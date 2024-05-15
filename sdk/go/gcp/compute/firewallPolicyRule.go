@@ -131,7 +131,7 @@ import (
 type FirewallPolicyRule struct {
 	pulumi.CustomResourceState
 
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -154,11 +154,18 @@ type FirewallPolicyRule struct {
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrOutput `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrOutput `pulumi:"tlsInspect"`
 }
 
 // NewFirewallPolicyRule registers a new resource with the given unique name, arguments, and options.
@@ -206,7 +213,7 @@ func GetFirewallPolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallPolicyRule resources.
 type firewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action *string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -229,15 +236,22 @@ type firewallPolicyRuleState struct {
 	Priority *int `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 type FirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -260,11 +274,18 @@ type FirewallPolicyRuleState struct {
 	Priority pulumi.IntPtrInput
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput
 }
 
 func (FirewallPolicyRuleState) ElementType() reflect.Type {
@@ -272,7 +293,7 @@ func (FirewallPolicyRuleState) ElementType() reflect.Type {
 }
 
 type firewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -291,16 +312,23 @@ type firewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 // The set of arguments for constructing a FirewallPolicyRule resource.
 type FirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -319,11 +347,18 @@ type FirewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatchInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput
 }
 
 func (FirewallPolicyRuleArgs) ElementType() reflect.Type {
@@ -413,7 +448,7 @@ func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 func (o FirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -466,6 +501,13 @@ func (o FirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.IntOutput { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
+// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringPtrOutput { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
+}
+
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 // this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
@@ -475,6 +517,12 @@ func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o FirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+// 'apply_security_profile_group' and cannot be set for other actions.
+func (o FirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.BoolPtrOutput { return v.TlsInspect }).(pulumi.BoolPtrOutput)
 }
 
 type FirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }

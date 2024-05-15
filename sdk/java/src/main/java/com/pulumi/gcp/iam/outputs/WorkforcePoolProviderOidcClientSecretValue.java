@@ -14,7 +14,6 @@ import javax.annotation.Nullable;
 public final class WorkforcePoolProviderOidcClientSecretValue {
     /**
      * @return The plain text of the client secret value.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private String plainText;
@@ -28,7 +27,6 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
     private WorkforcePoolProviderOidcClientSecretValue() {}
     /**
      * @return The plain text of the client secret value.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public String plainText() {

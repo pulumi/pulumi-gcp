@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     name: "my-terraform-ghe-repo",
  *     location: "us-central1",
- *     parentConnection: my_connection.id,
+ *     parentConnection: my_connection.name,
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
  * });
  * ```

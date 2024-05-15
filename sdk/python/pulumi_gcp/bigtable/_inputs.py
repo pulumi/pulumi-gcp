@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AuthorizedViewSubsetViewArgs',
+    'AuthorizedViewSubsetViewFamilySubsetArgs',
     'GCPolicyMaxAgeArgs',
     'GCPolicyMaxVersionArgs',
     'InstanceClusterArgs',
@@ -20,6 +22,105 @@ __all__ = [
     'TableIamBindingConditionArgs',
     'TableIamMemberConditionArgs',
 ]
+
+@pulumi.input_type
+class AuthorizedViewSubsetViewArgs:
+    def __init__(__self__, *,
+                 family_subsets: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]] = None,
+                 row_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]] family_subsets: A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+               
+               -----
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] row_prefixes: A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+        """
+        if family_subsets is not None:
+            pulumi.set(__self__, "family_subsets", family_subsets)
+        if row_prefixes is not None:
+            pulumi.set(__self__, "row_prefixes", row_prefixes)
+
+    @property
+    @pulumi.getter(name="familySubsets")
+    def family_subsets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]:
+        """
+        A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+
+        -----
+        """
+        return pulumi.get(self, "family_subsets")
+
+    @family_subsets.setter
+    def family_subsets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]):
+        pulumi.set(self, "family_subsets", value)
+
+    @property
+    @pulumi.getter(name="rowPrefixes")
+    def row_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+        """
+        return pulumi.get(self, "row_prefixes")
+
+    @row_prefixes.setter
+    def row_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "row_prefixes", value)
+
+
+@pulumi.input_type
+class AuthorizedViewSubsetViewFamilySubsetArgs:
+    def __init__(__self__, *,
+                 family_name: pulumi.Input[str],
+                 qualifier_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] family_name: Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] qualifier_prefixes: A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+               Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] qualifiers: A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+        """
+        pulumi.set(__self__, "family_name", family_name)
+        if qualifier_prefixes is not None:
+            pulumi.set(__self__, "qualifier_prefixes", qualifier_prefixes)
+        if qualifiers is not None:
+            pulumi.set(__self__, "qualifiers", qualifiers)
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> pulumi.Input[str]:
+        """
+        Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+        """
+        return pulumi.get(self, "family_name")
+
+    @family_name.setter
+    def family_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "family_name", value)
+
+    @property
+    @pulumi.getter(name="qualifierPrefixes")
+    def qualifier_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+        Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+        """
+        return pulumi.get(self, "qualifier_prefixes")
+
+    @qualifier_prefixes.setter
+    def qualifier_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "qualifier_prefixes", value)
+
+    @property
+    @pulumi.getter
+    def qualifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+        """
+        return pulumi.get(self, "qualifiers")
+
+    @qualifiers.setter
+    def qualifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "qualifiers", value)
+
 
 @pulumi.input_type
 class GCPolicyMaxAgeArgs:

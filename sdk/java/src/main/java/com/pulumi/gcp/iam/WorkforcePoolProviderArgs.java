@@ -6,6 +6,7 @@ package com.pulumi.gcp.iam;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderSamlArgs;
 import java.lang.Boolean;
@@ -182,6 +183,29 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can&#39;t get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="extraAttributesOauth2Client")
+    private @Nullable Output<WorkforcePoolProviderExtraAttributesOauth2ClientArgs> extraAttributesOauth2Client;
+
+    /**
+     * @return The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can&#39;t get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkforcePoolProviderExtraAttributesOauth2ClientArgs>> extraAttributesOauth2Client() {
+        return Optional.ofNullable(this.extraAttributesOauth2Client);
+    }
+
+    /**
      * The location for the resource.
      * 
      */
@@ -282,6 +306,7 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
+        this.extraAttributesOauth2Client = $.extraAttributesOauth2Client;
         this.location = $.location;
         this.oidc = $.oidc;
         this.providerId = $.providerId;
@@ -496,6 +521,35 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param extraAttributesOauth2Client The configuration for OAuth 2.0 client used to get the additional user
+         * attributes. This should be used when users can&#39;t get the desired claims
+         * in authentication credentials. Currently this configuration is only
+         * supported with OIDC protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraAttributesOauth2Client(@Nullable Output<WorkforcePoolProviderExtraAttributesOauth2ClientArgs> extraAttributesOauth2Client) {
+            $.extraAttributesOauth2Client = extraAttributesOauth2Client;
+            return this;
+        }
+
+        /**
+         * @param extraAttributesOauth2Client The configuration for OAuth 2.0 client used to get the additional user
+         * attributes. This should be used when users can&#39;t get the desired claims
+         * in authentication credentials. Currently this configuration is only
+         * supported with OIDC protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraAttributesOauth2Client(WorkforcePoolProviderExtraAttributesOauth2ClientArgs extraAttributesOauth2Client) {
+            return extraAttributesOauth2Client(Output.of(extraAttributesOauth2Client));
         }
 
         /**

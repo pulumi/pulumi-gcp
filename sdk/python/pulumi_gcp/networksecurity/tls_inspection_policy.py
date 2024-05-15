@@ -279,6 +279,14 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata.
+
+        To get more information about TlsInspectionPolicy, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.tlsInspectionPolicies)
+        * How-to Guides
+            * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
+
         ## Example Usage
 
         ### Network Security Tls Inspection Policy Basic
@@ -399,6 +407,14 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  args: TlsInspectionPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata.
+
+        To get more information about TlsInspectionPolicy, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.tlsInspectionPolicies)
+        * How-to Guides
+            * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
+
         ## Example Usage
 
         ### Network Security Tls Inspection Policy Basic

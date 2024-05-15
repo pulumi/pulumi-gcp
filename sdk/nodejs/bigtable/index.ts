@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AuthorizedViewArgs, AuthorizedViewState } from "./authorizedView";
+export type AuthorizedView = import("./authorizedView").AuthorizedView;
+export const AuthorizedView: typeof import("./authorizedView").AuthorizedView = null as any;
+utilities.lazyLoad(exports, ["AuthorizedView"], () => require("./authorizedView"));
+
 export { GCPolicyArgs, GCPolicyState } from "./gcpolicy";
 export type GCPolicy = import("./gcpolicy").GCPolicy;
 export const GCPolicy: typeof import("./gcpolicy").GCPolicy = null as any;
@@ -65,6 +70,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:bigtable/authorizedView:AuthorizedView":
+                return new AuthorizedView(name, <any>undefined, { urn })
             case "gcp:bigtable/gCPolicy:GCPolicy":
                 return new GCPolicy(name, <any>undefined, { urn })
             case "gcp:bigtable/instance:Instance":
@@ -88,6 +95,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "bigtable/authorizedView", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/gCPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamBinding", _module)

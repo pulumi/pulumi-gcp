@@ -439,14 +439,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * The Service Account email used to create the job.
+     * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountEmail;
 
     /**
-     * @return The Service Account email used to create the job.
+     * @return The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     public Output<Optional<String>> serviceAccountEmail() {

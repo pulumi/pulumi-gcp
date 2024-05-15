@@ -80,6 +80,65 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ * ### Region Security Policy Rule With Preconfigured Waf Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionSecurityPolicy("default", {
+ *     region: "asia-southeast1",
+ *     name: "policyruletest",
+ *     description: "basic region security policy",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
+ *     region: "asia-southeast1",
+ *     securityPolicy: _default.name,
+ *     description: "new rule",
+ *     priority: 100,
+ *     match: {
+ *         versionedExpr: "SRC_IPS_V1",
+ *         config: {
+ *             srcIpRanges: ["10.10.0.0/16"],
+ *         },
+ *     },
+ *     preconfiguredWafConfig: {
+ *         exclusions: [
+ *             {
+ *                 requestUris: [{
+ *                     operator: "STARTS_WITH",
+ *                     value: "/admin",
+ *                 }],
+ *                 targetRuleSet: "rce-stable",
+ *             },
+ *             {
+ *                 requestQueryParams: [
+ *                     {
+ *                         operator: "CONTAINS",
+ *                         value: "password",
+ *                     },
+ *                     {
+ *                         operator: "STARTS_WITH",
+ *                         value: "freeform",
+ *                     },
+ *                     {
+ *                         operator: "EQUALS",
+ *                         value: "description",
+ *                     },
+ *                 ],
+ *                 targetRuleSet: "xss-stable",
+ *                 targetRuleIds: [
+ *                     "owasp-crs-v030001-id941330-xss",
+ *                     "owasp-crs-v030001-id941340-xss",
+ *                 ],
+ *             },
+ *         ],
+ *     },
+ *     action: "allow",
+ *     preview: true,
+ * });
+ * ```
  * ### Region Security Policy Rule With Network Match
  *
  * ```typescript
@@ -223,6 +282,12 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly networkMatch!: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleNetworkMatch | undefined>;
     /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     */
+    public readonly preconfiguredWafConfig!: pulumi.Output<outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig | undefined>;
+    /**
      * If set to true, the specified action is not enforced.
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
@@ -237,6 +302,11 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    public readonly rateLimitOptions!: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */
@@ -266,9 +336,11 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["networkMatch"] = state ? state.networkMatch : undefined;
+            resourceInputs["preconfiguredWafConfig"] = state ? state.preconfiguredWafConfig : undefined;
             resourceInputs["preview"] = state ? state.preview : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rateLimitOptions"] = state ? state.rateLimitOptions : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
         } else {
@@ -289,9 +361,11 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["networkMatch"] = args ? args.networkMatch : undefined;
+            resourceInputs["preconfiguredWafConfig"] = args ? args.preconfiguredWafConfig : undefined;
             resourceInputs["preview"] = args ? args.preview : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rateLimitOptions"] = args ? args.rateLimitOptions : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
         }
@@ -336,6 +410,12 @@ export interface RegionSecurityPolicyRuleState {
      */
     networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch>;
     /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     */
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig>;
+    /**
      * If set to true, the specified action is not enforced.
      */
     preview?: pulumi.Input<boolean>;
@@ -350,6 +430,11 @@ export interface RegionSecurityPolicyRuleState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */
@@ -399,6 +484,12 @@ export interface RegionSecurityPolicyRuleArgs {
      */
     networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch>;
     /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     */
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig>;
+    /**
      * If set to true, the specified action is not enforced.
      */
     preview?: pulumi.Input<boolean>;
@@ -413,6 +504,11 @@ export interface RegionSecurityPolicyRuleArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */

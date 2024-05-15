@@ -15479,6 +15479,8 @@ func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterDnsConfig struct {
+	// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
+	AdditiveVpcScopeDnsDomain *string `pulumi:"additiveVpcScopeDnsDomain"`
 	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
 	ClusterDns *string `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
@@ -15499,6 +15501,8 @@ type ClusterDnsConfigInput interface {
 }
 
 type ClusterDnsConfigArgs struct {
+	// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
+	AdditiveVpcScopeDnsDomain pulumi.StringPtrInput `pulumi:"additiveVpcScopeDnsDomain"`
 	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
 	ClusterDns pulumi.StringPtrInput `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
@@ -15584,6 +15588,11 @@ func (o ClusterDnsConfigOutput) ToClusterDnsConfigPtrOutputWithContext(ctx conte
 	}).(ClusterDnsConfigPtrOutput)
 }
 
+// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
+func (o ClusterDnsConfigOutput) AdditiveVpcScopeDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.AdditiveVpcScopeDnsDomain }).(pulumi.StringPtrOutput)
+}
+
 // Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
 func (o ClusterDnsConfigOutput) ClusterDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
@@ -15621,6 +15630,16 @@ func (o ClusterDnsConfigPtrOutput) Elem() ClusterDnsConfigOutput {
 		var ret ClusterDnsConfig
 		return ret
 	}).(ClusterDnsConfigOutput)
+}
+
+// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
+func (o ClusterDnsConfigPtrOutput) AdditiveVpcScopeDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditiveVpcScopeDnsDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 // Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
@@ -20255,6 +20274,8 @@ func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWo
 }
 
 type ClusterNodeConfigAdvancedMachineFeatures struct {
+	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -20271,6 +20292,8 @@ type ClusterNodeConfigAdvancedMachineFeaturesInput interface {
 }
 
 type ClusterNodeConfigAdvancedMachineFeaturesArgs struct {
+	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -20352,6 +20375,11 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodeConfigAdvan
 	}).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -20379,6 +20407,16 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() ClusterNodeCon
 		var ret ClusterNodeConfigAdvancedMachineFeatures
 		return ret
 	}).(ClusterNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -26905,6 +26943,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNode
 }
 
 type ClusterNodePoolNodeConfigAdvancedMachineFeatures struct {
+	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -26921,6 +26961,8 @@ type ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput interface {
 }
 
 type ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
+	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -27002,6 +27044,11 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodePoo
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -27029,6 +27076,16 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() Cluste
 		var ret ClusterNodePoolNodeConfigAdvancedMachineFeatures
 		return ret
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -35931,6 +35988,8 @@ func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfig
 }
 
 type NodePoolNodeConfigAdvancedMachineFeatures struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -35947,6 +36006,8 @@ type NodePoolNodeConfigAdvancedMachineFeaturesInput interface {
 }
 
 type NodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -36028,6 +36089,11 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ToNodePoolNodeConfigAdv
 	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Whether the node should have nested virtualization enabled.
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -36055,6 +36121,16 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() NodePoolNodeC
 		var ret NodePoolNodeConfigAdvancedMachineFeatures
 		return ret
 	}).(NodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+// Whether the node should have nested virtualization enabled.
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -43325,6 +43401,8 @@ func (o GetClusterDefaultSnatStatusArrayOutput) Index(i pulumi.IntInput) GetClus
 }
 
 type GetClusterDnsConfig struct {
+	// Enable additive VPC scope DNS in a GKE cluster.
+	AdditiveVpcScopeDnsDomain string `pulumi:"additiveVpcScopeDnsDomain"`
 	// Which in-cluster DNS provider should be used.
 	ClusterDns string `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
@@ -43345,6 +43423,8 @@ type GetClusterDnsConfigInput interface {
 }
 
 type GetClusterDnsConfigArgs struct {
+	// Enable additive VPC scope DNS in a GKE cluster.
+	AdditiveVpcScopeDnsDomain pulumi.StringInput `pulumi:"additiveVpcScopeDnsDomain"`
 	// Which in-cluster DNS provider should be used.
 	ClusterDns pulumi.StringInput `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
@@ -43402,6 +43482,11 @@ func (o GetClusterDnsConfigOutput) ToGetClusterDnsConfigOutput() GetClusterDnsCo
 
 func (o GetClusterDnsConfigOutput) ToGetClusterDnsConfigOutputWithContext(ctx context.Context) GetClusterDnsConfigOutput {
 	return o
+}
+
+// Enable additive VPC scope DNS in a GKE cluster.
+func (o GetClusterDnsConfigOutput) AdditiveVpcScopeDnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDnsConfig) string { return v.AdditiveVpcScopeDnsDomain }).(pulumi.StringOutput)
 }
 
 // Which in-cluster DNS provider should be used.
@@ -46275,6 +46360,8 @@ func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNode
 }
 
 type GetClusterNodeConfigAdvancedMachineFeature struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -46291,6 +46378,8 @@ type GetClusterNodeConfigAdvancedMachineFeatureInput interface {
 }
 
 type GetClusterNodeConfigAdvancedMachineFeatureArgs struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -46344,6 +46433,11 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodeConfig
 
 func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodeConfigAdvancedMachineFeatureOutput {
 	return o
+}
+
+// Whether the node should have nested virtualization enabled.
+func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -50713,6 +50807,8 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNodePoolNodeConfigAdvancedMachineFeature struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -50729,6 +50825,8 @@ type GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput interface {
 }
 
 type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -50782,6 +50880,11 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNo
 
 func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
 	return o
+}
+
+// Whether the node should have nested virtualization enabled.
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterDnsConfigResult
     {
         /// <summary>
+        /// Enable additive VPC scope DNS in a GKE cluster.
+        /// </summary>
+        public readonly string AdditiveVpcScopeDnsDomain;
+        /// <summary>
         /// Which in-cluster DNS provider should be used.
         /// </summary>
         public readonly string ClusterDns;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterDnsConfigResult(
+            string additiveVpcScopeDnsDomain,
+
             string clusterDns,
 
             string clusterDnsDomain,
 
             string clusterDnsScope)
         {
+            AdditiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
             ClusterDns = clusterDns;
             ClusterDnsDomain = clusterDnsDomain;
             ClusterDnsScope = clusterDnsScope;

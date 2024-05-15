@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.TargetAnthosClusterArgs;
+import com.pulumi.gcp.clouddeploy.inputs.TargetCustomTargetArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetMultiTargetArgs;
@@ -58,6 +59,21 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TargetAnthosClusterArgs>> anthosCluster() {
         return Optional.ofNullable(this.anthosCluster);
+    }
+
+    /**
+     * Optional. Information specifying a Custom Target.
+     * 
+     */
+    @Import(name="customTarget")
+    private @Nullable Output<TargetCustomTargetArgs> customTarget;
+
+    /**
+     * @return Optional. Information specifying a Custom Target.
+     * 
+     */
+    public Optional<Output<TargetCustomTargetArgs>> customTarget() {
+        return Optional.ofNullable(this.customTarget);
     }
 
     /**
@@ -172,7 +188,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `Target`. Format is `a-z?`.
      * 
      * ***
      * 
@@ -181,7 +197,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * @return Name of the `Target`. Format is `a-z?`.
      * 
      * ***
      * 
@@ -240,6 +256,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     private TargetArgs(TargetArgs $) {
         this.annotations = $.annotations;
         this.anthosCluster = $.anthosCluster;
+        this.customTarget = $.customTarget;
         this.deployParameters = $.deployParameters;
         this.description = $.description;
         this.executionConfigs = $.executionConfigs;
@@ -317,6 +334,27 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder anthosCluster(TargetAnthosClusterArgs anthosCluster) {
             return anthosCluster(Output.of(anthosCluster));
+        }
+
+        /**
+         * @param customTarget Optional. Information specifying a Custom Target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTarget(@Nullable Output<TargetCustomTargetArgs> customTarget) {
+            $.customTarget = customTarget;
+            return this;
+        }
+
+        /**
+         * @param customTarget Optional. Information specifying a Custom Target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTarget(TargetCustomTargetArgs customTarget) {
+            return customTarget(Output.of(customTarget));
         }
 
         /**
@@ -483,7 +521,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+         * @param name Name of the `Target`. Format is `a-z?`.
          * 
          * ***
          * 
@@ -496,7 +534,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+         * @param name Name of the `Target`. Format is `a-z?`.
          * 
          * ***
          * 

@@ -128,6 +128,87 @@ import (
 //	}
 //
 // ```
+// ### Region Security Policy Rule With Preconfigured Waf Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//				Region:      pulumi.String("asia-southeast1"),
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("basic region security policy"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule", &compute.RegionSecurityPolicyRuleArgs{
+//				Region:         pulumi.String("asia-southeast1"),
+//				SecurityPolicy: _default.Name,
+//				Description:    pulumi.String("new rule"),
+//				Priority:       pulumi.Int(100),
+//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//						SrcIpRanges: pulumi.StringArray{
+//							pulumi.String("10.10.0.0/16"),
+//						},
+//					},
+//				},
+//				PreconfiguredWafConfig: &compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs{
+//					Exclusions: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{
+//						&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
+//							RequestUris: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{
+//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{
+//									Operator: pulumi.String("STARTS_WITH"),
+//									Value:    pulumi.String("/admin"),
+//								},
+//							},
+//							TargetRuleSet: pulumi.String("rce-stable"),
+//						},
+//						&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
+//							RequestQueryParams: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{
+//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
+//									Operator: pulumi.String("CONTAINS"),
+//									Value:    pulumi.String("password"),
+//								},
+//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
+//									Operator: pulumi.String("STARTS_WITH"),
+//									Value:    pulumi.String("freeform"),
+//								},
+//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
+//									Operator: pulumi.String("EQUALS"),
+//									Value:    pulumi.String("description"),
+//								},
+//							},
+//							TargetRuleSet: pulumi.String("xss-stable"),
+//							TargetRuleIds: pulumi.StringArray{
+//								pulumi.String("owasp-crs-v030001-id941330-xss"),
+//								pulumi.String("owasp-crs-v030001-id941340-xss"),
+//							},
+//						},
+//					},
+//				},
+//				Action:  pulumi.String("allow"),
+//				Preview: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Security Policy Rule With Network Match
 //
 // ```go
@@ -268,6 +349,10 @@ type RegionSecurityPolicyRule struct {
 	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
 	// Structure is documented below.
 	NetworkMatch RegionSecurityPolicyRuleNetworkMatchPtrOutput `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	// Structure is documented below.
+	PreconfiguredWafConfig RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview pulumi.BoolPtrOutput `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list.
@@ -277,6 +362,9 @@ type RegionSecurityPolicyRule struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions RegionSecurityPolicyRuleRateLimitOptionsPtrOutput `pulumi:"rateLimitOptions"`
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
@@ -350,6 +438,10 @@ type regionSecurityPolicyRuleState struct {
 	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
 	// Structure is documented below.
 	NetworkMatch *RegionSecurityPolicyRuleNetworkMatch `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	// Structure is documented below.
+	PreconfiguredWafConfig *RegionSecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview *bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list.
@@ -359,6 +451,9 @@ type regionSecurityPolicyRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions *RegionSecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The Region in which the created Region Security Policy rule should reside.
 	Region *string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
@@ -391,6 +486,10 @@ type RegionSecurityPolicyRuleState struct {
 	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
 	// Structure is documented below.
 	NetworkMatch RegionSecurityPolicyRuleNetworkMatchPtrInput
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	// Structure is documented below.
+	PreconfiguredWafConfig RegionSecurityPolicyRulePreconfiguredWafConfigPtrInput
 	// If set to true, the specified action is not enforced.
 	Preview pulumi.BoolPtrInput
 	// An integer indicating the priority of a rule in the list.
@@ -400,6 +499,9 @@ type RegionSecurityPolicyRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions RegionSecurityPolicyRuleRateLimitOptionsPtrInput
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringPtrInput
 	// The name of the security policy this rule belongs to.
@@ -436,6 +538,10 @@ type regionSecurityPolicyRuleArgs struct {
 	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
 	// Structure is documented below.
 	NetworkMatch *RegionSecurityPolicyRuleNetworkMatch `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	// Structure is documented below.
+	PreconfiguredWafConfig *RegionSecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview *bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list.
@@ -445,6 +551,9 @@ type regionSecurityPolicyRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions *RegionSecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The Region in which the created Region Security Policy rule should reside.
 	Region string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
@@ -478,6 +587,10 @@ type RegionSecurityPolicyRuleArgs struct {
 	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
 	// Structure is documented below.
 	NetworkMatch RegionSecurityPolicyRuleNetworkMatchPtrInput
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	// Structure is documented below.
+	PreconfiguredWafConfig RegionSecurityPolicyRulePreconfiguredWafConfigPtrInput
 	// If set to true, the specified action is not enforced.
 	Preview pulumi.BoolPtrInput
 	// An integer indicating the priority of a rule in the list.
@@ -487,6 +600,9 @@ type RegionSecurityPolicyRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions RegionSecurityPolicyRuleRateLimitOptionsPtrInput
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringInput
 	// The name of the security policy this rule belongs to.
@@ -617,6 +733,15 @@ func (o RegionSecurityPolicyRuleOutput) NetworkMatch() RegionSecurityPolicyRuleN
 	return o.ApplyT(func(v *RegionSecurityPolicyRule) RegionSecurityPolicyRuleNetworkMatchPtrOutput { return v.NetworkMatch }).(RegionSecurityPolicyRuleNetworkMatchPtrOutput)
 }
 
+// Preconfigured WAF configuration to be applied for the rule.
+// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+// Structure is documented below.
+func (o RegionSecurityPolicyRuleOutput) PreconfiguredWafConfig() RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicyRule) RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+		return v.PreconfiguredWafConfig
+	}).(RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
 // If set to true, the specified action is not enforced.
 func (o RegionSecurityPolicyRuleOutput) Preview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicyRule) pulumi.BoolPtrOutput { return v.Preview }).(pulumi.BoolPtrOutput)
@@ -633,6 +758,14 @@ func (o RegionSecurityPolicyRuleOutput) Priority() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o RegionSecurityPolicyRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicyRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+// Structure is documented below.
+func (o RegionSecurityPolicyRuleOutput) RateLimitOptions() RegionSecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicyRule) RegionSecurityPolicyRuleRateLimitOptionsPtrOutput {
+		return v.RateLimitOptions
+	}).(RegionSecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
 // The Region in which the created Region Security Policy rule should reside.

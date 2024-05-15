@@ -445,6 +445,18 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                  tls_inspection_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Firewall endpoint association links a firewall endpoint to a VPC network in
+        the same zone. After you define this association, Cloud Firewall forwards the
+        zonal workload traffic in your VPC network that requires layer 7 inspection to
+        the attached firewall endpoint.
+
+        To get more information about FirewallEndpointAssociation, see:
+
+        * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
+        * How-to Guides
+            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+
         ## Example Usage
 
         ### Network Security Firewall Endpoint Association Basic
@@ -508,6 +520,18 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                  args: FirewallEndpointAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Firewall endpoint association links a firewall endpoint to a VPC network in
+        the same zone. After you define this association, Cloud Firewall forwards the
+        zonal workload traffic in your VPC network that requires layer 7 inspection to
+        the attached firewall endpoint.
+
+        To get more information about FirewallEndpointAssociation, see:
+
+        * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
+        * How-to Guides
+            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+
         ## Example Usage
 
         ### Network Security Firewall Endpoint Association Basic

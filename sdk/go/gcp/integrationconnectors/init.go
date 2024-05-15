@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "gcp:integrationconnectors/endpointAttachment:EndpointAttachment":
 		r = &EndpointAttachment{}
+	case "gcp:integrationconnectors/managedZone:ManagedZone":
+		r = &ManagedZone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"integrationconnectors/endpointAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"integrationconnectors/managedZone",
 		&module{version},
 	)
 }

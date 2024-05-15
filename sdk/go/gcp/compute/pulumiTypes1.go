@@ -13,6 +13,1744 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherRouteRule struct {
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService. The headerAction specified here are applied before
+	// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+	// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+	// Structure is documented below.
+	HeaderAction *URLMapPathMatcherRouteRuleHeaderAction `pulumi:"headerAction"`
+	// The rules for determining a match.
+	// Structure is documented below.
+	MatchRules []URLMapPathMatcherRouteRuleMatchRule `pulumi:"matchRules"`
+	// For routeRules within a given pathMatcher, priority determines the order
+	// in which load balancer will interpret routeRules. RouteRules are evaluated
+	// in order of priority, from the lowest to highest number. The priority of
+	// a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+	// that matches the request is applied.
+	// You cannot configure two or more routeRules with the same priority.
+	// Priority for each rule must be set to a number between 0 and
+	// 2147483647 inclusive.
+	// Priority numbers can have gaps, which enable you to add or remove rules
+	// in the future without affecting the rest of the rules. For example,
+	// 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+	// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+	// future without any impact on existing rules.
+	Priority int `pulumi:"priority"`
+	// In response to a matching matchRule, the load balancer performs advanced routing
+	// actions like URL rewrites, header transformations, etc. prior to forwarding the
+	// request to the selected backend. If  routeAction specifies any
+	// weightedBackendServices, service must not be set. Conversely if service is set,
+	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+	// or urlRedirect must be set.
+	// Structure is documented below.
+	RouteAction *URLMapPathMatcherRouteRuleRouteAction `pulumi:"routeAction"`
+	// The backend service resource to which traffic is
+	// directed if this rule is matched. If routeAction is additionally specified,
+	// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+	// the request to the backend. However, if service is specified, routeAction cannot
+	// contain any weightedBackendService s. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+	// service or routeAction.weightedBackendService must be set.
+	Service *string `pulumi:"service"`
+	// When this rule is matched, the request is redirected to a URL specified by
+	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
+	// set.
+	// Structure is documented below.
+	UrlRedirect *URLMapPathMatcherRouteRuleUrlRedirect `pulumi:"urlRedirect"`
+}
+
+// URLMapPathMatcherRouteRuleInput is an input type that accepts URLMapPathMatcherRouteRuleArgs and URLMapPathMatcherRouteRuleOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleInput` via:
+//
+//	URLMapPathMatcherRouteRuleArgs{...}
+type URLMapPathMatcherRouteRuleInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleOutput() URLMapPathMatcherRouteRuleOutput
+	ToURLMapPathMatcherRouteRuleOutputWithContext(context.Context) URLMapPathMatcherRouteRuleOutput
+}
+
+type URLMapPathMatcherRouteRuleArgs struct {
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService. The headerAction specified here are applied before
+	// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+	// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+	// Structure is documented below.
+	HeaderAction URLMapPathMatcherRouteRuleHeaderActionPtrInput `pulumi:"headerAction"`
+	// The rules for determining a match.
+	// Structure is documented below.
+	MatchRules URLMapPathMatcherRouteRuleMatchRuleArrayInput `pulumi:"matchRules"`
+	// For routeRules within a given pathMatcher, priority determines the order
+	// in which load balancer will interpret routeRules. RouteRules are evaluated
+	// in order of priority, from the lowest to highest number. The priority of
+	// a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+	// that matches the request is applied.
+	// You cannot configure two or more routeRules with the same priority.
+	// Priority for each rule must be set to a number between 0 and
+	// 2147483647 inclusive.
+	// Priority numbers can have gaps, which enable you to add or remove rules
+	// in the future without affecting the rest of the rules. For example,
+	// 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+	// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+	// future without any impact on existing rules.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// In response to a matching matchRule, the load balancer performs advanced routing
+	// actions like URL rewrites, header transformations, etc. prior to forwarding the
+	// request to the selected backend. If  routeAction specifies any
+	// weightedBackendServices, service must not be set. Conversely if service is set,
+	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+	// or urlRedirect must be set.
+	// Structure is documented below.
+	RouteAction URLMapPathMatcherRouteRuleRouteActionPtrInput `pulumi:"routeAction"`
+	// The backend service resource to which traffic is
+	// directed if this rule is matched. If routeAction is additionally specified,
+	// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+	// the request to the backend. However, if service is specified, routeAction cannot
+	// contain any weightedBackendService s. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+	// service or routeAction.weightedBackendService must be set.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// When this rule is matched, the request is redirected to a URL specified by
+	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
+	// set.
+	// Structure is documented below.
+	UrlRedirect URLMapPathMatcherRouteRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
+}
+
+func (URLMapPathMatcherRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleArgs) ToURLMapPathMatcherRouteRuleOutput() URLMapPathMatcherRouteRuleOutput {
+	return i.ToURLMapPathMatcherRouteRuleOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleArgs) ToURLMapPathMatcherRouteRuleOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleOutput)
+}
+
+// URLMapPathMatcherRouteRuleArrayInput is an input type that accepts URLMapPathMatcherRouteRuleArray and URLMapPathMatcherRouteRuleArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleArray{ URLMapPathMatcherRouteRuleArgs{...} }
+type URLMapPathMatcherRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleArrayOutput() URLMapPathMatcherRouteRuleArrayOutput
+	ToURLMapPathMatcherRouteRuleArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleArray []URLMapPathMatcherRouteRuleInput
+
+func (URLMapPathMatcherRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleArray) ToURLMapPathMatcherRouteRuleArrayOutput() URLMapPathMatcherRouteRuleArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleArray) ToURLMapPathMatcherRouteRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleOutput) ToURLMapPathMatcherRouteRuleOutput() URLMapPathMatcherRouteRuleOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleOutput) ToURLMapPathMatcherRouteRuleOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleOutput {
+	return o
+}
+
+// Specifies changes to request and response headers that need to take effect for
+// the selected backendService. The headerAction specified here are applied before
+// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleOutput) HeaderAction() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleHeaderAction { return v.HeaderAction }).(URLMapPathMatcherRouteRuleHeaderActionPtrOutput)
+}
+
+// The rules for determining a match.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleOutput) MatchRules() URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) []URLMapPathMatcherRouteRuleMatchRule { return v.MatchRules }).(URLMapPathMatcherRouteRuleMatchRuleArrayOutput)
+}
+
+// For routeRules within a given pathMatcher, priority determines the order
+// in which load balancer will interpret routeRules. RouteRules are evaluated
+// in order of priority, from the lowest to highest number. The priority of
+// a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+// that matches the request is applied.
+// You cannot configure two or more routeRules with the same priority.
+// Priority for each rule must be set to a number between 0 and
+// 2147483647 inclusive.
+// Priority numbers can have gaps, which enable you to add or remove rules
+// in the future without affecting the rest of the rules. For example,
+// 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+// future without any impact on existing rules.
+func (o URLMapPathMatcherRouteRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// In response to a matching matchRule, the load balancer performs advanced routing
+// actions like URL rewrites, header transformations, etc. prior to forwarding the
+// request to the selected backend. If  routeAction specifies any
+// weightedBackendServices, service must not be set. Conversely if service is set,
+// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+// or urlRedirect must be set.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleOutput) RouteAction() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleRouteAction { return v.RouteAction }).(URLMapPathMatcherRouteRuleRouteActionPtrOutput)
+}
+
+// The backend service resource to which traffic is
+// directed if this rule is matched. If routeAction is additionally specified,
+// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+// the request to the backend. However, if service is specified, routeAction cannot
+// contain any weightedBackendService s. Conversely, if routeAction specifies any
+// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+// service or routeAction.weightedBackendService must be set.
+func (o URLMapPathMatcherRouteRuleOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// When this rule is matched, the request is redirected to a URL specified by
+// urlRedirect. If urlRedirect is specified, service or routeAction must not be
+// set.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleOutput) UrlRedirect() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleUrlRedirect { return v.UrlRedirect }).(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleArrayOutput) ToURLMapPathMatcherRouteRuleArrayOutput() URLMapPathMatcherRouteRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleArrayOutput) ToURLMapPathMatcherRouteRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRule {
+		return vs[0].([]URLMapPathMatcherRouteRule)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderAction struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves []string `pulumi:"responseHeadersToRemoves"`
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionArgs and URLMapPathMatcherRouteRuleHeaderActionOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionInput` via:
+//
+//	URLMapPathMatcherRouteRuleHeaderActionArgs{...}
+type URLMapPathMatcherRouteRuleHeaderActionInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionOutput() URLMapPathMatcherRouteRuleHeaderActionOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionOutput
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionArgs struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves pulumi.StringArrayInput `pulumi:"responseHeadersToRemoves"`
+}
+
+func (URLMapPathMatcherRouteRuleHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderAction)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionArgs) ToURLMapPathMatcherRouteRuleHeaderActionOutput() URLMapPathMatcherRouteRuleHeaderActionOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionArgs) ToURLMapPathMatcherRouteRuleHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionArgs) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutput() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionArgs) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionOutput).ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionPtrInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionArgs, URLMapPathMatcherRouteRuleHeaderActionPtr and URLMapPathMatcherRouteRuleHeaderActionPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionPtrOutput() URLMapPathMatcherRouteRuleHeaderActionPtrOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleHeaderActionPtrType URLMapPathMatcherRouteRuleHeaderActionArgs
+
+func URLMapPathMatcherRouteRuleHeaderActionPtr(v *URLMapPathMatcherRouteRuleHeaderActionArgs) URLMapPathMatcherRouteRuleHeaderActionPtrInput {
+	return (*urlmapPathMatcherRouteRuleHeaderActionPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleHeaderAction)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleHeaderActionPtrType) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutput() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleHeaderActionPtrType) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ToURLMapPathMatcherRouteRuleHeaderActionOutput() URLMapPathMatcherRouteRuleHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ToURLMapPathMatcherRouteRuleHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutput() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleHeaderAction) *URLMapPathMatcherRouteRuleHeaderAction {
+		return &v
+	}).(URLMapPathMatcherRouteRuleHeaderActionPtrOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []string { return v.ResponseHeadersToRemoves }).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutput() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ToURLMapPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) Elem() URLMapPathMatcherRouteRuleHeaderActionOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) URLMapPathMatcherRouteRuleHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleHeaderAction
+		return ret
+	}).(URLMapPathMatcherRouteRuleHeaderActionOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs and URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddInput` via:
+//
+//	URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs{...}
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput)
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray and URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray{ URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs{...} }
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddInput
+
+func (URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd) bool { return v.Replace }).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs and URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddInput` via:
+//
+//	URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs{...}
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput)
+}
+
+// URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray and URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray{ URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs{...} }
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput
+	ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddInput
+
+func (URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd) bool { return v.Replace }).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRule struct {
+	// For satisfying the matchRule condition, the path of the request must exactly
+	// match the value specified in fullPathMatch after removing any query parameters
+	// and anchor that may be part of the original URL. FullPathMatch must be between 1
+	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+	// be specified.
+	FullPathMatch *string `pulumi:"fullPathMatch"`
+	// Specifies a list of header match criteria, all of which must match corresponding
+	// headers in the request.
+	// Structure is documented below.
+	HeaderMatches []URLMapPathMatcherRouteRuleMatchRuleHeaderMatch `pulumi:"headerMatches"`
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+	// Defaults to false.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+	// a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+	// clients present node metadata. If a match takes place, the relevant routing
+	// configuration is made available to those proxies. For each metadataFilter in
+	// this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+	// filterLabels must match the corresponding label provided in the metadata. If its
+	// filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+	// with corresponding labels in the provided metadata. metadataFilters specified
+	// here can be overrides those specified in ForwardingRule that refers to this
+	// UrlMap. metadataFilters only applies to Loadbalancers that have their
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MetadataFilters []URLMapPathMatcherRouteRuleMatchRuleMetadataFilter `pulumi:"metadataFilters"`
+	// For satisfying the matchRule condition, the path of the request
+	// must match the wildcard pattern specified in pathTemplateMatch
+	// after removing any query parameters and anchor that may be part
+	// of the original URL.
+	// pathTemplateMatch must be between 1 and 255 characters
+	// (inclusive).  The pattern specified by pathTemplateMatch may
+	// have at most 5 wildcard operators and at most 5 variable
+	// captures in total.
+	PathTemplateMatch *string `pulumi:"pathTemplateMatch"`
+	// For satisfying the matchRule condition, the request's path must begin with the
+	// specified prefixMatch. prefixMatch must begin with a /. The value must be
+	// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+	// regexMatch must be specified.
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// Specifies a list of query parameter match criteria, all of which must match
+	// corresponding query parameters in the request.
+	// Structure is documented below.
+	QueryParameterMatches []URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch `pulumi:"queryParameterMatches"`
+	// For satisfying the matchRule condition, the path of the request must satisfy the
+	// regular expression specified in regexMatch after removing any query parameters
+	// and anchor supplied with the original URL. For regular expression grammar please
+	// see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+	// fullPathMatch or regexMatch must be specified.
+	RegexMatch *string `pulumi:"regexMatch"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleArgs and URLMapPathMatcherRouteRuleMatchRuleOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleOutput() URLMapPathMatcherRouteRuleMatchRuleOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleArgs struct {
+	// For satisfying the matchRule condition, the path of the request must exactly
+	// match the value specified in fullPathMatch after removing any query parameters
+	// and anchor that may be part of the original URL. FullPathMatch must be between 1
+	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+	// be specified.
+	FullPathMatch pulumi.StringPtrInput `pulumi:"fullPathMatch"`
+	// Specifies a list of header match criteria, all of which must match corresponding
+	// headers in the request.
+	// Structure is documented below.
+	HeaderMatches URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput `pulumi:"headerMatches"`
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+	// Defaults to false.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+	// a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+	// clients present node metadata. If a match takes place, the relevant routing
+	// configuration is made available to those proxies. For each metadataFilter in
+	// this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+	// filterLabels must match the corresponding label provided in the metadata. If its
+	// filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+	// with corresponding labels in the provided metadata. metadataFilters specified
+	// here can be overrides those specified in ForwardingRule that refers to this
+	// UrlMap. metadataFilters only applies to Loadbalancers that have their
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MetadataFilters URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput `pulumi:"metadataFilters"`
+	// For satisfying the matchRule condition, the path of the request
+	// must match the wildcard pattern specified in pathTemplateMatch
+	// after removing any query parameters and anchor that may be part
+	// of the original URL.
+	// pathTemplateMatch must be between 1 and 255 characters
+	// (inclusive).  The pattern specified by pathTemplateMatch may
+	// have at most 5 wildcard operators and at most 5 variable
+	// captures in total.
+	PathTemplateMatch pulumi.StringPtrInput `pulumi:"pathTemplateMatch"`
+	// For satisfying the matchRule condition, the request's path must begin with the
+	// specified prefixMatch. prefixMatch must begin with a /. The value must be
+	// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+	// regexMatch must be specified.
+	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
+	// Specifies a list of query parameter match criteria, all of which must match
+	// corresponding query parameters in the request.
+	// Structure is documented below.
+	QueryParameterMatches URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
+	// For satisfying the matchRule condition, the path of the request must satisfy the
+	// regular expression specified in regexMatch after removing any query parameters
+	// and anchor supplied with the original URL. For regular expression grammar please
+	// see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+	// fullPathMatch or regexMatch must be specified.
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleArgs) ToURLMapPathMatcherRouteRuleMatchRuleOutput() URLMapPathMatcherRouteRuleMatchRuleOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleArgs) ToURLMapPathMatcherRouteRuleMatchRuleOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleOutput)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleArrayInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleArray and URLMapPathMatcherRouteRuleMatchRuleArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleArray{ URLMapPathMatcherRouteRuleMatchRuleArgs{...} }
+type URLMapPathMatcherRouteRuleMatchRuleArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleArrayOutput() URLMapPathMatcherRouteRuleMatchRuleArrayOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleArray []URLMapPathMatcherRouteRuleMatchRuleInput
+
+func (URLMapPathMatcherRouteRuleMatchRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleArray) ToURLMapPathMatcherRouteRuleMatchRuleArrayOutput() URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleArray) ToURLMapPathMatcherRouteRuleMatchRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) ToURLMapPathMatcherRouteRuleMatchRuleOutput() URLMapPathMatcherRouteRuleMatchRuleOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) ToURLMapPathMatcherRouteRuleMatchRuleOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleOutput {
+	return o
+}
+
+// For satisfying the matchRule condition, the path of the request must exactly
+// match the value specified in fullPathMatch after removing any query parameters
+// and anchor that may be part of the original URL. FullPathMatch must be between 1
+// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+// be specified.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) FullPathMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) *string { return v.FullPathMatch }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of header match criteria, all of which must match corresponding
+// headers in the request.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) HeaderMatches() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+		return v.HeaderMatches
+	}).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput)
+}
+
+// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+// Defaults to false.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+// a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+// clients present node metadata. If a match takes place, the relevant routing
+// configuration is made available to those proxies. For each metadataFilter in
+// this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+// filterLabels must match the corresponding label provided in the metadata. If its
+// filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+// with corresponding labels in the provided metadata. metadataFilters specified
+// here can be overrides those specified in ForwardingRule that refers to this
+// UrlMap. metadataFilters only applies to Loadbalancers that have their
+// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) MetadataFilters() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+		return v.MetadataFilters
+	}).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput)
+}
+
+// For satisfying the matchRule condition, the path of the request
+// must match the wildcard pattern specified in pathTemplateMatch
+// after removing any query parameters and anchor that may be part
+// of the original URL.
+// pathTemplateMatch must be between 1 and 255 characters
+// (inclusive).  The pattern specified by pathTemplateMatch may
+// have at most 5 wildcard operators and at most 5 variable
+// captures in total.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) PathTemplateMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) *string { return v.PathTemplateMatch }).(pulumi.StringPtrOutput)
+}
+
+// For satisfying the matchRule condition, the request's path must begin with the
+// specified prefixMatch. prefixMatch must begin with a /. The value must be
+// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+// regexMatch must be specified.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of query parameter match criteria, all of which must match
+// corresponding query parameters in the request.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) QueryParameterMatches() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+		return v.QueryParameterMatches
+	}).(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput)
+}
+
+// For satisfying the matchRule condition, the path of the request must satisfy the
+// regular expression specified in regexMatch after removing any query parameters
+// and anchor supplied with the original URL. For regular expression grammar please
+// see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+// fullPathMatch or regexMatch must be specified.
+func (o URLMapPathMatcherRouteRuleMatchRuleOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleArrayOutput() URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleMatchRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleMatchRule {
+		return vs[0].([]URLMapPathMatcherRouteRuleMatchRule)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleMatchRuleOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatch struct {
+	// The value should exactly match contents of exactMatch. Only one of exactMatch,
+	// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// The name of the HTTP header to match. For matching against the HTTP request's
+	// authority, use a headerMatch with the header name ":authority". For matching a
+	// request's method, use the headerName ":method".
+	HeaderName string `pulumi:"headerName"`
+	// If set to false, the headerMatch is considered a match if the match criteria
+	// above are met. If set to true, the headerMatch is considered a match if the
+	// match criteria above are NOT met. Defaults to false.
+	InvertMatch *bool `pulumi:"invertMatch"`
+	// The value of the header must start with the contents of prefixMatch. Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// A header with the contents of headerName must exist. The match takes place
+	// whether or not the request's header has a value or not. Only one of exactMatch,
+	// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+	PresentMatch *bool `pulumi:"presentMatch"`
+	// The header value must be an integer and its value must be in the range specified
+	// in rangeMatch. If the header does not contain an integer, number or is empty,
+	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	// Structure is documented below.
+	RangeMatch *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch `pulumi:"rangeMatch"`
+	// The value of the header must match the regular expression specified in
+	// regexMatch. For regular expression grammar, please see:
+	// en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+	// specified in the HTTP request, use a headerMatch with headerName set to PORT and
+	// a regular expression that satisfies the RFC2616 Host header's port specifier.
+	// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+	// rangeMatch must be set.
+	RegexMatch *string `pulumi:"regexMatch"`
+	// The value of the header must end with the contents of suffixMatch. Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	SuffixMatch *string `pulumi:"suffixMatch"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleHeaderMatchInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs and URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleHeaderMatchInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs struct {
+	// The value should exactly match contents of exactMatch. Only one of exactMatch,
+	// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// The name of the HTTP header to match. For matching against the HTTP request's
+	// authority, use a headerMatch with the header name ":authority". For matching a
+	// request's method, use the headerName ":method".
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// If set to false, the headerMatch is considered a match if the match criteria
+	// above are met. If set to true, the headerMatch is considered a match if the
+	// match criteria above are NOT met. Defaults to false.
+	InvertMatch pulumi.BoolPtrInput `pulumi:"invertMatch"`
+	// The value of the header must start with the contents of prefixMatch. Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
+	// A header with the contents of headerName must exist. The match takes place
+	// whether or not the request's header has a value or not. Only one of exactMatch,
+	// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
+	// The header value must be an integer and its value must be in the range specified
+	// in rangeMatch. If the header does not contain an integer, number or is empty,
+	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	// Structure is documented below.
+	RangeMatch URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput `pulumi:"rangeMatch"`
+	// The value of the header must match the regular expression specified in
+	// regexMatch. For regular expression grammar, please see:
+	// en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+	// specified in the HTTP request, use a headerMatch with headerName set to PORT and
+	// a regular expression that satisfies the RFC2616 Host header's port specifier.
+	// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+	// rangeMatch must be set.
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+	// The value of the header must end with the contents of suffixMatch. Only one of
+	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+	// must be set.
+	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatch)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray and URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{ URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...} }
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray []URLMapPathMatcherRouteRuleMatchRuleHeaderMatchInput
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleHeaderMatch)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
+	return o
+}
+
+// The value should exactly match contents of exactMatch. Only one of exactMatch,
+// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// The name of the HTTP header to match. For matching against the HTTP request's
+// authority, use a headerMatch with the header name ":authority". For matching a
+// request's method, use the headerName ":method".
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// If set to false, the headerMatch is considered a match if the match criteria
+// above are met. If set to true, the headerMatch is considered a match if the
+// match criteria above are NOT met. Defaults to false.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) InvertMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *bool { return v.InvertMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the header must start with the contents of prefixMatch. Only one of
+// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+// must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// A header with the contents of headerName must exist. The match takes place
+// whether or not the request's header has a value or not. Only one of exactMatch,
+// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The header value must be an integer and its value must be in the range specified
+// in rangeMatch. If the header does not contain an integer, number or is empty,
+// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+// must be set.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) RangeMatch() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+		return v.RangeMatch
+	}).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput)
+}
+
+// The value of the header must match the regular expression specified in
+// regexMatch. For regular expression grammar, please see:
+// en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+// specified in the HTTP request, use a headerMatch with headerName set to PORT and
+// a regular expression that satisfies the RFC2616 Host header's port specifier.
+// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+// rangeMatch must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+// The value of the header must end with the contents of suffixMatch. Only one of
+// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+// must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) SuffixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.SuffixMatch }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleHeaderMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+		return vs[0].([]URLMapPathMatcherRouteRuleMatchRuleHeaderMatch)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch struct {
+	// The end of the range (exclusive).
+	RangeEnd int `pulumi:"rangeEnd"`
+	// The start of the range (inclusive).
+	RangeStart int `pulumi:"rangeStart"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs and URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs struct {
+	// The end of the range (exclusive).
+	RangeEnd pulumi.IntInput `pulumi:"rangeEnd"`
+	// The start of the range (inclusive).
+	RangeStart pulumi.IntInput `pulumi:"rangeStart"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput).ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs, URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtr and URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrType URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs
+
+func URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtr(v *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput {
+	return (*urlmapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrType) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrType) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+		return &v
+	}).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput)
+}
+
+// The end of the range (exclusive).
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) RangeEnd() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) int { return v.RangeEnd }).(pulumi.IntOutput)
+}
+
+// The start of the range (inclusive).
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput) RangeStart() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) int { return v.RangeStart }).(pulumi.IntOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) ToURLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) Elem() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch
+		return ret
+	}).(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput)
+}
+
+// The end of the range (exclusive).
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) RangeEnd() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeEnd
+	}).(pulumi.IntPtrOutput)
+}
+
+// The start of the range (inclusive).
+func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) RangeStart() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeStart
+	}).(pulumi.IntPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilter struct {
+	// The list of label value pairs that must match labels in the provided metadata
+	// based on filterMatchCriteria  This list must not be empty and can have at the
+	// most 64 entries.
+	// Structure is documented below.
+	FilterLabels []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of filterLabels
+	// contribute towards the overall metadataFilter match. Supported values are:
+	// - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+	//   provided metadata.
+	// - MATCH_ALL: All filterLabels must have matching labels in
+	//   the provided metadata.
+	//   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs and URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs struct {
+	// The list of label value pairs that must match labels in the provided metadata
+	// based on filterMatchCriteria  This list must not be empty and can have at the
+	// most 64 entries.
+	// Structure is documented below.
+	FilterLabels URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of filterLabels
+	// contribute towards the overall metadataFilter match. Supported values are:
+	// - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+	//   provided metadata.
+	// - MATCH_ALL: All filterLabels must have matching labels in
+	//   the provided metadata.
+	//   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray and URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray{ URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs{...} }
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput {
+	return o
+}
+
+// The list of label value pairs that must match labels in the provided metadata
+// based on filterMatchCriteria  This list must not be empty and can have at the
+// most 64 entries.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterLabels() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilter) []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+		return v.FilterLabels
+	}).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+// Specifies how individual filterLabel matches within the list of filterLabels
+// contribute towards the overall metadataFilter match. Supported values are:
+//   - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+//     provided metadata.
+//   - MATCH_ALL: All filterLabels must have matching labels in
+//     the provided metadata.
+//     Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+		return vs[0].([]URLMapPathMatcherRouteRuleMatchRuleMetadataFilter)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel struct {
+	// Name of metadata label. The name can have a maximum length of 1024 characters
+	// and must be at least 1 character long.
+	Name string `pulumi:"name"`
+	// The value of the label must match the specified value. value can have a maximum
+	// length of 1024 characters.
+	Value string `pulumi:"value"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs and URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs struct {
+	// Name of metadata label. The name can have a maximum length of 1024 characters
+	// and must be at least 1 character long.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the label must match the specified value. value can have a maximum
+	// length of 1024 characters.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray and URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray{ URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs{...} }
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelInput
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+// Name of metadata label. The name can have a maximum length of 1024 characters
+// and must be at least 1 character long.
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the label must match the specified value. value can have a maximum
+// length of 1024 characters.
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+		return vs[0].([]URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch struct {
+	// The queryParameterMatch matches if the value of the parameter exactly matches
+	// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+	// must be set.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// The name of the query parameter to match. The query parameter must exist in the
+	// request, in the absence of which the request match fails.
+	Name string `pulumi:"name"`
+	// Specifies that the queryParameterMatch matches if the request contains the query
+	// parameter, irrespective of whether the parameter has a value or not. Only one of
+	// presentMatch, exactMatch and regexMatch must be set.
+	PresentMatch *bool `pulumi:"presentMatch"`
+	// The queryParameterMatch matches if the value of the parameter matches the
+	// regular expression specified by regexMatch. For the regular expression grammar,
+	// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+	// exactMatch and regexMatch must be set.
+	RegexMatch *string `pulumi:"regexMatch"`
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs and URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...}
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs struct {
+	// The queryParameterMatch matches if the value of the parameter exactly matches
+	// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+	// must be set.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// The name of the query parameter to match. The query parameter must exist in the
+	// request, in the absence of which the request match fails.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies that the queryParameterMatch matches if the request contains the query
+	// parameter, irrespective of whether the parameter has a value or not. Only one of
+	// presentMatch, exactMatch and regexMatch must be set.
+	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
+	// The queryParameterMatch matches if the value of the parameter matches the
+	// regular expression specified by regexMatch. For the regular expression grammar,
+	// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+	// exactMatch and regexMatch must be set.
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+}
+
+func (URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput)
+}
+
+// URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput is an input type that accepts URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray and URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{ URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...} }
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput
+	ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray []URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchInput
+
+func (URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
+	return o
+}
+
+// The queryParameterMatch matches if the value of the parameter exactly matches
+// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+// must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// The name of the query parameter to match. The query parameter must exist in the
+// request, in the absence of which the request match fails.
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies that the queryParameterMatch matches if the request contains the query
+// parameter, irrespective of whether the parameter has a value or not. Only one of
+// presentMatch, exactMatch and regexMatch must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The queryParameterMatch matches if the value of the parameter matches the
+// regular expression specified by regexMatch. For the regular expression grammar,
+// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+// exactMatch and regexMatch must be set.
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) ToURLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+		return vs[0].([]URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see W3C
 	// Recommendation for Cross Origin Resource Sharing
@@ -26505,6 +28243,26 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleInput)(nil)).Elem(), URLMapPathMatcherRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
@@ -26869,6 +28627,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput{})

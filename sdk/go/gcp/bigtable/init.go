@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:bigtable/authorizedView:AuthorizedView":
+		r = &AuthorizedView{}
 	case "gcp:bigtable/gCPolicy:GCPolicy":
 		r = &GCPolicy{}
 	case "gcp:bigtable/instance:Instance":
@@ -52,6 +54,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigtable/authorizedView",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigtable/gCPolicy",

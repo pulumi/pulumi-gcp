@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.clouddeploy.outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit;
+import com.pulumi.gcp.clouddeploy.outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo;
 import com.pulumi.gcp.clouddeploy.outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,12 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
      * 
      */
     private @Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit git;
+    /**
+     * @return Cloud Build 2nd gen repository containing the Skaffold Config modules.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo googleCloudBuildRepo;
     /**
      * @return Cloud Storage bucket containing Skaffold Config modules.
      * Structure is documented below.
@@ -49,6 +56,14 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
         return Optional.ofNullable(this.git);
     }
     /**
+     * @return Cloud Build 2nd gen repository containing the Skaffold Config modules.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo> googleCloudBuildRepo() {
+        return Optional.ofNullable(this.googleCloudBuildRepo);
+    }
+    /**
      * @return Cloud Storage bucket containing Skaffold Config modules.
      * Structure is documented below.
      * 
@@ -68,12 +83,14 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
     public static final class Builder {
         private @Nullable List<String> configs;
         private @Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit git;
+        private @Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo googleCloudBuildRepo;
         private @Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage googleCloudStorage;
         public Builder() {}
         public Builder(CustomTargetTypeCustomActionsIncludeSkaffoldModule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
     	      this.git = defaults.git;
+    	      this.googleCloudBuildRepo = defaults.googleCloudBuildRepo;
     	      this.googleCloudStorage = defaults.googleCloudStorage;
         }
 
@@ -93,6 +110,12 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
             return this;
         }
         @CustomType.Setter
+        public Builder googleCloudBuildRepo(@Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo googleCloudBuildRepo) {
+
+            this.googleCloudBuildRepo = googleCloudBuildRepo;
+            return this;
+        }
+        @CustomType.Setter
         public Builder googleCloudStorage(@Nullable CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage googleCloudStorage) {
 
             this.googleCloudStorage = googleCloudStorage;
@@ -102,6 +125,7 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
             final var _resultValue = new CustomTargetTypeCustomActionsIncludeSkaffoldModule();
             _resultValue.configs = configs;
             _resultValue.git = git;
+            _resultValue.googleCloudBuildRepo = googleCloudBuildRepo;
             _resultValue.googleCloudStorage = googleCloudStorage;
             return _resultValue;
         }

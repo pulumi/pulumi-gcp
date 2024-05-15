@@ -505,14 +505,14 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `DeliveryPipeline`. Format is `a-z?`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * @return Name of the `DeliveryPipeline`. Format is `a-z?`.
      * 
      */
     public Output<String> name() {

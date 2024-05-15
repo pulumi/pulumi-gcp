@@ -120,6 +120,12 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// </summary>
+        [Output("allowResourceTagsOnDeletion")]
+        public Output<bool?> AllowResourceTagsOnDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies column names to use for data clustering.
         /// Up to four top-level columns are allowed, and should be specified in
         /// descending priority order.
@@ -406,6 +412,12 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// </summary>
+        [Input("allowResourceTagsOnDeletion")]
+        public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
+
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 
@@ -587,6 +599,12 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// </summary>
+        [Input("allowResourceTagsOnDeletion")]
+        public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
+
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 

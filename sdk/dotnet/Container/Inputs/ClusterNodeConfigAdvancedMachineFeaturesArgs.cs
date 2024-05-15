@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigAdvancedMachineFeaturesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        /// </summary>
+        [Input("enableNestedVirtualization")]
+        public Input<bool>? EnableNestedVirtualization { get; set; }
+
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         [Input("threadsPerCore", required: true)]

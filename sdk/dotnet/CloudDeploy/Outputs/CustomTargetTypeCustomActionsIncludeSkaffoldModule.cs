@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly Outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit? Git;
         /// <summary>
+        /// Cloud Build 2nd gen repository containing the Skaffold Config modules.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo? GoogleCloudBuildRepo;
+        /// <summary>
         /// Cloud Storage bucket containing Skaffold Config modules.
         /// Structure is documented below.
         /// </summary>
@@ -34,10 +39,13 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             Outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit? git,
 
+            Outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo? googleCloudBuildRepo,
+
             Outputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage? googleCloudStorage)
         {
             Configs = configs;
             Git = git;
+            GoogleCloudBuildRepo = googleCloudBuildRepo;
             GoogleCloudStorage = googleCloudStorage;
         }
     }

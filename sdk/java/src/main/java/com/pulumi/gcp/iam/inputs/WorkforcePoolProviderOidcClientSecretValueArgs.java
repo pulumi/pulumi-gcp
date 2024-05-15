@@ -18,7 +18,6 @@ public final class WorkforcePoolProviderOidcClientSecretValueArgs extends com.pu
 
     /**
      * The plain text of the client secret value.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="plainText", required=true)
@@ -26,7 +25,6 @@ public final class WorkforcePoolProviderOidcClientSecretValueArgs extends com.pu
 
     /**
      * @return The plain text of the client secret value.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<String> plainText() {
@@ -77,7 +75,6 @@ public final class WorkforcePoolProviderOidcClientSecretValueArgs extends com.pu
 
         /**
          * @param plainText The plain text of the client secret value.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -89,7 +86,6 @@ public final class WorkforcePoolProviderOidcClientSecretValueArgs extends com.pu
 
         /**
          * @param plainText The plain text of the client secret value.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

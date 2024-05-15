@@ -4551,20 +4551,36 @@ class ClusterDefaultSnatStatusArgs:
 @pulumi.input_type
 class ClusterDnsConfigArgs:
     def __init__(__self__, *,
+                 additive_vpc_scope_dns_domain: Optional[pulumi.Input[str]] = None,
                  cluster_dns: Optional[pulumi.Input[str]] = None,
                  cluster_dns_domain: Optional[pulumi.Input[str]] = None,
                  cluster_dns_scope: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] additive_vpc_scope_dns_domain: This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
         :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         :param pulumi.Input[str] cluster_dns_domain: The suffix used for all cluster service records.
         :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
+        if additive_vpc_scope_dns_domain is not None:
+            pulumi.set(__self__, "additive_vpc_scope_dns_domain", additive_vpc_scope_dns_domain)
         if cluster_dns is not None:
             pulumi.set(__self__, "cluster_dns", cluster_dns)
         if cluster_dns_domain is not None:
             pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
         if cluster_dns_scope is not None:
             pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="additiveVpcScopeDnsDomain")
+    def additive_vpc_scope_dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
+        """
+        return pulumi.get(self, "additive_vpc_scope_dns_domain")
+
+    @additive_vpc_scope_dns_domain.setter
+    def additive_vpc_scope_dns_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additive_vpc_scope_dns_domain", value)
 
     @property
     @pulumi.getter(name="clusterDns")
@@ -6445,11 +6461,15 @@ class ClusterNodeConfigArgs:
 @pulumi.input_type
 class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 threads_per_core: pulumi.Input[int]):
+                 threads_per_core: pulumi.Input[int],
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -6462,6 +6482,18 @@ class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
 
 
 @pulumi.input_type
@@ -8949,11 +8981,15 @@ class ClusterNodePoolNodeConfigArgs:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 threads_per_core: pulumi.Input[int]):
+                 threads_per_core: pulumi.Input[int],
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -8966,6 +9002,18 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
 
 
 @pulumi.input_type
@@ -11812,11 +11860,15 @@ class NodePoolNodeConfigArgs:
 @pulumi.input_type
 class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 threads_per_core: pulumi.Input[int]):
+                 threads_per_core: pulumi.Input[int],
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[bool] enable_nested_virtualization: Whether the node should have nested virtualization enabled.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -11829,6 +11881,18 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the node should have nested virtualization enabled.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
 
 
 @pulumi.input_type

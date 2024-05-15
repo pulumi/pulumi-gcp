@@ -13,6 +13,288 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AuthorizedViewSubsetView struct {
+	// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+	//
+	// ***
+	FamilySubsets []AuthorizedViewSubsetViewFamilySubset `pulumi:"familySubsets"`
+	// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+	RowPrefixes []string `pulumi:"rowPrefixes"`
+}
+
+// AuthorizedViewSubsetViewInput is an input type that accepts AuthorizedViewSubsetViewArgs and AuthorizedViewSubsetViewOutput values.
+// You can construct a concrete instance of `AuthorizedViewSubsetViewInput` via:
+//
+//	AuthorizedViewSubsetViewArgs{...}
+type AuthorizedViewSubsetViewInput interface {
+	pulumi.Input
+
+	ToAuthorizedViewSubsetViewOutput() AuthorizedViewSubsetViewOutput
+	ToAuthorizedViewSubsetViewOutputWithContext(context.Context) AuthorizedViewSubsetViewOutput
+}
+
+type AuthorizedViewSubsetViewArgs struct {
+	// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+	//
+	// ***
+	FamilySubsets AuthorizedViewSubsetViewFamilySubsetArrayInput `pulumi:"familySubsets"`
+	// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+	RowPrefixes pulumi.StringArrayInput `pulumi:"rowPrefixes"`
+}
+
+func (AuthorizedViewSubsetViewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (i AuthorizedViewSubsetViewArgs) ToAuthorizedViewSubsetViewOutput() AuthorizedViewSubsetViewOutput {
+	return i.ToAuthorizedViewSubsetViewOutputWithContext(context.Background())
+}
+
+func (i AuthorizedViewSubsetViewArgs) ToAuthorizedViewSubsetViewOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedViewSubsetViewOutput)
+}
+
+func (i AuthorizedViewSubsetViewArgs) ToAuthorizedViewSubsetViewPtrOutput() AuthorizedViewSubsetViewPtrOutput {
+	return i.ToAuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizedViewSubsetViewArgs) ToAuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedViewSubsetViewOutput).ToAuthorizedViewSubsetViewPtrOutputWithContext(ctx)
+}
+
+// AuthorizedViewSubsetViewPtrInput is an input type that accepts AuthorizedViewSubsetViewArgs, AuthorizedViewSubsetViewPtr and AuthorizedViewSubsetViewPtrOutput values.
+// You can construct a concrete instance of `AuthorizedViewSubsetViewPtrInput` via:
+//
+//	        AuthorizedViewSubsetViewArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorizedViewSubsetViewPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizedViewSubsetViewPtrOutput() AuthorizedViewSubsetViewPtrOutput
+	ToAuthorizedViewSubsetViewPtrOutputWithContext(context.Context) AuthorizedViewSubsetViewPtrOutput
+}
+
+type authorizedViewSubsetViewPtrType AuthorizedViewSubsetViewArgs
+
+func AuthorizedViewSubsetViewPtr(v *AuthorizedViewSubsetViewArgs) AuthorizedViewSubsetViewPtrInput {
+	return (*authorizedViewSubsetViewPtrType)(v)
+}
+
+func (*authorizedViewSubsetViewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (i *authorizedViewSubsetViewPtrType) ToAuthorizedViewSubsetViewPtrOutput() AuthorizedViewSubsetViewPtrOutput {
+	return i.ToAuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizedViewSubsetViewPtrType) ToAuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedViewSubsetViewPtrOutput)
+}
+
+type AuthorizedViewSubsetViewOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedViewSubsetViewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (o AuthorizedViewSubsetViewOutput) ToAuthorizedViewSubsetViewOutput() AuthorizedViewSubsetViewOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewOutput) ToAuthorizedViewSubsetViewOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewOutput) ToAuthorizedViewSubsetViewPtrOutput() AuthorizedViewSubsetViewPtrOutput {
+	return o.ToAuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedViewSubsetViewOutput) ToAuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizedViewSubsetView) *AuthorizedViewSubsetView {
+		return &v
+	}).(AuthorizedViewSubsetViewPtrOutput)
+}
+
+// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+//
+// ***
+func (o AuthorizedViewSubsetViewOutput) FamilySubsets() AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return o.ApplyT(func(v AuthorizedViewSubsetView) []AuthorizedViewSubsetViewFamilySubset { return v.FamilySubsets }).(AuthorizedViewSubsetViewFamilySubsetArrayOutput)
+}
+
+// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+func (o AuthorizedViewSubsetViewOutput) RowPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorizedViewSubsetView) []string { return v.RowPrefixes }).(pulumi.StringArrayOutput)
+}
+
+type AuthorizedViewSubsetViewPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedViewSubsetViewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (o AuthorizedViewSubsetViewPtrOutput) ToAuthorizedViewSubsetViewPtrOutput() AuthorizedViewSubsetViewPtrOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewPtrOutput) ToAuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewPtrOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewPtrOutput) Elem() AuthorizedViewSubsetViewOutput {
+	return o.ApplyT(func(v *AuthorizedViewSubsetView) AuthorizedViewSubsetView {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizedViewSubsetView
+		return ret
+	}).(AuthorizedViewSubsetViewOutput)
+}
+
+// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+//
+// ***
+func (o AuthorizedViewSubsetViewPtrOutput) FamilySubsets() AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return o.ApplyT(func(v *AuthorizedViewSubsetView) []AuthorizedViewSubsetViewFamilySubset {
+		if v == nil {
+			return nil
+		}
+		return v.FamilySubsets
+	}).(AuthorizedViewSubsetViewFamilySubsetArrayOutput)
+}
+
+// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+func (o AuthorizedViewSubsetViewPtrOutput) RowPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorizedViewSubsetView) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RowPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+type AuthorizedViewSubsetViewFamilySubset struct {
+	// Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+	FamilyName string `pulumi:"familyName"`
+	// A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+	// Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+	QualifierPrefixes []string `pulumi:"qualifierPrefixes"`
+	// A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+	Qualifiers []string `pulumi:"qualifiers"`
+}
+
+// AuthorizedViewSubsetViewFamilySubsetInput is an input type that accepts AuthorizedViewSubsetViewFamilySubsetArgs and AuthorizedViewSubsetViewFamilySubsetOutput values.
+// You can construct a concrete instance of `AuthorizedViewSubsetViewFamilySubsetInput` via:
+//
+//	AuthorizedViewSubsetViewFamilySubsetArgs{...}
+type AuthorizedViewSubsetViewFamilySubsetInput interface {
+	pulumi.Input
+
+	ToAuthorizedViewSubsetViewFamilySubsetOutput() AuthorizedViewSubsetViewFamilySubsetOutput
+	ToAuthorizedViewSubsetViewFamilySubsetOutputWithContext(context.Context) AuthorizedViewSubsetViewFamilySubsetOutput
+}
+
+type AuthorizedViewSubsetViewFamilySubsetArgs struct {
+	// Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+	FamilyName pulumi.StringInput `pulumi:"familyName"`
+	// A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+	// Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+	QualifierPrefixes pulumi.StringArrayInput `pulumi:"qualifierPrefixes"`
+	// A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+	Qualifiers pulumi.StringArrayInput `pulumi:"qualifiers"`
+}
+
+func (AuthorizedViewSubsetViewFamilySubsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedViewSubsetViewFamilySubset)(nil)).Elem()
+}
+
+func (i AuthorizedViewSubsetViewFamilySubsetArgs) ToAuthorizedViewSubsetViewFamilySubsetOutput() AuthorizedViewSubsetViewFamilySubsetOutput {
+	return i.ToAuthorizedViewSubsetViewFamilySubsetOutputWithContext(context.Background())
+}
+
+func (i AuthorizedViewSubsetViewFamilySubsetArgs) ToAuthorizedViewSubsetViewFamilySubsetOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewFamilySubsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedViewSubsetViewFamilySubsetOutput)
+}
+
+// AuthorizedViewSubsetViewFamilySubsetArrayInput is an input type that accepts AuthorizedViewSubsetViewFamilySubsetArray and AuthorizedViewSubsetViewFamilySubsetArrayOutput values.
+// You can construct a concrete instance of `AuthorizedViewSubsetViewFamilySubsetArrayInput` via:
+//
+//	AuthorizedViewSubsetViewFamilySubsetArray{ AuthorizedViewSubsetViewFamilySubsetArgs{...} }
+type AuthorizedViewSubsetViewFamilySubsetArrayInput interface {
+	pulumi.Input
+
+	ToAuthorizedViewSubsetViewFamilySubsetArrayOutput() AuthorizedViewSubsetViewFamilySubsetArrayOutput
+	ToAuthorizedViewSubsetViewFamilySubsetArrayOutputWithContext(context.Context) AuthorizedViewSubsetViewFamilySubsetArrayOutput
+}
+
+type AuthorizedViewSubsetViewFamilySubsetArray []AuthorizedViewSubsetViewFamilySubsetInput
+
+func (AuthorizedViewSubsetViewFamilySubsetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedViewSubsetViewFamilySubset)(nil)).Elem()
+}
+
+func (i AuthorizedViewSubsetViewFamilySubsetArray) ToAuthorizedViewSubsetViewFamilySubsetArrayOutput() AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return i.ToAuthorizedViewSubsetViewFamilySubsetArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorizedViewSubsetViewFamilySubsetArray) ToAuthorizedViewSubsetViewFamilySubsetArrayOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedViewSubsetViewFamilySubsetArrayOutput)
+}
+
+type AuthorizedViewSubsetViewFamilySubsetOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedViewSubsetViewFamilySubsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedViewSubsetViewFamilySubset)(nil)).Elem()
+}
+
+func (o AuthorizedViewSubsetViewFamilySubsetOutput) ToAuthorizedViewSubsetViewFamilySubsetOutput() AuthorizedViewSubsetViewFamilySubsetOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewFamilySubsetOutput) ToAuthorizedViewSubsetViewFamilySubsetOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewFamilySubsetOutput {
+	return o
+}
+
+// Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+func (o AuthorizedViewSubsetViewFamilySubsetOutput) FamilyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizedViewSubsetViewFamilySubset) string { return v.FamilyName }).(pulumi.StringOutput)
+}
+
+// A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+// Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+func (o AuthorizedViewSubsetViewFamilySubsetOutput) QualifierPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorizedViewSubsetViewFamilySubset) []string { return v.QualifierPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+func (o AuthorizedViewSubsetViewFamilySubsetOutput) Qualifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorizedViewSubsetViewFamilySubset) []string { return v.Qualifiers }).(pulumi.StringArrayOutput)
+}
+
+type AuthorizedViewSubsetViewFamilySubsetArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedViewSubsetViewFamilySubsetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedViewSubsetViewFamilySubset)(nil)).Elem()
+}
+
+func (o AuthorizedViewSubsetViewFamilySubsetArrayOutput) ToAuthorizedViewSubsetViewFamilySubsetArrayOutput() AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewFamilySubsetArrayOutput) ToAuthorizedViewSubsetViewFamilySubsetArrayOutputWithContext(ctx context.Context) AuthorizedViewSubsetViewFamilySubsetArrayOutput {
+	return o
+}
+
+func (o AuthorizedViewSubsetViewFamilySubsetArrayOutput) Index(i pulumi.IntInput) AuthorizedViewSubsetViewFamilySubsetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorizedViewSubsetViewFamilySubset {
+		return vs[0].([]AuthorizedViewSubsetViewFamilySubset)[vs[1].(int)]
+	}).(AuthorizedViewSubsetViewFamilySubsetOutput)
+}
+
 type GCPolicyMaxAge struct {
 	// Number of days before applying GC policy.
 	//
@@ -1433,6 +1715,10 @@ func (o TableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewInput)(nil)).Elem(), AuthorizedViewSubsetViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewPtrInput)(nil)).Elem(), AuthorizedViewSubsetViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewFamilySubsetInput)(nil)).Elem(), AuthorizedViewSubsetViewFamilySubsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedViewSubsetViewFamilySubsetArrayInput)(nil)).Elem(), AuthorizedViewSubsetViewFamilySubsetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxAgeInput)(nil)).Elem(), GCPolicyMaxAgeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxAgePtrInput)(nil)).Elem(), GCPolicyMaxAgeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxVersionInput)(nil)).Elem(), GCPolicyMaxVersionArgs{})
@@ -1451,6 +1737,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamBindingConditionPtrInput)(nil)).Elem(), TableIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberConditionInput)(nil)).Elem(), TableIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberConditionPtrInput)(nil)).Elem(), TableIamMemberConditionArgs{})
+	pulumi.RegisterOutputType(AuthorizedViewSubsetViewOutput{})
+	pulumi.RegisterOutputType(AuthorizedViewSubsetViewPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizedViewSubsetViewFamilySubsetOutput{})
+	pulumi.RegisterOutputType(AuthorizedViewSubsetViewFamilySubsetArrayOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxAgeOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxAgePtrOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxVersionOutput{})

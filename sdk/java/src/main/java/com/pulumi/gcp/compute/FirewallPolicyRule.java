@@ -131,14 +131,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/firewallPolicyRule:FirewallPolicyRule")
 public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
      * 
      */
     public Output<String> action() {
@@ -277,6 +277,24 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.ruleTupleCount;
     }
     /**
+     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * 
+     */
+    @Export(name="securityProfileGroup", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityProfileGroup;
+
+    /**
+     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * 
+     */
+    public Output<Optional<String>> securityProfileGroup() {
+        return Codegen.optional(this.securityProfileGroup);
+    }
+    /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
      * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      * 
@@ -305,6 +323,22 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> targetServiceAccounts() {
         return Codegen.optional(this.targetServiceAccounts);
+    }
+    /**
+     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * 
+     */
+    @Export(name="tlsInspect", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> tlsInspect;
+
+    /**
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * 
+     */
+    public Output<Optional<Boolean>> tlsInspect() {
+        return Codegen.optional(this.tlsInspect);
     }
 
     /**

@@ -21,6 +21,8 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
      * Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
      * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
      * 
+     * &lt;a name=&#34;nested_extra_attributes_oauth2_client&#34;&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
+     * 
      */
     @Import(name="additionalScopes")
     private @Nullable Output<List<String>> additionalScopes;
@@ -28,6 +30,8 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
     /**
      * @return Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
      * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+     * 
+     * &lt;a name=&#34;nested_extra_attributes_oauth2_client&#34;&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
      * 
      */
     public Optional<Output<List<String>>> additionalScopes() {
@@ -108,6 +112,8 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
          * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
          * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
          * 
+         * &lt;a name=&#34;nested_extra_attributes_oauth2_client&#34;&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
+         * 
          * @return builder
          * 
          */
@@ -120,6 +126,8 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
          * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
          * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
          * 
+         * &lt;a name=&#34;nested_extra_attributes_oauth2_client&#34;&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
+         * 
          * @return builder
          * 
          */
@@ -130,6 +138,8 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
         /**
          * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
          * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         * 
+         * &lt;a name=&#34;nested_extra_attributes_oauth2_client&#34;&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
          * 
          * @return builder
          * 

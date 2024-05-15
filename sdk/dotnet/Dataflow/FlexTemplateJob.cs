@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> SdkContainerImage { get; private set; } = null!;
 
         /// <summary>
-        /// Service account email to run the workers as.
+        /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
@@ -477,7 +477,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? SdkContainerImage { get; set; }
 
         /// <summary>
-        /// Service account email to run the workers as.
+        /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
@@ -697,7 +697,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? SdkContainerImage { get; set; }
 
         /// <summary>
-        /// Service account email to run the workers as.
+        /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

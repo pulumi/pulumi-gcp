@@ -507,6 +507,29 @@ class CustomTargetType(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_target_type = gcp.clouddeploy.CustomTargetType("custom-target-type",
+            location="us-central1",
+            name="my-custom-target-type",
+            description="My custom target type",
+            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
+                render_action="renderAction",
+                deploy_action="deployAction",
+                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
+                    configs=["my-config"],
+                    google_cloud_build_repo=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs(
+                        repository="projects/example/locations/us-central1/connections/git/repositories/example-repo",
+                        path="configs/skaffold.yaml",
+                        ref="main",
+                    ),
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -633,6 +656,29 @@ class CustomTargetType(pulumi.CustomResource):
                     google_cloud_storage=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs(
                         source="gs://example-bucket/dir/configs/*",
                         path="skaffold.yaml",
+                    ),
+                )],
+            ))
+        ```
+        ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_target_type = gcp.clouddeploy.CustomTargetType("custom-target-type",
+            location="us-central1",
+            name="my-custom-target-type",
+            description="My custom target type",
+            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
+                render_action="renderAction",
+                deploy_action="deployAction",
+                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
+                    configs=["my-config"],
+                    google_cloud_build_repo=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs(
+                        repository="projects/example/locations/us-central1/connections/git/repositories/example-repo",
+                        path="configs/skaffold.yaml",
+                        ref="main",
                     ),
                 )],
             ))

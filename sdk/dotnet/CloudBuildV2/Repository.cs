@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     {
     ///         Name = "my-terraform-ghe-repo",
     ///         Location = "us-central1",
-    ///         ParentConnection = my_connection.Id,
+    ///         ParentConnection = my_connection.Name,
     ///         RemoteUri = "https://ghe.com/hashicorp/terraform-provider-google.git",
     ///     });
     /// 

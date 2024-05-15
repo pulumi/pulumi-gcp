@@ -371,7 +371,7 @@ class Repository(pulumi.CustomResource):
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-terraform-ghe-repo",
             location="us-central1",
-            parent_connection=my_connection.id,
+            parent_connection=my_connection.name,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
         ### Cloudbuildv2 Repository Github Doc
@@ -515,7 +515,7 @@ class Repository(pulumi.CustomResource):
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-terraform-ghe-repo",
             location="us-central1",
-            parent_connection=my_connection.id,
+            parent_connection=my_connection.name,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
         ### Cloudbuildv2 Repository Github Doc

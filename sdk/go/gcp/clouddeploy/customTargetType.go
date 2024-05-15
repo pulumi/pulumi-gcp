@@ -147,6 +147,49 @@ import (
 //	}
 //
 // ```
+// ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-custom-target-type"),
+//				Description: pulumi.String("My custom target type"),
+//				CustomActions: &clouddeploy.CustomTargetTypeCustomActionsArgs{
+//					RenderAction: pulumi.String("renderAction"),
+//					DeployAction: pulumi.String("deployAction"),
+//					IncludeSkaffoldModules: clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray{
+//						&clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{
+//							Configs: pulumi.StringArray{
+//								pulumi.String("my-config"),
+//							},
+//							GoogleCloudBuildRepo: &clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs{
+//								Repository: pulumi.String("projects/example/locations/us-central1/connections/git/repositories/example-repo"),
+//								Path:       pulumi.String("configs/skaffold.yaml"),
+//								Ref:        pulumi.String("main"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

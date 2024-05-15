@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  *                     .title("Sample expression")
  *                     .build())
  *                 .build())
+ *             .maximumLifetime("86400s")
  *             .passthroughExtensions(CertificateTemplatePassthroughExtensionsArgs.builder()
  *                 .additionalExtensions(CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs.builder()
  *                     .objectIdPaths(                    
@@ -256,6 +257,26 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     * 
+     */
+    @Export(name="maximumLifetime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> maximumLifetime;
+
+    /**
+     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     * 
+     */
+    public Output<Optional<String>> maximumLifetime() {
+        return Codegen.optional(this.maximumLifetime);
     }
     /**
      * The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.

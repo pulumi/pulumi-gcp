@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Compute
     public partial class FirewallPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -193,6 +193,14 @@ namespace Pulumi.Gcp.Compute
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
         /// <summary>
+        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        [Output("securityProfileGroup")]
+        public Output<string?> SecurityProfileGroup { get; private set; } = null!;
+
+        /// <summary>
         /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
         /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
@@ -204,6 +212,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetServiceAccounts")]
         public Output<ImmutableArray<string>> TargetServiceAccounts { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        [Output("tlsInspect")]
+        public Output<bool?> TlsInspect { get; private set; } = null!;
 
 
         /// <summary>
@@ -252,7 +267,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -302,6 +317,14 @@ namespace Pulumi.Gcp.Compute
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
+        /// <summary>
+        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        [Input("securityProfileGroup")]
+        public Input<string>? SecurityProfileGroup { get; set; }
+
         [Input("targetResources")]
         private InputList<string>? _targetResources;
 
@@ -327,6 +350,13 @@ namespace Pulumi.Gcp.Compute
             set => _targetServiceAccounts = value;
         }
 
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        [Input("tlsInspect")]
+        public Input<bool>? TlsInspect { get; set; }
+
         public FirewallPolicyRuleArgs()
         {
         }
@@ -336,7 +366,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -398,6 +428,14 @@ namespace Pulumi.Gcp.Compute
         [Input("ruleTupleCount")]
         public Input<int>? RuleTupleCount { get; set; }
 
+        /// <summary>
+        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        [Input("securityProfileGroup")]
+        public Input<string>? SecurityProfileGroup { get; set; }
+
         [Input("targetResources")]
         private InputList<string>? _targetResources;
 
@@ -422,6 +460,13 @@ namespace Pulumi.Gcp.Compute
             get => _targetServiceAccounts ?? (_targetServiceAccounts = new InputList<string>());
             set => _targetServiceAccounts = value;
         }
+
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        [Input("tlsInspect")]
+        public Input<bool>? TlsInspect { get; set; }
 
         public FirewallPolicyRuleState()
         {

@@ -318,14 +318,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Service account email to run the workers as.
+     * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     @Import(name="serviceAccountEmail")
     private @Nullable Output<String> serviceAccountEmail;
 
     /**
-     * @return Service account email to run the workers as.
+     * @return Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -861,7 +861,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceAccountEmail Service account email to run the workers as.
+         * @param serviceAccountEmail Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
          * 
          * @return builder
          * 
@@ -872,7 +872,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceAccountEmail Service account email to run the workers as.
+         * @param serviceAccountEmail Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
          * 
          * @return builder
          * 

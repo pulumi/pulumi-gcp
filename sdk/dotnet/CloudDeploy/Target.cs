@@ -203,6 +203,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Information specifying a Custom Target.
+        /// </summary>
+        [Output("customTarget")]
+        public Output<Outputs.TargetCustomTarget?> CustomTarget { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The deploy parameters to use for this target.
         /// </summary>
         [Output("deployParameters")]
@@ -263,7 +269,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<Outputs.TargetMultiTarget?> MultiTarget { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+        /// Name of the `Target`. Format is `a-z?`.
         /// 
         /// 
         /// 
@@ -386,6 +392,12 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("anthosCluster")]
         public Input<Inputs.TargetAnthosClusterArgs>? AnthosCluster { get; set; }
 
+        /// <summary>
+        /// Optional. Information specifying a Custom Target.
+        /// </summary>
+        [Input("customTarget")]
+        public Input<Inputs.TargetCustomTargetArgs>? CustomTarget { get; set; }
+
         [Input("deployParameters")]
         private InputMap<string>? _deployParameters;
 
@@ -450,7 +462,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<Inputs.TargetMultiTargetArgs>? MultiTarget { get; set; }
 
         /// <summary>
-        /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+        /// Name of the `Target`. Format is `a-z?`.
         /// 
         /// 
         /// 
@@ -511,6 +523,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Information specifying a Custom Target.
+        /// </summary>
+        [Input("customTarget")]
+        public Input<Inputs.TargetCustomTargetGetArgs>? CustomTarget { get; set; }
 
         [Input("deployParameters")]
         private InputMap<string>? _deployParameters;
@@ -606,7 +624,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<Inputs.TargetMultiTargetGetArgs>? MultiTarget { get; set; }
 
         /// <summary>
-        /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+        /// Name of the `Target`. Format is `a-z?`.
         /// 
         /// 
         /// 

@@ -117,6 +117,27 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     * 
+     */
+    @Import(name="maximumLifetime")
+    private @Nullable Output<String> maximumLifetime;
+
+    /**
+     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     * 
+     */
+    public Optional<Output<String>> maximumLifetime() {
+        return Optional.ofNullable(this.maximumLifetime);
+    }
+
+    /**
      * The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
      * 
      */
@@ -229,6 +250,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         this.identityConstraints = $.identityConstraints;
         this.labels = $.labels;
         this.location = $.location;
+        this.maximumLifetime = $.maximumLifetime;
         this.name = $.name;
         this.passthroughExtensions = $.passthroughExtensions;
         this.predefinedValues = $.predefinedValues;
@@ -385,6 +407,33 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+         * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+         * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+         * lifetime will be explicitly truncated to match it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumLifetime(@Nullable Output<String> maximumLifetime) {
+            $.maximumLifetime = maximumLifetime;
+            return this;
+        }
+
+        /**
+         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
+         * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+         * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
+         * lifetime will be explicitly truncated to match it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumLifetime(String maximumLifetime) {
+            return maximumLifetime(Output.of(maximumLifetime));
         }
 
         /**

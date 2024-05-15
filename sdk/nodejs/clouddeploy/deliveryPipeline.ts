@@ -317,7 +317,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `DeliveryPipeline`. Format is `a-z?`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -450,7 +450,7 @@ export interface DeliveryPipelineState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `DeliveryPipeline`. Format is `a-z?`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -509,7 +509,7 @@ export interface DeliveryPipelineArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `DeliveryPipeline`. Format is `a-z?`.
      */
     name?: pulumi.Input<string>;
     /**

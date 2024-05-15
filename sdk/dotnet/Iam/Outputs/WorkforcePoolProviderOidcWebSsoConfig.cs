@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// <summary>
         /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
         /// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+        /// 
+        /// &lt;a name="nested_extra_attributes_oauth2_client"&gt;&lt;/a&gt;The `extra_attributes_oauth2_client` block supports:
         /// </summary>
         public readonly ImmutableArray<string> AdditionalScopes;
         /// <summary>

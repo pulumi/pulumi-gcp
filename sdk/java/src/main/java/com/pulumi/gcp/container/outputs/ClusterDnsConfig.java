@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterDnsConfig {
     /**
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * 
+     */
+    private @Nullable String additiveVpcScopeDnsDomain;
+    /**
      * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
      * 
      */
@@ -28,6 +33,13 @@ public final class ClusterDnsConfig {
     private @Nullable String clusterDnsScope;
 
     private ClusterDnsConfig() {}
+    /**
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * 
+     */
+    public Optional<String> additiveVpcScopeDnsDomain() {
+        return Optional.ofNullable(this.additiveVpcScopeDnsDomain);
+    }
     /**
      * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
      * 
@@ -59,17 +71,25 @@ public final class ClusterDnsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additiveVpcScopeDnsDomain;
         private @Nullable String clusterDns;
         private @Nullable String clusterDnsDomain;
         private @Nullable String clusterDnsScope;
         public Builder() {}
         public Builder(ClusterDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additiveVpcScopeDnsDomain = defaults.additiveVpcScopeDnsDomain;
     	      this.clusterDns = defaults.clusterDns;
     	      this.clusterDnsDomain = defaults.clusterDnsDomain;
     	      this.clusterDnsScope = defaults.clusterDnsScope;
         }
 
+        @CustomType.Setter
+        public Builder additiveVpcScopeDnsDomain(@Nullable String additiveVpcScopeDnsDomain) {
+
+            this.additiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterDns(@Nullable String clusterDns) {
 
@@ -90,6 +110,7 @@ public final class ClusterDnsConfig {
         }
         public ClusterDnsConfig build() {
             final var _resultValue = new ClusterDnsConfig();
+            _resultValue.additiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
             _resultValue.clusterDns = clusterDns;
             _resultValue.clusterDnsDomain = clusterDnsDomain;
             _resultValue.clusterDnsScope = clusterDnsScope;

@@ -225,14 +225,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Service Account email used to create the job.
+     * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     @Import(name="serviceAccountEmail")
     private @Nullable Output<String> serviceAccountEmail;
 
     /**
-     * @return The Service Account email used to create the job.
+     * @return The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -668,7 +668,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountEmail The Service Account email used to create the job.
+         * @param serviceAccountEmail The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
          * 
          * @return builder
          * 
@@ -679,7 +679,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountEmail The Service Account email used to create the job.
+         * @param serviceAccountEmail The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
          * 
          * @return builder
          * 

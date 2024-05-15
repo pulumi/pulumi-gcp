@@ -5,11 +5,17 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+    /**
+     * @return Whether the node should have nested virtualization enabled.
+     * 
+     */
+    private Boolean enableNestedVirtualization;
     /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
@@ -17,6 +23,13 @@ public final class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
     private Integer threadsPerCore;
 
     private GetClusterNodePoolNodeConfigAdvancedMachineFeature() {}
+    /**
+     * @return Whether the node should have nested virtualization enabled.
+     * 
+     */
+    public Boolean enableNestedVirtualization() {
+        return this.enableNestedVirtualization;
+    }
     /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
@@ -34,13 +47,23 @@ public final class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enableNestedVirtualization;
         private Integer threadsPerCore;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigAdvancedMachineFeature defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
         }
 
+        @CustomType.Setter
+        public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
+            if (enableNestedVirtualization == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigAdvancedMachineFeature", "enableNestedVirtualization");
+            }
+            this.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
         @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
             if (threadsPerCore == null) {
@@ -51,6 +74,7 @@ public final class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
         }
         public GetClusterNodePoolNodeConfigAdvancedMachineFeature build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigAdvancedMachineFeature();
+            _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.threadsPerCore = threadsPerCore;
             return _resultValue;
         }

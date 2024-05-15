@@ -39,7 +39,7 @@ class DeliveryPipelineArgs:
                are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
-        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -121,7 +121,7 @@ class DeliveryPipelineArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `DeliveryPipeline`. Format is `a-z?`.
         """
         return pulumi.get(self, "name")
 
@@ -204,7 +204,7 @@ class _DeliveryPipelineState:
                labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -363,7 +363,7 @@ class _DeliveryPipelineState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `DeliveryPipeline`. Format is `a-z?`.
         """
         return pulumi.get(self, "name")
 
@@ -708,7 +708,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -1056,7 +1056,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -1168,7 +1168,7 @@ class DeliveryPipeline(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `DeliveryPipeline`. Format is `a-z?`.
         """
         return pulumi.get(self, "name")
 

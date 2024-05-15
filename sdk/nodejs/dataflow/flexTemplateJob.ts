@@ -201,7 +201,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly sdkContainerImage!: pulumi.Output<string>;
     /**
-     * Service account email to run the workers as.
+     * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
     public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
@@ -413,7 +413,7 @@ export interface FlexTemplateJobState {
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
-     * Service account email to run the workers as.
+     * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
@@ -533,7 +533,7 @@ export interface FlexTemplateJobArgs {
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
-     * Service account email to run the workers as.
+     * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     skipWaitOnJobTermination?: pulumi.Input<boolean>;

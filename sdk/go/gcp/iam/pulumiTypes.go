@@ -1345,6 +1345,687 @@ func (o WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) Index(i pulumi
 	}).(WorkforcePoolAccessRestrictionsAllowedServiceOutput)
 }
 
+type WorkforcePoolProviderExtraAttributesOauth2Client struct {
+	// Represents the IdP and type of claims that should be fetched.
+	// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+	//   in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+	//   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+	AttributesType string `pulumi:"attributesType"`
+	// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+	ClientId string `pulumi:"clientId"`
+	// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+	ClientSecret WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret `pulumi:"clientSecret"`
+	// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+	IssuerUri string `pulumi:"issuerUri"`
+	// Represents the parameters to control which claims are fetched from an IdP.
+	QueryParameters *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters `pulumi:"queryParameters"`
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientArgs and WorkforcePoolProviderExtraAttributesOauth2ClientOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientInput` via:
+//
+//	WorkforcePoolProviderExtraAttributesOauth2ClientArgs{...}
+type WorkforcePoolProviderExtraAttributesOauth2ClientInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientOutput() WorkforcePoolProviderExtraAttributesOauth2ClientOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientOutput
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientArgs struct {
+	// Represents the IdP and type of claims that should be fetched.
+	// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+	//   in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+	//   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+	AttributesType pulumi.StringInput `pulumi:"attributesType"`
+	// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+	ClientSecret WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput `pulumi:"clientSecret"`
+	// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+	// Represents the parameters to control which claims are fetched from an IdP.
+	QueryParameters WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput `pulumi:"queryParameters"`
+}
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2Client)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientOutput() WorkforcePoolProviderExtraAttributesOauth2ClientOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientOutput)
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientOutput).ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientArgs, WorkforcePoolProviderExtraAttributesOauth2ClientPtr and WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput` via:
+//
+//	        WorkforcePoolProviderExtraAttributesOauth2ClientArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput
+}
+
+type workforcePoolProviderExtraAttributesOauth2ClientPtrType WorkforcePoolProviderExtraAttributesOauth2ClientArgs
+
+func WorkforcePoolProviderExtraAttributesOauth2ClientPtr(v *WorkforcePoolProviderExtraAttributesOauth2ClientArgs) WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput {
+	return (*workforcePoolProviderExtraAttributesOauth2ClientPtrType)(v)
+}
+
+func (*workforcePoolProviderExtraAttributesOauth2ClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2Client)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2Client)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientOutput() WorkforcePoolProviderExtraAttributesOauth2ClientOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return o.ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderExtraAttributesOauth2Client) *WorkforcePoolProviderExtraAttributesOauth2Client {
+		return &v
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput)
+}
+
+// Represents the IdP and type of claims that should be fetched.
+//   - AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+//     in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+//     See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) AttributesType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) string { return v.AttributesType }).(pulumi.StringOutput)
+}
+
+// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ClientSecret() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
+		return v.ClientSecret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput)
+}
+
+// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+// Represents the parameters to control which claims are fetched from an IdP.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) QueryParameters() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
+		return v.QueryParameters
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2Client)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) Elem() WorkforcePoolProviderExtraAttributesOauth2ClientOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) WorkforcePoolProviderExtraAttributesOauth2Client {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderExtraAttributesOauth2Client
+		return ret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientOutput)
+}
+
+// Represents the IdP and type of claims that should be fetched.
+//   - AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+//     in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+//     See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) AttributesType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AttributesType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) ClientSecret() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput)
+}
+
+// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the parameters to control which claims are fetched from an IdP.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) QueryParameters() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameters
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret struct {
+	// The value of the client secret.
+	// Structure is documented below.
+	Value *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue `pulumi:"value"`
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs and WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput` via:
+//
+//	WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{...}
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs struct {
+	// The value of the client secret.
+	// Structure is documented below.
+	Value WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput `pulumi:"value"`
+}
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput)
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput).ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs, WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtr and WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrInput` via:
+//
+//	        WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput
+}
+
+type workforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrType WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs
+
+func WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtr(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrInput {
+	return (*workforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrType)(v)
+}
+
+func (*workforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return o.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret) *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
+		return &v
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput)
+}
+
+// The value of the client secret.
+// Structure is documented below.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput) Value() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret) *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
+		return v.Value
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) Elem() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret
+		return ret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput)
+}
+
+// The value of the client secret.
+// Structure is documented below.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) Value() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret) *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue struct {
+	// The plain text of the client secret value.
+	PlainText string `pulumi:"plainText"`
+	// (Output)
+	// A thumbprint to represent the current client secret value.
+	Thumbprint *string `pulumi:"thumbprint"`
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs and WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueInput` via:
+//
+//	WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{...}
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs struct {
+	// The plain text of the client secret value.
+	PlainText pulumi.StringInput `pulumi:"plainText"`
+	// (Output)
+	// A thumbprint to represent the current client secret value.
+	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
+}
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput)
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput).ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs, WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtr and WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput` via:
+//
+//	        WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput
+}
+
+type workforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrType WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs
+
+func WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtr(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput {
+	return (*workforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrType)(v)
+}
+
+func (*workforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o.ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
+		return &v
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput)
+}
+
+// The plain text of the client secret value.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) PlainText() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) string { return v.PlainText }).(pulumi.StringOutput)
+}
+
+// (Output)
+// A thumbprint to represent the current client secret value.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) Elem() WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue
+		return ret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput)
+}
+
+// The plain text of the client secret value.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlainText
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A thumbprint to represent the current client secret value.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Thumbprint
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters struct {
+	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+	// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+	// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+	Filter *string `pulumi:"filter"`
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs and WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput` via:
+//
+//	WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{...}
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs struct {
+	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+	// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+	// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput)
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput).ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput is an input type that accepts WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs, WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtr and WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput` via:
+//
+//	        WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput
+	ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput
+}
+
+type workforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrType WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs
+
+func WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtr(v *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput {
+	return (*workforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrType)(v)
+}
+
+func (*workforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return i.ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrType) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o.ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
+		return &v
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput)
+}
+
+// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) ToWorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) Elem() WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters
+		return ret
+	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput)
+}
+
+// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkforcePoolProviderOidc struct {
 	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
 	ClientId string `pulumi:"clientId"`
@@ -1731,7 +2412,6 @@ func (o WorkforcePoolProviderOidcClientSecretPtrOutput) Value() WorkforcePoolPro
 
 type WorkforcePoolProviderOidcClientSecretValue struct {
 	// The plain text of the client secret value.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PlainText string `pulumi:"plainText"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
@@ -1751,7 +2431,6 @@ type WorkforcePoolProviderOidcClientSecretValueInput interface {
 
 type WorkforcePoolProviderOidcClientSecretValueArgs struct {
 	// The plain text of the client secret value.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PlainText pulumi.StringInput `pulumi:"plainText"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
@@ -1836,7 +2515,6 @@ func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProvide
 }
 
 // The plain text of the client secret value.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainText() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) string { return v.PlainText }).(pulumi.StringOutput)
 }
@@ -1872,7 +2550,6 @@ func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Elem() WorkforcePoo
 }
 
 // The plain text of the client secret value.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
 		if v == nil {
@@ -1896,6 +2573,8 @@ func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Thumbprint() pulumi
 type WorkforcePoolProviderOidcWebSsoConfig struct {
 	// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
 	// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+	//
+	// <a name="nestedExtraAttributesOauth2Client"></a>The `extraAttributesOauth2Client` block supports:
 	AdditionalScopes []string `pulumi:"additionalScopes"`
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -1924,6 +2603,8 @@ type WorkforcePoolProviderOidcWebSsoConfigInput interface {
 type WorkforcePoolProviderOidcWebSsoConfigArgs struct {
 	// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
 	// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+	//
+	// <a name="nestedExtraAttributesOauth2Client"></a>The `extraAttributesOauth2Client` block supports:
 	AdditionalScopes pulumi.StringArrayInput `pulumi:"additionalScopes"`
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -2017,6 +2698,8 @@ func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidc
 
 // Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
 // Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+//
+// <a name="nestedExtraAttributesOauth2Client"></a>The `extraAttributesOauth2Client` block supports:
 func (o WorkforcePoolProviderOidcWebSsoConfigOutput) AdditionalScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) []string { return v.AdditionalScopes }).(pulumi.StringArrayOutput)
 }
@@ -2064,6 +2747,8 @@ func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) Elem() WorkforcePoolProv
 
 // Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
 // Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+//
+// <a name="nestedExtraAttributesOauth2Client"></a>The `extraAttributesOauth2Client` block supports:
 func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) AdditionalScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) []string {
 		if v == nil {
@@ -3338,6 +4023,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsPtrInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceArrayInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretArgs{})
@@ -3378,6 +4071,14 @@ func init() {
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretOutput{})

@@ -170,7 +170,7 @@ import (
 type RegionNetworkFirewallPolicyRule struct {
 	pulumi.CustomResourceState
 
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -199,6 +199,10 @@ type RegionNetworkFirewallPolicyRule struct {
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrOutput `pulumi:"securityProfileGroup"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -208,6 +212,9 @@ type RegionNetworkFirewallPolicyRule struct {
 	TargetSecureTags RegionNetworkFirewallPolicyRuleTargetSecureTagArrayOutput `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrOutput `pulumi:"tlsInspect"`
 }
 
 // NewRegionNetworkFirewallPolicyRule registers a new resource with the given unique name, arguments, and options.
@@ -255,7 +262,7 @@ func GetRegionNetworkFirewallPolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionNetworkFirewallPolicyRule resources.
 type regionNetworkFirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action *string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -284,6 +291,10 @@ type regionNetworkFirewallPolicyRuleState struct {
 	RuleName *string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -293,10 +304,13 @@ type regionNetworkFirewallPolicyRuleState struct {
 	TargetSecureTags []RegionNetworkFirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 type RegionNetworkFirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -325,6 +339,10 @@ type RegionNetworkFirewallPolicyRuleState struct {
 	RuleName pulumi.StringPtrInput
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -334,6 +352,9 @@ type RegionNetworkFirewallPolicyRuleState struct {
 	TargetSecureTags RegionNetworkFirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput
 }
 
 func (RegionNetworkFirewallPolicyRuleState) ElementType() reflect.Type {
@@ -341,7 +362,7 @@ func (RegionNetworkFirewallPolicyRuleState) ElementType() reflect.Type {
 }
 
 type regionNetworkFirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -366,6 +387,10 @@ type regionNetworkFirewallPolicyRuleArgs struct {
 	Region *string `pulumi:"region"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -375,11 +400,14 @@ type regionNetworkFirewallPolicyRuleArgs struct {
 	TargetSecureTags []RegionNetworkFirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 // The set of arguments for constructing a RegionNetworkFirewallPolicyRule resource.
 type RegionNetworkFirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -404,6 +432,10 @@ type RegionNetworkFirewallPolicyRuleArgs struct {
 	Region pulumi.StringPtrInput
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput
+	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -413,6 +445,9 @@ type RegionNetworkFirewallPolicyRuleArgs struct {
 	TargetSecureTags RegionNetworkFirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
+	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput
 }
 
 func (RegionNetworkFirewallPolicyRuleArgs) ElementType() reflect.Type {
@@ -502,7 +537,7 @@ func (o RegionNetworkFirewallPolicyRuleOutput) ToRegionNetworkFirewallPolicyRule
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 func (o RegionNetworkFirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -570,6 +605,13 @@ func (o RegionNetworkFirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntOutput
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicyRule) pulumi.IntOutput { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
+// A fully-qualified URL of a SecurityProfileGroup resource. Example:
+// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+func (o RegionNetworkFirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkFirewallPolicyRule) pulumi.StringPtrOutput { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
+}
+
 // A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
 // specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
 // tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
@@ -585,6 +627,12 @@ func (o RegionNetworkFirewallPolicyRuleOutput) TargetSecureTags() RegionNetworkF
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o RegionNetworkFirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+// 'apply_security_profile_group' and cannot be set for other actions.
+func (o RegionNetworkFirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkFirewallPolicyRule) pulumi.BoolPtrOutput { return v.TlsInspect }).(pulumi.BoolPtrOutput)
 }
 
 type RegionNetworkFirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }

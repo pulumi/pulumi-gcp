@@ -24,6 +24,7 @@ class WorkforcePoolProviderArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 extra_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] = None,
                  oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
                  saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None):
         """
@@ -90,6 +91,11 @@ class WorkforcePoolProviderArgs:
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+               attributes. This should be used when users can't get the desired claims
+               in authentication credentials. Currently this configuration is only
+               supported with OIDC protocol.
+               Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderOidcArgs'] oidc: Represents an OpenId Connect 1.0 identity provider.
                Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderSamlArgs'] saml: Represents a SAML identity provider.
@@ -108,6 +114,8 @@ class WorkforcePoolProviderArgs:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if extra_attributes_oauth2_client is not None:
+            pulumi.set(__self__, "extra_attributes_oauth2_client", extra_attributes_oauth2_client)
         if oidc is not None:
             pulumi.set(__self__, "oidc", oidc)
         if saml is not None:
@@ -264,6 +272,22 @@ class WorkforcePoolProviderArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="extraAttributesOauth2Client")
+    def extra_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]:
+        """
+        The configuration for OAuth 2.0 client used to get the additional user
+        attributes. This should be used when users can't get the desired claims
+        in authentication credentials. Currently this configuration is only
+        supported with OIDC protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extra_attributes_oauth2_client")
+
+    @extra_attributes_oauth2_client.setter
+    def extra_attributes_oauth2_client(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]):
+        pulumi.set(self, "extra_attributes_oauth2_client", value)
+
+    @property
     @pulumi.getter
     def oidc(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']]:
         """
@@ -298,6 +322,7 @@ class _WorkforcePoolProviderState:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 extra_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
@@ -358,6 +383,11 @@ class _WorkforcePoolProviderState:
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+               attributes. This should be used when users can't get the desired claims
+               in authentication credentials. Currently this configuration is only
+               supported with OIDC protocol.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource.
         :param pulumi.Input[str] name: Output only. The resource name of the provider.
                Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
@@ -392,6 +422,8 @@ class _WorkforcePoolProviderState:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if extra_attributes_oauth2_client is not None:
+            pulumi.set(__self__, "extra_attributes_oauth2_client", extra_attributes_oauth2_client)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -514,6 +546,22 @@ class _WorkforcePoolProviderState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="extraAttributesOauth2Client")
+    def extra_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]:
+        """
+        The configuration for OAuth 2.0 client used to get the additional user
+        attributes. This should be used when users can't get the desired claims
+        in authentication credentials. Currently this configuration is only
+        supported with OIDC protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extra_attributes_oauth2_client")
+
+    @extra_attributes_oauth2_client.setter
+    def extra_attributes_oauth2_client(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]):
+        pulumi.set(self, "extra_attributes_oauth2_client", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -624,6 +672,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 extra_attributes_oauth2_client: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderOidcArgs']]] = None,
                  provider_id: Optional[pulumi.Input[str]] = None,
@@ -760,6 +809,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
+                issuer_uri="https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                client_id="https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                ),
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+            ),
+            extra_attributes_oauth2_client=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs(
+                issuer_uri="https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                attributes_type="AZURE_AD_GROUPS_MAIL",
+            ))
+        ```
+        ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
+                issuer_uri="https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                client_id="https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                ),
+            ),
+            extra_attributes_oauth2_client=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs(
+                issuer_uri="https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                attributes_type="AZURE_AD_GROUPS_MAIL",
+                query_parameters=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs(
+                    filter="mail:gcp",
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -832,6 +966,11 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input[pulumi.InputType['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+               attributes. This should be used when users can't get the desired claims
+               in authentication credentials. Currently this configuration is only
+               supported with OIDC protocol.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource.
         :param pulumi.Input[pulumi.InputType['WorkforcePoolProviderOidcArgs']] oidc: Represents an OpenId Connect 1.0 identity provider.
                Structure is documented below.
@@ -984,6 +1123,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
+                issuer_uri="https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                client_id="https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                ),
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+            ),
+            extra_attributes_oauth2_client=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs(
+                issuer_uri="https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                attributes_type="AZURE_AD_GROUPS_MAIL",
+            ))
+        ```
+        ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
+                issuer_uri="https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+                client_id="https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                ),
+            ),
+            extra_attributes_oauth2_client=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientArgs(
+                issuer_uri="https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
+                attributes_type="AZURE_AD_GROUPS_MAIL",
+                query_parameters=gcp.iam.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs(
+                    filter="mail:gcp",
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -1023,6 +1247,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 extra_attributes_oauth2_client: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderOidcArgs']]] = None,
                  provider_id: Optional[pulumi.Input[str]] = None,
@@ -1042,6 +1267,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["extra_attributes_oauth2_client"] = extra_attributes_oauth2_client
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -1070,6 +1296,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            extra_attributes_oauth2_client: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oidc: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolProviderOidcArgs']]] = None,
@@ -1135,6 +1362,11 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input[pulumi.InputType['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+               attributes. This should be used when users can't get the desired claims
+               in authentication credentials. Currently this configuration is only
+               supported with OIDC protocol.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource.
         :param pulumi.Input[str] name: Output only. The resource name of the provider.
                Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
@@ -1168,6 +1400,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["extra_attributes_oauth2_client"] = extra_attributes_oauth2_client
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc"] = oidc
@@ -1262,6 +1495,18 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         A user-specified display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="extraAttributesOauth2Client")
+    def extra_attributes_oauth2_client(self) -> pulumi.Output[Optional['outputs.WorkforcePoolProviderExtraAttributesOauth2Client']]:
+        """
+        The configuration for OAuth 2.0 client used to get the additional user
+        attributes. This should be used when users can't get the desired claims
+        in authentication credentials. Currently this configuration is only
+        supported with OIDC protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extra_attributes_oauth2_client")
 
     @property
     @pulumi.getter

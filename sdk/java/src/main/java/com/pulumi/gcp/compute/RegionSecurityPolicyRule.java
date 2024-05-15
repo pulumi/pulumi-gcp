@@ -12,6 +12,8 @@ import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleState;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRuleMatch;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRuleNetworkMatch;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRulePreconfiguredWafConfig;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRuleRateLimitOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -140,6 +142,92 @@ import javax.annotation.Nullable;
  *                         "192.168.0.0/16",
  *                         "10.0.0.0/8")
  *                     .build())
+ *                 .build())
+ *             .action("allow")
+ *             .preview(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Security Policy Rule With Preconfigured Waf Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()        
+ *             .region("asia-southeast1")
+ *             .name("policyruletest")
+ *             .description("basic region security policy")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyRule = new RegionSecurityPolicyRule("policyRule", RegionSecurityPolicyRuleArgs.builder()        
+ *             .region("asia-southeast1")
+ *             .securityPolicy(default_.name())
+ *             .description("new rule")
+ *             .priority(100)
+ *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                 .versionedExpr("SRC_IPS_V1")
+ *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                     .srcIpRanges("10.10.0.0/16")
+ *                     .build())
+ *                 .build())
+ *             .preconfiguredWafConfig(RegionSecurityPolicyRulePreconfiguredWafConfigArgs.builder()
+ *                 .exclusions(                
+ *                     RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                         .requestUris(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs.builder()
+ *                             .operator("STARTS_WITH")
+ *                             .value("/admin")
+ *                             .build())
+ *                         .targetRuleSet("rce-stable")
+ *                         .build(),
+ *                     RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                         .requestQueryParams(                        
+ *                             RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs.builder()
+ *                                 .operator("CONTAINS")
+ *                                 .value("password")
+ *                                 .build(),
+ *                             RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs.builder()
+ *                                 .operator("STARTS_WITH")
+ *                                 .value("freeform")
+ *                                 .build(),
+ *                             RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs.builder()
+ *                                 .operator("EQUALS")
+ *                                 .value("description")
+ *                                 .build())
+ *                         .targetRuleSet("xss-stable")
+ *                         .targetRuleIds(                        
+ *                             "owasp-crs-v030001-id941330-xss",
+ *                             "owasp-crs-v030001-id941340-xss")
+ *                         .build())
  *                 .build())
  *             .action("allow")
  *             .preview(true)
@@ -357,6 +445,24 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.networkMatch);
     }
     /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="preconfiguredWafConfig", refs={RegionSecurityPolicyRulePreconfiguredWafConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RegionSecurityPolicyRulePreconfiguredWafConfig> preconfiguredWafConfig;
+
+    /**
+     * @return Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionSecurityPolicyRulePreconfiguredWafConfig>> preconfiguredWafConfig() {
+        return Codegen.optional(this.preconfiguredWafConfig);
+    }
+    /**
      * If set to true, the specified action is not enforced.
      * 
      */
@@ -403,6 +509,22 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="rateLimitOptions", refs={RegionSecurityPolicyRuleRateLimitOptions.class}, tree="[0]")
+    private Output</* @Nullable */ RegionSecurityPolicyRuleRateLimitOptions> rateLimitOptions;
+
+    /**
+     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionSecurityPolicyRuleRateLimitOptions>> rateLimitOptions() {
+        return Codegen.optional(this.rateLimitOptions);
     }
     /**
      * The Region in which the created Region Security Policy rule should reside.
