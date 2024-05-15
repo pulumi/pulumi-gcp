@@ -18,6 +18,23 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Firewall endpoint is a Cloud Firewall resource that enables
+ * layer 7 advanced protection capabilities, such as intrusion prevention,
+ * in your network.
+ * 
+ * To get more information about FirewallEndpoint, see:
+ * 
+ * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
+ * * How-to Guides
+ *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+ *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ * 
+ * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+ * you must specify a `billing_project_id` and set `user_project_override` to true
+ * in the provider configuration. Otherwise the ACM API will return a 403 error.
+ * Your account must have the `serviceusage.services.use` permission on the
+ * `billing_project_id` you defined.
+ * 
  * ## Example Usage
  * 
  * ### Network Security Firewall Endpoint Basic

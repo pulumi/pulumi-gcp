@@ -7110,6 +7110,35 @@ export namespace bigquerydatapolicy {
 }
 
 export namespace bigtable {
+    export interface AuthorizedViewSubsetView {
+        /**
+         * A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+         *
+         * -----
+         */
+        familySubsets?: outputs.bigtable.AuthorizedViewSubsetViewFamilySubset[];
+        /**
+         * A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+         */
+        rowPrefixes?: string[];
+    }
+
+    export interface AuthorizedViewSubsetViewFamilySubset {
+        /**
+         * Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+         */
+        familyName: string;
+        /**
+         * A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+         * Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+         */
+        qualifierPrefixes?: string[];
+        /**
+         * A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+         */
+        qualifiers?: string[];
+    }
+
     export interface GCPolicyMaxAge {
         /**
          * Number of days before applying GC policy.
@@ -12347,6 +12376,11 @@ export namespace clouddeploy {
          */
         git?: outputs.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit;
         /**
+         * Cloud Build 2nd gen repository containing the Skaffold Config modules.
+         * Structure is documented below.
+         */
+        googleCloudBuildRepo?: outputs.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo;
+        /**
          * Cloud Storage bucket containing Skaffold Config modules.
          * Structure is documented below.
          */
@@ -12366,6 +12400,21 @@ export namespace clouddeploy {
          * Git repository the package should be cloned from.
          */
         repo: string;
+    }
+
+    export interface CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo {
+        /**
+         * Relative path from the repository root to the Skaffold file.
+         */
+        path?: string;
+        /**
+         * Branch or tag to use when cloning the repository.
+         */
+        ref?: string;
+        /**
+         * Cloud Build 2nd gen repository in the format of 'projects/<project>/locations/<location>/connections/<connection>/repositories/<repository>'.
+         */
+        repository: string;
     }
 
     export interface CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
@@ -12714,6 +12763,13 @@ export namespace clouddeploy {
          * Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
          */
         membership?: string;
+    }
+
+    export interface TargetCustomTarget {
+        /**
+         * Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+         */
+        customTargetType: string;
     }
 
     export interface TargetExecutionConfig {
@@ -29969,6 +30025,227 @@ export namespace compute {
         values?: string[];
     }
 
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfig {
+        /**
+         * An exclusion to apply during preconfigured WAF evaluation.
+         * Structure is documented below.
+         */
+        exclusions?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusion[];
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
+        /**
+         * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         */
+        requestCookies?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky[];
+        /**
+         * Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         */
+        requestHeaders?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader[];
+        /**
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Note that the parameter can be in the query string or in the POST body.
+         * Structure is documented below.
+         */
+        requestQueryParams?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam[];
+        /**
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+         * When specifying this field, the query or fragment part should be excluded.
+         * Structure is documented below.
+         */
+        requestUris?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri[];
+        /**
+         * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+         * If omitted, it refers to all the rule IDs under the WAF rule set.
+         */
+        targetRuleIds?: string[];
+        /**
+         * Target WAF rule set to apply the preconfigured WAF exclusion.
+         */
+        targetRuleSet: string;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         * Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: string;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         * Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: string;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         * Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: string;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         * Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: string;
+    }
+
+    export interface RegionSecurityPolicyRuleRateLimitOptions {
+        /**
+         * Can only be specified if the action for the rule is "rateBasedBan".
+         * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+         */
+        banDurationSec?: number;
+        /**
+         * Can only be specified if the action for the rule is "rateBasedBan".
+         * If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+         * Structure is documented below.
+         */
+        banThreshold?: outputs.compute.RegionSecurityPolicyRuleRateLimitOptionsBanThreshold;
+        /**
+         * Action to take for requests that are under the configured rate limit threshold.
+         * Valid option is "allow" only.
+         */
+        conformAction?: string;
+        /**
+         * Determines the key to enforce the rateLimitThreshold on. Possible values are:
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
+         * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+         * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+         * Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+         */
+        enforceOnKey?: string;
+        /**
+         * If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+         * You can specify up to 3 enforceOnKeyConfigs.
+         * If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+         * Structure is documented below.
+         */
+        enforceOnKeyConfigs?: outputs.compute.RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
+        /**
+         * Rate limit key name applicable only for the following key types:
+         * HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+         * HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         */
+        enforceOnKeyName?: string;
+        /**
+         * Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+         * Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+         */
+        exceedAction?: string;
+        /**
+         * Threshold at which to begin ratelimiting.
+         * Structure is documented below.
+         */
+        rateLimitThreshold?: outputs.compute.RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold;
+    }
+
+    export interface RegionSecurityPolicyRuleRateLimitOptionsBanThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count?: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec?: number;
+    }
+
+    export interface RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+        /**
+         * Rate limit key name applicable only for the following key types:
+         * HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+         * HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         */
+        enforceOnKeyName?: string;
+        /**
+         * Determines the key to enforce the rateLimitThreshold on. Possible values are:
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
+         * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+         * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+         * Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+         */
+        enforceOnKeyType?: string;
+    }
+
+    export interface RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count?: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec?: number;
+    }
+
     export interface RegionSecurityPolicyUserDefinedField {
         /**
          * The base relative to which 'offset' is measured. Possible values are:
@@ -36102,6 +36379,10 @@ export namespace container {
 
     export interface ClusterDnsConfig {
         /**
+         * This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
+         */
+        additiveVpcScopeDnsDomain?: string;
+        /**
          * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
          */
         clusterDns?: string;
@@ -36671,6 +36952,10 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: boolean;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -37414,6 +37699,10 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: boolean;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -38308,6 +38597,10 @@ export namespace container {
 
     export interface GetClusterDnsConfig {
         /**
+         * Enable additive VPC scope DNS in a GKE cluster.
+         */
+        additiveVpcScopeDnsDomain: string;
+        /**
          * Which in-cluster DNS provider should be used.
          */
         clusterDns: string;
@@ -38721,6 +39014,10 @@ export namespace container {
     }
 
     export interface GetClusterNodeConfigAdvancedMachineFeature {
+        /**
+         * Whether the node should have nested virtualization enabled.
+         */
+        enableNestedVirtualization: boolean;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -39330,6 +39627,10 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+        /**
+         * Whether the node should have nested virtualization enabled.
+         */
+        enableNestedVirtualization: boolean;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -40094,6 +40395,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigAdvancedMachineFeatures {
+        /**
+         * Whether the node should have nested virtualization enabled.
+         */
+        enableNestedVirtualization?: boolean;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -60381,6 +60686,62 @@ export namespace iam {
         domain?: string;
     }
 
+    export interface WorkforcePoolProviderExtraAttributesOauth2Client {
+        /**
+         * Represents the IdP and type of claims that should be fetched.
+         * * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+         * in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+         * See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+         * 'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+         */
+        attributesType: string;
+        /**
+         * The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+         */
+        clientId: string;
+        /**
+         * The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+         */
+        clientSecret: outputs.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret;
+        /**
+         * The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+         */
+        issuerUri: string;
+        /**
+         * Represents the parameters to control which claims are fetched from an IdP.
+         */
+        queryParameters?: outputs.iam.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters;
+    }
+
+    export interface WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
+        /**
+         * The value of the client secret.
+         * Structure is documented below.
+         */
+        value?: outputs.iam.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue;
+    }
+
+    export interface WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
+        /**
+         * The plain text of the client secret value.
+         */
+        plainText: string;
+        /**
+         * (Output)
+         * A thumbprint to represent the current client secret value.
+         */
+        thumbprint: string;
+    }
+
+    export interface WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
+        /**
+         * The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+         * filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+         * groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+         */
+        filter?: string;
+    }
+
     export interface WorkforcePoolProviderOidc {
         /**
          * The client ID. Must match the audience claim of the JWT issued by the identity provider.
@@ -60439,7 +60800,6 @@ export namespace iam {
     export interface WorkforcePoolProviderOidcClientSecretValue {
         /**
          * The plain text of the client secret value.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         plainText: string;
         /**
@@ -60453,6 +60813,8 @@ export namespace iam {
         /**
          * Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
          * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         *
+         * <a name="nestedExtraAttributesOauth2Client"></a>The `extraAttributesOauth2Client` block supports:
          */
         additionalScopes?: string[];
         /**

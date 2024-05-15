@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigAdvancedMachineFeatures
     {
         /// <summary>
+        /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        /// </summary>
+        public readonly bool? EnableNestedVirtualization;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
 
         [OutputConstructor]
-        private ClusterNodeConfigAdvancedMachineFeatures(int threadsPerCore)
+        private ClusterNodeConfigAdvancedMachineFeatures(
+            bool? enableNestedVirtualization,
+
+            int threadsPerCore)
         {
+            EnableNestedVirtualization = enableNestedVirtualization;
             ThreadsPerCore = threadsPerCore;
         }
     }

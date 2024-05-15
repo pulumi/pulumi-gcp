@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()        
  *             .name("my-terraform-ghe-repo")
  *             .location("us-central1")
- *             .parentConnection(my_connection.id())
+ *             .parentConnection(my_connection.name())
  *             .remoteUri("https://ghe.com/hashicorp/terraform-provider-google.git")
  *             .build());
  * 

@@ -112,7 +112,7 @@ index 2455fcf2a..1d0cef901 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index 1bc68938b..bca136ef2 100644
+index 8ddea556b..4cf153e82 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
 @@ -126,7 +126,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -155,10 +155,10 @@ index 5a62364bc..cbebdfdce 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 9d5e5fa35..9a512f867 100644
+index 6ba6160af..c1fa191ce 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -717,8 +717,8 @@ The following arguments are supported:
+@@ -721,8 +721,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -812,7 +812,7 @@ index aa3317fd1..5e02b203a 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index b76ff7739..745ded706 100644
+index bb9f4ee66..6ecdfcbb5 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -1144,7 +1144,7 @@ index 6d2f569a0..d31f9be97 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index 052747cde..bed48ee73 100644
+index 4805d1fd5..f66af63b5 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -142,7 +142,7 @@ The following arguments are supported:
@@ -1596,7 +1596,7 @@ index 20ce807e7..1cf3cbdbb 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 0ad936d66..5d0ca9c6e 100644
+index 473ad5159..1606b2e39 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1687,7 +1687,7 @@ index 0ad936d66..5d0ca9c6e 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -850,8 +868,6 @@ gvnic {
+@@ -852,8 +870,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1696,7 +1696,7 @@ index 0ad936d66..5d0ca9c6e 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -872,7 +888,7 @@ gvnic {
+@@ -874,7 +890,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1705,7 +1705,7 @@ index 0ad936d66..5d0ca9c6e 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -897,10 +913,7 @@ gvnic {
+@@ -899,10 +915,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1717,7 +1717,7 @@ index 0ad936d66..5d0ca9c6e 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -912,13 +925,14 @@ gvnic {
+@@ -914,13 +927,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1739,14 +1739,7 @@ index 0ad936d66..5d0ca9c6e 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -967,12 +981,20 @@ sole_tenant_config {
- 
- * `threads_per_core` - (Required) The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
- 
--* `network_performance_config` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)) Network bandwidth tier configuration.
-+* `network_performance_config` - (Optional) Network bandwidth tier configuration.
- 
- <a name="network_performance_config"></a>The `network_performance_config` block supports:
+@@ -977,6 +991,14 @@ sole_tenant_config {
  
  * `total_egress_bandwidth_tier` (Required) - Specifies the total network bandwidth tier for the NodePool.
  
@@ -1761,7 +1754,7 @@ index 0ad936d66..5d0ca9c6e 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1122,7 +1144,7 @@ for more details. This field only applies to private clusters, when
+@@ -1133,7 +1155,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1770,7 +1763,7 @@ index 0ad936d66..5d0ca9c6e 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1223,9 +1245,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1234,9 +1256,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1862,7 +1855,7 @@ index d8db626fc..5613e008c 100644
  ```
  
 diff --git a/website/docs/r/dataflow_flex_template_job.html.markdown b/website/docs/r/dataflow_flex_template_job.html.markdown
-index eb068d14b..36ecff352 100644
+index d4bbfa00e..3bd917ab9 100644
 --- a/website/docs/r/dataflow_flex_template_job.html.markdown
 +++ b/website/docs/r/dataflow_flex_template_job.html.markdown
 @@ -32,7 +32,7 @@ There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -1883,7 +1876,7 @@ index eb068d14b..36ecff352 100644
  complete.
  
  You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
-@@ -107,14 +107,11 @@ such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+@@ -107,14 +107,11 @@ Template.
  
  * `labels` - (Optional) User labels to be specified for the job. Keys and values
  should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -1913,7 +1906,7 @@ index eb068d14b..36ecff352 100644
  * `project` - (Optional) The project in which the resource belongs. If it is not
  provided, the provider project is used.
 diff --git a/website/docs/r/dataflow_job.html.markdown b/website/docs/r/dataflow_job.html.markdown
-index b33badf77..d666ca9b3 100644
+index c80d329ab..6bc18f040 100644
 --- a/website/docs/r/dataflow_job.html.markdown
 +++ b/website/docs/r/dataflow_job.html.markdown
 @@ -23,44 +23,47 @@ resource "google_dataflow_job" "big_data_job" {
@@ -1986,7 +1979,7 @@ index b33badf77..d666ca9b3 100644
  
  You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a [random_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) resource, for example:
  
-@@ -109,8 +112,8 @@ The following arguments are supported:
+@@ -111,8 +114,8 @@ The following arguments are supported:
    All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
  * `transform_name_mapping` - (Optional) Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
  * `max_workers` - (Optional) The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -3328,7 +3321,7 @@ index 8d04d36a1..7091f611e 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index eb593594c..929f171ae 100644
+index 92248532c..946d2d73c 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -28,9 +28,8 @@ To get more information about UptimeCheckConfig, see:

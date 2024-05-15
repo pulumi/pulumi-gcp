@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderState;
+import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderExtraAttributesOauth2Client;
 import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderOidc;
 import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderSaml;
 import java.lang.Boolean;
@@ -265,6 +266,160 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkforcePool;
+ * import com.pulumi.gcp.iam.WorkforcePoolArgs;
+ * import com.pulumi.gcp.iam.WorkforcePoolProvider;
+ * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .build());
+ * 
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *             .workforcePoolId(pool.workforcePoolId())
+ *             .location(pool.location())
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
+ *             .oidc(WorkforcePoolProviderOidcArgs.builder()
+ *                 .issuerUri("https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/")
+ *                 .clientId("https://analysis.windows.net/powerbi/connector/GoogleBigQuery")
+ *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
+ *                     .responseType("CODE")
+ *                     .assertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS")
+ *                     .build())
+ *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .extraAttributesOauth2Client(WorkforcePoolProviderExtraAttributesOauth2ClientArgs.builder()
+ *                 .issuerUri("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0")
+ *                 .clientId("client-id")
+ *                 .clientSecret(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .attributesType("AZURE_AD_GROUPS_MAIL")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkforcePool;
+ * import com.pulumi.gcp.iam.WorkforcePoolArgs;
+ * import com.pulumi.gcp.iam.WorkforcePoolProvider;
+ * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .build());
+ * 
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *             .workforcePoolId(pool.workforcePoolId())
+ *             .location(pool.location())
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
+ *             .oidc(WorkforcePoolProviderOidcArgs.builder()
+ *                 .issuerUri("https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/")
+ *                 .clientId("https://analysis.windows.net/powerbi/connector/GoogleBigQuery")
+ *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
+ *                     .responseType("CODE")
+ *                     .assertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS")
+ *                     .build())
+ *                 .build())
+ *             .extraAttributesOauth2Client(WorkforcePoolProviderExtraAttributesOauth2ClientArgs.builder()
+ *                 .issuerUri("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0")
+ *                 .clientId("client-id")
+ *                 .clientSecret(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .attributesType("AZURE_AD_GROUPS_MAIL")
+ *                 .queryParameters(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs.builder()
+ *                     .filter("mail:gcp")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -442,6 +597,28 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can&#39;t get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="extraAttributesOauth2Client", refs={WorkforcePoolProviderExtraAttributesOauth2Client.class}, tree="[0]")
+    private Output</* @Nullable */ WorkforcePoolProviderExtraAttributesOauth2Client> extraAttributesOauth2Client;
+
+    /**
+     * @return The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can&#39;t get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkforcePoolProviderExtraAttributesOauth2Client>> extraAttributesOauth2Client() {
+        return Codegen.optional(this.extraAttributesOauth2Client);
     }
     /**
      * The location for the resource.

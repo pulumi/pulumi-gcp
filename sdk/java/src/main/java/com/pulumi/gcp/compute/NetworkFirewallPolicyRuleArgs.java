@@ -22,14 +22,14 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
     public static final NetworkFirewallPolicyRuleArgs Empty = new NetworkFirewallPolicyRuleArgs();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
      * 
      */
     public Output<String> action() {
@@ -178,6 +178,25 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * 
+     */
+    @Import(name="securityProfileGroup")
+    private @Nullable Output<String> securityProfileGroup;
+
+    /**
+     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * 
+     */
+    public Optional<Output<String>> securityProfileGroup() {
+        return Optional.ofNullable(this.securityProfileGroup);
+    }
+
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
      * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
      * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
@@ -217,6 +236,23 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.targetServiceAccounts);
     }
 
+    /**
+     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * 
+     */
+    @Import(name="tlsInspect")
+    private @Nullable Output<Boolean> tlsInspect;
+
+    /**
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * 
+     */
+    public Optional<Output<Boolean>> tlsInspect() {
+        return Optional.ofNullable(this.tlsInspect);
+    }
+
     private NetworkFirewallPolicyRuleArgs() {}
 
     private NetworkFirewallPolicyRuleArgs(NetworkFirewallPolicyRuleArgs $) {
@@ -230,8 +266,10 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         this.priority = $.priority;
         this.project = $.project;
         this.ruleName = $.ruleName;
+        this.securityProfileGroup = $.securityProfileGroup;
         this.targetSecureTags = $.targetSecureTags;
         this.targetServiceAccounts = $.targetServiceAccounts;
+        this.tlsInspect = $.tlsInspect;
     }
 
     public static Builder builder() {
@@ -253,7 +291,7 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
          * 
          * @return builder
          * 
@@ -264,7 +302,7 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
          * 
          * @return builder
          * 
@@ -469,6 +507,31 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
+         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProfileGroup(@Nullable Output<String> securityProfileGroup) {
+            $.securityProfileGroup = securityProfileGroup;
+            return this;
+        }
+
+        /**
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
+         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProfileGroup(String securityProfileGroup) {
+            return securityProfileGroup(Output.of(securityProfileGroup));
+        }
+
+        /**
          * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
          * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
          * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
@@ -543,6 +606,29 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
          */
         public Builder targetServiceAccounts(String... targetServiceAccounts) {
             return targetServiceAccounts(List.of(targetServiceAccounts));
+        }
+
+        /**
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspect(@Nullable Output<Boolean> tlsInspect) {
+            $.tlsInspect = tlsInspect;
+            return this;
+        }
+
+        /**
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspect(Boolean tlsInspect) {
+            return tlsInspect(Output.of(tlsInspect));
         }
 
         public NetworkFirewallPolicyRuleArgs build() {

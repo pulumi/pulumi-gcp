@@ -57,7 +57,7 @@ class JobArgs:
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
@@ -292,7 +292,7 @@ class JobArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The Service Account email used to create the job.
+        The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -399,7 +399,7 @@ class _JobState:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
@@ -662,7 +662,7 @@ class _JobState:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The Service Account email used to create the job.
+        The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -913,7 +913,7 @@ class Job(pulumi.CustomResource):
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -1165,7 +1165,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
@@ -1344,7 +1344,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Output[Optional[str]]:
         """
-        The Service Account email used to create the job.
+        The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 

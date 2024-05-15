@@ -6,13 +6,31 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs Empty = new ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs();
+
+    /**
+     * Defines whether the instance should have nested virtualization enabled. Defaults to false.
+     * 
+     */
+    @Import(name="enableNestedVirtualization")
+    private @Nullable Output<Boolean> enableNestedVirtualization;
+
+    /**
+     * @return Defines whether the instance should have nested virtualization enabled. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableNestedVirtualization() {
+        return Optional.ofNullable(this.enableNestedVirtualization);
+    }
 
     /**
      * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -32,6 +50,7 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends 
     private ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs() {}
 
     private ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs(ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs $) {
+        this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
     }
 
@@ -51,6 +70,27 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends 
 
         public Builder(ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs defaults) {
             $ = new ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableNestedVirtualization Defines whether the instance should have nested virtualization enabled. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(@Nullable Output<Boolean> enableNestedVirtualization) {
+            $.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+
+        /**
+         * @param enableNestedVirtualization Defines whether the instance should have nested virtualization enabled. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
+            return enableNestedVirtualization(Output.of(enableNestedVirtualization));
         }
 
         /**

@@ -89,6 +89,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+ *     location: "us-central1",
+ *     name: "my-custom-target-type",
+ *     description: "My custom target type",
+ *     customActions: {
+ *         renderAction: "renderAction",
+ *         deployAction: "deployAction",
+ *         includeSkaffoldModules: [{
+ *             configs: ["my-config"],
+ *             googleCloudBuildRepo: {
+ *                 repository: "projects/example/locations/us-central1/connections/git/repositories/example-repo",
+ *                 path: "configs/skaffold.yaml",
+ *                 ref: "main",
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

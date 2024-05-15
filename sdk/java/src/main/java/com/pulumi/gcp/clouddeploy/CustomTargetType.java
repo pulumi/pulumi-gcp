@@ -175,6 +175,55 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.CustomTargetType;
+ * import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-custom-target-type")
+ *             .description("My custom target type")
+ *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
+ *                 .renderAction("renderAction")
+ *                 .deployAction("deployAction")
+ *                 .includeSkaffoldModules(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs.builder()
+ *                     .configs("my-config")
+ *                     .googleCloudBuildRepo(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs.builder()
+ *                         .repository("projects/example/locations/us-central1/connections/git/repositories/example-repo")
+ *                         .path("configs/skaffold.yaml")
+ *                         .ref("main")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

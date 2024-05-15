@@ -204,7 +204,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * The Service Account email used to create the job.
+     * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
     /**
@@ -394,7 +394,7 @@ export interface JobState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The Service Account email used to create the job.
+     * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -494,7 +494,7 @@ export interface JobArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The Service Account email used to create the job.
+     * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**

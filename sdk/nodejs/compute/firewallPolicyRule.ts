@@ -111,7 +111,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
     }
 
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -154,6 +154,12 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
     /**
+     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     */
+    public readonly securityProfileGroup!: pulumi.Output<string | undefined>;
+    /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
@@ -162,6 +168,11 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
+    /**
+     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * 'apply_security_profile_group' and cannot be set for other actions.
+     */
+    public readonly tlsInspect!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a FirewallPolicyRule resource with the given unique name, arguments, and options.
@@ -186,8 +197,10 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
+            resourceInputs["securityProfileGroup"] = state ? state.securityProfileGroup : undefined;
             resourceInputs["targetResources"] = state ? state.targetResources : undefined;
             resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
+            resourceInputs["tlsInspect"] = state ? state.tlsInspect : undefined;
         } else {
             const args = argsOrState as FirewallPolicyRuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -213,8 +226,10 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["securityProfileGroup"] = args ? args.securityProfileGroup : undefined;
             resourceInputs["targetResources"] = args ? args.targetResources : undefined;
             resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["tlsInspect"] = args ? args.tlsInspect : undefined;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
         }
@@ -228,7 +243,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
  */
 export interface FirewallPolicyRuleState {
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
      */
     action?: pulumi.Input<string>;
     /**
@@ -271,6 +286,12 @@ export interface FirewallPolicyRuleState {
      */
     ruleTupleCount?: pulumi.Input<number>;
     /**
+     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     */
+    securityProfileGroup?: pulumi.Input<string>;
+    /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
@@ -279,6 +300,11 @@ export interface FirewallPolicyRuleState {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * 'apply_security_profile_group' and cannot be set for other actions.
+     */
+    tlsInspect?: pulumi.Input<boolean>;
 }
 
 /**
@@ -286,7 +312,7 @@ export interface FirewallPolicyRuleState {
  */
 export interface FirewallPolicyRuleArgs {
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
      */
     action: pulumi.Input<string>;
     /**
@@ -321,6 +347,12 @@ export interface FirewallPolicyRuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
+     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
+     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
+     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     */
+    securityProfileGroup?: pulumi.Input<string>;
+    /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
@@ -329,4 +361,9 @@ export interface FirewallPolicyRuleArgs {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * 'apply_security_profile_group' and cannot be set for other actions.
+     */
+    tlsInspect?: pulumi.Input<boolean>;
 }

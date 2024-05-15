@@ -2651,6 +2651,35 @@
                     }
                 }
             },
+            "google_bigtable_authorized_view": {
+                "current": "gcp:bigtable/authorizedView:AuthorizedView",
+                "majorVersion": 7,
+                "fields": {
+                    "subset_view": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "family_subsets": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "qualifier_prefixes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "qualifiers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "row_prefixes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_bigtable_gc_policy": {
                 "current": "gcp:bigtable/gCPolicy:GCPolicy",
                 "majorVersion": 7,
@@ -4185,6 +4214,9 @@
                                             "git": {
                                                 "maxItemsOne": true
                                             },
+                                            "google_cloud_build_repo": {
+                                                "maxItemsOne": true
+                                            },
                                             "google_cloud_storage": {
                                                 "maxItemsOne": true
                                             }
@@ -4444,6 +4476,9 @@
                 "majorVersion": 7,
                 "fields": {
                     "anthos_cluster": {
+                        "maxItemsOne": true
+                    },
+                    "custom_target": {
                         "maxItemsOne": true
                     },
                     "execution_configs": {
@@ -7091,6 +7126,51 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "preconfigured_waf_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclusion": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "request_cookie": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_header": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_query_param": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_uri": {
+                                                "maxItemsOne": false
+                                            },
+                                            "target_rule_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rate_limit_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ban_threshold": {
+                                    "maxItemsOne": true
+                                },
+                                "enforce_on_key_configs": {
+                                    "maxItemsOne": false
+                                },
+                                "rate_limit_threshold": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -17642,6 +17722,26 @@
                 "current": "gcp:iam/workforcePoolProvider:WorkforcePoolProvider",
                 "majorVersion": 7,
                 "fields": {
+                    "extra_attributes_oauth2_client": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_secret": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "value": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "query_parameters": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "oidc": {
                         "maxItemsOne": true,
                         "elem": {
@@ -18415,6 +18515,10 @@
             },
             "google_integration_connectors_endpoint_attachment": {
                 "current": "gcp:integrationconnectors/endpointAttachment:EndpointAttachment",
+                "majorVersion": 7
+            },
+            "google_integration_connectors_managed_zone": {
+                "current": "gcp:integrationconnectors/managedZone:ManagedZone",
                 "majorVersion": 7
             },
             "google_integrations_auth_config": {
@@ -19478,6 +19582,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_network_connectivity_regional_endpoint": {
+                "current": "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint",
+                "majorVersion": 7
             },
             "google_network_connectivity_service_connection_policy": {
                 "current": "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy",
@@ -30460,6 +30568,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_integration_connectors_managed_zone": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_kms_crypto_key": [
                 "effective_labels",
                 "terraform_labels"
@@ -30517,6 +30629,10 @@
                 "terraform_labels"
             ],
             "google_network_connectivity_policy_based_route": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_connectivity_regional_endpoint": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -31012,6 +31128,7 @@
             "gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding": 0,
             "gcp:bigquerydatapolicy/dataPolicyIamMember:DataPolicyIamMember": 0,
             "gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy": 0,
+            "gcp:bigtable/authorizedView:AuthorizedView": 0,
             "gcp:bigtable/gCPolicy:GCPolicy": 0,
             "gcp:bigtable/instance:Instance": 0,
             "gcp:bigtable/instanceIamBinding:InstanceIamBinding": 0,
@@ -31523,6 +31640,7 @@
             "gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig": 0,
             "gcp:integrationconnectors/connection:Connection": 0,
             "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": 0,
+            "gcp:integrationconnectors/managedZone:ManagedZone": 0,
             "gcp:kms/cryptoKey:CryptoKey": 0,
             "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": 0,
             "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": 0,
@@ -31578,6 +31696,7 @@
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/internalRange:InternalRange": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
+            "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint": 0,
             "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": 0,
             "gcp:networkconnectivity/spoke:Spoke": 0,
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": 0,

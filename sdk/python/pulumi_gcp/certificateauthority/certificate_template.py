@@ -20,6 +20,7 @@ class CertificateTemplateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
@@ -33,6 +34,10 @@ class CertificateTemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+               IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+               Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+               lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
                If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
@@ -52,6 +57,8 @@ class CertificateTemplateArgs:
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maximum_lifetime is not None:
+            pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if passthrough_extensions is not None:
@@ -111,6 +118,21 @@ class CertificateTemplateArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
+
+    @maximum_lifetime.setter
+    def maximum_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_lifetime", value)
 
     @property
     @pulumi.getter
@@ -177,6 +199,7 @@ class _CertificateTemplateState:
                  identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
@@ -194,6 +217,10 @@ class _CertificateTemplateState:
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+               IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+               Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+               lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
                If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
@@ -220,6 +247,8 @@ class _CertificateTemplateState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maximum_lifetime is not None:
+            pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if passthrough_extensions is not None:
@@ -307,6 +336,21 @@ class _CertificateTemplateState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
+
+    @maximum_lifetime.setter
+    def maximum_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_lifetime", value)
 
     @property
     @pulumi.getter
@@ -397,6 +441,7 @@ class CertificateTemplate(pulumi.CustomResource):
                  identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
                  predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
@@ -430,6 +475,7 @@ class CertificateTemplate(pulumi.CustomResource):
                     title="Sample expression",
                 ),
             ),
+            maximum_lifetime="86400s",
             passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
                 additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
                     object_id_paths=[
@@ -528,6 +574,10 @@ class CertificateTemplate(pulumi.CustomResource):
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+               IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+               Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+               lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
                If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
@@ -574,6 +624,7 @@ class CertificateTemplate(pulumi.CustomResource):
                     title="Sample expression",
                 ),
             ),
+            maximum_lifetime="86400s",
             passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
                 additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
                     object_id_paths=[
@@ -682,6 +733,7 @@ class CertificateTemplate(pulumi.CustomResource):
                  identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
                  predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
@@ -701,6 +753,7 @@ class CertificateTemplate(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["maximum_lifetime"] = maximum_lifetime
             __props__.__dict__["name"] = name
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
             __props__.__dict__["predefined_values"] = predefined_values
@@ -727,6 +780,7 @@ class CertificateTemplate(pulumi.CustomResource):
             identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            maximum_lifetime: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
             predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
@@ -749,6 +803,10 @@ class CertificateTemplate(pulumi.CustomResource):
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+               IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+               Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+               lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
                If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
@@ -773,6 +831,7 @@ class CertificateTemplate(pulumi.CustomResource):
         __props__.__dict__["identity_constraints"] = identity_constraints
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["maximum_lifetime"] = maximum_lifetime
         __props__.__dict__["name"] = name
         __props__.__dict__["passthrough_extensions"] = passthrough_extensions
         __props__.__dict__["predefined_values"] = predefined_values
@@ -831,6 +890,17 @@ class CertificateTemplate(pulumi.CustomResource):
         The location for the resource
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
 
     @property
     @pulumi.getter

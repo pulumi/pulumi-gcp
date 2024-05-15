@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterDnsConfig {
     /**
+     * @return Enable additive VPC scope DNS in a GKE cluster.
+     * 
+     */
+    private String additiveVpcScopeDnsDomain;
+    /**
      * @return Which in-cluster DNS provider should be used.
      * 
      */
@@ -27,6 +32,13 @@ public final class GetClusterDnsConfig {
     private String clusterDnsScope;
 
     private GetClusterDnsConfig() {}
+    /**
+     * @return Enable additive VPC scope DNS in a GKE cluster.
+     * 
+     */
+    public String additiveVpcScopeDnsDomain() {
+        return this.additiveVpcScopeDnsDomain;
+    }
     /**
      * @return Which in-cluster DNS provider should be used.
      * 
@@ -58,17 +70,27 @@ public final class GetClusterDnsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String additiveVpcScopeDnsDomain;
         private String clusterDns;
         private String clusterDnsDomain;
         private String clusterDnsScope;
         public Builder() {}
         public Builder(GetClusterDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additiveVpcScopeDnsDomain = defaults.additiveVpcScopeDnsDomain;
     	      this.clusterDns = defaults.clusterDns;
     	      this.clusterDnsDomain = defaults.clusterDnsDomain;
     	      this.clusterDnsScope = defaults.clusterDnsScope;
         }
 
+        @CustomType.Setter
+        public Builder additiveVpcScopeDnsDomain(String additiveVpcScopeDnsDomain) {
+            if (additiveVpcScopeDnsDomain == null) {
+              throw new MissingRequiredPropertyException("GetClusterDnsConfig", "additiveVpcScopeDnsDomain");
+            }
+            this.additiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterDns(String clusterDns) {
             if (clusterDns == null) {
@@ -95,6 +117,7 @@ public final class GetClusterDnsConfig {
         }
         public GetClusterDnsConfig build() {
             final var _resultValue = new GetClusterDnsConfig();
+            _resultValue.additiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
             _resultValue.clusterDns = clusterDns;
             _resultValue.clusterDnsDomain = clusterDnsDomain;
             _resultValue.clusterDnsScope = clusterDnsScope;

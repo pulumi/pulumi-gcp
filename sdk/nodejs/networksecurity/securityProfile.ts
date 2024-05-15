@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A security profile defines the behavior associated to a profile type.
+ *
+ * To get more information about SecurityProfile, see:
+ *
+ * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.securityProfiles)
+ * * How-to Guides
+ *     * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
+ *
  * ## Example Usage
  *
  * ### Network Security Security Profile Basic

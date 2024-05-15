@@ -1318,6 +1318,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigtable/authorizedView",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/authorizedView:AuthorizedView": "AuthorizedView"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/gCPolicy",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
@@ -5406,6 +5414,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "integrationconnectors/managedZone",
+  "fqn": "pulumi_gcp.integrationconnectors",
+  "classes": {
+   "gcp:integrationconnectors/managedZone:ManagedZone": "ManagedZone"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/cryptoKey",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -5842,6 +5858,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "PolicyBasedRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/regionalEndpoint",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint": "RegionalEndpoint"
   }
  },
  {

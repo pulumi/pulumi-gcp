@@ -6,6 +6,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs;
+import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs;
 import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs;
 import java.lang.String;
 import java.util.List;
@@ -51,6 +52,23 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs extend
     }
 
     /**
+     * Cloud Build 2nd gen repository containing the Skaffold Config modules.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="googleCloudBuildRepo")
+    private @Nullable Output<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs> googleCloudBuildRepo;
+
+    /**
+     * @return Cloud Build 2nd gen repository containing the Skaffold Config modules.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs>> googleCloudBuildRepo() {
+        return Optional.ofNullable(this.googleCloudBuildRepo);
+    }
+
+    /**
      * Cloud Storage bucket containing Skaffold Config modules.
      * Structure is documented below.
      * 
@@ -72,6 +90,7 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs extend
     private CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs $) {
         this.configs = $.configs;
         this.git = $.git;
+        this.googleCloudBuildRepo = $.googleCloudBuildRepo;
         this.googleCloudStorage = $.googleCloudStorage;
     }
 
@@ -145,6 +164,29 @@ public final class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs extend
          */
         public Builder git(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs git) {
             return git(Output.of(git));
+        }
+
+        /**
+         * @param googleCloudBuildRepo Cloud Build 2nd gen repository containing the Skaffold Config modules.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleCloudBuildRepo(@Nullable Output<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs> googleCloudBuildRepo) {
+            $.googleCloudBuildRepo = googleCloudBuildRepo;
+            return this;
+        }
+
+        /**
+         * @param googleCloudBuildRepo Cloud Build 2nd gen repository containing the Skaffold Config modules.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleCloudBuildRepo(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs googleCloudBuildRepo) {
+            return googleCloudBuildRepo(Output.of(googleCloudBuildRepo));
         }
 
         /**

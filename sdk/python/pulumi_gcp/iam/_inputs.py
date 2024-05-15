@@ -18,6 +18,10 @@ __all__ = [
     'DenyPolicyRuleDenyRuleDenialConditionArgs',
     'WorkforcePoolAccessRestrictionsArgs',
     'WorkforcePoolAccessRestrictionsAllowedServiceArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs',
     'WorkforcePoolProviderOidcArgs',
     'WorkforcePoolProviderOidcClientSecretArgs',
     'WorkforcePoolProviderOidcClientSecretValueArgs',
@@ -495,6 +499,189 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
 
 
 @pulumi.input_type
+class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
+    def __init__(__self__, *,
+                 attributes_type: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs'],
+                 issuer_uri: pulumi.Input[str],
+                 query_parameters: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']] = None):
+        """
+        :param pulumi.Input[str] attributes_type: Represents the IdP and type of claims that should be fetched.
+               * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+               in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+               See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+               'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+        :param pulumi.Input[str] client_id: The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs'] client_secret: The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        :param pulumi.Input[str] issuer_uri: The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs'] query_parameters: Represents the parameters to control which claims are fetched from an IdP.
+        """
+        pulumi.set(__self__, "attributes_type", attributes_type)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if query_parameters is not None:
+            pulumi.set(__self__, "query_parameters", query_parameters)
+
+    @property
+    @pulumi.getter(name="attributesType")
+    def attributes_type(self) -> pulumi.Input[str]:
+        """
+        Represents the IdP and type of claims that should be fetched.
+        * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+        in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+        See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+        'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+        """
+        return pulumi.get(self, "attributes_type")
+
+    @attributes_type.setter
+    def attributes_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attributes_type", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs']:
+        """
+        The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs']):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> pulumi.Input[str]:
+        """
+        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @property
+    @pulumi.getter(name="queryParameters")
+    def query_parameters(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]:
+        """
+        Represents the parameters to control which claims are fetched from an IdP.
+        """
+        return pulumi.get(self, "query_parameters")
+
+    @query_parameters.setter
+    def query_parameters(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]):
+        pulumi.set(self, "query_parameters", value)
+
+
+@pulumi.input_type
+class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']] = None):
+        """
+        :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs'] value: The value of the client secret.
+               Structure is documented below.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]:
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
+    def __init__(__self__, *,
+                 plain_text: pulumi.Input[str],
+                 thumbprint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] plain_text: The plain text of the client secret value.
+        :param pulumi.Input[str] thumbprint: (Output)
+               A thumbprint to represent the current client secret value.
+        """
+        pulumi.set(__self__, "plain_text", plain_text)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @property
+    @pulumi.getter(name="plainText")
+    def plain_text(self) -> pulumi.Input[str]:
+        """
+        The plain text of the client secret value.
+        """
+        return pulumi.get(self, "plain_text")
+
+    @plain_text.setter
+    def plain_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plain_text", value)
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @thumbprint.setter
+    def thumbprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "thumbprint", value)
+
+
+@pulumi.input_type
+class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
+    def __init__(__self__, *,
+                 filter: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+               filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+               groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+        groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
 class WorkforcePoolProviderOidcArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
@@ -659,7 +846,6 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
                  thumbprint: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] plain_text: The plain text of the client secret value.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] thumbprint: (Output)
                A thumbprint to represent the current client secret value.
         """
@@ -672,7 +858,6 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
     def plain_text(self) -> pulumi.Input[str]:
         """
         The plain text of the client secret value.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "plain_text")
 
@@ -712,6 +897,8 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
                Possible values are: `CODE`, `ID_TOKEN`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
                Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+               
+               <a name="nested_extra_attributes_oauth2_client"></a>The `extra_attributes_oauth2_client` block supports:
         """
         pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
         pulumi.set(__self__, "response_type", response_type)
@@ -755,6 +942,8 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         """
         Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
         Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+
+        <a name="nested_extra_attributes_oauth2_client"></a>The `extra_attributes_oauth2_client` block supports:
         """
         return pulumi.get(self, "additional_scopes")
 

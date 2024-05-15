@@ -198,6 +198,8 @@ type Target struct {
 	AnthosCluster TargetAnthosClusterPtrOutput `pulumi:"anthosCluster"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Information specifying a Custom Target.
+	CustomTarget TargetCustomTargetPtrOutput `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -220,7 +222,7 @@ type Target struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrOutput `pulumi:"multiTarget"`
-	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `Target`. Format is `a-z?`.
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -287,6 +289,8 @@ type targetState struct {
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. Information specifying a Custom Target.
+	CustomTarget *TargetCustomTarget `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -309,7 +313,7 @@ type targetState struct {
 	Location *string `pulumi:"location"`
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
-	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `Target`. Format is `a-z?`.
 	//
 	// ***
 	Name *string `pulumi:"name"`
@@ -339,6 +343,8 @@ type TargetState struct {
 	AnthosCluster TargetAnthosClusterPtrInput
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringPtrInput
+	// Optional. Information specifying a Custom Target.
+	CustomTarget TargetCustomTargetPtrInput
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -361,7 +367,7 @@ type TargetState struct {
 	Location pulumi.StringPtrInput
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
-	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `Target`. Format is `a-z?`.
 	//
 	// ***
 	Name pulumi.StringPtrInput
@@ -393,6 +399,8 @@ type targetArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
+	// Optional. Information specifying a Custom Target.
+	CustomTarget *TargetCustomTarget `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -410,7 +418,7 @@ type targetArgs struct {
 	Location string `pulumi:"location"`
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
-	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `Target`. Format is `a-z?`.
 	//
 	// ***
 	Name *string `pulumi:"name"`
@@ -431,6 +439,8 @@ type TargetArgs struct {
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
+	// Optional. Information specifying a Custom Target.
+	CustomTarget TargetCustomTargetPtrInput
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -448,7 +458,7 @@ type TargetArgs struct {
 	Location pulumi.StringInput
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
-	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `Target`. Format is `a-z?`.
 	//
 	// ***
 	Name pulumi.StringPtrInput
@@ -565,6 +575,11 @@ func (o TargetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Information specifying a Custom Target.
+func (o TargetOutput) CustomTarget() TargetCustomTargetPtrOutput {
+	return o.ApplyT(func(v *Target) TargetCustomTargetPtrOutput { return v.CustomTarget }).(TargetCustomTargetPtrOutput)
+}
+
 // Optional. The deploy parameters to use for this target.
 func (o TargetOutput) DeployParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.DeployParameters }).(pulumi.StringMapOutput)
@@ -617,7 +632,7 @@ func (o TargetOutput) MultiTarget() TargetMultiTargetPtrOutput {
 	return o.ApplyT(func(v *Target) TargetMultiTargetPtrOutput { return v.MultiTarget }).(TargetMultiTargetPtrOutput)
 }
 
-// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+// Name of the `Target`. Format is `a-z?`.
 //
 // ***
 func (o TargetOutput) Name() pulumi.StringOutput {

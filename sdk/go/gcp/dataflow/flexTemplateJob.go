@@ -182,7 +182,7 @@ type FlexTemplateJob struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringOutput `pulumi:"sdkContainerImage"`
-	// Service account email to run the workers as.
+	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail      pulumi.StringOutput  `pulumi:"serviceAccountEmail"`
 	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -291,7 +291,7 @@ type flexTemplateJobState struct {
 	Region *string `pulumi:"region"`
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
-	// Service account email to run the workers as.
+	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail      *string `pulumi:"serviceAccountEmail"`
 	SkipWaitOnJobTermination *bool   `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -363,7 +363,7 @@ type FlexTemplateJobState struct {
 	Region pulumi.StringPtrInput
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
-	// Service account email to run the workers as.
+	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail      pulumi.StringPtrInput
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -434,7 +434,7 @@ type flexTemplateJobArgs struct {
 	Region *string `pulumi:"region"`
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
-	// Service account email to run the workers as.
+	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail      *string `pulumi:"serviceAccountEmail"`
 	SkipWaitOnJobTermination *bool   `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -498,7 +498,7 @@ type FlexTemplateJobArgs struct {
 	Region pulumi.StringPtrInput
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
-	// Service account email to run the workers as.
+	// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail      pulumi.StringPtrInput
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -715,7 +715,7 @@ func (o FlexTemplateJobOutput) SdkContainerImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.SdkContainerImage }).(pulumi.StringOutput)
 }
 
-// Service account email to run the workers as.
+// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 func (o FlexTemplateJobOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }

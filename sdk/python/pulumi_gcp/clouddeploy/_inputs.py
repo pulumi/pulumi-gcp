@@ -18,6 +18,7 @@ __all__ = [
     'CustomTargetTypeCustomActionsArgs',
     'CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs',
     'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs',
+    'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs',
     'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs',
     'CustomTargetTypeIamBindingConditionArgs',
     'CustomTargetTypeIamMemberConditionArgs',
@@ -48,6 +49,7 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs',
     'TargetAnthosClusterArgs',
+    'TargetCustomTargetArgs',
     'TargetExecutionConfigArgs',
     'TargetGkeArgs',
     'TargetIamBindingConditionArgs',
@@ -351,10 +353,13 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
     def __init__(__self__, *,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  git: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']] = None,
+                 google_cloud_build_repo: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs']] = None,
                  google_cloud_storage: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] configs: The Skaffold Config modules to use from the specified source.
         :param pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs'] git: Remote git repository containing the Skaffold Config modules.
+               Structure is documented below.
+        :param pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs'] google_cloud_build_repo: Cloud Build 2nd gen repository containing the Skaffold Config modules.
                Structure is documented below.
         :param pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs'] google_cloud_storage: Cloud Storage bucket containing Skaffold Config modules.
                Structure is documented below.
@@ -363,6 +368,8 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
             pulumi.set(__self__, "configs", configs)
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if google_cloud_build_repo is not None:
+            pulumi.set(__self__, "google_cloud_build_repo", google_cloud_build_repo)
         if google_cloud_storage is not None:
             pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
 
@@ -390,6 +397,19 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
     @git.setter
     def git(self, value: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']]):
         pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter(name="googleCloudBuildRepo")
+    def google_cloud_build_repo(self) -> Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs']]:
+        """
+        Cloud Build 2nd gen repository containing the Skaffold Config modules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_cloud_build_repo")
+
+    @google_cloud_build_repo.setter
+    def google_cloud_build_repo(self, value: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs']]):
+        pulumi.set(self, "google_cloud_build_repo", value)
 
     @property
     @pulumi.getter(name="googleCloudStorage")
@@ -451,6 +471,60 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs:
     def ref(self) -> Optional[pulumi.Input[str]]:
         """
         Git ref the package should be cloned from.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
+
+
+@pulumi.input_type
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] repository: Cloud Build 2nd gen repository in the format of 'projects/<project>/locations/<location>/connections/<connection>/repositories/<repository>'.
+        :param pulumi.Input[str] path: Relative path from the repository root to the Skaffold file.
+        :param pulumi.Input[str] ref: Branch or tag to use when cloning the repository.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        Cloud Build 2nd gen repository in the format of 'projects/<project>/locations/<location>/connections/<connection>/repositories/<repository>'.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relative path from the repository root to the Skaffold file.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Branch or tag to use when cloning the repository.
         """
         return pulumi.get(self, "ref")
 
@@ -1764,6 +1838,28 @@ class TargetAnthosClusterArgs:
     @membership.setter
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
+
+
+@pulumi.input_type
+class TargetCustomTargetArgs:
+    def __init__(__self__, *,
+                 custom_target_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] custom_target_type: Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+        """
+        pulumi.set(__self__, "custom_target_type", custom_target_type)
+
+    @property
+    @pulumi.getter(name="customTargetType")
+    def custom_target_type(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+        """
+        return pulumi.get(self, "custom_target_type")
+
+    @custom_target_type.setter
+    def custom_target_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "custom_target_type", value)
 
 
 @pulumi.input_type

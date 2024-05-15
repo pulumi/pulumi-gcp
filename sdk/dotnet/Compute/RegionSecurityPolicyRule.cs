@@ -116,6 +116,92 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Security Policy Rule With Preconfigured Waf Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
+    ///     {
+    ///         Region = "asia-southeast1",
+    ///         Name = "policyruletest",
+    ///         Description = "basic region security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule", new()
+    ///     {
+    ///         Region = "asia-southeast1",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule",
+    ///         Priority = 100,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "10.10.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         PreconfiguredWafConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs
+    ///         {
+    ///             Exclusions = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs
+    ///                 {
+    ///                     RequestUris = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs
+    ///                         {
+    ///                             Operator = "STARTS_WITH",
+    ///                             Value = "/admin",
+    ///                         },
+    ///                     },
+    ///                     TargetRuleSet = "rce-stable",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs
+    ///                 {
+    ///                     RequestQueryParams = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
+    ///                         {
+    ///                             Operator = "CONTAINS",
+    ///                             Value = "password",
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
+    ///                         {
+    ///                             Operator = "STARTS_WITH",
+    ///                             Value = "freeform",
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
+    ///                         {
+    ///                             Operator = "EQUALS",
+    ///                             Value = "description",
+    ///                         },
+    ///                     },
+    ///                     TargetRuleSet = "xss-stable",
+    ///                     TargetRuleIds = new[]
+    ///                     {
+    ///                         "owasp-crs-v030001-id941330-xss",
+    ///                         "owasp-crs-v030001-id941340-xss",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Security Policy Rule With Network Match
     /// 
     /// ```csharp
@@ -271,6 +357,14 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionSecurityPolicyRuleNetworkMatch?> NetworkMatch { get; private set; } = null!;
 
         /// <summary>
+        /// Preconfigured WAF configuration to be applied for the rule.
+        /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("preconfiguredWafConfig")]
+        public Output<Outputs.RegionSecurityPolicyRulePreconfiguredWafConfig?> PreconfiguredWafConfig { get; private set; } = null!;
+
+        /// <summary>
         /// If set to true, the specified action is not enforced.
         /// </summary>
         [Output("preview")]
@@ -290,6 +384,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rateLimitOptions")]
+        public Output<Outputs.RegionSecurityPolicyRuleRateLimitOptions?> RateLimitOptions { get; private set; } = null!;
 
         /// <summary>
         /// The Region in which the created Region Security Policy rule should reside.
@@ -392,6 +493,14 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionSecurityPolicyRuleNetworkMatchArgs>? NetworkMatch { get; set; }
 
         /// <summary>
+        /// Preconfigured WAF configuration to be applied for the rule.
+        /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("preconfiguredWafConfig")]
+        public Input<Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs>? PreconfiguredWafConfig { get; set; }
+
+        /// <summary>
         /// If set to true, the specified action is not enforced.
         /// </summary>
         [Input("preview")]
@@ -411,6 +520,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.RegionSecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
         /// The Region in which the created Region Security Policy rule should reside.
@@ -475,6 +591,14 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionSecurityPolicyRuleNetworkMatchGetArgs>? NetworkMatch { get; set; }
 
         /// <summary>
+        /// Preconfigured WAF configuration to be applied for the rule.
+        /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("preconfiguredWafConfig")]
+        public Input<Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigGetArgs>? PreconfiguredWafConfig { get; set; }
+
+        /// <summary>
         /// If set to true, the specified action is not enforced.
         /// </summary>
         [Input("preview")]
@@ -494,6 +618,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.RegionSecurityPolicyRuleRateLimitOptionsGetArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
         /// The Region in which the created Region Security Policy rule should reside.

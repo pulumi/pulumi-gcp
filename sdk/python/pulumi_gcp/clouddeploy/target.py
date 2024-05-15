@@ -19,6 +19,7 @@ class TargetArgs:
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 custom_target: Optional[pulumi.Input['TargetCustomTargetArgs']] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
@@ -37,6 +38,7 @@ class TargetArgs:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -46,7 +48,7 @@ class TargetArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
-        :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
                
                
                
@@ -60,6 +62,8 @@ class TargetArgs:
             pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
+        if custom_target is not None:
+            pulumi.set(__self__, "custom_target", custom_target)
         if deploy_parameters is not None:
             pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
@@ -119,6 +123,18 @@ class TargetArgs:
     @anthos_cluster.setter
     def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
         pulumi.set(self, "anthos_cluster", value)
+
+    @property
+    @pulumi.getter(name="customTarget")
+    def custom_target(self) -> Optional[pulumi.Input['TargetCustomTargetArgs']]:
+        """
+        Optional. Information specifying a Custom Target.
+        """
+        return pulumi.get(self, "custom_target")
+
+    @custom_target.setter
+    def custom_target(self, value: Optional[pulumi.Input['TargetCustomTargetArgs']]):
+        pulumi.set(self, "custom_target", value)
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -199,7 +215,7 @@ class TargetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `Target`. Format is `a-z?`.
 
 
 
@@ -254,6 +270,7 @@ class _TargetState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 custom_target: Optional[pulumi.Input['TargetCustomTargetArgs']] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -280,6 +297,7 @@ class _TargetState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
+        :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -292,7 +310,7 @@ class _TargetState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
-        :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
                
                
                
@@ -311,6 +329,8 @@ class _TargetState:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if custom_target is not None:
+            pulumi.set(__self__, "custom_target", custom_target)
         if deploy_parameters is not None:
             pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
@@ -386,6 +406,18 @@ class _TargetState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="customTarget")
+    def custom_target(self) -> Optional[pulumi.Input['TargetCustomTargetArgs']]:
+        """
+        Optional. Information specifying a Custom Target.
+        """
+        return pulumi.get(self, "custom_target")
+
+    @custom_target.setter
+    def custom_target(self, value: Optional[pulumi.Input['TargetCustomTargetArgs']]):
+        pulumi.set(self, "custom_target", value)
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -511,7 +543,7 @@ class _TargetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `Target`. Format is `a-z?`.
 
 
 
@@ -615,6 +647,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 custom_target: Optional[pulumi.Input[pulumi.InputType['TargetCustomTargetArgs']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
@@ -758,6 +791,7 @@ class Target(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[pulumi.InputType['TargetCustomTargetArgs']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -768,7 +802,7 @@ class Target(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
-        :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
                
                
                
@@ -924,6 +958,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 custom_target: Optional[pulumi.Input[pulumi.InputType['TargetCustomTargetArgs']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
@@ -946,6 +981,7 @@ class Target(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["anthos_cluster"] = anthos_cluster
+            __props__.__dict__["custom_target"] = custom_target
             __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_configs"] = execution_configs
@@ -982,6 +1018,7 @@ class Target(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            custom_target: Optional[pulumi.Input[pulumi.InputType['TargetCustomTargetArgs']]] = None,
             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1013,6 +1050,7 @@ class Target(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
+        :param pulumi.Input[pulumi.InputType['TargetCustomTargetArgs']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1025,7 +1063,7 @@ class Target(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
-        :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
                
                
                
@@ -1045,6 +1083,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["anthos_cluster"] = anthos_cluster
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["custom_target"] = custom_target
         __props__.__dict__["deploy_parameters"] = deploy_parameters
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -1091,6 +1130,14 @@ class Target(pulumi.CustomResource):
         Output only. Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customTarget")
+    def custom_target(self) -> pulumi.Output[Optional['outputs.TargetCustomTarget']]:
+        """
+        Optional. Information specifying a Custom Target.
+        """
+        return pulumi.get(self, "custom_target")
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -1176,7 +1223,7 @@ class Target(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
+        Name of the `Target`. Format is `a-z?`.
 
 
 

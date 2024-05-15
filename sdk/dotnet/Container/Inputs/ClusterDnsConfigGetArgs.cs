@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterDnsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
+        /// </summary>
+        [Input("additiveVpcScopeDnsDomain")]
+        public Input<string>? AdditiveVpcScopeDnsDomain { get; set; }
+
+        /// <summary>
         /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         /// </summary>
         [Input("clusterDns")]

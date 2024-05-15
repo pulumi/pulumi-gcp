@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.clouddeploy.TargetArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetState;
 import com.pulumi.gcp.clouddeploy.outputs.TargetAnthosCluster;
+import com.pulumi.gcp.clouddeploy.outputs.TargetCustomTarget;
 import com.pulumi.gcp.clouddeploy.outputs.TargetExecutionConfig;
 import com.pulumi.gcp.clouddeploy.outputs.TargetGke;
 import com.pulumi.gcp.clouddeploy.outputs.TargetMultiTarget;
@@ -274,6 +275,20 @@ public class Target extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Optional. Information specifying a Custom Target.
+     * 
+     */
+    @Export(name="customTarget", refs={TargetCustomTarget.class}, tree="[0]")
+    private Output</* @Nullable */ TargetCustomTarget> customTarget;
+
+    /**
+     * @return Optional. Information specifying a Custom Target.
+     * 
+     */
+    public Output<Optional<TargetCustomTarget>> customTarget() {
+        return Codegen.optional(this.customTarget);
+    }
+    /**
      * Optional. The deploy parameters to use for this target.
      * 
      */
@@ -412,7 +427,7 @@ public class Target extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.multiTarget);
     }
     /**
-     * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `Target`. Format is `a-z?`.
      * 
      * ***
      * 
@@ -421,7 +436,7 @@ public class Target extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * @return Name of the `Target`. Format is `a-z?`.
      * 
      * ***
      * 

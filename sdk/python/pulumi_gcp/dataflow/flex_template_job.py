@@ -71,7 +71,7 @@ class FlexTemplateJobArgs:
                provided, the provider project is used.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -358,7 +358,7 @@ class FlexTemplateJobArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Service account email to run the workers as.
+        Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -491,7 +491,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -824,7 +824,7 @@ class _FlexTemplateJobState:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Service account email to run the workers as.
+        Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -1050,7 +1050,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                provided, the provider project is used.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -1295,7 +1295,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -1520,7 +1520,7 @@ class FlexTemplateJob(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Output[str]:
         """
-        Service account email to run the workers as.
+        Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 

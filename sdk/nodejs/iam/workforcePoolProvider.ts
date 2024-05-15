@@ -144,6 +144,95 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+ *         clientId: "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+ *         webSsoConfig: {
+ *             responseType: "CODE",
+ *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *         },
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *     },
+ *     extraAttributesOauth2Client: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "client-id",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         attributesType: "AZURE_AD_GROUPS_MAIL",
+ *     },
+ * });
+ * ```
+ * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989/",
+ *         clientId: "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         webSsoConfig: {
+ *             responseType: "CODE",
+ *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *         },
+ *     },
+ *     extraAttributesOauth2Client: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "client-id",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         attributesType: "AZURE_AD_GROUPS_MAIL",
+ *         queryParameters: {
+ *             filter: "mail:gcp",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -258,6 +347,14 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can't get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     */
+    public readonly extraAttributesOauth2Client!: pulumi.Output<outputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client | undefined>;
+    /**
      * The location for the resource.
      */
     public readonly location!: pulumi.Output<string>;
@@ -320,6 +417,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["extraAttributesOauth2Client"] = state ? state.extraAttributesOauth2Client : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oidc"] = state ? state.oidc : undefined;
@@ -343,6 +441,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["extraAttributesOauth2Client"] = args ? args.extraAttributesOauth2Client : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["oidc"] = args ? args.oidc : undefined;
             resourceInputs["providerId"] = args ? args.providerId : undefined;
@@ -426,6 +525,14 @@ export interface WorkforcePoolProviderState {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can't get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     */
+    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client>;
     /**
      * The location for the resource.
      */
@@ -542,6 +649,14 @@ export interface WorkforcePoolProviderArgs {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The configuration for OAuth 2.0 client used to get the additional user
+     * attributes. This should be used when users can't get the desired claims
+     * in authentication credentials. Currently this configuration is only
+     * supported with OIDC protocol.
+     * Structure is documented below.
+     */
+    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client>;
     /**
      * The location for the resource.
      */

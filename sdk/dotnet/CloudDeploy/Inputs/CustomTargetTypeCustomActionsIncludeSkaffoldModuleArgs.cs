@@ -32,6 +32,13 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs>? Git { get; set; }
 
         /// <summary>
+        /// Cloud Build 2nd gen repository containing the Skaffold Config modules.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("googleCloudBuildRepo")]
+        public Input<Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs>? GoogleCloudBuildRepo { get; set; }
+
+        /// <summary>
         /// Cloud Storage bucket containing Skaffold Config modules.
         /// Structure is documented below.
         /// </summary>

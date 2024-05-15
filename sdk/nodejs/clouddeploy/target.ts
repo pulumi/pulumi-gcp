@@ -177,6 +177,10 @@ export class Target extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    public readonly customTarget!: pulumi.Output<outputs.clouddeploy.TargetCustomTarget | undefined>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     public readonly deployParameters!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -217,7 +221,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
-     * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `Target`. Format is `a-z?`.
      *
      *
      *
@@ -269,6 +273,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["anthosCluster"] = state ? state.anthosCluster : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customTarget"] = state ? state.customTarget : undefined;
             resourceInputs["deployParameters"] = state ? state.deployParameters : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
@@ -294,6 +299,7 @@ export class Target extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
+            resourceInputs["customTarget"] = args ? args.customTarget : undefined;
             resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["executionConfigs"] = args ? args.executionConfigs : undefined;
@@ -341,6 +347,10 @@ export interface TargetState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -381,7 +391,7 @@ export interface TargetState {
      */
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
-     * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `Target`. Format is `a-z?`.
      *
      *
      *
@@ -434,6 +444,10 @@ export interface TargetArgs {
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -465,7 +479,7 @@ export interface TargetArgs {
      */
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
-     * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `Target`. Format is `a-z?`.
      *
      *
      *

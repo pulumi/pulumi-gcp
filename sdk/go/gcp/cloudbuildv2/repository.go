@@ -122,7 +122,7 @@ import (
 //			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				Name:             pulumi.String("my-terraform-ghe-repo"),
 //				Location:         pulumi.String("us-central1"),
-//				ParentConnection: my_connection.ID(),
+//				ParentConnection: my_connection.Name,
 //				RemoteUri:        pulumi.String("https://ghe.com/hashicorp/terraform-provider-google.git"),
 //			})
 //			if err != nil {

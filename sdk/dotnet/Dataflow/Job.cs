@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
@@ -459,7 +459,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
@@ -655,7 +655,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

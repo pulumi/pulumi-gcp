@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .authorized_view import *
 from .gc_policy import *
 from .get_instance_iam_policy import *
 from .get_table_iam_policy import *

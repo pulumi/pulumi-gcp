@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 Title = "Sample expression",
     ///             },
     ///         },
+    ///         MaximumLifetime = "86400s",
     ///         PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsArgs
     ///         {
     ///             AdditionalExtensions = new[]
@@ -213,6 +214,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        /// lifetime will be explicitly truncated to match it.
+        /// </summary>
+        [Output("maximumLifetime")]
+        public Output<string?> MaximumLifetime { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
         [Output("name")]
@@ -340,6 +350,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        /// lifetime will be explicitly truncated to match it.
+        /// </summary>
+        [Input("maximumLifetime")]
+        public Input<string>? MaximumLifetime { get; set; }
+
+        /// <summary>
         /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
         [Input("name")]
@@ -432,6 +451,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+        /// lifetime will be explicitly truncated to match it.
+        /// </summary>
+        [Input("maximumLifetime")]
+        public Input<string>? MaximumLifetime { get; set; }
 
         /// <summary>
         /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.

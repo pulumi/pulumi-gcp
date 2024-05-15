@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *             title: "Sample expression",
  *         },
  *     },
+ *     maximumLifetime: "86400s",
  *     passthroughExtensions: {
  *         additionalExtensions: [{
  *             objectIdPaths: [
@@ -180,6 +181,13 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     */
+    public readonly maximumLifetime!: pulumi.Output<string | undefined>;
+    /**
      * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -230,6 +238,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["identityConstraints"] = state ? state.identityConstraints : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maximumLifetime"] = state ? state.maximumLifetime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["passthroughExtensions"] = state ? state.passthroughExtensions : undefined;
             resourceInputs["predefinedValues"] = state ? state.predefinedValues : undefined;
@@ -245,6 +254,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["identityConstraints"] = args ? args.identityConstraints : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maximumLifetime"] = args ? args.maximumLifetime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
             resourceInputs["predefinedValues"] = args ? args.predefinedValues : undefined;
@@ -292,6 +302,13 @@ export interface CertificateTemplateState {
      * The location for the resource
      */
     location?: pulumi.Input<string>;
+    /**
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     */
+    maximumLifetime?: pulumi.Input<string>;
     /**
      * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      */
@@ -348,6 +365,13 @@ export interface CertificateTemplateArgs {
      * The location for the resource
      */
     location: pulumi.Input<string>;
+    /**
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+     * Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+     * lifetime will be explicitly truncated to match it.
+     */
+    maximumLifetime?: pulumi.Input<string>;
     /**
      * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      */

@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A security profile group defines a container for security profiles.
+ *
+ * To get more information about SecurityProfileGroup, see:
+ *
+ * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
+ * * How-to Guides
+ *     * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+ *     * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+ *
  * ## Example Usage
  *
  * ### Network Security Security Profile Group Basic

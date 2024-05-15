@@ -8,6 +8,7 @@ import typing
 from .hub import *
 from .internal_range import *
 from .policy_based_route import *
+from .regional_endpoint import *
 from .service_connection_policy import *
 from .spoke import *
 from ._inputs import *

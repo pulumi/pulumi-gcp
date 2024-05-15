@@ -167,14 +167,14 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * Name of the `DeliveryPipeline`. Format is `a-z?`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+     * @return Name of the `DeliveryPipeline`. Format is `a-z?`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -516,7 +516,7 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+         * @param name Name of the `DeliveryPipeline`. Format is `a-z?`.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+         * @param name Name of the `DeliveryPipeline`. Format is `a-z?`.
          * 
          * @return builder
          * 

@@ -312,6 +312,16 @@ __all__ = [
     'RegionSecurityPolicyRuleMatchConfig',
     'RegionSecurityPolicyRuleNetworkMatch',
     'RegionSecurityPolicyRuleNetworkMatchUserDefinedField',
+    'RegionSecurityPolicyRulePreconfiguredWafConfig',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusion',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri',
+    'RegionSecurityPolicyRuleRateLimitOptions',
+    'RegionSecurityPolicyRuleRateLimitOptionsBanThreshold',
+    'RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig',
+    'RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold',
     'RegionSecurityPolicyUserDefinedField',
     'RegionUrlMapDefaultRouteAction',
     'RegionUrlMapDefaultRouteActionCorsPolicy',
@@ -22282,6 +22292,680 @@ class RegionSecurityPolicyRuleNetworkMatchUserDefinedField(dict):
         Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfig(dict):
+    def __init__(__self__, *,
+                 exclusions: Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusion']] = None):
+        """
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs'] exclusions: An exclusion to apply during preconfigured WAF evaluation.
+               Structure is documented below.
+        """
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusion']]:
+        """
+        An exclusion to apply during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclusions")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetRuleSet":
+            suggest = "target_rule_set"
+        elif key == "requestCookies":
+            suggest = "request_cookies"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "requestQueryParams":
+            suggest = "request_query_params"
+        elif key == "requestUris":
+            suggest = "request_uris"
+        elif key == "targetRuleIds":
+            suggest = "target_rule_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRulePreconfiguredWafConfigExclusion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_rule_set: str,
+                 request_cookies: Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky']] = None,
+                 request_headers: Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader']] = None,
+                 request_query_params: Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam']] = None,
+                 request_uris: Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri']] = None,
+                 target_rule_ids: Optional[Sequence[str]] = None):
+        """
+        :param str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Structure is documented below.
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs'] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Structure is documented below.
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs'] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Note that the parameter can be in the query string or in the POST body.
+               Structure is documented below.
+        :param Sequence['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs'] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+               When specifying this field, the query or fragment part should be excluded.
+               Structure is documented below.
+        :param Sequence[str] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+               If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        pulumi.set(__self__, "target_rule_set", target_rule_set)
+        if request_cookies is not None:
+            pulumi.set(__self__, "request_cookies", request_cookies)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if request_query_params is not None:
+            pulumi.set(__self__, "request_query_params", request_query_params)
+        if request_uris is not None:
+            pulumi.set(__self__, "request_uris", request_uris)
+        if target_rule_ids is not None:
+            pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+
+    @property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> str:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+    @property
+    @pulumi.getter(name="requestCookies")
+    def request_cookies(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky']]:
+        """
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_cookies")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader']]:
+        """
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="requestQueryParams")
+    def request_query_params(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam']]:
+        """
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Note that the parameter can be in the query string or in the POST body.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_query_params")
+
+    @property
+    @pulumi.getter(name="requestUris")
+    def request_uris(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri']]:
+        """
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        When specifying this field, the query or fragment part should be excluded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_uris")
+
+    @property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: Optional[str] = None):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+               Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: Optional[str] = None):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+               Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: Optional[str] = None):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+               Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: Optional[str] = None):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+               Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleRateLimitOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "banDurationSec":
+            suggest = "ban_duration_sec"
+        elif key == "banThreshold":
+            suggest = "ban_threshold"
+        elif key == "conformAction":
+            suggest = "conform_action"
+        elif key == "enforceOnKey":
+            suggest = "enforce_on_key"
+        elif key == "enforceOnKeyConfigs":
+            suggest = "enforce_on_key_configs"
+        elif key == "enforceOnKeyName":
+            suggest = "enforce_on_key_name"
+        elif key == "exceedAction":
+            suggest = "exceed_action"
+        elif key == "rateLimitThreshold":
+            suggest = "rate_limit_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleRateLimitOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ban_duration_sec: Optional[int] = None,
+                 ban_threshold: Optional['outputs.RegionSecurityPolicyRuleRateLimitOptionsBanThreshold'] = None,
+                 conform_action: Optional[str] = None,
+                 enforce_on_key: Optional[str] = None,
+                 enforce_on_key_configs: Optional[Sequence['outputs.RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig']] = None,
+                 enforce_on_key_name: Optional[str] = None,
+                 exceed_action: Optional[str] = None,
+                 rate_limit_threshold: Optional['outputs.RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold'] = None):
+        """
+        :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban".
+               If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        :param 'RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgs' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban".
+               If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+               Structure is documented below.
+        :param str conform_action: Action to take for requests that are under the configured rate limit threshold.
+               Valid option is "allow" only.
+        :param str enforce_on_key: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        :param Sequence['RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+               You can specify up to 3 enforceOnKeyConfigs.
+               If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+               Structure is documented below.
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+               Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        :param 'RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs' rate_limit_threshold: Threshold at which to begin ratelimiting.
+               Structure is documented below.
+        """
+        if ban_duration_sec is not None:
+            pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
+        if ban_threshold is not None:
+            pulumi.set(__self__, "ban_threshold", ban_threshold)
+        if conform_action is not None:
+            pulumi.set(__self__, "conform_action", conform_action)
+        if enforce_on_key is not None:
+            pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        if enforce_on_key_configs is not None:
+            pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
+        if enforce_on_key_name is not None:
+            pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        if exceed_action is not None:
+            pulumi.set(__self__, "exceed_action", exceed_action)
+        if rate_limit_threshold is not None:
+            pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
+
+    @property
+    @pulumi.getter(name="banDurationSec")
+    def ban_duration_sec(self) -> Optional[int]:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        return pulumi.get(self, "ban_duration_sec")
+
+    @property
+    @pulumi.getter(name="banThreshold")
+    def ban_threshold(self) -> Optional['outputs.RegionSecurityPolicyRuleRateLimitOptionsBanThreshold']:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ban_threshold")
+
+    @property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> Optional[str]:
+        """
+        Action to take for requests that are under the configured rate limit threshold.
+        Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @property
+    @pulumi.getter(name="enforceOnKey")
+    def enforce_on_key(self) -> Optional[str]:
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+        return pulumi.get(self, "enforce_on_key")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyConfigs")
+    def enforce_on_key_configs(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig']]:
+        """
+        If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        You can specify up to 3 enforceOnKeyConfigs.
+        If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enforce_on_key_configs")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> Optional[str]:
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> Optional[str]:
+        """
+        Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+        Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @property
+    @pulumi.getter(name="rateLimitThreshold")
+    def rate_limit_threshold(self) -> Optional['outputs.RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold']:
+        """
+        Threshold at which to begin ratelimiting.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_threshold")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalSec":
+            suggest = "interval_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleRateLimitOptionsBanThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsBanThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsBanThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: Optional[int] = None,
+                 interval_sec: Optional[int] = None):
+        """
+        :param int count: Number of HTTP(S) requests for calculating the threshold.
+        :param int interval_sec: Interval over which the threshold is computed.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if interval_sec is not None:
+            pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> Optional[int]:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enforceOnKeyName":
+            suggest = "enforce_on_key_name"
+        elif key == "enforceOnKeyType":
+            suggest = "enforce_on_key_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce_on_key_name: Optional[str] = None,
+                 enforce_on_key_type: Optional[str] = None):
+        """
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str enforce_on_key_type: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+        if enforce_on_key_name is not None:
+            pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        if enforce_on_key_type is not None:
+            pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> Optional[str]:
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyType")
+    def enforce_on_key_type(self) -> Optional[str]:
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+        return pulumi.get(self, "enforce_on_key_type")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalSec":
+            suggest = "interval_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: Optional[int] = None,
+                 interval_sec: Optional[int] = None):
+        """
+        :param int count: Number of HTTP(S) requests for calculating the threshold.
+        :param int interval_sec: Interval over which the threshold is computed.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if interval_sec is not None:
+            pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> Optional[int]:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
 
 
 @pulumi.output_type

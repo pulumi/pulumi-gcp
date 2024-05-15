@@ -225,7 +225,7 @@ type Job struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The Service Account email used to create the job.
+	// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
 	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
@@ -324,7 +324,7 @@ type jobState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region *string `pulumi:"region"`
-	// The Service Account email used to create the job.
+	// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
@@ -383,7 +383,7 @@ type JobState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The region in which the created job should run.
 	Region pulumi.StringPtrInput
-	// The Service Account email used to create the job.
+	// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
@@ -440,7 +440,7 @@ type jobArgs struct {
 	Project *string `pulumi:"project"`
 	// The region in which the created job should run.
 	Region *string `pulumi:"region"`
-	// The Service Account email used to create the job.
+	// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
@@ -490,7 +490,7 @@ type JobArgs struct {
 	Project pulumi.StringPtrInput
 	// The region in which the created job should run.
 	Region pulumi.StringPtrInput
-	// The Service Account email used to create the job.
+	// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
@@ -679,7 +679,7 @@ func (o JobOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The Service Account email used to create the job.
+// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
 func (o JobOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }

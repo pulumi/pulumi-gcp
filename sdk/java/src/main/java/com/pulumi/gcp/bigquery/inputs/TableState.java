@@ -28,6 +28,21 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
+     * Whether or not to allow table deletion when there are still resource tags attached.
+     * 
+     */
+    @Import(name="allowResourceTagsOnDeletion")
+    private @Nullable Output<Boolean> allowResourceTagsOnDeletion;
+
+    /**
+     * @return Whether or not to allow table deletion when there are still resource tags attached.
+     * 
+     */
+    public Optional<Output<Boolean>> allowResourceTagsOnDeletion() {
+        return Optional.ofNullable(this.allowResourceTagsOnDeletion);
+    }
+
+    /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in
      * descending priority order.
@@ -598,6 +613,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private TableState() {}
 
     private TableState(TableState $) {
+        this.allowResourceTagsOnDeletion = $.allowResourceTagsOnDeletion;
         this.clusterings = $.clusterings;
         this.creationTime = $.creationTime;
         this.datasetId = $.datasetId;
@@ -648,6 +664,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableState defaults) {
             $ = new TableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowResourceTagsOnDeletion Whether or not to allow table deletion when there are still resource tags attached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowResourceTagsOnDeletion(@Nullable Output<Boolean> allowResourceTagsOnDeletion) {
+            $.allowResourceTagsOnDeletion = allowResourceTagsOnDeletion;
+            return this;
+        }
+
+        /**
+         * @param allowResourceTagsOnDeletion Whether or not to allow table deletion when there are still resource tags attached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowResourceTagsOnDeletion(Boolean allowResourceTagsOnDeletion) {
+            return allowResourceTagsOnDeletion(Output.of(allowResourceTagsOnDeletion));
         }
 
         /**

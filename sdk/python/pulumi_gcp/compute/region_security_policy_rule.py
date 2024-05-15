@@ -23,8 +23,10 @@ class RegionSecurityPolicyRuleArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
                  network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicyRule resource.
         :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions:
@@ -54,9 +56,14 @@ class RegionSecurityPolicyRuleArgs:
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
+        :param pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "priority", priority)
@@ -68,10 +75,14 @@ class RegionSecurityPolicyRuleArgs:
             pulumi.set(__self__, "match", match)
         if network_match is not None:
             pulumi.set(__self__, "network_match", network_match)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
 
     @property
     @pulumi.getter
@@ -178,6 +189,20 @@ class RegionSecurityPolicyRuleArgs:
         pulumi.set(self, "network_match", value)
 
     @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
+
+    @property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -202,6 +227,19 @@ class RegionSecurityPolicyRuleArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
+
 
 @pulumi.input_type
 class _RegionSecurityPolicyRuleState:
@@ -210,9 +248,11 @@ class _RegionSecurityPolicyRuleState:
                  description: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
                  network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
@@ -236,12 +276,17 @@ class _RegionSecurityPolicyRuleState:
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
+        :param pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
@@ -256,12 +301,16 @@ class _RegionSecurityPolicyRuleState:
             pulumi.set(__self__, "match", match)
         if network_match is not None:
             pulumi.set(__self__, "network_match", network_match)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if security_policy is not None:
@@ -331,6 +380,20 @@ class _RegionSecurityPolicyRuleState:
         pulumi.set(self, "network_match", value)
 
     @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
+
+    @property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -370,6 +433,19 @@ class _RegionSecurityPolicyRuleState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -406,9 +482,11 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
                  network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -477,6 +555,63 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                         "10.0.0.0/8",
                     ],
                 ),
+            ),
+            action="allow",
+            preview=True)
+        ```
+        ### Region Security Policy Rule With Preconfigured Waf Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            region="asia-southeast1",
+            name="policyruletest",
+            description="basic region security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            region="asia-southeast1",
+            security_policy=default.name,
+            description="new rule",
+            priority=100,
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+                versioned_expr="SRC_IPS_V1",
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                    src_ip_ranges=["10.10.0.0/16"],
+                ),
+            ),
+            preconfigured_waf_config=gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs(
+                exclusions=[
+                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
+                        request_uris=[gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs(
+                            operator="STARTS_WITH",
+                            value="/admin",
+                        )],
+                        target_rule_set="rce-stable",
+                    ),
+                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
+                        request_query_params=[
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="CONTAINS",
+                                value="password",
+                            ),
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="STARTS_WITH",
+                                value="freeform",
+                            ),
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="EQUALS",
+                                value="description",
+                            ),
+                        ],
+                        target_rule_set="xss-stable",
+                        target_rule_ids=[
+                            "owasp-crs-v030001-id941330-xss",
+                            "owasp-crs-v030001-id941340-xss",
+                        ],
+                    ),
+                ],
             ),
             action="allow",
             preview=True)
@@ -581,12 +716,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
@@ -664,6 +804,63 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                         "10.0.0.0/8",
                     ],
                 ),
+            ),
+            action="allow",
+            preview=True)
+        ```
+        ### Region Security Policy Rule With Preconfigured Waf Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            region="asia-southeast1",
+            name="policyruletest",
+            description="basic region security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            region="asia-southeast1",
+            security_policy=default.name,
+            description="new rule",
+            priority=100,
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+                versioned_expr="SRC_IPS_V1",
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                    src_ip_ranges=["10.10.0.0/16"],
+                ),
+            ),
+            preconfigured_waf_config=gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs(
+                exclusions=[
+                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
+                        request_uris=[gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs(
+                            operator="STARTS_WITH",
+                            value="/admin",
+                        )],
+                        target_rule_set="rce-stable",
+                    ),
+                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
+                        request_query_params=[
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="CONTAINS",
+                                value="password",
+                            ),
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="STARTS_WITH",
+                                value="freeform",
+                            ),
+                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
+                                operator="EQUALS",
+                                value="description",
+                            ),
+                        ],
+                        target_rule_set="xss-stable",
+                        target_rule_ids=[
+                            "owasp-crs-v030001-id941330-xss",
+                            "owasp-crs-v030001-id941340-xss",
+                        ],
+                    ),
+                ],
             ),
             action="allow",
             preview=True)
@@ -766,9 +963,11 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
                  network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -786,11 +985,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["match"] = match
             __props__.__dict__["network_match"] = network_match
+            __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
             __props__.__dict__["preview"] = preview
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
+            __props__.__dict__["rate_limit_options"] = rate_limit_options
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -811,9 +1012,11 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
             network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+            preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             security_policy: Optional[pulumi.Input[str]] = None) -> 'RegionSecurityPolicyRule':
         """
@@ -842,12 +1045,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
@@ -862,9 +1070,11 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["match"] = match
         __props__.__dict__["network_match"] = network_match
+        __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
         __props__.__dict__["preview"] = preview
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
+        __props__.__dict__["rate_limit_options"] = rate_limit_options
         __props__.__dict__["region"] = region
         __props__.__dict__["security_policy"] = security_policy
         return RegionSecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
@@ -917,6 +1127,16 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         return pulumi.get(self, "network_match")
 
     @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> pulumi.Output[Optional['outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @property
     @pulumi.getter
     def preview(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -942,6 +1162,15 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> pulumi.Output[Optional['outputs.RegionSecurityPolicyRuleRateLimitOptions']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
 
     @property
     @pulumi.getter

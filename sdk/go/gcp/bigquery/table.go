@@ -126,6 +126,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// Whether or not to allow table deletion when there are still resource tags attached.
+	AllowResourceTagsOnDeletion pulumi.BoolPtrOutput `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -277,6 +279,8 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
+	// Whether or not to allow table deletion when there are still resource tags attached.
+	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -388,6 +392,8 @@ type tableState struct {
 }
 
 type TableState struct {
+	// Whether or not to allow table deletion when there are still resource tags attached.
+	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -503,6 +509,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// Whether or not to allow table deletion when there are still resource tags attached.
+	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -578,6 +586,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// Whether or not to allow table deletion when there are still resource tags attached.
+	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -736,6 +746,11 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+// Whether or not to allow table deletion when there are still resource tags attached.
+func (o TableOutput) AllowResourceTagsOnDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.AllowResourceTagsOnDeletion }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies column names to use for data clustering.

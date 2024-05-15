@@ -455,14 +455,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.sdkContainerImage;
     }
     /**
-     * Service account email to run the workers as.
+     * Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
-     * @return Service account email to run the workers as.
+     * @return Service account email to run the workers as. This should be just an email e.g. `myserviceaccount{@literal @}myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      * 
      */
     public Output<String> serviceAccountEmail() {

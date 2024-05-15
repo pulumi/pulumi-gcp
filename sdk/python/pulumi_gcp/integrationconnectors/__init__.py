@@ -7,5 +7,6 @@ import typing
 # Export this package's modules as members:
 from .connection import *
 from .endpoint_attachment import *
+from .managed_zone import *
 from ._inputs import *
 from . import outputs

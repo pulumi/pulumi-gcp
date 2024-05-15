@@ -364,7 +364,7 @@ type DeliveryPipeline struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `DeliveryPipeline`. Format is `a-z?`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -444,7 +444,7 @@ type deliveryPipelineState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `DeliveryPipeline`. Format is `a-z?`.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -487,7 +487,7 @@ type DeliveryPipelineState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `DeliveryPipeline`. Format is `a-z?`.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -525,7 +525,7 @@ type deliveryPipelineArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `DeliveryPipeline`. Format is `a-z?`.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -554,7 +554,7 @@ type DeliveryPipelineArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+	// Name of the `DeliveryPipeline`. Format is `a-z?`.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -704,7 +704,7 @@ func (o DeliveryPipelineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
+// Name of the `DeliveryPipeline`. Format is `a-z?`.
 func (o DeliveryPipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

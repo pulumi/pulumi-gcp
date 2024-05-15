@@ -47,6 +47,7 @@ import (
 //						Title:       pulumi.String("Sample expression"),
 //					},
 //				},
+//				MaximumLifetime: pulumi.String("86400s"),
 //				PassthroughExtensions: &certificateauthority.CertificateTemplatePassthroughExtensionsArgs{
 //					AdditionalExtensions: certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{
 //						&certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{
@@ -173,6 +174,11 @@ type CertificateTemplate struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+	// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+	// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+	// lifetime will be explicitly truncated to match it.
+	MaximumLifetime pulumi.StringPtrOutput `pulumi:"maximumLifetime"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
@@ -247,6 +253,11 @@ type certificateTemplateState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
+	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+	// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+	// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+	// lifetime will be explicitly truncated to match it.
+	MaximumLifetime *string `pulumi:"maximumLifetime"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name *string `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
@@ -284,6 +295,11 @@ type CertificateTemplateState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
+	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+	// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+	// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+	// lifetime will be explicitly truncated to match it.
+	MaximumLifetime pulumi.StringPtrInput
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringPtrInput
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
@@ -321,6 +337,11 @@ type certificateTemplateArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
+	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+	// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+	// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+	// lifetime will be explicitly truncated to match it.
+	MaximumLifetime *string `pulumi:"maximumLifetime"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name *string `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
@@ -351,6 +372,11 @@ type CertificateTemplateArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
+	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+	// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+	// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+	// lifetime will be explicitly truncated to match it.
+	MaximumLifetime pulumi.StringPtrInput
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringPtrInput
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
@@ -488,6 +514,14 @@ func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 // The location for the resource
 func (o CertificateTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
+// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
+// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
+// lifetime will be explicitly truncated to match it.
+func (o CertificateTemplateOutput) MaximumLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringPtrOutput { return v.MaximumLifetime }).(pulumi.StringPtrOutput)
 }
 
 // The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.

@@ -123,6 +123,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * Whether or not to allow table deletion when there are still resource tags attached.
+     */
+    public readonly allowResourceTagsOnDeletion!: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in
      * descending priority order.
@@ -308,6 +312,7 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
+            resourceInputs["allowResourceTagsOnDeletion"] = state ? state.allowResourceTagsOnDeletion : undefined;
             resourceInputs["clusterings"] = state ? state.clusterings : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
@@ -348,6 +353,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
+            resourceInputs["allowResourceTagsOnDeletion"] = args ? args.allowResourceTagsOnDeletion : undefined;
             resourceInputs["clusterings"] = args ? args.clusterings : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -392,6 +398,10 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * Whether or not to allow table deletion when there are still resource tags attached.
+     */
+    allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in
@@ -570,6 +580,10 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * Whether or not to allow table deletion when there are still resource tags attached.
+     */
+    allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in

@@ -16,6 +16,21 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterDnsConfigArgs Empty = new ClusterDnsConfigArgs();
 
     /**
+     * This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * 
+     */
+    @Import(name="additiveVpcScopeDnsDomain")
+    private @Nullable Output<String> additiveVpcScopeDnsDomain;
+
+    /**
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * 
+     */
+    public Optional<Output<String>> additiveVpcScopeDnsDomain() {
+        return Optional.ofNullable(this.additiveVpcScopeDnsDomain);
+    }
+
+    /**
      * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
      * 
      */
@@ -63,6 +78,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     private ClusterDnsConfigArgs() {}
 
     private ClusterDnsConfigArgs(ClusterDnsConfigArgs $) {
+        this.additiveVpcScopeDnsDomain = $.additiveVpcScopeDnsDomain;
         this.clusterDns = $.clusterDns;
         this.clusterDnsDomain = $.clusterDnsDomain;
         this.clusterDnsScope = $.clusterDnsScope;
@@ -84,6 +100,27 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(ClusterDnsConfigArgs defaults) {
             $ = new ClusterDnsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additiveVpcScopeDnsDomain(@Nullable Output<String> additiveVpcScopeDnsDomain) {
+            $.additiveVpcScopeDnsDomain = additiveVpcScopeDnsDomain;
+            return this;
+        }
+
+        /**
+         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additiveVpcScopeDnsDomain(String additiveVpcScopeDnsDomain) {
+            return additiveVpcScopeDnsDomain(Output.of(additiveVpcScopeDnsDomain));
         }
 
         /**

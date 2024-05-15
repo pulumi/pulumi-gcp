@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleRateLimitOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -111,6 +113,25 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="preconfiguredWafConfig")
+    private @Nullable Output<RegionSecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig;
+
+    /**
+     * @return Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionSecurityPolicyRulePreconfiguredWafConfigArgs>> preconfiguredWafConfig() {
+        return Optional.ofNullable(this.preconfiguredWafConfig);
+    }
+
+    /**
      * If set to true, the specified action is not enforced.
      * 
      */
@@ -162,6 +183,23 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rateLimitOptions")
+    private @Nullable Output<RegionSecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions;
+
+    /**
+     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionSecurityPolicyRuleRateLimitOptionsArgs>> rateLimitOptions() {
+        return Optional.ofNullable(this.rateLimitOptions);
+    }
+
+    /**
      * The Region in which the created Region Security Policy rule should reside.
      * 
      */
@@ -202,9 +240,11 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
         this.description = $.description;
         this.match = $.match;
         this.networkMatch = $.networkMatch;
+        this.preconfiguredWafConfig = $.preconfiguredWafConfig;
         this.preview = $.preview;
         this.priority = $.priority;
         this.project = $.project;
+        this.rateLimitOptions = $.rateLimitOptions;
         this.region = $.region;
         this.securityPolicy = $.securityPolicy;
     }
@@ -342,6 +382,31 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule.
+         * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(@Nullable Output<RegionSecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig) {
+            $.preconfiguredWafConfig = preconfiguredWafConfig;
+            return this;
+        }
+
+        /**
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule.
+         * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(RegionSecurityPolicyRulePreconfiguredWafConfigArgs preconfiguredWafConfig) {
+            return preconfiguredWafConfig(Output.of(preconfiguredWafConfig));
+        }
+
+        /**
          * @param preview If set to true, the specified action is not enforced.
          * 
          * @return builder
@@ -408,6 +473,29 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitOptions(@Nullable Output<RegionSecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions) {
+            $.rateLimitOptions = rateLimitOptions;
+            return this;
+        }
+
+        /**
+         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitOptions(RegionSecurityPolicyRuleRateLimitOptionsArgs rateLimitOptions) {
+            return rateLimitOptions(Output.of(rateLimitOptions));
         }
 
         /**

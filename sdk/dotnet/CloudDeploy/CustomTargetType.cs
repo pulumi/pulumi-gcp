@@ -134,6 +134,46 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-custom-target-type",
+    ///         Description = "My custom target type",
+    ///         CustomActions = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsArgs
+    ///         {
+    ///             RenderAction = "renderAction",
+    ///             DeployAction = "deployAction",
+    ///             IncludeSkaffoldModules = new[]
+    ///             {
+    ///                 new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs
+    ///                 {
+    ///                     Configs = new[]
+    ///                     {
+    ///                         "my-config",
+    ///                     },
+    ///                     GoogleCloudBuildRepo = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs
+    ///                     {
+    ///                         Repository = "projects/example/locations/us-central1/connections/git/repositories/example-repo",
+    ///                         Path = "configs/skaffold.yaml",
+    ///                         Ref = "main",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

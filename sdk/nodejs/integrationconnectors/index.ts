@@ -15,6 +15,11 @@ export type EndpointAttachment = import("./endpointAttachment").EndpointAttachme
 export const EndpointAttachment: typeof import("./endpointAttachment").EndpointAttachment = null as any;
 utilities.lazyLoad(exports, ["EndpointAttachment"], () => require("./endpointAttachment"));
 
+export { ManagedZoneArgs, ManagedZoneState } from "./managedZone";
+export type ManagedZone = import("./managedZone").ManagedZone;
+export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;
+utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +29,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "gcp:integrationconnectors/endpointAttachment:EndpointAttachment":
                 return new EndpointAttachment(name, <any>undefined, { urn })
+            case "gcp:integrationconnectors/managedZone:ManagedZone":
+                return new ManagedZone(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "integrationconnectors/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "integrationconnectors/endpointAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "integrationconnectors/managedZone", _module)
