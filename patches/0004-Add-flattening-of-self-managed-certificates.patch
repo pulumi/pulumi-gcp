@@ -5,10 +5,10 @@ Subject: [PATCH] Add flattening of self managed certificates
 
 
 diff --git a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
-index 4221826dc..a8cebf62a 100644
+index 0e1e7d89d..364f48602 100644
 --- a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
 +++ b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
-@@ -435,6 +435,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
+@@ -440,6 +440,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
  	if err := d.Set("scope", flattenCertificateManagerCertificateScope(res["scope"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Certificate: %s", err)
  	}
@@ -18,7 +18,7 @@ index 4221826dc..a8cebf62a 100644
  	if err := d.Set("managed", flattenCertificateManagerCertificateManaged(res["managed"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Certificate: %s", err)
  	}
-@@ -630,6 +633,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
+@@ -640,6 +643,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
  	return v
  }
  
