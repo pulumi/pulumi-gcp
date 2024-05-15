@@ -6935,6 +6935,9 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         """
         :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
+               * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+               * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+               * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -6951,6 +6954,9 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         """
         Possible cgroup modes that can be used.
         Accepted values are:
+        * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+        * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+        * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
         return pulumi.get(self, "cgroup_mode")
 
@@ -9439,6 +9445,9 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         """
         :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
+               * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+               * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+               * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -9455,6 +9464,9 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         """
         Possible cgroup modes that can be used.
         Accepted values are:
+        * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+        * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+        * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
         return pulumi.get(self, "cgroup_mode")
 

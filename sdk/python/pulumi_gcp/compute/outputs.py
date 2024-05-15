@@ -3111,6 +3111,25 @@ class BackendServiceLocalityLbPolicyPolicy(dict):
                Note that specifying the same policy more than once for a backend is
                not a valid configuration and will be rejected.
                The possible values are:
+               * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+               is selected in round robin order.
+               * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+               hosts and picks the host which has fewer active requests.
+               * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+               hashing to backends. The algorithm has the property that the
+               addition/removal of a host from a set of N hosts only affects
+               1/N of the requests.
+               * `RANDOM`: The load balancer selects a random healthy host.
+               * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+               connection metadata, i.e., connections are opened
+               to the same address as the destination address of
+               the incoming connection before the connection
+               was redirected to the load balancer.
+               * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+               Maglev is not as stable as ring hash but has faster table lookup
+               build times and host selection times. For more information about
+               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3126,6 +3145,25 @@ class BackendServiceLocalityLbPolicyPolicy(dict):
         Note that specifying the same policy more than once for a backend is
         not a valid configuration and will be rejected.
         The possible values are:
+        * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+        is selected in round robin order.
+        * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+        hosts and picks the host which has fewer active requests.
+        * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+        hashing to backends. The algorithm has the property that the
+        addition/removal of a host from a set of N hosts only affects
+        1/N of the requests.
+        * `RANDOM`: The load balancer selects a random healthy host.
+        * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+        connection metadata, i.e., connections are opened
+        to the same address as the destination address of
+        the incoming connection before the connection
+        was redirected to the load balancer.
+        * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+        Maglev is not as stable as ring hash but has faster table lookup
+        build times and host selection times. For more information about
+        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
         """
         return pulumi.get(self, "name")
 
@@ -4665,6 +4703,15 @@ class HealthCheckGrpcHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         if grpc_service_name is not None:
             pulumi.set(__self__, "grpc_service_name", grpc_service_name)
@@ -4712,6 +4759,15 @@ class HealthCheckGrpcHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -4915,6 +4971,15 @@ class HealthCheckHttpHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTP health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -4974,6 +5039,15 @@ class HealthCheckHttpHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5051,6 +5125,15 @@ class HealthCheckHttpsHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTPS health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -5110,6 +5193,15 @@ class HealthCheckHttpsHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTPS health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5202,6 +5294,15 @@ class HealthCheckSslHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTP2 health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -5251,6 +5352,15 @@ class HealthCheckSslHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP2 health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5324,6 +5434,15 @@ class HealthCheckTcpHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, TCP health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -5373,6 +5492,15 @@ class HealthCheckTcpHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, TCP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -17787,6 +17915,15 @@ class RegionHealthCheckGrpcHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         if grpc_service_name is not None:
             pulumi.set(__self__, "grpc_service_name", grpc_service_name)
@@ -17834,6 +17971,15 @@ class RegionHealthCheckGrpcHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -18037,6 +18183,15 @@ class RegionHealthCheckHttpHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTP health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -18096,6 +18251,15 @@ class RegionHealthCheckHttpHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -18173,6 +18337,15 @@ class RegionHealthCheckHttpsHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTPS health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -18232,6 +18405,15 @@ class RegionHealthCheckHttpsHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTPS health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -18324,6 +18506,15 @@ class RegionHealthCheckSslHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, HTTP2 health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -18373,6 +18564,15 @@ class RegionHealthCheckSslHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP2 health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -18446,6 +18646,15 @@ class RegionHealthCheckTcpHealthCheck(dict):
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, TCP health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
@@ -18495,6 +18704,15 @@ class RegionHealthCheckTcpHealthCheck(dict):
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, TCP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
 
@@ -29816,7 +30034,11 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
                `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param str json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+               * `DISABLED` - Don't parse JSON payloads in POST bodies.
+               * `STANDARD` - Parse JSON payloads in POST bodies.
         :param str log_level: Log level to use. Defaults to `NORMAL`.
+               * `NORMAL` - Normal log level.
+               * `VERBOSE` - Verbose log level.
         :param Sequence[str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
@@ -29842,6 +30064,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
     def json_parsing(self) -> Optional[str]:
         """
         Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+        * `DISABLED` - Don't parse JSON payloads in POST bodies.
+        * `STANDARD` - Parse JSON payloads in POST bodies.
         """
         return pulumi.get(self, "json_parsing")
 
@@ -29850,6 +30074,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
     def log_level(self) -> Optional[str]:
         """
         Log level to use. Defaults to `NORMAL`.
+        * `NORMAL` - Normal log level.
+        * `VERBOSE` - Verbose log level.
         """
         return pulumi.get(self, "log_level")
 
@@ -30659,10 +30885,22 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
                exceed this `ban_threshold`. Structure is documented below.
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
+               
+               * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+               * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+               * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+               * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+               * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+               * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+               * `REGION_CODE`: The country/region from which the request originates.
         :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               
+               * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+               * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
         :param 'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         """
         pulumi.set(__self__, "conform_action", conform_action)
@@ -30730,6 +30968,15 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     def enforce_on_key(self) -> Optional[str]:
         """
         Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
+
+        * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+        * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+        * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+        * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+        * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+        * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+        * `REGION_CODE`: The country/region from which the request originates.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -30748,6 +30995,9 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     def enforce_on_key_name(self) -> Optional[str]:
         """
         Rate limit key name applicable only for the following key types:
+
+        * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+        * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -30832,7 +31082,19 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
                  enforce_on_key_type: Optional[str] = None):
         """
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               
+               * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+               * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
         :param str enforce_on_key_type: Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
+               
+               * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+               * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+               * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+               * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+               * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+               * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+               * `REGION_CODE`: The country/region from which the request originates.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -30844,6 +31106,9 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
     def enforce_on_key_name(self) -> Optional[str]:
         """
         Rate limit key name applicable only for the following key types:
+
+        * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+        * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -30852,6 +31117,15 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
     def enforce_on_key_type(self) -> Optional[str]:
         """
         Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
+
+        * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+        * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+        * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+        * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+        * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+        * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+        * `REGION_CODE`: The country/region from which the request originates.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -30939,6 +31213,9 @@ class SecurityPolicyRuleRedirectOptions(dict):
                  target: Optional[str] = None):
         """
         :param str type: Type of redirect action.
+               
+               * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
+               * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
         :param str target: External redirection target when `EXTERNAL_302` is set in `type`.
         """
         pulumi.set(__self__, "type", type)
@@ -30950,6 +31227,9 @@ class SecurityPolicyRuleRedirectOptions(dict):
     def type(self) -> str:
         """
         Type of redirect action.
+
+        * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
+        * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
         """
         return pulumi.get(self, "type")
 
@@ -40369,6 +40649,8 @@ class GetForwardingRulesRuleResult(dict):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
                cannot have overlapping 'portRange's.
+               
+               @pattern: \\d+(?:-\\d+)?
         :param Sequence[str] ports: The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -40389,6 +40671,8 @@ class GetForwardingRulesRuleResult(dict):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
                they share at least one port number.
+               
+               @pattern: \\d+(?:-\\d+)?
         :param str project: The name of the project.
         :param str psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param str psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
@@ -40774,6 +41058,8 @@ class GetForwardingRulesRuleResult(dict):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
         cannot have overlapping 'portRange's.
+
+        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -40801,6 +41087,8 @@ class GetForwardingRulesRuleResult(dict):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
         they share at least one port number.
+
+        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "ports")
 

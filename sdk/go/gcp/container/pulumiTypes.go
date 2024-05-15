@@ -22172,6 +22172,9 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.IntPtrOut
 type ClusterNodeConfigLinuxNodeConfig struct {
 	// Possible cgroup modes that can be used.
 	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode *string `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
@@ -22194,6 +22197,9 @@ type ClusterNodeConfigLinuxNodeConfigInput interface {
 type ClusterNodeConfigLinuxNodeConfigArgs struct {
 	// Possible cgroup modes that can be used.
 	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
@@ -22281,6 +22287,9 @@ func (o ClusterNodeConfigLinuxNodeConfigOutput) ToClusterNodeConfigLinuxNodeConf
 
 // Possible cgroup modes that can be used.
 // Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 func (o ClusterNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
 }
@@ -22319,6 +22328,9 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Elem() ClusterNodeConfigLinux
 
 // Possible cgroup modes that can be used.
 // Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) *string {
 		if v == nil {
@@ -28824,6 +28836,9 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.I
 type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	// Possible cgroup modes that can be used.
 	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode *string `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
@@ -28846,6 +28861,9 @@ type ClusterNodePoolNodeConfigLinuxNodeConfigInput interface {
 type ClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// Possible cgroup modes that can be used.
 	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
@@ -28933,6 +28951,9 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToClusterNodePoolNodeCon
 
 // Possible cgroup modes that can be used.
 // Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
 }
@@ -28971,6 +28992,9 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Elem() ClusterNodePoo
 
 // Possible cgroup modes that can be used.
 // Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) *string {
 		if v == nil {

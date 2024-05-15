@@ -570,6 +570,51 @@ type RegionBackendService struct {
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
+	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+	//   is selected in round robin order.
+	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+	//   hosts and picks the host which has fewer active requests.
+	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+	//   hashing to backends. The algorithm has the property that the
+	//   addition/removal of a host from a set of N hosts only affects
+	//   1/N of the requests.
+	// * `RANDOM`: The load balancer selects a random healthy host.
+	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+	//   connection metadata, i.e., connections are opened
+	//   to the same address as the destination address of
+	//   the incoming connection before the connection
+	//   was redirected to the load balancer.
+	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+	//   Maglev is not as stable as ring hash but has faster table lookup
+	//   build times and host selection times. For more information about
+	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+	//   reported weights. If set, the Backend Service must
+	//   configure a non legacy HTTP-based Health Check, and
+	//   health check replies are expected to contain
+	//   non-standard HTTP response header field
+	//   X-Load-Balancing-Endpoint-Weight to specify the
+	//   per-instance weights. If set, Load Balancing is weight
+	//   based on the per-instance weights reported in the last
+	//   processed health check replies, as long as every
+	//   instance either reported a valid weight or had
+	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+	//   equal-weight.
+	//
+	// This field is applicable to either:
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	//   and loadBalancingScheme set to INTERNAL_MANAGED.
+	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+	//   Network Load Balancing. The default is MAGLEV.
+	//
+	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	// or RING_HASH, session affinity settings will not take effect.
+	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	// field set to true.
+	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrOutput `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -723,6 +768,51 @@ type regionBackendServiceState struct {
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
+	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+	//   is selected in round robin order.
+	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+	//   hosts and picks the host which has fewer active requests.
+	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+	//   hashing to backends. The algorithm has the property that the
+	//   addition/removal of a host from a set of N hosts only affects
+	//   1/N of the requests.
+	// * `RANDOM`: The load balancer selects a random healthy host.
+	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+	//   connection metadata, i.e., connections are opened
+	//   to the same address as the destination address of
+	//   the incoming connection before the connection
+	//   was redirected to the load balancer.
+	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+	//   Maglev is not as stable as ring hash but has faster table lookup
+	//   build times and host selection times. For more information about
+	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+	//   reported weights. If set, the Backend Service must
+	//   configure a non legacy HTTP-based Health Check, and
+	//   health check replies are expected to contain
+	//   non-standard HTTP response header field
+	//   X-Load-Balancing-Endpoint-Weight to specify the
+	//   per-instance weights. If set, Load Balancing is weight
+	//   based on the per-instance weights reported in the last
+	//   processed health check replies, as long as every
+	//   instance either reported a valid weight or had
+	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+	//   equal-weight.
+	//
+	// This field is applicable to either:
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	//   and loadBalancingScheme set to INTERNAL_MANAGED.
+	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+	//   Network Load Balancing. The default is MAGLEV.
+	//
+	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	// or RING_HASH, session affinity settings will not take effect.
+	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	// field set to true.
+	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -847,6 +937,51 @@ type RegionBackendServiceState struct {
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
+	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+	//   is selected in round robin order.
+	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+	//   hosts and picks the host which has fewer active requests.
+	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+	//   hashing to backends. The algorithm has the property that the
+	//   addition/removal of a host from a set of N hosts only affects
+	//   1/N of the requests.
+	// * `RANDOM`: The load balancer selects a random healthy host.
+	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+	//   connection metadata, i.e., connections are opened
+	//   to the same address as the destination address of
+	//   the incoming connection before the connection
+	//   was redirected to the load balancer.
+	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+	//   Maglev is not as stable as ring hash but has faster table lookup
+	//   build times and host selection times. For more information about
+	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+	//   reported weights. If set, the Backend Service must
+	//   configure a non legacy HTTP-based Health Check, and
+	//   health check replies are expected to contain
+	//   non-standard HTTP response header field
+	//   X-Load-Balancing-Endpoint-Weight to specify the
+	//   per-instance weights. If set, Load Balancing is weight
+	//   based on the per-instance weights reported in the last
+	//   processed health check replies, as long as every
+	//   instance either reported a valid weight or had
+	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+	//   equal-weight.
+	//
+	// This field is applicable to either:
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	//   and loadBalancingScheme set to INTERNAL_MANAGED.
+	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+	//   Network Load Balancing. The default is MAGLEV.
+	//
+	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	// or RING_HASH, session affinity settings will not take effect.
+	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	// field set to true.
+	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -968,6 +1103,51 @@ type regionBackendServiceArgs struct {
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
+	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+	//   is selected in round robin order.
+	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+	//   hosts and picks the host which has fewer active requests.
+	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+	//   hashing to backends. The algorithm has the property that the
+	//   addition/removal of a host from a set of N hosts only affects
+	//   1/N of the requests.
+	// * `RANDOM`: The load balancer selects a random healthy host.
+	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+	//   connection metadata, i.e., connections are opened
+	//   to the same address as the destination address of
+	//   the incoming connection before the connection
+	//   was redirected to the load balancer.
+	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+	//   Maglev is not as stable as ring hash but has faster table lookup
+	//   build times and host selection times. For more information about
+	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+	//   reported weights. If set, the Backend Service must
+	//   configure a non legacy HTTP-based Health Check, and
+	//   health check replies are expected to contain
+	//   non-standard HTTP response header field
+	//   X-Load-Balancing-Endpoint-Weight to specify the
+	//   per-instance weights. If set, Load Balancing is weight
+	//   based on the per-instance weights reported in the last
+	//   processed health check replies, as long as every
+	//   instance either reported a valid weight or had
+	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+	//   equal-weight.
+	//
+	// This field is applicable to either:
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	//   and loadBalancingScheme set to INTERNAL_MANAGED.
+	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+	//   Network Load Balancing. The default is MAGLEV.
+	//
+	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	// or RING_HASH, session affinity settings will not take effect.
+	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	// field set to true.
+	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -1084,6 +1264,51 @@ type RegionBackendServiceArgs struct {
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
+	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+	//   is selected in round robin order.
+	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+	//   hosts and picks the host which has fewer active requests.
+	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+	//   hashing to backends. The algorithm has the property that the
+	//   addition/removal of a host from a set of N hosts only affects
+	//   1/N of the requests.
+	// * `RANDOM`: The load balancer selects a random healthy host.
+	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+	//   connection metadata, i.e., connections are opened
+	//   to the same address as the destination address of
+	//   the incoming connection before the connection
+	//   was redirected to the load balancer.
+	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+	//   Maglev is not as stable as ring hash but has faster table lookup
+	//   build times and host selection times. For more information about
+	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+	//   reported weights. If set, the Backend Service must
+	//   configure a non legacy HTTP-based Health Check, and
+	//   health check replies are expected to contain
+	//   non-standard HTTP response header field
+	//   X-Load-Balancing-Endpoint-Weight to specify the
+	//   per-instance weights. If set, Load Balancing is weight
+	//   based on the per-instance weights reported in the last
+	//   processed health check replies, as long as every
+	//   instance either reported a valid weight or had
+	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+	//   equal-weight.
+	//
+	// This field is applicable to either:
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	//   and loadBalancingScheme set to INTERNAL_MANAGED.
+	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+	//   Network Load Balancing. The default is MAGLEV.
+	//
+	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	// or RING_HASH, session affinity settings will not take effect.
+	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	// field set to true.
+	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -1342,6 +1567,51 @@ func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 
 // The load balancing algorithm used within the scope of the locality.
 // The possible values are:
+//   - `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+//     is selected in round robin order.
+//   - `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+//     hosts and picks the host which has fewer active requests.
+//   - `RING_HASH`: The ring/modulo hash load balancer implements consistent
+//     hashing to backends. The algorithm has the property that the
+//     addition/removal of a host from a set of N hosts only affects
+//     1/N of the requests.
+//   - `RANDOM`: The load balancer selects a random healthy host.
+//   - `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+//     connection metadata, i.e., connections are opened
+//     to the same address as the destination address of
+//     the incoming connection before the connection
+//     was redirected to the load balancer.
+//   - `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+//     Maglev is not as stable as ring hash but has faster table lookup
+//     build times and host selection times. For more information about
+//     Maglev, refer to https://ai.google/research/pubs/pub44824
+//   - `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+//     reported weights. If set, the Backend Service must
+//     configure a non legacy HTTP-based Health Check, and
+//     health check replies are expected to contain
+//     non-standard HTTP response header field
+//     X-Load-Balancing-Endpoint-Weight to specify the
+//     per-instance weights. If set, Load Balancing is weight
+//     based on the per-instance weights reported in the last
+//     processed health check replies, as long as every
+//     instance either reported a valid weight or had
+//     UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+//     equal-weight.
+//
+// This field is applicable to either:
+//   - A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+//     and loadBalancingScheme set to INTERNAL_MANAGED.
+//   - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+//   - A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+//     Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+//     Network Load Balancing. The default is MAGLEV.
+//
+// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+// or RING_HASH, session affinity settings will not take effect.
+// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+// by a URL map that is bound to target gRPC proxy that has validateForProxyless
+// field set to true.
+// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 func (o RegionBackendServiceOutput) LocalityLbPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.LocalityLbPolicy }).(pulumi.StringPtrOutput)
 }

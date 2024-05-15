@@ -443,12 +443,28 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
     /**
      * A special group to grant access to. Possible values include:
      * 
+     * * `projectOwners`: Owners of the enclosing project.
+     * 
+     * * `projectReaders`: Readers of the enclosing project.
+     * 
+     * * `projectWriters`: Writers of the enclosing project.
+     * 
+     * * `allAuthenticatedUsers`: All authenticated BigQuery users.
+     * 
      */
     @Export(name="specialGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specialGroup;
 
     /**
      * @return A special group to grant access to. Possible values include:
+     * 
+     * * `projectOwners`: Owners of the enclosing project.
+     * 
+     * * `projectReaders`: Readers of the enclosing project.
+     * 
+     * * `projectWriters`: Writers of the enclosing project.
+     * 
+     * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */
     public Output<Optional<String>> specialGroup() {

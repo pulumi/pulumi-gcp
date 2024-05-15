@@ -21,12 +21,15 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// <summary>
         /// The parameters to copy from the verified token to the generated token.
         /// Only the following parameters may be copied:
+        /// * `PathGlobs`
         /// </summary>
         public readonly ImmutableArray<string> CopiedParameters;
         /// <summary>
         /// The keyset to use for signature generation.
         /// The following are both valid paths to an EdgeCacheKeyset resource:
         /// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+        /// * `yourKeyset`
+        /// This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
         /// </summary>
         public readonly string? Keyset;
         /// <summary>

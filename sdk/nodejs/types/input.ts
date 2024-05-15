@@ -5001,6 +5001,14 @@ export namespace bigquery {
         routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
         /**
          * A special group to grant access to. Possible values include:
+         *
+         * * `projectOwners`: Owners of the enclosing project.
+         *
+         * * `projectReaders`: Readers of the enclosing project.
+         *
+         * * `projectWriters`: Writers of the enclosing project.
+         *
+         * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          */
         specialGroup?: pulumi.Input<string>;
         /**
@@ -15414,6 +15422,25 @@ export namespace compute {
          * Note that specifying the same policy more than once for a backend is
          * not a valid configuration and will be rejected.
          * The possible values are:
+         * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+         * is selected in round robin order.
+         * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+         * hosts and picks the host which has fewer active requests.
+         * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+         * hashing to backends. The algorithm has the property that the
+         * addition/removal of a host from a set of N hosts only affects
+         * 1/N of the requests.
+         * * `RANDOM`: The load balancer selects a random healthy host.
+         * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+         * connection metadata, i.e., connections are opened
+         * to the same address as the destination address of
+         * the incoming connection before the connection
+         * was redirected to the load balancer.
+         * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+         * Maglev is not as stable as ring hash but has faster table lookup
+         * build times and host selection times. For more information about
+         * Maglev, refer to https://ai.google/research/pubs/pub44824
+         * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
          */
         name: pulumi.Input<string>;
     }
@@ -15905,6 +15932,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
     }
@@ -15981,6 +16017,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -16023,6 +16068,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTPS health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -16067,6 +16121,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -16105,6 +16168,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, TCP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -19813,6 +19885,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
     }
@@ -19889,6 +19970,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -19931,6 +20021,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTPS health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -19975,6 +20074,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -20013,6 +20121,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, TCP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
@@ -23233,10 +23350,14 @@ export namespace compute {
         jsonCustomConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig>;
         /**
          * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+         * * `DISABLED` - Don't parse JSON payloads in POST bodies.
+         * * `STANDARD` - Parse JSON payloads in POST bodies.
          */
         jsonParsing?: pulumi.Input<string>;
         /**
          * Log level to use. Defaults to `NORMAL`.
+         * * `NORMAL` - Normal log level.
+         * * `VERBOSE` - Verbose log level.
          */
         logLevel?: pulumi.Input<string>;
         /**
@@ -23488,6 +23609,15 @@ export namespace compute {
         conformAction: pulumi.Input<string>;
         /**
          * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to `ALL`.
+         *
+         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+         * * `REGION_CODE`: The country/region from which the request originates.
          */
         enforceOnKey?: pulumi.Input<string>;
         /**
@@ -23498,6 +23628,9 @@ export namespace compute {
         enforceOnKeyConfigs?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>[]>;
         /**
          * Rate limit key name applicable only for the following key types:
+         *
+         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: pulumi.Input<string>;
         /**
@@ -23529,10 +23662,22 @@ export namespace compute {
     export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
         /**
          * Rate limit key name applicable only for the following key types:
+         *
+         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: pulumi.Input<string>;
         /**
          * Determines the key to enforce the `rateLimitThreshold` on. If not specified, defaults to `ALL`.
+         *
+         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+         * * `REGION_CODE`: The country/region from which the request originates.
          */
         enforceOnKeyType?: pulumi.Input<string>;
     }
@@ -23566,6 +23711,9 @@ export namespace compute {
         target?: pulumi.Input<string>;
         /**
          * Type of redirect action.
+         *
+         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
+         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
          */
         type: pulumi.Input<string>;
     }
@@ -27763,6 +27911,9 @@ export namespace container {
         /**
          * Possible cgroup modes that can be used.
          * Accepted values are:
+         * * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+         * * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+         * * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
          */
         cgroupMode?: pulumi.Input<string>;
         /**
@@ -28506,6 +28657,9 @@ export namespace container {
         /**
          * Possible cgroup modes that can be used.
          * Accepted values are:
+         * * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+         * * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+         * * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
          */
         cgroupMode?: pulumi.Input<string>;
         /**
@@ -54588,12 +54742,15 @@ export namespace networkservices {
         /**
          * The parameters to copy from the verified token to the generated token.
          * Only the following parameters may be copied:
+         * * `PathGlobs`
          */
         copiedParameters?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The keyset to use for signature generation.
          * The following are both valid paths to an EdgeCacheKeyset resource:
          * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+         * * `yourKeyset`
+         * This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
          */
         keyset?: pulumi.Input<string>;
         /**
@@ -54764,6 +54921,12 @@ export namespace networkservices {
         /**
          * The HTTP Status code to use for this RedirectAction.
          * The supported values are:
+         * - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+         * - `FOUND`, which corresponds to 302.
+         * - `SEE_OTHER` which corresponds to 303.
+         * - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+         * - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+         * Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
          */
         redirectResponseCode?: pulumi.Input<string>;
         /**
