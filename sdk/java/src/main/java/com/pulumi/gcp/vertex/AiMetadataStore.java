@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var store = new AiMetadataStore("store", AiMetadataStoreArgs.builder()        
+ *         var store = new AiMetadataStore("store", AiMetadataStoreArgs.builder()
  *             .name("test-store")
  *             .description("Store to test the terraform module")
  *             .region("us-central1")

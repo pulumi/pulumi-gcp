@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new DocumentAiWarehouseLocation("example", DocumentAiWarehouseLocationArgs.builder()        
+ *         var example = new DocumentAiWarehouseLocation("example", DocumentAiWarehouseLocationArgs.builder()
  *             .location("us")
  *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .accessControlMode("ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI")

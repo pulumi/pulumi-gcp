@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new NetworkEdgeSecurityService("default", NetworkEdgeSecurityServiceArgs.builder()        
+ *         var default_ = new NetworkEdgeSecurityService("default", NetworkEdgeSecurityServiceArgs.builder()
  *             .name("my-edge-security-service")
  *             .region("us-east1")
  *             .description("My basic resource")

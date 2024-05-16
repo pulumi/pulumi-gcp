@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()        
+ *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()        
+ *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()        
+ *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()        
+ *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()        
+ *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -268,7 +268,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()        
+ *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -319,7 +319,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()        
+ *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -369,7 +369,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()        
+ *         var policy = new WebTypeComputeIamPolicy("policy", WebTypeComputeIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -404,7 +404,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()        
+ *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -442,7 +442,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()        
+ *         var binding = new WebTypeComputeIamBinding("binding", WebTypeComputeIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -483,7 +483,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()        
+ *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -521,7 +521,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()        
+ *         var member = new WebTypeComputeIamMember("member", WebTypeComputeIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane{@literal @}example.com")

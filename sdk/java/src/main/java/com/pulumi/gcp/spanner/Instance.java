@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .config("regional-us-central1")
  *             .displayName("Test Spanner Instance")
  *             .numNodes(2)
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .config("regional-us-central1")
  *             .displayName("Test Spanner Instance")
  *             .processingUnits(200)
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .config("regional-us-central1")
  *             .displayName("Test Spanner Instance")
  *             .autoscalingConfig(InstanceAutoscalingConfigArgs.builder()
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .config("nam-eur-asia1")
  *             .displayName("Multi Regional Instance")
  *             .numNodes(2)

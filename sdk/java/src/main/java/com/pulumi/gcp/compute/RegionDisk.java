@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var disk = new Disk("disk", DiskArgs.builder()        
+ *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("my-disk")
  *             .image("debian-cloud/debian-11")
  *             .size(50)
@@ -83,13 +83,13 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()        
+ *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()
  *             .name("my-snapshot")
  *             .sourceDisk(disk.name())
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()        
+ *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()
  *             .name("my-region-disk")
  *             .snapshot(snapdisk.id())
  *             .type("pd-ssd")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new RegionDisk("primary", RegionDiskArgs.builder()        
+ *         var primary = new RegionDisk("primary", RegionDiskArgs.builder()
  *             .name("primary-region-disk")
  *             .type("pd-ssd")
  *             .region("us-central1")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *                 "us-central1-f")
  *             .build());
  * 
- *         var secondary = new RegionDisk("secondary", RegionDiskArgs.builder()        
+ *         var secondary = new RegionDisk("secondary", RegionDiskArgs.builder()
  *             .name("secondary-region-disk")
  *             .type("pd-ssd")
  *             .region("us-east1")
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()        
+ *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()
  *             .name("my-region-features-disk")
  *             .type("pd-ssd")
  *             .region("us-central1")

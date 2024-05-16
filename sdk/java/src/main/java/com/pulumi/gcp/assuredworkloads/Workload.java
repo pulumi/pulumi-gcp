@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Workload("primary", WorkloadArgs.builder()        
+ *         var primary = new Workload("primary", WorkloadArgs.builder()
  *             .complianceRegime("FEDRAMP_MODERATE")
  *             .displayName("{{display}}")
  *             .location("us-west1")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Workload("primary", WorkloadArgs.builder()        
+ *         var primary = new Workload("primary", WorkloadArgs.builder()
  *             .complianceRegime("EU_REGIONS_AND_SUPPORT")
  *             .displayName("display")
  *             .location("europe-west9")

@@ -60,19 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -141,19 +141,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -224,19 +224,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -313,39 +313,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var mySourceDisk = new Disk("mySourceDisk", DiskArgs.builder()        
+ *         var mySourceDisk = new Disk("mySourceDisk", DiskArgs.builder()
  *             .name("workstation-config")
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var mySourceSnapshot = new Snapshot("mySourceSnapshot", SnapshotArgs.builder()        
+ *         var mySourceSnapshot = new Snapshot("mySourceSnapshot", SnapshotArgs.builder()
  *             .name("workstation-config")
  *             .sourceDisk(mySourceDisk.name())
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .location("us-central1")
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location(defaultWorkstationCluster.location())
@@ -397,19 +397,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -418,7 +418,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -473,19 +473,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -494,7 +494,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -549,19 +549,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -570,7 +570,7 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")
@@ -642,19 +642,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("workstation-cluster")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
  *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -663,22 +663,22 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultKeyRing = new KeyRing("defaultKeyRing", KeyRingArgs.builder()        
+ *         var defaultKeyRing = new KeyRing("defaultKeyRing", KeyRingArgs.builder()
  *             .name("workstation-cluster")
  *             .location("us-central1")
  *             .build());
  * 
- *         var defaultCryptoKey = new CryptoKey("defaultCryptoKey", CryptoKeyArgs.builder()        
+ *         var defaultCryptoKey = new CryptoKey("defaultCryptoKey", CryptoKeyArgs.builder()
  *             .name("workstation-cluster")
  *             .keyRing(defaultKeyRing.id())
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
  *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location("us-central1")

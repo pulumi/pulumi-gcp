@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tpl = new InstanceTemplate("tpl", InstanceTemplateArgs.builder()        
+ *         var tpl = new InstanceTemplate("tpl", InstanceTemplateArgs.builder()
  *             .name("template")
  *             .machineType("e2-medium")
  *             .disks(InstanceTemplateDiskArgs.builder()
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .canIpForward(true)
  *             .build());
  * 
- *         var tplInstanceFromTemplate = new InstanceFromTemplate("tplInstanceFromTemplate", InstanceFromTemplateArgs.builder()        
+ *         var tplInstanceFromTemplate = new InstanceFromTemplate("tplInstanceFromTemplate", InstanceFromTemplateArgs.builder()
  *             .name("instance-from-template")
  *             .zone("us-central1-a")
  *             .sourceInstanceTemplate(tpl.selfLinkUnique())

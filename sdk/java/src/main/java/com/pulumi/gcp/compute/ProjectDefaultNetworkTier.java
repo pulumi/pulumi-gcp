@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectDefaultNetworkTier("default", ProjectDefaultNetworkTierArgs.builder()        
+ *         var default_ = new ProjectDefaultNetworkTier("default", ProjectDefaultNetworkTierArgs.builder()
  *             .networkTier("PREMIUM")
  *             .build());
  * 

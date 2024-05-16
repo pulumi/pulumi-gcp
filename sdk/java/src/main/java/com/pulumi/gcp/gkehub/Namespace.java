@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *         var scope = new Scope("scope", ScopeArgs.builder()
  *             .scopeId("tf-test-scope_8493")
  *             .build());
  * 
- *         var namespace = new Namespace("namespace", NamespaceArgs.builder()        
+ *         var namespace = new Namespace("namespace", NamespaceArgs.builder()
  *             .scopeNamespaceId("tf-test-namespace_9106")
  *             .scopeId(scope.scopeId())
  *             .scope(scope.name())

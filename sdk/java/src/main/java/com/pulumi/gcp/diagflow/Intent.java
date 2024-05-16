@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .displayName("example_agent")
  *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicIntent = new Intent("basicIntent", IntentArgs.builder()        
+ *         var basicIntent = new Intent("basicIntent", IntentArgs.builder()
  *             .displayName("basic-intent")
  *             .build());
  * 
@@ -107,36 +107,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agentProject = new Project("agentProject", ProjectArgs.builder()        
+ *         var agentProject = new Project("agentProject", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var agentProjectService = new Service("agentProjectService", ServiceArgs.builder()        
+ *         var agentProjectService = new Service("agentProjectService", ServiceArgs.builder()
  *             .project(agentProject.projectId())
  *             .service("dialogflow.googleapis.com")
  *             .disableDependentServices(false)
  *             .build());
  * 
- *         var dialogflowServiceAccount = new Account("dialogflowServiceAccount", AccountArgs.builder()        
+ *         var dialogflowServiceAccount = new Account("dialogflowServiceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .build());
  * 
- *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()        
+ *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()
  *             .project(agentProjectService.project())
  *             .role("roles/dialogflow.admin")
  *             .member(dialogflowServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .project(agentProject.projectId())
  *             .displayName("example_agent")
  *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var fullIntent = new Intent("fullIntent", IntentArgs.builder()        
+ *         var fullIntent = new Intent("fullIntent", IntentArgs.builder()
  *             .project(agentProject.projectId())
  *             .displayName("full-intent")
  *             .webhookState("WEBHOOK_STATE_ENABLED")

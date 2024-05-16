@@ -64,11 +64,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()        
+ *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()
  *             .byteLength(16)
  *             .build());
  * 
- *         var webserver = new InstanceTemplate("webserver", InstanceTemplateArgs.builder()        
+ *         var webserver = new InstanceTemplate("webserver", InstanceTemplateArgs.builder()
  *             .name("standard-webserver")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var webservers = new InstanceGroupManager("webservers", InstanceGroupManagerArgs.builder()        
+ *         var webservers = new InstanceGroupManager("webservers", InstanceGroupManagerArgs.builder()
  *             .name("my-webservers")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(webserver.id())
@@ -92,14 +92,14 @@ import javax.annotation.Nullable;
  *             .targetSize(1)
  *             .build());
  * 
- *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
  *             .name("test")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var exampleBackend = new BackendService("exampleBackend", BackendServiceArgs.builder()        
+ *         var exampleBackend = new BackendService("exampleBackend", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .description("Our company website")
  *             .portName("http")
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var backendKey = new BackendServiceSignedUrlKey("backendKey", BackendServiceSignedUrlKeyArgs.builder()        
+ *         var backendKey = new BackendServiceSignedUrlKey("backendKey", BackendServiceSignedUrlKeyArgs.builder()
  *             .name("test-key")
  *             .keyValue(urlSignature.b64Url())
  *             .backendService(exampleBackend.name())

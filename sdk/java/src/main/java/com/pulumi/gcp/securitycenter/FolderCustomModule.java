@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new Folder("folder", FolderArgs.builder()        
+ *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
  *             .build());
  * 
- *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()        
+ *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()
  *             .folder(folder.folderId())
  *             .displayName("basic_custom_module")
  *             .enablementState("ENABLED")
@@ -117,12 +117,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new Folder("folder", FolderArgs.builder()        
+ *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
  *             .build());
  * 
- *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()        
+ *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()
  *             .folder(folder.folderId())
  *             .displayName("full_custom_module")
  *             .enablementState("ENABLED")

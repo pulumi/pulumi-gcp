@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_access = new AccessPolicy("test-access", AccessPolicyArgs.builder()        
+ *         var test_access = new AccessPolicy("test-access", AccessPolicyArgs.builder()
  *             .parent("organizations/")
  *             .title("my policy")
  *             .build());
  * 
- *         var authorized_orgs_desc = new AuthorizedOrgsDesc("authorized-orgs-desc", AuthorizedOrgsDescArgs.builder()        
+ *         var authorized_orgs_desc = new AuthorizedOrgsDesc("authorized-orgs-desc", AuthorizedOrgsDescArgs.builder()
  *             .parent(test_access.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(test_access.name().applyValue(name -> String.format("accessPolicies/%s/authorizedOrgsDescs/fakeDescName", name)))
  *             .authorizationType("AUTHORIZATION_TYPE_TRUST")

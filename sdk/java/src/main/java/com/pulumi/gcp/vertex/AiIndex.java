@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("vertex-ai-index-test")
  *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
- *         var data = new BucketObject("data", BucketObjectArgs.builder()        
+ *         var data = new BucketObject("data", BucketObjectArgs.builder()
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var index = new AiIndex("index", AiIndexArgs.builder()        
+ *         var index = new AiIndex("index", AiIndexArgs.builder()
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .displayName("test-index")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("vertex-ai-index-test")
  *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
- *         var data = new BucketObject("data", BucketObjectArgs.builder()        
+ *         var data = new BucketObject("data", BucketObjectArgs.builder()
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var index = new AiIndex("index", AiIndexArgs.builder()        
+ *         var index = new AiIndex("index", AiIndexArgs.builder()
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .displayName("test-index")

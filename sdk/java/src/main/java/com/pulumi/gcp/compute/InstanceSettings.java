@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gceInstanceSettings = new InstanceSettings("gceInstanceSettings", InstanceSettingsArgs.builder()        
+ *         var gceInstanceSettings = new InstanceSettings("gceInstanceSettings", InstanceSettingsArgs.builder()
  *             .zone("us-east7-b")
  *             .metadata(InstanceSettingsMetadataArgs.builder()
  *                 .items(Map.of("foo", "baz"))

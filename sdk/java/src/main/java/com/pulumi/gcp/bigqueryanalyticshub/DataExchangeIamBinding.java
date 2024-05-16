@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()        
+ *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()        
+ *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()        
+ *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()        
+ *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()        
+ *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()        
+ *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()
  *             .project(dataExchange.project())
  *             .location(dataExchange.location())
  *             .dataExchangeId(dataExchange.dataExchangeId())

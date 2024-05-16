@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var registry = new Registry("registry", RegistryArgs.builder()        
+ *         var registry = new Registry("registry", RegistryArgs.builder()
  *             .project("my-project")
  *             .location("EU")
  *             .build());
@@ -82,12 +82,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var registry = new Registry("registry", RegistryArgs.builder()        
+ *         var registry = new Registry("registry", RegistryArgs.builder()
  *             .project("my-project")
  *             .location("EU")
  *             .build());
  * 
- *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()
  *             .bucket(registry.id())
  *             .role("roles/storage.objectViewer")
  *             .member("user:jane{@literal @}example.com")

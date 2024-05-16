@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .name("test-network")
  *             .build());
  * 
- *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()        
+ *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
  *             .name("test-pool")
  *             .location("us-west2")
  *             .serviceLevel("PREMIUM")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var testVolume = new Volume("testVolume", VolumeArgs.builder()        
+ *         var testVolume = new Volume("testVolume", VolumeArgs.builder()
  *             .location("us-west2")
  *             .name("test-volume")
  *             .capacityGib("100")

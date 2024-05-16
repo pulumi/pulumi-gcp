@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
  *             .name("my-server-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
  *             .name("my-server-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
  *             .name("my-server-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .name("my-trust-config")
  *             .description("sample trust config description")
  *             .location("global")
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
  *             .name("my-server-tls-policy")
  *             .description("my description")
  *             .location("global")

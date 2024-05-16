@@ -58,11 +58,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var client = new Client("client", ClientArgs.builder()        
+ *         var client = new Client("client", ClientArgs.builder()
  *             .location("us-west1")
  *             .build());
  * 
- *         var basicExample = new AuthConfig("basicExample", AuthConfigArgs.builder()        
+ *         var basicExample = new AuthConfig("basicExample", AuthConfigArgs.builder()
  *             .location("us-west1")
  *             .displayName("test-authconfig")
  *             .description("Test auth config created via terraform")

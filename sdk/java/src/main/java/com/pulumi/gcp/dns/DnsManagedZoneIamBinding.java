@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()        
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()        
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .role("roles/viewer")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()        
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .role("roles/viewer")
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()        
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()        
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .role("roles/viewer")
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()        
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
  *             .role("roles/viewer")

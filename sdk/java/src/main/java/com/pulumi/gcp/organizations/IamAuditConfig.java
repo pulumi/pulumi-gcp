@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new IamAuditConfig("config", IamAuditConfigArgs.builder()        
+ *         var config = new IamAuditConfig("config", IamAuditConfigArgs.builder()
  *             .orgId("your-organization-id")
  *             .service("allServices")
  *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()

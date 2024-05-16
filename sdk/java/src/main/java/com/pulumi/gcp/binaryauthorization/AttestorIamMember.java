@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()        
+ *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()        
+ *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .role("roles/viewer")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()        
+ *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .role("roles/viewer")
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()        
+ *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()        
+ *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .role("roles/viewer")
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()        
+ *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
  *             .role("roles/viewer")
