@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()        
+ *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()        
+ *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()        
+ *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()        
+ *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()        
+ *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()        
+ *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()
  *             .project(basic.project())
  *             .location(basic.location())
  *             .name(basic.name())

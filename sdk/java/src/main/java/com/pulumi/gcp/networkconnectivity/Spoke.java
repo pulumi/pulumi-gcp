@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var basicHub = new Hub("basicHub", HubArgs.builder()        
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
  *             .name("hub")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
- *         var primary = new Spoke("primary", SpokeArgs.builder()        
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
  *             .name("name")
  *             .location("global")
  *             .description("A sample spoke with a linked routher appliance instance")
@@ -121,19 +121,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()        
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
  *             .name("subnet")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-west1")
  *             .network(network.selfLink())
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("instance")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
@@ -152,13 +152,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicHub = new Hub("basicHub", HubArgs.builder()        
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
  *             .name("hub")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
- *         var primary = new Spoke("primary", SpokeArgs.builder()        
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
  *             .name("name")
  *             .location("us-west1")
  *             .description("A sample spoke with a linked routher appliance instance")

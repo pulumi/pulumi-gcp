@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()        
+ *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()        
+ *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")

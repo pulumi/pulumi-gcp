@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()        
+ *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()        
+ *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new JobIamMember("member", JobIamMemberArgs.builder()        
+ *         var member = new JobIamMember("member", JobIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()        
+ *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()        
+ *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new JobIamMember("member", JobIamMemberArgs.builder()        
+ *         var member = new JobIamMember("member", JobIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())

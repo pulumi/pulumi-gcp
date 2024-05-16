@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Fleet("default", FleetArgs.builder()        
+ *         var default_ = new Fleet("default", FleetArgs.builder()
  *             .displayName("my production fleet")
  *             .defaultClusterConfig(FleetDefaultClusterConfigArgs.builder()
  *                 .securityPostureConfig(FleetDefaultClusterConfigSecurityPostureConfigArgs.builder()

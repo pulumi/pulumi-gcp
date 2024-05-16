@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var samlConfig = new InboundSamlConfig("samlConfig", InboundSamlConfigArgs.builder()        
+ *         var samlConfig = new InboundSamlConfig("samlConfig", InboundSamlConfigArgs.builder()
  *             .name("saml.tf-config")
  *             .displayName("Display Name")
  *             .idpConfig(InboundSamlConfigIdpConfigArgs.builder()

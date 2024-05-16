@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()        
+ *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()        
+ *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()        
+ *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()        
+ *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()        
+ *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()        
+ *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())

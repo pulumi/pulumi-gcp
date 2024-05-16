@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new MuteConfig("default", MuteConfigArgs.builder()        
+ *         var default_ = new MuteConfig("default", MuteConfigArgs.builder()
  *             .muteConfigId("my-config")
  *             .parent("organizations/123456789")
  *             .filter("category: \"OS_VULNERABILITY\"")

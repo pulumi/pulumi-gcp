@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingCustomDomain("default", HostingCustomDomainArgs.builder()        
+ *         var default_ = new HostingCustomDomain("default", HostingCustomDomainArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .customDomain("custom.domain.com")
@@ -85,12 +85,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id-full")
  *             .build());
  * 
- *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()        
+ *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()
  *             .project("my-project-name")
  *             .siteId(default_.siteId())
  *             .customDomain("source.domain.com")
@@ -139,12 +139,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .name("cloud-run-service-via-hosting")
  *             .location("us-central1")
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
@@ -169,13 +169,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Cloud Run Integration")
  *             .build());
  * 
- *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()        
+ *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()
  *             .project("my-project-name")
  *             .siteId(default_.siteId())
  *             .customDomain("run.custom.domain.com")

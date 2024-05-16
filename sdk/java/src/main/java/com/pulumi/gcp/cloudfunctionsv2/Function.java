@@ -64,19 +64,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-v2")
  *             .location("us-central1")
  *             .description("a new function")
@@ -144,28 +144,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .accountId("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("functions2-topic")
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
  *             .location("us-central1")
  *             .description("a new function")
@@ -251,24 +251,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .accountId("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
  *             .location("us-central1")
  *             .description("a new function")
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()        
+ *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -298,7 +298,7 @@ import javax.annotation.Nullable;
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var cloudRunInvoker = new IamMember("cloudRunInvoker", IamMemberArgs.builder()        
+ *         var cloudRunInvoker = new IamMember("cloudRunInvoker", IamMemberArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .service(function.name())
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var invokeCloudFunction = new Job("invokeCloudFunction", JobArgs.builder()        
+ *         var invokeCloudFunction = new Job("invokeCloudFunction", JobArgs.builder()
  *             .name("invoke-gcf-function")
  *             .description("Schedule the HTTPS trigger for cloud function")
  *             .schedule("0 0 * * *")
@@ -368,19 +368,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source_bucket = new Bucket("source-bucket", BucketArgs.builder()        
+ *         var source_bucket = new Bucket("source-bucket", BucketArgs.builder()
  *             .name("gcf-source-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(source_bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var trigger_bucket = new Bucket("trigger-bucket", BucketArgs.builder()        
+ *         var trigger_bucket = new Bucket("trigger-bucket", BucketArgs.builder()
  *             .name("gcf-trigger-bucket")
  *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
@@ -390,37 +390,37 @@ import javax.annotation.Nullable;
  * 
  *         // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
  *         // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
- *         var gcs_pubsub_publishing = new IAMMember("gcs-pubsub-publishing", IAMMemberArgs.builder()        
+ *         var gcs_pubsub_publishing = new IAMMember("gcs-pubsub-publishing", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/pubsub.publisher")
  *             .member(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
  *             .build());
  * 
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .accountId("gcf-sa")
  *             .displayName("Test Service Account - used for both the cloud function and eventarc trigger in the test")
  *             .build());
  * 
  *         // Permissions on the service account used by the function and Eventarc trigger
- *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()        
+ *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/run.invoker")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()        
+ *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()        
+ *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
  *             .location("us-central1")
  *             .description("a new function")
@@ -504,19 +504,19 @@ import javax.annotation.Nullable;
  *         // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
  *         // and the docs:
  *         // https://cloud.google.com/eventarc/docs/path-patterns
- *         var source_bucket = new Bucket("source-bucket", BucketArgs.builder()        
+ *         var source_bucket = new Bucket("source-bucket", BucketArgs.builder()
  *             .name("gcf-source-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(source_bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .accountId("gcf-sa")
  *             .displayName("Test Service Account - used for both the cloud function and eventarc trigger in the test")
  *             .build());
@@ -524,32 +524,32 @@ import javax.annotation.Nullable;
  *         // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
  *         // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
  *         // google_cloudfunctions2_function below (Audit Log events have path pattern support)
- *         var audit_log_bucket = new Bucket("audit-log-bucket", BucketArgs.builder()        
+ *         var audit_log_bucket = new Bucket("audit-log-bucket", BucketArgs.builder()
  *             .name("gcf-auditlog-bucket")
  *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         // Permissions on the service account used by the function and Eventarc trigger
- *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()        
+ *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/run.invoker")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()        
+ *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()        
+ *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
  *             .location("us-central1")
  *             .description("a new function")
@@ -643,47 +643,47 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .accountId("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var logWriter = new IAMMember("logWriter", IAMMemberArgs.builder()        
+ *         var logWriter = new IAMMember("logWriter", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/logging.logWriter")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var artifactRegistryWriter = new IAMMember("artifactRegistryWriter", IAMMemberArgs.builder()        
+ *         var artifactRegistryWriter = new IAMMember("artifactRegistryWriter", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/artifactregistry.writer")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var storageObjectAdmin = new IAMMember("storageObjectAdmin", IAMMemberArgs.builder()        
+ *         var storageObjectAdmin = new IAMMember("storageObjectAdmin", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/storage.objectAdmin")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
  *         // builder permissions need to stablize before it can pull the source zip
- *         var wait60s = new Sleep("wait60s", SleepArgs.builder()        
+ *         var wait60s = new Sleep("wait60s", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-v2")
  *             .location("us-central1")
  *             .description("a new function")
@@ -753,19 +753,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -776,7 +776,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-secret")
  *             .location("us-central1")
  *             .description("a new function")
@@ -803,7 +803,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()        
+ *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
  *             .secret(secret.name())
  *             .secretData("secret")
  *             .enabled(true)
@@ -856,19 +856,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -879,7 +879,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-secret")
  *             .location("us-central1")
  *             .description("a new function")
@@ -905,7 +905,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()        
+ *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
  *             .secret(secret.name())
  *             .secretData("secret")
  *             .enabled(true)
@@ -955,19 +955,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()        
+ *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()
  *             .name("workerpool")
  *             .location("us-central1")
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
@@ -977,7 +977,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-workerpool")
  *             .location("us-central1")
  *             .description("a new function")
@@ -1052,44 +1052,44 @@ import javax.annotation.Nullable;
  * 
  *         final var projectGetProject = OrganizationsFunctions.getProject();
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var eaSa = new ServiceIdentity("eaSa", ServiceIdentityArgs.builder()        
+ *         var eaSa = new ServiceIdentity("eaSa", ServiceIdentityArgs.builder()
  *             .project(projectGetProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .service("eventarc.googleapis.com")
  *             .build());
  * 
- *         var unencoded_ar_repo = new Repository("unencoded-ar-repo", RepositoryArgs.builder()        
+ *         var unencoded_ar_repo = new Repository("unencoded-ar-repo", RepositoryArgs.builder()
  *             .repositoryId("ar-repo")
  *             .location("us-central1")
  *             .format("DOCKER")
  *             .build());
  * 
- *         var encoded_ar_repo = new Repository("encoded-ar-repo", RepositoryArgs.builder()        
+ *         var encoded_ar_repo = new Repository("encoded-ar-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("cmek-repo")
  *             .format("DOCKER")
  *             .kmsKeyName("cmek-key")
  *             .build());
  * 
- *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()        
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
  *             .location(encoded_ar_repo.location())
  *             .repository(encoded_ar_repo.name())
  *             .role("roles/artifactregistry.admin")
  *             .members(String.format("serviceAccount:service-%s{@literal @}gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var gcfCmekKeyuser = new CryptoKeyIAMBinding("gcfCmekKeyuser", CryptoKeyIAMBindingArgs.builder()        
+ *         var gcfCmekKeyuser = new CryptoKeyIAMBinding("gcfCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId("cmek-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .members(            
@@ -1100,7 +1100,7 @@ import javax.annotation.Nullable;
  *                 eaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-cmek")
  *             .location("us-central1")
  *             .description("CMEK function")

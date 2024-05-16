@@ -59,14 +59,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnet_nw = new Network("subnet-nw", NetworkArgs.builder()        
+ *         var subnet_nw = new Network("subnet-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var subnet_pc = new PrivateCloud("subnet-pc", PrivateCloudArgs.builder()        
+ *         var subnet_pc = new PrivateCloud("subnet-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vmw_engine_subnet = new Subnet("vmw-engine-subnet", SubnetArgs.builder()        
+ *         var vmw_engine_subnet = new Subnet("vmw-engine-subnet", SubnetArgs.builder()
  *             .name("service-1")
  *             .parent(subnet_pc.id())
  *             .ipCidrRange("192.168.100.0/26")

@@ -79,35 +79,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()        
+ *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Custom Service Account")
  *             .build());
  * 
- *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()        
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
  *             .project(customServiceAccount.project())
  *             .role("roles/compute.networkUser")
  *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()        
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
  *             .project(customServiceAccount.project())
  *             .role("roles/storage.objectViewer")
  *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("appengine-static-content")
  *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("hello-world.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var myappV1 = new StandardAppVersion("myappV1", StandardAppVersionArgs.builder()        
+ *         var myappV1 = new StandardAppVersion("myappV1", StandardAppVersionArgs.builder()
  *             .versionId("v1")
  *             .service("myapp")
  *             .runtime("nodejs20")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
- *         var myappV2 = new StandardAppVersion("myappV2", StandardAppVersionArgs.builder()        
+ *         var myappV2 = new StandardAppVersion("myappV2", StandardAppVersionArgs.builder()
  *             .versionId("v2")
  *             .service("myapp")
  *             .runtime("nodejs20")

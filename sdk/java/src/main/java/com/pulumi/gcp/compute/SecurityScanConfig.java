@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scannerStaticIp = new Address("scannerStaticIp", AddressArgs.builder()        
+ *         var scannerStaticIp = new Address("scannerStaticIp", AddressArgs.builder()
  *             .name("scan-basic-static-ip")
  *             .build());
  * 
- *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()        
+ *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
  *             .displayName("scan-config")
  *             .startingUrls(scannerStaticIp.address().applyValue(address -> String.format("http://%s", address)))
  *             .targetPlatforms("COMPUTE")

@@ -59,18 +59,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("appengine-static-content")
  *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("hello-world.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var internalapp = new StandardAppVersion("internalapp", StandardAppVersionArgs.builder()        
+ *         var internalapp = new StandardAppVersion("internalapp", StandardAppVersionArgs.builder()
  *             .versionId("v1")
  *             .service("internalapp")
  *             .deleteServiceOnDestroy(true)
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .envVariables(Map.of("port", "8080"))
  *             .build());
  * 
- *         var internalappServiceNetworkSettings = new ServiceNetworkSettings("internalappServiceNetworkSettings", ServiceNetworkSettingsArgs.builder()        
+ *         var internalappServiceNetworkSettings = new ServiceNetworkSettings("internalappServiceNetworkSettings", ServiceNetworkSettingsArgs.builder()
  *             .service(internalapp.service())
  *             .networkSettings(ServiceNetworkSettingsNetworkSettingsArgs.builder()
  *                 .ingressTrafficAllowed("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY")

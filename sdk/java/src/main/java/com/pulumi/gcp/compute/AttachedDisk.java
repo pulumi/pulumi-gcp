@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name("attached-disk-instance")
  *             .machineType("e2-medium")
  *             .zone("us-west1-a")
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new AttachedDisk("default", AttachedDiskArgs.builder()        
+ *         var default_ = new AttachedDisk("default", AttachedDiskArgs.builder()
  *             .disk(defaultGoogleComputeDisk.id())
  *             .instance(defaultInstance.id())
  *             .build());

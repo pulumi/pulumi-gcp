@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()        
+ *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()
  *             .name("my-client-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()        
+ *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()
  *             .name("my-client-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

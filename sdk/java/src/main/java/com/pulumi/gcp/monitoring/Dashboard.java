@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()        
+ *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .dashboardJson("""
  * {
  *   "displayName": "Demo Dashboard",
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()        
+ *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .dashboardJson("""
  * {
  *   "displayName": "Grid Layout Example",

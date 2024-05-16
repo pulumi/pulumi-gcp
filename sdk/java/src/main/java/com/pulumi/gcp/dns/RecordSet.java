@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var frontendInstance = new Instance("frontendInstance", InstanceArgs.builder()        
+ *         var frontendInstance = new Instance("frontendInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network("default")
@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+ *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
  *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
  *             .type("A")
  *             .ttl(300)
@@ -113,12 +113,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var a = new RecordSet("a", RecordSetArgs.builder()        
+ *         var a = new RecordSet("a", RecordSetArgs.builder()
  *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
  *             .managedZone(prod.name())
  *             .type("A")
@@ -159,12 +159,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var mx = new RecordSet("mx", RecordSetArgs.builder()        
+ *         var mx = new RecordSet("mx", RecordSetArgs.builder()
  *             .name(prod.dnsName())
  *             .managedZone(prod.name())
  *             .type("MX")
@@ -212,12 +212,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var spf = new RecordSet("spf", RecordSetArgs.builder()        
+ *         var spf = new RecordSet("spf", RecordSetArgs.builder()
  *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
  *             .managedZone(prod.name())
  *             .type("TXT")
@@ -260,12 +260,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var cname = new RecordSet("cname", RecordSetArgs.builder()        
+ *         var cname = new RecordSet("cname", RecordSetArgs.builder()
  *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
  *             .managedZone(prod.name())
  *             .type("CNAME")
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var geo = new RecordSet("geo", RecordSetArgs.builder()        
+ *         var geo = new RecordSet("geo", RecordSetArgs.builder()
  *             .name(String.format("backend.%s", prod.dnsName()))
  *             .managedZone(prod.name())
  *             .type("A")
@@ -366,21 +366,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var prodRegionBackendService = new RegionBackendService("prodRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var prodRegionBackendService = new RegionBackendService("prodRegionBackendService", RegionBackendServiceArgs.builder()
  *             .name("prod-backend")
  *             .region("us-central1")
  *             .build());
  * 
- *         var prodNetwork = new Network("prodNetwork", NetworkArgs.builder()        
+ *         var prodNetwork = new Network("prodNetwork", NetworkArgs.builder()
  *             .name("prod-network")
  *             .build());
  * 
- *         var prodForwardingRule = new ForwardingRule("prodForwardingRule", ForwardingRuleArgs.builder()        
+ *         var prodForwardingRule = new ForwardingRule("prodForwardingRule", ForwardingRuleArgs.builder()
  *             .name("prod-ilb")
  *             .region("us-central1")
  *             .loadBalancingScheme("INTERNAL")
@@ -390,7 +390,7 @@ import javax.annotation.Nullable;
  *             .allowGlobalAccess(true)
  *             .build());
  * 
- *         var a = new RecordSet("a", RecordSetArgs.builder()        
+ *         var a = new RecordSet("a", RecordSetArgs.builder()
  *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
  *             .managedZone(prod.name())
  *             .type("A")

@@ -61,11 +61,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("my_entry")
  *             .userSpecifiedType("my_custom_type")
@@ -105,11 +105,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("my_entry")
  *             .type("FILESET")
@@ -150,11 +150,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("my_entry")
  *             .userSpecifiedType("my_user_specified_type")

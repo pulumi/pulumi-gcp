@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var ssd = new Disk("ssd", DiskArgs.builder()        
+ *         var ssd = new Disk("ssd", DiskArgs.builder()
  *             .name("my-disk")
  *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(50)
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()        
+ *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()
  *             .name("my-resource-policy")
  *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attachment = new DiskResourcePolicyAttachment("attachment", DiskResourcePolicyAttachmentArgs.builder()        
+ *         var attachment = new DiskResourcePolicyAttachment("attachment", DiskResourcePolicyAttachmentArgs.builder()
  *             .name(policy.name())
  *             .disk(ssd.name())
  *             .zone("us-central1-a")

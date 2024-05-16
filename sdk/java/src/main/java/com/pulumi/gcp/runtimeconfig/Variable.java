@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()        
+ *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()
  *             .name("my-service-runtime-config")
  *             .description("Runtime configuration values for my service")
  *             .build());
  * 
- *         var environment = new Variable("environment", VariableArgs.builder()        
+ *         var environment = new Variable("environment", VariableArgs.builder()
  *             .parent(my_runtime_config.name())
  *             .name("prod-variables/hostname")
  *             .text("example.com")
@@ -92,12 +92,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()        
+ *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()
  *             .name("my-service-runtime-config")
  *             .description("Runtime configuration values for my service")
  *             .build());
  * 
- *         var my_secret = new Variable("my-secret", VariableArgs.builder()        
+ *         var my_secret = new Variable("my-secret", VariableArgs.builder()
  *             .parent(my_runtime_config.name())
  *             .name("secret")
  *             .value(StdFunctions.filebase64(Filebase64Args.builder()

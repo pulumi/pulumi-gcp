@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicIntent = new CxIntent("basicIntent", CxIntentArgs.builder()        
+ *         var basicIntent = new CxIntent("basicIntent", CxIntentArgs.builder()
  *             .parent(agent.id())
  *             .displayName("Example")
  *             .priority(1)

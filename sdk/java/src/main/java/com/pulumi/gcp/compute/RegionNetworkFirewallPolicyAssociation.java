@@ -46,18 +46,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()        
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
  *             .name("policy")
  *             .project("my-project-name")
  *             .description("Sample global network firewall policy")
  *             .region("us-west1")
  *             .build());
  * 
- *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()
  *             .name("network")
  *             .build());
  * 
- *         var primary = new RegionNetworkFirewallPolicyAssociation("primary", RegionNetworkFirewallPolicyAssociationArgs.builder()        
+ *         var primary = new RegionNetworkFirewallPolicyAssociation("primary", RegionNetworkFirewallPolicyAssociationArgs.builder()
  *             .name("association")
  *             .attachmentTarget(basicNetwork.id())
  *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
