@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())
@@ -107,18 +107,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBackendBucket = new Bucket("imageBackendBucket", BucketArgs.builder()        
+ *         var imageBackendBucket = new Bucket("imageBackendBucket", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("image-store-bucket")
  *             .description("basic security policy")
  *             .type("CLOUD_ARMOR_EDGE")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .description("Contains beautiful images")
  *             .bucketName(imageBackendBucket.name())
@@ -160,12 +160,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())
@@ -211,12 +211,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()
  *             .name("image-backend-bucket")
  *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())

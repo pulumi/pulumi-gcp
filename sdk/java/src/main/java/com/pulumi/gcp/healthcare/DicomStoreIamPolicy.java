@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dicomStore = new DicomStoreIamPolicy("dicomStore", DicomStoreIamPolicyArgs.builder()        
+ *         var dicomStore = new DicomStoreIamPolicy("dicomStore", DicomStoreIamPolicyArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dicomStore = new DicomStoreIamBinding("dicomStore", DicomStoreIamBindingArgs.builder()        
+ *         var dicomStore = new DicomStoreIamBinding("dicomStore", DicomStoreIamBindingArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dicomStore = new DicomStoreIamMember("dicomStore", DicomStoreIamMemberArgs.builder()        
+ *         var dicomStore = new DicomStoreIamMember("dicomStore", DicomStoreIamMemberArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dicomStore = new DicomStoreIamPolicy("dicomStore", DicomStoreIamPolicyArgs.builder()        
+ *         var dicomStore = new DicomStoreIamPolicy("dicomStore", DicomStoreIamPolicyArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dicomStore = new DicomStoreIamBinding("dicomStore", DicomStoreIamBindingArgs.builder()        
+ *         var dicomStore = new DicomStoreIamBinding("dicomStore", DicomStoreIamBindingArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dicomStore = new DicomStoreIamMember("dicomStore", DicomStoreIamMemberArgs.builder()        
+ *         var dicomStore = new DicomStoreIamMember("dicomStore", DicomStoreIamMemberArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

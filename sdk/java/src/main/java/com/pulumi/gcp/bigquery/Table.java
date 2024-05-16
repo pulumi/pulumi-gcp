@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("foo")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "default"))
  *             .build());
  * 
- *         var defaultTable = new Table("defaultTable", TableArgs.builder()        
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
  *             .datasetId(default_.datasetId())
  *             .tableId("bar")
  *             .timePartitioning(TableTimePartitioningArgs.builder()
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var sheet = new Table("sheet", TableArgs.builder()        
+ *         var sheet = new Table("sheet", TableArgs.builder()
  *             .datasetId(default_.datasetId())
  *             .tableId("sheet")
  *             .externalDataConfiguration(TableExternalDataConfigurationArgs.builder()

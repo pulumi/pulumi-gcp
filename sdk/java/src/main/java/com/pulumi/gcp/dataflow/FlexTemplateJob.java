@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
  *             .name("dataflow-flextemplates-job")
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .parameters(Map.of("inputSubscription", "messages"))
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId").orElse("projects/myproject/subscriptions/messages");
- *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()        
+ *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
  *                 Map.entry("region", region),
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
  *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
  *             .region(region)
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")

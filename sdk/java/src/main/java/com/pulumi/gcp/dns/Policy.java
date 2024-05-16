@@ -59,17 +59,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()
  *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var example_policy = new Policy("example-policy", PolicyArgs.builder()        
+ *         var example_policy = new Policy("example-policy", PolicyArgs.builder()
  *             .name("example-policy")
  *             .enableInboundForwarding(true)
  *             .enableLogging(true)

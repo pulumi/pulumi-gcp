@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_basic = new RegionSecurityPolicy("region-sec-policy-basic", RegionSecurityPolicyArgs.builder()        
+ *         var region_sec_policy_basic = new RegionSecurityPolicy("region-sec-policy-basic", RegionSecurityPolicyArgs.builder()
  *             .name("my-sec-policy-basic")
  *             .description("basic region security policy")
  *             .type("CLOUD_ARMOR")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy("region-sec-policy-ddos-protection", RegionSecurityPolicyArgs.builder()        
+ *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy("region-sec-policy-ddos-protection", RegionSecurityPolicyArgs.builder()
  *             .name("my-sec-policy-ddos-protection")
  *             .description("with ddos protection config")
  *             .type("CLOUD_ARMOR_NETWORK")
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy("region-sec-policy-user-defined-fields", RegionSecurityPolicyArgs.builder()        
+ *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy("region-sec-policy-user-defined-fields", RegionSecurityPolicyArgs.builder()
  *             .name("my-sec-policy-user-defined-fields")
  *             .description("with user defined fields")
  *             .type("CLOUD_ARMOR_NETWORK")

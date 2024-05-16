@@ -60,18 +60,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("appengine-test-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("hello-world.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var adminV3 = new StandardAppVersion("adminV3", StandardAppVersionArgs.builder()        
+ *         var adminV3 = new StandardAppVersion("adminV3", StandardAppVersionArgs.builder()
  *             .versionId("v3")
  *             .service("admin")
  *             .runtime("nodejs20")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
- *         var webService = new ApplicationUrlDispatchRules("webService", ApplicationUrlDispatchRulesArgs.builder()        
+ *         var webService = new ApplicationUrlDispatchRules("webService", ApplicationUrlDispatchRulesArgs.builder()
  *             .dispatchRules(            
  *                 ApplicationUrlDispatchRulesDispatchRuleArgs.builder()
  *                     .domain("*")

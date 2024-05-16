@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var access_level_service_account = new AccessLevel("access-level-service-account", AccessLevelArgs.builder()        
+ *         var access_level_service_account = new AccessLevel("access-level-service-account", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
  *             .title("chromeos_no_lock")
@@ -100,11 +100,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var created_later = new Account("created-later", AccountArgs.builder()        
+ *         var created_later = new Account("created-later", AccountArgs.builder()
  *             .accountId("my-account-id")
  *             .build());
  * 
- *         var access_level_conditions = new AccessLevelCondition("access-level-conditions", AccessLevelConditionArgs.builder()        
+ *         var access_level_conditions = new AccessLevelCondition("access-level-conditions", AccessLevelConditionArgs.builder()
  *             .accessLevel(access_level_service_account.name())
  *             .ipSubnetworks("192.0.4.0/24")
  *             .members(            

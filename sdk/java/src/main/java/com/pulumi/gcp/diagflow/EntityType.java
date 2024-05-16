@@ -56,13 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .displayName("example_agent")
  *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicEntityType = new EntityType("basicEntityType", EntityTypeArgs.builder()        
+ *         var basicEntityType = new EntityType("basicEntityType", EntityTypeArgs.builder()
  *             .displayName("")
  *             .kind("KIND_MAP")
  *             .entities(            

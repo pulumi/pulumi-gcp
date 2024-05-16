@@ -896,13 +896,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -953,11 +953,11 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -965,7 +965,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1025,13 +1025,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -1082,11 +1082,11 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1094,7 +1094,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1154,13 +1154,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -1211,11 +1211,11 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1223,7 +1223,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1283,13 +1283,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -1340,11 +1340,11 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1352,7 +1352,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1404,13 +1404,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .purpose("ASYMMETRIC_DECRYPT")
@@ -1482,11 +1482,11 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1494,7 +1494,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1546,13 +1546,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .purpose("ASYMMETRIC_DECRYPT")
@@ -1624,11 +1624,11 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1636,7 +1636,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1688,13 +1688,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .purpose("ASYMMETRIC_DECRYPT")
@@ -1766,11 +1766,11 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1778,7 +1778,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1830,13 +1830,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .purpose("ASYMMETRIC_DECRYPT")
@@ -1908,11 +1908,11 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
      *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -1920,7 +1920,7 @@ public final class KmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var users = new User("users", UserArgs.builder()        
+     *         var users = new User("users", UserArgs.builder()
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
@@ -1982,13 +1982,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -2034,7 +2034,7 @@ public final class KmsFunctions {
      *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -2106,13 +2106,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -2158,7 +2158,7 @@ public final class KmsFunctions {
      *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -2230,13 +2230,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -2282,7 +2282,7 @@ public final class KmsFunctions {
      *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -2354,13 +2354,13 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
      *             .project("my-project")
      *             .name("my-key-ring")
      *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()
      *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
@@ -2406,7 +2406,7 @@ public final class KmsFunctions {
      *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")

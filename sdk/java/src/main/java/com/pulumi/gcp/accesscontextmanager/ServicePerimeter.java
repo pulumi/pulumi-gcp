@@ -73,12 +73,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()        
+ *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_storage", name)))
  *             .title("restrict_storage")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()        
+ *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
  *             .title("chromeos_no_lock")
@@ -149,12 +149,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var secure_data_exchange = new ServicePerimeters("secure-data-exchange", ServicePerimetersArgs.builder()        
+ *         var secure_data_exchange = new ServicePerimeters("secure-data-exchange", ServicePerimetersArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .servicePerimeters(            
  *                 ServicePerimetersServicePerimeterArgs.builder()
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()        
+ *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/secure_data_exchange", name)))
  *             .title("secure_data_exchange")
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var test_access = new ServicePerimeter("test-access", ServicePerimeterArgs.builder()        
+ *         var test_access = new ServicePerimeter("test-access", ServicePerimeterArgs.builder()
  *             .parent(String.format("accessPolicies/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
  *             .name(String.format("accessPolicies/%s/servicePerimeters/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
  *             .title("%s")
@@ -286,12 +286,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()        
+ *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_bigquery_dryrun_storage", name)))
  *             .title("restrict_bigquery_dryrun_storage")

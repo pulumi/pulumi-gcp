@@ -209,12 +209,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -269,12 +269,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -329,12 +329,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -389,12 +389,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -450,12 +450,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -511,12 +511,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -572,12 +572,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -633,12 +633,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -694,12 +694,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -755,12 +755,12 @@ public final class ComputeFunctions {
      *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -1202,7 +1202,7 @@ public final class ComputeFunctions {
      *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1257,7 +1257,7 @@ public final class ComputeFunctions {
      *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1312,7 +1312,7 @@ public final class ComputeFunctions {
      *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1367,7 +1367,7 @@ public final class ComputeFunctions {
      *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1687,12 +1687,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -1747,12 +1747,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -1807,12 +1807,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -1867,12 +1867,12 @@ public final class ComputeFunctions {
      *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
      *             .name("prod-zone")
      *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
      *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
      *             .type("A")
      *             .ttl(300)
@@ -2036,7 +2036,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -2092,7 +2092,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -2148,7 +2148,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -2204,7 +2204,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -2260,7 +2260,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -2316,7 +2316,7 @@ public final class ComputeFunctions {
      *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
@@ -3584,7 +3584,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance("windows", InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -3707,7 +3707,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance("windows", InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -3830,7 +3830,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance("windows", InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -3953,7 +3953,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance("windows", InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
      *                 .network("default")
@@ -4685,23 +4685,23 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network("other", NetworkArgs.builder()        
+     *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
      *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
      *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
@@ -4757,23 +4757,23 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network("other", NetworkArgs.builder()        
+     *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
      *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
      *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
@@ -4829,23 +4829,23 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network("other", NetworkArgs.builder()        
+     *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
      *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
      *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
@@ -4901,23 +4901,23 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network("other", NetworkArgs.builder()        
+     *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
      *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
      *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
      *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
@@ -5027,7 +5027,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5078,7 +5078,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5129,7 +5129,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5180,7 +5180,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5231,7 +5231,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5282,7 +5282,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
      *             .nodeType(types.names()[0])
@@ -5354,7 +5354,7 @@ public final class ComputeFunctions {
      *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5414,7 +5414,7 @@ public final class ComputeFunctions {
      *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5474,7 +5474,7 @@ public final class ComputeFunctions {
      *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5534,7 +5534,7 @@ public final class ComputeFunctions {
      *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -6659,7 +6659,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -6711,7 +6711,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -6763,7 +6763,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -6815,7 +6815,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -6867,7 +6867,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -6919,7 +6919,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions();
      * 
      *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
@@ -8822,51 +8822,6 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -8874,51 +8829,6 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -8928,51 +8838,6 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -8980,51 +8845,6 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -9034,51 +8854,6 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -9086,51 +8861,6 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
-     * import com.pulumi.gcp.compute.InstanceGroupManager;
-     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getZones();
-     * 
-     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
-     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
-     *                 .targetSize(1)
-     *                 .build());
-     * 
-     *         
-     * }
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

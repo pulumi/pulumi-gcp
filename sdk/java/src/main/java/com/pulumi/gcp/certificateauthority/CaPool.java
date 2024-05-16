@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")

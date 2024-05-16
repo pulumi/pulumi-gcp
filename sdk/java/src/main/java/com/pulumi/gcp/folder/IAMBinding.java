@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var department1 = new Folder("department1", FolderArgs.builder()        
+ *         var department1 = new Folder("department1", FolderArgs.builder()
  *             .displayName("Department 1")
  *             .parent("organizations/1234567")
  *             .build());
  * 
- *         var admin = new IAMBinding("admin", IAMBindingArgs.builder()        
+ *         var admin = new IAMBinding("admin", IAMBindingArgs.builder()
  *             .folder(department1.name())
  *             .role("roles/editor")
  *             .members("user:alice{@literal @}gmail.com")

@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var image_store = new Bucket("image-store", BucketArgs.builder()        
+ *         var image_store = new Bucket("image-store", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var image_store_default_acl = new DefaultObjectACL("image-store-default-acl", DefaultObjectACLArgs.builder()        
+ *         var image_store_default_acl = new DefaultObjectACL("image-store-default-acl", DefaultObjectACLArgs.builder()
  *             .bucket(image_store.name())
  *             .roleEntities(            
  *                 "OWNER:user-my.email{@literal @}gmail.com",

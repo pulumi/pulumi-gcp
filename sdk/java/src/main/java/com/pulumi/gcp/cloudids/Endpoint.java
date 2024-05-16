@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("tf-test-my-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()
  *             .name("address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -67,13 +67,13 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var example_endpoint = new Endpoint("example-endpoint", EndpointArgs.builder()        
+ *         var example_endpoint = new Endpoint("example-endpoint", EndpointArgs.builder()
  *             .name("test")
  *             .location("us-central1-f")
  *             .network(default_.id())

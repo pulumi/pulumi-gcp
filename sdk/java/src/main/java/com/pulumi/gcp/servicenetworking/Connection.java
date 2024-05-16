@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a VPC network
- *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()        
+ *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()
  *             .name("peering-network")
  *             .build());
  * 
  *         // Create an IP address
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("private-ip-alloc")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -67,14 +67,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a private connection
- *         var default_ = new Connection("default", ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()
  *             .network(peeringNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
  *         // (Optional) Import or export custom routes
- *         var peeringRoutes = new NetworkPeeringRoutesConfig("peeringRoutes", NetworkPeeringRoutesConfigArgs.builder()        
+ *         var peeringRoutes = new NetworkPeeringRoutesConfig("peeringRoutes", NetworkPeeringRoutesConfigArgs.builder()
  *             .peering(default_.peering())
  *             .network(peeringNetwork.name())
  *             .importCustomRoutes(true)

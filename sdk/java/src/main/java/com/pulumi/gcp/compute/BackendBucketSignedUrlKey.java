@@ -56,23 +56,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()        
+ *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()
  *             .byteLength(16)
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("test-storage-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var testBackend = new BackendBucket("testBackend", BackendBucketArgs.builder()        
+ *         var testBackend = new BackendBucket("testBackend", BackendBucketArgs.builder()
  *             .name("test-signed-backend-bucket")
  *             .description("Contains beautiful images")
  *             .bucketName(bucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var backendKey = new BackendBucketSignedUrlKey("backendKey", BackendBucketSignedUrlKeyArgs.builder()        
+ *         var backendKey = new BackendBucketSignedUrlKey("backendKey", BackendBucketSignedUrlKeyArgs.builder()
  *             .name("test-key")
  *             .keyValue(urlSignature.b64Url())
  *             .backendBucket(testBackend.name())
