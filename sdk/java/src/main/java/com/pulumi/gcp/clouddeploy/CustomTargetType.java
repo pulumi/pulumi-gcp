@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
  *             .location("us-central1")
  *             .name("my-custom-target-type")
  *             .description("My custom target type")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
  *             .location("us-central1")
  *             .name("my-custom-target-type")
  *             .description("My custom target type")
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
  *             .location("us-central1")
  *             .name("my-custom-target-type")
  *             .description("My custom target type")
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
  *             .location("us-central1")
  *             .name("my-custom-target-type")
  *             .description("My custom target type")

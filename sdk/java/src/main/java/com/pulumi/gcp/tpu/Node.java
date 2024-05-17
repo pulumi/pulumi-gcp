@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         var tpu = new Node("tpu", NodeArgs.builder()        
+ *         var tpu = new Node("tpu", NodeArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-b")
  *             .acceleratorType("v3-8")
@@ -108,11 +108,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("tpu-node-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()
  *             .name("my-global-address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -120,13 +120,13 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()
  *             .network(network.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var tpu = new Node("tpu", NodeArgs.builder()        
+ *         var tpu = new Node("tpu", NodeArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-b")
  *             .acceleratorType("v3-8")

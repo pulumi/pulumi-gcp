@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .location("us-central1")
  *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()
  *             .dataset(dataset.id())
  *             .name("my-consent-store")
  *             .build());
@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .location("us-central1")
  *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()
  *             .dataset(dataset.id())
  *             .name("my-consent-store")
  *             .enableConsentCreateOnUpdate(true)
@@ -146,22 +146,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .location("us-central1")
  *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()
  *             .dataset(dataset.id())
  *             .name("my-consent-store")
  *             .build());
  * 
- *         var test_account = new Account("test-account", AccountArgs.builder()        
+ *         var test_account = new Account("test-account", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var test_iam = new ConsentStoreIamMember("test-iam", ConsentStoreIamMemberArgs.builder()        
+ *         var test_iam = new ConsentStoreIamMember("test-iam", ConsentStoreIamMemberArgs.builder()
  *             .dataset(dataset.id())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/editor")

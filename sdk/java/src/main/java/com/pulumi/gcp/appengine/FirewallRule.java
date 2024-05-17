@@ -56,19 +56,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("tf-test-project")
  *             .projectId("ae-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var app = new Application("app", ApplicationArgs.builder()        
+ *         var app = new Application("app", ApplicationArgs.builder()
  *             .project(myProject.projectId())
  *             .locationId("us-central")
  *             .build());
  * 
- *         var rule = new FirewallRule("rule", FirewallRuleArgs.builder()        
+ *         var rule = new FirewallRule("rule", FirewallRuleArgs.builder()
  *             .project(app.project())
  *             .priority(1000)
  *             .action("ALLOW")

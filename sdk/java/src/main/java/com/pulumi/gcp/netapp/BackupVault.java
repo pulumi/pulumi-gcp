@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testBackupVault = new BackupVault("testBackupVault", BackupVaultArgs.builder()        
+ *         var testBackupVault = new BackupVault("testBackupVault", BackupVaultArgs.builder()
  *             .name("test-backup-vault")
  *             .location("us-central1")
  *             .description("Terraform created vault")

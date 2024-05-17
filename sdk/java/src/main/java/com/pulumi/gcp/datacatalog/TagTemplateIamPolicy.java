@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()        
+ *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()        
+ *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()        
+ *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()        
+ *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()        
+ *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()        
+ *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
  *             .tagTemplate(basicTagTemplate.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")

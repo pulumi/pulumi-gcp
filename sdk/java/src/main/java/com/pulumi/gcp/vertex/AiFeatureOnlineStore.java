@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureOnlineStore = new AiFeatureOnlineStore("featureOnlineStore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureOnlineStore = new AiFeatureOnlineStore("featureOnlineStore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_online_store")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_online_store_optimized")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_online_store_beta_bigtable")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")

@@ -58,19 +58,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent(project.orgId().applyValue(orgId -> String.format("organizations/%s", orgId)))
  *             .title("my policy")
  *             .build());
  * 
- *         var test_access = new AccessLevel("test-access", AccessLevelArgs.builder()        
+ *         var test_access = new AccessLevel("test-access", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
  *             .title("chromeos_no_lock")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var example = new AccessBoundaryPolicy("example", AccessBoundaryPolicyArgs.builder()        
+ *         var example = new AccessBoundaryPolicy("example", AccessBoundaryPolicyArgs.builder()
  *             .parent(StdFunctions.urlencode().applyValue(invoke -> invoke.result()))
  *             .name("my-ab-policy")
  *             .displayName("My AB policy")

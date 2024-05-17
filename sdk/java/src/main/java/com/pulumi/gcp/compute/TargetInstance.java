@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vm = new Instance("target-vm", InstanceArgs.builder()        
+ *         var target_vm = new Instance("target-vm", InstanceArgs.builder()
  *             .name("target-vm")
  *             .machineType("e2-medium")
  *             .zone("us-central1-a")
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetInstance("default", TargetInstanceArgs.builder()        
+ *         var default_ = new TargetInstance("default", TargetInstanceArgs.builder()
  *             .name("target")
  *             .instance(target_vm.id())
  *             .build());
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vmInstance = new Instance("target-vmInstance", InstanceArgs.builder()        
+ *         var target_vmInstance = new Instance("target-vmInstance", InstanceArgs.builder()
  *             .name("custom-network-target-vm")
  *             .machineType("e2-medium")
  *             .zone("us-central1-a")
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var customNetwork = new TargetInstance("customNetwork", TargetInstanceArgs.builder()        
+ *         var customNetwork = new TargetInstance("customNetwork", TargetInstanceArgs.builder()
  *             .name("custom-network")
  *             .instance(target_vmInstance.id())
  *             .network(target_vm.selfLink())
@@ -199,13 +199,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("custom-default-network")
  *             .autoCreateSubnetworks(false)
  *             .routingMode("REGIONAL")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("custom-default-subnet")
  *             .ipCidrRange("10.1.2.0/24")
  *             .network(default_.id())
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vm = new Instance("target-vm", InstanceArgs.builder()        
+ *         var target_vm = new Instance("target-vm", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(default_.selfLink())
@@ -236,7 +236,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()        
+ *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()
  *             .region("southamerica-west1")
  *             .name("tf-test-policyddos_88717")
  *             .description("ddos protection security policy to set target instance")
@@ -246,20 +246,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()        
+ *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()
  *             .region("southamerica-west1")
  *             .name("tf-test-edgesec_85794")
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 
- *         var regionsecuritypolicy = new RegionSecurityPolicy("regionsecuritypolicy", RegionSecurityPolicyArgs.builder()        
+ *         var regionsecuritypolicy = new RegionSecurityPolicy("regionsecuritypolicy", RegionSecurityPolicyArgs.builder()
  *             .name("region-secpolicy")
  *             .region("southamerica-west1")
  *             .description("basic security policy for target instance")
  *             .type("CLOUD_ARMOR_NETWORK")
  *             .build());
  * 
- *         var defaultTargetInstance = new TargetInstance("defaultTargetInstance", TargetInstanceArgs.builder()        
+ *         var defaultTargetInstance = new TargetInstance("defaultTargetInstance", TargetInstanceArgs.builder()
  *             .name("target-instance")
  *             .zone("southamerica-west1-a")
  *             .instance(target_vm.id())

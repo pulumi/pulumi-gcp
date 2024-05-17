@@ -67,34 +67,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var apigee = new Service("apigee", ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("servicenetworking.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service("compute", ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
  *             .name("apigee-range")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -103,26 +103,26 @@ import javax.annotation.Nullable;
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()
  *             .network(apigeeNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeEnvironment = new Environment("apigeeEnvironment", EnvironmentArgs.builder()        
+ *         var apigeeEnvironment = new Environment("apigeeEnvironment", EnvironmentArgs.builder()
  *             .orgId(apigeeOrg.id())
  *             .name("my-environment-name")
  *             .description("Apigee Environment")
  *             .displayName("environment-1")
  *             .build());
  * 
- *         var apigeeTargetServer = new TargetServer("apigeeTargetServer", TargetServerArgs.builder()        
+ *         var apigeeTargetServer = new TargetServer("apigeeTargetServer", TargetServerArgs.builder()
  *             .name("my-target-server")
  *             .description("Apigee Target Server")
  *             .protocol("HTTP")

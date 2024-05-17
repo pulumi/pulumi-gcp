@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()        
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()        
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()        
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()        
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()        
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -270,7 +270,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()        
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()        
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()        
+ *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -409,7 +409,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()        
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -448,7 +448,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()        
+ *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -490,7 +490,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()        
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")
@@ -529,7 +529,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()        
+ *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
  *             .project(image.project())
  *             .machineImage(image.name())
  *             .role("roles/compute.admin")

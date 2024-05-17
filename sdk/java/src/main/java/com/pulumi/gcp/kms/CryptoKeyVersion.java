@@ -59,18 +59,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()        
+ *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()
  *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
  *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var example_key = new CryptoKeyVersion("example-key", CryptoKeyVersionArgs.builder()        
+ *         var example_key = new CryptoKeyVersion("example-key", CryptoKeyVersionArgs.builder()
  *             .cryptoKey(cryptokey.id())
  *             .build());
  * 

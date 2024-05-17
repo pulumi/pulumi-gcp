@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("memory-cache")
  *             .memorySizeGb(1)
  *             .build());
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("ha-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cache_persis = new Instance("cache-persis", InstanceArgs.builder()        
+ *         var cache_persis = new Instance("cache-persis", InstanceArgs.builder()
  *             .name("ha-memory-cache-persis")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
@@ -223,11 +223,11 @@ import javax.annotation.Nullable;
  *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
  *         // this from "data"to "resource"
- *         var redis_network = new Network("redis-network", NetworkArgs.builder()        
+ *         var redis_network = new Network("redis-network", NetworkArgs.builder()
  *             .name("redis-test-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()
  *             .name("address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -235,13 +235,13 @@ import javax.annotation.Nullable;
  *             .network(redis_network.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()
  *             .network(redis_network.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("private-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
@@ -297,7 +297,7 @@ import javax.annotation.Nullable;
  *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("mrr-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(5)
@@ -351,12 +351,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redisKeyring = new KeyRing("redisKeyring", KeyRingArgs.builder()        
+ *         var redisKeyring = new KeyRing("redisKeyring", KeyRingArgs.builder()
  *             .name("redis-keyring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var redisKey = new CryptoKey("redisKey", CryptoKeyArgs.builder()        
+ *         var redisKey = new CryptoKey("redisKey", CryptoKeyArgs.builder()
  *             .name("redis-key")
  *             .keyRing(redisKeyring.id())
  *             .build());
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("cmek-memory-cache")
  *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)

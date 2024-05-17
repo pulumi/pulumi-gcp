@@ -79,12 +79,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_with_private_secondary_ip_ranges = new Subnetwork("network-with-private-secondary-ip-ranges", SubnetworkArgs.builder()        
+ *         var network_with_private_secondary_ip_ranges = new Subnetwork("network-with-private-secondary-ip-ranges", SubnetworkArgs.builder()
  *             .name("test-subnetwork")
  *             .ipCidrRange("10.2.0.0/16")
  *             .region("us-central1")
@@ -128,12 +128,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("log-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet_with_logging = new Subnetwork("subnet-with-logging", SubnetworkArgs.builder()        
+ *         var subnet_with_logging = new Subnetwork("subnet-with-logging", SubnetworkArgs.builder()
  *             .name("log-test-subnetwork")
  *             .ipCidrRange("10.2.0.0/16")
  *             .region("us-central1")
@@ -177,12 +177,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("l7lb-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_for_l7lb = new Subnetwork("network-for-l7lb", SubnetworkArgs.builder()        
+ *         var network_for_l7lb = new Subnetwork("network-for-l7lb", SubnetworkArgs.builder()
  *             .name("l7lb-test-subnetwork")
  *             .ipCidrRange("10.0.0.0/22")
  *             .region("us-central1")
@@ -223,12 +223,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("ipv6-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_ipv6 = new Subnetwork("subnetwork-ipv6", SubnetworkArgs.builder()        
+ *         var subnetwork_ipv6 = new Subnetwork("subnetwork-ipv6", SubnetworkArgs.builder()
  *             .name("ipv6-test-subnetwork")
  *             .ipCidrRange("10.0.0.0/22")
  *             .region("us-west2")
@@ -269,13 +269,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("internal-ipv6-test-network")
  *             .autoCreateSubnetworks(false)
  *             .enableUlaInternalIpv6(true)
  *             .build());
  * 
- *         var subnetwork_internal_ipv6 = new Subnetwork("subnetwork-internal-ipv6", SubnetworkArgs.builder()        
+ *         var subnetwork_internal_ipv6 = new Subnetwork("subnetwork-internal-ipv6", SubnetworkArgs.builder()
  *             .name("internal-ipv6-test-subnetwork")
  *             .ipCidrRange("10.0.0.0/22")
  *             .region("us-west2")
@@ -316,12 +316,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
  *             .name("subnet-purpose-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_purpose_private_nat = new Subnetwork("subnetwork-purpose-private-nat", SubnetworkArgs.builder()        
+ *         var subnetwork_purpose_private_nat = new Subnetwork("subnetwork-purpose-private-nat", SubnetworkArgs.builder()
  *             .name("subnet-purpose-test-subnetwork")
  *             .region("us-west2")
  *             .ipCidrRange("192.168.1.0/24")
@@ -361,12 +361,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net_cidr_overlap = new Network("net-cidr-overlap", NetworkArgs.builder()        
+ *         var net_cidr_overlap = new Network("net-cidr-overlap", NetworkArgs.builder()
  *             .name("net-cidr-overlap")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_cidr_overlap = new Subnetwork("subnetwork-cidr-overlap", SubnetworkArgs.builder()        
+ *         var subnetwork_cidr_overlap = new Subnetwork("subnetwork-cidr-overlap", SubnetworkArgs.builder()
  *             .name("subnet-cidr-overlap")
  *             .region("us-west2")
  *             .ipCidrRange("192.168.1.0/24")

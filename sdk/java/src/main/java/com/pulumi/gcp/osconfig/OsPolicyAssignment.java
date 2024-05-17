@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new OsPolicyAssignment("primary", OsPolicyAssignmentArgs.builder()        
+ *         var primary = new OsPolicyAssignment("primary", OsPolicyAssignmentArgs.builder()
  *             .instanceFilter(OsPolicyAssignmentInstanceFilterArgs.builder()
  *                 .all(false)
  *                 .exclusionLabels(OsPolicyAssignmentInstanceFilterExclusionLabelArgs.builder()

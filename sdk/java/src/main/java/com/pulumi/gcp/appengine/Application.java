@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .orgId("1234567")
  *             .build());
  * 
- *         var app = new Application("app", ApplicationArgs.builder()        
+ *         var app = new Application("app", ApplicationArgs.builder()
  *             .project(myProject.projectId())
  *             .locationId("us-central")
  *             .build());

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()        
+ *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()        
+ *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()        
+ *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()        
+ *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()        
+ *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()        
+ *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()
  *             .taxonomy(basicTaxonomy.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")

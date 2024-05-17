@@ -60,14 +60,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()        
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()
  *             .datasetId("job_load_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var sampleTable = new Table("sampleTable", TableArgs.builder()        
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(sampleDataset.datasetId())
  *             .tableId("job_load_table")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()        
+ *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()
  *             .name("example_feature_group")
  *             .description("A sample feature group")
  *             .region("us-central1")
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var featureGroupFeature = new AiFeatureGroupFeature("featureGroupFeature", AiFeatureGroupFeatureArgs.builder()        
+ *         var featureGroupFeature = new AiFeatureGroupFeature("featureGroupFeature", AiFeatureGroupFeatureArgs.builder()
  *             .name("example_feature")
  *             .region("us-central1")
  *             .featureGroup(sampleFeatureGroup.name())

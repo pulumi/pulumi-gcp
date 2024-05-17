@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()        
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
  *             .name("producer-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()        
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("producer-subnet")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(producerNet.id())
  *             .build());
  * 
- *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()        
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("my-network-connectivity-policy")
  *             .location("us-central1")
  *             .serviceClass("my-basic-service-class")

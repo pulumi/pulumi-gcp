@@ -82,19 +82,19 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("neg-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("neg-subnetwork")
  *             .ipCidrRange("10.0.0.1/16")
  *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()        
+ *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .subnetwork(defaultSubnetwork.id())
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var endpoint_instance2 = new Instance("endpoint-instance2", InstanceArgs.builder()        
+ *         var endpoint_instance2 = new Instance("endpoint-instance2", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .subnetwork(defaultSubnetwork.id())
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()        
+ *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
  *             .networkEndpointGroup(neg.name())
  *             .networkEndpoints(            
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()        
+ *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())

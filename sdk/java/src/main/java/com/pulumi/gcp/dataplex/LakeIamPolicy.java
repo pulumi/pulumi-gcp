@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()        
+ *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()        
+ *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()        
+ *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()        
+ *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()        
+ *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()        
+ *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.name())

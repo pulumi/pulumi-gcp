@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarNetwork = new Network("foobarNetwork", NetworkArgs.builder()        
+ *         var foobarNetwork = new Network("foobarNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var foobar = new Router("foobar", RouterArgs.builder()        
+ *         var foobar = new Router("foobar", RouterArgs.builder()
  *             .name("my-router")
  *             .network(foobarNetwork.name())
  *             .bgp(RouterBgpArgs.builder()
@@ -110,12 +110,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var encrypted_interconnect_router = new Router("encrypted-interconnect-router", RouterArgs.builder()        
+ *         var encrypted_interconnect_router = new Router("encrypted-interconnect-router", RouterArgs.builder()
  *             .name("test-router")
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
