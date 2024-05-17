@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()
  *             .displayName("tenant")
  *             .build());
  * 
- *         var tenantOauthIdpConfig = new TenantOauthIdpConfig("tenantOauthIdpConfig", TenantOauthIdpConfigArgs.builder()        
+ *         var tenantOauthIdpConfig = new TenantOauthIdpConfig("tenantOauthIdpConfig", TenantOauthIdpConfigArgs.builder()
  *             .name("oidc.oauth-idp-config")
  *             .tenant(tenant.name())
  *             .displayName("Display Name")

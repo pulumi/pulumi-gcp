@@ -66,13 +66,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("dialogflowcx-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var fullAgent = new CxAgent("fullAgent", CxAgentArgs.builder()        
+ *         var fullAgent = new CxAgent("fullAgent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")

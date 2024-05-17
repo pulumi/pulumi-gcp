@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()        
+ *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()
  *             .siteId(default_.siteId())
  *             .channelId("channel-basic")
  *             .build());
@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var full = new HostingChannel("full", HostingChannelArgs.builder()        
+ *         var full = new HostingChannel("full", HostingChannelArgs.builder()
  *             .siteId(default_.siteId())
  *             .channelId("channel-full")
  *             .ttl("86400s")

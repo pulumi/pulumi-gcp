@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new QueueIamPolicy("policy", QueueIamPolicyArgs.builder()        
+ *         var policy = new QueueIamPolicy("policy", QueueIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new QueueIamBinding("binding", QueueIamBindingArgs.builder()        
+ *         var binding = new QueueIamBinding("binding", QueueIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new QueueIamMember("member", QueueIamMemberArgs.builder()        
+ *         var member = new QueueIamMember("member", QueueIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new QueueIamPolicy("policy", QueueIamPolicyArgs.builder()        
+ *         var policy = new QueueIamPolicy("policy", QueueIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new QueueIamBinding("binding", QueueIamBindingArgs.builder()        
+ *         var binding = new QueueIamBinding("binding", QueueIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new QueueIamMember("member", QueueIamMemberArgs.builder()        
+ *         var member = new QueueIamMember("member", QueueIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())

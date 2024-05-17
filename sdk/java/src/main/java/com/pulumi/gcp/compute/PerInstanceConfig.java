@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()        
+ *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()
  *             .name("my-template")
  *             .machineType("e2-medium")
  *             .canIpForward(false)
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var igm_no_tp = new InstanceGroupManager("igm-no-tp", InstanceGroupManagerArgs.builder()        
+ *         var igm_no_tp = new InstanceGroupManager("igm-no-tp", InstanceGroupManagerArgs.builder()
  *             .description("Test instance group manager")
  *             .name("my-igm")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .name("my-disk-name")
  *             .type("pd-ssd")
  *             .zone(igm.zone())
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
- *         var withDisk = new PerInstanceConfig("withDisk", PerInstanceConfigArgs.builder()        
+ *         var withDisk = new PerInstanceConfig("withDisk", PerInstanceConfigArgs.builder()
  *             .zone(igm.zone())
  *             .instanceGroupManager(igm.name())
  *             .name("instance-1")

@@ -60,36 +60,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var apigee = new Service("apigee", ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .runtimeType("HYBRID")
  *             .build());
  * 
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var synchronizer_iam = new IAMMember("synchronizer-iam", IAMMemberArgs.builder()        
+ *         var synchronizer_iam = new IAMMember("synchronizer-iam", IAMMemberArgs.builder()
  *             .project(project.projectId())
  *             .role("roles/apigee.synchronizerManager")
  *             .member(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var apigeeSyncAuthorization = new SyncAuthorization("apigeeSyncAuthorization", SyncAuthorizationArgs.builder()        
+ *         var apigeeSyncAuthorization = new SyncAuthorization("apigeeSyncAuthorization", SyncAuthorizationArgs.builder()
  *             .name(apigeeOrg.name())
  *             .identities(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());

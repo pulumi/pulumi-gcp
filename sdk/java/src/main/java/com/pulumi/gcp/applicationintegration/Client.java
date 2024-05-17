@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Client("example", ClientArgs.builder()        
+ *         var example = new Client("example", ClientArgs.builder()
  *             .location("us-central1")
  *             .build());
  * 
@@ -100,27 +100,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("my-keyring")
  *             .location("us-east1")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()        
+ *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()
  *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
  *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var testKey = new CryptoKeyVersion("testKey", CryptoKeyVersionArgs.builder()        
+ *         var testKey = new CryptoKeyVersion("testKey", CryptoKeyVersionArgs.builder()
  *             .cryptoKey(cryptokey.id())
  *             .build());
  * 
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var example = new Client("example", ClientArgs.builder()        
+ *         var example = new Client("example", ClientArgs.builder()
  *             .location("us-east1")
  *             .createSampleIntegrations(true)
  *             .runAsServiceAccount(serviceAccount.email())

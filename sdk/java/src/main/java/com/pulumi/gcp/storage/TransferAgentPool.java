@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var pubsubEditorRole = new IAMMember("pubsubEditorRole", IAMMemberArgs.builder()        
+ *         var pubsubEditorRole = new IAMMember("pubsubEditorRole", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/pubsub.editor")
  *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var example = new TransferAgentPool("example", TransferAgentPoolArgs.builder()        
+ *         var example = new TransferAgentPool("example", TransferAgentPoolArgs.builder()
  *             .name("agent-pool-example")
  *             .displayName("Source A to destination Z")
  *             .bandwidthLimit(TransferAgentPoolBandwidthLimitArgs.builder()

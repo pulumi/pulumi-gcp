@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()
  *             .name("my-address-groups")
  *             .parent("projects/my-project-name")
  *             .location("us-central1")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()
  *             .name("my-address-groups")
  *             .parent("organizations/123456789")
  *             .location("us-central1")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()
  *             .name("my-address-groups")
  *             .parent("projects/my-project-name")
  *             .location("us-central1")

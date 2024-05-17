@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_exclusion = new ProjectExclusion("my-exclusion", ProjectExclusionArgs.builder()        
+ *         var my_exclusion = new ProjectExclusion("my-exclusion", ProjectExclusionArgs.builder()
  *             .name("my-instance-debug-exclusion")
  *             .description("Exclude GCE instance debug logs")
  *             .filter("resource.type = gce_instance AND severity <= DEBUG")

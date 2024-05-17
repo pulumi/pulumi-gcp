@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nodePool = new NodePool("nodePool", NodePoolArgs.builder()        
+ *         var nodePool = new NodePool("nodePool", NodePoolArgs.builder()
  *             .name("nodepool-1")
  *             .cluster(cluster.name())
  *             .location("us-central1")
@@ -94,11 +94,11 @@ import javax.annotation.Nullable;
  *             .nodeCount(3)
  *             .build());
  * 
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .name("example-vpc")
  *             .build());
  * 
- *         var default_ = new VpnConnection("default", VpnConnectionArgs.builder()        
+ *         var default_ = new VpnConnection("default", VpnConnectionArgs.builder()
  *             .name("vpn-connection-1")
  *             .location("us-central1")
  *             .cluster(cluster.name().applyValue(name -> String.format("projects/%s/locations/us-east1/clusters/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))

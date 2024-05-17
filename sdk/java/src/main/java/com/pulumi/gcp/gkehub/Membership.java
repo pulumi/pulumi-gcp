@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *         var membership = new Membership("membership", MembershipArgs.builder()
  *             .membershipId("basic")
  *             .location("us-west1")
  *             .endpoint(MembershipEndpointArgs.builder()
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *         var membership = new Membership("membership", MembershipArgs.builder()
  *             .membershipId("basic")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *         var membership = new Membership("membership", MembershipArgs.builder()
  *             .membershipId("basic")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()

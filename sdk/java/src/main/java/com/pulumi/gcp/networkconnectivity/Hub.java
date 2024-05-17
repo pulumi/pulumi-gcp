@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Hub("primary", HubArgs.builder()        
+ *         var primary = new Hub("primary", HubArgs.builder()
  *             .name("hub")
  *             .description("A sample hub")
  *             .project("my-project-name")

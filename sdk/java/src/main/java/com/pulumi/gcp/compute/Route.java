@@ -75,11 +75,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("compute-network")
  *             .build());
  * 
- *         var default_ = new Route("default", RouteArgs.builder()        
+ *         var default_ = new Route("default", RouteArgs.builder()
  *             .name("network-route")
  *             .destRange("15.0.0.0/24")
  *             .network(defaultNetwork.name())
@@ -128,19 +128,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("compute-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("compute-subnet")
  *             .ipCidrRange("10.0.1.0/24")
  *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()        
+ *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
  *             .name("proxy-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -149,13 +149,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
  *             .name("compute-backend")
  *             .region("us-central1")
  *             .healthChecks(hc.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()        
+ *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()
  *             .name("compute-forwarding-rule")
  *             .region("us-central1")
  *             .loadBalancingScheme("INTERNAL")
@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(defaultSubnetwork.name())
  *             .build());
  * 
- *         var route_ilb = new Route("route-ilb", RouteArgs.builder()        
+ *         var route_ilb = new Route("route-ilb", RouteArgs.builder()
  *             .name("route-ilb")
  *             .destRange("0.0.0.0/0")
  *             .network(default_.name())
@@ -216,43 +216,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producer = new Network("producer", NetworkArgs.builder()        
+ *         var producer = new Network("producer", NetworkArgs.builder()
  *             .name("producer-vpc")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnetwork = new Subnetwork("producerSubnetwork", SubnetworkArgs.builder()        
+ *         var producerSubnetwork = new Subnetwork("producerSubnetwork", SubnetworkArgs.builder()
  *             .name("producer-subnet")
  *             .ipCidrRange("10.0.1.0/24")
  *             .region("us-central1")
  *             .network(producer.id())
  *             .build());
  * 
- *         var consumer = new Network("consumer", NetworkArgs.builder()        
+ *         var consumer = new Network("consumer", NetworkArgs.builder()
  *             .name("consumer-vpc")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var consumerSubnetwork = new Subnetwork("consumerSubnetwork", SubnetworkArgs.builder()        
+ *         var consumerSubnetwork = new Subnetwork("consumerSubnetwork", SubnetworkArgs.builder()
  *             .name("consumer-subnet")
  *             .ipCidrRange("10.0.2.0/24")
  *             .region("us-central1")
  *             .network(consumer.id())
  *             .build());
  * 
- *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+ *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
  *             .name("peering-producer-to-consumer")
  *             .network(consumer.id())
  *             .peerNetwork(producer.id())
  *             .build());
  * 
- *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+ *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
  *             .name("peering-consumer-to-producer")
  *             .network(producer.id())
  *             .peerNetwork(consumer.id())
  *             .build());
  * 
- *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()        
+ *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
  *             .name("proxy-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -261,13 +261,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
  *             .name("compute-backend")
  *             .region("us-central1")
  *             .healthChecks(hc.id())
  *             .build());
  * 
- *         var default_ = new ForwardingRule("default", ForwardingRuleArgs.builder()        
+ *         var default_ = new ForwardingRule("default", ForwardingRuleArgs.builder()
  *             .name("compute-forwarding-rule")
  *             .region("us-central1")
  *             .loadBalancingScheme("INTERNAL")
@@ -277,7 +277,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(producerSubnetwork.name())
  *             .build());
  * 
- *         var route_ilb = new Route("route-ilb", RouteArgs.builder()        
+ *         var route_ilb = new Route("route-ilb", RouteArgs.builder()
  *             .name("route-ilb")
  *             .destRange("0.0.0.0/0")
  *             .network(consumer.name())

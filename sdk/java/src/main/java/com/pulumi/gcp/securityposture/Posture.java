@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var posture1 = new Posture("posture1", PostureArgs.builder()        
+ *         var posture1 = new Posture("posture1", PostureArgs.builder()
  *             .postureId("posture_example")
  *             .parent("organizations/123456789")
  *             .location("global")

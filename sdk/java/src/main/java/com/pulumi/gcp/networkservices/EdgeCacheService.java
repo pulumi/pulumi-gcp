@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *         var dest = new Bucket("dest", BucketArgs.builder()
  *             .name("my-bucket")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress(dest.url())
  *             .description("The default bucket for media edge test")
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()
  *             .name("my-service")
  *             .description("some description")
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
@@ -145,13 +145,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *         var dest = new Bucket("dest", BucketArgs.builder()
  *             .name("my-bucket")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var google = new EdgeCacheOrigin("google", EdgeCacheOriginArgs.builder()        
+ *         var google = new EdgeCacheOrigin("google", EdgeCacheOriginArgs.builder()
  *             .name("origin-google")
  *             .originAddress("google.com")
  *             .description("The default bucket for media edge test")
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress(dest.url())
  *             .description("The default bucket for media edge test")
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()
  *             .name("my-service")
  *             .description("some description")
  *             .disableQuic(true)
@@ -373,19 +373,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var keyset = new EdgeCacheKeyset("keyset", EdgeCacheKeysetArgs.builder()        
+ *         var keyset = new EdgeCacheKeyset("keyset", EdgeCacheKeysetArgs.builder()
  *             .name("keyset-name")
  *             .description("The default keyset")
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
@@ -397,13 +397,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress("gs://media-edge-default")
  *             .description("The default bucket for media edge test")
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()
  *             .name("my-service")
  *             .description("some description")
  *             .routing(EdgeCacheServiceRoutingArgs.builder()

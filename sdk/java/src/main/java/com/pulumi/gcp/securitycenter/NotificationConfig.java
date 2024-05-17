@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sccNotification = new Topic("sccNotification", TopicArgs.builder()        
+ *         var sccNotification = new Topic("sccNotification", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
  * 
- *         var customNotificationConfig = new NotificationConfig("customNotificationConfig", NotificationConfigArgs.builder()        
+ *         var customNotificationConfig = new NotificationConfig("customNotificationConfig", NotificationConfigArgs.builder()
  *             .configId("my-config")
  *             .organization("123456789")
  *             .description("My custom Cloud Security Command Center Finding Notification Configuration")

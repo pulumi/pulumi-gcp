@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
  *             .serviceId("metastore-srv")
  *             .location("us-central1")
  *             .port(9080)
@@ -114,18 +114,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
  *             .serviceId("example-service")
  *             .location("us-central1")
  *             .encryptionConfig(MetastoreServiceEncryptionConfigArgs.builder()
@@ -172,12 +172,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .region("us-central1")
  *             .network(net.id())
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
- *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
  *             .serviceId("metastore-srv")
  *             .location("us-central1")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
@@ -234,12 +234,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .region("us-central1")
  *             .network(net.id())
@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
- *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
  *             .serviceId("metastore-srv")
  *             .location("us-central1")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dpms2 = new MetastoreService("dpms2", MetastoreServiceArgs.builder()        
+ *         var dpms2 = new MetastoreService("dpms2", MetastoreServiceArgs.builder()
  *             .serviceId("ms-dpms2")
  *             .location("us-central1")
  *             .databaseType("SPANNER")
@@ -337,7 +337,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dpms2ScalingFactor = new MetastoreService("dpms2ScalingFactor", MetastoreServiceArgs.builder()        
+ *         var dpms2ScalingFactor = new MetastoreService("dpms2ScalingFactor", MetastoreServiceArgs.builder()
  *             .serviceId("ms-dpms2sf")
  *             .location("us-central1")
  *             .databaseType("SPANNER")
@@ -384,12 +384,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("backup")
  *             .location("us-central1")
  *             .build());
  * 
- *         var backup = new MetastoreService("backup", MetastoreServiceArgs.builder()        
+ *         var backup = new MetastoreService("backup", MetastoreServiceArgs.builder()
  *             .serviceId("backup")
  *             .location("us-central1")
  *             .port(9080)

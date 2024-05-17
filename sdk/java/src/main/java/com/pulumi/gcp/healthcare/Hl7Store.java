@@ -62,16 +62,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("hl7-v2-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()
  *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .rejectDuplicateMessage(true)
@@ -114,12 +114,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()
  *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .parserConfig(Hl7StoreParserConfigArgs.builder()
@@ -241,12 +241,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()
  *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .parserConfig(Hl7StoreParserConfigArgs.builder()

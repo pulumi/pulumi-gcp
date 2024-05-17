@@ -58,14 +58,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()        
+ *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .type("STANDARD")
  *             .location("global")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()        
+ *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vmw_engine_ext_cluster = new Cluster("vmw-engine-ext-cluster", ClusterArgs.builder()        
+ *         var vmw_engine_ext_cluster = new Cluster("vmw-engine-ext-cluster", ClusterArgs.builder()
  *             .name("ext-cluster")
  *             .parent(cluster_pc.id())
  *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()
@@ -128,14 +128,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()        
+ *         var cluster_nw = new Network("cluster-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .type("STANDARD")
  *             .location("global")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()        
+ *         var cluster_pc = new PrivateCloud("cluster-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()        
+ *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()
  *             .name("ext-cluster")
  *             .parent(cluster_pc.id())
  *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()

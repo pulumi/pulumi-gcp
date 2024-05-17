@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()        
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
  *             .displayName("tf-test")
  *             .parent("organizations/123456789")
  *             .build());

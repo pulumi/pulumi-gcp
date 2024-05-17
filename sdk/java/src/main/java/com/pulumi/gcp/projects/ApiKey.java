@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("app")
  *             .name("app")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
  *             .name("key")
  *             .displayName("sample-key")
  *             .project(basic.name())
@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("app")
  *             .name("app")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
  *             .name("key")
  *             .displayName("sample-key")
  *             .project(basic.name())
@@ -163,13 +163,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("app")
  *             .name("app")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
  *             .name("key")
  *             .displayName("sample-key")
  *             .project(basic.name())
@@ -216,13 +216,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("app")
  *             .name("app")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
  *             .name("key")
  *             .displayName("sample-key")
  *             .project(basic.name())
@@ -262,13 +262,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("app")
  *             .name("app")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
  *             .name("key")
  *             .displayName("sample-key")
  *             .project(basic.name())

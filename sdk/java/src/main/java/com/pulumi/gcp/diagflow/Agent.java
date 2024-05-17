@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullAgent = new Agent("fullAgent", AgentArgs.builder()        
+ *         var fullAgent = new Agent("fullAgent", AgentArgs.builder()
  *             .displayName("dialogflow-agent")
  *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            

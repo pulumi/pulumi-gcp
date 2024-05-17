@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()
  *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
@@ -108,12 +108,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()
  *             .name("my-app-connector")
  *             .region("us-central1")
  *             .displayName("some display name")

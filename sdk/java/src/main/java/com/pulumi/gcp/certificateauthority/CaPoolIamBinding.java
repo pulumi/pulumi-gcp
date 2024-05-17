@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()        
+ *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
  *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()        
+ *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
  *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()        
+ *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .members("user:jane{@literal @}example.com")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()        
+ *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .members("user:jane{@literal @}example.com")
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()        
+ *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member("user:jane{@literal @}example.com")
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()        
+ *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member("user:jane{@literal @}example.com")
@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()        
+ *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
  *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -370,7 +370,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()        
+ *         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
  *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -405,7 +405,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()        
+ *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .members("user:jane{@literal @}example.com")
@@ -443,7 +443,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()        
+ *         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .members("user:jane{@literal @}example.com")
@@ -484,7 +484,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()        
+ *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member("user:jane{@literal @}example.com")
@@ -522,7 +522,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()        
+ *         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member("user:jane{@literal @}example.com")

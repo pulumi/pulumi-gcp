@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()
  *             .name("my-app-gateway")
  *             .type("TCP_PROXY")
  *             .region("us-central1")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()
  *             .name("my-app-gateway")
  *             .type("TCP_PROXY")
  *             .region("us-central1")

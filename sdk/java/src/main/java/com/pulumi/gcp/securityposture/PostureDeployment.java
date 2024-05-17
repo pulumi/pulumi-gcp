@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var posture1 = new Posture("posture1", PostureArgs.builder()        
+ *         var posture1 = new Posture("posture1", PostureArgs.builder()
  *             .postureId("posture_1")
  *             .parent("organizations/123456789")
  *             .location("global")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var postureDeployment = new PostureDeployment("postureDeployment", PostureDeploymentArgs.builder()        
+ *         var postureDeployment = new PostureDeployment("postureDeployment", PostureDeploymentArgs.builder()
  *             .postureDeploymentId("posture_deployment_1")
  *             .parent("organizations/123456789")
  *             .location("global")
