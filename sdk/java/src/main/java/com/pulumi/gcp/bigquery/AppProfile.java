@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("bt-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()
  *             .instance(instance.name())
  *             .appProfileId("bt-profile")
  *             .multiClusterRoutingUseAny(true)
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("bt-instance")
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId("cluster-1")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()
  *             .instance(instance.name())
  *             .appProfileId("bt-profile")
  *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()
@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("bt-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
@@ -198,7 +198,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()
  *             .instance(instance.name())
  *             .appProfileId("bt-profile")
  *             .multiClusterRoutingUseAny(true)
@@ -243,7 +243,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("bt-instance")
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId("cluster-1")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()
  *             .instance(instance.name())
  *             .appProfileId("bt-profile")
  *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()

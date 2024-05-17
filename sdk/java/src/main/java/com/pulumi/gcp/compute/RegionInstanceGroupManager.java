@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var autohealing = new HealthCheck("autohealing", HealthCheckArgs.builder()        
+ *         var autohealing = new HealthCheck("autohealing", HealthCheckArgs.builder()
  *             .name("autohealing-health-check")
  *             .checkIntervalSec(5)
  *             .timeoutSec(5)
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()        
+ *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()
  *             .name("appserver-igm")
  *             .baseInstanceName("app")
  *             .region("us-central1")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()        
+ *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()
  *             .name("appserver-igm")
  *             .baseInstanceName("app")
  *             .region("us-central1")

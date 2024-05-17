@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()
  *             .name("my-grpc-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()
  *             .name("my-grpc-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()
  *             .name("my-grpc-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

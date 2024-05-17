@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()        
+ *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
  *             .name("custom.disableGkeAutoUpgrade")
  *             .parent("organizations/123456789")
  *             .actionType("ALLOW")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()        
+ *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
  *             .name("custom.disableGkeAutoUpgrade")
  *             .parent("organizations/123456789")
  *             .displayName("Disable GKE auto upgrade")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .resourceTypes("container.googleapis.com/NodePool")
  *             .build());
  * 
- *         var bool = new Policy("bool", PolicyArgs.builder()        
+ *         var bool = new Policy("bool", PolicyArgs.builder()
  *             .name(constraint.name().applyValue(name -> String.format("organizations/123456789/policies/%s", name)))
  *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()

@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteReservation("example", LiteReservationArgs.builder()        
+ *         var example = new LiteReservation("example", LiteReservationArgs.builder()
  *             .name("example-reservation")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .throughputCapacity(2)
  *             .build());
  * 
- *         var exampleLiteTopic = new LiteTopic("exampleLiteTopic", LiteTopicArgs.builder()        
+ *         var exampleLiteTopic = new LiteTopic("exampleLiteTopic", LiteTopicArgs.builder()
  *             .name("example-topic")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()

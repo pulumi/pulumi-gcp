@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectMetadataItem("default", ProjectMetadataItemArgs.builder()        
+ *         var default_ = new ProjectMetadataItem("default", ProjectMetadataItemArgs.builder()
  *             .key("my_metadata")
  *             .value("my_value")
  *             .build());

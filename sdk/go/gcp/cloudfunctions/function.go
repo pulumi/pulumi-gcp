@@ -195,6 +195,9 @@ type Function struct {
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
+	//
+	// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 	HttpsTriggerSecurityLevel pulumi.StringOutput `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
@@ -312,6 +315,9 @@ type functionState struct {
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
+	//
+	// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
@@ -392,6 +398,9 @@ type FunctionState struct {
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
 	// The security level for the function. The following options are available:
+	//
+	// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
@@ -474,6 +483,9 @@ type functionArgs struct {
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
+	//
+	// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
@@ -546,6 +558,9 @@ type FunctionArgs struct {
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
 	// The security level for the function. The following options are available:
+	//
+	// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
@@ -735,6 +750,9 @@ func (o FunctionOutput) EventTrigger() FunctionEventTriggerOutput {
 }
 
 // The security level for the function. The following options are available:
+//
+// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
 func (o FunctionOutput) HttpsTriggerSecurityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.HttpsTriggerSecurityLevel }).(pulumi.StringOutput)
 }

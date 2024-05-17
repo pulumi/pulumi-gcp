@@ -26,6 +26,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies how port is selected for health checking, can be one of the
         /// following values:
+        /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        /// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        /// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        /// network endpoint is used for health checking. For other backends, the
+        /// port or named port specified in the Backend Service is used for health
+        /// checking.
+        /// If not specified, TCP health check follows behavior specified in `port` and
+        /// `portName` fields.
+        /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         /// </summary>
         public readonly string? PortSpecification;
         /// <summary>

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var basic = new Field("basic", FieldArgs.builder()        
+ *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("chatrooms__34962")
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var timestamp = new Field("timestamp", FieldArgs.builder()        
+ *         var timestamp = new Field("timestamp", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("chatrooms")
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var matchOverride = new Field("matchOverride", FieldArgs.builder()        
+ *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("chatrooms__74000")

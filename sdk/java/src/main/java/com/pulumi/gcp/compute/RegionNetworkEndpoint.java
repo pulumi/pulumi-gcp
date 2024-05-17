@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()        
+ *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()
  *             .name("ip-port-neg")
  *             .network(default_.id())
  *             .region("us-central1")
  *             .networkEndpointType("INTERNET_IP_PORT")
  *             .build());
  * 
- *         var region_internet_ip_port_endpoint = new RegionNetworkEndpoint("region-internet-ip-port-endpoint", RegionNetworkEndpointArgs.builder()        
+ *         var region_internet_ip_port_endpoint = new RegionNetworkEndpoint("region-internet-ip-port-endpoint", RegionNetworkEndpointArgs.builder()
  *             .regionNetworkEndpointGroup(group.name())
  *             .region("us-central1")
  *             .ipAddress("8.8.8.8")
@@ -112,19 +112,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()        
+ *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()
  *             .name("fqdn-port-neg")
  *             .network(default_.id())
  *             .region("us-central1")
  *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 
- *         var region_internet_fqdn_port_endpoint = new RegionNetworkEndpoint("region-internet-fqdn-port-endpoint", RegionNetworkEndpointArgs.builder()        
+ *         var region_internet_fqdn_port_endpoint = new RegionNetworkEndpoint("region-internet-fqdn-port-endpoint", RegionNetworkEndpointArgs.builder()
  *             .regionNetworkEndpointGroup(group.name())
  *             .region("us-central1")
  *             .fqdn("backend.example.com")

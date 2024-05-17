@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()        
+ *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()        
+ *         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .role("roles/viewer")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()        
+ *         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .role("roles/viewer")
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()        
+ *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()        
+ *         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .role("roles/viewer")
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()        
+ *         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
  *             .role("roles/viewer")

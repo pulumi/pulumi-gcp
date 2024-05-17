@@ -74,11 +74,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("alloydb-cluster")
  *             .build());
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
  *             .network(defaultNetwork.id())
@@ -125,11 +125,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("alloydb-cluster-full")
  *             .build());
  * 
- *         var full = new Cluster("full", ClusterArgs.builder()        
+ *         var full = new Cluster("full", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster-full")
  *             .location("us-central1")
  *             .network(default_.id())
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *             .name("alloydb-network")
  *             .build());
  * 
- *         var source = new Cluster("source", ClusterArgs.builder()        
+ *         var source = new Cluster("source", ClusterArgs.builder()
  *             .clusterId("alloydb-source-cluster")
  *             .location("us-central1")
  *             .network(default_.id())
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sourceInstance = new Instance("sourceInstance", InstanceArgs.builder()        
+ *         var sourceInstance = new Instance("sourceInstance", InstanceArgs.builder()
  *             .cluster(source.name())
  *             .instanceId("alloydb-instance")
  *             .instanceType("PRIMARY")
@@ -233,13 +233,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sourceBackup = new Backup("sourceBackup", BackupArgs.builder()        
+ *         var sourceBackup = new Backup("sourceBackup", BackupArgs.builder()
  *             .backupId("alloydb-backup")
  *             .location("us-central1")
  *             .clusterName(source.name())
  *             .build());
  * 
- *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()        
+ *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()
  *             .clusterId("alloydb-backup-restored")
  *             .location("us-central1")
  *             .network(default_.id())
@@ -248,7 +248,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var restoredViaPitr = new Cluster("restoredViaPitr", ClusterArgs.builder()        
+ *         var restoredViaPitr = new Cluster("restoredViaPitr", ClusterArgs.builder()
  *             .clusterId("alloydb-pitr-restored")
  *             .location("us-central1")
  *             .network(default_.id())
@@ -260,7 +260,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-source-cluster")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -268,7 +268,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
@@ -317,17 +317,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("alloydb-secondary-cluster")
  *             .build());
  * 
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .clusterId("alloydb-primary-cluster")
  *             .location("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()        
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
  *             .cluster(primary.name())
  *             .instanceId("alloydb-primary-instance")
  *             .instanceType("PRIMARY")
@@ -336,7 +336,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secondary = new Cluster("secondary", ClusterArgs.builder()        
+ *         var secondary = new Cluster("secondary", ClusterArgs.builder()
  *             .clusterId("alloydb-secondary-cluster")
  *             .location("us-east1")
  *             .network(default_.id())
@@ -351,7 +351,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-secondary-cluster")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -359,7 +359,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())

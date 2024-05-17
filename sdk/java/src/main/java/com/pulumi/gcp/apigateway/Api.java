@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var api = new Api("api", ApiArgs.builder()        
+ *         var api = new Api("api", ApiArgs.builder()
  *             .apiId("my-api")
  *             .build());
  * 

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()        
+ *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()
  *             .name("global-appserver-ip")
  *             .build());
  * 
@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("my-network-name")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()        
+ *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()
  *             .name("global-psconnect-ip")
  *             .addressType("INTERNAL")
  *             .purpose("PRIVATE_SERVICE_CONNECT")

@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Bucket("default", BucketArgs.builder()        
+ *         var default_ = new Bucket("default", BucketArgs.builder()
  *             .name("test_bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var defaultStorageBucket = new StorageBucket("defaultStorageBucket", StorageBucketArgs.builder()        
+ *         var defaultStorageBucket = new StorageBucket("defaultStorageBucket", StorageBucketArgs.builder()
  *             .project("my-project-name")
  *             .bucketId(default_.id())
  *             .build());

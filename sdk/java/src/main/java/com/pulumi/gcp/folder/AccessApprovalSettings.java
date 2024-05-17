@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("my-folder")
  *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .folderId(myFolder.folderId())
  *             .notificationEmails(            
  *                 "testuser{@literal @}example.com",
@@ -115,24 +115,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("my-folder")
  *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .folderId(myFolder.name())
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("key-ring")
  *             .location("global")
  *             .project(myProject.projectId())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("crypto-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ASYMMETRIC_SIGN")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *             .folderId(myFolder.folderId())
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.signerVerifier")
  *             .member(serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult).applyValue(serviceAccount -> String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail()))))
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .folderId(myFolder.folderId())
  *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()

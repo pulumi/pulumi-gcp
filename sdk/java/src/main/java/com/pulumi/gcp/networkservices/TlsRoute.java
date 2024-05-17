@@ -50,19 +50,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
  *             .name("my-tls-route")
  *             .description("my description")
  *             .rules(TlsRouteRuleArgs.builder()
@@ -117,25 +117,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()        
+ *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()
  *             .name("my-tls-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
  *             .name("my-tls-route")
  *             .description("my description")
  *             .meshes(defaultMesh.id())
@@ -191,19 +191,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name("my-tls-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -212,7 +212,7 @@ import javax.annotation.Nullable;
  *             .ports(443)
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
  *             .name("my-tls-route")
  *             .description("my description")
  *             .gateways(defaultGateway.id())

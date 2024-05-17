@@ -21,11 +21,15 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+     * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
+     * * `STANDARD` - Parse JSON payloads in POST bodies.
      * 
      */
     private @Nullable String jsonParsing;
     /**
      * @return Log level to use. Defaults to `NORMAL`.
+     * * `NORMAL` - Normal log level.
+     * * `VERBOSE` - Verbose log level.
      * 
      */
     private @Nullable String logLevel;
@@ -46,6 +50,8 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     }
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+     * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
+     * * `STANDARD` - Parse JSON payloads in POST bodies.
      * 
      */
     public Optional<String> jsonParsing() {
@@ -53,6 +59,8 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     }
     /**
      * @return Log level to use. Defaults to `NORMAL`.
+     * * `NORMAL` - Normal log level.
+     * * `VERBOSE` - Verbose log level.
      * 
      */
     public Optional<String> logLevel() {

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TagKeyIamPolicy("policy", TagKeyIamPolicyArgs.builder()        
+ *         var policy = new TagKeyIamPolicy("policy", TagKeyIamPolicyArgs.builder()
  *             .tagKey(key.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TagKeyIamBinding("binding", TagKeyIamBindingArgs.builder()        
+ *         var binding = new TagKeyIamBinding("binding", TagKeyIamBindingArgs.builder()
  *             .tagKey(key.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TagKeyIamMember("member", TagKeyIamMemberArgs.builder()        
+ *         var member = new TagKeyIamMember("member", TagKeyIamMemberArgs.builder()
  *             .tagKey(key.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TagKeyIamPolicy("policy", TagKeyIamPolicyArgs.builder()        
+ *         var policy = new TagKeyIamPolicy("policy", TagKeyIamPolicyArgs.builder()
  *             .tagKey(key.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TagKeyIamBinding("binding", TagKeyIamBindingArgs.builder()        
+ *         var binding = new TagKeyIamBinding("binding", TagKeyIamBindingArgs.builder()
  *             .tagKey(key.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TagKeyIamMember("member", TagKeyIamMemberArgs.builder()        
+ *         var member = new TagKeyIamMember("member", TagKeyIamMemberArgs.builder()
  *             .tagKey(key.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")

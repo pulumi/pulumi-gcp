@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()        
+ *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()        
+ *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()        
+ *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()        
+ *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()        
+ *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()        
+ *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())

@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()        
+ *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()        
+ *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .role("roles/containeranalysis.notes.occurrences.viewer")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()        
+ *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .role("roles/containeranalysis.notes.occurrences.viewer")
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()        
+ *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()        
+ *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .role("roles/containeranalysis.notes.occurrences.viewer")
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()        
+ *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
  *             .role("roles/containeranalysis.notes.occurrences.viewer")

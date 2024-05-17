@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
  *             .name("tf-test-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
@@ -111,28 +111,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()        
+ *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()
  *             .secretId("ghe-pk-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var private_key_secret_version = new SecretVersion("private-key-secret-version", SecretVersionArgs.builder()        
+ *         var private_key_secret_version = new SecretVersion("private-key-secret-version", SecretVersionArgs.builder()
  *             .secret(private_key_secret.id())
  *             .secretData(StdFunctions.file(FileArgs.builder()
  *                 .input("private-key.pem")
  *                 .build()).result())
  *             .build());
  * 
- *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()        
+ *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var webhook_secret_secret_version = new SecretVersion("webhook-secret-secret-version", SecretVersionArgs.builder()        
+ *         var webhook_secret_secret_version = new SecretVersion("webhook-secret-secret-version", SecretVersionArgs.builder()
  *             .secret(webhook_secret_secret.id())
  *             .secretData("<webhook-secret-data>")
  *             .build());
@@ -144,17 +144,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy_pk = new SecretIamPolicy("policy-pk", SecretIamPolicyArgs.builder()        
+ *         var policy_pk = new SecretIamPolicy("policy-pk", SecretIamPolicyArgs.builder()
  *             .secretId(private_key_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var policy_whs = new SecretIamPolicy("policy-whs", SecretIamPolicyArgs.builder()        
+ *         var policy_whs = new SecretIamPolicy("policy-whs", SecretIamPolicyArgs.builder()
  *             .secretId(webhook_secret_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
  *             .name("my-terraform-ghe-connection")
  *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
@@ -209,14 +209,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()        
+ *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var github_token_secret_version = new SecretVersion("github-token-secret-version", SecretVersionArgs.builder()        
+ *         var github_token_secret_version = new SecretVersion("github-token-secret-version", SecretVersionArgs.builder()
  *             .secret(github_token_secret.id())
  *             .secretData(StdFunctions.file(FileArgs.builder()
  *                 .input("my-github-token.txt")
@@ -230,12 +230,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()        
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .secretId(github_token_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
  *             .name("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()

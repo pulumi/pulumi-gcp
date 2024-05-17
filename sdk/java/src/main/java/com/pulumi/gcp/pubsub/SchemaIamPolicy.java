@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()        
+ *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()        
+ *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()        
+ *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()        
+ *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()        
+ *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()        
+ *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")

@@ -64,18 +64,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_entry_group")
  *             .build());
  * 
- *         var entry = new Entry("entry", EntryArgs.builder()        
+ *         var entry = new Entry("entry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("my_entry")
  *             .userSpecifiedType("my_custom_type")
  *             .userSpecifiedSystem("SomethingExternal")
  *             .build());
  * 
- *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()        
+ *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()
  *             .tagTemplateId("my_template")
  *             .region("us-central1")
  *             .displayName("Demo Tag Template")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .forceDelete("false")
  *             .build());
  * 
- *         var basicTag = new Tag("basicTag", TagArgs.builder()        
+ *         var basicTag = new Tag("basicTag", TagArgs.builder()
  *             .parent(entry.id())
  *             .template(tagTemplate.id())
  *             .fields(TagFieldArgs.builder()
@@ -165,25 +165,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_entry_group")
  *             .build());
  * 
- *         var firstEntry = new Entry("firstEntry", EntryArgs.builder()        
+ *         var firstEntry = new Entry("firstEntry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("first_entry")
  *             .userSpecifiedType("my_custom_type")
  *             .userSpecifiedSystem("SomethingExternal")
  *             .build());
  * 
- *         var secondEntry = new Entry("secondEntry", EntryArgs.builder()        
+ *         var secondEntry = new Entry("secondEntry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("second_entry")
  *             .userSpecifiedType("another_custom_type")
  *             .userSpecifiedSystem("SomethingElseExternal")
  *             .build());
  * 
- *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()        
+ *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()
  *             .tagTemplateId("my_template")
  *             .region("us-central1")
  *             .displayName("Demo Tag Template")
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *             .forceDelete("false")
  *             .build());
  * 
- *         var entryGroupTag = new Tag("entryGroupTag", TagArgs.builder()        
+ *         var entryGroupTag = new Tag("entryGroupTag", TagArgs.builder()
  *             .parent(entryGroup.id())
  *             .template(tagTemplate.id())
  *             .fields(TagFieldArgs.builder()
@@ -273,11 +273,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()
  *             .entryGroupId("my_entry_group")
  *             .build());
  * 
- *         var entry = new Entry("entry", EntryArgs.builder()        
+ *         var entry = new Entry("entry", EntryArgs.builder()
  *             .entryGroup(entryGroup.id())
  *             .entryId("my_entry")
  *             .userSpecifiedType("my_custom_type")
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()        
+ *         var tagTemplate = new TagTemplate("tagTemplate", TagTemplateArgs.builder()
  *             .tagTemplateId("my_template")
  *             .region("us-central1")
  *             .displayName("Demo Tag Template")
@@ -363,7 +363,7 @@ import javax.annotation.Nullable;
  *             .forceDelete("false")
  *             .build());
  * 
- *         var basicTag = new Tag("basicTag", TagArgs.builder()        
+ *         var basicTag = new Tag("basicTag", TagArgs.builder()
  *             .parent(entry.id())
  *             .template(tagTemplate.id())
  *             .fields(            
@@ -382,7 +382,7 @@ import javax.annotation.Nullable;
  *             .column("address")
  *             .build());
  * 
- *         var second_tag = new Tag("second-tag", TagArgs.builder()        
+ *         var second_tag = new Tag("second-tag", TagArgs.builder()
  *             .parent(entry.id())
  *             .template(tagTemplate.id())
  *             .fields(            

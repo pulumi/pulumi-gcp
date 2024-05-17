@@ -252,6 +252,8 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair, and
      * cannot have overlapping &#39;portRange&#39;s.
      * 
+     * {@literal @}pattern: \d+(?:-\d+)?
+     * 
      */
     private String portRange;
     /**
@@ -275,6 +277,8 @@ public final class GetForwardingRulesRule {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair if
      * they share at least one port number.
+     * 
+     * {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     private List<String> ports;
@@ -652,6 +656,8 @@ public final class GetForwardingRulesRule {
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair, and
      * cannot have overlapping &#39;portRange&#39;s.
      * 
+     * {@literal @}pattern: \d+(?:-\d+)?
+     * 
      */
     public String portRange() {
         return this.portRange;
@@ -677,6 +683,8 @@ public final class GetForwardingRulesRule {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same &#39;[IPAddress, IPProtocol]&#39; pair if
      * they share at least one port number.
+     * 
+     * {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public List<String> ports() {

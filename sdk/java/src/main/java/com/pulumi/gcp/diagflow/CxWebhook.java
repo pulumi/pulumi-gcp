@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicWebhook = new CxWebhook("basicWebhook", CxWebhookArgs.builder()        
+ *         var basicWebhook = new CxWebhook("basicWebhook", CxWebhookArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyFlow")
  *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()

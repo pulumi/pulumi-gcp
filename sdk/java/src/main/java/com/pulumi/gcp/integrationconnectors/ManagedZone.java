@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var targetProject = new Project("targetProject", ProjectArgs.builder()        
+ *         var targetProject = new Project("targetProject", ProjectArgs.builder()
  *             .projectId("tf-test_75092")
  *             .name("tf-test_2605")
  *             .orgId("123456789")
@@ -74,29 +74,29 @@ import javax.annotation.Nullable;
  * 
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var dnsPeerBinding = new IAMMember("dnsPeerBinding", IAMMemberArgs.builder()        
+ *         var dnsPeerBinding = new IAMMember("dnsPeerBinding", IAMMemberArgs.builder()
  *             .project(targetProject.projectId())
  *             .role("roles/dns.peer")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-connectors.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var dns = new Service("dns", ServiceArgs.builder()        
+ *         var dns = new Service("dns", ServiceArgs.builder()
  *             .project(targetProject.projectId())
  *             .service("dns.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service("compute", ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()
  *             .project(targetProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .project(targetProject.projectId())
  *             .name("test")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var zone = new ManagedZone("zone", ManagedZoneArgs.builder()        
+ *         var zone = new ManagedZone("zone", ManagedZoneArgs.builder()
  *             .name("tf-test-dns_34535")
  *             .dnsName("private_22375.example.com.")
  *             .visibility("private")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var testmanagedzone = new ManagedZone("testmanagedzone", ManagedZoneArgs.builder()        
+ *         var testmanagedzone = new ManagedZone("testmanagedzone", ManagedZoneArgs.builder()
  *             .name("test")
  *             .description("tf created description")
  *             .labels(Map.of("intent", "example"))

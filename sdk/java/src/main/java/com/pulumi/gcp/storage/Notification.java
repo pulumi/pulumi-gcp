@@ -68,16 +68,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // End enabling notifications
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("default_bucket")
  *             .location("US")
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("default_topic")
  *             .build());
  * 
- *         var notification = new Notification("notification", NotificationArgs.builder()        
+ *         var notification = new Notification("notification", NotificationArgs.builder()
  *             .bucket(bucket.name())
  *             .payloadFormat("JSON_API_V1")
  *             .topic(topic.id())
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *         // Enable notifications by giving the correct IAM permission to the unique service account.
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
  *             .topic(topic.id())
  *             .role("roles/pubsub.publisher")
  *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()        
+ *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()
  *             .region("us-central1")
  *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("backend-service")
  *             .protocol("HTTP")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .region("us-central1")
  *             .name("url-map")
  *             .description("a description")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()
  *             .region("us-central1")
  *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .location("us-central1")
  *             .name("my-trust-config")
  *             .description("sample description for trust config")
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()        
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()
  *             .location("us-central1")
  *             .name("my-tls-policy")
  *             .description("my description")
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()        
+ *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()
  *             .region("us-central1")
  *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("http-health-check")
  *             .checkIntervalSec(1)
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("backend-service")
  *             .portName("http")
@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .region("us-central1")
  *             .name("url-map")
  *             .description("a description")
@@ -249,7 +249,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()
  *             .region("us-central1")
  *             .name("test-mtls-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
@@ -294,7 +294,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .name("my-certificate")
  *             .location("us-central1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
@@ -307,7 +307,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .name("backend-service")
  *             .region("us-central1")
  *             .protocol("HTTPS")
@@ -315,13 +315,13 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .name("url-map")
  *             .defaultService(defaultRegionBackendService.id())
  *             .region("us-central1")
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()
  *             .name("target-http-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))

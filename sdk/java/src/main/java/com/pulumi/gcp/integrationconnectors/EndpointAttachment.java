@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sampleendpointattachment = new EndpointAttachment("sampleendpointattachment", EndpointAttachmentArgs.builder()        
+ *         var sampleendpointattachment = new EndpointAttachment("sampleendpointattachment", EndpointAttachmentArgs.builder()
  *             .name("test-endpoint-attachment")
  *             .location("us-central1")
  *             .description("tf created description")

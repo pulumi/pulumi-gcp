@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()        
+ *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()
  *             .location("us-central1")
  *             .preferenceSetId("preference-set-test")
  *             .description("Terraform integration test description")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()        
+ *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()
  *             .location("us-central1")
  *             .preferenceSetId("preference-set-test")
  *             .description("Terraform integration test description")

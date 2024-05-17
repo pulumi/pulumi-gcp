@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("attestation-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .cryptoKey(crypto_key.id())
  *             .build());
  * 
- *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
  *             .name("attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var occurrence = new Occurence("occurrence", OccurenceArgs.builder()        
+ *         var occurrence = new Occurence("occurrence", OccurenceArgs.builder()
  *             .resourceUri("gcr.io/my-project/my-image")
  *             .noteName(note.id())
  *             .attestation(OccurenceAttestationArgs.builder()

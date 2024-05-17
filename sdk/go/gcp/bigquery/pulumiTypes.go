@@ -3089,6 +3089,14 @@ type DatasetAccessType struct {
 	// Structure is documented below.
 	Routine *DatasetAccessRoutine `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
+	//
+	// * `projectOwners`: Owners of the enclosing project.
+	//
+	// * `projectReaders`: Readers of the enclosing project.
+	//
+	// * `projectWriters`: Writers of the enclosing project.
+	//
+	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
 	// fred@example.com
@@ -3139,6 +3147,14 @@ type DatasetAccessTypeArgs struct {
 	// Structure is documented below.
 	Routine DatasetAccessRoutinePtrInput `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
+	//
+	// * `projectOwners`: Owners of the enclosing project.
+	//
+	// * `projectReaders`: Readers of the enclosing project.
+	//
+	// * `projectWriters`: Writers of the enclosing project.
+	//
+	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup pulumi.StringPtrInput `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
 	// fred@example.com
@@ -3246,6 +3262,14 @@ func (o DatasetAccessTypeOutput) Routine() DatasetAccessRoutinePtrOutput {
 }
 
 // A special group to grant access to. Possible values include:
+//
+// * `projectOwners`: Owners of the enclosing project.
+//
+// * `projectReaders`: Readers of the enclosing project.
+//
+// * `projectWriters`: Writers of the enclosing project.
+//
+// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 func (o DatasetAccessTypeOutput) SpecialGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
 }

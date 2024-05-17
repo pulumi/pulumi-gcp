@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var intent = new CxIntent("intent", CxIntentArgs.builder()        
+ *         var intent = new CxIntent("intent", CxIntentArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyIntent")
  *             .priority(1)
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var page = new CxPage("page", CxPageArgs.builder()        
+ *         var page = new CxPage("page", CxPageArgs.builder()
  *             .parent(agent.startFlow())
  *             .displayName("MyPage")
  *             .transitionRoutes(CxPageTransitionRouteArgs.builder()
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicTestCase = new CxTestCase("basicTestCase", CxTestCaseArgs.builder()        
+ *         var basicTestCase = new CxTestCase("basicTestCase", CxTestCaseArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyTestCase")
  *             .tags("#tag1")

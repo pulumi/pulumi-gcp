@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()        
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
  *             .name("my-router-peer")
  *             .router("my-router")
  *             .region("us-central1")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()        
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
  *             .name("my-router-peer")
  *             .router("my-router")
  *             .region("us-central1")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()        
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
  *             .name("my-router-peer")
  *             .router("my-router")
  *             .region("us-central1")
@@ -207,40 +207,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("my-router-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()        
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
  *             .name("my-router-sub")
  *             .network(network.selfLink())
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .build());
  * 
- *         var addrIntf = new Address("addrIntf", AddressArgs.builder()        
+ *         var addrIntf = new Address("addrIntf", AddressArgs.builder()
  *             .name("my-router-addr-intf")
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var addrIntfRedundant = new Address("addrIntfRedundant", AddressArgs.builder()        
+ *         var addrIntfRedundant = new Address("addrIntfRedundant", AddressArgs.builder()
  *             .name("my-router-addr-intf-red")
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var addrPeer = new Address("addrPeer", AddressArgs.builder()        
+ *         var addrPeer = new Address("addrPeer", AddressArgs.builder()
  *             .name("my-router-addr-peer")
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("router-appliance")
  *             .zone("us-central1-a")
  *             .machineType("e2-medium")
@@ -256,11 +256,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var hub = new Hub("hub", HubArgs.builder()        
+ *         var hub = new Hub("hub", HubArgs.builder()
  *             .name("my-router-hub")
  *             .build());
  * 
- *         var spoke = new Spoke("spoke", SpokeArgs.builder()        
+ *         var spoke = new Spoke("spoke", SpokeArgs.builder()
  *             .name("my-router-spoke")
  *             .location(subnetwork.region())
  *             .hub(hub.id())
@@ -273,7 +273,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var router = new Router("router", RouterArgs.builder()        
+ *         var router = new Router("router", RouterArgs.builder()
  *             .name("my-router-router")
  *             .region(subnetwork.region())
  *             .network(network.selfLink())
@@ -282,7 +282,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var interfaceRedundant = new RouterInterface("interfaceRedundant", RouterInterfaceArgs.builder()        
+ *         var interfaceRedundant = new RouterInterface("interfaceRedundant", RouterInterfaceArgs.builder()
  *             .name("my-router-intf-red")
  *             .region(router.region())
  *             .router(router.name())
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *             .privateIpAddress(addrIntfRedundant.address())
  *             .build());
  * 
- *         var interface_ = new RouterInterface("interface", RouterInterfaceArgs.builder()        
+ *         var interface_ = new RouterInterface("interface", RouterInterfaceArgs.builder()
  *             .name("my-router-intf")
  *             .region(router.region())
  *             .router(router.name())
@@ -299,7 +299,7 @@ import javax.annotation.Nullable;
  *             .redundantInterface(interfaceRedundant.name())
  *             .build());
  * 
- *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()        
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
  *             .name("my-router-peer")
  *             .router(router.name())
  *             .region(router.region())
@@ -341,7 +341,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RouterPeer("foobar", RouterPeerArgs.builder()        
+ *         var foobar = new RouterPeer("foobar", RouterPeerArgs.builder()
  *             .name("%s-peer")
  *             .router(foobarGoogleComputeRouter.name())
  *             .region(foobarGoogleComputeRouter.region())
@@ -417,6 +417,14 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     /**
      * User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
+     * * `ALL_SUBNETS`: Advertises all of the router&#39;s own VPC subnets.
+     *   This excludes any routes learned for subnets that use VPC Network
+     *   Peering.
+     * 
+     * Note that this field can only be populated if advertiseMode is `CUSTOM`
+     * and overrides the list defined for the router (in the &#34;bgp&#34; message).
+     * These groups are advertised in addition to any specified prefixes.
+     * Leave this field blank to advertise no custom groups.
      * 
      */
     @Export(name="advertisedGroups", refs={List.class,String.class}, tree="[0,1]")
@@ -425,6 +433,14 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     /**
      * @return User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
+     * * `ALL_SUBNETS`: Advertises all of the router&#39;s own VPC subnets.
+     *   This excludes any routes learned for subnets that use VPC Network
+     *   Peering.
+     * 
+     * Note that this field can only be populated if advertiseMode is `CUSTOM`
+     * and overrides the list defined for the router (in the &#34;bgp&#34; message).
+     * These groups are advertised in addition to any specified prefixes.
+     * Leave this field blank to advertise no custom groups.
      * 
      */
     public Output<Optional<List<String>>> advertisedGroups() {
@@ -602,6 +618,14 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource that configures and manages this BGP peer.
+     * * `MANAGED_BY_USER` is the default value and can be managed by
+     *   you or other users
+     * * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+     *   managed by Cloud Interconnect, specifically by an
+     *   InterconnectAttachment of type PARTNER. Google automatically
+     *   creates, updates, and deletes this type of BGP peer when the
+     *   PARTNER InterconnectAttachment is created, updated,
+     *   or deleted.
      * 
      */
     @Export(name="managementType", refs={String.class}, tree="[0]")
@@ -609,6 +633,14 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource that configures and manages this BGP peer.
+     * * `MANAGED_BY_USER` is the default value and can be managed by
+     *   you or other users
+     * * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+     *   managed by Cloud Interconnect, specifically by an
+     *   InterconnectAttachment of type PARTNER. Google automatically
+     *   creates, updates, and deletes this type of BGP peer when the
+     *   PARTNER InterconnectAttachment is created, updated,
+     *   or deleted.
      * 
      */
     public Output<String> managementType() {

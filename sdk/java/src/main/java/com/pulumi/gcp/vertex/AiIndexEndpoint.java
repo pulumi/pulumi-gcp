@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()        
+ *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()
  *             .name("network-name")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *             .build());
  * 
- *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()        
+ *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()
  *             .name("address-name")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .network(vertexNetwork.id())
  *             .build());
  * 
- *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()        
+ *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()
  *             .network(vertexNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(vertexRange.name())
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint with an public endpoint")
  *             .region("us-central1")

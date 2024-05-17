@@ -80,30 +80,30 @@ import javax.annotation.Nullable;
  *             .project(project)
  *             .build());
  * 
- *         var s3_backup_bucket = new Bucket("s3-backup-bucket", BucketArgs.builder()        
+ *         var s3_backup_bucket = new Bucket("s3-backup-bucket", BucketArgs.builder()
  *             .name(String.format("%s-backup", awsS3Bucket))
  *             .storageClass("NEARLINE")
  *             .project(project)
  *             .location("US")
  *             .build());
  * 
- *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember("s3-backup-bucketBucketIAMMember", BucketIAMMemberArgs.builder()        
+ *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember("s3-backup-bucketBucketIAMMember", BucketIAMMemberArgs.builder()
  *             .bucket(s3_backup_bucket.name())
  *             .role("roles/storage.admin")
  *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name(pubsubTopicName)
  *             .build());
  * 
- *         var notificationConfig = new TopicIAMMember("notificationConfig", TopicIAMMemberArgs.builder()        
+ *         var notificationConfig = new TopicIAMMember("notificationConfig", TopicIAMMemberArgs.builder()
  *             .topic(topic.id())
  *             .role("roles/pubsub.publisher")
  *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var s3_bucket_nightly_backup = new TransferJob("s3-bucket-nightly-backup", TransferJobArgs.builder()        
+ *         var s3_bucket_nightly_backup = new TransferJob("s3-bucket-nightly-backup", TransferJobArgs.builder()
  *             .description("Nightly backup of S3 bucket")
  *             .project(project)
  *             .transferSpec(TransferJobTransferSpecArgs.builder()

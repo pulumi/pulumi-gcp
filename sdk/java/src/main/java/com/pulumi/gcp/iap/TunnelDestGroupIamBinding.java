@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()        
+ *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()        
+ *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()        
+ *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()        
+ *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()        
+ *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()        
+ *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()        
+ *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -384,7 +384,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()        
+ *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -421,7 +421,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()        
+ *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -461,7 +461,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()        
+ *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()        
+ *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
@@ -544,7 +544,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()        
+ *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())

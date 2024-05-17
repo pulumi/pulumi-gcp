@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gceReservation = new Reservation("gceReservation", ReservationArgs.builder()        
+ *         var gceReservation = new Reservation("gceReservation", ReservationArgs.builder()
  *             .name("gce-reservation")
  *             .zone("us-central1-a")
  *             .specificReservation(ReservationSpecificReservationArgs.builder()

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()        
+ *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()        
+ *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()        
+ *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()        
+ *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()        
+ *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()        
+ *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
  *             .project(runtime.project())
  *             .location(runtime.location())
  *             .runtimeName(runtime.name())

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new AndroidApp("basic", AndroidAppArgs.builder()        
+ *         var basic = new AndroidApp("basic", AndroidAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Display Name Basic")
  *             .packageName("android.package.app")
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var android = new ApiKey("android", ApiKeyArgs.builder()        
+ *         var android = new ApiKey("android", ApiKeyArgs.builder()
  *             .name("api-key")
  *             .displayName("Display Name")
  *             .project("my-project-name")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Display Name")
  *             .packageName("android.package.app")
