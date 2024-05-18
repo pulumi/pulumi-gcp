@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tpl = new InstanceFromMachineImage("tpl", InstanceFromMachineImageArgs.builder()        
+ *         var tpl = new InstanceFromMachineImage("tpl", InstanceFromMachineImageArgs.builder()
  *             .name("instance-from-machine-image")
  *             .zone("us-central1-a")
  *             .sourceMachineImage("projects/PROJECT-ID/global/machineImages/NAME")

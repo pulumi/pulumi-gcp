@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()        
+ *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()
  *             .namePrefix("my-certificate-")
  *             .description("a description")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificate = new RandomId("certificate", RandomIdArgs.builder()        
+ *         var certificate = new RandomId("certificate", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .prefix("my-certificate-")
  *             .keepers(Map.ofEntries(
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // You may also want to control name generation explicitly:
- *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()        
+ *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()
  *             .name(certificate.hex())
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *         // SSL certificates cannot be updated after creation. In order to apply
  *         // the specified configuration, the provider will destroy the existing
  *         // resource and create a replacement. Example:
- *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()        
+ *         var default_ = new SSLCertificate("default", SSLCertificateArgs.builder()
  *             .namePrefix("my-certificate-")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -176,14 +176,14 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -191,7 +191,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .description("a description")
  *             .defaultService(defaultBackendService.id())
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy("defaultTargetHttpsProxy", TargetHttpsProxyArgs.builder()        
+ *         var defaultTargetHttpsProxy = new TargetHttpsProxy("defaultTargetHttpsProxy", TargetHttpsProxyArgs.builder()
  *             .name("test-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(default_.id())

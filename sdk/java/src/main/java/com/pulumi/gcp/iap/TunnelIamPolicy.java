@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -317,7 +317,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -367,7 +367,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -402,7 +402,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -440,7 +440,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane{@literal @}example.com")
@@ -481,7 +481,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane{@literal @}example.com")
@@ -519,7 +519,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()
  *             .project(projectService.project())
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane{@literal @}example.com")

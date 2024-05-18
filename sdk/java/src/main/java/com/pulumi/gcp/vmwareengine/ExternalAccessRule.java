@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()        
+ *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()
  *             .name("sample-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()        
+ *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()
  *             .location("us-west1")
  *             .name("sample-np")
  *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
- *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()        
+ *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()
  *             .name("sample-external-access-rule")
  *             .parent(external_access_rule_np.id())
  *             .priority(101)
@@ -130,14 +130,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()        
+ *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()
  *             .name("sample-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var external_access_rule_pc = new PrivateCloud("external-access-rule-pc", PrivateCloudArgs.builder()        
+ *         var external_access_rule_pc = new PrivateCloud("external-access-rule-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -154,20 +154,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()        
+ *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()
  *             .location("us-west1")
  *             .name("sample-np")
  *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
- *         var external_access_rule_ea = new ExternalAddress("external-access-rule-ea", ExternalAddressArgs.builder()        
+ *         var external_access_rule_ea = new ExternalAddress("external-access-rule-ea", ExternalAddressArgs.builder()
  *             .name("sample-ea")
  *             .parent(external_access_rule_pc.id())
  *             .internalIp("192.168.0.65")
  *             .build());
  * 
- *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()        
+ *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()
  *             .name("sample-external-access-rule")
  *             .parent(external_access_rule_np.id())
  *             .description("Sample Description")

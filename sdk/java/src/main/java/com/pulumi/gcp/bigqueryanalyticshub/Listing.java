@@ -60,21 +60,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listing = new DataExchange("listing", DataExchangeArgs.builder()        
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
  *             .location("US")
  *             .dataExchangeId("my_data_exchange")
  *             .displayName("my_data_exchange")
  *             .description("example data exchange")
  *             .build());
  * 
- *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()        
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()
  *             .datasetId("my_listing")
  *             .friendlyName("my_listing")
  *             .description("example data exchange")
  *             .location("US")
  *             .build());
  * 
- *         var listingListing = new Listing("listingListing", ListingArgs.builder()        
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
  *             .location("US")
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId("my_listing")
@@ -121,21 +121,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listing = new DataExchange("listing", DataExchangeArgs.builder()        
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
  *             .location("US")
  *             .dataExchangeId("my_data_exchange")
  *             .displayName("my_data_exchange")
  *             .description("example data exchange")
  *             .build());
  * 
- *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()        
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()
  *             .datasetId("my_listing")
  *             .friendlyName("my_listing")
  *             .description("example data exchange")
  *             .location("US")
  *             .build());
  * 
- *         var listingListing = new Listing("listingListing", ListingArgs.builder()        
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
  *             .location("US")
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId("my_listing")

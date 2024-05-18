@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -384,7 +384,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -421,7 +421,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -461,7 +461,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
@@ -544,7 +544,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())

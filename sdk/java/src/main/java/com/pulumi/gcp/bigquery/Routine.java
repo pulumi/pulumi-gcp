@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine("sproc", RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("PROCEDURE")
@@ -102,11 +102,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine("sproc", RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("SCALAR_FUNCTION")
@@ -158,11 +158,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine("sproc", RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("TABLE_VALUED_FUNCTION")
@@ -225,17 +225,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var pyspark = new Routine("pyspark", RoutineArgs.builder()        
+ *         var pyspark = new Routine("pyspark", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("PROCEDURE")
@@ -303,17 +303,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var pysparkMainfile = new Routine("pysparkMainfile", RoutineArgs.builder()        
+ *         var pysparkMainfile = new Routine("pysparkMainfile", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("PROCEDURE")
@@ -365,17 +365,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var sparkJar = new Routine("sparkJar", RoutineArgs.builder()        
+ *         var sparkJar = new Routine("sparkJar", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("PROCEDURE")
@@ -427,11 +427,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("tf_test_dataset_id_77884")
  *             .build());
  * 
- *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()        
+ *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("custom_masking_routine")
  *             .routineType("SCALAR_FUNCTION")
@@ -481,17 +481,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
  *             .cloudResource()
  *             .build());
  * 
- *         var remoteFunction = new Routine("remoteFunction", RoutineArgs.builder()        
+ *         var remoteFunction = new Routine("remoteFunction", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("routine_id")
  *             .routineType("SCALAR_FUNCTION")

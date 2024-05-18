@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ApiIamPolicy("policy", ApiIamPolicyArgs.builder()        
+ *         var policy = new ApiIamPolicy("policy", ApiIamPolicyArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ApiIamBinding("binding", ApiIamBindingArgs.builder()        
+ *         var binding = new ApiIamBinding("binding", ApiIamBindingArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .role("roles/apigateway.viewer")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ApiIamMember("member", ApiIamMemberArgs.builder()        
+ *         var member = new ApiIamMember("member", ApiIamMemberArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .role("roles/apigateway.viewer")
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ApiIamPolicy("policy", ApiIamPolicyArgs.builder()        
+ *         var policy = new ApiIamPolicy("policy", ApiIamPolicyArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ApiIamBinding("binding", ApiIamBindingArgs.builder()        
+ *         var binding = new ApiIamBinding("binding", ApiIamBindingArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .role("roles/apigateway.viewer")
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ApiIamMember("member", ApiIamMemberArgs.builder()        
+ *         var member = new ApiIamMember("member", ApiIamMemberArgs.builder()
  *             .project(api.project())
  *             .api(api.apiId())
  *             .role("roles/apigateway.viewer")

@@ -55,17 +55,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()
  *             .name("folder-logging-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var my_folder = new Folder("my-folder", FolderArgs.builder()        
+ *         var my_folder = new Folder("my-folder", FolderArgs.builder()
  *             .displayName("My folder")
  *             .parent("organizations/123456")
  *             .build());
  * 
- *         var my_sink = new FolderSink("my-sink", FolderSinkArgs.builder()        
+ *         var my_sink = new FolderSink("my-sink", FolderSinkArgs.builder()
  *             .name("my-sink")
  *             .description("some explanation on what this is")
  *             .folder(my_folder.name())
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .filter("resource.type = gce_instance AND severity >= WARNING")
  *             .build());
  * 
- *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()        
+ *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/storage.objectCreator")
  *             .members(my_sink.writerIdentity())

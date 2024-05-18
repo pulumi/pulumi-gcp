@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("tcp-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("tcp-region-health-check")
  *             .description("Health check via tcp")
  *             .timeoutSec(1)
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("ssl-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("ssl-region-health-check")
  *             .description("Health check via ssl")
  *             .timeoutSec(1)
@@ -243,7 +243,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("http-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("http-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -327,7 +327,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("http-region-health-check")
  *             .description("Health check via http")
  *             .timeoutSec(1)
@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("https-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -415,7 +415,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("https-region-health-check")
  *             .description("Health check via https")
  *             .timeoutSec(1)
@@ -463,7 +463,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("http2-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -503,7 +503,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("http2-region-health-check")
  *             .description("Health check via http2")
  *             .timeoutSec(1)
@@ -551,7 +551,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("grpc-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -591,7 +591,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()        
+ *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()
  *             .name("grpc-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)

@@ -51,19 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_peering_nw = new Network("network-peering-nw", NetworkArgs.builder()        
+ *         var network_peering_nw = new Network("network-peering-nw", NetworkArgs.builder()
  *             .name("default-np-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .build());
  * 
- *         var network_peering_peer_nw = new Network("network-peering-peer-nw", NetworkArgs.builder()        
+ *         var network_peering_peer_nw = new Network("network-peering-peer-nw", NetworkArgs.builder()
  *             .name("peer-np-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .build());
  * 
- *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()        
+ *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()
  *             .name("sample-network-peering")
  *             .description("Sample description")
  *             .vmwareEngineNetwork(network_peering_nw.id())
@@ -109,17 +109,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_peering_vpc = new Network("network-peering-vpc", NetworkArgs.builder()        
+ *         var network_peering_vpc = new Network("network-peering-vpc", NetworkArgs.builder()
  *             .name("default-vpc")
  *             .build());
  * 
- *         var network_peering_standard_nw = new Network("network-peering-standard-nw", NetworkArgs.builder()        
+ *         var network_peering_standard_nw = new Network("network-peering-standard-nw", NetworkArgs.builder()
  *             .name("default-standard-nw-np")
  *             .location("global")
  *             .type("STANDARD")
  *             .build());
  * 
- *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()        
+ *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()
  *             .name("sample-network-peering")
  *             .description("Sample description")
  *             .peerNetwork(network_peering_vpc.id())

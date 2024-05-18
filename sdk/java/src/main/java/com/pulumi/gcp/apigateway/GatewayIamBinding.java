@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()        
+ *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()        
+ *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()        
+ *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()        
+ *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()        
+ *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()        
+ *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())

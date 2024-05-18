@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new AiDataset("dataset", AiDatasetArgs.builder()        
+ *         var dataset = new AiDataset("dataset", AiDatasetArgs.builder()
  *             .displayName("terraform")
  *             .metadataSchemaUri("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml")
  *             .region("us-central1")

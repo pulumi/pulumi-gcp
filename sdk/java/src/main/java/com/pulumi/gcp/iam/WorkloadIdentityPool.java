@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()        
+ *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()        
+ *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .displayName("Name of pool")
  *             .description("Identity pool for automated test")

@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()        
+ *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
@@ -96,18 +96,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceProjectFull = new Project("serviceProjectFull", ProjectArgs.builder()        
+ *         var serviceProjectFull = new Project("serviceProjectFull", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project Full")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var example2 = new ServiceProjectAttachment("example2", ServiceProjectAttachmentArgs.builder()        
+ *         var example2 = new ServiceProjectAttachment("example2", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProjectFull.projectId())
  *             .serviceProject(serviceProjectFull.projectId())
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 

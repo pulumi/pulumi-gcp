@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domainMapping = new DomainMapping("domainMapping", DomainMappingArgs.builder()        
+ *         var domainMapping = new DomainMapping("domainMapping", DomainMappingArgs.builder()
  *             .domainName("verified-domain.com")
  *             .sslSettings(DomainMappingSslSettingsArgs.builder()
  *                 .sslManagementType("AUTOMATIC")

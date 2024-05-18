@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicTaxonomy = new Taxonomy("basicTaxonomy", TaxonomyArgs.builder()        
+ *         var basicTaxonomy = new Taxonomy("basicTaxonomy", TaxonomyArgs.builder()
  *             .displayName("my_taxonomy")
  *             .description("A collection of policy tags")
  *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")

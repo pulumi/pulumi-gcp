@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Disk("foobar", DiskArgs.builder()        
+ *         var foobar = new Disk("foobar", DiskArgs.builder()
  *             .name("existing-disk")
  *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var dailyBackup = new ResourcePolicy("dailyBackup", ResourcePolicyArgs.builder()        
+ *         var dailyBackup = new ResourcePolicy("dailyBackup", ResourcePolicyArgs.builder()
  *             .name("every-day-4am")
  *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()        
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
  *             .name("appserver-template")
  *             .description("This template is used to create app server instances.")
  *             .tags(            
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()        
+ *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()
  *             .name("appserver-template")
  *             .machineType("e2-medium")
  *             .canIpForward(false)
@@ -265,52 +265,6 @@ import javax.annotation.Nullable;
  * with `name_prefix`. Example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceTemplate;
- * import com.pulumi.gcp.compute.InstanceTemplateArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
- * import com.pulumi.gcp.compute.InstanceGroupManager;
- * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
- *             .disks()
- *             .networkInterfaces()
- *             .namePrefix("instance-template-")
- *             .machineType("e2-medium")
- *             .region("us-central1")
- *             .build());
- * 
- *         var instanceGroupManager = new InstanceGroupManager("instanceGroupManager", InstanceGroupManagerArgs.builder()        
- *             .name("instance-group-manager")
- *             .instanceTemplate(instanceTemplate.id())
- *             .baseInstanceName("instance-group-manager")
- *             .zone("us-central1-f")
- *             .targetSize("1")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With this setup, this provider generates a unique name for your Instance

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema("example", SchemaArgs.builder()        
+ *         var example = new Schema("example", SchemaArgs.builder()
  *             .name("example-schema")
  *             .type("AVRO")
  *             .definition("""
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema("example", SchemaArgs.builder()        
+ *         var example = new Schema("example", SchemaArgs.builder()
  *             .name("example")
  *             .type("PROTOCOL_BUFFER")
  *             .definition("""
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * }            """)
  *             .build());
  * 
- *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
  *             .name("example-topic")
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
  *                 .schema("projects/my-project-name/schemas/example")

@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("tf-test-backend-service-external")
  *             .protocol("HTTP")
  *             .loadBalancingScheme("EXTERNAL")
@@ -155,14 +155,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -249,7 +249,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -301,14 +301,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
@@ -355,14 +355,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
@@ -416,14 +416,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(healthCheck.id())
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -468,14 +468,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(healthCheck.id())
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -533,19 +533,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var externalProxy = new GlobalNetworkEndpointGroup("externalProxy", GlobalNetworkEndpointGroupArgs.builder()        
+ *         var externalProxy = new GlobalNetworkEndpointGroup("externalProxy", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("network-endpoint")
  *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .defaultPort("443")
  *             .build());
  * 
- *         var proxy = new GlobalNetworkEndpoint("proxy", GlobalNetworkEndpointArgs.builder()        
+ *         var proxy = new GlobalNetworkEndpoint("proxy", GlobalNetworkEndpointArgs.builder()
  *             .globalNetworkEndpointGroup(externalProxy.id())
  *             .fqdn("test.example.com")
  *             .port(externalProxy.defaultPort())
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .enableCdn(true)
  *             .timeoutSec(10)
@@ -590,14 +590,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .healthChecks(defaultHealthCheck.id())
  *             .loadBalancingScheme("EXTERNAL_MANAGED")

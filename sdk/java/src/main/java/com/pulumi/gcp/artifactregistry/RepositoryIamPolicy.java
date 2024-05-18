@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()        
+ *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()        
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()        
+ *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()        
+ *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()        
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()        
+ *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())

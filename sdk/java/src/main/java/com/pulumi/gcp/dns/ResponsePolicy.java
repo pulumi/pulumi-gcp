@@ -62,17 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()
  *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()        
+ *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()
  *             .name(network_1.name())
  *             .network(network_1.name())
  *             .ipCidrRange("10.0.36.0/24")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()        
+ *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()
  *             .name("cluster-1")
  *             .location("us-central1-c")
  *             .initialNodeCount(1)
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var example_response_policy = new ResponsePolicy("example-response-policy", ResponsePolicyArgs.builder()        
+ *         var example_response_policy = new ResponsePolicy("example-response-policy", ResponsePolicyArgs.builder()
  *             .responsePolicyName("example-response-policy")
  *             .networks(            
  *                 ResponsePolicyNetworkArgs.builder()

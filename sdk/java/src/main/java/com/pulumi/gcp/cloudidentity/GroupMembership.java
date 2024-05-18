@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new Group("group", GroupArgs.builder()        
+ *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var child_group = new Group("child-group", GroupArgs.builder()        
+ *         var child_group = new Group("child-group", GroupArgs.builder()
  *             .displayName("my-identity-group-child")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()        
+ *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
  *                 .id(child_group.groupKey().applyValue(groupKey -> groupKey.id()))
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new Group("group", GroupArgs.builder()        
+ *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()        
+ *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
  *                 .id("cloud_identity_user{@literal @}example.com")

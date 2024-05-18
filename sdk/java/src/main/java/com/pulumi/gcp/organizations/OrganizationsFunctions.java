@@ -104,7 +104,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -154,7 +154,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -204,7 +204,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -254,7 +254,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -304,7 +304,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -354,7 +354,7 @@ public final class OrganizationsFunctions {
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
@@ -476,58 +476,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -585,58 +533,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -694,58 +590,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -803,58 +647,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -912,58 +704,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1021,58 +761,6 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
-     * 
-     *         final var provider = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("provider-user-admin")
-     *                 .build())
-     *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup("rbac.authorization.k8s.io")
-     *                 .kind("ClusterRole")
-     *                 .name("cluster-admin")
-     *                 .build())
-     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1563,7 +1251,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
@@ -1610,7 +1298,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
@@ -1657,7 +1345,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
@@ -1704,7 +1392,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
@@ -1751,7 +1439,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
@@ -1798,7 +1486,7 @@ public final class OrganizationsFunctions {
      *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
      *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());

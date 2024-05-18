@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deploymentResourcePool = new AiDeploymentResourcePool("deploymentResourcePool", AiDeploymentResourcePoolArgs.builder()        
+ *         var deploymentResourcePool = new AiDeploymentResourcePool("deploymentResourcePool", AiDeploymentResourcePoolArgs.builder()
  *             .region("us-central1")
  *             .name("example-deployment-resource-pool")
  *             .dedicatedResources(AiDeploymentResourcePoolDedicatedResourcesArgs.builder()

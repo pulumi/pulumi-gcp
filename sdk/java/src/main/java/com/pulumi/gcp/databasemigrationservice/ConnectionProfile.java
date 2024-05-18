@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cloudsqldb = new DatabaseInstance("cloudsqldb", DatabaseInstanceArgs.builder()        
+ *         var cloudsqldb = new DatabaseInstance("cloudsqldb", DatabaseInstanceArgs.builder()
  *             .name("my-database")
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -84,18 +84,18 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()        
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
  *             .commonName("my-cert")
  *             .instance(cloudsqldb.name())
  *             .build());
  * 
- *         var sqldbUser = new User("sqldbUser", UserArgs.builder()        
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
  *             .name("my-username")
  *             .instance(cloudsqldb.name())
  *             .password("my-password")
  *             .build());
  * 
- *         var cloudsqlprofile = new ConnectionProfile("cloudsqlprofile", ConnectionProfileArgs.builder()        
+ *         var cloudsqlprofile = new ConnectionProfile("cloudsqlprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
  *             .connectionProfileId("my-fromprofileid")
  *             .displayName("my-fromprofileid_display")
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var cloudsqlprofileDestination = new ConnectionProfile("cloudsqlprofileDestination", ConnectionProfileArgs.builder()        
+ *         var cloudsqlprofileDestination = new ConnectionProfile("cloudsqlprofileDestination", ConnectionProfileArgs.builder()
  *             .location("us-central1")
  *             .connectionProfileId("my-toprofileid")
  *             .displayName("my-toprofileid_displayname")
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgresqldb = new DatabaseInstance("postgresqldb", DatabaseInstanceArgs.builder()        
+ *         var postgresqldb = new DatabaseInstance("postgresqldb", DatabaseInstanceArgs.builder()
  *             .name("my-database")
  *             .databaseVersion("POSTGRES_12")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -189,18 +189,18 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()        
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
  *             .commonName("my-cert")
  *             .instance(postgresqldb.name())
  *             .build());
  * 
- *         var sqldbUser = new User("sqldbUser", UserArgs.builder()        
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
  *             .name("my-username")
  *             .instance(postgresqldb.name())
  *             .password("my-password")
  *             .build());
  * 
- *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()        
+ *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
  *             .connectionProfileId("my-profileid")
  *             .displayName("my-profileid_display")
@@ -251,7 +251,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oracleprofile = new ConnectionProfile("oracleprofile", ConnectionProfileArgs.builder()        
+ *         var oracleprofile = new ConnectionProfile("oracleprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
  *             .connectionProfileId("my-profileid")
  *             .displayName("my-profileid_display")
@@ -311,11 +311,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("private-ip-alloc")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -323,13 +323,13 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var alloydbprofile = new ConnectionProfile("alloydbprofile", ConnectionProfileArgs.builder()        
+ *         var alloydbprofile = new ConnectionProfile("alloydbprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
  *             .connectionProfileId("my-profileid")
  *             .displayName("my-profileid_display")

@@ -55,13 +55,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()        
+ *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .defaultPort("90")
  *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 
- *         var default_endpoint = new GlobalNetworkEndpoint("default-endpoint", GlobalNetworkEndpointArgs.builder()        
+ *         var default_endpoint = new GlobalNetworkEndpoint("default-endpoint", GlobalNetworkEndpointArgs.builder()
  *             .globalNetworkEndpointGroup(neg.name())
  *             .fqdn("www.example.com")
  *             .port(90)

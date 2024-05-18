@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()        
+ *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()        
+ *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()        
+ *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()        
+ *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()        
+ *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()        
+ *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .name(default_.name())

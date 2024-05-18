@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *         var membership = new Membership("membership", MembershipArgs.builder()
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .description("Membership")
  *             .build());
  * 
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("multiclusteringress")
  *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("multiclusterservicediscovery")
  *             .location("global")
  *             .labels(Map.of("foo", "bar"))
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("servicemesh")
  *             .location("global")
  *             .build());
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("fleetobservability")
  *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("fleetobservability")
  *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
@@ -291,7 +291,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("fleetobservability")
  *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
@@ -340,7 +340,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("servicemesh")
  *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
@@ -384,7 +384,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("configmanagement")
  *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
@@ -433,7 +433,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("policycontroller")
  *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
@@ -495,7 +495,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("policycontroller")
  *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
@@ -590,7 +590,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("policycontroller")
  *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
@@ -644,7 +644,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *         var feature = new Feature("feature", FeatureArgs.builder()
  *             .name("clusterupgrade")
  *             .location("global")
  *             .spec(FeatureSpecArgs.builder()

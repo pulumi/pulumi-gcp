@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prefixes = new PublicAdvertisedPrefix("prefixes", PublicAdvertisedPrefixArgs.builder()        
+ *         var prefixes = new PublicAdvertisedPrefix("prefixes", PublicAdvertisedPrefixArgs.builder()
  *             .name("my-prefix")
  *             .description("description")
  *             .dnsVerificationIp("127.127.0.0")
