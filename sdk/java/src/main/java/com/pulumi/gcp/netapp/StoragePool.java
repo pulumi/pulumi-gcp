@@ -73,13 +73,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a network or use datasource to reference existing network
- *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()        
+ *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()
  *             .name("test-network")
  *             .build());
  * 
  *         // Reserve a CIDR for NetApp Volumes to use
  *         // When using shared-VPCs, this resource needs to be created in host project
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("test-address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a Private Service Access connection
  *         // When using shared-VPCs, this resource needs to be created in host project
- *         var default_ = new Connection("default", ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()
  *             .network(peeringNetwork.id())
  *             .service("netapp.servicenetworking.goog")
  *             .reservedPeeringRanges(privateIpAlloc.name())
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  *         // Modify the PSA Connection to allow import/export of custom routes
  *         // When using shared-VPCs, this resource needs to be created in host project
- *         var routeUpdates = new NetworkPeeringRoutesConfig("routeUpdates", NetworkPeeringRoutesConfigArgs.builder()        
+ *         var routeUpdates = new NetworkPeeringRoutesConfig("routeUpdates", NetworkPeeringRoutesConfigArgs.builder()
  *             .peering(default_.peering())
  *             .network(peeringNetwork.name())
  *             .importCustomRoutes(true)
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a storage pool
  *         // Create this resource in the project which is expected to own the volumes
- *         var testPool = new StoragePool("testPool", StoragePoolArgs.builder()        
+ *         var testPool = new StoragePool("testPool", StoragePoolArgs.builder()
  *             .name("test-pool")
  *             .location("us-central1")
  *             .serviceLevel("PREMIUM")

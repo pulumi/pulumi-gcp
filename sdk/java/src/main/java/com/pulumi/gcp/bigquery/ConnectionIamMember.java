@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()        
+ *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()        
+ *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()        
+ *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()        
+ *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()        
+ *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()        
+ *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
  *             .project(connection.project())
  *             .location(connection.location())
  *             .connectionId(connection.connectionId())

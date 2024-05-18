@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()        
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()        
+ *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .role("roles/secretmanager.secretAccessor")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()        
+ *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .role("roles/secretmanager.secretAccessor")
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()        
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()        
+ *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .role("roles/secretmanager.secretAccessor")
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()        
+ *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
  *             .role("roles/secretmanager.secretAccessor")

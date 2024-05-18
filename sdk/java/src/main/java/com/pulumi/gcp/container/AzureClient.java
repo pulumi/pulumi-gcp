@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new AzureClient("primary", AzureClientArgs.builder()        
+ *         var primary = new AzureClient("primary", AzureClientArgs.builder()
  *             .applicationId("12345678-1234-1234-1234-123456789111")
  *             .location("us-west1")
  *             .name("client-name")

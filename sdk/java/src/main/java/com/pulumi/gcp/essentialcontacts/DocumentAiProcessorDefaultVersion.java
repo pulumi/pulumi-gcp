@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var processor = new DocumentAiProcessor("processor", DocumentAiProcessorArgs.builder()        
+ *         var processor = new DocumentAiProcessor("processor", DocumentAiProcessorArgs.builder()
  *             .location("us")
  *             .displayName("test-processor")
  *             .type("OCR_PROCESSOR")
  *             .build());
  * 
- *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", DocumentAiProcessorDefaultVersionArgs.builder()        
+ *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", DocumentAiProcessorDefaultVersionArgs.builder()
  *             .processor(processor.id())
  *             .version(processor.id().applyValue(id -> String.format("%s/processorVersions/stable", id)))
  *             .build());

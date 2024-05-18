@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()        
+ *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()        
+ *         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .role("roles/apigateway.viewer")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()        
+ *         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .role("roles/apigateway.viewer")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()        
+ *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()        
+ *         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .role("roles/apigateway.viewer")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()        
+ *         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
  *             .role("roles/apigateway.viewer")

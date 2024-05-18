@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()
  *             .displayName("tenant")
  *             .allowPasswordSignup(true)
  *             .build());

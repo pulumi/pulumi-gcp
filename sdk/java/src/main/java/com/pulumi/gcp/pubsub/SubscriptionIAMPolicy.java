@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()        
+ *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()
  *             .subscription("your-subscription-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMBinding("editor", SubscriptionIAMBindingArgs.builder()        
+ *         var editor = new SubscriptionIAMBinding("editor", SubscriptionIAMBindingArgs.builder()
  *             .subscription("your-subscription-name")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMMember("editor", SubscriptionIAMMemberArgs.builder()        
+ *         var editor = new SubscriptionIAMMember("editor", SubscriptionIAMMemberArgs.builder()
  *             .subscription("your-subscription-name")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()        
+ *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()
  *             .subscription("your-subscription-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMBinding("editor", SubscriptionIAMBindingArgs.builder()        
+ *         var editor = new SubscriptionIAMBinding("editor", SubscriptionIAMBindingArgs.builder()
  *             .subscription("your-subscription-name")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMMember("editor", SubscriptionIAMMemberArgs.builder()        
+ *         var editor = new SubscriptionIAMMember("editor", SubscriptionIAMMemberArgs.builder()
  *             .subscription("your-subscription-name")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

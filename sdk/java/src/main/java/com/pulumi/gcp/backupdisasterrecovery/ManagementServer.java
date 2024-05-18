@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()        
+ *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()
  *             .name("vpc-network")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var ms_console = new ManagementServer("ms-console", ManagementServerArgs.builder()        
+ *         var ms_console = new ManagementServer("ms-console", ManagementServerArgs.builder()
  *             .location("us-central1")
  *             .name("ms-console")
  *             .type("BACKUP_RESTORE")

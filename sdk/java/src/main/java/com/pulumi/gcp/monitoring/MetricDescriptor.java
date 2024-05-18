@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new MetricDescriptor("basic", MetricDescriptorArgs.builder()        
+ *         var basic = new MetricDescriptor("basic", MetricDescriptorArgs.builder()
  *             .description("Daily sales records from all branch stores.")
  *             .displayName("metric-descriptor")
  *             .type("custom.googleapis.com/stores/daily_sales")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var withAlert = new MetricDescriptor("withAlert", MetricDescriptorArgs.builder()        
+ *         var withAlert = new MetricDescriptor("withAlert", MetricDescriptorArgs.builder()
  *             .description("Daily sales records from all branch stores.")
  *             .displayName("metric-descriptor")
  *             .type("custom.googleapis.com/stores/daily_sales")
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .unit("{USD}")
  *             .build());
  * 
- *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("metric-descriptor")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()

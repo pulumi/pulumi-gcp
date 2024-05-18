@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress("gs://media-edge-default")
  *             .description("The default bucket for media edge test")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fallback = new EdgeCacheOrigin("fallback", EdgeCacheOriginArgs.builder()        
+ *         var fallback = new EdgeCacheOrigin("fallback", EdgeCacheOriginArgs.builder()
  *             .name("my-fallback")
  *             .originAddress("fallback.example.com")
  *             .description("The default bucket for media edge test")
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress("gs://media-edge-default")
  *             .failoverOrigin(fallback.id())
@@ -185,19 +185,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()
  *             .name("my-origin")
  *             .originAddress("gs://media-edge-default")
  *             .description("The default bucket for V4 authentication")

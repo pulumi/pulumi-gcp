@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
  *             .name("terraform")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
  *             .name("terraform2")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
  *             .name("terraform3")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteTopic("example", LiteTopicArgs.builder()        
+ *         var example = new LiteTopic("example", LiteTopicArgs.builder()
  *             .name("example-topic")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleLiteSubscription = new LiteSubscription("exampleLiteSubscription", LiteSubscriptionArgs.builder()        
+ *         var exampleLiteSubscription = new LiteSubscription("exampleLiteSubscription", LiteSubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.name())
  *             .deliveryConfig(LiteSubscriptionDeliveryConfigArgs.builder()

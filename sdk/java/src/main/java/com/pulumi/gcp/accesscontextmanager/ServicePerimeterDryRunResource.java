@@ -68,12 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var service_perimeter_dry_run_resourceServicePerimeter = new ServicePerimeter("service-perimeter-dry-run-resourceServicePerimeter", ServicePerimeterArgs.builder()        
+ *         var service_perimeter_dry_run_resourceServicePerimeter = new ServicePerimeter("service-perimeter-dry-run-resourceServicePerimeter", ServicePerimeterArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_all", name)))
  *             .title("restrict_all")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .useExplicitDryRunSpec(true)
  *             .build());
  * 
- *         var service_perimeter_dry_run_resource = new ServicePerimeterDryRunResource("service-perimeter-dry-run-resource", ServicePerimeterDryRunResourceArgs.builder()        
+ *         var service_perimeter_dry_run_resource = new ServicePerimeterDryRunResource("service-perimeter-dry-run-resource", ServicePerimeterDryRunResourceArgs.builder()
  *             .perimeterName(service_perimeter_dry_run_resourceServicePerimeter.name())
  *             .resource("projects/987654321")
  *             .build());

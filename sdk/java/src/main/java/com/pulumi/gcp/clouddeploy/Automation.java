@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()        
+ *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()
  *             .name("cd-pipeline")
  *             .location("us-central1")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var b_automation = new Automation("b-automation", AutomationArgs.builder()        
+ *         var b_automation = new Automation("b-automation", AutomationArgs.builder()
  *             .name("cd-automation")
  *             .project(pipeline.project())
  *             .location(pipeline.location())
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()        
+ *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()
  *             .name("cd-pipeline")
  *             .location("us-central1")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var f_automation = new Automation("f-automation", AutomationArgs.builder()        
+ *         var f_automation = new Automation("f-automation", AutomationArgs.builder()
  *             .name("cd-automation")
  *             .location("us-central1")
  *             .deliveryPipeline(pipeline.name())

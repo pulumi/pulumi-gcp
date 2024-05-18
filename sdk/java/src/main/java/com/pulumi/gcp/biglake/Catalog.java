@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Catalog("default", CatalogArgs.builder()        
+ *         var default_ = new Catalog("default", CatalogArgs.builder()
  *             .name("my_catalog")
  *             .location("US")
  *             .build());

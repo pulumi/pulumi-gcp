@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *         var my_index = new Index("my-index", IndexArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("atestcollection")
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id-dm")
  *             .locationId("nam5")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *         var my_index = new Index("my-index", IndexArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("atestcollection")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id-vector")
  *             .locationId("nam5")
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *         var my_index = new Index("my-index", IndexArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .collection("atestcollection")

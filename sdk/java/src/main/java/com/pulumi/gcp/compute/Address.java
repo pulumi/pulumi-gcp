@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ipAddress = new Address("ipAddress", AddressArgs.builder()        
+ *         var ipAddress = new Address("ipAddress", AddressArgs.builder()
  *             .name("my-address")
  *             .build());
  * 
@@ -104,18 +104,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var internalWithSubnetAndAddress = new Address("internalWithSubnetAndAddress", AddressArgs.builder()        
+ *         var internalWithSubnetAndAddress = new Address("internalWithSubnetAndAddress", AddressArgs.builder()
  *             .name("my-internal-address")
  *             .subnetwork(defaultSubnetwork.id())
  *             .addressType("INTERNAL")
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var internalWithGceEndpoint = new Address("internalWithGceEndpoint", AddressArgs.builder()        
+ *         var internalWithGceEndpoint = new Address("internalWithGceEndpoint", AddressArgs.builder()
  *             .name("my-internal-address-")
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_ = new Address("static", AddressArgs.builder()        
+ *         var static_ = new Address("static", AddressArgs.builder()
  *             .name("ipv4-address")
  *             .build());
  * 
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var instanceWithIp = new Instance("instanceWithIp", InstanceArgs.builder()        
+ *         var instanceWithIp = new Instance("instanceWithIp", InstanceArgs.builder()
  *             .name("vm-instance")
  *             .machineType("f1-micro")
  *             .zone("us-central1-a")
@@ -254,12 +254,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var ipsec_interconnect_address = new Address("ipsec-interconnect-address", AddressArgs.builder()        
+ *         var ipsec_interconnect_address = new Address("ipsec-interconnect-address", AddressArgs.builder()
  *             .name("test-address")
  *             .addressType("INTERNAL")
  *             .purpose("IPSEC_INTERCONNECT")

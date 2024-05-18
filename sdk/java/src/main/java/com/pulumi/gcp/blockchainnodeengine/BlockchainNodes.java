@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNode = new BlockchainNodes("defaultNode", BlockchainNodesArgs.builder()        
+ *         var defaultNode = new BlockchainNodes("defaultNode", BlockchainNodesArgs.builder()
  *             .location("us-central1")
  *             .blockchainType("ETHEREUM")
  *             .blockchainNodeId("blockchain_basic_node")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNodeGeth = new BlockchainNodes("defaultNodeGeth", BlockchainNodesArgs.builder()        
+ *         var defaultNodeGeth = new BlockchainNodes("defaultNodeGeth", BlockchainNodesArgs.builder()
  *             .location("us-central1")
  *             .blockchainType("ETHEREUM")
  *             .blockchainNodeId("blockchain_geth_node")

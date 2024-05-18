@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -384,7 +384,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -421,7 +421,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -461,7 +461,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
@@ -544,7 +544,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()        
+ *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()
  *             .project("your-project-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()        
+ *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()
  *             .project("your-project-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMBinding("project", IAMBindingArgs.builder()        
+ *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMBinding("project", IAMBindingArgs.builder()        
+ *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/container.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMMember("project", IAMMemberArgs.builder()        
+ *         var project = new IAMMember("project", IAMMemberArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -277,7 +277,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMMember("project", IAMMemberArgs.builder()        
+ *         var project = new IAMMember("project", IAMMemberArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/firebase.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMAuditConfig("project", IAMAuditConfigArgs.builder()        
+ *         var project = new IAMAuditConfig("project", IAMAuditConfigArgs.builder()
  *             .project("your-project-id")
  *             .service("allServices")
  *             .auditLogConfigs(            
@@ -381,7 +381,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()        
+ *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()
  *             .project("your-project-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -431,7 +431,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()        
+ *         var project = new IAMPolicy("project", IAMPolicyArgs.builder()
  *             .project("your-project-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -467,7 +467,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMBinding("project", IAMBindingArgs.builder()        
+ *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -505,7 +505,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMBinding("project", IAMBindingArgs.builder()        
+ *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/container.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -547,7 +547,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMMember("project", IAMMemberArgs.builder()        
+ *         var project = new IAMMember("project", IAMMemberArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -585,7 +585,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMMember("project", IAMMemberArgs.builder()        
+ *         var project = new IAMMember("project", IAMMemberArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/firebase.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -628,7 +628,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new IAMAuditConfig("project", IAMAuditConfigArgs.builder()        
+ *         var project = new IAMAuditConfig("project", IAMAuditConfigArgs.builder()
  *             .project("your-project-id")
  *             .service("allServices")
  *             .auditLogConfigs(            

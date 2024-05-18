@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ResourcePolicy("foo", ResourcePolicyArgs.builder()        
+ *         var foo = new ResourcePolicy("foo", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()        
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()        
+ *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()        
+ *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()        
+ *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .description("Start and stop instances")
@@ -289,7 +289,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()        
+ *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("us-central1")
  *             .description("chain name snapshot")
@@ -344,7 +344,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cgroup = new ResourcePolicy("cgroup", ResourcePolicyArgs.builder()        
+ *         var cgroup = new ResourcePolicy("cgroup", ResourcePolicyArgs.builder()
  *             .name("gce-policy")
  *             .region("europe-west1")
  *             .diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs.builder()

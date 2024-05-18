@@ -46,18 +46,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var projectService = new Service("projectService", ServiceArgs.builder()        
+ *         var projectService = new Service("projectService", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("iap.googleapis.com")
  *             .build());
  * 
- *         var projectBrand = new Brand("projectBrand", BrandArgs.builder()        
+ *         var projectBrand = new Brand("projectBrand", BrandArgs.builder()
  *             .supportEmail("support{@literal @}example.com")
  *             .applicationTitle("Cloud IAP protected Application")
  *             .project(projectService.project())

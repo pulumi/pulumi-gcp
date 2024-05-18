@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var picture = new BucketObject("picture", BucketObjectArgs.builder()        
+ *         var picture = new BucketObject("picture", BucketObjectArgs.builder()
  *             .name("butterfly01")
  *             .source(new FileAsset("/images/nature/garden-tiger-moth.jpg"))
  *             .bucket("image-store")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var emptyFolder = new BucketObject("emptyFolder", BucketObjectArgs.builder()        
+ *         var emptyFolder = new BucketObject("emptyFolder", BucketObjectArgs.builder()
  *             .name("empty_folder/")
  *             .content(" ")
  *             .bucket("image-store")

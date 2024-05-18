@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()        
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()        
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()        
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()        
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMMember("organization", IAMMemberArgs.builder()        
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -277,7 +277,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMMember("organization", IAMMemberArgs.builder()        
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()        
+ *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()
  *             .orgId("1234567890")
  *             .service("allServices")
  *             .auditLogConfigs(            
@@ -385,7 +385,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()        
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -435,7 +435,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()        
+ *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -473,7 +473,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()        
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -511,7 +511,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()        
+ *         var organization = new IAMBinding("organization", IAMBindingArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -553,7 +553,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMMember("organization", IAMMemberArgs.builder()        
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -591,7 +591,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IAMMember("organization", IAMMemberArgs.builder()        
+ *         var organization = new IAMMember("organization", IAMMemberArgs.builder()
  *             .orgId("1234567890")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -634,7 +634,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()        
+ *         var organization = new IamAuditConfig("organization", IamAuditConfigArgs.builder()
  *             .orgId("1234567890")
  *             .service("allServices")
  *             .auditLogConfigs(            

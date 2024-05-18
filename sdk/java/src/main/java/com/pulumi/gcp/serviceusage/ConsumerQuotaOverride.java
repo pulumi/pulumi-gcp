@@ -56,13 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()
  *             .project(myProject.projectId())
  *             .service("servicemanagement.googleapis.com")
  *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
@@ -107,13 +107,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()
  *             .dimensions(Map.of("region", "us-central1"))
  *             .project(myProject.projectId())
  *             .service("compute.googleapis.com")
@@ -159,13 +159,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()
  *             .project(myProject.projectId())
  *             .service("libraryagent.googleapis.com")
  *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()

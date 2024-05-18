@@ -60,16 +60,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("dicom-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new DicomStore("default", DicomStoreArgs.builder()        
+ *         var default_ = new DicomStore("default", DicomStoreArgs.builder()
  *             .name("example-dicom-store")
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
@@ -119,16 +119,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("dicom-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()        
+ *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()
  *             .datasetId("dicom_bq_ds")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -136,13 +136,13 @@ import javax.annotation.Nullable;
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
- *         var bqTable = new Table("bqTable", TableArgs.builder()        
+ *         var bqTable = new Table("bqTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(bqDataset.datasetId())
  *             .tableId("dicom_bq_tb")
  *             .build());
  * 
- *         var default_ = new DicomStore("default", DicomStoreArgs.builder()        
+ *         var default_ = new DicomStore("default", DicomStoreArgs.builder()
  *             .name("example-dicom-store")
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()

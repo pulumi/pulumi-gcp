@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicInstance = new Instance("basicInstance", InstanceArgs.builder()        
+ *         var basicInstance = new Instance("basicInstance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .type("BASIC")
@@ -103,11 +103,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AppengineFunctions.getDefaultServiceAccount();
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("datafusion-full-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("datafusion-ip-alloc")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .build());
  * 
- *         var extendedInstance = new Instance("extendedInstance", InstanceArgs.builder()        
+ *         var extendedInstance = new Instance("extendedInstance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .description("My Data Fusion instance")
  *             .displayName("My Data Fusion instance")
@@ -179,17 +179,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("my-instance")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("my-instance")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cmek = new Instance("cmek", InstanceArgs.builder()        
+ *         var cmek = new Instance("cmek", InstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .type("BASIC")
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -236,7 +236,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var enterpriseInstance = new Instance("enterpriseInstance", InstanceArgs.builder()        
+ *         var enterpriseInstance = new Instance("enterpriseInstance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .type("ENTERPRISE")
@@ -276,11 +276,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eventTopic = new Topic("eventTopic", TopicArgs.builder()        
+ *         var eventTopic = new Topic("eventTopic", TopicArgs.builder()
  *             .name("my-instance")
  *             .build());
  * 
- *         var event = new Instance("event", InstanceArgs.builder()        
+ *         var event = new Instance("event", InstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .type("BASIC")
@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Instance("zone", InstanceArgs.builder()        
+ *         var zone = new Instance("zone", InstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .zone("us-central1-a")

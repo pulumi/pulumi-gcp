@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var clientCert = new SslCert("clientCert", SslCertArgs.builder()        
+ *         var clientCert = new SslCert("clientCert", SslCertArgs.builder()
  *             .commonName("client-name")
  *             .instance(main.name())
  *             .build());

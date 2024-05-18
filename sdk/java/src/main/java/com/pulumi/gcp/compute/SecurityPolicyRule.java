@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
  *             .name("policyruletest")
  *             .description("basic global security policy")
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()        
+ *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("new rule")
  *             .priority(100)
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
  *             .name("policyruletest")
  *             .description("basic global security policy")
  *             .type("CLOUD_ARMOR")
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *         //   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
  *         //   to = google_compute_security_policy_rule.default_rule
  *         // }
- *         var defaultRule = new SecurityPolicyRule("defaultRule", SecurityPolicyRuleArgs.builder()        
+ *         var defaultRule = new SecurityPolicyRule("defaultRule", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("default rule")
  *             .action("allow")
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()        
+ *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("new rule")
  *             .priority(100)
@@ -184,13 +184,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
  *             .name("policywithmultiplerules")
  *             .description("basic global security policy")
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRuleOne = new SecurityPolicyRule("policyRuleOne", SecurityPolicyRuleArgs.builder()        
+ *         var policyRuleOne = new SecurityPolicyRule("policyRuleOne", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("new rule one")
  *             .priority(100)
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  *             .preview(true)
  *             .build());
  * 
- *         var policyRuleTwo = new SecurityPolicyRule("policyRuleTwo", SecurityPolicyRuleArgs.builder()        
+ *         var policyRuleTwo = new SecurityPolicyRule("policyRuleTwo", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("new rule two")
  *             .priority(101)
