@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataExchange = new DataExchange("dataExchange", DataExchangeArgs.builder()        
+ *         var dataExchange = new DataExchange("dataExchange", DataExchangeArgs.builder()
  *             .location("US")
  *             .dataExchangeId("my_data_exchange")
  *             .displayName("my_data_exchange")

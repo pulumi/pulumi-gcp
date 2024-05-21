@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloud_run_service_name")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -90,28 +90,28 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("cloud-run-pubsub-invoker")
  *             .displayName("Cloud Run Pub/Sub Invoker")
  *             .build());
  * 
- *         var binding = new IamBinding("binding", IamBindingArgs.builder()        
+ *         var binding = new IamBinding("binding", IamBindingArgs.builder()
  *             .location(default_.location())
  *             .service(default_.name())
  *             .role("roles/run.invoker")
  *             .members(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var project = new IAMBinding("project", IAMBindingArgs.builder()        
+ *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .role("roles/iam.serviceAccountTokenCreator")
  *             .members(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("pubsub_topic")
  *             .build());
  * 
- *         var subscription = new Subscription("subscription", SubscriptionArgs.builder()        
+ *         var subscription = new Subscription("subscription", SubscriptionArgs.builder()
  *             .name("pubsub_subscription")
  *             .topic(topic.name())
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("cloudrun-sql")
  *             .region("us-east1")
  *             .databaseVersion("MYSQL_5_7")
@@ -219,7 +219,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -294,7 +294,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var noauthIamPolicy = new IamPolicy("noauthIamPolicy", IamPolicyArgs.builder()        
+ *         var noauthIamPolicy = new IamPolicy("noauthIamPolicy", IamPolicyArgs.builder()
  *             .location(default_.location())
  *             .project(default_.project())
  *             .service(default_.name())
@@ -334,7 +334,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -399,7 +399,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
  *             .metadata(ServiceMetadataArgs.builder()

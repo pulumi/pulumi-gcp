@@ -57,18 +57,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *         var default_ = new WebApp("default", WebAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Web App for debug token")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
  *         // If your app already exists, you don't have to wait 30 seconds.
- *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckDebugToken = new AppCheckDebugToken("defaultAppCheckDebugToken", AppCheckDebugTokenArgs.builder()        
+ *         var defaultAppCheckDebugToken = new AppCheckDebugToken("defaultAppCheckDebugToken", AppCheckDebugTokenArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .displayName("Debug Token")

@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("backend-service")
  *             .protocol("HTTP")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .region("us-central1")
  *             .name("url-map")
  *             .defaultService(defaultRegionBackendService.id())
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()
  *             .region("us-central1")
  *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .region("us-central1")
  *             .name("url-map")
  *             .defaultUrlRedirect(RegionUrlMapDefaultUrlRedirectArgs.builder()
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()
  *             .region("us-central1")
  *             .name("test-https-redirect-proxy")
  *             .urlMap(defaultRegionUrlMap.id())

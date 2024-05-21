@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
  *             .name("terraform")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -66,13 +66,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()        
+ *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
  *             .name("terraform")
  *             .labels(Map.of("foo", "bar"))
  *             .featurestore(featurestore.id())
  *             .build());
  * 
- *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()        
+ *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()
  *             .name("terraform")
  *             .labels(Map.of("foo", "bar"))
  *             .entitytype(entity.id())
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
  *             .name("terraform2")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()        
+ *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
  *             .name("terraform2")
  *             .labels(Map.of("foo", "bar"))
  *             .featurestore(featurestore.id())
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()        
+ *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()
  *             .name("terraform2")
  *             .labels(Map.of("foo", "bar"))
  *             .entitytype(entity.id())

@@ -65,13 +65,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()        
+ *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()
  *             .name("dproc-cluster-unique-name")
  *             .region("us-central1")
  *             .build());
  * 
  *         // Submit an example spark job to a dataproc cluster
- *         var spark = new Job("spark", JobArgs.builder()        
+ *         var spark = new Job("spark", JobArgs.builder()
  *             .region(mycluster.region())
  *             .forceDelete(true)
  *             .placement(JobPlacementArgs.builder()
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Submit an example pyspark job to a dataproc cluster
- *         var pyspark = new Job("pyspark", JobArgs.builder()        
+ *         var pyspark = new Job("pyspark", JobArgs.builder()
  *             .region(mycluster.region())
  *             .forceDelete(true)
  *             .placement(JobPlacementArgs.builder()

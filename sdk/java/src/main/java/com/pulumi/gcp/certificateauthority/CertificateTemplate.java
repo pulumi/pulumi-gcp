@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new CertificateTemplate("primary", CertificateTemplateArgs.builder()        
+ *         var primary = new CertificateTemplate("primary", CertificateTemplateArgs.builder()
  *             .location("us-west1")
  *             .name("template")
  *             .description("An updated sample certificate template")

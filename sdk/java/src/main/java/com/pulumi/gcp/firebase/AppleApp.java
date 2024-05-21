@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AppleApp("default", AppleAppArgs.builder()        
+ *         var default_ = new AppleApp("default", AppleAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Display Name Basic")
  *             .bundleId("apple.app.12345")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apple = new ApiKey("apple", ApiKeyArgs.builder()        
+ *         var apple = new ApiKey("apple", ApiKeyArgs.builder()
  *             .name("api-key")
  *             .displayName("Display Name Full")
  *             .project("my-project-name")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var full = new AppleApp("full", AppleAppArgs.builder()        
+ *         var full = new AppleApp("full", AppleAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Display Name Full")
  *             .bundleId("apple.app.12345")

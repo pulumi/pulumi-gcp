@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
@@ -211,13 +211,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new ProjectBucketConfig("loggingMetric", ProjectBucketConfigArgs.builder()        
+ *         var loggingMetric = new ProjectBucketConfig("loggingMetric", ProjectBucketConfigArgs.builder()
  *             .location("global")
  *             .project("my-project-name")
  *             .bucketId("_Default")
  *             .build());
  * 
- *         var loggingMetricMetric = new Metric("loggingMetricMetric", MetricArgs.builder()        
+ *         var loggingMetricMetric = new Metric("loggingMetricMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .bucketName(loggingMetric.id())
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()

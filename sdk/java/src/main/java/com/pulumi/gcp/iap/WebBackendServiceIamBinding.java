@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -274,7 +274,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -326,7 +326,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -413,7 +413,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -452,7 +452,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -494,7 +494,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")
@@ -533,7 +533,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .webBackendService(default_.name())
  *             .role("roles/iap.httpsResourceAccessor")

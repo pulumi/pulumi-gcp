@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()        
+ *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()        
+ *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()        
+ *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()        
+ *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()        
+ *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()        
+ *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")

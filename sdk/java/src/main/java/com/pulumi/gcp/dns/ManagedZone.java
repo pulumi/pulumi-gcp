@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_zone = new ManagedZone("example-zone", ManagedZoneArgs.builder()        
+ *         var example_zone = new ManagedZone("example-zone", ManagedZoneArgs.builder()
  *             .name("example-zone")
  *             .dnsName("my-domain.com.")
  *             .description("Example DNS zone")
@@ -102,17 +102,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()
  *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()        
+ *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()
  *             .name("private-zone")
  *             .dnsName("private.example.com.")
  *             .description("Example private DNS zone")
@@ -163,17 +163,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()
  *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()        
+ *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()
  *             .name("private-zone")
  *             .dnsName("private.example.com.")
  *             .description("Example private DNS zone")
@@ -242,12 +242,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()        
+ *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()
  *             .name(network_1.name())
  *             .network(network_1.name())
  *             .ipCidrRange("10.0.36.0/24")
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()        
+ *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()
  *             .name("cluster-1")
  *             .location("us-central1-c")
  *             .initialNodeCount(1)
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var private_zone_gke = new ManagedZone("private-zone-gke", ManagedZoneArgs.builder()        
+ *         var private_zone_gke = new ManagedZone("private-zone-gke", ManagedZoneArgs.builder()
  *             .name("private-zone")
  *             .dnsName("private.example.com.")
  *             .description("Example private DNS zone")
@@ -338,17 +338,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_source = new Network("network-source", NetworkArgs.builder()        
+ *         var network_source = new Network("network-source", NetworkArgs.builder()
  *             .name("network-source")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_target = new Network("network-target", NetworkArgs.builder()        
+ *         var network_target = new Network("network-target", NetworkArgs.builder()
  *             .name("network-target")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var peering_zone = new ManagedZone("peering-zone", ManagedZoneArgs.builder()        
+ *         var peering_zone = new ManagedZone("peering-zone", ManagedZoneArgs.builder()
  *             .name("peering-zone")
  *             .dnsName("peering.example.com.")
  *             .description("Example private DNS peering zone")
@@ -401,12 +401,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *         var example = new Namespace("example", NamespaceArgs.builder()
  *             .namespaceId("example")
  *             .location("us-central1")
  *             .build());
  * 
- *         var sd_zone = new ManagedZone("sd-zone", ManagedZoneArgs.builder()        
+ *         var sd_zone = new ManagedZone("sd-zone", ManagedZoneArgs.builder()
  *             .name("peering-zone")
  *             .dnsName("services.example.com.")
  *             .description("Example private DNS Service Directory zone")
@@ -418,7 +418,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
@@ -454,7 +454,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cloud_logging_enabled_zone = new ManagedZone("cloud-logging-enabled-zone", ManagedZoneArgs.builder()        
+ *         var cloud_logging_enabled_zone = new ManagedZone("cloud-logging-enabled-zone", ManagedZoneArgs.builder()
  *             .name("cloud-logging-enabled-zone")
  *             .dnsName("services.example.com.")
  *             .description("Example cloud logging enabled DNS zone")

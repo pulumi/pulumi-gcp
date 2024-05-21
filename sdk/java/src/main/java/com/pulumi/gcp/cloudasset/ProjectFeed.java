@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // The topic where the resource change notifications will be sent.
- *         var feedOutput = new Topic("feedOutput", TopicArgs.builder()        
+ *         var feedOutput = new Topic("feedOutput", TopicArgs.builder()
  *             .project("my-project-name")
  *             .name("network-updates")
  *             .build());
  * 
  *         // Create a feed that sends notifications about network resource updates.
- *         var projectFeed = new ProjectFeed("projectFeed", ProjectFeedArgs.builder()        
+ *         var projectFeed = new ProjectFeed("projectFeed", ProjectFeedArgs.builder()
  *             .project("my-project-name")
  *             .feedId("network-updates")
  *             .contentType("RESOURCE")

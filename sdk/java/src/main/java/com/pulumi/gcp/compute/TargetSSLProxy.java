@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()
  *             .name("default-cert")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -80,13 +80,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .protocol("SSL")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var default_ = new TargetSSLProxy("default", TargetSSLProxyArgs.builder()        
+ *         var default_ = new TargetSSLProxy("default", TargetSSLProxyArgs.builder()
  *             .name("test-proxy")
  *             .backendService(defaultBackendService.id())
  *             .sslCertificates(defaultSSLCertificate.id())

@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLogView = new ProjectBucketConfig("loggingLogView", ProjectBucketConfigArgs.builder()        
+ *         var loggingLogView = new ProjectBucketConfig("loggingLogView", ProjectBucketConfigArgs.builder()
  *             .project("my-project-name")
  *             .location("global")
  *             .retentionDays(30)
  *             .bucketId("_Default")
  *             .build());
  * 
- *         var loggingLogViewLogView = new LogView("loggingLogViewLogView", LogViewArgs.builder()        
+ *         var loggingLogViewLogView = new LogView("loggingLogViewLogView", LogViewArgs.builder()
  *             .name("my-view")
  *             .bucket(loggingLogView.id())
  *             .description("A logging view configured with Terraform")

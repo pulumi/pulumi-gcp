@@ -53,23 +53,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("foobar")
  *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var other = new Network("other", NetworkArgs.builder()        
+ *         var other = new Network("other", NetworkArgs.builder()
  *             .name("other")
  *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+ *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
  *             .name("peering1")
  *             .network(default_.selfLink())
  *             .peerNetwork(other.selfLink())
  *             .build());
  * 
- *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+ *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()
  *             .name("peering2")
  *             .network(other.selfLink())
  *             .peerNetwork(default_.selfLink())

@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("static-content-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var publicRule = new DefaultObjectAccessControl("publicRule", DefaultObjectAccessControlArgs.builder()        
+ *         var publicRule = new DefaultObjectAccessControl("publicRule", DefaultObjectAccessControlArgs.builder()
  *             .bucket(bucket.name())
  *             .role("READER")
  *             .entity("allUsers")

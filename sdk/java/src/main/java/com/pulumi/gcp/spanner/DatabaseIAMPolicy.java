@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -270,7 +270,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -410,7 +410,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -449,7 +449,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -492,7 +492,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
@@ -531,7 +531,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")

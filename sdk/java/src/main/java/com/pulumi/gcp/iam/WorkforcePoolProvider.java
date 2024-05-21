@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")
@@ -110,13 +110,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")
@@ -166,13 +166,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")
@@ -228,13 +228,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")
@@ -300,13 +300,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")
@@ -376,13 +376,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
  *             .providerId("example-prvdr")

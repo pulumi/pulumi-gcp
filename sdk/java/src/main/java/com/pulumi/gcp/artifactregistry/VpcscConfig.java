@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_config = new VpcscConfig("my-config", VpcscConfigArgs.builder()        
+ *         var my_config = new VpcscConfig("my-config", VpcscConfigArgs.builder()
  *             .location("us-central1")
  *             .vpcscPolicy("ALLOW")
  *             .build());

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
  *             .name("vpc-network")
  *             .build());
  * 
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
  *             .project("my-project-name")
  *             .name("vpc-network")
  *             .autoCreateSubnetworks(true)
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
  *             .project("my-project-name")
  *             .name("vpc-network")
  *             .autoCreateSubnetworks(true)

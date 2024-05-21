@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testAccount = new Account("testAccount", AccountArgs.builder()        
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var example = new Workflow("example", WorkflowArgs.builder()        
+ *         var example = new Workflow("example", WorkflowArgs.builder()
  *             .name("workflow")
  *             .region("us-central1")
  *             .description("Magic")

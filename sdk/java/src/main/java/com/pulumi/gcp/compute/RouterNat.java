@@ -64,18 +64,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .network(net.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router("router", RouterArgs.builder()        
+ *         var router = new Router("router", RouterArgs.builder()
  *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nat = new RouterNat("nat", RouterNatArgs.builder()        
+ *         var nat = new RouterNat("nat", RouterNatArgs.builder()
  *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
@@ -136,32 +136,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .network(net.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router("router", RouterArgs.builder()        
+ *         var router = new Router("router", RouterArgs.builder()
  *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new Address("address-" + i, AddressArgs.builder()            
+ *             new Address("address-" + i, AddressArgs.builder()
  *                 .name(String.format("nat-manual-ip-%s", range.value()))
  *                 .region(subnet.region())
  *                 .build());
  * 
  *         
  * }
- *         var natManual = new RouterNat("natManual", RouterNatArgs.builder()        
+ *         var natManual = new RouterNat("natManual", RouterNatArgs.builder()
  *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
@@ -215,40 +215,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .network(net.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router("router", RouterArgs.builder()        
+ *         var router = new Router("router", RouterArgs.builder()
  *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
- *         var addr1 = new Address("addr1", AddressArgs.builder()        
+ *         var addr1 = new Address("addr1", AddressArgs.builder()
  *             .name("nat-address1")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var addr2 = new Address("addr2", AddressArgs.builder()        
+ *         var addr2 = new Address("addr2", AddressArgs.builder()
  *             .name("nat-address2")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var addr3 = new Address("addr3", AddressArgs.builder()        
+ *         var addr3 = new Address("addr3", AddressArgs.builder()
  *             .name("nat-address3")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var natRules = new RouterNat("natRules", RouterNatArgs.builder()        
+ *         var natRules = new RouterNat("natRules", RouterNatArgs.builder()
  *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
@@ -316,11 +316,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()        
+ *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .network(net.id())
  *             .ipCidrRange("10.0.0.0/16")
@@ -328,18 +328,18 @@ import javax.annotation.Nullable;
  *             .purpose("PRIVATE_NAT")
  *             .build());
  * 
- *         var router = new Router("router", RouterArgs.builder()        
+ *         var router = new Router("router", RouterArgs.builder()
  *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
- *         var hub = new Hub("hub", HubArgs.builder()        
+ *         var hub = new Hub("hub", HubArgs.builder()
  *             .name("my-hub")
  *             .description("vpc hub for inter vpc nat")
  *             .build());
  * 
- *         var spoke = new Spoke("spoke", SpokeArgs.builder()        
+ *         var spoke = new Spoke("spoke", SpokeArgs.builder()
  *             .name("my-spoke")
  *             .location("global")
  *             .description("vpc spoke for inter vpc nat")
@@ -352,7 +352,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var natType = new RouterNat("natType", RouterNatArgs.builder()        
+ *         var natType = new RouterNat("natType", RouterNatArgs.builder()
  *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())

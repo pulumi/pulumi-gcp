@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("basic-plan")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("autopilot-cluster")
  *             .location("us-central1")
  *             .enableAutopilot(true)
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var autopilot = new BackupPlan("autopilot", BackupPlanArgs.builder()        
+ *         var autopilot = new BackupPlan("autopilot", BackupPlanArgs.builder()
  *             .name("autopilot-plan")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("cmek-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -216,17 +216,17 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("backup-key")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("backup-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()        
+ *         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()
  *             .name("cmek-plan")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -283,7 +283,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("full-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -300,7 +300,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var full = new BackupPlan("full", BackupPlanArgs.builder()        
+ *         var full = new BackupPlan("full", BackupPlanArgs.builder()
  *             .name("full-plan")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -367,7 +367,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rpo-daily-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -384,7 +384,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()        
+ *         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()
  *             .name("rpo-daily-window")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -466,7 +466,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rpo-weekly-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -483,7 +483,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()        
+ *         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()
  *             .name("rpo-weekly-window")
  *             .cluster(primary.id())
  *             .location("us-central1")

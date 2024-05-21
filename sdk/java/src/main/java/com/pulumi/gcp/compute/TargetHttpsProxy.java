@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()
  *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .description("a description")
  *             .defaultService(defaultBackendService.id())
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
  *             .name("test-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()
  *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -163,14 +163,14 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .description("a description")
  *             .defaultService(defaultBackendService.id())
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
  *             .name("test-http-keep-alive-timeout-proxy")
  *             .httpKeepAliveTimeoutSec(610)
  *             .urlMap(defaultURLMap.id())
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .name("my-trust-config")
  *             .description("sample description for the trust config")
  *             .location("global")
@@ -273,7 +273,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()        
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()
  *             .name("my-tls-policy")
  *             .description("my description")
  *             .location("global")
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()
  *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private.key")
@@ -294,14 +294,14 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -309,7 +309,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .description("a description")
  *             .defaultService(defaultBackendService.id())
@@ -327,7 +327,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
  *             .name("test-mtls-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .name("my-certificate")
  *             .scope("ALL_REGIONS")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
@@ -386,7 +386,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -394,7 +394,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .description("a description")
  *             .defaultService(defaultBackendService.id())
@@ -412,7 +412,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
  *             .name("target-http-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))

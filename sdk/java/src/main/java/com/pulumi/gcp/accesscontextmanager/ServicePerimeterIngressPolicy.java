@@ -68,12 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("Storage Policy")
  *             .build());
  * 
- *         var storage_perimeter = new ServicePerimeter("storage-perimeter", ServicePerimeterArgs.builder()        
+ *         var storage_perimeter = new ServicePerimeter("storage-perimeter", ServicePerimeterArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accesspolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accesspolicies/%s/serviceperimeters/storage-perimeter", name)))
  *             .title("Storage Perimeter")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var ingressPolicy = new ServicePerimeterIngressPolicy("ingressPolicy", ServicePerimeterIngressPolicyArgs.builder()        
+ *         var ingressPolicy = new ServicePerimeterIngressPolicy("ingressPolicy", ServicePerimeterIngressPolicyArgs.builder()
  *             .perimeter(storage_perimeter.name())
  *             .ingressFrom(ServicePerimeterIngressPolicyIngressFromArgs.builder()
  *                 .identityType("any_identity")

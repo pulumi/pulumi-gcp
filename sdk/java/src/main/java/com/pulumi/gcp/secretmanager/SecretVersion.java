@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-version")
  *             .labels(Map.of("label", "my-label"))
  *             .replication(SecretReplicationArgs.builder()
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .build());
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()        
+ *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .deletionPolicy("ABANDON")
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()        
+ *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .deletionPolicy("DISABLE")
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_base64 = new SecretVersion("secret-version-base64", SecretVersionArgs.builder()        
+ *         var secret_version_base64 = new SecretVersion("secret-version-base64", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .isSecretDataBase64(true)
  *             .secretData(StdFunctions.filebase64(Filebase64Args.builder()
