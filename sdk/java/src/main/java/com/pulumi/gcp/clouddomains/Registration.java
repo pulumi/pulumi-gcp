@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRegistration = new Registration("myRegistration", RegistrationArgs.builder()        
+ *         var myRegistration = new Registration("myRegistration", RegistrationArgs.builder()
  *             .domainName("example-domain.com")
  *             .location("global")
  *             .labels(Map.of("labelkey", "labelvalue"))

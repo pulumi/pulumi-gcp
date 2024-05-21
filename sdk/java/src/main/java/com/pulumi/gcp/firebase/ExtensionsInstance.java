@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var images = new Bucket("images", BucketArgs.builder()        
+ *         var images = new Bucket("images", BucketArgs.builder()
  *             .project("my-project-name")
  *             .name("bucket-id")
  *             .location("US")
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var resizeImage = new ExtensionsInstance("resizeImage", ExtensionsInstanceArgs.builder()        
+ *         var resizeImage = new ExtensionsInstance("resizeImage", ExtensionsInstanceArgs.builder()
  *             .project("my-project-name")
  *             .instanceId("storage-resize-images")
  *             .config(ExtensionsInstanceConfigArgs.builder()

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()        
+ *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_8_0")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()        
+ *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()
  *             .name("my-instance")
  *             .region("us-central1")
  *             .databaseVersion("POSTGRES_9_6")

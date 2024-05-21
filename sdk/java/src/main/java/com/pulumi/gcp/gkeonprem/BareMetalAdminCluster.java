@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var admin_cluster_basic = new BareMetalAdminCluster("admin-cluster-basic", BareMetalAdminClusterArgs.builder()        
+ *         var admin_cluster_basic = new BareMetalAdminCluster("admin-cluster-basic", BareMetalAdminClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
  *             .bareMetalVersion("1.13.4")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var admin_cluster_basic = new BareMetalAdminCluster("admin-cluster-basic", BareMetalAdminClusterArgs.builder()        
+ *         var admin_cluster_basic = new BareMetalAdminCluster("admin-cluster-basic", BareMetalAdminClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
  *             .description("test description")

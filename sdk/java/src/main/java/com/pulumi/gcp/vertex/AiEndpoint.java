@@ -65,13 +65,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()        
+ *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()
  *             .name("network-name")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()        
+ *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
  *             .name("endpoint-name")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()        
+ *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()
  *             .name("address-name")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -92,13 +92,13 @@ import javax.annotation.Nullable;
  *             .network(vertexNetwork.id())
  *             .build());
  * 
- *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()        
+ *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()
  *             .network(vertexNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))

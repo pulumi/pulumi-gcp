@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()        
+ *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
  *             .userLabels(Map.of("example-key", "example-value"))
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var statusCode = new UptimeCheckConfig("statusCode", UptimeCheckConfigArgs.builder()        
+ *         var statusCode = new UptimeCheckConfig("statusCode", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https = new UptimeCheckConfig("https", UptimeCheckConfigArgs.builder()        
+ *         var https = new UptimeCheckConfig("https", UptimeCheckConfigArgs.builder()
  *             .displayName("https-uptime-check")
  *             .timeout("60s")
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
@@ -267,12 +267,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var check = new Group("check", GroupArgs.builder()        
+ *         var check = new Group("check", GroupArgs.builder()
  *             .displayName("uptime-check-group")
  *             .filter("resource.metadata.name=has_substring(\"foo\")")
  *             .build());
  * 
- *         var tcpGroup = new UptimeCheckConfig("tcpGroup", UptimeCheckConfigArgs.builder()        
+ *         var tcpGroup = new UptimeCheckConfig("tcpGroup", UptimeCheckConfigArgs.builder()
  *             .displayName("tcp-uptime-check")
  *             .timeout("60s")
  *             .tcpCheck(UptimeCheckConfigTcpCheckArgs.builder()
@@ -330,19 +330,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("my-project-name-gcf-source")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("synthetic-fn-source.zip"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("synthetic_function")
  *             .location("us-central1")
  *             .buildConfig(FunctionBuildConfigArgs.builder()
@@ -362,7 +362,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var syntheticMonitor = new UptimeCheckConfig("syntheticMonitor", UptimeCheckConfigArgs.builder()        
+ *         var syntheticMonitor = new UptimeCheckConfig("syntheticMonitor", UptimeCheckConfigArgs.builder()
  *             .displayName("synthetic_monitor")
  *             .timeout("60s")
  *             .syntheticMonitor(UptimeCheckConfigSyntheticMonitorArgs.builder()

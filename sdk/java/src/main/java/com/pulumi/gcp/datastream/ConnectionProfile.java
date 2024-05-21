@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
@@ -117,11 +117,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var privateConnection = new PrivateConnection("privateConnection", PrivateConnectionArgs.builder()        
+ *         var privateConnection = new PrivateConnection("privateConnection", PrivateConnectionArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .privateConnectionId("my-connection")
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-instance")
  *             .databaseVersion("POSTGRES_14")
  *             .region("us-central1")
@@ -160,23 +160,23 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var defaultConnectionProfile = new ConnectionProfile("defaultConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var defaultConnectionProfile = new ConnectionProfile("defaultConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
@@ -281,7 +281,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-instance")
  *             .databaseVersion("POSTGRES_14")
  *             .region("us-central1")
@@ -309,23 +309,23 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")

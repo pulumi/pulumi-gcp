@@ -57,17 +57,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkPrimary = new Network("networkPrimary", NetworkArgs.builder()        
+ *         var networkPrimary = new Network("networkPrimary", NetworkArgs.builder()
  *             .name("primary-network")
  *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var networkSecondary = new Network("networkSecondary", NetworkArgs.builder()        
+ *         var networkSecondary = new Network("networkSecondary", NetworkArgs.builder()
  *             .name("secondary-network")
  *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var peeringPrimary = new NetworkPeering("peeringPrimary", NetworkPeeringArgs.builder()        
+ *         var peeringPrimary = new NetworkPeering("peeringPrimary", NetworkPeeringArgs.builder()
  *             .name("primary-peering")
  *             .network(networkPrimary.id())
  *             .peerNetwork(networkSecondary.id())
@@ -75,14 +75,14 @@ import javax.annotation.Nullable;
  *             .exportCustomRoutes(true)
  *             .build());
  * 
- *         var peeringPrimaryRoutes = new NetworkPeeringRoutesConfig("peeringPrimaryRoutes", NetworkPeeringRoutesConfigArgs.builder()        
+ *         var peeringPrimaryRoutes = new NetworkPeeringRoutesConfig("peeringPrimaryRoutes", NetworkPeeringRoutesConfigArgs.builder()
  *             .peering(peeringPrimary.name())
  *             .network(networkPrimary.name())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)
  *             .build());
  * 
- *         var peeringSecondary = new NetworkPeering("peeringSecondary", NetworkPeeringArgs.builder()        
+ *         var peeringSecondary = new NetworkPeering("peeringSecondary", NetworkPeeringArgs.builder()
  *             .name("secondary-peering")
  *             .network(networkSecondary.id())
  *             .peerNetwork(networkPrimary.id())
@@ -128,12 +128,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()        
+ *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()
  *             .name("container-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()        
+ *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()
  *             .name("container-subnetwork")
  *             .region("us-central1")
  *             .network(containerNetwork.name())
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var privateCluster = new Cluster("privateCluster", ClusterArgs.builder()        
+ *         var privateCluster = new Cluster("privateCluster", ClusterArgs.builder()
  *             .name("private-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()        
+ *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()
  *             .peering(privateCluster.privateClusterConfig().applyValue(privateClusterConfig -> privateClusterConfig.peeringName()))
  *             .network(containerNetwork.name())
  *             .importCustomRoutes(true)

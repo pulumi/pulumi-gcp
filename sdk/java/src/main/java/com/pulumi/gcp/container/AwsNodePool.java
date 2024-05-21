@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username("my{@literal @}service-account.com")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()        
+ *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()
  *             .autoscaling(AwsNodePoolAutoscalingArgs.builder()
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username("my{@literal @}service-account.com")
@@ -305,7 +305,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()        
+ *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()
  *             .autoscaling(AwsNodePoolAutoscalingArgs.builder()
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)
@@ -408,7 +408,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username("my{@literal @}service-account.com")
@@ -467,7 +467,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()        
+ *         var primaryAwsNodePool = new AwsNodePool("primaryAwsNodePool", AwsNodePoolArgs.builder()
  *             .autoscaling(AwsNodePoolAutoscalingArgs.builder()
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var idpConfig = new DefaultSupportedIdpConfig("idpConfig", DefaultSupportedIdpConfigArgs.builder()        
+ *         var idpConfig = new DefaultSupportedIdpConfig("idpConfig", DefaultSupportedIdpConfigArgs.builder()
  *             .enabled(true)
  *             .idpId("playgames.google.com")
  *             .clientId("client-id")

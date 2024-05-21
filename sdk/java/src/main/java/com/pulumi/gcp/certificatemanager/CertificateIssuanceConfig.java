@@ -70,13 +70,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()
  *             .name("ca-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var default_ = new CertificateIssuanceConfig("default", CertificateIssuanceConfigArgs.builder()        
+ *         var default_ = new CertificateIssuanceConfig("default", CertificateIssuanceConfigArgs.builder()
  *             .name("issuance-config")
  *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(pool.name())
  *             .certificateAuthorityId("ca-authority")

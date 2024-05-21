@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .project(default_.projectId())
  *             .build());
  * 

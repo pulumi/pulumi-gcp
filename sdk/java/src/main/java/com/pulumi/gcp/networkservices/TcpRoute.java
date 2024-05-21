@@ -51,19 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -118,19 +118,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -183,25 +183,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()        
+ *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -259,19 +259,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("backend-service-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -280,7 +280,7 @@ import javax.annotation.Nullable;
  *             .ports(443)
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
  *             .name("my-tcp-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

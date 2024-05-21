@@ -52,18 +52,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod_ssl_policy = new SSLPolicy("prod-ssl-policy", SSLPolicyArgs.builder()        
+ *         var prod_ssl_policy = new SSLPolicy("prod-ssl-policy", SSLPolicyArgs.builder()
  *             .name("production-ssl-policy")
  *             .profile("MODERN")
  *             .build());
  * 
- *         var nonprod_ssl_policy = new SSLPolicy("nonprod-ssl-policy", SSLPolicyArgs.builder()        
+ *         var nonprod_ssl_policy = new SSLPolicy("nonprod-ssl-policy", SSLPolicyArgs.builder()
  *             .name("nonprod-ssl-policy")
  *             .profile("MODERN")
  *             .minTlsVersion("TLS_1_2")
  *             .build());
  * 
- *         var custom_ssl_policy = new SSLPolicy("custom-ssl-policy", SSLPolicyArgs.builder()        
+ *         var custom_ssl_policy = new SSLPolicy("custom-ssl-policy", SSLPolicyArgs.builder()
  *             .name("custom-ssl-policy")
  *             .minTlsVersion("TLS_1_2")
  *             .profile("CUSTOM")

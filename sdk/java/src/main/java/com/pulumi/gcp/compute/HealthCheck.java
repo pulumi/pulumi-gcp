@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()        
+ *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()
  *             .name("tcp-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()        
+ *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()
  *             .name("tcp-health-check")
  *             .description("Health check via tcp")
  *             .timeoutSec(1)
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()        
+ *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()
  *             .name("ssl-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()        
+ *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()
  *             .name("ssl-health-check")
  *             .description("Health check via ssl")
  *             .timeoutSec(1)
@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()        
+ *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -287,7 +287,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()        
+ *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .description("Health check via http")
  *             .timeoutSec(1)
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()        
+ *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()
  *             .name("https-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()        
+ *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()
  *             .name("https-health-check")
  *             .description("Health check via https")
  *             .timeoutSec(1)
@@ -423,7 +423,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()        
+ *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()
  *             .name("http2-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -463,7 +463,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()        
+ *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()
  *             .name("http2-health-check")
  *             .description("Health check via http2")
  *             .timeoutSec(1)
@@ -511,7 +511,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()        
+ *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()
  *             .name("grpc-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -551,7 +551,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()        
+ *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()
  *             .name("grpc-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -594,7 +594,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var health_check_with_logging = new HealthCheck("health-check-with-logging", HealthCheckArgs.builder()        
+ *         var health_check_with_logging = new HealthCheck("health-check-with-logging", HealthCheckArgs.builder()
  *             .name("tcp-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)

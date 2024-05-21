@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicEntityType = new CxEntityType("basicEntityType", CxEntityTypeArgs.builder()        
+ *         var basicEntityType = new CxEntityType("basicEntityType", CxEntityTypeArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyEntity")
  *             .kind("KIND_MAP")

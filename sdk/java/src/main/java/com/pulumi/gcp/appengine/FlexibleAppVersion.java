@@ -95,61 +95,61 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("appeng-flex")
  *             .projectId("appeng-flex")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var app = new Application("app", ApplicationArgs.builder()        
+ *         var app = new Application("app", ApplicationArgs.builder()
  *             .project(myProject.projectId())
  *             .locationId("us-central")
  *             .build());
  * 
- *         var service = new Service("service", ServiceArgs.builder()        
+ *         var service = new Service("service", ServiceArgs.builder()
  *             .project(myProject.projectId())
  *             .service("appengineflex.googleapis.com")
  *             .disableDependentServices(false)
  *             .build());
  * 
- *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()        
+ *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()
  *             .project(service.project())
  *             .accountId("my-account")
  *             .displayName("Custom Service Account")
  *             .build());
  * 
- *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()        
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/compute.networkUser")
  *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()        
+ *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/logging.logWriter")
  *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()        
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/storage.objectViewer")
  *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .project(myProject.projectId())
  *             .name("appengine-static-content")
  *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("hello-world.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var myappV1 = new FlexibleAppVersion("myappV1", FlexibleAppVersionArgs.builder()        
+ *         var myappV1 = new FlexibleAppVersion("myappV1", FlexibleAppVersionArgs.builder()
  *             .versionId("v1")
  *             .project(gaeApi.project())
  *             .service("default")

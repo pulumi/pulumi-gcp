@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()        
+ *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()
  *             .name("standard-nw")
  *             .location("global")
  *             .type("STANDARD")
@@ -95,19 +95,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // there can be only 1 Legacy network per region for a given project,
  *         // so creating new project for isolation in CI.
- *         var acceptanceProject = new Project("acceptanceProject", ProjectArgs.builder()        
+ *         var acceptanceProject = new Project("acceptanceProject", ProjectArgs.builder()
  *             .name("vmw-proj")
  *             .projectId("vmw-proj")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var acceptance = new Service("acceptance", ServiceArgs.builder()        
+ *         var acceptance = new Service("acceptance", ServiceArgs.builder()
  *             .project(acceptanceProject.projectId())
  *             .service("vmwareengine.googleapis.com")
  *             .build());
  * 
- *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()        
+ *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()
  *             .project(acceptance.project())
  *             .name("us-west1-default")
  *             .location("us-west1")
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .description("VMwareEngine legacy network sample")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 

@@ -71,11 +71,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()        
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId(datasetDataset.datasetId())
  *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -113,11 +113,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()        
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
  *             .datasetId(dataset.datasetId())
  *             .role("roles/bigquery.dataViewer")
  *             .members("user:jane{@literal @}example.com")
@@ -156,11 +156,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()        
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
  *             .datasetId(dataset.datasetId())
  *             .role("roles/bigquery.dataEditor")
  *             .member("user:jane{@literal @}example.com")
@@ -208,11 +208,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()        
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId(datasetDataset.datasetId())
  *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -250,11 +250,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()        
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
  *             .datasetId(dataset.datasetId())
  *             .role("roles/bigquery.dataViewer")
  *             .members("user:jane{@literal @}example.com")
@@ -293,11 +293,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()        
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
  *             .datasetId(dataset.datasetId())
  *             .role("roles/bigquery.dataEditor")
  *             .member("user:jane{@literal @}example.com")

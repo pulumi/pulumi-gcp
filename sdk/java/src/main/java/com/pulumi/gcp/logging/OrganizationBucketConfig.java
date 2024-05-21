@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .organization("123456789")
  *             .build());
  * 
- *         var basic = new OrganizationBucketConfig("basic", OrganizationBucketConfigArgs.builder()        
+ *         var basic = new OrganizationBucketConfig("basic", OrganizationBucketConfigArgs.builder()
  *             .organization(default_.organization())
  *             .location("global")
  *             .retentionDays(30)

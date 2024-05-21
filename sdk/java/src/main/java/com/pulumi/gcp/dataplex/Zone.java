@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Lake("basic", LakeArgs.builder()        
+ *         var basic = new Lake("basic", LakeArgs.builder()
  *             .location("us-west1")
  *             .name("lake")
  *             .description("Lake for DCL")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("my-lake", "exists"))
  *             .build());
  * 
- *         var primary = new Zone("primary", ZoneArgs.builder()        
+ *         var primary = new Zone("primary", ZoneArgs.builder()
  *             .discoverySpec(ZoneDiscoverySpecArgs.builder()
  *                 .enabled(false)
  *                 .build())

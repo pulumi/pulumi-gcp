@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
  *             .region("us-central1")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
  *             .region("us-central1")
@@ -198,11 +198,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lookerNetwork = new Network("lookerNetwork", NetworkArgs.builder()        
+ *         var lookerNetwork = new Network("lookerNetwork", NetworkArgs.builder()
  *             .name("looker-network")
  *             .build());
  * 
- *         var lookerRange = new GlobalAddress("lookerRange", GlobalAddressArgs.builder()        
+ *         var lookerRange = new GlobalAddress("lookerRange", GlobalAddressArgs.builder()
  *             .name("looker-range")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *             .network(lookerNetwork.id())
  *             .build());
  * 
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
  *             .region("us-central1")
@@ -257,7 +257,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var lookerVpcConnection = new Connection("lookerVpcConnection", ConnectionArgs.builder()        
+ *         var lookerVpcConnection = new Connection("lookerVpcConnection", ConnectionArgs.builder()
  *             .network(lookerNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(lookerRange.name())
@@ -265,7 +265,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("looker-kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-looker.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -303,7 +303,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
  *             .region("us-central1")

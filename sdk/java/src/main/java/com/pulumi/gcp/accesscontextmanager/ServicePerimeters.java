@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var service_perimeter = new ServicePerimeters("service-perimeter", ServicePerimetersArgs.builder()        
+ *         var service_perimeter = new ServicePerimeters("service-perimeter", ServicePerimetersArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .servicePerimeters(            
  *                 ServicePerimetersServicePerimeterArgs.builder()
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()        
+ *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
  *             .title("chromeos_no_lock")

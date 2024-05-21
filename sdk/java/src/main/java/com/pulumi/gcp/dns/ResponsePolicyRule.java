@@ -54,17 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()
  *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()
  *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var response_policy = new ResponsePolicy("response-policy", ResponsePolicyArgs.builder()        
+ *         var response_policy = new ResponsePolicy("response-policy", ResponsePolicyArgs.builder()
  *             .responsePolicyName("example-response-policy")
  *             .networks(            
  *                 ResponsePolicyNetworkArgs.builder()
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var example_response_policy_rule = new ResponsePolicyRule("example-response-policy-rule", ResponsePolicyRuleArgs.builder()        
+ *         var example_response_policy_rule = new ResponsePolicyRule("example-response-policy-rule", ResponsePolicyRuleArgs.builder()
  *             .responsePolicy(response_policy.responsePolicyName())
  *             .ruleName("example-rule")
  *             .dnsName("dns.example.com.")

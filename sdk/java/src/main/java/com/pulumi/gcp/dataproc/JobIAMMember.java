@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new JobIAMPolicy("editor", JobIAMPolicyArgs.builder()        
+ *         var editor = new JobIAMPolicy("editor", JobIAMPolicyArgs.builder()
  *             .project("your-project")
  *             .region("your-region")
  *             .jobId("your-dataproc-job")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMBinding("editor", JobIAMBindingArgs.builder()        
+ *         var editor = new JobIAMBinding("editor", JobIAMBindingArgs.builder()
  *             .jobId("your-dataproc-job")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMMember("editor", JobIAMMemberArgs.builder()        
+ *         var editor = new JobIAMMember("editor", JobIAMMemberArgs.builder()
  *             .jobId("your-dataproc-job")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new JobIAMPolicy("editor", JobIAMPolicyArgs.builder()        
+ *         var editor = new JobIAMPolicy("editor", JobIAMPolicyArgs.builder()
  *             .project("your-project")
  *             .region("your-region")
  *             .jobId("your-dataproc-job")
@@ -219,7 +219,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMBinding("editor", JobIAMBindingArgs.builder()        
+ *         var editor = new JobIAMBinding("editor", JobIAMBindingArgs.builder()
  *             .jobId("your-dataproc-job")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMMember("editor", JobIAMMemberArgs.builder()        
+ *         var editor = new JobIAMMember("editor", JobIAMMemberArgs.builder()
  *             .jobId("your-dataproc-job")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

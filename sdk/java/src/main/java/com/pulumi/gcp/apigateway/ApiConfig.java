@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiCfg = new Api("apiCfg", ApiArgs.builder()        
+ *         var apiCfg = new Api("apiCfg", ApiArgs.builder()
  *             .apiId("my-api")
  *             .build());
  * 
- *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()        
+ *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()
  *             .api(apiCfg.apiId())
  *             .apiConfigId("my-config")
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
@@ -112,11 +112,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiCfg = new Api("apiCfg", ApiArgs.builder()        
+ *         var apiCfg = new Api("apiCfg", ApiArgs.builder()
  *             .apiId("my-api")
  *             .build());
  * 
- *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()        
+ *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()
  *             .api(apiCfg.apiId())
  *             .apiConfigId("my-config")
  *             .grpcServices(ApiConfigGrpcServiceArgs.builder()

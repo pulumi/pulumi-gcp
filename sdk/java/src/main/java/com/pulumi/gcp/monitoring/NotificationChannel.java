@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new NotificationChannel("basic", NotificationChannelArgs.builder()        
+ *         var basic = new NotificationChannel("basic", NotificationChannelArgs.builder()
  *             .displayName("Test Notification Channel")
  *             .type("email")
  *             .labels(Map.of("email_address", "fake_email{@literal @}blahblah.com"))
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new NotificationChannel("default", NotificationChannelArgs.builder()        
+ *         var default_ = new NotificationChannel("default", NotificationChannelArgs.builder()
  *             .displayName("Test Slack Channel")
  *             .type("slack")
  *             .labels(Map.of("channel_name", "#foobar"))

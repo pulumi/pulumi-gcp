@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("default")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new TargetPool("default", TargetPoolArgs.builder()        
+ *         var default_ = new TargetPool("default", TargetPoolArgs.builder()
  *             .name("instance-pool")
  *             .instances(            
  *                 "us-central1-a/myinstance1",
