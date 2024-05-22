@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .labels(Map.of("foo", "bar"))
  *             .messageRetentionDuration("86600s")
@@ -98,17 +98,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
  *             .location("global")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .kmsKeyName(cryptoKey.id())
  *             .build());
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .messageStoragePolicy(TopicMessageStoragePolicyArgs.builder()
  *                 .allowedPersistenceRegions("europe-west3")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema("example", SchemaArgs.builder()        
+ *         var example = new Schema("example", SchemaArgs.builder()
  *             .name("example")
  *             .type("AVRO")
  *             .definition("""
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
  *             .name("example-topic")
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
  *                 .schema("projects/my-project-name/schemas/example")
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
  *                 .awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs.builder()

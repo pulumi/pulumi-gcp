@@ -60,19 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()        
+ *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()
  *             .name("container-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()        
+ *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()
  *             .name("container-subnetwork")
  *             .region("us-central1")
  *             .network(containerNetwork.name())
  *             .ipCidrRange("10.0.36.0/24")
  *             .build());
  * 
- *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+ *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -85,14 +85,14 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()        
+ *         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()
  *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
  *             .zone("us-central1-a")
  *             .name("http")
  *             .port(8080)
  *             .build());
  * 
- *         var myPorts = new InstanceGroupNamedPort("myPorts", InstanceGroupNamedPortArgs.builder()        
+ *         var myPorts = new InstanceGroupNamedPort("myPorts", InstanceGroupNamedPortArgs.builder()
  *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
  *             .zone("us-central1-a")
  *             .name("https")

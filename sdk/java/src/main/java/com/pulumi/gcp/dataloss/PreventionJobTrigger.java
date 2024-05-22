@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigqueryRowLimit = new PreventionJobTrigger("bigqueryRowLimit", PreventionJobTriggerArgs.builder()        
+ *         var bigqueryRowLimit = new PreventionJobTrigger("bigqueryRowLimit", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigqueryRowLimitPercentage = new PreventionJobTrigger("bigqueryRowLimitPercentage", PreventionJobTriggerArgs.builder()        
+ *         var bigqueryRowLimitPercentage = new PreventionJobTrigger("bigqueryRowLimitPercentage", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -268,7 +268,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jobNotificationEmails = new PreventionJobTrigger("jobNotificationEmails", PreventionJobTriggerArgs.builder()        
+ *         var jobNotificationEmails = new PreventionJobTrigger("jobNotificationEmails", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description for the job_trigger created by terraform")
  *             .displayName("TerraformDisplayName")
@@ -333,7 +333,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("tf_test")
  *             .friendlyName("terraform-test")
  *             .description("Description for the dataset created by terraform")
@@ -342,7 +342,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "default"))
  *             .build());
  * 
- *         var defaultTable = new Table("defaultTable", TableArgs.builder()        
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
  *             .datasetId(default_.datasetId())
  *             .tableId("tf_test")
  *             .deletionProtection(false)
@@ -368,7 +368,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var deidentify = new PreventionJobTrigger("deidentify", PreventionJobTriggerArgs.builder()        
+ *         var deidentify = new PreventionJobTrigger("deidentify", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description for the job_trigger created by terraform")
  *             .displayName("TerraformDisplayName")
@@ -445,7 +445,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hybridTrigger = new PreventionJobTrigger("hybridTrigger", PreventionJobTriggerArgs.builder()        
+ *         var hybridTrigger = new PreventionJobTrigger("hybridTrigger", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .manual()
@@ -515,7 +515,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inspect = new PreventionJobTrigger("inspect", PreventionJobTriggerArgs.builder()        
+ *         var inspect = new PreventionJobTrigger("inspect", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -633,7 +633,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var publishToStackdriver = new PreventionJobTrigger("publishToStackdriver", PreventionJobTriggerArgs.builder()        
+ *         var publishToStackdriver = new PreventionJobTrigger("publishToStackdriver", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description for the job_trigger created by terraform")
  *             .displayName("TerraformDisplayName")
@@ -693,7 +693,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var withTriggerId = new PreventionJobTrigger("withTriggerId", PreventionJobTriggerArgs.builder()        
+ *         var withTriggerId = new PreventionJobTrigger("withTriggerId", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Starting description")
  *             .displayName("display")
@@ -761,7 +761,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -835,7 +835,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")

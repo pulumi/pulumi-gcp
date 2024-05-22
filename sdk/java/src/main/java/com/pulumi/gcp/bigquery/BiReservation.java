@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reservation = new BiReservation("reservation", BiReservationArgs.builder()        
+ *         var reservation = new BiReservation("reservation", BiReservationArgs.builder()
  *             .location("us-west2")
  *             .size("3000000000")
  *             .build());

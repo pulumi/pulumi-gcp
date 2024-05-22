@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()        
+ *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()        
+ *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()        
+ *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()        
+ *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -219,7 +219,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()        
+ *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()        
+ *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")

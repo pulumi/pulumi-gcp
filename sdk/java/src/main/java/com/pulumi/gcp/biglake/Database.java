@@ -57,25 +57,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var catalog = new Catalog("catalog", CatalogArgs.builder()        
+ *         var catalog = new Catalog("catalog", CatalogArgs.builder()
  *             .name("my_catalog")
  *             .location("US")
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("my_bucket")
  *             .location("US")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var metadataFolder = new BucketObject("metadataFolder", BucketObjectArgs.builder()        
+ *         var metadataFolder = new BucketObject("metadataFolder", BucketObjectArgs.builder()
  *             .name("metadata/")
  *             .content(" ")
  *             .bucket(bucket.name())
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .name("my_database")
  *             .catalog(catalog.id())
  *             .type("HIVE")

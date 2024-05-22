@@ -58,23 +58,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository("gitRepository", RepositoryArgs.builder()        
+ *         var gitRepository = new Repository("gitRepository", RepositoryArgs.builder()
  *             .name("my/repository")
  *             .build());
  * 
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("my_secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()        
+ *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()
  *             .secret(secret.id())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var repository = new Repository("repository", RepositoryArgs.builder()        
+ *         var repository = new Repository("repository", RepositoryArgs.builder()
  *             .name("dataform_repository")
  *             .region("us-central1")
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var release = new RepositoryReleaseConfig("release", RepositoryReleaseConfigArgs.builder()        
+ *         var release = new RepositoryReleaseConfig("release", RepositoryReleaseConfigArgs.builder()
  *             .project(repository.project())
  *             .region(repository.region())
  *             .repository(repository.name())

@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var access_levels = new AccessLevels("access-levels", AccessLevelsArgs.builder()        
+ *         var access_levels = new AccessLevels("access-levels", AccessLevelsArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .accessLevels(            
  *                 AccessLevelsAccessLevelArgs.builder()

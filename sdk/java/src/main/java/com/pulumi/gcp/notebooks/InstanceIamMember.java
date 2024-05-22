@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()        
+ *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()        
+ *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()        
+ *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()        
+ *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()        
+ *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()        
+ *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
  *             .project(instance.project())
  *             .location(instance.location())
  *             .instanceName(instance.name())

@@ -68,19 +68,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("neg-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("neg-subnetwork")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()        
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -122,11 +122,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("neg-network")
  *             .build());
  * 
- *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()        
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .defaultPort("90")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .networkEndpointType("NON_GCP_PRIVATE_IP_PORT")
  *             .build());
  * 
- *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()        
+ *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
  *             .networkEndpointGroup(neg.name())
  *             .port(neg.defaultPort())
  *             .ipAddress("127.0.0.1")

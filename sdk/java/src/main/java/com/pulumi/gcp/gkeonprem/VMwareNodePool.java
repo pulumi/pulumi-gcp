@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_basic = new VMwareCluster("default-basic", VMwareClusterArgs.builder()        
+ *         var default_basic = new VMwareCluster("default-basic", VMwareClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nodepool_basic = new VMwareNodePool("nodepool-basic", VMwareNodePoolArgs.builder()        
+ *         var nodepool_basic = new VMwareNodePool("nodepool-basic", VMwareNodePoolArgs.builder()
  *             .name("my-nodepool")
  *             .location("us-west1")
  *             .vmwareCluster(default_basic.name())
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_full = new VMwareCluster("default-full", VMwareClusterArgs.builder()        
+ *         var default_full = new VMwareCluster("default-full", VMwareClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nodepool_full = new VMwareNodePool("nodepool-full", VMwareNodePoolArgs.builder()        
+ *         var nodepool_full = new VMwareNodePool("nodepool-full", VMwareNodePoolArgs.builder()
  *             .name("my-nodepool")
  *             .location("us-west1")
  *             .vmwareCluster(default_full.name())

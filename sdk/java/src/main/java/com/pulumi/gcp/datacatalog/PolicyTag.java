@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()        
+ *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()
  *             .displayName("taxonomy_display_name")
  *             .description("A collection of policy tags")
  *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var basicPolicyTag = new PolicyTag("basicPolicyTag", PolicyTagArgs.builder()        
+ *         var basicPolicyTag = new PolicyTag("basicPolicyTag", PolicyTagArgs.builder()
  *             .taxonomy(myTaxonomy.id())
  *             .displayName("Low security")
  *             .description("A policy tag normally associated with low security items")
@@ -97,26 +97,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()        
+ *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()
  *             .displayName("taxonomy_display_name")
  *             .description("A collection of policy tags")
  *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var parentPolicy = new PolicyTag("parentPolicy", PolicyTagArgs.builder()        
+ *         var parentPolicy = new PolicyTag("parentPolicy", PolicyTagArgs.builder()
  *             .taxonomy(myTaxonomy.id())
  *             .displayName("High")
  *             .description("A policy tag category used for high security access")
  *             .build());
  * 
- *         var childPolicy = new PolicyTag("childPolicy", PolicyTagArgs.builder()        
+ *         var childPolicy = new PolicyTag("childPolicy", PolicyTagArgs.builder()
  *             .taxonomy(myTaxonomy.id())
  *             .displayName("ssn")
  *             .description("A hash of the users ssn")
  *             .parentPolicyTag(parentPolicy.id())
  *             .build());
  * 
- *         var childPolicy2 = new PolicyTag("childPolicy2", PolicyTagArgs.builder()        
+ *         var childPolicy2 = new PolicyTag("childPolicy2", PolicyTagArgs.builder()
  *             .taxonomy(myTaxonomy.id())
  *             .displayName("dob")
  *             .description("The users date of birth")

@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
  *             .name("apigee-range")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -72,19 +72,19 @@ import javax.annotation.Nullable;
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()
  *             .network(apigeeNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeEndpointAttachment = new EndpointAttachment("apigeeEndpointAttachment", EndpointAttachmentArgs.builder()        
+ *         var apigeeEndpointAttachment = new EndpointAttachment("apigeeEndpointAttachment", EndpointAttachmentArgs.builder()
  *             .orgId(apigeeOrg.id())
  *             .endpointAttachmentId("test1")
  *             .location("{google_compute_service_attachment location}")

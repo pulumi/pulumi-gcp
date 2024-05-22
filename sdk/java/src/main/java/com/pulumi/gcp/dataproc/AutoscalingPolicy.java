@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var asp = new AutoscalingPolicy("asp", AutoscalingPolicyArgs.builder()        
+ *         var asp = new AutoscalingPolicy("asp", AutoscalingPolicyArgs.builder()
  *             .policyId("dataproc-policy")
  *             .location("us-central1")
  *             .workerConfig(AutoscalingPolicyWorkerConfigArgs.builder()
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basic = new Cluster("basic", ClusterArgs.builder()        
+ *         var basic = new Cluster("basic", ClusterArgs.builder()
  *             .name("dataproc-policy")
  *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()

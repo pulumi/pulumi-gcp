@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serialPortPolicy = new OrganizationPolicy("serialPortPolicy", OrganizationPolicyArgs.builder()        
+ *         var serialPortPolicy = new OrganizationPolicy("serialPortPolicy", OrganizationPolicyArgs.builder()
  *             .project("your-project-id")
  *             .constraint("compute.disableSerialPortAccess")
  *             .booleanPolicy(OrganizationPolicyBooleanPolicyArgs.builder()
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()        
+ *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()
  *             .project("your-project-id")
  *             .constraint("serviceuser.services")
  *             .listPolicy(OrganizationPolicyListPolicyArgs.builder()
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()        
+ *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()
  *             .project("your-project-id")
  *             .constraint("serviceuser.services")
  *             .listPolicy(OrganizationPolicyListPolicyArgs.builder()
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()        
+ *         var servicesPolicy = new OrganizationPolicy("servicesPolicy", OrganizationPolicyArgs.builder()
  *             .project("your-project-id")
  *             .constraint("serviceuser.services")
  *             .restorePolicy(OrganizationPolicyRestorePolicyArgs.builder()

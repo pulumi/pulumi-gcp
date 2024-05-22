@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom = new CustomService("custom", CustomServiceArgs.builder()        
+ *         var custom = new CustomService("custom", CustomServiceArgs.builder()
  *             .serviceId("custom-srv")
  *             .displayName("My Custom Service custom-srv")
  *             .telemetry(CustomServiceTelemetryArgs.builder()

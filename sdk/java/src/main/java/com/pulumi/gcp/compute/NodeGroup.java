@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
  *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
  *             .zone("us-central1-a")
  *             .description("example google_compute_node_group for the Google Provider")
@@ -107,13 +107,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
  *             .nodeType("c2-node-60-240")
  *             .build());
  * 
- *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
  *             .zone("us-central1-a")
  *             .description("example google_compute_node_group for Terraform Google Provider")
@@ -156,13 +156,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
  *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
  *             .zone("us-central1-a")
  *             .description("example google_compute_node_group for Google Provider")
@@ -214,19 +214,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestProject = new Project("guestProject", ProjectArgs.builder()        
+ *         var guestProject = new Project("guestProject", ProjectArgs.builder()
  *             .projectId("project-id")
  *             .name("project-name")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
  *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
  *             .zone("us-central1-f")
  *             .description("example google_compute_node_group for Terraform Google Provider")

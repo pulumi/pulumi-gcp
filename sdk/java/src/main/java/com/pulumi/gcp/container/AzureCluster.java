@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         var basic = new AzureClient("basic", AzureClientArgs.builder()        
+ *         var basic = new AzureClient("basic", AzureClientArgs.builder()
  *             .applicationId("12345678-1234-1234-1234-123456789111")
  *             .location("us-west1")
  *             .name("client-name")
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()        
+ *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
  *                     .username("mmv2{@literal @}google.com")
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         var basic = new AzureClient("basic", AzureClientArgs.builder()        
+ *         var basic = new AzureClient("basic", AzureClientArgs.builder()
  *             .applicationId("12345678-1234-1234-1234-123456789111")
  *             .location("us-west1")
  *             .name("client-name")
@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()        
+ *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
  *                     .username("mmv2{@literal @}google.com")

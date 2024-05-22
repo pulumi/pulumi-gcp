@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application("application", ApplicationArgs.builder()        
+ *         var application = new Application("application", ApplicationArgs.builder()
  *             .location("us-central1")
  *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
@@ -88,28 +88,28 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
  *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
  *             .ipCidrRange("10.0.1.0/24")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // health check
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("l7-ilb-hc")
  *             .project(serviceProject.projectId())
  *             .checkIntervalSec(1)
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // backend service
- *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
  *             .name("l7-ilb-backend-subnet")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // forwarding rule
- *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()        
+ *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()
  *             .name("l7-ilb-forwarding-rule")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -155,11 +155,11 @@ import javax.annotation.Nullable;
  *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Service("example", ServiceArgs.builder()        
+ *         var example = new Service("example", ServiceArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application("application", ApplicationArgs.builder()        
+ *         var application = new Application("application", ApplicationArgs.builder()
  *             .location("us-central1")
  *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
@@ -239,28 +239,28 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
  *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
  *             .ipCidrRange("10.0.1.0/24")
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // health check
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("l7-ilb-hc")
  *             .project(serviceProject.projectId())
  *             .checkIntervalSec(1)
@@ -280,7 +280,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // backend service
- *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
  *             .name("l7-ilb-backend-subnet")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -288,7 +288,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // forwarding rule
- *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()        
+ *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()
  *             .name("l7-ilb-forwarding-rule")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -306,11 +306,11 @@ import javax.annotation.Nullable;
  *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Service("example", ServiceArgs.builder()        
+ *         var example = new Service("example", ServiceArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())

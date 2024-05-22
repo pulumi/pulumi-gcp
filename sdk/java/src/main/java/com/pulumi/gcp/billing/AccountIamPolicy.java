@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()        
+ *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()        
+ *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()        
+ *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()        
+ *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()        
+ *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()        
+ *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
  *             .member("user:jane{@literal @}example.com")

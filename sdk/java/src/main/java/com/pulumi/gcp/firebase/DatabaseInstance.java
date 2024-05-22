@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new DatabaseInstance("basic", DatabaseInstanceArgs.builder()        
+ *         var basic = new DatabaseInstance("basic", DatabaseInstanceArgs.builder()
  *             .project("my-project-name")
  *             .region("us-central1")
  *             .instanceId("active-db")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var full = new DatabaseInstance("full", DatabaseInstanceArgs.builder()        
+ *         var full = new DatabaseInstance("full", DatabaseInstanceArgs.builder()
  *             .project("my-project-name")
  *             .region("europe-west1")
  *             .instanceId("disabled-db")
@@ -122,23 +122,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .projectId("rtdb-project")
  *             .name("rtdb-project")
  *             .orgId("123456789")
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .project(default_.projectId())
  *             .build());
  * 
- *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()        
+ *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()
  *             .project(defaultProject.project())
  *             .service("firebasedatabase.googleapis.com")
  *             .build());
  * 
- *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()        
+ *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()
  *             .project(defaultProject.project())
  *             .region("us-central1")
  *             .instanceId("rtdb-project-default-rtdb")

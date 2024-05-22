@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_site = new Bucket("static-site", BucketArgs.builder()        
+ *         var static_site = new Bucket("static-site", BucketArgs.builder()
  *             .name("image-store.com")
  *             .location("EU")
  *             .forceDestroy(true)
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()        
+ *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
  *             .name("auto-expiring-bucket")
  *             .location("US")
  *             .forceDestroy(true)
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()        
+ *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
  *             .name("no-public-access-bucket")
  *             .location("US")
  *             .forceDestroy(true)

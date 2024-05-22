@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()        
+ *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()        
+ *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IamBinding("binding", IamBindingArgs.builder()        
+ *         var binding = new IamBinding("binding", IamBindingArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IamBinding("binding", IamBindingArgs.builder()        
+ *         var binding = new IamBinding("binding", IamBindingArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new IamMember("member", IamMemberArgs.builder()        
+ *         var member = new IamMember("member", IamMemberArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -278,7 +278,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new IamMember("member", IamMemberArgs.builder()        
+ *         var member = new IamMember("member", IamMemberArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -331,7 +331,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()        
+ *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -383,7 +383,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()        
+ *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -420,7 +420,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IamBinding("binding", IamBindingArgs.builder()        
+ *         var binding = new IamBinding("binding", IamBindingArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -460,7 +460,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IamBinding("binding", IamBindingArgs.builder()        
+ *         var binding = new IamBinding("binding", IamBindingArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -503,7 +503,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new IamMember("member", IamMemberArgs.builder()        
+ *         var member = new IamMember("member", IamMemberArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())
@@ -543,7 +543,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new IamMember("member", IamMemberArgs.builder()        
+ *         var member = new IamMember("member", IamMemberArgs.builder()
  *             .project(test.project())
  *             .datasetId(test.datasetId())
  *             .tableId(test.tableId())

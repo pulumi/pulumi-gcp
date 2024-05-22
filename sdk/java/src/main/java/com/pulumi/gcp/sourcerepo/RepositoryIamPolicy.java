@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()        
+ *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .role("roles/viewer")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()        
+ *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .role("roles/viewer")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()        
+ *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .role("roles/viewer")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()        
+ *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()
  *             .project(example.project())
  *             .topic(example.name())
  *             .role("roles/viewer")

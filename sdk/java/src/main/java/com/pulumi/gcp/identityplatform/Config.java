@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
@@ -88,12 +88,12 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var identitytoolkit = new Service("identitytoolkit", ServiceArgs.builder()        
+ *         var identitytoolkit = new Service("identitytoolkit", ServiceArgs.builder()
  *             .project(default_.projectId())
  *             .service("identitytoolkit.googleapis.com")
  *             .build());
  * 
- *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+ *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
  *             .project(default_.projectId())
  *             .autodeleteAnonymousUsers(true)
  *             .signIn(ConfigSignInArgs.builder()

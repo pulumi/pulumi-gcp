@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("attestor-note")
  *             .shortDescription("test note")
  *             .longDescription("a longer description of test note")

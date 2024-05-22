@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Service("project", ServiceArgs.builder()        
+ *         var project = new Service("project", ServiceArgs.builder()
  *             .project("your-project-id")
  *             .service("iam.googleapis.com")
  *             .disableDependentServices(true)

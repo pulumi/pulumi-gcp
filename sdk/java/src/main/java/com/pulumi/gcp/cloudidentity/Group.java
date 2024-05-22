@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cloudIdentityGroupBasic = new Group("cloudIdentityGroupBasic", GroupArgs.builder()        
+ *         var cloudIdentityGroupBasic = new Group("cloudIdentityGroupBasic", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .initialGroupConfig("WITH_INITIAL_OWNER")
  *             .parent("customers/A01b123xz")

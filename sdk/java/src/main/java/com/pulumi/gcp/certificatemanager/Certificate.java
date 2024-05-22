@@ -51,19 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
  *             .name("dns-auth")
  *             .description("The default dnss")
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
  *             .name("dns-auth2")
  *             .description("The default dnss")
  *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("dns-cert")
  *             .description("The default cert")
  *             .scope("EDGE_CACHE")
@@ -127,14 +127,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()
  *             .name("ca-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
  *         // creating certificate_issuance_config to use it in the managed certificate
- *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()        
+ *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()
  *             .name("issuance-config")
  *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .keyAlgorithm("ECDSA_P256")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("issuance-config-cert")
  *             .description("The default cert")
  *             .scope("EDGE_CACHE")
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(pool.name())
  *             .certificateAuthorityId("ca-authority")
@@ -227,19 +227,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
  *             .name("dns-auth")
  *             .description("The default dnss")
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
  *             .name("dns-auth2")
  *             .description("The default dnss")
  *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("self-managed-cert")
  *             .description("Global cert")
  *             .scope("EDGE_CACHE")
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("self-managed-cert")
  *             .description("Regional cert")
  *             .location("us-central1")
@@ -347,14 +347,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()
  *             .name("ca-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
  *         // creating certificate_issuance_config to use it in the managed certificate
- *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()        
+ *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()
  *             .name("issuance-config")
  *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
@@ -367,7 +367,7 @@ import javax.annotation.Nullable;
  *             .keyAlgorithm("ECDSA_P256")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("issuance-config-cert")
  *             .description("sample google managed all_regions certificate with issuance config for terraform")
  *             .scope("ALL_REGIONS")
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(pool.name())
  *             .certificateAuthorityId("ca-authority")
@@ -447,19 +447,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
  *             .name("dns-auth")
  *             .description("The default dnss")
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
  *             .name("dns-auth2")
  *             .description("The default dnss")
  *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("dns-cert")
  *             .description("The default cert")
  *             .scope("ALL_REGIONS")
@@ -506,14 +506,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
  *             .name("dns-auth")
  *             .location("us-central1")
  *             .description("The default dnss")
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("dns-cert")
  *             .description("regional managed certs")
  *             .location("us-central1")

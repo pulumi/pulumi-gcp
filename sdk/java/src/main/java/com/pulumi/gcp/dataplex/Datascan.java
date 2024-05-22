@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicProfile = new Datascan("basicProfile", DatascanArgs.builder()        
+ *         var basicProfile = new Datascan("basicProfile", DatascanArgs.builder()
  *             .location("us-central1")
  *             .dataScanId("dataprofile-basic")
  *             .data(DatascanDataArgs.builder()
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullProfile = new Datascan("fullProfile", DatascanArgs.builder()        
+ *         var fullProfile = new Datascan("fullProfile", DatascanArgs.builder()
  *             .location("us-central1")
  *             .displayName("Full Datascan Profile")
  *             .dataScanId("dataprofile-full")
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var source = new Dataset("source", DatasetArgs.builder()        
+ *         var source = new Dataset("source", DatasetArgs.builder()
  *             .datasetId("dataplex_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicQuality = new Datascan("basicQuality", DatascanArgs.builder()        
+ *         var basicQuality = new Datascan("basicQuality", DatascanArgs.builder()
  *             .location("us-central1")
  *             .dataScanId("dataquality-basic")
  *             .data(DatascanDataArgs.builder()
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullQuality = new Datascan("fullQuality", DatascanArgs.builder()        
+ *         var fullQuality = new Datascan("fullQuality", DatascanArgs.builder()
  *             .location("us-central1")
  *             .displayName("Full Datascan Quality")
  *             .dataScanId("dataquality-full")

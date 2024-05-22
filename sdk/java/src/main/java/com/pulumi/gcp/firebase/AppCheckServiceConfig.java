@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
  *             .project("my-project-name")
  *             .serviceId("firestore.googleapis.com")
  *             .build());
@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
  *             .project("my-project-name")
  *             .serviceId("firebasestorage.googleapis.com")
  *             .enforcementMode("ENFORCED")
@@ -139,13 +139,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
  *             .project("my-project-name")
  *             .serviceId("identitytoolkit.googleapis.com")
  *             .enforcementMode("UNENFORCED")

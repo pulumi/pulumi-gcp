@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()
  *             .accountId("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 
- *         var mykey = new Key("mykey", KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()
  *             .serviceAccountId(myaccount.name())
  *             .publicKeyType("TYPE_X509_PEM_FILE")
  *             .build());
@@ -93,17 +93,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()
  *             .accountId("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 
  *         // note this requires the terraform to be run regularly
- *         var mykeyRotation = new Rotating("mykeyRotation", RotatingArgs.builder()        
+ *         var mykeyRotation = new Rotating("mykeyRotation", RotatingArgs.builder()
  *             .rotationDays(30)
  *             .build());
  * 
- *         var mykey = new Key("mykey", KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()
  *             .serviceAccountId(myaccount.name())
  *             .keepers(Map.of("rotation_time", mykeyRotation.rotationRfc3339()))
  *             .build());
@@ -146,16 +146,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
  *         // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
- *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()
  *             .accountId("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 
- *         var mykey = new Key("mykey", KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()
  *             .serviceAccountId(myaccount.name())
  *             .build());
  * 
- *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
+ *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
  *             .metadata(ObjectMetaArgs.builder()
  *                 .name("google-application-credentials")
  *                 .build())

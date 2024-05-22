@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("basic")
  *             .description("Test internal range")
  *             .network(defaultNetwork.selfLink())
@@ -102,12 +102,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("automatic-reservation")
  *             .network(defaultNetwork.id())
  *             .usage("FOR_VPC")
@@ -148,12 +148,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("external-ranges")
  *             .network(defaultNetwork.id())
  *             .usage("EXTERNAL_TO_VPC")
@@ -196,12 +196,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("overlap-range")
  *             .description("Test internal range")
  *             .network(defaultNetwork.id())
@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  *             .overlaps("OVERLAP_EXISTING_SUBNET_RANGE")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("overlapping-subnet")
  *             .ipCidrRange("10.0.0.0/24")
  *             .region("us-central1")
