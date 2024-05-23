@@ -66,12 +66,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()        
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
  *             .name("mynetwork")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()        
+ *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()
  *             .name("ha-cluster")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
@@ -85,14 +85,14 @@ import javax.annotation.Nullable;
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()        
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
  *             .name("mysubnet")
  *             .ipCidrRange("10.0.0.248/29")
  *             .region("us-central1")
  *             .network(producerNet.id())
  *             .build());
  * 
- *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()        
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("mypolicy")
  *             .location("us-central1")
  *             .serviceClass("gcp-memorystore-redis")

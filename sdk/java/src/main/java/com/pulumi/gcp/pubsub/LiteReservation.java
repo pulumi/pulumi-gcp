@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteReservation("example", LiteReservationArgs.builder()        
+ *         var example = new LiteReservation("example", LiteReservationArgs.builder()
  *             .name("example-reservation")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .throughputCapacity(2)

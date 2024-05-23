@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group("default", GroupArgs.builder()        
+ *         var default_ = new Group("default", GroupArgs.builder()
  *             .location("us-central1")
  *             .groupId("group-test")
  *             .description("Terraform integration test description")

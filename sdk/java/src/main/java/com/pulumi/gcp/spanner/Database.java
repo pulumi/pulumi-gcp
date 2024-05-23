@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new Instance("main", InstanceArgs.builder()        
+ *         var main = new Instance("main", InstanceArgs.builder()
  *             .config("regional-europe-west1")
  *             .displayName("main-instance")
  *             .numNodes(1)
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .instance(main.name())
  *             .name("my-database")
  *             .versionRetentionPeriod("3d")

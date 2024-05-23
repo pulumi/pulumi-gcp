@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_basic = new VMwareCluster("cluster-basic", VMwareClusterArgs.builder()        
+ *         var cluster_basic = new VMwareCluster("cluster-basic", VMwareClusterArgs.builder()
  *             .name("cluster-basic")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_f5lb = new VMwareCluster("cluster-f5lb", VMwareClusterArgs.builder()        
+ *         var cluster_f5lb = new VMwareCluster("cluster-f5lb", VMwareClusterArgs.builder()
  *             .name("cluster-f5lb")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_manuallb = new VMwareCluster("cluster-manuallb", VMwareClusterArgs.builder()        
+ *         var cluster_manuallb = new VMwareCluster("cluster-manuallb", VMwareClusterArgs.builder()
  *             .name("cluster-manuallb")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")

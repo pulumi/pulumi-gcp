@@ -55,14 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var securityProfile = new SecurityProfile("securityProfile", SecurityProfileArgs.builder()        
+ *         var securityProfile = new SecurityProfile("securityProfile", SecurityProfileArgs.builder()
  *             .name("sec-profile")
  *             .type("THREAT_PREVENTION")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
- *         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()        
+ *         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()
  *             .name("sec-profile-group")
  *             .parent("organizations/123456789")
  *             .description("my description")

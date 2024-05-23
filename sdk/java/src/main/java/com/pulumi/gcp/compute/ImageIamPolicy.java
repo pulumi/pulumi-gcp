@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()        
+ *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()        
+ *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()        
+ *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()        
+ *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()        
+ *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()        
+ *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -323,7 +323,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()        
+ *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -374,7 +374,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()        
+ *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -410,7 +410,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()        
+ *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -449,7 +449,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()        
+ *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -491,7 +491,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()        
+ *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")
@@ -530,7 +530,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()        
+ *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
  *             .role("roles/compute.imageUser")

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RouterInterface("foobar", RouterInterfaceArgs.builder()        
+ *         var foobar = new RouterInterface("foobar", RouterInterfaceArgs.builder()
  *             .name("interface-1")
  *             .router("router-1")
  *             .region("us-central1")

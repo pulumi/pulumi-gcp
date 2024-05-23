@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicTagTemplate = new TagTemplate("basicTagTemplate", TagTemplateArgs.builder()        
+ *         var basicTagTemplate = new TagTemplate("basicTagTemplate", TagTemplateArgs.builder()
  *             .tagTemplateId("my_template")
  *             .region("us-central1")
  *             .displayName("Demo Tag Template")

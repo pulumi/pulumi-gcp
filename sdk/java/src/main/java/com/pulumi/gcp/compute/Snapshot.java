@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var persistent = new Disk("persistent", DiskArgs.builder()        
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
  *             .name("debian-disk")
  *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
  *             .name("my-snapshot")
  *             .sourceDisk(persistent.id())
  *             .zone("us-central1-a")
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var persistent = new Disk("persistent", DiskArgs.builder()        
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
  *             .name("debian-disk")
  *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
  *             .name("my-snapshot")
  *             .sourceDisk(persistent.id())
  *             .zone("us-central1-a")

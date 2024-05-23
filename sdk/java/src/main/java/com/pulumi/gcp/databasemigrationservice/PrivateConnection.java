@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .name("my-network")
  *             .build());
  * 
- *         var defaultPrivateConnection = new PrivateConnection("defaultPrivateConnection", PrivateConnectionArgs.builder()        
+ *         var defaultPrivateConnection = new PrivateConnection("defaultPrivateConnection", PrivateConnectionArgs.builder()
  *             .displayName("dbms_pc")
  *             .location("us-central1")
  *             .privateConnectionId("my-connection")

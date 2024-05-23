@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()        
+ *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()
  *             .disableDefaultSink(true)
  *             .kmsKeyName("kms-key")
  *             .organization("123456789")
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .organization("123456789")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:%s", settings.applyValue(getOrganizationSettingsResult -> getOrganizationSettingsResult.kmsServiceAccountId())))

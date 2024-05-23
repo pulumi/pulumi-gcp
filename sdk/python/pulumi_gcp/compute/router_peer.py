@@ -53,6 +53,14 @@ class RouterPeerArgs:
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
+               * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+               This excludes any routes learned for subnets that use VPC Network
+               Peering.
+               
+               Note that this field can only be populated if advertiseMode is `CUSTOM`
+               and overrides the list defined for the router (in the "bgp" message).
+               These groups are advertised in addition to any specified prefixes.
+               Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -204,6 +212,14 @@ class RouterPeerArgs:
         """
         User-specified list of prefix groups to advertise in custom
         mode, which currently supports the following option:
+        * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+        This excludes any routes learned for subnets that use VPC Network
+        Peering.
+
+        Note that this field can only be populated if advertiseMode is `CUSTOM`
+        and overrides the list defined for the router (in the "bgp" message).
+        These groups are advertised in addition to any specified prefixes.
+        Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -480,6 +496,14 @@ class _RouterPeerState:
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
+               * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+               This excludes any routes learned for subnets that use VPC Network
+               Peering.
+               
+               Note that this field can only be populated if advertiseMode is `CUSTOM`
+               and overrides the list defined for the router (in the "bgp" message).
+               These groups are advertised in addition to any specified prefixes.
+               Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -506,6 +530,14 @@ class _RouterPeerState:
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
+               * `MANAGED_BY_USER` is the default value and can be managed by
+               you or other users
+               * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+               managed by Cloud Interconnect, specifically by an
+               InterconnectAttachment of type PARTNER. Google automatically
+               creates, updates, and deletes this type of BGP peer when the
+               PARTNER InterconnectAttachment is created, updated,
+               or deleted.
         :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
@@ -604,6 +636,14 @@ class _RouterPeerState:
         """
         User-specified list of prefix groups to advertise in custom
         mode, which currently supports the following option:
+        * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+        This excludes any routes learned for subnets that use VPC Network
+        Peering.
+
+        Note that this field can only be populated if advertiseMode is `CUSTOM`
+        and overrides the list defined for the router (in the "bgp" message).
+        These groups are advertised in addition to any specified prefixes.
+        Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -751,6 +791,14 @@ class _RouterPeerState:
     def management_type(self) -> Optional[pulumi.Input[str]]:
         """
         The resource that configures and manages this BGP peer.
+        * `MANAGED_BY_USER` is the default value and can be managed by
+        you or other users
+        * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+        managed by Cloud Interconnect, specifically by an
+        InterconnectAttachment of type PARTNER. Google automatically
+        creates, updates, and deletes this type of BGP peer when the
+        PARTNER InterconnectAttachment is created, updated,
+        or deleted.
         """
         return pulumi.get(self, "management_type")
 
@@ -1134,6 +1182,14 @@ class RouterPeer(pulumi.CustomResource):
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
+               * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+               This excludes any routes learned for subnets that use VPC Network
+               Peering.
+               
+               Note that this field can only be populated if advertiseMode is `CUSTOM`
+               and overrides the list defined for the router (in the "bgp" message).
+               These groups are advertised in addition to any specified prefixes.
+               Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -1516,6 +1572,14 @@ class RouterPeer(pulumi.CustomResource):
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
+               * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+               This excludes any routes learned for subnets that use VPC Network
+               Peering.
+               
+               Note that this field can only be populated if advertiseMode is `CUSTOM`
+               and overrides the list defined for the router (in the "bgp" message).
+               These groups are advertised in addition to any specified prefixes.
+               Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -1542,6 +1606,14 @@ class RouterPeer(pulumi.CustomResource):
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
+               * `MANAGED_BY_USER` is the default value and can be managed by
+               you or other users
+               * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+               managed by Cloud Interconnect, specifically by an
+               InterconnectAttachment of type PARTNER. Google automatically
+               creates, updates, and deletes this type of BGP peer when the
+               PARTNER InterconnectAttachment is created, updated,
+               or deleted.
         :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
@@ -1618,6 +1690,14 @@ class RouterPeer(pulumi.CustomResource):
         """
         User-specified list of prefix groups to advertise in custom
         mode, which currently supports the following option:
+        * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+        This excludes any routes learned for subnets that use VPC Network
+        Peering.
+
+        Note that this field can only be populated if advertiseMode is `CUSTOM`
+        and overrides the list defined for the router (in the "bgp" message).
+        These groups are advertised in addition to any specified prefixes.
+        Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -1721,6 +1801,14 @@ class RouterPeer(pulumi.CustomResource):
     def management_type(self) -> pulumi.Output[str]:
         """
         The resource that configures and manages this BGP peer.
+        * `MANAGED_BY_USER` is the default value and can be managed by
+        you or other users
+        * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+        managed by Cloud Interconnect, specifically by an
+        InterconnectAttachment of type PARTNER. Google automatically
+        creates, updates, and deletes this type of BGP peer when the
+        PARTNER InterconnectAttachment is created, updated,
+        or deleted.
         """
         return pulumi.get(self, "management_type")
 

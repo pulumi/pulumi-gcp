@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .moduleId("default")
  *             .build());
  * 
- *         var appengSlo = new Slo("appengSlo", SloArgs.builder()        
+ *         var appengSlo = new Slo("appengSlo", SloArgs.builder()
  *             .service(default_.serviceId())
  *             .sloId("ae-slo")
  *             .displayName("Test SLO for App Engine")
@@ -123,12 +123,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-request-slos")
  *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var requestBasedSlo = new Slo("requestBasedSlo", SloArgs.builder()        
+ *         var requestBasedSlo = new Slo("requestBasedSlo", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .sloId("consumed-api-slo")
  *             .displayName("Test SLO with request based SLI (good total ratio)")
@@ -177,12 +177,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .displayName("Test SLO with window based SLI")
  *             .goal(0.95)
@@ -233,12 +233,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)
@@ -294,12 +294,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)
@@ -357,12 +357,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)

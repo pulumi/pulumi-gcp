@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
     /**
-     * @return The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
+     * @return The number of local SSD disks to attach to the node,
+     * which is limited by the maximum number of disks allowable per zone.
      * 
      */
     private @Nullable Integer localSsdCount;
@@ -24,12 +25,16 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      */
     private @Nullable String machineType;
     /**
-     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
+     * @return Minimum CPU platform to be used by this instance.
+     * The instance may be scheduled on the specified or a newer CPU platform.
+     * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+     * @return Whether the nodes are created as preemptible VM instances.
+     * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+     * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
      * 
      */
     private @Nullable Boolean preemptible;
@@ -41,7 +46,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
 
     private ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig() {}
     /**
-     * @return The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
+     * @return The number of local SSD disks to attach to the node,
+     * which is limited by the maximum number of disks allowable per zone.
      * 
      */
     public Optional<Integer> localSsdCount() {
@@ -55,14 +61,18 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
+     * @return Minimum CPU platform to be used by this instance.
+     * The instance may be scheduled on the specified or a newer CPU platform.
+     * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
      */
     public Optional<String> minCpuPlatform() {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+     * @return Whether the nodes are created as preemptible VM instances.
+     * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+     * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
      * 
      */
     public Optional<Boolean> preemptible() {

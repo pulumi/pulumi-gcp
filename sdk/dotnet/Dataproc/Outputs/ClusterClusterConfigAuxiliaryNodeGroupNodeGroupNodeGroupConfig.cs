@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig
     {
         /// <summary>
-        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        /// multiple times.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator> Accelerators;
         /// <summary>
@@ -26,15 +27,21 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
-        /// The name of a Google Compute Engine machine type to create for the master
+        /// The name of a Google Compute Engine machine type
+        /// to create for the node group. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+        /// The name of a minimum generation of CPU family
+        /// for the node group. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+        /// Specifies the number of master nodes to create.
+        /// Please set a number greater than 0. Node Group must have at least 1 instance.
         /// </summary>
         public readonly int? NumInstances;
 

@@ -15,31 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
     /**
-     * @return The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
+     * @return The target GKE node pool.
      * 
      */
     private String nodePool;
     /**
-     * @return Input only. The configuration for the GKE node pool.
+     * @return The configuration for the GKE node pool.
+     * If specified, Dataproc attempts to create a node pool with the specified shape.
+     * If one with the same name already exists, it is verified against all specified fields.
+     * If a field differs, the virtual cluster creation will fail.
      * 
      */
     private @Nullable ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig nodePoolConfig;
     /**
      * @return The roles associated with the GKE node pool.
+     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
      * 
      */
     private List<String> roles;
 
     private ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget() {}
     /**
-     * @return The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
+     * @return The target GKE node pool.
      * 
      */
     public String nodePool() {
         return this.nodePool;
     }
     /**
-     * @return Input only. The configuration for the GKE node pool.
+     * @return The configuration for the GKE node pool.
+     * If specified, Dataproc attempts to create a node pool with the specified shape.
+     * If one with the same name already exists, it is verified against all specified fields.
+     * If a field differs, the virtual cluster creation will fail.
      * 
      */
     public Optional<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig> nodePoolConfig() {
@@ -47,6 +54,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
     /**
      * @return The roles associated with the GKE node pool.
+     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
      * 
      */
     public List<String> roles() {

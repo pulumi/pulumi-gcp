@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
  *             .displayName("My Alert Policy")
  *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()

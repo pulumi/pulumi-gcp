@@ -55,14 +55,16 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
     }
 
     /**
-     * The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+     * The amount of local SSD disks that will be
+     * attached to each preemptible worker node. Defaults to 0.
      * 
      */
     @Import(name="numLocalSsds")
     private @Nullable Output<Integer> numLocalSsds;
 
     /**
-     * @return The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+     * @return The amount of local SSD disks that will be
+     * attached to each preemptible worker node. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> numLocalSsds() {
@@ -146,7 +148,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
         }
 
         /**
-         * @param numLocalSsds The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+         * @param numLocalSsds The amount of local SSD disks that will be
+         * attached to each preemptible worker node. Defaults to 0.
          * 
          * @return builder
          * 
@@ -157,7 +160,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
         }
 
         /**
-         * @param numLocalSsds The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+         * @param numLocalSsds The amount of local SSD disks that will be
+         * attached to each preemptible worker node. Defaults to 0.
          * 
          * @return builder
          * 

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig
     {
         /// <summary>
-        /// The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
+        /// The number of local SSD disks to attach to the node, 
+        /// which is limited by the maximum number of disks allowable per zone.
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
@@ -22,11 +23,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+        /// Minimum CPU platform to be used by this instance. 
+        /// The instance may be scheduled on the specified or a newer CPU platform.
+        /// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        /// Whether the nodes are created as preemptible VM instances. 
+        /// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+        /// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>

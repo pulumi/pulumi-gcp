@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("Org Access Policy")
  *             .build());
@@ -97,13 +97,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project-name")
  *             .name("my-project-name")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("Scoped Access Policy")
  *             .scopes(project.number().applyValue(number -> String.format("projects/%s", number)))

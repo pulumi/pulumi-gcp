@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()        
+ *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()
  *             .name("my-region-commitment")
  *             .plan("THIRTY_SIX_MONTH")
  *             .resources(            
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()        
+ *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()
  *             .name("my-full-commitment")
  *             .description("some description")
  *             .plan("THIRTY_SIX_MONTH")

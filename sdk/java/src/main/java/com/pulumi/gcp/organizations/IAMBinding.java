@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IAMBinding("binding", IAMBindingArgs.builder()        
+ *         var binding = new IAMBinding("binding", IAMBindingArgs.builder()
  *             .orgId("123456789")
  *             .role("roles/browser")
  *             .members("user:alice{@literal @}gmail.com")

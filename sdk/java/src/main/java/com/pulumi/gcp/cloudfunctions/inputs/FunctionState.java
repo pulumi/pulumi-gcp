@@ -177,12 +177,18 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The security level for the function. The following options are available:
      * 
+     * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+     * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+     * 
      */
     @Import(name="httpsTriggerSecurityLevel")
     private @Nullable Output<String> httpsTriggerSecurityLevel;
 
     /**
      * @return The security level for the function. The following options are available:
+     * 
+     * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+     * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
      * 
      */
     public Optional<Output<String>> httpsTriggerSecurityLevel() {
@@ -822,6 +828,9 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param httpsTriggerSecurityLevel The security level for the function. The following options are available:
          * 
+         * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+         * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+         * 
          * @return builder
          * 
          */
@@ -832,6 +841,9 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpsTriggerSecurityLevel The security level for the function. The following options are available:
+         * 
+         * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+         * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
          * 
          * @return builder
          * 

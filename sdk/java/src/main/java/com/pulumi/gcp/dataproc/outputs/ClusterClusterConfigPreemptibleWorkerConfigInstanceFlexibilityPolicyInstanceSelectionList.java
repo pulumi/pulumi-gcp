@@ -14,26 +14,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
     /**
-     * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;.
+     * @return Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
      * 
      */
     private @Nullable List<String> machineTypes;
     /**
-     * @return Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+     * @return Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+     * 
+     * ***
      * 
      */
     private @Nullable Integer rank;
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList() {}
     /**
-     * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;.
+     * @return Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
      * 
      */
     public List<String> machineTypes() {
         return this.machineTypes == null ? List.of() : this.machineTypes;
     }
     /**
-     * @return Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+     * @return Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+     * 
+     * ***
      * 
      */
     public Optional<Integer> rank() {

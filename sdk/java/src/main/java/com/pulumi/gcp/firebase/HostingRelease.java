@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Test release")
@@ -106,12 +106,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
@@ -122,12 +122,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()        
+ *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()
  *             .siteId(default_.siteId())
  *             .channelId("channel-id")
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .channelId(defaultHostingChannel.channelId())
  *             .versionName(defaultHostingVersion.name())
@@ -166,12 +166,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .type("SITE_DISABLE")
  *             .message("Take down site")

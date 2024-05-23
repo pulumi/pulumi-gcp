@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()        
+ *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .table("your-bigtable-table")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()        
+ *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()        
+ *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()        
+ *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .table("your-bigtable-table")
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()        
+ *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()        
+ *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")

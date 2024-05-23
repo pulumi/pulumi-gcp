@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Gateway("default", GatewayArgs.builder()        
+ *         var default_ = new Gateway("default", GatewayArgs.builder()
  *             .name("my-gateway")
  *             .scope("default-scope-basic")
  *             .type("OPEN_MESH")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Gateway("default", GatewayArgs.builder()        
+ *         var default_ = new Gateway("default", GatewayArgs.builder()
  *             .name("my-gateway")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("my-certificate")
  *             .location("us-central1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
@@ -155,13 +155,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .routingMode("REGIONAL")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork-name")
  *             .purpose("PRIVATE")
  *             .ipCidrRange("10.128.0.0/20")
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *             .role("ACTIVE")
  *             .build());
  * 
- *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()        
+ *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()
  *             .name("my-proxy-only-subnetwork")
  *             .purpose("REGIONAL_MANAGED_PROXY")
  *             .ipCidrRange("192.168.0.0/23")
@@ -179,12 +179,12 @@ import javax.annotation.Nullable;
  *             .role("ACTIVE")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()
  *             .name("my-policy-name")
  *             .location("us-central1")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()
  *             .name("my-policyrule-name")
  *             .location("us-central1")
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *             .basicProfile("ALLOW")
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name("my-gateway1")
  *             .location("us-central1")
  *             .addresses("10.128.0.99")
@@ -249,7 +249,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("my-certificate")
  *             .location("us-south1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
@@ -262,13 +262,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .routingMode("REGIONAL")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork-name")
  *             .purpose("PRIVATE")
  *             .ipCidrRange("10.128.0.0/20")
@@ -277,7 +277,7 @@ import javax.annotation.Nullable;
  *             .role("ACTIVE")
  *             .build());
  * 
- *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()        
+ *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()
  *             .name("my-proxy-only-subnetwork")
  *             .purpose("REGIONAL_MANAGED_PROXY")
  *             .ipCidrRange("192.168.0.0/23")
@@ -286,12 +286,12 @@ import javax.annotation.Nullable;
  *             .role("ACTIVE")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()
  *             .name("my-policy-name")
  *             .location("us-south1")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()
  *             .name("my-policyrule-name")
  *             .location("us-south1")
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
@@ -301,7 +301,7 @@ import javax.annotation.Nullable;
  *             .basicProfile("ALLOW")
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name("my-gateway1")
  *             .location("us-south1")
  *             .addresses("10.128.0.99")
@@ -315,7 +315,7 @@ import javax.annotation.Nullable;
  *             .deleteSwgAutogenRouterOnDestroy(true)
  *             .build());
  * 
- *         var gateway2 = new Gateway("gateway2", GatewayArgs.builder()        
+ *         var gateway2 = new Gateway("gateway2", GatewayArgs.builder()
  *             .name("my-gateway2")
  *             .location("us-south1")
  *             .addresses("10.128.0.98")

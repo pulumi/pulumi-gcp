@@ -235,6 +235,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
         /// cannot have overlapping 'portRange's.
+        /// 
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         public readonly string PortRange;
         /// <summary>
@@ -258,6 +260,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
         /// they share at least one port number.
+        /// 
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         public readonly ImmutableArray<string> Ports;
         /// <summary>

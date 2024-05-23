@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oauthIdpConfig = new OauthIdpConfig("oauthIdpConfig", OauthIdpConfigArgs.builder()        
+ *         var oauthIdpConfig = new OauthIdpConfig("oauthIdpConfig", OauthIdpConfigArgs.builder()
  *             .name("oidc.oauth-idp-config")
  *             .displayName("Display Name")
  *             .clientId("client-id")

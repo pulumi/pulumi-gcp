@@ -61,16 +61,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
  *             .name("example-fhir-store")
  *             .dataset(dataset.id())
  *             .version("R4")
@@ -126,12 +126,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()        
+ *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()
  *             .datasetId("bq_example_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
- *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
  *             .name("example-fhir-store")
  *             .dataset(dataset.id())
  *             .version("R4")
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("fhir-notifications")
  *             .build());
  * 
@@ -206,16 +206,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
  *             .name("example-fhir-store")
  *             .dataset(dataset.id())
  *             .version("R4")
@@ -264,16 +264,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
  *             .name("example-fhir-store")
  *             .dataset(dataset.id())
  *             .version("R4")
