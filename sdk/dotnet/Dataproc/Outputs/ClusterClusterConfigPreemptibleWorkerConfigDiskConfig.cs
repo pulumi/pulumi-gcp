@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? BootDiskType;
         /// <summary>
-        /// The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
         /// </summary>
         public readonly int? NumLocalSsds;
 

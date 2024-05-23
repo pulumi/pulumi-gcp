@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_ekmconnection = new EkmConnection("example-ekmconnection", EkmConnectionArgs.builder()        
+ *         var example_ekmconnection = new EkmConnection("example-ekmconnection", EkmConnectionArgs.builder()
  *             .name("ekmconnection_example")
  *             .location("us-central1")
  *             .keyManagementMode("MANUAL")

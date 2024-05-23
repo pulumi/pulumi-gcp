@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -276,7 +276,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
@@ -334,7 +334,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -374,7 +374,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
@@ -391,7 +391,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -427,7 +427,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -465,7 +465,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -507,7 +507,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -545,7 +545,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()
  *             .keyRingId("your-key-ring-id")
  *             .role("roles/cloudkms.admin")
  *             .member("user:jane{@literal @}example.com")

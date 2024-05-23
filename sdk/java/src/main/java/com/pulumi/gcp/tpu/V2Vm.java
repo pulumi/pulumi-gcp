@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getV2RuntimeVersions();
  * 
- *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+ *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-c")
  *             .runtimeVersion("tpu-vm-tf-2.13.0")
@@ -116,24 +116,24 @@ import javax.annotation.Nullable;
  * 
  *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("tpu-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("tpu-subnet")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(network.id())
  *             .build());
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("tpu-sa")
  *             .displayName("Test TPU VM")
  *             .build());
  * 
- *         var disk = new Disk("disk", DiskArgs.builder()        
+ *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("tpu-disk")
  *             .image("debian-cloud/debian-11")
  *             .size(10)
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-c")
  *             .build());
  * 
- *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+ *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-c")
  *             .description("Text description of the TPU.")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Wait after service account creation to limit eventual consistency errors.
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 

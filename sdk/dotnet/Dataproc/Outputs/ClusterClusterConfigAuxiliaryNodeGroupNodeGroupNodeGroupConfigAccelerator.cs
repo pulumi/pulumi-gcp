@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator
     {
         /// <summary>
-        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public readonly int AcceleratorCount;
         /// <summary>
-        /// The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         /// </summary>
         public readonly string AcceleratorType;
 

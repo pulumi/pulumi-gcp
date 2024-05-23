@@ -52,35 +52,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source_network = new Network("source-network", NetworkArgs.builder()        
+ *         var source_network = new Network("source-network", NetworkArgs.builder()
  *             .name("ad-network")
  *             .build());
  * 
- *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()        
+ *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()
  *             .domainName("ad.test.hashicorptest.com")
  *             .locations("us-central1")
  *             .reservedIpRange("192.168.255.0/24")
  *             .authorizedNetworks(source_network.id())
  *             .build());
  * 
- *         var peered_project = new Project("peered-project", ProjectArgs.builder()        
+ *         var peered_project = new Project("peered-project", ProjectArgs.builder()
  *             .name("my-peered-project")
  *             .projectId("my-peered-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var compute = new Service("compute", ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()
  *             .project(peered_project.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var peered_network = new Network("peered-network", NetworkArgs.builder()        
+ *         var peered_network = new Network("peered-network", NetworkArgs.builder()
  *             .project(compute.project())
  *             .name("ad-peered-network")
  *             .build());
  * 
- *         var ad_domain_peering = new Peering("ad-domain-peering", PeeringArgs.builder()        
+ *         var ad_domain_peering = new Peering("ad-domain-peering", PeeringArgs.builder()
  *             .domainResource(ad_domain.name())
  *             .peeringId("ad-domain-peering")
  *             .authorizedNetwork(peered_network.id())

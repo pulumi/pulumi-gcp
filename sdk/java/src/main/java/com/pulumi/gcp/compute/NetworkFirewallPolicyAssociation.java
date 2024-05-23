@@ -46,17 +46,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkFirewallPolicy = new NetworkFirewallPolicy("networkFirewallPolicy", NetworkFirewallPolicyArgs.builder()        
+ *         var networkFirewallPolicy = new NetworkFirewallPolicy("networkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
  *             .name("policy")
  *             .project("my-project-name")
  *             .description("Sample global network firewall policy")
  *             .build());
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("network")
  *             .build());
  * 
- *         var primary = new NetworkFirewallPolicyAssociation("primary", NetworkFirewallPolicyAssociationArgs.builder()        
+ *         var primary = new NetworkFirewallPolicyAssociation("primary", NetworkFirewallPolicyAssociationArgs.builder()
  *             .name("association")
  *             .attachmentTarget(network.id())
  *             .firewallPolicy(networkFirewallPolicy.name())

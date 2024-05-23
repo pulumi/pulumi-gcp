@@ -70,18 +70,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("test-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var archive = new BucketObject("archive", BucketObjectArgs.builder()        
+ *         var archive = new BucketObject("archive", BucketObjectArgs.builder()
  *             .name("index.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./path/to/zip/file/which/contains/code"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-test")
  *             .description("My function")
  *             .runtime("nodejs16")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // IAM entry for all users to invoke the function
- *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()        
+ *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()
  *             .project(function.project())
  *             .region(function.region())
  *             .cloudFunction(function.name())
@@ -139,18 +139,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("test-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var archive = new BucketObject("archive", BucketObjectArgs.builder()        
+ *         var archive = new BucketObject("archive", BucketObjectArgs.builder()
  *             .name("index.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./path/to/zip/file/which/contains/code"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-test")
  *             .description("My function")
  *             .runtime("nodejs16")
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // IAM entry for a single user to invoke the function
- *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()        
+ *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()
  *             .project(function.project())
  *             .region(function.region())
  *             .cloudFunction(function.name())
@@ -344,12 +344,18 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * The security level for the function. The following options are available:
      * 
+     * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+     * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+     * 
      */
     @Export(name="httpsTriggerSecurityLevel", refs={String.class}, tree="[0]")
     private Output<String> httpsTriggerSecurityLevel;
 
     /**
      * @return The security level for the function. The following options are available:
+     * 
+     * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+     * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
      * 
      */
     public Output<String> httpsTriggerSecurityLevel() {

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()        
+ *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()        
+ *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()        
+ *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()        
+ *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()        
+ *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()        
+ *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()
  *             .project(dataPolicy.project())
  *             .location(dataPolicy.location())
  *             .dataPolicyId(dataPolicy.dataPolicyId())

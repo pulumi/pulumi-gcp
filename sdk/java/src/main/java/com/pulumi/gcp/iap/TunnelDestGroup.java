@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()        
+ *         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()
  *             .region("us-central1")
  *             .groupName("testgroup_41819")
  *             .cidrs(            

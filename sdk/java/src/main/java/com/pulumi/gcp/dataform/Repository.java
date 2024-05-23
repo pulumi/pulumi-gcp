@@ -54,19 +54,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("my-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()        
+ *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()
  *             .secret(secret.id())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()        
+ *         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()
  *             .name("dataform_repository")
  *             .displayName("dataform_repository")
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())

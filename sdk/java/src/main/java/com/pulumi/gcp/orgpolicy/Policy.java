@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("id")
  *             .name("id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *         var primary = new Policy("primary", PolicyArgs.builder()
  *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", name)))
  *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
@@ -102,12 +102,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Folder("basic", FolderArgs.builder()        
+ *         var basic = new Folder("basic", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder")
  *             .build());
  * 
- *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *         var primary = new Policy("primary", PolicyArgs.builder()
  *             .name(basic.name().applyValue(name -> String.format("%s/policies/gcp.resourceLocations", name)))
  *             .parent(basic.name())
  *             .spec(PolicySpecArgs.builder()
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *         var primary = new Policy("primary", PolicyArgs.builder()
  *             .name("organizations/123456789/policies/gcp.detailedAuditLoggingMode")
  *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()
@@ -190,13 +190,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("id")
  *             .name("id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *         var primary = new Policy("primary", PolicyArgs.builder()
  *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/gcp.resourceLocations", name)))
  *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
@@ -252,7 +252,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()        
+ *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
  *             .name("custom.disableGkeAutoUpgrade_29439")
  *             .parent("organizations/123456789")
  *             .displayName("Disable GKE auto upgrade")
@@ -263,7 +263,7 @@ import javax.annotation.Nullable;
  *             .resourceTypes("container.googleapis.com/NodePool")
  *             .build());
  * 
- *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *         var primary = new Policy("primary", PolicyArgs.builder()
  *             .name(constraint.name().applyValue(name -> String.format("organizations/123456789/policies/%s", name)))
  *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()

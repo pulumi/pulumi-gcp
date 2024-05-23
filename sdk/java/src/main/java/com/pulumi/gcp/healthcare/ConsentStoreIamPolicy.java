@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()        
+ *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()        
+ *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/viewer")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()        
+ *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/viewer")
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()        
+ *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()        
+ *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/viewer")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()        
+ *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/viewer")

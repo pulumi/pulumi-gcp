@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs>? _accelerators;
 
         /// <summary>
-        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        /// multiple times.
         /// </summary>
         public InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs> Accelerators
         {
@@ -43,19 +44,25 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// The name of a Google Compute Engine machine type to create for the master
+        /// The name of a Google Compute Engine machine type
+        /// to create for the node group. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+        /// The name of a minimum generation of CPU family
+        /// for the node group. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+        /// Specifies the number of master nodes to create.
+        /// Please set a number greater than 0. Node Group must have at least 1 instance.
         /// </summary>
         [Input("numInstances")]
         public Input<int>? NumInstances { get; set; }

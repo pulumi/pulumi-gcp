@@ -1093,12 +1093,19 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
                  min_cpu_platform: Optional[str] = None,
                  num_instances: Optional[int] = None):
         """
-        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+               multiple times.
         :param 'ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs' disk_config: Disk Config
         :param Sequence[str] instance_names: List of auxiliary node group instance names which have been assigned to the cluster.
-        :param str machine_type: The name of a Google Compute Engine machine type to create for the master
-        :param str min_cpu_platform: The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
-        :param int num_instances: Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+        :param str machine_type: The name of a Google Compute Engine machine type
+               to create for the node group. If not specified, GCP will default to a predetermined
+               computed value (currently `n1-standard-4`).
+        :param str min_cpu_platform: The name of a minimum generation of CPU family
+               for the node group. If not specified, GCP will default to a predetermined computed value
+               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+               for details about which CPU families are available (and defaulted) for each zone.
+        :param int num_instances: Specifies the number of master nodes to create.
+               Please set a number greater than 0. Node Group must have at least 1 instance.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -1117,7 +1124,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator']]:
         """
-        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        multiple times.
         """
         return pulumi.get(self, "accelerators")
 
@@ -1141,7 +1149,9 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
-        The name of a Google Compute Engine machine type to create for the master
+        The name of a Google Compute Engine machine type
+        to create for the node group. If not specified, GCP will default to a predetermined
+        computed value (currently `n1-standard-4`).
         """
         return pulumi.get(self, "machine_type")
 
@@ -1149,7 +1159,10 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+        The name of a minimum generation of CPU family
+        for the node group. If not specified, GCP will default to a predetermined computed value
+        for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        for details about which CPU families are available (and defaulted) for each zone.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -1157,7 +1170,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[int]:
         """
-        Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+        Specifies the number of master nodes to create.
+        Please set a number greater than 0. Node Group must have at least 1 instance.
         """
         return pulumi.get(self, "num_instances")
 
@@ -1187,8 +1201,11 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
                  accelerator_count: int,
                  accelerator_type: str):
         """
-        :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
-        :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+        :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+               
+               
+               - - -
+        :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -1197,7 +1214,10 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
     @pulumi.getter(name="acceleratorCount")
     def accelerator_count(self) -> int:
         """
-        The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+        The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+
+
+        - - -
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -1205,7 +1225,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> str:
         """
-        The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+        The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -1238,9 +1258,15 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
                  boot_disk_type: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
-        :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
-        :param str boot_disk_type: The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
-        :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+        :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified
+               in GB. The primary disk contains the boot volume and system libraries, and the
+               smallest allowed disk size is 10GB. GCP will default to a predetermined
+               computed value if not set (currently 500GB). Note: If SSDs are not
+               attached, it also contains the HDFS data blocks and Hadoop working directories.
+        :param str boot_disk_type: The disk type of the primary disk attached to each node.
+               One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node. 
+               Defaults to 0.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -1253,7 +1279,11 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[int]:
         """
-        Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+        Size of the primary disk attached to each node, specified
+        in GB. The primary disk contains the boot volume and system libraries, and the
+        smallest allowed disk size is 10GB. GCP will default to a predetermined
+        computed value if not set (currently 500GB). Note: If SSDs are not
+        attached, it also contains the HDFS data blocks and Hadoop working directories.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -1261,7 +1291,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[str]:
         """
-        The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+        The disk type of the primary disk attached to each node.
+        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -1269,7 +1300,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+        The amount of local SSD disks that will be attached to each master cluster node. 
+        Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -2167,9 +2199,15 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
                  boot_disk_type: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
-        :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
-        :param str boot_disk_type: The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
-        :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+        :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified
+               in GB. The primary disk contains the boot volume and system libraries, and the
+               smallest allowed disk size is 10GB. GCP will default to a predetermined
+               computed value if not set (currently 500GB). Note: If SSDs are not
+               attached, it also contains the HDFS data blocks and Hadoop working directories.
+        :param str boot_disk_type: The disk type of the primary disk attached to each node.
+               One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param int num_local_ssds: The amount of local SSD disks that will be
+               attached to each master cluster node. Defaults to 0.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -2182,7 +2220,11 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[int]:
         """
-        Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+        Size of the primary disk attached to each node, specified
+        in GB. The primary disk contains the boot volume and system libraries, and the
+        smallest allowed disk size is 10GB. GCP will default to a predetermined
+        computed value if not set (currently 500GB). Note: If SSDs are not
+        attached, it also contains the HDFS data blocks and Hadoop working directories.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -2190,7 +2232,8 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[str]:
         """
-        The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+        The disk type of the primary disk attached to each node.
+        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -2198,7 +2241,8 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+        The amount of local SSD disks that will be
+        attached to each master cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -2382,7 +2426,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each preemptible worker node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        :param int num_local_ssds: The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+        :param int num_local_ssds: The amount of local SSD disks that will be
+               attached to each preemptible worker node. Defaults to 0.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -2415,7 +2460,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+        The amount of local SSD disks that will be
+        attached to each preemptible worker node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -2493,8 +2539,10 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
                  machine_types: Optional[Sequence[str]] = None,
                  rank: Optional[int] = None):
         """
-        :param Sequence[str] machine_types: Full machine-type names, e.g. "n1-standard-16".
-        :param int rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        :param Sequence[str] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
+        :param int rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+               
+               - - -
         """
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
@@ -2505,7 +2553,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @pulumi.getter(name="machineTypes")
     def machine_types(self) -> Optional[Sequence[str]]:
         """
-        Full machine-type names, e.g. "n1-standard-16".
+        Full machine-type names, e.g. `"n1-standard-16"`.
         """
         return pulumi.get(self, "machine_types")
 
@@ -2513,7 +2561,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @pulumi.getter
     def rank(self) -> Optional[int]:
         """
-        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+
+        - - -
         """
         return pulumi.get(self, "rank")
 
@@ -3665,9 +3715,13 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  roles: Sequence[str],
                  node_pool_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig'] = None):
         """
-        :param str node_pool: The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
-        :param Sequence[str] roles: The roles associated with the GKE node pool.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs' node_pool_config: Input only. The configuration for the GKE node pool.
+        :param str node_pool: The target GKE node pool.
+        :param Sequence[str] roles: The roles associated with the GKE node pool. 
+               One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs' node_pool_config: The configuration for the GKE node pool. 
+               If specified, Dataproc attempts to create a node pool with the specified shape.
+               If one with the same name already exists, it is verified against all specified fields.
+               If a field differs, the virtual cluster creation will fail.
         """
         pulumi.set(__self__, "node_pool", node_pool)
         pulumi.set(__self__, "roles", roles)
@@ -3678,7 +3732,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="nodePool")
     def node_pool(self) -> str:
         """
-        The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
+        The target GKE node pool.
         """
         return pulumi.get(self, "node_pool")
 
@@ -3686,7 +3740,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def roles(self) -> Sequence[str]:
         """
-        The roles associated with the GKE node pool.
+        The roles associated with the GKE node pool. 
+        One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
         """
         return pulumi.get(self, "roles")
 
@@ -3694,7 +3749,10 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="nodePoolConfig")
     def node_pool_config(self) -> Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig']:
         """
-        Input only. The configuration for the GKE node pool.
+        The configuration for the GKE node pool. 
+        If specified, Dataproc attempts to create a node pool with the specified shape.
+        If one with the same name already exists, it is verified against all specified fields.
+        If a field differs, the virtual cluster creation will fail.
         """
         return pulumi.get(self, "node_pool_config")
 
@@ -3706,8 +3764,11 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  autoscaling: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling'] = None,
                  config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig'] = None):
         """
-        :param Sequence[str] locations: The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs' autoscaling: The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+        :param Sequence[str] locations: The list of Compute Engine zones where node pool nodes associated 
+               with a Dataproc on GKE virtual cluster will be located.
+               - - -
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs' autoscaling: The autoscaler configuration for this node pool. 
+               The autoscaler is enabled only when a valid configuration is present.
         :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs' config: The node pool configuration.
         """
         pulumi.set(__self__, "locations", locations)
@@ -3720,7 +3781,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def locations(self) -> Sequence[str]:
         """
-        The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+        The list of Compute Engine zones where node pool nodes associated 
+        with a Dataproc on GKE virtual cluster will be located.
+        - - -
         """
         return pulumi.get(self, "locations")
 
@@ -3728,7 +3791,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def autoscaling(self) -> Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling']:
         """
-        The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+        The autoscaler configuration for this node pool. 
+        The autoscaler is enabled only when a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -3821,10 +3885,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  preemptible: Optional[bool] = None,
                  spot: Optional[bool] = None):
         """
-        :param int local_ssd_count: The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+        :param int local_ssd_count: The number of local SSD disks to attach to the node, 
+               which is limited by the maximum number of disks allowable per zone.
         :param str machine_type: The name of a Compute Engine machine type.
-        :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-        :param bool preemptible: Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        :param str min_cpu_platform: Minimum CPU platform to be used by this instance. 
+               The instance may be scheduled on the specified or a newer CPU platform.
+               Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+        :param bool preemptible: Whether the nodes are created as preemptible VM instances. 
+               Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+               CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         """
         if local_ssd_count is not None:
@@ -3842,7 +3911,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[int]:
         """
-        The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+        The number of local SSD disks to attach to the node, 
+        which is limited by the maximum number of disks allowable per zone.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -3858,7 +3928,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+        Minimum CPU platform to be used by this instance. 
+        The instance may be scheduled on the specified or a newer CPU platform.
+        Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -3866,7 +3938,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         """
-        Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        Whether the nodes are created as preemptible VM instances. 
+        Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+        CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
         return pulumi.get(self, "preemptible")
 

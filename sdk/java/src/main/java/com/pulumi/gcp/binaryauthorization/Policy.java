@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -73,14 +73,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
  *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .admissionWhitelistPatterns(PolicyAdmissionWhitelistPatternArgs.builder()
  *                 .namePattern("gcr.io/google_containers/*")
  *                 .build())
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -143,14 +143,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
  *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .defaultAdmissionRule(PolicyDefaultAdmissionRuleArgs.builder()
  *                 .evaluationMode("REQUIRE_ATTESTATION")
  *                 .enforcementMode("ENFORCED_BLOCK_AND_AUDIT_LOG")

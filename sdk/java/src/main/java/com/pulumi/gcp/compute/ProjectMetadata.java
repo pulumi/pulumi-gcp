@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectMetadata("default", ProjectMetadataArgs.builder()        
+ *         var default_ = new ProjectMetadata("default", ProjectMetadataArgs.builder()
  *             .metadata(Map.ofEntries(
  *                 Map.entry("foo", "bar"),
  *                 Map.entry("fizz", "buzz"),
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *         //A key set in project metadata is propagated to every instance in the project.
  *         //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
  *         //It is better to use OS Login instead.
- *         var mySshKey = new ProjectMetadata("mySshKey", ProjectMetadataArgs.builder()        
+ *         var mySshKey = new ProjectMetadata("mySshKey", ProjectMetadataArgs.builder()
  *             .metadata(Map.of("ssh-keys", """
  *       dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
  *       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar

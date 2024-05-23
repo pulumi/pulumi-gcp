@@ -20,14 +20,16 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     public static final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs Empty = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs();
 
     /**
-     * The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+     * The autoscaler configuration for this node pool.
+     * The autoscaler is enabled only when a valid configuration is present.
      * 
      */
     @Import(name="autoscaling")
     private @Nullable Output<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs> autoscaling;
 
     /**
-     * @return The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+     * @return The autoscaler configuration for this node pool.
+     * The autoscaler is enabled only when a valid configuration is present.
      * 
      */
     public Optional<Output<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs>> autoscaling() {
@@ -50,14 +52,18 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+     * The list of Compute Engine zones where node pool nodes associated
+     * with a Dataproc on GKE virtual cluster will be located.
+     * ***
      * 
      */
     @Import(name="locations", required=true)
     private Output<List<String>> locations;
 
     /**
-     * @return The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+     * @return The list of Compute Engine zones where node pool nodes associated
+     * with a Dataproc on GKE virtual cluster will be located.
+     * ***
      * 
      */
     public Output<List<String>> locations() {
@@ -91,7 +97,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param autoscaling The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+         * @param autoscaling The autoscaler configuration for this node pool.
+         * The autoscaler is enabled only when a valid configuration is present.
          * 
          * @return builder
          * 
@@ -102,7 +109,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param autoscaling The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+         * @param autoscaling The autoscaler configuration for this node pool.
+         * The autoscaler is enabled only when a valid configuration is present.
          * 
          * @return builder
          * 
@@ -133,7 +141,9 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param locations The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+         * @param locations The list of Compute Engine zones where node pool nodes associated
+         * with a Dataproc on GKE virtual cluster will be located.
+         * ***
          * 
          * @return builder
          * 
@@ -144,7 +154,9 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param locations The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+         * @param locations The list of Compute Engine zones where node pool nodes associated
+         * with a Dataproc on GKE virtual cluster will be located.
+         * ***
          * 
          * @return builder
          * 
@@ -154,7 +166,9 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param locations The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+         * @param locations The list of Compute Engine zones where node pool nodes associated
+         * with a Dataproc on GKE virtual cluster will be located.
+         * ***
          * 
          * @return builder
          * 

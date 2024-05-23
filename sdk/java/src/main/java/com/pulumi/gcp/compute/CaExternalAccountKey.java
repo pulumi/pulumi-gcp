@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new CaExternalAccountKey("prod", CaExternalAccountKeyArgs.builder()        
+ *         var prod = new CaExternalAccountKey("prod", CaExternalAccountKeyArgs.builder()
  *             .project("my-project-name")
  *             .build());
  * 

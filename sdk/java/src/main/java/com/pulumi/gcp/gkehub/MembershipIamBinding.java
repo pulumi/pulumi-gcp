@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()        
+ *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()        
+ *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()        
+ *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()        
+ *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()        
+ *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()        
+ *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
  *             .project(membership.project())
  *             .location(membership.location())
  *             .membershipId(membership.membershipId())

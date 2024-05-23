@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()
  *             .name("my-gateway-security-policy")
  *             .location("us-central1")
  *             .description("gateway security policy created to be used as reference by the rule.")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()
  *             .name("my-gateway-security-policy-rule")
  *             .location("us-central1")
  *             .gatewaySecurityPolicy(default_.name())
@@ -102,13 +102,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()
  *             .name("my-gateway-security-policy")
  *             .location("us-central1")
  *             .description("gateway security policy created to be used as reference by the rule.")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()
  *             .name("my-gateway-security-policy-rule")
  *             .location("us-central1")
  *             .gatewaySecurityPolicy(default_.name())

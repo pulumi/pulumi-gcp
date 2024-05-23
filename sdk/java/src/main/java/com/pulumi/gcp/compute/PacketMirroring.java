@@ -77,11 +77,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var mirror = new Instance("mirror", InstanceArgs.builder()        
+ *         var mirror = new Instance("mirror", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(default_.id())
@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .network(default_.id())
  *             .ipCidrRange("10.2.0.0/16")
  *             .build());
  * 
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("my-healthcheck")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -110,12 +110,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .name("my-service")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()        
+ *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()
  *             .name("my-ilb")
  *             .isMirroringCollector(true)
  *             .ipProtocol("TCP")
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *             .networkTier("PREMIUM")
  *             .build());
  * 
- *         var foobar = new PacketMirroring("foobar", PacketMirroringArgs.builder()        
+ *         var foobar = new PacketMirroring("foobar", PacketMirroringArgs.builder()
  *             .name("my-mirroring")
  *             .description("bar")
  *             .network(PacketMirroringNetworkArgs.builder()

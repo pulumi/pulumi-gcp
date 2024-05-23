@@ -1378,7 +1378,7 @@ public final class StorageFunctions {
      *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
      *             .build());
      * 
@@ -1472,7 +1472,7 @@ public final class StorageFunctions {
      *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
      *             .build());
      * 
@@ -1566,7 +1566,7 @@ public final class StorageFunctions {
      *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
      *             .build());
      * 
@@ -1660,7 +1660,7 @@ public final class StorageFunctions {
      *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
      *             .build());
      * 
@@ -1782,7 +1782,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -1826,13 +1826,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
@@ -1915,7 +1915,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -1959,13 +1959,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
@@ -2048,7 +2048,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -2092,13 +2092,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
@@ -2181,7 +2181,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -2225,13 +2225,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
@@ -2314,7 +2314,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -2358,13 +2358,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
@@ -2447,7 +2447,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
@@ -2491,13 +2491,13 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("kms-protected-bucket")
      *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
