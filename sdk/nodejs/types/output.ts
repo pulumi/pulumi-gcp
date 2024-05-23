@@ -5556,6 +5556,14 @@ export namespace bigquery {
         routine?: outputs.bigquery.DatasetAccessRoutine;
         /**
          * A special group to grant access to. Possible values include:
+         *
+         * * `projectOwners`: Owners of the enclosing project.
+         *
+         * * `projectReaders`: Readers of the enclosing project.
+         *
+         * * `projectWriters`: Writers of the enclosing project.
+         *
+         * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          */
         specialGroup?: string;
         /**
@@ -20372,6 +20380,25 @@ export namespace compute {
          * Note that specifying the same policy more than once for a backend is
          * not a valid configuration and will be rejected.
          * The possible values are:
+         * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+         * is selected in round robin order.
+         * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+         * hosts and picks the host which has fewer active requests.
+         * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+         * hashing to backends. The algorithm has the property that the
+         * addition/removal of a host from a set of N hosts only affects
+         * 1/N of the requests.
+         * * `RANDOM`: The load balancer selects a random healthy host.
+         * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+         * connection metadata, i.e., connections are opened
+         * to the same address as the destination address of
+         * the incoming connection before the connection
+         * was redirected to the load balancer.
+         * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+         * Maglev is not as stable as ring hash but has faster table lookup
+         * build times and host selection times. For more information about
+         * Maglev, refer to https://ai.google/research/pubs/pub44824
+         * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
          */
         name: string;
     }
@@ -21746,6 +21773,8 @@ export namespace compute {
          * For internal forwarding rules within the same VPC network, two or more
          * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
          * cannot have overlapping 'portRange's.
+         *
+         * @pattern: \d+(?:-\d+)?
          */
         portRange: string;
         /**
@@ -21769,6 +21798,8 @@ export namespace compute {
          * For internal forwarding rules within the same VPC network, two or more
          * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
          * they share at least one port number.
+         *
+         * @pattern: \d+(?:-\d+)?
          */
         ports: string[];
         /**
@@ -24825,6 +24856,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
     }
@@ -24901,6 +24941,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -24943,6 +24992,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTPS health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -24987,6 +25045,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -25025,6 +25092,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, TCP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -28733,6 +28809,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
     }
@@ -28809,6 +28894,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -28851,6 +28945,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTPS health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -28895,6 +28998,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -28933,6 +29045,15 @@ export namespace compute {
         /**
          * Specifies how port is selected for health checking, can be one of the
          * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, TCP health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
          */
         portSpecification?: string;
         /**
@@ -32566,10 +32687,14 @@ export namespace compute {
         jsonCustomConfig: outputs.compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
         /**
          * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+         * * `DISABLED` - Don't parse JSON payloads in POST bodies.
+         * * `STANDARD` - Parse JSON payloads in POST bodies.
          */
         jsonParsing: string;
         /**
          * Log level to use. Defaults to `NORMAL`.
+         * * `NORMAL` - Normal log level.
+         * * `VERBOSE` - Verbose log level.
          */
         logLevel: string;
         /**
@@ -32821,6 +32946,15 @@ export namespace compute {
         conformAction: string;
         /**
          * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to `ALL`.
+         *
+         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+         * * `REGION_CODE`: The country/region from which the request originates.
          */
         enforceOnKey?: string;
         /**
@@ -32831,6 +32965,9 @@ export namespace compute {
         enforceOnKeyConfigs?: outputs.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
         /**
          * Rate limit key name applicable only for the following key types:
+         *
+         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: string;
         /**
@@ -32862,10 +32999,22 @@ export namespace compute {
     export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
         /**
          * Rate limit key name applicable only for the following key types:
+         *
+         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
+         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: string;
         /**
          * Determines the key to enforce the `rateLimitThreshold` on. If not specified, defaults to `ALL`.
+         *
+         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
+         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
+         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
+         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
+         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
+         * * `REGION_CODE`: The country/region from which the request originates.
          */
         enforceOnKeyType?: string;
     }
@@ -32899,6 +33048,9 @@ export namespace compute {
         target?: string;
         /**
          * Type of redirect action.
+         *
+         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
+         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
          */
         type: string;
     }
@@ -37110,6 +37262,9 @@ export namespace container {
         /**
          * Possible cgroup modes that can be used.
          * Accepted values are:
+         * * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+         * * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+         * * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
          */
         cgroupMode: string;
         /**
@@ -37857,6 +38012,9 @@ export namespace container {
         /**
          * Possible cgroup modes that can be used.
          * Accepted values are:
+         * * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+         * * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+         * * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
          */
         cgroupMode: string;
         /**
@@ -48550,7 +48708,8 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
         /**
-         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+         * multiple times.
          */
         accelerators?: outputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator[];
         /**
@@ -48562,41 +48721,56 @@ export namespace dataproc {
          */
         instanceNames: string[];
         /**
-         * The name of a Google Compute Engine machine type to create for the master
+         * The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
          */
         machineType: string;
         /**
-         * The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+         * The name of a minimum generation of CPU family
+         * for the node group. If not specified, GCP will default to a predetermined computed value
+         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for details about which CPU families are available (and defaulted) for each zone.
          */
         minCpuPlatform: string;
         /**
-         * Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+         * Specifies the number of master nodes to create.
+         * Please set a number greater than 0. Node Group must have at least 1 instance.
          */
         numInstances: number;
     }
 
     export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
         /**
-         * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+         * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+         *
+         *
+         * - - -
          */
         acceleratorCount: number;
         /**
-         * The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+         * The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
          */
         acceleratorType: string;
     }
 
     export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
         /**
-         * Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * Size of the primary disk attached to each node, specified
+         * in GB. The primary disk contains the boot volume and system libraries, and the
+         * smallest allowed disk size is 10GB. GCP will default to a predetermined
+         * computed value if not set (currently 500GB). Note: If SSDs are not
+         * attached, it also contains the HDFS data blocks and Hadoop working directories.
          */
         bootDiskSizeGb: number;
         /**
-         * The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+         * The disk type of the primary disk attached to each node.
+         * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
         /**
-         * The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * Defaults to 0.
          */
         numLocalSsds: number;
     }
@@ -48847,15 +49021,21 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigMasterConfigDiskConfig {
         /**
-         * Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * Size of the primary disk attached to each node, specified
+         * in GB. The primary disk contains the boot volume and system libraries, and the
+         * smallest allowed disk size is 10GB. GCP will default to a predetermined
+         * computed value if not set (currently 500GB). Note: If SSDs are not
+         * attached, it also contains the HDFS data blocks and Hadoop working directories.
          */
         bootDiskSizeGb: number;
         /**
-         * The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+         * The disk type of the primary disk attached to each node.
+         * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
         /**
-         * The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+         * The amount of local SSD disks that will be
+         * attached to each master cluster node. Defaults to 0.
          */
         numLocalSsds: number;
     }
@@ -48914,7 +49094,8 @@ export namespace dataproc {
          */
         bootDiskType?: string;
         /**
-         * The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+         * The amount of local SSD disks that will be
+         * attached to each preemptible worker node. Defaults to 0.
          */
         numLocalSsds: number;
     }
@@ -48932,11 +49113,13 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
         /**
-         * Full machine-type names, e.g. "n1-standard-16".
+         * Full machine-type names, e.g. `"n1-standard-16"`.
          */
         machineTypes: string[];
         /**
-         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         * Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         *
+         * - - -
          */
         rank: number;
     }
@@ -49250,22 +49433,27 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
         /**
-         * The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
+         * The target GKE node pool.
          */
         nodePool: string;
         /**
-         * Input only. The configuration for the GKE node pool.
+         * The configuration for the GKE node pool. 
+         * If specified, Dataproc attempts to create a node pool with the specified shape.
+         * If one with the same name already exists, it is verified against all specified fields.
+         * If a field differs, the virtual cluster creation will fail.
          */
         nodePoolConfig: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig;
         /**
-         * The roles associated with the GKE node pool.
+         * The roles associated with the GKE node pool. 
+         * One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
          */
         roles: string[];
     }
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
         /**
-         * The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+         * The autoscaler configuration for this node pool. 
+         * The autoscaler is enabled only when a valid configuration is present.
          */
         autoscaling: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling;
         /**
@@ -49273,7 +49461,9 @@ export namespace dataproc {
          */
         config: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig;
         /**
-         * The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+         * The list of Compute Engine zones where node pool nodes associated 
+         * with a Dataproc on GKE virtual cluster will be located.
+         * - - -
          */
         locations: string[];
     }
@@ -49291,7 +49481,8 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
         /**
-         * The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+         * The number of local SSD disks to attach to the node, 
+         * which is limited by the maximum number of disks allowable per zone.
          */
         localSsdCount?: number;
         /**
@@ -49299,11 +49490,15 @@ export namespace dataproc {
          */
         machineType?: string;
         /**
-         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+         * Minimum CPU platform to be used by this instance. 
+         * The instance may be scheduled on the specified or a newer CPU platform.
+         * Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
          */
         minCpuPlatform?: string;
         /**
-         * Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+         * Whether the nodes are created as preemptible VM instances. 
+         * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+         * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
          */
         preemptible?: boolean;
         /**
@@ -66533,12 +66728,15 @@ export namespace networkservices {
         /**
          * The parameters to copy from the verified token to the generated token.
          * Only the following parameters may be copied:
+         * * `PathGlobs`
          */
         copiedParameters?: string[];
         /**
          * The keyset to use for signature generation.
          * The following are both valid paths to an EdgeCacheKeyset resource:
          * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+         * * `yourKeyset`
+         * This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
          */
         keyset?: string;
         /**
@@ -66709,6 +66907,12 @@ export namespace networkservices {
         /**
          * The HTTP Status code to use for this RedirectAction.
          * The supported values are:
+         * - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+         * - `FOUND`, which corresponds to 302.
+         * - `SEE_OTHER` which corresponds to 303.
+         * - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+         * - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+         * Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
          */
         redirectResponseCode: string;
         /**
@@ -67974,7 +68178,13 @@ export namespace organizations {
     }
 
     export interface GetIAMPolicyAuditConfigAuditLogConfig {
+        /**
+         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+         */
         exemptedMembers?: string[];
+        /**
+         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+         */
         logType: string;
     }
 

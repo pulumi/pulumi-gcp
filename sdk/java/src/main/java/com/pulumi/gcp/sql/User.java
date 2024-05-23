@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var users = new User("users", UserArgs.builder()        
+ *         var users = new User("users", UserArgs.builder()
  *             .name("me")
  *             .instance(main.name())
  *             .host("me.com")
@@ -107,11 +107,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -123,13 +123,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var iamUser = new User("iamUser", UserArgs.builder()        
+ *         var iamUser = new User("iamUser", UserArgs.builder()
  *             .name("me{@literal @}example.com")
  *             .instance(main.name())
  *             .type("CLOUD_IAM_USER")
  *             .build());
  * 
- *         var iamServiceAccountUser = new User("iamServiceAccountUser", UserArgs.builder()        
+ *         var iamServiceAccountUser = new User("iamServiceAccountUser", UserArgs.builder()
  *             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
  *                 .input(serviceAccount.email())
  *                 .suffix(".gserviceaccount.com")
@@ -174,11 +174,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
  *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var iamGroupUser = new User("iamGroupUser", UserArgs.builder()        
+ *         var iamGroupUser = new User("iamGroupUser", UserArgs.builder()
  *             .name("iam_group{@literal @}example.com")
  *             .instance(main.name())
  *             .type("CLOUD_IAM_GROUP")

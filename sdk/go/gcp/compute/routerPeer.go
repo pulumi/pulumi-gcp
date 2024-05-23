@@ -348,6 +348,14 @@ type RouterPeer struct {
 	AdvertiseMode pulumi.StringPtrOutput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which currently supports the following option:
+	// * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+	//   This excludes any routes learned for subnets that use VPC Network
+	//   Peering.
+	//
+	// Note that this field can only be populated if advertiseMode is `CUSTOM`
+	// and overrides the list defined for the router (in the "bgp" message).
+	// These groups are advertised in addition to any specified prefixes.
+	// Leave this field blank to advertise no custom groups.
 	AdvertisedGroups pulumi.StringArrayOutput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -385,6 +393,14 @@ type RouterPeer struct {
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringOutput `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
+	// * `MANAGED_BY_USER` is the default value and can be managed by
+	//   you or other users
+	// * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+	//   managed by Cloud Interconnect, specifically by an
+	//   InterconnectAttachment of type PARTNER. Google automatically
+	//   creates, updates, and deletes this type of BGP peer when the
+	//   PARTNER InterconnectAttachment is created, updated,
+	//   or deleted.
 	ManagementType pulumi.StringOutput `pulumi:"managementType"`
 	// Configuration for MD5 authentication on the BGP session.
 	// Structure is documented below.
@@ -472,6 +488,14 @@ type routerPeerState struct {
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which currently supports the following option:
+	// * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+	//   This excludes any routes learned for subnets that use VPC Network
+	//   Peering.
+	//
+	// Note that this field can only be populated if advertiseMode is `CUSTOM`
+	// and overrides the list defined for the router (in the "bgp" message).
+	// These groups are advertised in addition to any specified prefixes.
+	// Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -509,6 +533,14 @@ type routerPeerState struct {
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
+	// * `MANAGED_BY_USER` is the default value and can be managed by
+	//   you or other users
+	// * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+	//   managed by Cloud Interconnect, specifically by an
+	//   InterconnectAttachment of type PARTNER. Google automatically
+	//   creates, updates, and deletes this type of BGP peer when the
+	//   PARTNER InterconnectAttachment is created, updated,
+	//   or deleted.
 	ManagementType *string `pulumi:"managementType"`
 	// Configuration for MD5 authentication on the BGP session.
 	// Structure is documented below.
@@ -558,6 +590,14 @@ type RouterPeerState struct {
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which currently supports the following option:
+	// * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+	//   This excludes any routes learned for subnets that use VPC Network
+	//   Peering.
+	//
+	// Note that this field can only be populated if advertiseMode is `CUSTOM`
+	// and overrides the list defined for the router (in the "bgp" message).
+	// These groups are advertised in addition to any specified prefixes.
+	// Leave this field blank to advertise no custom groups.
 	AdvertisedGroups pulumi.StringArrayInput
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -595,6 +635,14 @@ type RouterPeerState struct {
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringPtrInput
 	// The resource that configures and manages this BGP peer.
+	// * `MANAGED_BY_USER` is the default value and can be managed by
+	//   you or other users
+	// * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+	//   managed by Cloud Interconnect, specifically by an
+	//   InterconnectAttachment of type PARTNER. Google automatically
+	//   creates, updates, and deletes this type of BGP peer when the
+	//   PARTNER InterconnectAttachment is created, updated,
+	//   or deleted.
 	ManagementType pulumi.StringPtrInput
 	// Configuration for MD5 authentication on the BGP session.
 	// Structure is documented below.
@@ -648,6 +696,14 @@ type routerPeerArgs struct {
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which currently supports the following option:
+	// * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+	//   This excludes any routes learned for subnets that use VPC Network
+	//   Peering.
+	//
+	// Note that this field can only be populated if advertiseMode is `CUSTOM`
+	// and overrides the list defined for the router (in the "bgp" message).
+	// These groups are advertised in addition to any specified prefixes.
+	// Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -733,6 +789,14 @@ type RouterPeerArgs struct {
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which currently supports the following option:
+	// * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+	//   This excludes any routes learned for subnets that use VPC Network
+	//   Peering.
+	//
+	// Note that this field can only be populated if advertiseMode is `CUSTOM`
+	// and overrides the list defined for the router (in the "bgp" message).
+	// These groups are advertised in addition to any specified prefixes.
+	// Leave this field blank to advertise no custom groups.
 	AdvertisedGroups pulumi.StringArrayInput
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -906,6 +970,14 @@ func (o RouterPeerOutput) AdvertiseMode() pulumi.StringPtrOutput {
 
 // User-specified list of prefix groups to advertise in custom
 // mode, which currently supports the following option:
+//   - `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
+//     This excludes any routes learned for subnets that use VPC Network
+//     Peering.
+//
+// Note that this field can only be populated if advertiseMode is `CUSTOM`
+// and overrides the list defined for the router (in the "bgp" message).
+// These groups are advertised in addition to any specified prefixes.
+// Leave this field blank to advertise no custom groups.
 func (o RouterPeerOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringArrayOutput { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }
@@ -976,6 +1048,14 @@ func (o RouterPeerOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 }
 
 // The resource that configures and manages this BGP peer.
+//   - `MANAGED_BY_USER` is the default value and can be managed by
+//     you or other users
+//   - `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
+//     managed by Cloud Interconnect, specifically by an
+//     InterconnectAttachment of type PARTNER. Google automatically
+//     creates, updates, and deletes this type of BGP peer when the
+//     PARTNER InterconnectAttachment is created, updated,
+//     or deleted.
 func (o RouterPeerOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.ManagementType }).(pulumi.StringOutput)
 }

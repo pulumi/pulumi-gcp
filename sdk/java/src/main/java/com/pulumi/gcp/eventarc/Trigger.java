@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("eventarc-service")
  *             .location("europe-west1")
  *             .metadata(ServiceMetadataArgs.builder()
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var primary = new Trigger("primary", TriggerArgs.builder()        
+ *         var primary = new Trigger("primary", TriggerArgs.builder()
  *             .name("name")
  *             .location("europe-west1")
  *             .matchingCriterias(TriggerMatchingCriteriaArgs.builder()
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var foo = new Topic("foo", TopicArgs.builder()        
+ *         var foo = new Topic("foo", TopicArgs.builder()
  *             .name("topic")
  *             .build());
  * 

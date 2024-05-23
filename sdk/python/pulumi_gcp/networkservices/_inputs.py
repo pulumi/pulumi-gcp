@@ -1744,9 +1744,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
                Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] copied_parameters: The parameters to copy from the verified token to the generated token.
                Only the following parameters may be copied:
+               * `PathGlobs`
         :param pulumi.Input[str] keyset: The keyset to use for signature generation.
                The following are both valid paths to an EdgeCacheKeyset resource:
                * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+               * `yourKeyset`
+               This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
         :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
                If not specified, defaults to `edge-cache-token`.
                If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
@@ -1786,6 +1789,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         """
         The parameters to copy from the verified token to the generated token.
         Only the following parameters may be copied:
+        * `PathGlobs`
         """
         return pulumi.get(self, "copied_parameters")
 
@@ -1800,6 +1804,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         The keyset to use for signature generation.
         The following are both valid paths to an EdgeCacheKeyset resource:
         * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+        * `yourKeyset`
+        This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
         """
         return pulumi.get(self, "keyset")
 
@@ -2268,6 +2274,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
         :param pulumi.Input[str] redirect_response_code: The HTTP Status code to use for this RedirectAction.
                The supported values are:
+               - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+               - `FOUND`, which corresponds to 302.
+               - `SEE_OTHER` which corresponds to 303.
+               - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+               - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+               Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
         :param pulumi.Input[bool] strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
                
                - - -
@@ -2343,6 +2355,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
         """
         The HTTP Status code to use for this RedirectAction.
         The supported values are:
+        - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+        - `FOUND`, which corresponds to 302.
+        - `SEE_OTHER` which corresponds to 303.
+        - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+        - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+        Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
         """
         return pulumi.get(self, "redirect_response_code")
 

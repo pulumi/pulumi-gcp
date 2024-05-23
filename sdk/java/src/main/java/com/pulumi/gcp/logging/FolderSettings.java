@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("folder-name")
  *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var example = new FolderSettings("example", FolderSettingsArgs.builder()        
+ *         var example = new FolderSettings("example", FolderSettingsArgs.builder()
  *             .disableDefaultSink(true)
  *             .folder(myFolder.folderId())
  *             .kmsKeyName("kms-key")
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .folder(myFolder.folderId())
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult).applyValue(settings -> String.format("serviceAccount:%s", settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult.kmsServiceAccountId()))))

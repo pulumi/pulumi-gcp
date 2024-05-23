@@ -67,11 +67,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .ackDeadlineSeconds(20)
@@ -116,11 +116,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .labels(Map.of("foo", "bar"))
@@ -169,15 +169,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var exampleDeadLetter = new Topic("exampleDeadLetter", TopicArgs.builder()        
+ *         var exampleDeadLetter = new Topic("exampleDeadLetter", TopicArgs.builder()
  *             .name("example-topic-dead-letter")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .deadLetterPolicy(SubscriptionDeadLetterPolicyArgs.builder()
@@ -227,15 +227,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var testTable = new Table("testTable", TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .tableId("example_table")
  *             .datasetId(test.datasetId())
@@ -251,7 +251,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
@@ -266,13 +266,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()        
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.metadataViewer")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()        
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.dataEditor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -319,15 +319,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic("example", TopicArgs.builder()        
+ *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var testTable = new Table("testTable", TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .tableId("example_table")
  *             .datasetId(test.datasetId())
@@ -343,7 +343,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
@@ -359,13 +359,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()        
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.metadataViewer")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()        
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.dataEditor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -410,17 +410,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Bucket("example", BucketArgs.builder()        
+ *         var example = new Bucket("example", BucketArgs.builder()
  *             .name("example-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(exampleTopic.id())
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
@@ -434,7 +434,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -480,17 +480,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Bucket("example", BucketArgs.builder()        
+ *         var example = new Bucket("example", BucketArgs.builder()
  *             .name("example-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(exampleTopic.id())
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
@@ -507,7 +507,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))

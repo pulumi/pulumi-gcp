@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var template = new WorkflowTemplate("template", WorkflowTemplateArgs.builder()        
+ *         var template = new WorkflowTemplate("template", WorkflowTemplateArgs.builder()
  *             .name("template-example")
  *             .location("us-central1")
  *             .placement(WorkflowTemplatePlacementArgs.builder()

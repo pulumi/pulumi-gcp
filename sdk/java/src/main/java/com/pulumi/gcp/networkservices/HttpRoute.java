@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()
  *             .name("my-http-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()
  *             .name("my-http-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()
  *             .name("my-http-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -331,13 +331,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *         var default_ = new Mesh("default", MeshArgs.builder()
  *             .name("my-http-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
  *             .build());
  * 
- *         var defaultHttpRoute = new HttpRoute("defaultHttpRoute", HttpRouteArgs.builder()        
+ *         var defaultHttpRoute = new HttpRoute("defaultHttpRoute", HttpRouteArgs.builder()
  *             .name("my-http-route")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

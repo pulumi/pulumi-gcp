@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EngineModel("default", EngineModelArgs.builder()        
+ *         var default_ = new EngineModel("default", EngineModelArgs.builder()
  *             .name("default")
  *             .description("My model")
  *             .regions("us-central1")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EngineModel("default", EngineModelArgs.builder()        
+ *         var default_ = new EngineModel("default", EngineModelArgs.builder()
  *             .name("default")
  *             .description("My model")
  *             .regions("us-central1")

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret")
  *             .labels(Map.of("label", "my-label"))
  *             .replication(SecretReplicationArgs.builder()
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_with_annotations = new Secret("secret-with-annotations", SecretArgs.builder()        
+ *         var secret_with_annotations = new Secret("secret-with-annotations", SecretArgs.builder()
  *             .secretId("secret")
  *             .labels(Map.of("label", "my-label"))
  *             .annotations(Map.ofEntries(
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_with_version_destroy_ttl = new Secret("secret-with-version-destroy-ttl", SecretArgs.builder()        
+ *         var secret_with_version_destroy_ttl = new Secret("secret-with-version-destroy-ttl", SecretArgs.builder()
  *             .secretId("secret")
  *             .versionDestroyTtl("2592000s")
  *             .replication(SecretReplicationArgs.builder()
@@ -197,13 +197,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var kms_secret_binding = new CryptoKeyIAMMember("kms-secret-binding", CryptoKeyIAMMemberArgs.builder()        
+ *         var kms_secret_binding = new CryptoKeyIAMMember("kms-secret-binding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-secretmanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var secret_with_automatic_cmek = new Secret("secret-with-automatic-cmek", SecretArgs.builder()        
+ *         var secret_with_automatic_cmek = new Secret("secret-with-automatic-cmek", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto(SecretReplicationAutoArgs.builder()

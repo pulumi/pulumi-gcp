@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionStoredInfoType("basic", PreventionStoredInfoTypeArgs.builder()        
+ *         var basic = new PreventionStoredInfoType("basic", PreventionStoredInfoTypeArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dictionary = new PreventionStoredInfoType("dictionary", PreventionStoredInfoTypeArgs.builder()        
+ *         var dictionary = new PreventionStoredInfoType("dictionary", PreventionStoredInfoTypeArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -147,19 +147,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("tf-test-bucket")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("tf-test-object")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("./test-fixtures/words.txt"))
  *             .build());
  * 
- *         var large = new PreventionStoredInfoType("large", PreventionStoredInfoTypeArgs.builder()        
+ *         var large = new PreventionStoredInfoType("large", PreventionStoredInfoTypeArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var withStoredInfoTypeId = new PreventionStoredInfoType("withStoredInfoTypeId", PreventionStoredInfoTypeArgs.builder()        
+ *         var withStoredInfoTypeId = new PreventionStoredInfoType("withStoredInfoTypeId", PreventionStoredInfoTypeArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
  *             .displayName("Displayname")

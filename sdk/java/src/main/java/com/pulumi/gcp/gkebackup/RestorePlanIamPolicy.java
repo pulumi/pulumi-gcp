@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("restore-all-ns-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("restore-all-ns")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()        
+ *         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()
  *             .name("restore-all-ns")
  *             .location("us-central1")
  *             .backupPlan(basic.id())
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rollback-ns-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rollback-ns")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()        
+ *         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()
  *             .name("rollback-ns-rp")
  *             .location("us-central1")
  *             .backupPlan(basic.id())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rollback-app-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rollback-app")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()        
+ *         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()
  *             .name("rollback-app-rp")
  *             .location("us-central1")
  *             .backupPlan(basic.id())
@@ -327,7 +327,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("all-groupkinds-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -344,7 +344,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("all-groupkinds")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -355,7 +355,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()        
+ *         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()
  *             .name("all-groupkinds-rp")
  *             .location("us-central1")
  *             .backupPlan(basic.id())
@@ -411,7 +411,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rename-ns-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -428,7 +428,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rename-ns")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()        
+ *         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()
  *             .name("rename-ns-rp")
  *             .location("us-central1")
  *             .backupPlan(basic.id())
@@ -523,7 +523,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("transform-rule-cluster")
  *             .location("us-central1")
  *             .initialNodeCount(1)
@@ -540,7 +540,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("transform-rule")
  *             .cluster(primary.id())
  *             .location("us-central1")
@@ -551,7 +551,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var transformRule = new RestorePlan("transformRule", RestorePlanArgs.builder()        
+ *         var transformRule = new RestorePlan("transformRule", RestorePlanArgs.builder()
  *             .name("transform-rule-rp")
  *             .description("copy nginx env variables")
  *             .labels(Map.of("app", "nginx"))

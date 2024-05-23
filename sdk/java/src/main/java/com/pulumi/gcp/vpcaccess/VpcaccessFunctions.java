@@ -54,7 +54,7 @@ public final class VpcaccessFunctions {
      *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *         var connector = new Connector("connector", ConnectorArgs.builder()
      *             .name("vpc-con")
      *             .ipCidrRange("10.8.0.0/28")
      *             .network("default")
@@ -111,7 +111,7 @@ public final class VpcaccessFunctions {
      *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *         var connector = new Connector("connector", ConnectorArgs.builder()
      *             .name("vpc-con")
      *             .ipCidrRange("10.8.0.0/28")
      *             .network("default")
@@ -168,7 +168,7 @@ public final class VpcaccessFunctions {
      *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *         var connector = new Connector("connector", ConnectorArgs.builder()
      *             .name("vpc-con")
      *             .ipCidrRange("10.8.0.0/28")
      *             .network("default")
@@ -225,7 +225,7 @@ public final class VpcaccessFunctions {
      *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *         var connector = new Connector("connector", ConnectorArgs.builder()
      *             .name("vpc-con")
      *             .ipCidrRange("10.8.0.0/28")
      *             .network("default")

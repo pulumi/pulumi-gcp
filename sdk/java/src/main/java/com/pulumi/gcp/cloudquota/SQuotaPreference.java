@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var preference = new SQuotaPreference("preference", SQuotaPreferenceArgs.builder()        
+ *         var preference = new SQuotaPreference("preference", SQuotaPreferenceArgs.builder()
  *             .parent("projects/my-project-name")
  *             .name("compute_googleapis_com-CPUS-per-project_us-east1")
  *             .dimensions(Map.of("region", "us-east1"))

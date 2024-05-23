@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *         var membership = new Membership("membership", MembershipArgs.builder()
  *             .membershipId("tf-test-membership_75125")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
@@ -78,11 +78,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *         var scope = new Scope("scope", ScopeArgs.builder()
  *             .scopeId("tf-test-scope_88722")
  *             .build());
  * 
- *         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()        
+ *         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()
  *             .membershipBindingId("tf-test-membership-binding_39249")
  *             .scope(scope.name())
  *             .membershipId(membership.membershipId())

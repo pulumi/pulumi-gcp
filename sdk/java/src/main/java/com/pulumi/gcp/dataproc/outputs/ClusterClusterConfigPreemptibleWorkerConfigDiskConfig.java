@@ -27,7 +27,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
      */
     private @Nullable String bootDiskType;
     /**
-     * @return The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+     * @return The amount of local SSD disks that will be
+     * attached to each preemptible worker node. Defaults to 0.
      * 
      */
     private @Nullable Integer numLocalSsds;
@@ -52,7 +53,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         return Optional.ofNullable(this.bootDiskType);
     }
     /**
-     * @return The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+     * @return The amount of local SSD disks that will be
+     * attached to each preemptible worker node. Defaults to 0.
      * 
      */
     public Optional<Integer> numLocalSsds() {

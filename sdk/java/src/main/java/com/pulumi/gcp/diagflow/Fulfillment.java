@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .displayName("example_agent")
  *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicFulfillment = new Fulfillment("basicFulfillment", FulfillmentArgs.builder()        
+ *         var basicFulfillment = new Fulfillment("basicFulfillment", FulfillmentArgs.builder()
  *             .displayName("basic-fulfillment")
  *             .enabled(true)
  *             .genericWebService(FulfillmentGenericWebServiceArgs.builder()

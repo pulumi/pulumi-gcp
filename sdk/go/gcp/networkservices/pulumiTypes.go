@@ -4052,10 +4052,13 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignature
 	Actions string `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
+	// * `PathGlobs`
 	CopiedParameters []string `pulumi:"copiedParameters"`
 	// The keyset to use for signature generation.
 	// The following are both valid paths to an EdgeCacheKeyset resource:
 	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+	// * `yourKeyset`
+	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 	Keyset *string `pulumi:"keyset"`
 	// The query parameter in which to put the generated token.
 	// If not specified, defaults to `edge-cache-token`.
@@ -4087,10 +4090,13 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignature
 	Actions pulumi.StringInput `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
+	// * `PathGlobs`
 	CopiedParameters pulumi.StringArrayInput `pulumi:"copiedParameters"`
 	// The keyset to use for signature generation.
 	// The following are both valid paths to an EdgeCacheKeyset resource:
 	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+	// * `yourKeyset`
+	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 	Keyset pulumi.StringPtrInput `pulumi:"keyset"`
 	// The query parameter in which to put the generated token.
 	// If not specified, defaults to `edge-cache-token`.
@@ -4192,6 +4198,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The parameters to copy from the verified token to the generated token.
 // Only the following parameters may be copied:
+// * `PathGlobs`
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) CopiedParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
 		return v.CopiedParameters
@@ -4200,7 +4207,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The keyset to use for signature generation.
 // The following are both valid paths to an EdgeCacheKeyset resource:
-// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `yourKeyset`
+//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) Keyset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
 		return v.Keyset
@@ -4265,6 +4274,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The parameters to copy from the verified token to the generated token.
 // Only the following parameters may be copied:
+// * `PathGlobs`
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) CopiedParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
 		if v == nil {
@@ -4276,7 +4286,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The keyset to use for signature generation.
 // The following are both valid paths to an EdgeCacheKeyset resource:
-// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `yourKeyset`
+//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Keyset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
 		if v == nil {
@@ -5349,6 +5361,12 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect struct {
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction.
 	// The supported values are:
+	// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+	// - `FOUND`, which corresponds to 302.
+	// - `SEE_OTHER` which corresponds to 303.
+	// - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+	// - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+	//   Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 	//
@@ -5382,6 +5400,12 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs struct {
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction.
 	// The supported values are:
+	// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+	// - `FOUND`, which corresponds to 302.
+	// - `SEE_OTHER` which corresponds to 303.
+	// - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+	// - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+	//   Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 	//
@@ -5492,6 +5516,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) PrefixRedi
 
 // The HTTP Status code to use for this RedirectAction.
 // The supported values are:
+//   - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+//   - `FOUND`, which corresponds to 302.
+//   - `SEE_OTHER` which corresponds to 303.
+//   - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+//   - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+//     Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
@@ -5573,6 +5603,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixR
 
 // The HTTP Status code to use for this RedirectAction.
 // The supported values are:
+//   - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+//   - `FOUND`, which corresponds to 302.
+//   - `SEE_OTHER` which corresponds to 303.
+//   - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+//   - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+//     Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {

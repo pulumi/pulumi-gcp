@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()        
+ *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()
  *             .name("my-pbr")
  *             .network(myNetwork.id())
  *             .filter(PolicyBasedRouteFilterArgs.builder()
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
@@ -118,11 +118,11 @@ import javax.annotation.Nullable;
  *         // This example substitutes an arbitrary internal IP for an internal network
  *         // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
  *         // to set one up.
- *         var ilb = new GlobalAddress("ilb", GlobalAddressArgs.builder()        
+ *         var ilb = new GlobalAddress("ilb", GlobalAddressArgs.builder()
  *             .name("my-ilb")
  *             .build());
  * 
- *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()        
+ *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()
  *             .name("my-pbr")
  *             .description("My routing policy")
  *             .network(myNetwork.id())

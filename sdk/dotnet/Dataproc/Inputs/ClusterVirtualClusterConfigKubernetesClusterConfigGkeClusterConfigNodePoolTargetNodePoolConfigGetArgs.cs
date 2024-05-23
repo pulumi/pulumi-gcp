@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+        /// The autoscaler configuration for this node pool. 
+        /// The autoscaler is enabled only when a valid configuration is present.
         /// </summary>
         [Input("autoscaling")]
         public Input<Inputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingGetArgs>? Autoscaling { get; set; }
@@ -28,7 +29,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _locations;
 
         /// <summary>
-        /// The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+        /// The list of Compute Engine zones where node pool nodes associated 
+        /// with a Dataproc on GKE virtual cluster will be located.
+        /// - - -
         /// </summary>
         public InputList<string> Locations
         {

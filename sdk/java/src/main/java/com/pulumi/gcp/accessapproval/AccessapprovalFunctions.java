@@ -60,7 +60,7 @@ public final class AccessapprovalFunctions {
      *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
@@ -116,7 +116,7 @@ public final class AccessapprovalFunctions {
      *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
@@ -172,7 +172,7 @@ public final class AccessapprovalFunctions {
      *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
@@ -228,7 +228,7 @@ public final class AccessapprovalFunctions {
      *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
@@ -284,7 +284,7 @@ public final class AccessapprovalFunctions {
      *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
@@ -340,7 +340,7 @@ public final class AccessapprovalFunctions {
      *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
@@ -396,7 +396,7 @@ public final class AccessapprovalFunctions {
      *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
@@ -452,7 +452,7 @@ public final class AccessapprovalFunctions {
      *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
@@ -508,7 +508,7 @@ public final class AccessapprovalFunctions {
      *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
@@ -564,7 +564,7 @@ public final class AccessapprovalFunctions {
      *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
@@ -620,7 +620,7 @@ public final class AccessapprovalFunctions {
      *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
@@ -676,7 +676,7 @@ public final class AccessapprovalFunctions {
      *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(cryptoKey.id())
      *             .role("roles/cloudkms.signerVerifier")
      *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))

@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+     * multiple times.
      * 
      */
     private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator> accelerators;
@@ -31,24 +32,31 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
      */
     private @Nullable List<String> instanceNames;
     /**
-     * @return The name of a Google Compute Engine machine type to create for the master
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     private @Nullable String machineType;
     /**
-     * @return The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+     * @return The name of a minimum generation of CPU family
+     * for the node group. If not specified, GCP will default to a predetermined computed value
+     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+     * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+     * @return Specifies the number of master nodes to create.
+     * Please set a number greater than 0. Node Group must have at least 1 instance.
      * 
      */
     private @Nullable Integer numInstances;
 
     private ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig() {}
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+     * multiple times.
      * 
      */
     public List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator> accelerators() {
@@ -69,21 +77,27 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         return this.instanceNames == null ? List.of() : this.instanceNames;
     }
     /**
-     * @return The name of a Google Compute Engine machine type to create for the master
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+     * @return The name of a minimum generation of CPU family
+     * for the node group. If not specified, GCP will default to a predetermined computed value
+     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+     * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
     public Optional<String> minCpuPlatform() {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+     * @return Specifies the number of master nodes to create.
+     * Please set a number greater than 0. Node Group must have at least 1 instance.
      * 
      */
     public Optional<Integer> numInstances() {

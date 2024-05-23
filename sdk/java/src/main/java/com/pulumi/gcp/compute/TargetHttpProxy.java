@@ -61,14 +61,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()        
+ *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()
  *             .name("test-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .build());
@@ -136,14 +136,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("http-health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()        
+ *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()
  *             .name("test-http-keep-alive-timeout-proxy")
  *             .httpKeepAliveTimeoutSec(610)
  *             .urlMap(defaultURLMap.id())
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
  *             .name("url-map")
  *             .defaultUrlRedirect(URLMapDefaultUrlRedirectArgs.builder()
  *                 .httpsRedirect(true)
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()        
+ *         var default_ = new TargetHttpProxy("default", TargetHttpProxyArgs.builder()
  *             .name("test-https-redirect-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .build());

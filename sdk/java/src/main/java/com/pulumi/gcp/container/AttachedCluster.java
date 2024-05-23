@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
  *             .location("us-west1")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .location("us-west1")
@@ -233,7 +233,7 @@ import javax.annotation.Nullable;
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
  *             .location("us-west1")
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var pubsubconnection = new Connection("pubsubconnection", ConnectionArgs.builder()        
+ *         var pubsubconnection = new Connection("pubsubconnection", ConnectionArgs.builder()
  *             .name("test-pubsub")
  *             .location("us-central1")
  *             .connectorVersion(String.format("projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("test-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -158,18 +158,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("dummypassword")
  *             .build());
  * 
- *         var secretIam = new SecretIamMember("secretIam", SecretIamMemberArgs.builder()        
+ *         var secretIam = new SecretIamMember("secretIam", SecretIamMemberArgs.builder()
  *             .secretId(secret_basic.id())
  *             .role("roles/secretmanager.admin")
  *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var zendeskconnection = new Connection("zendeskconnection", ConnectionArgs.builder()        
+ *         var zendeskconnection = new Connection("zendeskconnection", ConnectionArgs.builder()
  *             .name("test-zendesk")
  *             .description("tf updated description")
  *             .location("us-central1")

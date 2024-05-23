@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name")
  *             .labels(Map.of("label-one", "value-one"))
  *             .project("my-project-name")
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .description("basic security policy")
  *             .type("CLOUD_ARMOR")
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("%s")
  *             .description("throttle rule with enforce_on_key_configs")
  *             .rules(SecurityPolicyRuleArgs.builder()
@@ -451,6 +451,13 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
+     * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     *   They filter requests before they hit the origin servers.
+     * * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     *   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     *   They filter requests before the request is served from Google&#39;s cache.
+     * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
+     *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -458,6 +465,13 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type indicates the intended use of the security policy. This field can be set only at resource creation time.
+     * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     *   They filter requests before they hit the origin servers.
+     * * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     *   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     *   They filter requests before the request is served from Google&#39;s cache.
+     * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
+     *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      * 
      */
     public Output<String> type() {

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var environment = new Environment("environment", EnvironmentArgs.builder()        
+ *         var environment = new Environment("environment", EnvironmentArgs.builder()
  *             .name("notebooks-environment")
  *             .location("us-west1-a")
  *             .containerImage(EnvironmentContainerImageArgs.builder()

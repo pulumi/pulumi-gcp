@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the Play Integrity API
- *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()        
+ *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("playintegrity.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Play Integrity app")
  *             .packageName("package.name.playintegrity")
@@ -73,11 +73,11 @@ import javax.annotation.Nullable;
  * 
  *         // It takes a while for App Check to recognize the new app
  *         // If your app already exists, you don't have to wait 30 seconds.
- *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()        
+ *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .build());
@@ -119,13 +119,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the Play Integrity API
- *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()        
+ *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("playintegrity.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Play Integrity app")
  *             .packageName("package.name.playintegrity")
@@ -135,11 +135,11 @@ import javax.annotation.Nullable;
  * 
  *         // It takes a while for App Check to recognize the new app
  *         // If your app already exists, you don't have to wait 30 seconds.
- *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()        
+ *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .tokenTtl("7200s")

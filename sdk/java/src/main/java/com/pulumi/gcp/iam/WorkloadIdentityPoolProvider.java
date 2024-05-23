@@ -58,11 +58,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
@@ -103,11 +103,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .displayName("Name of provider")
@@ -157,11 +157,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
@@ -203,11 +203,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .displayName("Name of provider")
@@ -265,11 +265,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .attributeMapping(Map.ofEntries(
@@ -317,11 +317,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .displayName("Name of provider")
@@ -372,11 +372,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .displayName("Name of provider")

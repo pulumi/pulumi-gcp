@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .name("test-disk")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -113,14 +113,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Disk("primary", DiskArgs.builder()        
+ *         var primary = new Disk("primary", DiskArgs.builder()
  *             .name("async-test-disk")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
- *         var secondary = new Disk("secondary", DiskArgs.builder()        
+ *         var secondary = new Disk("secondary", DiskArgs.builder()
  *             .name("async-secondary-test-disk")
  *             .type("pd-ssd")
  *             .zone("us-east1-c")
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .name("test-disk-features")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")

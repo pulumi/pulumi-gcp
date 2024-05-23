@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()        
+ *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()
  *             .project("my-project-id")
  *             .action("DELETE")
  *             .build());
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()        
+ *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()
  *             .project("my-project-id")
  *             .action("DISABLE")
  *             .restorePolicy("REVERT")

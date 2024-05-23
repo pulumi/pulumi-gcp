@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()        
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
  *             .name("my-instance-template")
  *             .machineType("e2-medium")
  *             .canIpForward(false)
@@ -97,11 +97,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetPool = new TargetPool("defaultTargetPool", TargetPoolArgs.builder()        
+ *         var defaultTargetPool = new TargetPool("defaultTargetPool", TargetPoolArgs.builder()
  *             .name("my-target-pool")
  *             .build());
  * 
- *         var defaultInstanceGroupManager = new InstanceGroupManager("defaultInstanceGroupManager", InstanceGroupManagerArgs.builder()        
+ *         var defaultInstanceGroupManager = new InstanceGroupManager("defaultInstanceGroupManager", InstanceGroupManagerArgs.builder()
  *             .name("my-igm")
  *             .zone("us-central1-f")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .baseInstanceName("autoscaler-sample")
  *             .build());
  * 
- *         var default_ = new Autoscaler("default", AutoscalerArgs.builder()        
+ *         var default_ = new Autoscaler("default", AutoscalerArgs.builder()
  *             .name("my-autoscaler")
  *             .zone("us-central1-f")
  *             .target(defaultInstanceGroupManager.id())
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()        
+ *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()
  *             .name("my-instance-template")
  *             .machineType("e2-medium")
  *             .canIpForward(false)
@@ -199,11 +199,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()        
+ *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()
  *             .name("my-target-pool")
  *             .build());
  * 
- *         var foobarInstanceGroupManager = new InstanceGroupManager("foobarInstanceGroupManager", InstanceGroupManagerArgs.builder()        
+ *         var foobarInstanceGroupManager = new InstanceGroupManager("foobarInstanceGroupManager", InstanceGroupManagerArgs.builder()
  *             .name("my-igm")
  *             .zone("us-central1-f")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
@@ -214,7 +214,7 @@ import javax.annotation.Nullable;
  *             .baseInstanceName("foobar")
  *             .build());
  * 
- *         var foobar = new Autoscaler("foobar", AutoscalerArgs.builder()        
+ *         var foobar = new Autoscaler("foobar", AutoscalerArgs.builder()
  *             .name("my-autoscaler")
  *             .zone("us-central1-f")
  *             .target(foobarInstanceGroupManager.id())

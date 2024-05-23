@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CertificateMap("default", CertificateMapArgs.builder()        
+ *         var default_ = new CertificateMap("default", CertificateMapArgs.builder()
  *             .name("cert-map")
  *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
