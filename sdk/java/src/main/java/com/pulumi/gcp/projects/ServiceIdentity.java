@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var hcSa = new ServiceIdentity("hcSa", ServiceIdentityArgs.builder()        
+ *         var hcSa = new ServiceIdentity("hcSa", ServiceIdentityArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .service("healthcare.googleapis.com")
  *             .build());
  * 
- *         var hcSaBqJobuser = new IAMMember("hcSaBqJobuser", IAMMemberArgs.builder()        
+ *         var hcSaBqJobuser = new IAMMember("hcSaBqJobuser", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.jobUser")
  *             .member(hcSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))

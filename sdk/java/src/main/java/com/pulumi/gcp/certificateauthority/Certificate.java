@@ -79,13 +79,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .location("us-central1")
  *             .name("default")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-authority")
@@ -122,11 +122,11 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var certKey = new PrivateKey("certKey", PrivateKeyArgs.builder()        
+ *         var certKey = new PrivateKey("certKey", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
  *             .build());
  * 
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
@@ -235,13 +235,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .location("us-central1")
  *             .name("my-pool")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultCertificateTemplate = new CertificateTemplate("defaultCertificateTemplate", CertificateTemplateArgs.builder()        
+ *         var defaultCertificateTemplate = new CertificateTemplate("defaultCertificateTemplate", CertificateTemplateArgs.builder()
  *             .location("us-central1")
  *             .name("my-certificate-template")
  *             .description("An updated sample certificate template")
@@ -312,7 +312,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-authority")
@@ -349,7 +349,7 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
@@ -405,13 +405,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .location("us-central1")
  *             .name("my-pool")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-authority")
@@ -448,7 +448,7 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
@@ -512,13 +512,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .location("us-central1")
  *             .name("my-pool")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-authority")
@@ -557,7 +557,7 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .name("my-certificate")
@@ -651,13 +651,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .location("us-central1")
  *             .name("my-pool")
  *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-authority")
@@ -696,7 +696,7 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
  *             .location("us-central1")
  *             .pool(default_.name())
  *             .name("my-certificate")

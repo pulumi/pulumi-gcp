@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new InstanceGroup("test", InstanceGroupArgs.builder()        
+ *         var test = new InstanceGroup("test", InstanceGroupArgs.builder()
  *             .name("test")
  *             .description("Test instance group")
  *             .zone("us-central1-a")
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var webservers = new InstanceGroup("webservers", InstanceGroupArgs.builder()        
+ *         var webservers = new InstanceGroup("webservers", InstanceGroupArgs.builder()
  *             .name("webservers")
  *             .description("Test instance group")
  *             .instances(            
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var stagingVm = new Instance("stagingVm", InstanceArgs.builder()        
+ *         var stagingVm = new Instance("stagingVm", InstanceArgs.builder()
  *             .name("staging-vm")
  *             .machineType("e2-medium")
  *             .zone("us-central1-c")
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var stagingGroup = new InstanceGroup("stagingGroup", InstanceGroupArgs.builder()        
+ *         var stagingGroup = new InstanceGroup("stagingGroup", InstanceGroupArgs.builder()
  *             .name("staging-instance-group")
  *             .zone("us-central1-c")
  *             .instances(stagingVm.id())
@@ -187,12 +187,12 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var stagingHealth = new HttpsHealthCheck("stagingHealth", HttpsHealthCheckArgs.builder()        
+ *         var stagingHealth = new HttpsHealthCheck("stagingHealth", HttpsHealthCheckArgs.builder()
  *             .name("staging-health")
  *             .requestPath("/health_check")
  *             .build());
  * 
- *         var stagingService = new BackendService("stagingService", BackendServiceArgs.builder()        
+ *         var stagingService = new BackendService("stagingService", BackendServiceArgs.builder()
  *             .name("staging-service")
  *             .portName("https")
  *             .protocol("HTTPS")

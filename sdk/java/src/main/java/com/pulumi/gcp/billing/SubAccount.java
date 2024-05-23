@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subaccount = new SubAccount("subaccount", SubAccountArgs.builder()        
+ *         var subaccount = new SubAccount("subaccount", SubAccountArgs.builder()
  *             .displayName("My Billing Account")
  *             .masterBillingAccount("012345-567890-ABCDEF")
  *             .build());

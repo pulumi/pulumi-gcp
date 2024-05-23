@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application("application", ApplicationArgs.builder()        
+ *         var application = new Application("application", ApplicationArgs.builder()
  *             .location("us-central1")
  *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
@@ -88,28 +88,28 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
  *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
  *             .ipCidrRange("10.0.1.0/24")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // instance template
- *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(ilbNetwork.id())
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             """))
  *             .build());
  * 
- *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()        
+ *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()
  *             .name("l7-ilb-mig1")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -170,11 +170,11 @@ import javax.annotation.Nullable;
  *             .workloadUri(StdFunctions.replace().applyValue(invoke -> invoke.result()))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Workload("example", WorkloadArgs.builder()        
+ *         var example = new Workload("example", WorkloadArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .workloadId(mig.name())
@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application("application", ApplicationArgs.builder()        
+ *         var application = new Application("application", ApplicationArgs.builder()
  *             .location("us-central1")
  *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
@@ -254,28 +254,28 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
  *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
  *             .ipCidrRange("10.0.1.0/24")
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // instance template
- *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(ilbNetwork.id())
@@ -318,7 +318,7 @@ import javax.annotation.Nullable;
  *             """))
  *             .build());
  * 
- *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()        
+ *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()
  *             .name("l7-ilb-mig1")
  *             .project(serviceProject.projectId())
  *             .region("us-central1")
@@ -336,11 +336,11 @@ import javax.annotation.Nullable;
  *             .workloadUri(StdFunctions.replace().applyValue(invoke -> invoke.result()))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Workload("example", WorkloadArgs.builder()        
+ *         var example = new Workload("example", WorkloadArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .workloadId(mig.name())

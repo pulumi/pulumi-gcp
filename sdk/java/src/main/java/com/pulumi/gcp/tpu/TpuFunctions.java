@@ -85,7 +85,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -168,7 +168,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -251,7 +251,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -334,7 +334,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -417,7 +417,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -500,7 +500,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *         var tpu = new Node("tpu", NodeArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .acceleratorType("v3-8")
@@ -586,7 +586,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -671,7 +671,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -756,7 +756,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -841,7 +841,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -926,7 +926,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1011,7 +1011,7 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1093,7 +1093,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1174,7 +1174,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1255,7 +1255,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1336,7 +1336,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1417,7 +1417,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
@@ -1498,7 +1498,7 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
      *             .name("test-tpu")
      *             .zone("us-central1-b")
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))

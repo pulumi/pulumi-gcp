@@ -56,24 +56,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the reCAPTCHA Enterprise API
- *         var recaptchaEnterprise = new Service("recaptchaEnterprise", ServiceArgs.builder()        
+ *         var recaptchaEnterprise = new Service("recaptchaEnterprise", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("recaptchaenterprise.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *         var default_ = new WebApp("default", WebAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Web App for reCAPTCHA Enterprise")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
  *         // If your app already exists, you don't have to wait 30 seconds.
- *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckRecaptchaEnterpriseConfig = new AppCheckRecaptchaEnterpriseConfig("defaultAppCheckRecaptchaEnterpriseConfig", AppCheckRecaptchaEnterpriseConfigArgs.builder()        
+ *         var defaultAppCheckRecaptchaEnterpriseConfig = new AppCheckRecaptchaEnterpriseConfig("defaultAppCheckRecaptchaEnterpriseConfig", AppCheckRecaptchaEnterpriseConfigArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .siteKey("6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw")

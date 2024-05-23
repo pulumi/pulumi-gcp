@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *         var key = new TagKey("key", TagKeyArgs.builder()
  *             .parent("organizations/123456789")
  *             .shortName("keyname")
  *             .description("For keyname resources.")

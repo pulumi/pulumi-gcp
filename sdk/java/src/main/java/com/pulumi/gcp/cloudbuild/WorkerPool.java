@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()        
+ *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()
  *             .name("my-pool")
  *             .location("europe-west1")
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
@@ -98,17 +98,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .service("servicenetworking.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var workerRange = new GlobalAddress("workerRange", GlobalAddressArgs.builder()        
+ *         var workerRange = new GlobalAddress("workerRange", GlobalAddressArgs.builder()
  *             .name("worker-pool-range")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -116,13 +116,13 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .build());
  * 
- *         var workerPoolConn = new Connection("workerPoolConn", ConnectionArgs.builder()        
+ *         var workerPoolConn = new Connection("workerPoolConn", ConnectionArgs.builder()
  *             .network(network.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(workerRange.name())
  *             .build());
  * 
- *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()        
+ *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()
  *             .name("my-pool")
  *             .location("europe-west1")
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()

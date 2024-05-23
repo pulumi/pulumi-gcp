@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()
  *             .accountId("bqowner")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -109,17 +109,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
  *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -165,11 +165,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()
  *             .accountId("bqowner")
  *             .build());
  * 
- *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("public")
  *             .friendlyName("test")
  *             .description("This dataset is public")
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("private")
  *             .friendlyName("test")
  *             .description("This dataset is private")
@@ -250,12 +250,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("public_dataset")
  *             .description("This dataset is public")
  *             .build());
  * 
- *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()        
+ *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()
  *             .datasetId(public_.datasetId())
  *             .routineId("public_routine")
  *             .routineType("TABLE_VALUED_FUNCTION")
@@ -282,7 +282,7 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *         var private_ = new Dataset("private", DatasetArgs.builder()
  *             .datasetId("private_dataset")
  *             .description("This dataset is private")
  *             .accesses(            
@@ -330,7 +330,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-no-app")
  *             .build());
@@ -79,12 +79,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *         var default_ = new WebApp("default", WebAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Test web app for Firebase Hosting")
  *             .build());
  * 
- *         var full = new HostingSite("full", HostingSiteArgs.builder()        
+ *         var full = new HostingSite("full", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-with-app")
  *             .appId(default_.appId())

@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("US")
  *             .friendlyName("👋")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .databaseVersion("POSTGRES_11")
  *             .region("us-central1")
@@ -117,23 +117,23 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .friendlyName("👋")
  *             .description("a riveting description")
  *             .location("US")
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .databaseVersion("POSTGRES_11")
  *             .region("us-central1")
@@ -199,23 +199,23 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("US")
  *             .friendlyName("👋")
@@ -263,7 +263,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("aws-us-east-1")
  *             .friendlyName("👋")
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("azure-eastus2")
  *             .friendlyName("👋")
@@ -348,7 +348,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("US")
  *             .friendlyName("👋")
@@ -390,7 +390,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("US")
  *             .friendlyName("👋")
@@ -441,7 +441,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Cluster("basic", ClusterArgs.builder()        
+ *         var basic = new Cluster("basic", ClusterArgs.builder()
  *             .name("my-connection")
  *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
@@ -458,7 +458,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .connectionId("my-connection")
  *             .location("US")
  *             .friendlyName("👋")

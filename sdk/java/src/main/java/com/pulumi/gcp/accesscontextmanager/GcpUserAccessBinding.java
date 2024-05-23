@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new Group("group", GroupArgs.builder()        
+ *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 
- *         var accessLevelIdForUserAccessBinding = new AccessLevel("accessLevelIdForUserAccessBinding", AccessLevelArgs.builder()        
+ *         var accessLevelIdForUserAccessBinding = new AccessLevel("accessLevelIdForUserAccessBinding", AccessLevelArgs.builder()
  *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
  *             .title("chromeos_no_lock")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var gcpUserAccessBinding = new GcpUserAccessBinding("gcpUserAccessBinding", GcpUserAccessBindingArgs.builder()        
+ *         var gcpUserAccessBinding = new GcpUserAccessBinding("gcpUserAccessBinding", GcpUserAccessBindingArgs.builder()
  *             .organizationId("123456789")
  *             .groupKey(StdFunctions.trimprefix().applyValue(invoke -> invoke.result()))
  *             .accessLevels(accessLevelIdForUserAccessBinding.name())

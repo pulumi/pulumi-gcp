@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_network = new Network("default-network", NetworkArgs.builder()        
+ *         var default_network = new Network("default-network", NetworkArgs.builder()
  *             .name("network")
  *             .build());
  * 
- *         var default_instance = new Instance("default-instance", InstanceArgs.builder()        
+ *         var default_instance = new Instance("default-instance", InstanceArgs.builder()
  *             .name("instance")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -87,11 +87,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_instance_group = new InstanceGroup("default-instance-group", InstanceGroupArgs.builder()        
+ *         var default_instance_group = new InstanceGroup("default-instance-group", InstanceGroupArgs.builder()
  *             .name("instance-group")
  *             .build());
  * 
- *         var default_ig_membership = new InstanceGroupMembership("default-ig-membership", InstanceGroupMembershipArgs.builder()        
+ *         var default_ig_membership = new InstanceGroupMembership("default-ig-membership", InstanceGroupMembershipArgs.builder()
  *             .instance(default_instance.selfLink())
  *             .instanceGroup(default_instance_group.name())
  *             .build());

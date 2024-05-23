@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Namespace("default", NamespaceArgs.builder()        
+ *         var default_ = new Namespace("default", NamespaceArgs.builder()
  *             .namespaceId("my-namespace")
  *             .location("us-central1")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .serviceId("my-service")
  *             .namespace(default_.id())
  *             .metadata(Map.ofEntries(
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultServiceBinding = new ServiceBinding("defaultServiceBinding", ServiceBindingArgs.builder()        
+ *         var defaultServiceBinding = new ServiceBinding("defaultServiceBinding", ServiceBindingArgs.builder()
  *             .name("my-service-binding")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

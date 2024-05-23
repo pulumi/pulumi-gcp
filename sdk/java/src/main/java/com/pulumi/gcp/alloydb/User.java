@@ -64,11 +64,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("alloydb-network")
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
  *             .network(defaultNetwork.id())
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .instanceId("alloydb-instance")
  *             .instanceType("PRIMARY")
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-cluster")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -93,13 +93,13 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
  *             .network(defaultNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var user1 = new User("user1", UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .userId("user1")
  *             .userType("ALLOYDB_BUILT_IN")
@@ -150,11 +150,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("alloydb-network")
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
  *             .network(defaultNetwork.id())
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .instanceId("alloydb-instance")
  *             .instanceType("PRIMARY")
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-cluster")
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
@@ -179,13 +179,13 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
  *             .network(defaultNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var user2 = new User("user2", UserArgs.builder()        
+ *         var user2 = new User("user2", UserArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .userId("user2{@literal @}foo.com")
  *             .userType("ALLOYDB_IAM_USER")

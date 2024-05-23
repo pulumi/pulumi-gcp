@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
  * 
- *         var key = new CryptoKey("key", CryptoKeyArgs.builder()        
+ *         var key = new CryptoKey("key", CryptoKeyArgs.builder()
  *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
  *             .rotationPeriod("7776000s")
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMPolicy("cryptoKey", CryptoKeyIAMPolicyArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMPolicy("cryptoKey", CryptoKeyIAMPolicyArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .members("user:jane{@literal @}example.com")
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .members("user:jane{@literal @}example.com")
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .member("user:jane{@literal @}example.com")
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .member("user:jane{@literal @}example.com")

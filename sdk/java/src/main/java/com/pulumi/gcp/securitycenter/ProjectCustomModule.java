@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()        
+ *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()
  *             .displayName("basic_custom_module")
  *             .enablementState("ENABLED")
  *             .customConfig(ProjectCustomModuleCustomConfigArgs.builder()
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()        
+ *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()
  *             .displayName("full_custom_module")
  *             .enablementState("ENABLED")
  *             .customConfig(ProjectCustomModuleCustomConfigArgs.builder()

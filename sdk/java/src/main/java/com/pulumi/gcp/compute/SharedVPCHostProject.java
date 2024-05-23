@@ -50,18 +50,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // A host project provides network resources to associated service projects.
- *         var host = new SharedVPCHostProject("host", SharedVPCHostProjectArgs.builder()        
+ *         var host = new SharedVPCHostProject("host", SharedVPCHostProjectArgs.builder()
  *             .project("host-project-id")
  *             .build());
  * 
  *         // A service project gains access to network resources provided by its
  *         // associated host project.
- *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()        
+ *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()
  *             .hostProject(host.project())
  *             .serviceProject("service-project-id-1")
  *             .build());
  * 
- *         var service2 = new SharedVPCServiceProject("service2", SharedVPCServiceProjectArgs.builder()        
+ *         var service2 = new SharedVPCServiceProject("service2", SharedVPCServiceProjectArgs.builder()
  *             .hostProject(host.project())
  *             .serviceProject("service-project-id-2")
  *             .build());

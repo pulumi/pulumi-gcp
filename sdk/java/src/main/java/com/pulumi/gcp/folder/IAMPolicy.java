@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/container.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -236,7 +236,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -274,7 +274,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/firebase.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -317,7 +317,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()        
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
  *             .folder("folders/1234567")
  *             .service("allServices")
  *             .auditLogConfigs(            
@@ -378,7 +378,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -428,7 +428,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -464,7 +464,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -502,7 +502,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/container.admin")
  *             .members("user:jane{@literal @}example.com")
@@ -544,7 +544,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -582,7 +582,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/firebase.admin")
  *             .member("user:jane{@literal @}example.com")
@@ -625,7 +625,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()        
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
  *             .folder("folders/1234567")
  *             .service("allServices")
  *             .auditLogConfigs(            

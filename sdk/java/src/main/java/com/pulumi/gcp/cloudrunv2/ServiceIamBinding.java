@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()        
+ *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()        
+ *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()        
+ *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()        
+ *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()        
+ *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()        
+ *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())

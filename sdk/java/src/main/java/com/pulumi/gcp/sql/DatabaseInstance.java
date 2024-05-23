@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name("main-instance")
  *             .databaseVersion("POSTGRES_15")
  *             .region("us-central1")
@@ -114,11 +114,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var privateNetwork = new Network("privateNetwork", NetworkArgs.builder()        
+ *         var privateNetwork = new Network("privateNetwork", NetworkArgs.builder()
  *             .name("private-network")
  *             .build());
  * 
- *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()        
+ *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()
  *             .name("private-ip-address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -126,17 +126,17 @@ import javax.annotation.Nullable;
  *             .network(privateNetwork.id())
  *             .build());
  * 
- *         var privateVpcConnection = new Connection("privateVpcConnection", ConnectionArgs.builder()        
+ *         var privateVpcConnection = new Connection("privateVpcConnection", ConnectionArgs.builder()
  *             .network(privateNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("private-instance-%s", hex)))
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_5_7")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name("enterprise-plus-main-instance")
  *             .databaseVersion("MYSQL_8_0_31")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
  *             .name("psc-enabled-main-instance")
  *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
