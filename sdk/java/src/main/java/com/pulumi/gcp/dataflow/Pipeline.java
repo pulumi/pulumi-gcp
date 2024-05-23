@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Pipeline("primary", PipelineArgs.builder()        
+ *         var primary = new Pipeline("primary", PipelineArgs.builder()
  *             .name("my-pipeline")
  *             .displayName("my-pipeline")
  *             .type("PIPELINE_TYPE_BATCH")

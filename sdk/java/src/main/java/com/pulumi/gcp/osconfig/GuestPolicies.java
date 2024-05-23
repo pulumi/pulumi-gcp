@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Instance("foobar", InstanceArgs.builder()        
+ *         var foobar = new Instance("foobar", InstanceArgs.builder()
  *             .name("guest-policy-inst")
  *             .machineType("e2-medium")
  *             .zone("us-central1-a")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .metadata(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()
  *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .instances(foobar.id())
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()
  *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .groupLabels(                
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()
  *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .zones(                

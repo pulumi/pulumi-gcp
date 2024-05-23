@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Top-level folder under an organization.
- *         var department1 = new Folder("department1", FolderArgs.builder()        
+ *         var department1 = new Folder("department1", FolderArgs.builder()
  *             .displayName("Department 1")
  *             .parent("organizations/1234567")
  *             .build());
  * 
  *         // Folder nested under another folder.
- *         var team_abc = new Folder("team-abc", FolderArgs.builder()        
+ *         var team_abc = new Folder("team-abc", FolderArgs.builder()
  *             .displayName("Team ABC")
  *             .parent(department1.name())
  *             .build());

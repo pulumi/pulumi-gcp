@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()        
+ *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyFlow")
  *             .description("Test Flow")
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -186,13 +186,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("dialogflowcx-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()        
+ *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyFlow")
  *             .description("Test Flow")

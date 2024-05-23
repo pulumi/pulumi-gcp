@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()        
+ *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()
  *             .name(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()        
+ *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()
  *             .name(example.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()        
+ *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()
  *             .name(example.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()        
+ *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()
  *             .name(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()        
+ *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()
  *             .name(example.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()        
+ *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()
  *             .name(example.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")

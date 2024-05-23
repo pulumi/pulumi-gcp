@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectDefaultConfig("default", ProjectDefaultConfigArgs.builder()        
+ *         var default_ = new ProjectDefaultConfig("default", ProjectDefaultConfigArgs.builder()
  *             .signIn(ProjectDefaultConfigSignInArgs.builder()
  *                 .allowDuplicateEmails(true)
  *                 .anonymous(ProjectDefaultConfigSignInAnonymousArgs.builder()

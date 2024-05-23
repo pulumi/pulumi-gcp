@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *         var budget = new Budget("budget", BudgetArgs.builder()
  *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
  *             .displayName("Example Billing Budget")
  *             .amount(BudgetAmountArgs.builder()
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *         var budget = new Budget("budget", BudgetArgs.builder()
  *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *         var budget = new Budget("budget", BudgetArgs.builder()
  *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
@@ -257,13 +257,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var notificationChannel = new NotificationChannel("notificationChannel", NotificationChannelArgs.builder()        
+ *         var notificationChannel = new NotificationChannel("notificationChannel", NotificationChannelArgs.builder()
  *             .displayName("Example Notification Channel")
  *             .type("email")
  *             .labels(Map.of("email_address", "address{@literal @}example.com"))
  *             .build());
  * 
- *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *         var budget = new Budget("budget", BudgetArgs.builder()
  *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *         var budget = new Budget("budget", BudgetArgs.builder()
  *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()

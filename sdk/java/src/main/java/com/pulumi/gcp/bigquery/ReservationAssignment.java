@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Reservation("basic", ReservationArgs.builder()        
+ *         var basic = new Reservation("basic", ReservationArgs.builder()
  *             .name("tf-test-my-reservation")
  *             .project("my-project-name")
  *             .location("us-central1")
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .ignoreIdleSlots(false)
  *             .build());
  * 
- *         var primary = new ReservationAssignment("primary", ReservationAssignmentArgs.builder()        
+ *         var primary = new ReservationAssignment("primary", ReservationAssignmentArgs.builder()
  *             .assignee("projects/my-project-name")
  *             .jobType("PIPELINE")
  *             .reservation(basic.id())

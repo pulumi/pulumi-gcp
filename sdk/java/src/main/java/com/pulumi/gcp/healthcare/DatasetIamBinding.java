@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()        
+ *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()        
+ *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()        
+ *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -253,7 +253,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()        
+ *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

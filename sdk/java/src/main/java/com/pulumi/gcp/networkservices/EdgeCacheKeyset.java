@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()        
+ *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()
  *             .name("my-keyset")
  *             .description("The default keyset")
  *             .publicKeys(            
@@ -107,19 +107,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()        
+ *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()
  *             .name("my-keyset")
  *             .description("The default keyset")
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()

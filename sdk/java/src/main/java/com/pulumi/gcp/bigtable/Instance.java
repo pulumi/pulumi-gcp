@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production_instance = new Instance("production-instance", InstanceArgs.builder()        
+ *         var production_instance = new Instance("production-instance", InstanceArgs.builder()
  *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId("tf-instance-cluster")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production_instance = new Instance("production-instance", InstanceArgs.builder()        
+ *         var production_instance = new Instance("production-instance", InstanceArgs.builder()
  *             .name("tf-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()

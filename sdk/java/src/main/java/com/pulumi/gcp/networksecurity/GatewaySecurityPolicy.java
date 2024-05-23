@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()
  *             .name("my-gateway-security-policy")
  *             .location("us-central1")
  *             .description("my description")
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-basic-ca-pool")
  *             .location("us-central1")
  *             .tier("DEVOPS")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
  *             .pool(default_.name())
  *             .certificateAuthorityId("my-basic-certificate-authority")
  *             .location("us-central1")
@@ -170,23 +170,23 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nsSa = new ServiceIdentity("nsSa", ServiceIdentityArgs.builder()        
+ *         var nsSa = new ServiceIdentity("nsSa", ServiceIdentityArgs.builder()
  *             .service("networksecurity.googleapis.com")
  *             .build());
  * 
- *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()        
+ *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member(nsSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()        
+ *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
  *             .name("my-tls-inspection-policy")
  *             .location("us-central1")
  *             .caPool(default_.id())
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()
  *             .name("my-gateway-security-policy")
  *             .location("us-central1")
  *             .description("my description")

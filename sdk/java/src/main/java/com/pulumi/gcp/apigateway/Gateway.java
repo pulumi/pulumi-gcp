@@ -58,11 +58,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiGw = new Api("apiGw", ApiArgs.builder()        
+ *         var apiGw = new Api("apiGw", ApiArgs.builder()
  *             .apiId("my-api")
  *             .build());
  * 
- *         var apiGwApiConfig = new ApiConfig("apiGwApiConfig", ApiConfigArgs.builder()        
+ *         var apiGwApiConfig = new ApiConfig("apiGwApiConfig", ApiConfigArgs.builder()
  *             .api(apiGw.apiId())
  *             .apiConfigId("my-config")
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var apiGwGateway = new Gateway("apiGwGateway", GatewayArgs.builder()        
+ *         var apiGwGateway = new Gateway("apiGwGateway", GatewayArgs.builder()
  *             .apiConfig(apiGwApiConfig.id())
  *             .gatewayId("my-gateway")
  *             .build());

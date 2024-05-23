@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
  * 
- *         var cache = new SshPublicKey("cache", SshPublicKeyArgs.builder()        
+ *         var cache = new SshPublicKey("cache", SshPublicKeyArgs.builder()
  *             .user(me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()))
  *             .key(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/id_rsa.pub")

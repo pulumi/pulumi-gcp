@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()        
+ *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()
  *             .project("your-project")
  *             .region("your-region")
  *             .cluster("your-dataproc-cluster")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()        
+ *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()
  *             .cluster("your-dataproc-cluster")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()        
+ *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()
  *             .cluster("your-dataproc-cluster")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()        
+ *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()
  *             .project("your-project")
  *             .region("your-region")
  *             .cluster("your-dataproc-cluster")
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()        
+ *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()
  *             .cluster("your-dataproc-cluster")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()        
+ *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()
  *             .cluster("your-dataproc-cluster")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

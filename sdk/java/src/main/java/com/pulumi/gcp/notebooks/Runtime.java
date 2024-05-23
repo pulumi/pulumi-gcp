@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtime = new Runtime("runtime", RuntimeArgs.builder()        
+ *         var runtime = new Runtime("runtime", RuntimeArgs.builder()
  *             .name("notebooks-runtime")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeGpu = new Runtime("runtimeGpu", RuntimeArgs.builder()        
+ *         var runtimeGpu = new Runtime("runtimeGpu", RuntimeArgs.builder()
  *             .name("notebooks-runtime-gpu")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-container")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
@@ -249,7 +249,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-kernel")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
@@ -312,7 +312,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-script")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()

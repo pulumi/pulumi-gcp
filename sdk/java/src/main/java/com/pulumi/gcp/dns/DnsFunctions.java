@@ -66,7 +66,7 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()
      *             .name("foobar")
      *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
@@ -130,7 +130,7 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()
      *             .name("foobar")
      *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
@@ -194,7 +194,7 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()
      *             .name("foobar")
      *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
@@ -258,7 +258,7 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()
      *             .name("foobar")
      *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
@@ -318,7 +318,7 @@ public final class DnsFunctions {
      *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()
      *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
      *             .type("TXT")
      *             .ttl(300)
@@ -372,7 +372,7 @@ public final class DnsFunctions {
      *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()
      *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
      *             .type("TXT")
      *             .ttl(300)
@@ -426,7 +426,7 @@ public final class DnsFunctions {
      *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()
      *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
      *             .type("TXT")
      *             .ttl(300)
@@ -480,7 +480,7 @@ public final class DnsFunctions {
      *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()
      *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
      *             .type("TXT")
      *             .ttl(300)

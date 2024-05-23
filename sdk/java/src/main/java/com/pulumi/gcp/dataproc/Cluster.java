@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var simplecluster = new Cluster("simplecluster", ClusterArgs.builder()        
+ *         var simplecluster = new Cluster("simplecluster", ClusterArgs.builder()
  *             .name("simplecluster")
  *             .region("us-central1")
  *             .build());
@@ -102,12 +102,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()        
+ *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()
  *             .name("mycluster")
  *             .region("us-central1")
  *             .gracefulDecommissionTimeout("120s")
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var acceleratedCluster = new Cluster("acceleratedCluster", ClusterArgs.builder()        
+ *         var acceleratedCluster = new Cluster("acceleratedCluster", ClusterArgs.builder()
  *             .name("my-cluster-with-gpu")
  *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
