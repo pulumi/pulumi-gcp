@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var contact = new Contact("contact", ContactArgs.builder()        
+ *         var contact = new Contact("contact", ContactArgs.builder()
  *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
  *             .email("foo{@literal @}bar.com")
  *             .languageTag("en-GB")

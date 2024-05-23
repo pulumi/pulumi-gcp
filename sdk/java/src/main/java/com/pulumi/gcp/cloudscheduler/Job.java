@@ -59,11 +59,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("job-topic")
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test job")
  *             .schedule("*{@literal /}2 * * * *")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
  *             .schedule("*{@literal /}8 * * * *")
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .paused(true)
  *             .name("test-job")
  *             .description("test http job with updated fields")
@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .schedule("*{@literal /}4 * * * *")
  *             .description("test app engine job")
@@ -270,7 +270,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
  *             .schedule("*{@literal /}8 * * * *")
@@ -321,7 +321,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
  *             .schedule("*{@literal /}8 * * * *")

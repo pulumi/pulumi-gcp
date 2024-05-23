@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()
  *             .displayName("tenant")
  *             .build());
  * 
- *         var tenantSamlConfig = new TenantInboundSamlConfig("tenantSamlConfig", TenantInboundSamlConfigArgs.builder()        
+ *         var tenantSamlConfig = new TenantInboundSamlConfig("tenantSamlConfig", TenantInboundSamlConfigArgs.builder()
  *             .name("saml.tf-config")
  *             .displayName("Display Name")
  *             .tenant(tenant.name())

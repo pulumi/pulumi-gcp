@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example docker repository")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example docker repository")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example docker repository with cmek")
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -187,21 +187,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo_upstream_1 = new Repository("my-repo-upstream-1", RepositoryArgs.builder()        
+ *         var my_repo_upstream_1 = new Repository("my-repo-upstream-1", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository-upstream-1")
  *             .description("example docker repository (upstream source) 1")
  *             .format("DOCKER")
  *             .build());
  * 
- *         var my_repo_upstream_2 = new Repository("my-repo-upstream-2", RepositoryArgs.builder()        
+ *         var my_repo_upstream_2 = new Repository("my-repo-upstream-2", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository-upstream-2")
  *             .description("example docker repository (upstream source) 2")
  *             .format("DOCKER")
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example virtual docker repository")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example remote docker repository")
@@ -301,7 +301,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("debian-buster")
  *             .description("example remote apt repository")
@@ -351,7 +351,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("centos-8")
  *             .description("example remote yum repository")
@@ -401,7 +401,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .description("example docker repository with cleanup policies")
@@ -489,25 +489,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
  *             .secret(example_remote_secret.id())
  *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("example-dockerhub-remote")
  *             .description("example remote dockerhub repository with credentials")
@@ -575,25 +575,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
  *             .secret(example_remote_secret.id())
  *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("example-docker-custom-remote")
  *             .description("example remote custom docker repository with credentials")
@@ -663,25 +663,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
  *             .secret(example_remote_secret.id())
  *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("example-maven-custom-remote")
  *             .description("example remote custom maven repository with credentials")
@@ -751,25 +751,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
  *             .secret(example_remote_secret.id())
  *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("example-npm-custom-remote")
  *             .description("example remote custom npm repository with credentials")
@@ -839,25 +839,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
  *             .secret(example_remote_secret.id())
  *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("example-python-custom-remote")
  *             .description("example remote custom python repository with credentials")

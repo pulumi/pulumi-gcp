@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .androidSettings(EnterpriseKeyAndroidSettingsArgs.builder()
  *                 .allowAllPackageNames(true)
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .iosSettings(EnterpriseKeyIosSettingsArgs.builder()
  *                 .allowAllBundleIds(true)
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .project("my-project-name")
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
@@ -286,7 +286,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name-one")
  *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()

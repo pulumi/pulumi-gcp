@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_keyring = new KeyRing("example-keyring", KeyRingArgs.builder()        
+ *         var example_keyring = new KeyRing("example-keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(defaultHealthCheck.id())
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("tf-test-region-service-external")
  *             .region("us-central1")
  *             .protocol("HTTP")
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(defaultRegionHealthCheck.id())
@@ -218,14 +218,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -316,7 +316,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -324,7 +324,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -371,14 +371,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -455,20 +455,20 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("rbs-net")
  *             .autoCreateSubnetworks(false)
  *             .routingMode("REGIONAL")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("rbs-net-default")
  *             .ipCidrRange("10.1.2.0/24")
  *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
  *             .name("template-region-service")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
@@ -485,7 +485,7 @@ import javax.annotation.Nullable;
  *                 "load-balanced-backend")
  *             .build());
  * 
- *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()        
+ *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()
  *             .region("us-central1")
  *             .name("rbs-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
@@ -496,7 +496,7 @@ import javax.annotation.Nullable;
  *             .targetSize(1)
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("rbs-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
@@ -552,7 +552,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
@@ -560,7 +560,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(healthCheck.id())

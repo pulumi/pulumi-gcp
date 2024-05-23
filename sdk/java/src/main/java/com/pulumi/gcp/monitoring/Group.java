@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Group("basic", GroupArgs.builder()        
+ *         var basic = new Group("basic", GroupArgs.builder()
  *             .displayName("tf-test MonitoringGroup")
  *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .build());
@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var parent = new Group("parent", GroupArgs.builder()        
+ *         var parent = new Group("parent", GroupArgs.builder()
  *             .displayName("tf-test MonitoringParentGroup")
  *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .build());
  * 
- *         var subgroup = new Group("subgroup", GroupArgs.builder()        
+ *         var subgroup = new Group("subgroup", GroupArgs.builder()
  *             .displayName("tf-test MonitoringSubGroup")
  *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .parentName(parent.name())

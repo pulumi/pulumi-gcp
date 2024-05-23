@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new FunctionIamPolicy("policy", FunctionIamPolicyArgs.builder()        
+ *         var policy = new FunctionIamPolicy("policy", FunctionIamPolicyArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new FunctionIamBinding("binding", FunctionIamBindingArgs.builder()        
+ *         var binding = new FunctionIamBinding("binding", FunctionIamBindingArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new FunctionIamMember("member", FunctionIamMemberArgs.builder()        
+ *         var member = new FunctionIamMember("member", FunctionIamMemberArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new FunctionIamPolicy("policy", FunctionIamPolicyArgs.builder()        
+ *         var policy = new FunctionIamPolicy("policy", FunctionIamPolicyArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new FunctionIamBinding("binding", FunctionIamBindingArgs.builder()        
+ *         var binding = new FunctionIamBinding("binding", FunctionIamBindingArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new FunctionIamMember("member", FunctionIamMemberArgs.builder()        
+ *         var member = new FunctionIamMember("member", FunctionIamMemberArgs.builder()
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())

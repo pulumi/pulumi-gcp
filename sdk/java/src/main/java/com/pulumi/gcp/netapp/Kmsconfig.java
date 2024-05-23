@@ -58,17 +58,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("key-ring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("crypto-name")
  *             .keyRing(keyring.id())
  *             .build());
  * 
- *         var kmsConfig = new Kmsconfig("kmsConfig", KmsconfigArgs.builder()        
+ *         var kmsConfig = new Kmsconfig("kmsConfig", KmsconfigArgs.builder()
  *             .name("kms-test")
  *             .description("this is a test description")
  *             .cryptoKeyName(cryptoKey.id())

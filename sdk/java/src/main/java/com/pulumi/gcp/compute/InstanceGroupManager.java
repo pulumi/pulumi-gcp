@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var autohealing = new HealthCheck("autohealing", HealthCheckArgs.builder()        
+ *         var autohealing = new HealthCheck("autohealing", HealthCheckArgs.builder()
  *             .name("autohealing-health-check")
  *             .checkIntervalSec(5)
  *             .timeoutSec(5)
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appserver = new InstanceGroupManager("appserver", InstanceGroupManagerArgs.builder()        
+ *         var appserver = new InstanceGroupManager("appserver", InstanceGroupManagerArgs.builder()
  *             .name("appserver-igm")
  *             .baseInstanceName("app")
  *             .zone("us-central1-a")
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appserver = new InstanceGroupManager("appserver", InstanceGroupManagerArgs.builder()        
+ *         var appserver = new InstanceGroupManager("appserver", InstanceGroupManagerArgs.builder()
  *             .name("appserver-igm")
  *             .baseInstanceName("app")
  *             .zone("us-central1-a")

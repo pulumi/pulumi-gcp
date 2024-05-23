@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new DataStore("basic", DataStoreArgs.builder()        
+ *         var basic = new DataStore("basic", DataStoreArgs.builder()
  *             .location("global")
  *             .dataStoreId("data-store-id")
  *             .displayName("tf-test-structured-datastore")

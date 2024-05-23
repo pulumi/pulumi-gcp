@@ -58,25 +58,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project_id")
  *             .name("project_id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *         var key = new TagKey("key", TagKeyArgs.builder()
  *             .parent("organizations/123456789")
  *             .shortName("keyname")
  *             .description("For keyname resources.")
  *             .build());
  * 
- *         var value = new TagValue("value", TagValueArgs.builder()        
+ *         var value = new TagValue("value", TagValueArgs.builder()
  *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
- *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()        
+ *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
  *             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.number(),default_.location(),default_.name()))
  *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
  *             .location("us-central1")
@@ -119,25 +119,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project_id")
  *             .name("project_id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *         var key = new TagKey("key", TagKeyArgs.builder()
  *             .parent("organizations/123456789")
  *             .shortName("keyname")
  *             .description("For keyname resources.")
  *             .build());
  * 
- *         var value = new TagValue("value", TagValueArgs.builder()        
+ *         var value = new TagValue("value", TagValueArgs.builder()
  *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
- *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()        
+ *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
  *             .parent(project.number().applyValue(number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", number,instance.instanceId())))
  *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
  *             .location("us-central1-a")

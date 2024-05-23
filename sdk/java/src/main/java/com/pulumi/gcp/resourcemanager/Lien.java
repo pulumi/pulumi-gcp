@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("staging-project")
  *             .name("A very important project!")
  *             .build());
  * 
- *         var lien = new Lien("lien", LienArgs.builder()        
+ *         var lien = new Lien("lien", LienArgs.builder()
  *             .parent(project.number().applyValue(number -> String.format("projects/%s", number)))
  *             .restrictions("resourcemanager.projects.delete")
  *             .origin("machine-readable-explanation")

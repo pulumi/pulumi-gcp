@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CapacityCommitment("example", CapacityCommitmentArgs.builder()        
+ *         var example = new CapacityCommitment("example", CapacityCommitmentArgs.builder()
  *             .capacityCommitmentId("example-commitment")
  *             .location("us-west2")
  *             .slotCount(100)

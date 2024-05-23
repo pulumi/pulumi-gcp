@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()        
+ *         var example = new Environment("example", EnvironmentArgs.builder()
  *             .name("example-environment")
  *             .project("example-project")
  *             .region("us-central1")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()        
+ *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
  *             .name("example-secret")
  *             .project("example-project")
  *             .region("us-central1")

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()
  *             .region("us-central1")
  *             .namePrefix("my-certificate-")
  *             .description("a description")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificate = new RandomId("certificate", RandomIdArgs.builder()        
+ *         var certificate = new RandomId("certificate", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .prefix("my-certificate-")
  *             .keepers(Map.ofEntries(
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // You may also want to control name generation explicitly:
- *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()
  *             .region("us-central1")
  *             .name(certificate.hex())
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *         // recommended to specify create_before_destroy in a lifecycle block.
  *         // Either omit the Instance Template name attribute, specify a partial
  *         // name with name_prefix, or use random_id resource. Example:
- *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()
  *             .region("us-central1")
  *             .namePrefix("my-certificate-")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("backend-service")
  *             .protocol("HTTP")
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
  *             .region("us-central1")
  *             .name("url-map")
  *             .description("a description")
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", RegionTargetHttpsProxyArgs.builder()        
+ *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", RegionTargetHttpsProxyArgs.builder()
  *             .region("us-central1")
  *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())

@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()
  *             .name("organization-logging-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var my_sink = new OrganizationSink("my-sink", OrganizationSinkArgs.builder()        
+ *         var my_sink = new OrganizationSink("my-sink", OrganizationSinkArgs.builder()
  *             .name("my-sink")
  *             .description("some explanation on what this is")
  *             .orgId("123456789")
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .filter("resource.type = gce_instance AND severity >= WARNING")
  *             .build());
  * 
- *         var log_writer = new IAMMember("log-writer", IAMMemberArgs.builder()        
+ *         var log_writer = new IAMMember("log-writer", IAMMemberArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/storage.objectCreator")
  *             .member(my_sink.writerIdentity())

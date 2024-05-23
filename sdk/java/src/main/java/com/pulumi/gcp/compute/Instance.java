@@ -68,12 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("my-custom-sa")
  *             .displayName("Custom SA for VM Instance")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network("default")
