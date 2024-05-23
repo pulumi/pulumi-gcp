@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .name("test-network")
  *             .build());
  * 
- *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()        
+ *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
  *             .name("test-pool")
  *             .location("us-west2")
  *             .serviceLevel("PREMIUM")
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var defaultVolume = new Volume("defaultVolume", VolumeArgs.builder()        
+ *         var defaultVolume = new Volume("defaultVolume", VolumeArgs.builder()
  *             .location(defaultStoragePool.location())
  *             .name("test-volume")
  *             .capacityGib(100)
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .protocols("NFSV3")
  *             .build());
  * 
- *         var testSnapshot = new VolumeSnapshot("testSnapshot", VolumeSnapshotArgs.builder()        
+ *         var testSnapshot = new VolumeSnapshot("testSnapshot", VolumeSnapshotArgs.builder()
  *             .location(defaultVolume.location())
  *             .volumeName(defaultVolume.name())
  *             .name("testvolumesnap")

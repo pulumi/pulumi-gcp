@@ -68,18 +68,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("static-content-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("public-object")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("../static/img/header-logo.png"))
  *             .build());
  * 
- *         var publicRule = new ObjectAccessControl("publicRule", ObjectAccessControlArgs.builder()        
+ *         var publicRule = new ObjectAccessControl("publicRule", ObjectAccessControlArgs.builder()
  *             .object(object.outputName())
  *             .bucket(bucket.name())
  *             .role("READER")

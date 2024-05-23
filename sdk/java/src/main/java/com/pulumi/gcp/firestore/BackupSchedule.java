@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var daily_backup = new BackupSchedule("daily-backup", BackupScheduleArgs.builder()        
+ *         var daily_backup = new BackupSchedule("daily-backup", BackupScheduleArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .retention("8467200s")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var weekly_backup = new BackupSchedule("weekly-backup", BackupScheduleArgs.builder()        
+ *         var weekly_backup = new BackupSchedule("weekly-backup", BackupScheduleArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
  *             .retention("8467200s")

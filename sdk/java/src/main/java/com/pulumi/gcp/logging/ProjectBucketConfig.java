@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .projectId("your-project-id")
  *             .name("your-project-id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()        
+ *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()
  *             .project(default_.projectId())
  *             .location("global")
  *             .retentionDays(30)
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()        
+ *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()
  *             .project("project_id")
  *             .location("global")
  *             .retentionDays(30)
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var analytics_enabled_bucket = new ProjectBucketConfig("analytics-enabled-bucket", ProjectBucketConfigArgs.builder()        
+ *         var analytics_enabled_bucket = new ProjectBucketConfig("analytics-enabled-bucket", ProjectBucketConfigArgs.builder()
  *             .project("project_id")
  *             .location("global")
  *             .retentionDays(30)
@@ -187,24 +187,24 @@ import javax.annotation.Nullable;
  *             .project("project_id")
  *             .build());
  * 
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("us-central1")
  *             .build());
  * 
- *         var key = new CryptoKey("key", CryptoKeyArgs.builder()        
+ *         var key = new CryptoKey("key", CryptoKeyArgs.builder()
  *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
  *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .members(String.format("serviceAccount:%s", cmekSettings.applyValue(getProjectCmekSettingsResult -> getProjectCmekSettingsResult.serviceAccountId())))
  *             .build());
  * 
- *         var example_project_bucket_cmek_settings = new ProjectBucketConfig("example-project-bucket-cmek-settings", ProjectBucketConfigArgs.builder()        
+ *         var example_project_bucket_cmek_settings = new ProjectBucketConfig("example-project-bucket-cmek-settings", ProjectBucketConfigArgs.builder()
  *             .project("project_id")
  *             .location("us-central1")
  *             .retentionDays(30)
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_project_bucket_index_configs = new ProjectBucketConfig("example-project-bucket-index-configs", ProjectBucketConfigArgs.builder()        
+ *         var example_project_bucket_index_configs = new ProjectBucketConfig("example-project-bucket-index-configs", ProjectBucketConfigArgs.builder()
  *             .project("project_id")
  *             .location("global")
  *             .retentionDays(30)

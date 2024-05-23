@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *         var default_ = new Mesh("default", MeshArgs.builder()
  *             .name("my-mesh")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *         var default_ = new Mesh("default", MeshArgs.builder()
  *             .name("my-mesh-noport")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

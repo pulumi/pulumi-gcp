@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serialPortPolicy = new Policy("serialPortPolicy", PolicyArgs.builder()        
+ *         var serialPortPolicy = new Policy("serialPortPolicy", PolicyArgs.builder()
  *             .orgId("123456789")
  *             .constraint("compute.disableSerialPortAccess")
  *             .booleanPolicy(PolicyBooleanPolicyArgs.builder()
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()
  *             .orgId("123456789")
  *             .constraint("serviceuser.services")
  *             .listPolicy(PolicyListPolicyArgs.builder()
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()
  *             .orgId("123456789")
  *             .constraint("serviceuser.services")
  *             .listPolicy(PolicyListPolicyArgs.builder()
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()
  *             .orgId("123456789")
  *             .constraint("serviceuser.services")
  *             .restorePolicy(PolicyRestorePolicyArgs.builder()

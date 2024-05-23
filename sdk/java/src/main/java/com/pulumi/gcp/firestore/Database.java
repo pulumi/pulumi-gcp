@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("(default)")
  *             .locationId("nam5")
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -147,18 +147,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("kms-key-ring")
  *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("kms-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("cmek-database-id")
  *             .locationId("nam5")
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()        
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()        
+ *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("(default)")
  *             .locationId("nam5")
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()        
+ *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("database-id")
  *             .locationId("nam5")
@@ -299,18 +299,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("kms-key-ring")
  *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("kms-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("cmek-database-id")
  *             .locationId("nam5")
@@ -325,7 +325,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()        
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))

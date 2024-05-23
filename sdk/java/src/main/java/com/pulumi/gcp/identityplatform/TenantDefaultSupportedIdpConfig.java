@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()
  *             .displayName("tenant")
  *             .build());
  * 
- *         var idpConfig = new TenantDefaultSupportedIdpConfig("idpConfig", TenantDefaultSupportedIdpConfigArgs.builder()        
+ *         var idpConfig = new TenantDefaultSupportedIdpConfig("idpConfig", TenantDefaultSupportedIdpConfigArgs.builder()
  *             .enabled(true)
  *             .tenant(tenant.name())
  *             .idpId("playgames.google.com")

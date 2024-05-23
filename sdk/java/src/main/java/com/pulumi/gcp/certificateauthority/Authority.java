@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *         var default_ = new Authority("default", AuthorityArgs.builder()
  *             .pool("ca-pool")
  *             .certificateAuthorityId("my-certificate-authority")
  *             .location("us-central1")
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var root_ca = new Authority("root-ca", AuthorityArgs.builder()        
+ *         var root_ca = new Authority("root-ca", AuthorityArgs.builder()
  *             .pool("ca-pool")
  *             .certificateAuthorityId("my-certificate-authority-root")
  *             .location("us-central1")
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *         var default_ = new Authority("default", AuthorityArgs.builder()
  *             .pool("ca-pool")
  *             .certificateAuthorityId("my-certificate-authority-sub")
  *             .location("us-central1")
@@ -292,23 +292,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var privatecaSa = new ServiceIdentity("privatecaSa", ServiceIdentityArgs.builder()        
+ *         var privatecaSa = new ServiceIdentity("privatecaSa", ServiceIdentityArgs.builder()
  *             .service("privateca.googleapis.com")
  *             .build());
  * 
- *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", CryptoKeyIAMMemberArgs.builder()        
+ *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *             .role("roles/cloudkms.signerVerifier")
  *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var privatecaSaKeyuserViewer = new CryptoKeyIAMMember("privatecaSaKeyuserViewer", CryptoKeyIAMMemberArgs.builder()        
+ *         var privatecaSaKeyuserViewer = new CryptoKeyIAMMember("privatecaSaKeyuserViewer", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *             .role("roles/viewer")
  *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *         var default_ = new Authority("default", AuthorityArgs.builder()
  *             .pool("ca-pool")
  *             .certificateAuthorityId("my-certificate-authority")
  *             .location("us-central1")
@@ -393,7 +393,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *         var default_ = new Authority("default", AuthorityArgs.builder()
  *             .pool("ca-pool")
  *             .certificateAuthorityId("my-certificate-authority")
  *             .location("us-central1")

@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .name("health-check")
  *             .region("europe-west4")
  *             .timeoutSec(1)
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
  *             .name("backend-service")
  *             .protocol("TCP")
  *             .timeoutSec(10)
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()        
+ *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
  *             .name("test-proxy")
  *             .region("europe-west4")
  *             .backendService(defaultRegionBackendService.id())

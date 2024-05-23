@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-instance")
  *             .labels(Map.of("foo", "bar"))
@@ -98,25 +98,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("my-keyring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("my-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-instance")
  *             .kmsKey(cryptoKey.id())
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var caPool = new CaPool("caPool", CaPoolArgs.builder()        
+ *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
  *             .name("ca-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()        
+ *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
  *             .pool(caPool.name())
  *             .certificateAuthorityId("root-ca")
  *             .location("us-central1")
@@ -219,13 +219,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()        
+ *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
  *             .caPool(caPool.id())
  *             .role("roles/privateca.certificateRequester")
  *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceId("my-instance")
  *             .location("us-central1")
  *             .privateConfig(InstancePrivateConfigArgs.builder()
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 

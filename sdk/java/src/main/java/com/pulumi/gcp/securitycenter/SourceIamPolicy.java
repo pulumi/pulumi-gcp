@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customSource = new Source("customSource", SourceArgs.builder()        
+ *         var customSource = new Source("customSource", SourceArgs.builder()
  *             .displayName("My Source")
  *             .organization("123456789")
  *             .description("My custom Cloud Security Command Center Finding Source")

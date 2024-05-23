@@ -103,19 +103,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("my-gke-cluster")
  *             .location("us-central1")
  *             .removeDefaultNodePool(true)
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()        
+ *         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()
  *             .name("my-node-pool")
  *             .location("us-central1")
  *             .cluster(primary.name())
@@ -166,12 +166,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("marcellus-wallace")
  *             .location("us-central1-a")
  *             .initialNodeCount(3)
@@ -218,12 +218,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account("default", AccountArgs.builder()        
+ *         var default_ = new Account("default", AccountArgs.builder()
  *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("marcellus-wallace")
  *             .location("us-central1-a")
  *             .enableAutopilot(true)

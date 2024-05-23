@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationCustomModule("example", OrganizationCustomModuleArgs.builder()        
+ *         var example = new OrganizationCustomModule("example", OrganizationCustomModuleArgs.builder()
  *             .organization("123456789")
  *             .displayName("basic_custom_module")
  *             .enablementState("ENABLED")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationCustomModule("example", OrganizationCustomModuleArgs.builder()        
+ *         var example = new OrganizationCustomModule("example", OrganizationCustomModuleArgs.builder()
  *             .organization("123456789")
  *             .displayName("full_custom_module")
  *             .enablementState("ENABLED")

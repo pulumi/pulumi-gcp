@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()        
+ *         var basic = new Project("basic", ProjectArgs.builder()
  *             .projectId("m-id")
  *             .name("m-id-display")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new MonitoredProject("primary", MonitoredProjectArgs.builder()        
+ *         var primary = new MonitoredProject("primary", MonitoredProjectArgs.builder()
  *             .metricsScope("my-project-name")
  *             .name(basic.projectId())
  *             .build());

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .name("conn-test-net")
  *             .build());
  * 
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var source = new Instance("source", InstanceArgs.builder()        
+ *         var source = new Instance("source", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(vpc.id())
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var destination = new Instance("destination", InstanceArgs.builder()        
+ *         var destination = new Instance("destination", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(vpc.id())
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance_test = new ConnectivityTest("instance-test", ConnectivityTestArgs.builder()        
+ *         var instance_test = new ConnectivityTest("instance-test", ConnectivityTestArgs.builder()
  *             .name("conn-test-instances")
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .instance(source.id())
@@ -154,18 +154,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .name("connectivity-vpc")
  *             .build());
  * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
  *             .name("connectivity-vpc-subnet")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(vpc.id())
  *             .build());
  * 
- *         var source_addr = new Address("source-addr", AddressArgs.builder()        
+ *         var source_addr = new Address("source-addr", AddressArgs.builder()
  *             .name("src-addr")
  *             .subnetwork(subnet.id())
  *             .addressType("INTERNAL")
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .build());
  * 
- *         var dest_addr = new Address("dest-addr", AddressArgs.builder()        
+ *         var dest_addr = new Address("dest-addr", AddressArgs.builder()
  *             .name("dest-addr")
  *             .subnetwork(subnet.id())
  *             .addressType("INTERNAL")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .build());
  * 
- *         var address_test = new ConnectivityTest("address-test", ConnectivityTestArgs.builder()        
+ *         var address_test = new ConnectivityTest("address-test", ConnectivityTestArgs.builder()
  *             .name("conn-test-addr")
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .ipAddress(source_addr.address())

@@ -50,33 +50,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("basic-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("basic-subnetwork")
  *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var rejectedProducerProject = new Project("rejectedProducerProject", ProjectArgs.builder()        
+ *         var rejectedProducerProject = new Project("rejectedProducerProject", ProjectArgs.builder()
  *             .projectId("prj-rejected")
  *             .name("prj-rejected")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var acceptedProducerProject = new Project("acceptedProducerProject", ProjectArgs.builder()        
+ *         var acceptedProducerProject = new Project("acceptedProducerProject", ProjectArgs.builder()
  *             .projectId("prj-accepted")
  *             .name("prj-accepted")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var default_ = new NetworkAttachment("default", NetworkAttachmentArgs.builder()        
+ *         var default_ = new NetworkAttachment("default", NetworkAttachmentArgs.builder()
  *             .name("basic-network-attachment")
  *             .region("us-central1")
  *             .description("basic network attachment description")
@@ -125,19 +125,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("basic-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("basic-subnetwork")
  *             .region("us-central1")
  *             .network(default_.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()        
+ *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
  *             .name("basic-network-attachment")
  *             .region("us-central1")
  *             .description("my basic network attachment")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name("basic-instance")
  *             .zone("us-central1-a")
  *             .machineType("e2-micro")

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myService = new GenericService("myService", GenericServiceArgs.builder()        
+ *         var myService = new GenericService("myService", GenericServiceArgs.builder()
  *             .serviceId("my-service")
  *             .displayName("My Service my-service")
  *             .userLabels(Map.ofEntries(

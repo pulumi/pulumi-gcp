@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()        
+ *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()        
+ *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()        
+ *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()        
+ *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()        
+ *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()        
+ *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .serviceId(default_.serviceId())

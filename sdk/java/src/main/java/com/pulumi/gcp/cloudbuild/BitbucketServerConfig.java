@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_config = new BitbucketServerConfig("bbs-config", BitbucketServerConfigArgs.builder()        
+ *         var bbs_config = new BitbucketServerConfig("bbs-config", BitbucketServerConfigArgs.builder()
  *             .configId("bbs-config")
  *             .location("us-central1")
  *             .hostUri("https://bbs.com")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_config_with_repos = new BitbucketServerConfig("bbs-config-with-repos", BitbucketServerConfigArgs.builder()        
+ *         var bbs_config_with_repos = new BitbucketServerConfig("bbs-config-with-repos", BitbucketServerConfigArgs.builder()
  *             .configId("bbs-config")
  *             .location("us-central1")
  *             .hostUri("https://bbs.com")
@@ -164,16 +164,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .service("servicenetworking.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
  *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("private-ip-alloc")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -181,13 +181,13 @@ import javax.annotation.Nullable;
  *             .network(vpcNetwork.id())
  *             .build());
  * 
- *         var default_ = new Connection("default", ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()
  *             .network(vpcNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var bbs_config_with_peered_network = new BitbucketServerConfig("bbs-config-with-peered-network", BitbucketServerConfigArgs.builder()        
+ *         var bbs_config_with_peered_network = new BitbucketServerConfig("bbs-config-with-peered-network", BitbucketServerConfigArgs.builder()
  *             .configId("bbs-config")
  *             .location("us-central1")
  *             .hostUri("https://bbs.com")

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()        
+ *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()
  *             .name("my-template")
  *             .machineType("e2-medium")
  *             .canIpForward(false)
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()        
+ *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()
  *             .description("Demo test instance group manager")
  *             .name("my-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .name("my-disk-name")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
- *         var withDisk = new RegionPerInstanceConfig("withDisk", RegionPerInstanceConfigArgs.builder()        
+ *         var withDisk = new RegionPerInstanceConfig("withDisk", RegionPerInstanceConfigArgs.builder()
  *             .region(igm.region())
  *             .regionInstanceGroupManager(rigm.name())
  *             .name("instance-1")

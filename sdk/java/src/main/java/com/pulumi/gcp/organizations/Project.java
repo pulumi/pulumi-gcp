@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .orgId("1234567")
@@ -100,12 +100,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var department1 = new Folder("department1", FolderArgs.builder()        
+ *         var department1 = new Folder("department1", FolderArgs.builder()
  *             .displayName("Department 1")
  *             .parent("organizations/1234567")
  *             .build());
  * 
- *         var myProject_in_a_folder = new Project("myProject-in-a-folder", ProjectArgs.builder()        
+ *         var myProject_in_a_folder = new Project("myProject-in-a-folder", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .folderId(department1.name())

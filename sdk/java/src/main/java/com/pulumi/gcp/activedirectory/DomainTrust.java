@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad_domain_trust = new DomainTrust("ad-domain-trust", DomainTrustArgs.builder()        
+ *         var ad_domain_trust = new DomainTrust("ad-domain-trust", DomainTrustArgs.builder()
  *             .domain("test-managed-ad.com")
  *             .targetDomainName("example-gcp.com")
  *             .targetDnsIpAddresses("10.1.0.100")

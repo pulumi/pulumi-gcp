@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()        
+ *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()
  *             .org("test_organization")
  *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
  *                 .apiSecurityConfig(AddonsConfigAddonsConfigApiSecurityConfigArgs.builder()
@@ -115,27 +115,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigee = new Service("apigee", ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service("compute", ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .service("servicenetworking.googleapis.com")
  *             .build());
  * 
- *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
  *             .name("apigee-range")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -144,20 +144,20 @@ import javax.annotation.Nullable;
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()
  *             .network(apigeeNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var org = new Organization("org", OrganizationArgs.builder()        
+ *         var org = new Organization("org", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .billingType("EVALUATION")
  *             .build());
  * 
- *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()        
+ *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()
  *             .org(org.name())
  *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
  *                 .integrationConfig(AddonsConfigAddonsConfigIntegrationConfigArgs.builder()
