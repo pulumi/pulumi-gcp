@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_api\_iam\_binding
+// ## apigateway.ApiIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_api\_iam\_member
+// ## apigateway.ApiIamMember
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_api\_iam\_binding
+// ## apigateway.ApiIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_api\_iam\_member
+// ## apigateway.ApiIamMember
 //
 // ```go
 // package main

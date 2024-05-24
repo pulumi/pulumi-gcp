@@ -28,7 +28,7 @@ import (
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
-// ## google\_privateca\_certificate\_template\_iam\_policy
+// ## certificateauthority.CertificateTemplateIamPolicy
 //
 // ```go
 // package main
@@ -114,7 +114,7 @@ import (
 //	}
 //
 // ```
-// ## google\_privateca\_certificate\_template\_iam\_binding
+// ## certificateauthority.CertificateTemplateIamBinding
 //
 // ```go
 // package main
@@ -178,7 +178,7 @@ import (
 //	}
 //
 // ```
-// ## google\_privateca\_certificate\_template\_iam\_member
+// ## certificateauthority.CertificateTemplateIamMember
 //
 // ```go
 // package main
@@ -239,7 +239,7 @@ import (
 //
 // ```
 //
-// ## google\_privateca\_certificate\_template\_iam\_policy
+// ## certificateauthority.CertificateTemplateIamPolicy
 //
 // ```go
 // package main
@@ -325,7 +325,7 @@ import (
 //	}
 //
 // ```
-// ## google\_privateca\_certificate\_template\_iam\_binding
+// ## certificateauthority.CertificateTemplateIamBinding
 //
 // ```go
 // package main
@@ -389,7 +389,7 @@ import (
 //	}
 //
 // ```
-// ## google\_privateca\_certificate\_template\_iam\_member
+// ## certificateauthority.CertificateTemplateIamMember
 //
 // ```go
 // package main

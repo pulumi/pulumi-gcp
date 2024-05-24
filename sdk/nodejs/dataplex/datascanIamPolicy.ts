@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataplex\_datascan\_iam\_policy
+ * ## gcp.dataplex.DatascanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_datascan\_iam\_binding
+ * ## gcp.dataplex.DatascanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_datascan\_iam\_member
+ * ## gcp.dataplex.DatascanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_datascan\_iam\_policy
+ * ## gcp.dataplex.DatascanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_datascan\_iam\_binding
+ * ## gcp.dataplex.DatascanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_datascan\_iam\_member
+ * ## gcp.dataplex.DatascanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

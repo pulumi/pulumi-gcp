@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// &gt; **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_policy
+    /// ## gcp.cloudrun.IamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.CloudRun
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_binding
+    /// ## gcp.cloudrun.IamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudRun
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_member
+    /// ## gcp.cloudrun.IamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.CloudRun
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_policy
+    /// ## gcp.cloudrun.IamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.CloudRun
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_binding
+    /// ## gcp.cloudrun.IamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudRun
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_run\_service\_iam\_member
+    /// ## gcp.cloudrun.IamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

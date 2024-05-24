@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_policy
+ * ## gcp.datacatalog.TagTemplateIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_binding
+ * ## gcp.datacatalog.TagTemplateIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_member
+ * ## gcp.datacatalog.TagTemplateIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_policy
+ * ## gcp.datacatalog.TagTemplateIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_binding
+ * ## gcp.datacatalog.TagTemplateIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_member
+ * ## gcp.datacatalog.TagTemplateIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -230,7 +230,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_connection\\_iam\\_policy
+        ## bigquery.ConnectionIamPolicy
 
         ```python
         import pulumi
@@ -247,7 +247,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_binding
+        ## bigquery.ConnectionIamBinding
 
         ```python
         import pulumi
@@ -261,7 +261,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_member
+        ## bigquery.ConnectionIamMember
 
         ```python
         import pulumi
@@ -275,7 +275,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_policy
+        ## bigquery.ConnectionIamPolicy
 
         ```python
         import pulumi
@@ -292,7 +292,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_binding
+        ## bigquery.ConnectionIamBinding
 
         ```python
         import pulumi
@@ -306,7 +306,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_member
+        ## bigquery.ConnectionIamMember
 
         ```python
         import pulumi
@@ -395,7 +395,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_connection\\_iam\\_policy
+        ## bigquery.ConnectionIamPolicy
 
         ```python
         import pulumi
@@ -412,7 +412,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_binding
+        ## bigquery.ConnectionIamBinding
 
         ```python
         import pulumi
@@ -426,7 +426,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_member
+        ## bigquery.ConnectionIamMember
 
         ```python
         import pulumi
@@ -440,7 +440,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_policy
+        ## bigquery.ConnectionIamPolicy
 
         ```python
         import pulumi
@@ -457,7 +457,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_binding
+        ## bigquery.ConnectionIamBinding
 
         ```python
         import pulumi
@@ -471,7 +471,7 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_connection\\_iam\\_member
+        ## bigquery.ConnectionIamMember
 
         ```python
         import pulumi

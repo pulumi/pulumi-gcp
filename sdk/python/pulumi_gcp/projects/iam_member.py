@@ -22,7 +22,7 @@ class IAMMemberArgs:
                  condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
-        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -46,7 +46,7 @@ class IAMMemberArgs:
     @pulumi.getter
     def member(self) -> pulumi.Input[str]:
         """
-        Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
         Each entry can have one of the following values:
         * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -113,7 +113,7 @@ class _IAMMemberState:
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -165,7 +165,7 @@ class _IAMMemberState:
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[str]]:
         """
-        Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
         Each entry can have one of the following values:
         * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -231,7 +231,7 @@ class IAMMember(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -274,7 +274,7 @@ class IAMMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -303,7 +303,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -332,7 +332,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -352,7 +352,7 @@ class IAMMember(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -395,7 +395,7 @@ class IAMMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -424,7 +424,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -453,7 +453,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -503,7 +503,7 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
-        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -536,7 +536,7 @@ class IAMMember(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -579,7 +579,7 @@ class IAMMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -608,7 +608,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -637,7 +637,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -657,7 +657,7 @@ class IAMMember(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -700,7 +700,7 @@ class IAMMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -729,7 +729,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -758,7 +758,7 @@ class IAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -868,7 +868,7 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -912,7 +912,7 @@ class IAMMember(pulumi.CustomResource):
     @pulumi.getter
     def member(self) -> pulumi.Output[str]:
         """
-        Identities that will be granted the privilege in `role`. google\\_project\\_iam\\_binding expects `members` field while google\\_project\\_iam\\_member expects `member` field.
+        Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
         Each entry can have one of the following values:
         * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_dataproc\_job\_iam\_policy
+    /// ## gcp.dataproc.JobIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_job\_iam\_binding
+    /// ## gcp.dataproc.JobIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_job\_iam\_member
+    /// ## gcp.dataproc.JobIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_job\_iam\_policy
+    /// ## gcp.dataproc.JobIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_job\_iam\_binding
+    /// ## gcp.dataproc.JobIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_job\_iam\_member
+    /// ## gcp.dataproc.JobIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

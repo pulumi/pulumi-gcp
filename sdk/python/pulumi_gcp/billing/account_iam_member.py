@@ -227,7 +227,7 @@ class AccountIamMember(pulumi.CustomResource):
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_billing\\_account\\_iam\\_policy
+        ## billing.AccountIamPolicy
 
         ```python
         import pulumi
@@ -242,7 +242,7 @@ class AccountIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_billing\\_account\\_iam\\_binding
+        ## billing.AccountIamBinding
 
         ```python
         import pulumi
@@ -254,7 +254,7 @@ class AccountIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_billing\\_account\\_iam\\_member
+        ## billing.AccountIamMember
 
         ```python
         import pulumi
@@ -266,7 +266,7 @@ class AccountIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_billing\\_account\\_iam\\_policy
+        ## billing.AccountIamPolicy
 
         ```python
         import pulumi
@@ -281,7 +281,7 @@ class AccountIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_billing\\_account\\_iam\\_binding
+        ## billing.AccountIamBinding
 
         ```python
         import pulumi
@@ -293,7 +293,7 @@ class AccountIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_billing\\_account\\_iam\\_member
+        ## billing.AccountIamMember
 
         ```python
         import pulumi
@@ -365,7 +365,7 @@ class AccountIamMember(pulumi.CustomResource):
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_billing\\_account\\_iam\\_policy
+        ## billing.AccountIamPolicy
 
         ```python
         import pulumi
@@ -380,7 +380,7 @@ class AccountIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_billing\\_account\\_iam\\_binding
+        ## billing.AccountIamBinding
 
         ```python
         import pulumi
@@ -392,7 +392,7 @@ class AccountIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_billing\\_account\\_iam\\_member
+        ## billing.AccountIamMember
 
         ```python
         import pulumi
@@ -404,7 +404,7 @@ class AccountIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_billing\\_account\\_iam\\_policy
+        ## billing.AccountIamPolicy
 
         ```python
         import pulumi
@@ -419,7 +419,7 @@ class AccountIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_billing\\_account\\_iam\\_binding
+        ## billing.AccountIamBinding
 
         ```python
         import pulumi
@@ -431,7 +431,7 @@ class AccountIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_billing\\_account\\_iam\\_member
+        ## billing.AccountIamMember
 
         ```python
         import pulumi

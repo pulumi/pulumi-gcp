@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_gke\_hub\_membership\_iam\_policy
+// ## gkehub.MembershipIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_membership\_iam\_binding
+// ## gkehub.MembershipIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_membership\_iam\_member
+// ## gkehub.MembershipIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_membership\_iam\_policy
+// ## gkehub.MembershipIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_membership\_iam\_binding
+// ## gkehub.MembershipIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_membership\_iam\_member
+// ## gkehub.MembershipIamMember
 //
 // ```go
 // package main

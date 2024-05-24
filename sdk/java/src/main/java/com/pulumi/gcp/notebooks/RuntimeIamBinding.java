@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `gcp.notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_notebooks\_runtime\_iam\_policy
+ * ## gcp.notebooks.RuntimeIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_notebooks\_runtime\_iam\_binding
+ * ## gcp.notebooks.RuntimeIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_notebooks\_runtime\_iam\_member
+ * ## gcp.notebooks.RuntimeIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_notebooks\_runtime\_iam\_policy
+ * ## gcp.notebooks.RuntimeIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_notebooks\_runtime\_iam\_binding
+ * ## gcp.notebooks.RuntimeIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_notebooks\_runtime\_iam\_member
+ * ## gcp.notebooks.RuntimeIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

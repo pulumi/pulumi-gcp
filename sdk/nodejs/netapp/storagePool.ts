@@ -185,7 +185,7 @@ export class StoragePool extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
     public readonly serviceLevel!: pulumi.Output<string>;
     /**
@@ -333,7 +333,7 @@ export interface StoragePoolState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
     serviceLevel?: pulumi.Input<string>;
     /**
@@ -402,7 +402,7 @@ export interface StoragePoolArgs {
     project?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
     serviceLevel: pulumi.Input<string>;
 }

@@ -27,7 +27,7 @@ class TargetPoolArgs:
         """
         The set of arguments for constructing a TargetPool resource.
         :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
-               failover\\_ratio.
+               failover_ratio.
         :param pulumi.Input[str] description: Textual description field.
         :param pulumi.Input[float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -48,8 +48,8 @@ class TargetPoolArgs:
                region.
         :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
-               affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-               "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+               affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+               "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
@@ -77,7 +77,7 @@ class TargetPoolArgs:
     def backup_pool(self) -> Optional[pulumi.Input[str]]:
         """
         URL to the backup target pool. Must also set
-        failover\\_ratio.
+        failover_ratio.
         """
         return pulumi.get(self, "backup_pool")
 
@@ -197,8 +197,8 @@ class TargetPoolArgs:
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
         How to distribute load. Options are "NONE" (no
-        affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-        "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+        affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         return pulumi.get(self, "session_affinity")
 
@@ -224,7 +224,7 @@ class _TargetPoolState:
         """
         Input properties used for looking up and filtering TargetPool resources.
         :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
-               failover\\_ratio.
+               failover_ratio.
         :param pulumi.Input[str] description: Textual description field.
         :param pulumi.Input[float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -246,8 +246,8 @@ class _TargetPoolState:
         :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
-               affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-               "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+               affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+               "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
@@ -277,7 +277,7 @@ class _TargetPoolState:
     def backup_pool(self) -> Optional[pulumi.Input[str]]:
         """
         URL to the backup target pool. Must also set
-        failover\\_ratio.
+        failover_ratio.
         """
         return pulumi.get(self, "backup_pool")
 
@@ -409,8 +409,8 @@ class _TargetPoolState:
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
         How to distribute load. Options are "NONE" (no
-        affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-        "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+        affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         return pulumi.get(self, "session_affinity")
 
@@ -495,7 +495,7 @@ class TargetPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
-               failover\\_ratio.
+               failover_ratio.
         :param pulumi.Input[str] description: Textual description field.
         :param pulumi.Input[float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -516,8 +516,8 @@ class TargetPool(pulumi.CustomResource):
                region.
         :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
-               affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-               "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+               affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+               "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         ...
     @overload
@@ -656,7 +656,7 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
-               failover\\_ratio.
+               failover_ratio.
         :param pulumi.Input[str] description: Textual description field.
         :param pulumi.Input[float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -678,8 +678,8 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
-               affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-               "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+               affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+               "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -703,7 +703,7 @@ class TargetPool(pulumi.CustomResource):
     def backup_pool(self) -> pulumi.Output[Optional[str]]:
         """
         URL to the backup target pool. Must also set
-        failover\\_ratio.
+        failover_ratio.
         """
         return pulumi.get(self, "backup_pool")
 
@@ -795,8 +795,8 @@ class TargetPool(pulumi.CustomResource):
     def session_affinity(self) -> pulumi.Output[Optional[str]]:
         """
         How to distribute load. Options are "NONE" (no
-        affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
-        "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
+        affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         """
         return pulumi.get(self, "session_affinity")
 

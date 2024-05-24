@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.DataPlex
         /// Retrieves the current IAM policy data for lake
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Retrieves the current IAM policy data for lake
-        /// 
         /// 
         /// 
         /// ## example

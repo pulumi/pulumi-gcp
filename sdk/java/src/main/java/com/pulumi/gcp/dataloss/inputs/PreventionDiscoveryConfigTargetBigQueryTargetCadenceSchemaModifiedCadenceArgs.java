@@ -17,7 +17,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
     public static final PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs Empty = new PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs();
 
     /**
-     * How frequently profiles may be updated when schemas are modified. Default to monthly
+     * Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
     private @Nullable Output<String> frequency;
 
     /**
-     * @return How frequently profiles may be updated when schemas are modified. Default to monthly
+     * @return Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -34,16 +34,16 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
     }
 
     /**
-     * The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-     * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+     * The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+     * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
      * 
      */
     @Import(name="types")
     private @Nullable Output<List<String>> types;
 
     /**
-     * @return The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-     * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+     * @return The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+     * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
      * 
      */
     public Optional<Output<List<String>>> types() {
@@ -76,7 +76,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         }
 
         /**
-         * @param frequency How frequently profiles may be updated when schemas are modified. Default to monthly
+         * @param frequency Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         }
 
         /**
-         * @param frequency How frequently profiles may be updated when schemas are modified. Default to monthly
+         * @param frequency Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          * 
          * @return builder
@@ -99,8 +99,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         }
 
         /**
-         * @param types The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-         * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+         * @param types The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+         * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          * 
          * @return builder
          * 
@@ -111,8 +111,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         }
 
         /**
-         * @param types The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-         * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+         * @param types The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+         * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          * 
          * @return builder
          * 
@@ -122,8 +122,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         }
 
         /**
-         * @param types The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-         * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+         * @param types The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+         * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          * 
          * @return builder
          * 

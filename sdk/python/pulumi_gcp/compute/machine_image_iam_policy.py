@@ -206,7 +206,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_binding
+        ## compute.MachineImageIamBinding
 
         ```python
         import pulumi
@@ -236,7 +236,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_member
+        ## compute.MachineImageIamMember
 
         ```python
         import pulumi
@@ -303,7 +303,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_binding
+        ## compute.MachineImageIamBinding
 
         ```python
         import pulumi
@@ -333,7 +333,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_member
+        ## compute.MachineImageIamMember
 
         ```python
         import pulumi
@@ -466,7 +466,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_binding
+        ## compute.MachineImageIamBinding
 
         ```python
         import pulumi
@@ -496,7 +496,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_member
+        ## compute.MachineImageIamMember
 
         ```python
         import pulumi
@@ -563,7 +563,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_binding
+        ## compute.MachineImageIamBinding
 
         ```python
         import pulumi
@@ -593,7 +593,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_machine\\_image\\_iam\\_member
+        ## compute.MachineImageIamMember
 
         ```python
         import pulumi

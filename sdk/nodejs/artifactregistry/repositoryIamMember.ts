@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_artifact\_registry\_repository\_iam\_policy
+ * ## gcp.artifactregistry.RepositoryIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_artifact\_registry\_repository\_iam\_binding
+ * ## gcp.artifactregistry.RepositoryIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_artifact\_registry\_repository\_iam\_member
+ * ## gcp.artifactregistry.RepositoryIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_artifact\_registry\_repository\_iam\_policy
+ * ## gcp.artifactregistry.RepositoryIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_artifact\_registry\_repository\_iam\_binding
+ * ## gcp.artifactregistry.RepositoryIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_artifact\_registry\_repository\_iam\_member
+ * ## gcp.artifactregistry.RepositoryIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

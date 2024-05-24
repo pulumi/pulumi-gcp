@@ -160,7 +160,7 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -203,7 +203,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -232,7 +232,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -261,7 +261,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -281,7 +281,7 @@ class IAMPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -324,7 +324,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -353,7 +353,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -382,7 +382,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -462,7 +462,7 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -505,7 +505,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -534,7 +534,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -563,7 +563,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi
@@ -583,7 +583,7 @@ class IAMPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_project\\_iam\\_policy
+        ## projects.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
@@ -626,7 +626,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_project\\_iam\\_binding
+        ## projects.IAMBinding
 
         ```python
         import pulumi
@@ -655,7 +655,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_member
+        ## projects.IAMMember
 
         ```python
         import pulumi
@@ -684,7 +684,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_project\\_iam\\_audit\\_config
+        ## projects.IAMAuditConfig
 
         ```python
         import pulumi

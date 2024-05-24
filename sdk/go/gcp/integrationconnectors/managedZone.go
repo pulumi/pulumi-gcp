@@ -43,8 +43,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			targetProject, err := organizations.NewProject(ctx, "target_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_75092"),
-//				Name:           pulumi.String("tf-test_2605"),
+//				ProjectId:      pulumi.String("tf-test_2605"),
+//				Name:           pulumi.String("tf-test_34535"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			})
@@ -86,8 +86,8 @@ import (
 //				return err
 //			}
 //			zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
-//				Name:       pulumi.String("tf-test-dns_34535"),
-//				DnsName:    pulumi.String("private_22375.example.com."),
+//				Name:       pulumi.String("tf-test-dns_22375"),
+//				DnsName:    pulumi.String("private_29439.example.com."),
 //				Visibility: pulumi.String("private"),
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{

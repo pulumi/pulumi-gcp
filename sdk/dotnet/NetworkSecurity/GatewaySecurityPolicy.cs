@@ -124,16 +124,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         },
     ///     });
     /// 
-    ///     var nsSa = new Gcp.Projects.ServiceIdentity("ns_sa", new()
-    ///     {
-    ///         Service = "networksecurity.googleapis.com",
-    ///     });
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var tlsInspectionPermission = new Gcp.CertificateAuthority.CaPoolIamMember("tls_inspection_permission", new()
     ///     {
     ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
-    ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-networksecurity.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("default", new()

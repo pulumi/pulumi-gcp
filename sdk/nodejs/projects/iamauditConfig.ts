@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
  *
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -132,7 +132,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -153,7 +153,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -202,7 +202,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -233,7 +233,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -264,7 +264,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -353,7 +353,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -413,7 +413,7 @@ export interface IAMAuditConfigState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service?: pulumi.Input<string>;
 }
@@ -432,7 +432,7 @@ export interface IAMAuditConfigArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service: pulumi.Input<string>;
 }

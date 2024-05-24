@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+// ## healthcare.Hl7StoreIamPolicy
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+// ## healthcare.Hl7StoreIamBinding
 //
 // ```go
 // package main
@@ -93,7 +93,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+// ## healthcare.Hl7StoreIamMember
 //
 // ```go
 // package main
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+// ## healthcare.Hl7StoreIamPolicy
 //
 // ```go
 // package main
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+// ## healthcare.Hl7StoreIamBinding
 //
 // ```go
 // package main
@@ -192,7 +192,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+// ## healthcare.Hl7StoreIamMember
 //
 // ```go
 // package main

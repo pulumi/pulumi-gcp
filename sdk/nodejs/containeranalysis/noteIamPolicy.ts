@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `gcp.containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_container\_analysis\_note\_iam\_policy
+ * ## gcp.containeranalysis.NoteIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_container\_analysis\_note\_iam\_binding
+ * ## gcp.containeranalysis.NoteIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_container\_analysis\_note\_iam\_member
+ * ## gcp.containeranalysis.NoteIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_container\_analysis\_note\_iam\_policy
+ * ## gcp.containeranalysis.NoteIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_container\_analysis\_note\_iam\_binding
+ * ## gcp.containeranalysis.NoteIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_container\_analysis\_note\_iam\_member
+ * ## gcp.containeranalysis.NoteIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

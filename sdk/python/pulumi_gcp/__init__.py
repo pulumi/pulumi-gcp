@@ -2478,6 +2478,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/interconnect",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/interconnect:Interconnect": "Interconnect"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/interconnectAttachment",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -6066,6 +6074,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/httpRoute:HttpRoute": "HttpRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/lbTrafficExtension",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/lbTrafficExtension:LbTrafficExtension": "LbTrafficExtension"
   }
  },
  {

@@ -79,17 +79,132 @@ import * as utilities from "../utilities";
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
  * });
- * const nsSa = new gcp.projects.ServiceIdentity("ns_sa", {service: "networksecurity.googleapis.com"});
+ * const project = gcp.organizations.getProject({});
  * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission", {
  *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
- *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com`),
  * });
  * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("default", {
  *     name: "my-tls-inspection-policy",
  *     location: "us-central1",
  *     caPool: _default.id,
  *     excludePublicCaSet: false,
+ * });
+ * ```
+ * ### Network Security Tls Inspection Policy Custom
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     name: "my-basic-ca-pool",
+ *     location: "us-central1",
+ *     tier: "DEVOPS",
+ *     publishingOptions: {
+ *         publishCaCert: false,
+ *         publishCrl: false,
+ *     },
+ *     issuancePolicy: {
+ *         maximumLifetime: "1209600s",
+ *         baselineValues: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {},
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     pool: _default.name,
+ *     certificateAuthorityId: "my-basic-certificate-authority",
+ *     location: "us-central1",
+ *     lifetime: "86400s",
+ *     type: "SELF_SIGNED",
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "Test LLC",
+ *                 commonName: "my-ca",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const nsSa = new gcp.projects.ServiceIdentity("ns_sa", {service: "networksecurity.googleapis.com"});
+ * const defaultCaPoolIamMember = new gcp.certificateauthority.CaPoolIamMember("default", {
+ *     caPool: _default.id,
+ *     role: "roles/privateca.certificateManager",
+ *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ * });
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "my-trust-config",
+ *     description: "sample trust config description",
+ *     location: "us-central1",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *     }],
+ * });
+ * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("default", {
+ *     name: "my-tls-inspection-policy",
+ *     location: "us-central1",
+ *     caPool: _default.id,
+ *     excludePublicCaSet: false,
+ *     minTlsVersion: "TLS_1_0",
+ *     trustConfig: defaultTrustConfig.id,
+ *     tlsFeatureProfile: "PROFILE_CUSTOM",
+ *     customTlsFeatures: [
+ *         "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+ *         "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+ *         "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+ *         "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+ *         "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+ *         "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+ *         "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+ *         "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+ *         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+ *         "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+ *         "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+ *         "TLS_RSA_WITH_AES_128_CBC_SHA",
+ *         "TLS_RSA_WITH_AES_128_GCM_SHA256",
+ *         "TLS_RSA_WITH_AES_256_CBC_SHA",
+ *         "TLS_RSA_WITH_AES_256_GCM_SHA384",
+ *     ],
  * });
  * ```
  *
@@ -154,6 +269,10 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly customTlsFeatures!: pulumi.Output<string[] | undefined>;
+    /**
      * Free-text description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -166,6 +285,11 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
+     * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     */
+    public readonly minTlsVersion!: pulumi.Output<string | undefined>;
+    /**
      * Short name of the TlsInspectionPolicy resource to be created.
      *
      *
@@ -177,6 +301,15 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     */
+    public readonly tlsFeatureProfile!: pulumi.Output<string | undefined>;
+    /**
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly trustConfig!: pulumi.Output<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -197,11 +330,15 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
             const state = argsOrState as TlsInspectionPolicyState | undefined;
             resourceInputs["caPool"] = state ? state.caPool : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customTlsFeatures"] = state ? state.customTlsFeatures : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["excludePublicCaSet"] = state ? state.excludePublicCaSet : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["minTlsVersion"] = state ? state.minTlsVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tlsFeatureProfile"] = state ? state.tlsFeatureProfile : undefined;
+            resourceInputs["trustConfig"] = state ? state.trustConfig : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as TlsInspectionPolicyArgs | undefined;
@@ -209,11 +346,15 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'caPool'");
             }
             resourceInputs["caPool"] = args ? args.caPool : undefined;
+            resourceInputs["customTlsFeatures"] = args ? args.customTlsFeatures : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["excludePublicCaSet"] = args ? args.excludePublicCaSet : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tlsFeatureProfile"] = args ? args.tlsFeatureProfile : undefined;
+            resourceInputs["trustConfig"] = args ? args.trustConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -235,6 +376,10 @@ export interface TlsInspectionPolicyState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     */
+    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Free-text description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -247,6 +392,11 @@ export interface TlsInspectionPolicyState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     */
+    minTlsVersion?: pulumi.Input<string>;
+    /**
      * Short name of the TlsInspectionPolicy resource to be created.
      *
      *
@@ -258,6 +408,15 @@ export interface TlsInspectionPolicyState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     */
+    tlsFeatureProfile?: pulumi.Input<string>;
+    /**
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     */
+    trustConfig?: pulumi.Input<string>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -273,6 +432,10 @@ export interface TlsInspectionPolicyArgs {
      */
     caPool: pulumi.Input<string>;
     /**
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     */
+    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Free-text description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -285,6 +448,11 @@ export interface TlsInspectionPolicyArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     */
+    minTlsVersion?: pulumi.Input<string>;
+    /**
      * Short name of the TlsInspectionPolicy resource to be created.
      *
      *
@@ -296,4 +464,13 @@ export interface TlsInspectionPolicyArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     */
+    tlsFeatureProfile?: pulumi.Input<string>;
+    /**
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     */
+    trustConfig?: pulumi.Input<string>;
 }

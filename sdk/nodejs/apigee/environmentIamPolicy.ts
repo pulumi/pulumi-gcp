@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `gcp.apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_apigee\_environment\_iam\_policy
+ * ## gcp.apigee.EnvironmentIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_apigee\_environment\_iam\_binding
+ * ## gcp.apigee.EnvironmentIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_apigee\_environment\_iam\_member
+ * ## gcp.apigee.EnvironmentIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_apigee\_environment\_iam\_policy
+ * ## gcp.apigee.EnvironmentIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_apigee\_environment\_iam\_binding
+ * ## gcp.apigee.EnvironmentIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_apigee\_environment\_iam\_member
+ * ## gcp.apigee.EnvironmentIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_dns\_managed\_zone\_iam\_policy
+ * ## gcp.dns.DnsManagedZoneIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dns\_managed\_zone\_iam\_binding
+ * ## gcp.dns.DnsManagedZoneIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dns\_managed\_zone\_iam\_member
+ * ## gcp.dns.DnsManagedZoneIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dns\_managed\_zone\_iam\_policy
+ * ## gcp.dns.DnsManagedZoneIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dns\_managed\_zone\_iam\_binding
+ * ## gcp.dns.DnsManagedZoneIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dns\_managed\_zone\_iam\_member
+ * ## gcp.dns.DnsManagedZoneIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

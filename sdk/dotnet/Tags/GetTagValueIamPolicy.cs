@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Tags
         /// Retrieves the current IAM policy data for tagvalue
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Tags
 
         /// <summary>
         /// Retrieves the current IAM policy data for tagvalue
-        /// 
         /// 
         /// 
         /// ## example

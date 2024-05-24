@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Folder
     /// &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
     ///    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
     /// 
-    /// ## google\_folder\_iam\_policy
+    /// ## gcp.folder.IAMPolicy
     /// 
     /// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
     ///    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_binding
+    /// ## gcp.folder.IAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_member
+    /// ## gcp.folder.IAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_audit\_config
+    /// ## gcp.folder.IamAuditConfig
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -238,7 +238,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_policy
+    /// ## gcp.folder.IAMPolicy
     /// 
     /// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
     ///    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_binding
+    /// ## gcp.folder.IAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -372,7 +372,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_member
+    /// ## gcp.folder.IAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -418,7 +418,7 @@ namespace Pulumi.Gcp.Folder
     /// });
     /// ```
     /// 
-    /// ## google\_folder\_iam\_audit\_config
+    /// ## gcp.folder.IamAuditConfig
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

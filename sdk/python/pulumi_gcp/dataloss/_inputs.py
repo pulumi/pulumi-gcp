@@ -233,6 +233,16 @@ __all__ = [
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs',
     'PreventionInspectTemplateInspectConfigArgs',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeArgs',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs',
@@ -11778,13 +11788,18 @@ class PreventionDiscoveryConfigOrgConfigLocationArgs:
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetArgs:
     def __init__(__self__, *,
-                 big_query_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs']] = None):
+                 big_query_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs']] = None,
+                 cloud_sql_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs'] big_query_target: BigQuery target for Discovery. The first target to match a table will be the one applied.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs'] cloud_sql_target: Cloud SQL target for Discovery. The first target to match a table will be the one applied.
                Structure is documented below.
         """
         if big_query_target is not None:
             pulumi.set(__self__, "big_query_target", big_query_target)
+        if cloud_sql_target is not None:
+            pulumi.set(__self__, "cloud_sql_target", cloud_sql_target)
 
     @property
     @pulumi.getter(name="bigQueryTarget")
@@ -11798,6 +11813,19 @@ class PreventionDiscoveryConfigTargetArgs:
     @big_query_target.setter
     def big_query_target(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs']]):
         pulumi.set(self, "big_query_target", value)
+
+    @property
+    @pulumi.getter(name="cloudSqlTarget")
+    def cloud_sql_target(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']]:
+        """
+        Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_sql_target")
+
+    @cloud_sql_target.setter
+    def cloud_sql_target(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']]):
+        pulumi.set(self, "cloud_sql_target", value)
 
 
 @pulumi.input_type
@@ -11926,10 +11954,10 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceA
                  frequency: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] frequency: How frequently profiles may be updated when schemas are modified. Default to monthly
+        :param pulumi.Input[str] frequency: Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
                Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-               Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+               Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
         """
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
@@ -11940,7 +11968,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceA
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        How frequently profiles may be updated when schemas are modified. Default to monthly
+        Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
         Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         """
         return pulumi.get(self, "frequency")
@@ -11953,8 +11981,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceA
     @pulumi.getter
     def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-        Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+        The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+        Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
         """
         return pulumi.get(self, "types")
 
@@ -12019,8 +12047,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
                Structure is documented below.
         :param pulumi.Input[str] type_collection: Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
                Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
-        :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs'] types: Restrict discovery to specific table type
-               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs'] types: Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+               Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
         """
         if created_after is not None:
             pulumi.set(__self__, "created_after", created_after)
@@ -12073,8 +12101,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
     @pulumi.getter
     def types(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs']]:
         """
-        Restrict discovery to specific table type
-        Structure is documented below.
+        Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+        Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
         """
         return pulumi.get(self, "types")
 
@@ -12230,7 +12258,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArg
     def __init__(__self__, *,
                  patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]] patterns: A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]] patterns: A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
                Structure is documented below.
         """
         if patterns is not None:
@@ -12240,7 +12268,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArg
     @pulumi.getter
     def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]]]:
         """
-        A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
         Structure is documented below.
         """
         return pulumi.get(self, "patterns")
@@ -12303,6 +12331,385 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPat
     @table_id_regex.setter
     def table_id_regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_id_regex", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs'],
+                 conditions: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs']] = None,
+                 disabled: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs']] = None,
+                 generation_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs'] filter: Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs'] conditions: In addition to matching the filter, these conditions must be true before a profile is generated.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs'] disabled: Disable profiling for database resources that match this filter.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs'] generation_cadence: How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if generation_cadence is not None:
+            pulumi.set(__self__, "generation_cadence", generation_cadence)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs']:
+        """
+        Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs']):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs']]:
+        """
+        In addition to matching the filter, these conditions must be true before a profile is generated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs']]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs']]:
+        """
+        Disable profiling for database resources that match this filter.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs']]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="generationCadence")
+    def generation_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs']]:
+        """
+        How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_cadence")
+
+    @generation_cadence.setter
+    def generation_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs']]):
+        pulumi.set(self, "generation_cadence", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs:
+    def __init__(__self__, *,
+                 database_engines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] database_engines: Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
+               Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+               Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
+        """
+        if database_engines is not None:
+            pulumi.set(__self__, "database_engines", database_engines)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter(name="databaseEngines")
+    def database_engines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
+        Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
+        """
+        return pulumi.get(self, "database_engines")
+
+    @database_engines.setter
+    def database_engines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "database_engines", value)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+        Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "types", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
+    def __init__(__self__, *,
+                 collection: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs']] = None,
+                 others: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs'] collection: A specific set of database resources for this filter to apply to.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs'] others: Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        """
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
+        if others is not None:
+            pulumi.set(__self__, "others", others)
+
+    @property
+    @pulumi.getter
+    def collection(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs']]:
+        """
+        A specific set of database resources for this filter to apply to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collection")
+
+    @collection.setter
+    def collection(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs']]):
+        pulumi.set(self, "collection", value)
+
+    @property
+    @pulumi.getter
+    def others(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']]:
+        """
+        Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        """
+        return pulumi.get(self, "others")
+
+    @others.setter
+    def others(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']]):
+        pulumi.set(self, "others", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
+    def __init__(__self__, *,
+                 include_regexes: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs'] include_regexes: A collection of regular expressions to match a database resource against.
+               Structure is documented below.
+        """
+        if include_regexes is not None:
+            pulumi.set(__self__, "include_regexes", include_regexes)
+
+    @property
+    @pulumi.getter(name="includeRegexes")
+    def include_regexes(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']]:
+        """
+        A collection of regular expressions to match a database resource against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_regexes")
+
+    @include_regexes.setter
+    def include_regexes(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']]):
+        pulumi.set(self, "include_regexes", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs:
+    def __init__(__self__, *,
+                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]] patterns: A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+               Structure is documented below.
+        """
+        if patterns is not None:
+            pulumi.set(__self__, "patterns", patterns)
+
+    @property
+    @pulumi.getter
+    def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]]:
+        """
+        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "patterns")
+
+    @patterns.setter
+    def patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]]):
+        pulumi.set(self, "patterns", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs:
+    def __init__(__self__, *,
+                 database_regex: Optional[pulumi.Input[str]] = None,
+                 database_resource_name_regex: Optional[pulumi.Input[str]] = None,
+                 instance_regex: Optional[pulumi.Input[str]] = None,
+                 project_id_regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] database_regex: Regex to test the database name against. If empty, all databases match.
+        :param pulumi.Input[str] database_resource_name_regex: Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
+        :param pulumi.Input[str] instance_regex: Regex to test the instance name against. If empty, all instances match.
+        :param pulumi.Input[str] project_id_regex: For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        """
+        if database_regex is not None:
+            pulumi.set(__self__, "database_regex", database_regex)
+        if database_resource_name_regex is not None:
+            pulumi.set(__self__, "database_resource_name_regex", database_resource_name_regex)
+        if instance_regex is not None:
+            pulumi.set(__self__, "instance_regex", instance_regex)
+        if project_id_regex is not None:
+            pulumi.set(__self__, "project_id_regex", project_id_regex)
+
+    @property
+    @pulumi.getter(name="databaseRegex")
+    def database_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex to test the database name against. If empty, all databases match.
+        """
+        return pulumi.get(self, "database_regex")
+
+    @database_regex.setter
+    def database_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_regex", value)
+
+    @property
+    @pulumi.getter(name="databaseResourceNameRegex")
+    def database_resource_name_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
+        """
+        return pulumi.get(self, "database_resource_name_regex")
+
+    @database_resource_name_regex.setter
+    def database_resource_name_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_resource_name_regex", value)
+
+    @property
+    @pulumi.getter(name="instanceRegex")
+    def instance_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex to test the instance name against. If empty, all instances match.
+        """
+        return pulumi.get(self, "instance_regex")
+
+    @instance_regex.setter
+    def instance_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_regex", value)
+
+    @property
+    @pulumi.getter(name="projectIdRegex")
+    def project_id_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        """
+        return pulumi.get(self, "project_id_regex")
+
+    @project_id_regex.setter
+    def project_id_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id_regex", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
+    def __init__(__self__, *,
+                 refresh_frequency: Optional[pulumi.Input[str]] = None,
+                 schema_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']] = None):
+        """
+        :param pulumi.Input[str] refresh_frequency: Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
+               Structure is documented below.
+        """
+        if refresh_frequency is not None:
+            pulumi.set(__self__, "refresh_frequency", refresh_frequency)
+        if schema_modified_cadence is not None:
+            pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
+
+    @property
+    @pulumi.getter(name="refreshFrequency")
+    def refresh_frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "refresh_frequency")
+
+    @refresh_frequency.setter
+    def refresh_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "refresh_frequency", value)
+
+    @property
+    @pulumi.getter(name="schemaModifiedCadence")
+    def schema_modified_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']]:
+        """
+        Governs when to update data profiles when a schema is modified
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_modified_cadence")
+
+    @schema_modified_cadence.setter
+    def schema_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']]):
+        pulumi.set(self, "schema_modified_cadence", value)
+
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs:
+    def __init__(__self__, *,
+                 frequency: Optional[pulumi.Input[str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] frequency: Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+               Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+        Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "types", value)
 
 
 @pulumi.input_type

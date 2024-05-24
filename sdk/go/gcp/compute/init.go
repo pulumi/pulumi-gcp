@@ -121,6 +121,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceSettings{}
 	case "gcp:compute/instanceTemplate:InstanceTemplate":
 		r = &InstanceTemplate{}
+	case "gcp:compute/interconnect:Interconnect":
+		r = &Interconnect{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
 		r = &InterconnectAttachment{}
 	case "gcp:compute/machineImage:MachineImage":
@@ -564,6 +566,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/instanceTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/interconnect",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

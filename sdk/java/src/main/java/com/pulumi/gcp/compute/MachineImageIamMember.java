@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_compute\_machine\_image\_iam\_binding
+ * ## gcp.compute.MachineImageIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_compute\_machine\_image\_iam\_member
+ * ## gcp.compute.MachineImageIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -386,7 +386,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_compute\_machine\_image\_iam\_binding
+ * ## gcp.compute.MachineImageIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -467,7 +467,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_compute\_machine\_image\_iam\_member
+ * ## gcp.compute.MachineImageIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

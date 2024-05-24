@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_pubsub\_topic\_iam\_policy
+ * ## gcp.pubsub.TopicIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_topic\_iam\_binding
+ * ## gcp.pubsub.TopicIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_topic\_iam\_member
+ * ## gcp.pubsub.TopicIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_topic\_iam\_policy
+ * ## gcp.pubsub.TopicIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_topic\_iam\_binding
+ * ## gcp.pubsub.TopicIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_topic\_iam\_member
+ * ## gcp.pubsub.TopicIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -326,7 +326,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
+        ## apigateway.GatewayIamBinding
 
         ```python
         import pulumi
@@ -340,7 +340,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
+        ## apigateway.GatewayIamMember
 
         ```python
         import pulumi
@@ -371,7 +371,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
+        ## apigateway.GatewayIamBinding
 
         ```python
         import pulumi
@@ -385,7 +385,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
+        ## apigateway.GatewayIamMember
 
         ```python
         import pulumi
@@ -498,7 +498,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
+        ## apigateway.GatewayIamBinding
 
         ```python
         import pulumi
@@ -512,7 +512,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
+        ## apigateway.GatewayIamMember
 
         ```python
         import pulumi
@@ -543,7 +543,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
+        ## apigateway.GatewayIamBinding
 
         ```python
         import pulumi
@@ -557,7 +557,7 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
+        ## apigateway.GatewayIamMember
 
         ```python
         import pulumi

@@ -297,7 +297,7 @@ class LakeIamMember(pulumi.CustomResource):
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
+        ## dataplex.LakeIamPolicy
 
         ```python
         import pulumi
@@ -314,7 +314,7 @@ class LakeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_binding
+        ## dataplex.LakeIamBinding
 
         ```python
         import pulumi
@@ -328,7 +328,7 @@ class LakeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_member
+        ## dataplex.LakeIamMember
 
         ```python
         import pulumi
@@ -342,7 +342,7 @@ class LakeIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
+        ## dataplex.LakeIamPolicy
 
         ```python
         import pulumi
@@ -359,7 +359,7 @@ class LakeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_binding
+        ## dataplex.LakeIamBinding
 
         ```python
         import pulumi
@@ -373,7 +373,7 @@ class LakeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_member
+        ## dataplex.LakeIamMember
 
         ```python
         import pulumi
@@ -466,7 +466,7 @@ class LakeIamMember(pulumi.CustomResource):
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
+        ## dataplex.LakeIamPolicy
 
         ```python
         import pulumi
@@ -483,7 +483,7 @@ class LakeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_binding
+        ## dataplex.LakeIamBinding
 
         ```python
         import pulumi
@@ -497,7 +497,7 @@ class LakeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_member
+        ## dataplex.LakeIamMember
 
         ```python
         import pulumi
@@ -511,7 +511,7 @@ class LakeIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
+        ## dataplex.LakeIamPolicy
 
         ```python
         import pulumi
@@ -528,7 +528,7 @@ class LakeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_binding
+        ## dataplex.LakeIamBinding
 
         ```python
         import pulumi
@@ -542,7 +542,7 @@ class LakeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_lake\\_iam\\_member
+        ## dataplex.LakeIamMember
 
         ```python
         import pulumi

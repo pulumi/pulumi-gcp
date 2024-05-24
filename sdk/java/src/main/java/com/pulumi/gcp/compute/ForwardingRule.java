@@ -1164,7 +1164,7 @@ import javax.annotation.Nullable;
  *             .portRange("80")
  *             .target(defaultRegionTargetHttpProxy.id())
  *             .network(defaultNetwork.id())
- *             .ipAddress(defaultAddress.id())
+ *             .ipAddress(defaultAddress.address())
  *             .networkTier("STANDARD")
  *             .build());
  * 
@@ -1546,7 +1546,7 @@ import javax.annotation.Nullable;
  *         var steering = new ForwardingRule("steering", ForwardingRuleArgs.builder()
  *             .name("steering-rule")
  *             .region("us-central1")
- *             .ipAddress(basic.selfLink())
+ *             .ipAddress(basic.address())
  *             .backendService(external.selfLink())
  *             .loadBalancingScheme("EXTERNAL")
  *             .sourceIpRanges(            
@@ -1557,7 +1557,7 @@ import javax.annotation.Nullable;
  *         var externalForwardingRule = new ForwardingRule("externalForwardingRule", ForwardingRuleArgs.builder()
  *             .name("external-forwarding-rule")
  *             .region("us-central1")
- *             .ipAddress(basic.selfLink())
+ *             .ipAddress(basic.address())
  *             .backendService(external.selfLink())
  *             .loadBalancingScheme("EXTERNAL")
  *             .build());

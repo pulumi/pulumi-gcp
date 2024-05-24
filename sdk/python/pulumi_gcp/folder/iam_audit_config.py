@@ -23,7 +23,7 @@ class IamAuditConfigArgs:
         The set of arguments for constructing a IamAuditConfig resource.
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
         pulumi.set(__self__, "folder", folder)
@@ -57,7 +57,7 @@ class IamAuditConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -78,7 +78,7 @@ class _IamAuditConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         if audit_log_configs is not None:
             pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -129,7 +129,7 @@ class _IamAuditConfigState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -162,7 +162,7 @@ class IamAuditConfig(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -205,7 +205,7 @@ class IamAuditConfig(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -263,7 +263,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -283,7 +283,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -326,7 +326,7 @@ class IamAuditConfig(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -355,7 +355,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -384,7 +384,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -434,7 +434,7 @@ class IamAuditConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         ...
     @overload
@@ -457,7 +457,7 @@ class IamAuditConfig(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -500,7 +500,7 @@ class IamAuditConfig(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -529,7 +529,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -558,7 +558,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -578,7 +578,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -621,7 +621,7 @@ class IamAuditConfig(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -650,7 +650,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -679,7 +679,7 @@ class IamAuditConfig(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -786,7 +786,7 @@ class IamAuditConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -826,7 +826,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 

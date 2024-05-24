@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `gcp.dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+ * ## gcp.dataproc.AutoscalingPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+ * ## gcp.dataproc.AutoscalingPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_member
+ * ## gcp.dataproc.AutoscalingPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+ * ## gcp.dataproc.AutoscalingPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+ * ## gcp.dataproc.AutoscalingPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_autoscaling\_policy\_iam\_member
+ * ## gcp.dataproc.AutoscalingPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

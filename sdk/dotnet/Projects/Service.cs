@@ -10,20 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows management of a single API service for a Google Cloud Platform project.
-    /// 
-    /// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
-    /// or run `gcloud services list --available`.
-    /// 
-    /// This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
-    /// to use.
-    /// 
-    /// To get more information about `gcp.projects.Service`, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
-    /// * How-to Guides
-    ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -38,7 +24,7 @@ namespace Pulumi.Gcp.Projects
     ///     {
     ///         Project = "your-project-id",
     ///         ServiceName = "iam.googleapis.com",
-    ///         DisableDependentServices = true,
+    ///         DisableOnDestroy = false,
     ///     });
     /// 
     /// });
@@ -78,9 +64,6 @@ namespace Pulumi.Gcp.Projects
         [Output("disableDependentServices")]
         public Output<bool?> DisableDependentServices { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        /// </summary>
         [Output("disableOnDestroy")]
         public Output<bool?> DisableOnDestroy { get; private set; } = null!;
 
@@ -152,9 +135,6 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
-        /// <summary>
-        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 
@@ -188,9 +168,6 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
-        /// <summary>
-        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 

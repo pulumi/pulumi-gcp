@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
  * 
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -291,7 +291,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -336,7 +336,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -519,7 +519,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -599,7 +599,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

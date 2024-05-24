@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_kms\_key\_ring\_iam\_policy
+ * ## gcp.kms.KeyRingIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_kms\_key\_ring\_iam\_binding
+ * ## gcp.kms.KeyRingIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_kms\_key\_ring\_iam\_member
+ * ## gcp.kms.KeyRingIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -128,7 +128,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_kms\_key\_ring\_iam\_policy
+ * ## gcp.kms.KeyRingIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -177,7 +177,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_kms\_key\_ring\_iam\_binding
+ * ## gcp.kms.KeyRingIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -208,7 +208,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_kms\_key\_ring\_iam\_member
+ * ## gcp.kms.KeyRingIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

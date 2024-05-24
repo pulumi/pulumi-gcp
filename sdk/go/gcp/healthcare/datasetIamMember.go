@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_healthcare\_dataset\_iam\_policy
+// ## healthcare.DatasetIamPolicy
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dataset\_iam\_binding
+// ## healthcare.DatasetIamBinding
 //
 // ```go
 // package main
@@ -93,7 +93,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dataset\_iam\_member
+// ## healthcare.DatasetIamMember
 //
 // ```go
 // package main
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dataset\_iam\_policy
+// ## healthcare.DatasetIamPolicy
 //
 // ```go
 // package main
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dataset\_iam\_binding
+// ## healthcare.DatasetIamBinding
 //
 // ```go
 // package main
@@ -192,7 +192,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dataset\_iam\_member
+// ## healthcare.DatasetIamMember
 //
 // ```go
 // package main

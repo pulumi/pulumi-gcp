@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `cloudrunv2.JobIamBinding` resources **can be** used in conjunction with `cloudrunv2.JobIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_policy
+// ## cloudrunv2.JobIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_binding
+// ## cloudrunv2.JobIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_member
+// ## cloudrunv2.JobIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_policy
+// ## cloudrunv2.JobIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_binding
+// ## cloudrunv2.JobIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_v2\_job\_iam\_member
+// ## cloudrunv2.JobIamMember
 //
 // ```go
 // package main

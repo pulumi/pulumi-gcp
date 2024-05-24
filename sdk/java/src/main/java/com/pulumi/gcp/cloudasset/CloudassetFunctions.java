@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudasset.inputs.GetResourcesSearchAllArgs;
 import com.pulumi.gcp.cloudasset.inputs.GetResourcesSearchAllPlainArgs;
+import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesPlainArgs;
 import com.pulumi.gcp.cloudasset.outputs.GetResourcesSearchAllInvokeResult;
+import com.pulumi.gcp.cloudasset.outputs.GetSearchAllResourcesInvokeResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudassetFunctions {
@@ -477,5 +480,485 @@ public final class CloudassetFunctions {
      */
     public static CompletableFuture<GetResourcesSearchAllInvokeResult> getResourcesSearchAllPlain(GetResourcesSearchAllPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", TypeShape.of(GetResourcesSearchAllInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudBuildProjects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectServiceAccounts = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSearchAllResourcesInvokeResult> getSearchAllResources(GetSearchAllResourcesArgs args) {
+        return getSearchAllResources(args, InvokeOptions.Empty);
+    }
+    /**
+     * Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudBuildProjects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectServiceAccounts = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSearchAllResourcesInvokeResult> getSearchAllResourcesPlain(GetSearchAllResourcesPlainArgs args) {
+        return getSearchAllResourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudBuildProjects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectServiceAccounts = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSearchAllResourcesInvokeResult> getSearchAllResources(GetSearchAllResourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudasset/getSearchAllResources:getSearchAllResources", TypeShape.of(GetSearchAllResourcesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudBuildProjects = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudasset.CloudassetFunctions;
+     * import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectServiceAccounts = CloudassetFunctions.getSearchAllResources(GetSearchAllResourcesArgs.builder()
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSearchAllResourcesInvokeResult> getSearchAllResourcesPlain(GetSearchAllResourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudasset/getSearchAllResources:getSearchAllResources", TypeShape.of(GetSearchAllResourcesInvokeResult.class), args, Utilities.withVersion(options));
     }
 }

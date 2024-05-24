@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataproc\_job\_iam\_policy
+// ## dataproc.JobIAMPolicy
 //
 // ```go
 // package main
@@ -65,7 +65,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_job\_iam\_binding
+// ## dataproc.JobIAMBinding
 //
 // ```go
 // package main
@@ -95,7 +95,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_job\_iam\_member
+// ## dataproc.JobIAMMember
 //
 // ```go
 // package main
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_job\_iam\_policy
+// ## dataproc.JobIAMPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_job\_iam\_binding
+// ## dataproc.JobIAMBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_job\_iam\_member
+// ## dataproc.JobIAMMember
 //
 // ```go
 // package main

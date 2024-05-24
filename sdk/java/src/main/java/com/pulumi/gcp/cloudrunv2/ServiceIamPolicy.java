@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `gcp.cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_policy
+ * ## gcp.cloudrunv2.ServiceIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_binding
+ * ## gcp.cloudrunv2.ServiceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_member
+ * ## gcp.cloudrunv2.ServiceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_policy
+ * ## gcp.cloudrunv2.ServiceIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_binding
+ * ## gcp.cloudrunv2.ServiceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloud\_run\_v2\_service\_iam\_member
+ * ## gcp.cloudrunv2.ServiceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

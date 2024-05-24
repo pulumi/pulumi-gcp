@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; **Note:** `gcp.compute.SnapshotIamBinding` resources **can be** used in conjunction with `gcp.compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_compute\_snapshot\_iam\_policy
+    /// ## gcp.compute.SnapshotIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_snapshot\_iam\_binding
+    /// ## gcp.compute.SnapshotIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_snapshot\_iam\_member
+    /// ## gcp.compute.SnapshotIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_snapshot\_iam\_policy
+    /// ## gcp.compute.SnapshotIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_snapshot\_iam\_binding
+    /// ## gcp.compute.SnapshotIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_snapshot\_iam\_member
+    /// ## gcp.compute.SnapshotIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

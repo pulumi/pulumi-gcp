@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// &gt; **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_billing\_account\_iam\_policy
+    /// ## gcp.billing.AccountIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Billing
     /// });
     /// ```
     /// 
-    /// ## google\_billing\_account\_iam\_binding
+    /// ## gcp.billing.AccountIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Billing
     /// });
     /// ```
     /// 
-    /// ## google\_billing\_account\_iam\_member
+    /// ## gcp.billing.AccountIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Billing
     /// });
     /// ```
     /// 
-    /// ## google\_billing\_account\_iam\_policy
+    /// ## gcp.billing.AccountIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Billing
     /// });
     /// ```
     /// 
-    /// ## google\_billing\_account\_iam\_binding
+    /// ## gcp.billing.AccountIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Billing
     /// });
     /// ```
     /// 
-    /// ## google\_billing\_account\_iam\_member
+    /// ## gcp.billing.AccountIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

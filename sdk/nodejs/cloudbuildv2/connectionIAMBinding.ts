@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_cloudbuildv2\_connection\_iam\_policy
+ * ## gcp.cloudbuildv2.ConnectionIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudbuildv2\_connection\_iam\_binding
+ * ## gcp.cloudbuildv2.ConnectionIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudbuildv2\_connection\_iam\_member
+ * ## gcp.cloudbuildv2.ConnectionIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudbuildv2\_connection\_iam\_policy
+ * ## gcp.cloudbuildv2.ConnectionIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudbuildv2\_connection\_iam\_binding
+ * ## gcp.cloudbuildv2.ConnectionIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudbuildv2\_connection\_iam\_member
+ * ## gcp.cloudbuildv2.ConnectionIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

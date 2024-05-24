@@ -23,7 +23,7 @@ import (
 //
 // > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_organization\_iam\_policy
+// ## organizations.IAMPolicy
 //
 // !> **Warning:** New organizations have several default policies which will,
 //
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_binding
+// ## organizations.IAMBinding
 //
 // > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 //
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_member
+// ## organizations.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_audit\_config
+// ## organizations.IamAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_policy
+// ## organizations.IAMPolicy
 //
 // !> **Warning:** New organizations have several default policies which will,
 //
@@ -385,7 +385,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_binding
+// ## organizations.IAMBinding
 //
 // > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 //
@@ -452,7 +452,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_member
+// ## organizations.IAMMember
 //
 // ```go
 // package main
@@ -513,7 +513,7 @@ import (
 //
 // ```
 //
-// ## google\_organization\_iam\_audit\_config
+// ## organizations.IamAuditConfig
 //
 // ```go
 // package main

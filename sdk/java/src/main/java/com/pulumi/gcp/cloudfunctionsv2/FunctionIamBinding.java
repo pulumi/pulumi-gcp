@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_cloudfunctions2\_function\_iam\_policy
+ * ## gcp.cloudfunctionsv2.FunctionIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloudfunctions2\_function\_iam\_binding
+ * ## gcp.cloudfunctionsv2.FunctionIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloudfunctions2\_function\_iam\_member
+ * ## gcp.cloudfunctionsv2.FunctionIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloudfunctions2\_function\_iam\_policy
+ * ## gcp.cloudfunctionsv2.FunctionIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloudfunctions2\_function\_iam\_binding
+ * ## gcp.cloudfunctionsv2.FunctionIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_cloudfunctions2\_function\_iam\_member
+ * ## gcp.cloudfunctionsv2.FunctionIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

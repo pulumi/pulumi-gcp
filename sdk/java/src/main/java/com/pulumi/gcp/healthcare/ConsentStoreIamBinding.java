@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_healthcare\_consent\_store\_iam\_policy
+ * ## gcp.healthcare.ConsentStoreIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_consent\_store\_iam\_binding
+ * ## gcp.healthcare.ConsentStoreIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_consent\_store\_iam\_member
+ * ## gcp.healthcare.ConsentStoreIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_consent\_store\_iam\_policy
+ * ## gcp.healthcare.ConsentStoreIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_consent\_store\_iam\_binding
+ * ## gcp.healthcare.ConsentStoreIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -237,7 +237,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_consent\_store\_iam\_member
+ * ## gcp.healthcare.ConsentStoreIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

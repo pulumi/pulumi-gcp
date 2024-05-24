@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_billing\_account\_iam\_policy
+// ## billing.AccountIamPolicy
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 //
 // ```
 //
-// ## google\_billing\_account\_iam\_binding
+// ## billing.AccountIamBinding
 //
 // ```go
 // package main
@@ -93,7 +93,7 @@ import (
 //
 // ```
 //
-// ## google\_billing\_account\_iam\_member
+// ## billing.AccountIamMember
 //
 // ```go
 // package main
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_billing\_account\_iam\_policy
+// ## billing.AccountIamPolicy
 //
 // ```go
 // package main
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ## google\_billing\_account\_iam\_binding
+// ## billing.AccountIamBinding
 //
 // ```go
 // package main
@@ -192,7 +192,7 @@ import (
 //
 // ```
 //
-// ## google\_billing\_account\_iam\_member
+// ## billing.AccountIamMember
 //
 // ```go
 // package main

@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetBigQueryTarget? BigQueryTarget;
+        /// <summary>
+        /// Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? CloudSqlTarget;
 
         [OutputConstructor]
-        private PreventionDiscoveryConfigTarget(Outputs.PreventionDiscoveryConfigTargetBigQueryTarget? bigQueryTarget)
+        private PreventionDiscoveryConfigTarget(
+            Outputs.PreventionDiscoveryConfigTargetBigQueryTarget? bigQueryTarget,
+
+            Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? cloudSqlTarget)
         {
             BigQueryTarget = bigQueryTarget;
+            CloudSqlTarget = cloudSqlTarget;
         }
     }
 }

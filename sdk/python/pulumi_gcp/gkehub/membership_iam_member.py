@@ -305,7 +305,7 @@ class MembershipIamMember(pulumi.CustomResource):
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
+        ## gkehub.MembershipIamPolicy
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class MembershipIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
+        ## gkehub.MembershipIamBinding
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class MembershipIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
+        ## gkehub.MembershipIamMember
 
         ```python
         import pulumi
@@ -350,7 +350,7 @@ class MembershipIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
+        ## gkehub.MembershipIamPolicy
 
         ```python
         import pulumi
@@ -367,7 +367,7 @@ class MembershipIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
+        ## gkehub.MembershipIamBinding
 
         ```python
         import pulumi
@@ -381,7 +381,7 @@ class MembershipIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
+        ## gkehub.MembershipIamMember
 
         ```python
         import pulumi
@@ -476,7 +476,7 @@ class MembershipIamMember(pulumi.CustomResource):
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
+        ## gkehub.MembershipIamPolicy
 
         ```python
         import pulumi
@@ -493,7 +493,7 @@ class MembershipIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
+        ## gkehub.MembershipIamBinding
 
         ```python
         import pulumi
@@ -507,7 +507,7 @@ class MembershipIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
+        ## gkehub.MembershipIamMember
 
         ```python
         import pulumi
@@ -521,7 +521,7 @@ class MembershipIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
+        ## gkehub.MembershipIamPolicy
 
         ```python
         import pulumi
@@ -538,7 +538,7 @@ class MembershipIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
+        ## gkehub.MembershipIamBinding
 
         ```python
         import pulumi
@@ -552,7 +552,7 @@ class MembershipIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
+        ## gkehub.MembershipIamMember
 
         ```python
         import pulumi

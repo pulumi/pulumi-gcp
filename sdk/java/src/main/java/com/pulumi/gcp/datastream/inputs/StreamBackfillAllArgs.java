@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSqlServerExcludedObjectsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,12 +69,30 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.postgresqlExcludedObjects);
     }
 
+    /**
+     * SQL Server data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sqlServerExcludedObjects")
+    private @Nullable Output<StreamBackfillAllSqlServerExcludedObjectsArgs> sqlServerExcludedObjects;
+
+    /**
+     * @return SQL Server data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllSqlServerExcludedObjectsArgs>> sqlServerExcludedObjects() {
+        return Optional.ofNullable(this.sqlServerExcludedObjects);
+    }
+
     private StreamBackfillAllArgs() {}
 
     private StreamBackfillAllArgs(StreamBackfillAllArgs $) {
         this.mysqlExcludedObjects = $.mysqlExcludedObjects;
         this.oracleExcludedObjects = $.oracleExcludedObjects;
         this.postgresqlExcludedObjects = $.postgresqlExcludedObjects;
+        this.sqlServerExcludedObjects = $.sqlServerExcludedObjects;
     }
 
     public static Builder builder() {
@@ -161,6 +180,29 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder postgresqlExcludedObjects(StreamBackfillAllPostgresqlExcludedObjectsArgs postgresqlExcludedObjects) {
             return postgresqlExcludedObjects(Output.of(postgresqlExcludedObjects));
+        }
+
+        /**
+         * @param sqlServerExcludedObjects SQL Server data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerExcludedObjects(@Nullable Output<StreamBackfillAllSqlServerExcludedObjectsArgs> sqlServerExcludedObjects) {
+            $.sqlServerExcludedObjects = sqlServerExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param sqlServerExcludedObjects SQL Server data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerExcludedObjects(StreamBackfillAllSqlServerExcludedObjectsArgs sqlServerExcludedObjects) {
+            return sqlServerExcludedObjects(Output.of(sqlServerExcludedObjects));
         }
 
         public StreamBackfillAllArgs build() {

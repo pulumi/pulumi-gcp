@@ -90,7 +90,7 @@ type TargetPool struct {
 	pulumi.CustomResourceState
 
 	// URL to the backup target pool. Must also set
-	// failover\_ratio.
+	// failover_ratio.
 	BackupPool pulumi.StringPtrOutput `pulumi:"backupPool"`
 	// Textual description field.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -122,8 +122,8 @@ type TargetPool struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// How to distribute load. Options are "NONE" (no
-	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+	// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+	// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
 }
 
@@ -158,7 +158,7 @@ func GetTargetPool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TargetPool resources.
 type targetPoolState struct {
 	// URL to the backup target pool. Must also set
-	// failover\_ratio.
+	// failover_ratio.
 	BackupPool *string `pulumi:"backupPool"`
 	// Textual description field.
 	Description *string `pulumi:"description"`
@@ -190,14 +190,14 @@ type targetPoolState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// How to distribute load. Options are "NONE" (no
-	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+	// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+	// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 }
 
 type TargetPoolState struct {
 	// URL to the backup target pool. Must also set
-	// failover\_ratio.
+	// failover_ratio.
 	BackupPool pulumi.StringPtrInput
 	// Textual description field.
 	Description pulumi.StringPtrInput
@@ -229,8 +229,8 @@ type TargetPoolState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
-	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+	// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+	// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 	SessionAffinity pulumi.StringPtrInput
 }
 
@@ -240,7 +240,7 @@ func (TargetPoolState) ElementType() reflect.Type {
 
 type targetPoolArgs struct {
 	// URL to the backup target pool. Must also set
-	// failover\_ratio.
+	// failover_ratio.
 	BackupPool *string `pulumi:"backupPool"`
 	// Textual description field.
 	Description *string `pulumi:"description"`
@@ -270,15 +270,15 @@ type targetPoolArgs struct {
 	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// How to distribute load. Options are "NONE" (no
-	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+	// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+	// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 }
 
 // The set of arguments for constructing a TargetPool resource.
 type TargetPoolArgs struct {
 	// URL to the backup target pool. Must also set
-	// failover\_ratio.
+	// failover_ratio.
 	BackupPool pulumi.StringPtrInput
 	// Textual description field.
 	Description pulumi.StringPtrInput
@@ -308,8 +308,8 @@ type TargetPoolArgs struct {
 	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
-	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+	// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+	// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 	SessionAffinity pulumi.StringPtrInput
 }
 
@@ -401,7 +401,7 @@ func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) Tar
 }
 
 // URL to the backup target pool. Must also set
-// failover\_ratio.
+// failover_ratio.
 func (o TargetPoolOutput) BackupPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.BackupPool }).(pulumi.StringPtrOutput)
 }
@@ -463,8 +463,8 @@ func (o TargetPoolOutput) SelfLink() pulumi.StringOutput {
 }
 
 // How to distribute load. Options are "NONE" (no
-// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
 func (o TargetPoolOutput) SessionAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.SessionAffinity }).(pulumi.StringPtrOutput)
 }

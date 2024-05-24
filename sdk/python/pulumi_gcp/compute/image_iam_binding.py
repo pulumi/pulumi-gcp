@@ -286,7 +286,7 @@ class ImageIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_image\\_iam\\_policy
+        ## compute.ImageIamPolicy
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class ImageIamBinding(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_image\\_iam\\_binding
+        ## compute.ImageIamBinding
 
         ```python
         import pulumi
@@ -352,7 +352,7 @@ class ImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_image\\_iam\\_member
+        ## compute.ImageIamMember
 
         ```python
         import pulumi
@@ -383,7 +383,7 @@ class ImageIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_image\\_iam\\_policy
+        ## compute.ImageIamPolicy
 
         ```python
         import pulumi
@@ -419,7 +419,7 @@ class ImageIamBinding(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_image\\_iam\\_binding
+        ## compute.ImageIamBinding
 
         ```python
         import pulumi
@@ -449,7 +449,7 @@ class ImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_image\\_iam\\_member
+        ## compute.ImageIamMember
 
         ```python
         import pulumi
@@ -561,7 +561,7 @@ class ImageIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_image\\_iam\\_policy
+        ## compute.ImageIamPolicy
 
         ```python
         import pulumi
@@ -597,7 +597,7 @@ class ImageIamBinding(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_image\\_iam\\_binding
+        ## compute.ImageIamBinding
 
         ```python
         import pulumi
@@ -627,7 +627,7 @@ class ImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_image\\_iam\\_member
+        ## compute.ImageIamMember
 
         ```python
         import pulumi
@@ -658,7 +658,7 @@ class ImageIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_image\\_iam\\_policy
+        ## compute.ImageIamPolicy
 
         ```python
         import pulumi
@@ -694,7 +694,7 @@ class ImageIamBinding(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_image\\_iam\\_binding
+        ## compute.ImageIamBinding
 
         ```python
         import pulumi
@@ -724,7 +724,7 @@ class ImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_image\\_iam\\_member
+        ## compute.ImageIamMember
 
         ```python
         import pulumi

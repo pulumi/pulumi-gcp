@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_spanner\_instance\_iam\_policy
+ * ## gcp.spanner.InstanceIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_instance\_iam\_binding
+ * ## gcp.spanner.InstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_instance\_iam\_member
+ * ## gcp.spanner.InstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_instance\_iam\_policy
+ * ## gcp.spanner.InstanceIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -191,7 +191,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_instance\_iam\_binding
+ * ## gcp.spanner.InstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_instance\_iam\_member
+ * ## gcp.spanner.InstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

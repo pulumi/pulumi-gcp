@@ -51,7 +51,7 @@ export interface GetNetworkEndpointGroupArgs {
      */
     project?: string;
     /**
-     * The Network Endpoint Group self\_link.
+     * The Network Endpoint Group self_link.
      */
     selfLink?: string;
     /**
@@ -136,7 +136,7 @@ export interface GetNetworkEndpointGroupOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The Network Endpoint Group self\_link.
+     * The Network Endpoint Group self_link.
      */
     selfLink?: pulumi.Input<string>;
     /**

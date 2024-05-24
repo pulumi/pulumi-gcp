@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.GkeHub
         /// Retrieves the current IAM policy data for scope
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Retrieves the current IAM policy data for scope
-        /// 
         /// 
         /// 
         /// ## example

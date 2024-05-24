@@ -10299,6 +10299,73 @@ export namespace cloudasset {
         project: string;
     }
 
+    export interface GetSearchAllResourcesResult {
+        /**
+         * The type of this resource.
+         */
+        assetType: string;
+        /**
+         * The create timestamp of this resource, at which the resource was created.
+         */
+        createTime: string;
+        /**
+         * One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+         */
+        description: string;
+        /**
+         * The display name of this resource.
+         */
+        displayName: string;
+        /**
+         * The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+         */
+        folders: string[];
+        /**
+         * The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+         */
+        kmsKeys: string[];
+        /**
+         * Labels associated with this resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+         */
+        location: string;
+        /**
+         * The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+         */
+        name: string;
+        /**
+         * Network tags associated with this resource.
+         */
+        networkTags: string[];
+        /**
+         * The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+         */
+        organization: string;
+        /**
+         * The type of this resource's immediate parent, if there is one.
+         */
+        parentAssetType: string;
+        /**
+         * The full resource name of this resource's parent, if it has one.
+         */
+        parentFullResourceName: string;
+        /**
+         * The project that this resource belongs to, in the form of `projects/{project_number}`.
+         */
+        project: string;
+        /**
+         * The state of this resource.
+         */
+        state: string;
+        /**
+         * The last update timestamp of this resource, at which the resource was last modified or deleted.
+         */
+        updateTime: string;
+    }
+
     export interface OrganizationFeedCondition {
         /**
          * Description of the expression. This is a longer text which describes the expression,
@@ -27351,6 +27418,123 @@ export namespace compute {
         tag8021q: number;
     }
 
+    export interface InterconnectCircuitInfo {
+        /**
+         * (Output)
+         * Customer-side demarc ID for this circuit.
+         */
+        customerDemarcId: string;
+        /**
+         * (Output)
+         * Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
+         */
+        googleCircuitId: string;
+        /**
+         * (Output)
+         * Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by
+         * Google to the customer in the LOA.
+         */
+        googleDemarcId: string;
+    }
+
+    export interface InterconnectExpectedOutage {
+        /**
+         * (Output)
+         * If issueType is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+         * affected.
+         */
+        affectedCircuits: string[];
+        /**
+         * An optional description of this resource. Provide this property when you create the resource.
+         */
+        description: string;
+        /**
+         * (Output)
+         * Scheduled end time for the outage (milliseconds since Unix epoch).
+         */
+        endTime: string;
+        /**
+         * (Output)
+         * Form this outage is expected to take. Note that the versions of this enum prefixed with
+         * "IT_" have been deprecated in favor of the unprefixed values. Can take one of the
+         * following values:
+         * - OUTAGE: The Interconnect may be completely out of service for some or all of the
+         * specified window.
+         * - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain
+         * up, but with reduced bandwidth.
+         */
+        issueType: string;
+        /**
+         * Name of the resource. Provided by the client when the resource is created. The name must be
+         * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+         * long and match the regular expression `a-z?` which means the first
+         * character must be a lowercase letter, and all following characters must be a dash,
+         * lowercase letter, or digit, except the last character, which cannot be a dash.
+         */
+        name: string;
+        /**
+         * (Output)
+         * The party that generated this notification. Note that the value of NSRC_GOOGLE has been
+         * deprecated in favor of GOOGLE. Can take the following value:
+         * - GOOGLE: this notification as generated by Google.
+         */
+        source: string;
+        /**
+         * (Output)
+         * Scheduled start time for the outage (milliseconds since Unix epoch).
+         */
+        startTime: string;
+        /**
+         * (Output)
+         * State of this notification. Note that the versions of this enum prefixed with "NS_" have
+         * been deprecated in favor of the unprefixed values. Can take one of the following values:
+         * - ACTIVE: This outage notification is active. The event could be in the past, present,
+         * or future. See startTime and endTime for scheduling.
+         * - CANCELLED: The outage associated with this notification was cancelled before the
+         * outage was due to start.
+         * - COMPLETED: The outage associated with this notification is complete.
+         */
+        state: string;
+    }
+
+    export interface InterconnectMacsec {
+        /**
+         * A keychain placeholder describing a set of named key objects along with their
+         * start times. A MACsec CKN/CAK is generated for each key in the key chain.
+         * Google router automatically picks the key with the most recent startTime when establishing
+         * or re-establishing a MACsec secure link.
+         * Structure is documented below.
+         */
+        preSharedKeys: outputs.compute.InterconnectMacsecPreSharedKey[];
+    }
+
+    export interface InterconnectMacsecPreSharedKey {
+        /**
+         * If set to true, the Interconnect connection is configured with a should-secure
+         * MACsec security policy, that allows the Google router to fallback to cleartext
+         * traffic if the MKA session cannot be established. By default, the Interconnect
+         * connection is configured with a must-secure security policy that drops all traffic
+         * if the MKA session cannot be established with your router.
+         */
+        failOpen?: boolean;
+        /**
+         * A name for this pre-shared key. The name must be 1-63 characters long, and
+         * comply with RFC1035. Specifically, the name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the first character
+         * must be a lowercase letter, and all following characters must be a dash, lowercase
+         * letter, or digit, except the last character, which cannot be a dash.
+         */
+        name: string;
+        /**
+         * A RFC3339 timestamp on or after which the key is valid. startTime can be in the
+         * future. If the keychain has a single key, startTime can be omitted. If the keychain
+         * has multiple keys, startTime is mandatory for each key. The start times of keys must
+         * be in increasing order. The start times of two consecutive keys must be at least 6
+         * hours apart.
+         */
+        startTime?: string;
+    }
+
     export interface MachineImageIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -30085,6 +30269,11 @@ export namespace compute {
          */
         config?: outputs.compute.RegionSecurityPolicyRuleMatchConfig;
         /**
+         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         */
+        expr?: outputs.compute.RegionSecurityPolicyRuleMatchExpr;
+        /**
          * Preconfigured versioned expression. If this field is specified, config must also be specified.
          * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
          * Possible values are: `SRC_IPS_V1`.
@@ -30097,6 +30286,13 @@ export namespace compute {
          * CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
          */
         srcIpRanges?: string[];
+    }
+
+    export interface RegionSecurityPolicyRuleMatchExpr {
+        /**
+         * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+         */
+        expression: string;
     }
 
     export interface RegionSecurityPolicyRuleNetworkMatch {
@@ -36842,7 +37038,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfigs: outputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
         /**
-         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
          */
         enableComponents: string[];
         /**
@@ -38970,7 +39166,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfigs: outputs.container.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
         /**
-         * GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+         * GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
          */
         enableComponents: string[];
         /**
@@ -45697,6 +45893,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         bigQueryTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTarget;
+        /**
+         * Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+         * Structure is documented below.
+         */
+        cloudSqlTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTarget;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTarget {
@@ -45736,13 +45937,13 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence {
         /**
-         * How frequently profiles may be updated when schemas are modified. Default to monthly
+         * Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          */
         frequency?: string;
         /**
-         * The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-         * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+         * The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+         * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          */
         types?: string[];
     }
@@ -45776,8 +45977,8 @@ export namespace dataloss {
          */
         typeCollection?: string;
         /**
-         * Restrict discovery to specific table type
-         * Structure is documented below.
+         * Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+         * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
          */
         types?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes;
     }
@@ -45829,7 +46030,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
         /**
-         * A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+         * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
          * Structure is documented below.
          */
         patterns?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern[];
@@ -45848,6 +46049,120 @@ export namespace dataloss {
          * if unset, this property matches all tables
          */
         tableIdRegex?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTarget {
+        /**
+         * In addition to matching the filter, these conditions must be true before a profile is generated.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetConditions;
+        /**
+         * Disable profiling for database resources that match this filter.
+         */
+        disabled?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetDisabled;
+        /**
+         * Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+         * Structure is documented below.
+         */
+        filter: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilter;
+        /**
+         * How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+         * Structure is documented below.
+         */
+        generationCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetConditions {
+        /**
+         * Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
+         * Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
+         */
+        databaseEngines?: string[];
+        /**
+         * Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+         * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
+         */
+        types?: string[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetDisabled {
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
+        /**
+         * A specific set of database resources for this filter to apply to.
+         * Structure is documented below.
+         */
+        collection?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection;
+        /**
+         * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+         */
+        others?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection {
+        /**
+         * A collection of regular expressions to match a database resource against.
+         * Structure is documented below.
+         */
+        includeRegexes?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes {
+        /**
+         * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+         * Structure is documented below.
+         */
+        patterns?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern {
+        /**
+         * Regex to test the database name against. If empty, all databases match.
+         */
+        databaseRegex?: string;
+        /**
+         * Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
+         */
+        databaseResourceNameRegex?: string;
+        /**
+         * Regex to test the instance name against. If empty, all instances match.
+         */
+        instanceRegex?: string;
+        /**
+         * For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+         */
+        projectIdRegex?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers {
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
+        /**
+         * Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        refreshFrequency?: string;
+        /**
+         * Governs when to update data profiles when a schema is modified
+         * Structure is documented below.
+         */
+        schemaModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence {
+        /**
+         * Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency?: string;
+        /**
+         * The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+         * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+         */
+        types?: string[];
     }
 
     export interface PreventionInspectTemplateInspectConfig {
@@ -48769,6 +49084,10 @@ export namespace dataproc {
          */
         bootDiskType?: string;
         /**
+         * Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+         */
+        localSsdInterface?: string;
+        /**
          * The amount of local SSD disks that will be attached to each master cluster node. 
          * Defaults to 0.
          */
@@ -49034,6 +49353,13 @@ export namespace dataproc {
          */
         bootDiskType?: string;
         /**
+         * Optional. Interface type of local SSDs (default is "scsi").
+         * Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+         * Memory Express). See
+         * [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+         */
+        localSsdInterface?: string;
+        /**
          * The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
          */
@@ -49093,6 +49419,10 @@ export namespace dataproc {
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
+        /**
+         * Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+         */
+        localSsdInterface?: string;
         /**
          * The amount of local SSD disks that will be
          * attached to each preemptible worker node. Defaults to 0.
@@ -49330,6 +49660,10 @@ export namespace dataproc {
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
+        /**
+         * Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+         */
+        localSsdInterface?: string;
         /**
          * The amount of local SSD disks that will be
          * attached to each worker cluster node. Defaults to 0.
@@ -51463,6 +51797,30 @@ export namespace datastream {
         privateConnection: string;
     }
 
+    export interface ConnectionProfileSqlServerProfile {
+        /**
+         * Database for the SQL Server connection.
+         */
+        database: string;
+        /**
+         * Hostname for the SQL Server connection.
+         */
+        hostname: string;
+        /**
+         * Password for the SQL Server connection.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * Port for the SQL Server connection.
+         */
+        port?: number;
+        /**
+         * Username for the SQL Server connection.
+         */
+        username: string;
+    }
+
     export interface PrivateConnectionError {
         /**
          * A list of messages that carry the error details.
@@ -51504,6 +51862,11 @@ export namespace datastream {
          * Structure is documented below.
          */
         postgresqlExcludedObjects?: outputs.datastream.StreamBackfillAllPostgresqlExcludedObjects;
+        /**
+         * SQL Server data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        sqlServerExcludedObjects?: outputs.datastream.StreamBackfillAllSqlServerExcludedObjects;
     }
 
     export interface StreamBackfillAllMysqlExcludedObjects {
@@ -51721,6 +52084,80 @@ export namespace datastream {
         scale: number;
     }
 
+    export interface StreamBackfillAllSqlServerExcludedObjects {
+        /**
+         * SQL Server schemas/databases in the database server
+         * Structure is documented below.
+         */
+        schemas: outputs.datastream.StreamBackfillAllSqlServerExcludedObjectsSchema[];
+    }
+
+    export interface StreamBackfillAllSqlServerExcludedObjectsSchema {
+        /**
+         * Schema name.
+         */
+        schema: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        tables?: outputs.datastream.StreamBackfillAllSqlServerExcludedObjectsSchemaTable[];
+    }
+
+    export interface StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
+        /**
+         * SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        columns?: outputs.datastream.StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The SQL Server data type. Full data types list can be found here:
+         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         */
+        dataType?: string;
+        /**
+         * (Output)
+         * Column length.
+         */
+        length: number;
+        /**
+         * (Output)
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * (Output)
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * (Output)
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * (Output)
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
+        /**
+         * (Output)
+         * Column scale.
+         */
+        scale: number;
+    }
+
     export interface StreamBackfillNone {
     }
 
@@ -51860,6 +52297,11 @@ export namespace datastream {
          * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
          */
         sourceConnectionProfile: string;
+        /**
+         * SQL Server data source configuration.
+         * Structure is documented below.
+         */
+        sqlServerSourceConfig?: outputs.datastream.StreamSourceConfigSqlServerSourceConfig;
     }
 
     export interface StreamSourceConfigMysqlSourceConfig {
@@ -52373,6 +52815,175 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: boolean;
+        /**
+         * (Output)
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfig {
+        /**
+         * SQL Server objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigExcludeObjects;
+        /**
+         * SQL Server objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjects;
+        /**
+         * Max concurrent backfill tasks.
+         */
+        maxConcurrentBackfillTasks: number;
+        /**
+         * Max concurrent CDC tasks.
+         */
+        maxConcurrentCdcTasks: number;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigExcludeObjects {
+        /**
+         * SQL Server schemas/databases in the database server
+         * Structure is documented below.
+         */
+        schemas: outputs.datastream.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema[];
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
+        /**
+         * Schema name.
+         */
+        schema: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        tables?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable[];
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
+        /**
+         * SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        columns?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The SQL Server data type. Full data types list can be found here:
+         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         */
+        dataType?: string;
+        /**
+         * (Output)
+         * Column length.
+         */
+        length: number;
+        /**
+         * (Output)
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * (Output)
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * (Output)
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * (Output)
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
+        /**
+         * (Output)
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigIncludeObjects {
+        /**
+         * SQL Server schemas/databases in the database server
+         * Structure is documented below.
+         */
+        schemas: outputs.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema[];
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
+        /**
+         * Schema name.
+         */
+        schema: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        tables?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable[];
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
+        /**
+         * SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        columns?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The SQL Server data type. Full data types list can be found here:
+         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         */
+        dataType?: string;
+        /**
+         * (Output)
+         * Column length.
+         */
+        length: number;
+        /**
+         * (Output)
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * (Output)
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * (Output)
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * (Output)
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
         /**
          * (Output)
          * Column scale.
@@ -67461,6 +68072,81 @@ export namespace networkservices {
         regexMatch?: string;
     }
 
+    export interface LbTrafficExtensionExtensionChain {
+        /**
+         * A set of extensions to execute for the matching request.
+         * At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+         * LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+         * Structure is documented below.
+         */
+        extensions: outputs.networkservices.LbTrafficExtensionExtensionChainExtension[];
+        /**
+         * Conditions under which this chain is invoked for a request.
+         * Structure is documented below.
+         */
+        matchCondition: outputs.networkservices.LbTrafficExtensionExtensionChainMatchCondition;
+        /**
+         * The name for this extension chain. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last a letter or a number.
+         */
+        name: string;
+    }
+
+    export interface LbTrafficExtensionExtensionChainExtension {
+        /**
+         * The :authority header in the gRPC request sent from Envoy to the extension service.
+         */
+        authority: string;
+        /**
+         * Determines how the proxy behaves if the call to the extension fails or times out.
+         * When set to TRUE, request or response processing continues without error.
+         * Any subsequent extensions in the extension chain are also executed.
+         * When set to FALSE: * If response headers have not been delivered to the downstream client,
+         * a generic 500 error is returned to the client. The error response can be tailored by
+         * configuring a custom error response in the load balancer.
+         */
+        failOpen?: boolean;
+        /**
+         * List of the HTTP headers to forward to the extension (from the client or backend).
+         * If omitted, all headers are sent. Each element is a string indicating the header name.
+         */
+        forwardHeaders?: string[];
+        /**
+         * The name for this extension. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last a letter or a number.
+         */
+        name: string;
+        /**
+         * The reference to the service that runs the extension. Must be a reference to a backend service
+         */
+        service: string;
+        /**
+         * A set of events during request or response processing for which this extension is called.
+         * This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+         * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+         * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+         *
+         * - - -
+         */
+        supportedEvents?: string[];
+        /**
+         * Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        timeout: string;
+    }
+
+    export interface LbTrafficExtensionExtensionChainMatchCondition {
+        /**
+         * A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+         */
+        celExpression: string;
+    }
+
     export interface TcpRouteRule {
         /**
          * A detailed rule defining how to route traffic.
@@ -75063,7 +75749,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleCondition {
         /**
-         * Minimum age of an object in days to satisfy this condition.
+         * Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
          */
         age?: number;
         /**
@@ -75075,11 +75761,12 @@ export namespace storage {
          */
         customTimeBefore?: string;
         /**
-         * Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+         * Number of days elapsed since the user-specified timestamp set on an object.
          */
         daysSinceCustomTime?: number;
         /**
-         * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         * Number of days elapsed since the noncurrent timestamp of an object. This
+         * 										condition is relevant only for versioned objects.
          */
         daysSinceNoncurrentTime?: number;
         /**
@@ -75095,11 +75782,11 @@ export namespace storage {
          */
         matchesSuffixes?: string[];
         /**
-         * While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         * While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
          */
         noAge?: boolean;
         /**
-         * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
          */
         noncurrentTimeBefore?: string;
         /**

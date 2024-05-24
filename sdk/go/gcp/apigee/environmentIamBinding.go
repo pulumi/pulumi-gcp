@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_apigee\_environment\_iam\_policy
+// ## apigee.EnvironmentIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_apigee\_environment\_iam\_binding
+// ## apigee.EnvironmentIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_apigee\_environment\_iam\_member
+// ## apigee.EnvironmentIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_apigee\_environment\_iam\_policy
+// ## apigee.EnvironmentIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_apigee\_environment\_iam\_binding
+// ## apigee.EnvironmentIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_apigee\_environment\_iam\_member
+// ## apigee.EnvironmentIamMember
 //
 // ```go
 // package main

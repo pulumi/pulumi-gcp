@@ -1169,15 +1169,16 @@ func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 }
 
 type BucketLifecycleRuleCondition struct {
-	// Minimum age of an object in days to satisfy this condition.
+	// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
 	Age *int `pulumi:"age"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore *string `pulumi:"customTimeBefore"`
-	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+	// Number of days elapsed since the user-specified timestamp set on an object.
 	DaysSinceCustomTime *int `pulumi:"daysSinceCustomTime"`
-	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+	// Number of days elapsed since the noncurrent timestamp of an object. This
+	// 										condition is relevant only for versioned objects.
 	DaysSinceNoncurrentTime *int `pulumi:"daysSinceNoncurrentTime"`
 	// One or more matching name prefixes to satisfy this condition.
 	MatchesPrefixes []string `pulumi:"matchesPrefixes"`
@@ -1185,9 +1186,9 @@ type BucketLifecycleRuleCondition struct {
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
-	// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+	// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
 	NoAge *bool `pulumi:"noAge"`
-	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions *int `pulumi:"numNewerVersions"`
@@ -1207,15 +1208,16 @@ type BucketLifecycleRuleConditionInput interface {
 }
 
 type BucketLifecycleRuleConditionArgs struct {
-	// Minimum age of an object in days to satisfy this condition.
+	// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
 	Age pulumi.IntPtrInput `pulumi:"age"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore pulumi.StringPtrInput `pulumi:"customTimeBefore"`
-	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+	// Number of days elapsed since the user-specified timestamp set on an object.
 	DaysSinceCustomTime pulumi.IntPtrInput `pulumi:"daysSinceCustomTime"`
-	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+	// Number of days elapsed since the noncurrent timestamp of an object. This
+	// 										condition is relevant only for versioned objects.
 	DaysSinceNoncurrentTime pulumi.IntPtrInput `pulumi:"daysSinceNoncurrentTime"`
 	// One or more matching name prefixes to satisfy this condition.
 	MatchesPrefixes pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
@@ -1223,9 +1225,9 @@ type BucketLifecycleRuleConditionArgs struct {
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
-	// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+	// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
 	NoAge pulumi.BoolPtrInput `pulumi:"noAge"`
-	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
@@ -1259,7 +1261,7 @@ func (o BucketLifecycleRuleConditionOutput) ToBucketLifecycleRuleConditionOutput
 	return o
 }
 
-// Minimum age of an object in days to satisfy this condition.
+// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
 func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
 }
@@ -1274,12 +1276,14 @@ func (o BucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringPtrO
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CustomTimeBefore }).(pulumi.StringPtrOutput)
 }
 
-// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+// Number of days elapsed since the user-specified timestamp set on an object.
 func (o BucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceCustomTime }).(pulumi.IntPtrOutput)
 }
 
-// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+// Number of days elapsed since the noncurrent timestamp of an object. This
+//
+//	condition is relevant only for versioned objects.
 func (o BucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceNoncurrentTime }).(pulumi.IntPtrOutput)
 }
@@ -1299,12 +1303,12 @@ func (o BucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArray
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
 func (o BucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.NoAge }).(pulumi.BoolPtrOutput)
 }
 
-// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.NoncurrentTimeBefore }).(pulumi.StringPtrOutput)
 }

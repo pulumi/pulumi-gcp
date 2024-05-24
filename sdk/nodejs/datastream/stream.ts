@@ -369,6 +369,99 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Stream Sql Server
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "sql-server",
+ *     databaseVersion: "SQLSERVER_2019_STANDARD",
+ *     region: "us-central1",
+ *     rootPassword: "root-password",
+ *     deletionProtection: true,
+ *     settings: {
+ *         tier: "db-custom-2-4096",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     name: "db",
+ *     instance: instance.name,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     password: "password",
+ * });
+ * const source = new gcp.datastream.ConnectionProfile("source", {
+ *     displayName: "SQL Server Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     sqlServerProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         port: 1433,
+ *         username: user.name,
+ *         password: user.password,
+ *         database: db.name,
+ *     },
+ * });
+ * const destination = new gcp.datastream.ConnectionProfile("destination", {
+ *     displayName: "BigQuery Destination",
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     displayName: "SQL Server to BigQuery",
+ *     location: "us-central1",
+ *     streamId: "stream",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: source.id,
+ *         sqlServerSourceConfig: {
+ *             includeObjects: {
+ *                 schemas: [{
+ *                     schema: "schema",
+ *                     tables: [{
+ *                         table: "table",
+ *                     }],
+ *                 }],
+ *             },
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destination.id,
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ * });
+ * ```
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  *
  * ```typescript

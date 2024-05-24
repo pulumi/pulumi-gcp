@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
- * import com.pulumi.gcp.projects.ServiceIdentity;
- * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
@@ -170,14 +170,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nsSa = new ServiceIdentity("nsSa", ServiceIdentityArgs.builder()
- *             .service("networksecurity.googleapis.com")
- *             .build());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
- *             .member(nsSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()

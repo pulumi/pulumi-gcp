@@ -19,7 +19,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      * 
      */
     @Import(name="backupPool")
@@ -27,7 +27,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      * 
      */
     public Optional<Output<String>> backupPool() {
@@ -178,8 +178,8 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * How to distribute load. Options are &#34;NONE&#34; (no
-     * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-     * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+     * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+     * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
      * 
      */
     @Import(name="sessionAffinity")
@@ -187,8 +187,8 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return How to distribute load. Options are &#34;NONE&#34; (no
-     * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-     * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+     * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+     * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
      * 
      */
     public Optional<Output<String>> sessionAffinity() {
@@ -230,7 +230,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupPool URL to the backup target pool. Must also set
-         * failover\_ratio.
+         * failover_ratio.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupPool URL to the backup target pool. Must also set
-         * failover\_ratio.
+         * failover_ratio.
          * 
          * @return builder
          * 
@@ -457,8 +457,8 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sessionAffinity How to distribute load. Options are &#34;NONE&#34; (no
-         * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-         * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+         * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+         * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
          * 
          * @return builder
          * 
@@ -470,8 +470,8 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sessionAffinity How to distribute load. Options are &#34;NONE&#34; (no
-         * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-         * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+         * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+         * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
          * 
          * @return builder
          * 

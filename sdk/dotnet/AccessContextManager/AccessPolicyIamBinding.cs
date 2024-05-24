@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+    /// ## gcp.accesscontextmanager.AccessPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// });
     /// ```
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+    /// ## gcp.accesscontextmanager.AccessPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// });
     /// ```
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_member
+    /// ## gcp.accesscontextmanager.AccessPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// });
     /// ```
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+    /// ## gcp.accesscontextmanager.AccessPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// });
     /// ```
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+    /// ## gcp.accesscontextmanager.AccessPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// });
     /// ```
     /// 
-    /// ## google\_access\_context\_manager\_access\_policy\_iam\_member
+    /// ## gcp.accesscontextmanager.AccessPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

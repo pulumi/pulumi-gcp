@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `gcp.cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_cloud\_tasks\_queue\_iam\_policy
+ * ## gcp.cloudtasks.QueueIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_tasks\_queue\_iam\_binding
+ * ## gcp.cloudtasks.QueueIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_tasks\_queue\_iam\_member
+ * ## gcp.cloudtasks.QueueIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_tasks\_queue\_iam\_policy
+ * ## gcp.cloudtasks.QueueIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_tasks\_queue\_iam\_binding
+ * ## gcp.cloudtasks.QueueIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_tasks\_queue\_iam\_member
+ * ## gcp.cloudtasks.QueueIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

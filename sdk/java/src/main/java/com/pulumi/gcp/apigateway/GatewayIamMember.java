@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_api\_gateway\_gateway\_iam\_binding
+ * ## gcp.apigateway.GatewayIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_api\_gateway\_gateway\_iam\_member
+ * ## gcp.apigateway.GatewayIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_api\_gateway\_gateway\_iam\_binding
+ * ## gcp.apigateway.GatewayIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_api\_gateway\_gateway\_iam\_member
+ * ## gcp.apigateway.GatewayIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

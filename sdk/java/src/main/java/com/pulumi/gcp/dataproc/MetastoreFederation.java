@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A managed metastore federation.
+ * 
  * ## Example Usage
  * 
  * ### Dataproc Metastore Federation Basic

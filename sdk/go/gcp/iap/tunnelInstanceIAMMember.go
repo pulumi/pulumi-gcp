@@ -28,7 +28,7 @@ import (
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
-// ## google\_iap\_tunnel\_instance\_iam\_policy
+// ## iap.TunnelInstanceIAMPolicy
 //
 // ```go
 // package main
@@ -118,7 +118,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_tunnel\_instance\_iam\_binding
+// ## iap.TunnelInstanceIAMBinding
 //
 // ```go
 // package main
@@ -186,7 +186,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_tunnel\_instance\_iam\_member
+// ## iap.TunnelInstanceIAMMember
 //
 // ```go
 // package main
@@ -251,7 +251,7 @@ import (
 //
 // ```
 //
-// ## google\_iap\_tunnel\_instance\_iam\_policy
+// ## iap.TunnelInstanceIAMPolicy
 //
 // ```go
 // package main
@@ -341,7 +341,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_tunnel\_instance\_iam\_binding
+// ## iap.TunnelInstanceIAMBinding
 //
 // ```go
 // package main
@@ -409,7 +409,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_tunnel\_instance\_iam\_member
+// ## iap.TunnelInstanceIAMMember
 //
 // ```go
 // package main

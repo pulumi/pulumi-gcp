@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_policy
+ * ## gcp.healthcare.FhirStoreIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_binding
+ * ## gcp.healthcare.FhirStoreIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_member
+ * ## gcp.healthcare.FhirStoreIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_policy
+ * ## gcp.healthcare.FhirStoreIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -191,7 +191,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_binding
+ * ## gcp.healthcare.FhirStoreIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_fhir\_store\_iam\_member
+ * ## gcp.healthcare.FhirStoreIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

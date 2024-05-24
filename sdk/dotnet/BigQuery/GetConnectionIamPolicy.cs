@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.BigQuery
         /// Retrieves the current IAM policy data for connection
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Retrieves the current IAM policy data for connection
-        /// 
         /// 
         /// 
         /// ## example

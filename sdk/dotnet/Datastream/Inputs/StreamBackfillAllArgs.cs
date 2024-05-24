@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("postgresqlExcludedObjects")]
         public Input<Inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs>? PostgresqlExcludedObjects { get; set; }
 
+        /// <summary>
+        /// SQL Server data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sqlServerExcludedObjects")]
+        public Input<Inputs.StreamBackfillAllSqlServerExcludedObjectsArgs>? SqlServerExcludedObjects { get; set; }
+
         public StreamBackfillAllArgs()
         {
         }

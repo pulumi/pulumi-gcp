@@ -356,6 +356,15 @@ namespace Pulumi.Gcp.Compute
     public partial class RouterNat : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The network tier to use when automatically reserving NAT IP addresses.
+        /// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        /// project-level default tier is used.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Output("autoNetworkTier")]
+        public Output<string> AutoNetworkTier { get; private set; } = null!;
+
+        /// <summary>
         /// A list of URLs of the IP resources to be drained. These IPs must be
         /// valid static external IPs that have been assigned to the NAT.
         /// </summary>
@@ -575,6 +584,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RouterNatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network tier to use when automatically reserving NAT IP addresses.
+        /// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        /// project-level default tier is used.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Input("autoNetworkTier")]
+        public Input<string>? AutoNetworkTier { get; set; }
+
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
 
@@ -787,6 +805,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RouterNatState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network tier to use when automatically reserving NAT IP addresses.
+        /// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        /// project-level default tier is used.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Input("autoNetworkTier")]
+        public Input<string>? AutoNetworkTier { get; set; }
+
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
 

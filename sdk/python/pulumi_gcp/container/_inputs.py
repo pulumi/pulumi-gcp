@@ -5544,7 +5544,7 @@ class ClusterMonitoringConfigArgs:
                  managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_configs is not None:
@@ -5570,7 +5570,7 @@ class ClusterMonitoringConfigArgs:
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         """
         return pulumi.get(self, "enable_components")
 

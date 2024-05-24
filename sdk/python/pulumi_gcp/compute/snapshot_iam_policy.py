@@ -170,7 +170,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
+        ## compute.SnapshotIamPolicy
 
         ```python
         import pulumi
@@ -186,7 +186,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_binding
+        ## compute.SnapshotIamBinding
 
         ```python
         import pulumi
@@ -199,7 +199,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_member
+        ## compute.SnapshotIamMember
 
         ```python
         import pulumi
@@ -212,7 +212,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
+        ## compute.SnapshotIamPolicy
 
         ```python
         import pulumi
@@ -228,7 +228,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_binding
+        ## compute.SnapshotIamBinding
 
         ```python
         import pulumi
@@ -241,7 +241,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_member
+        ## compute.SnapshotIamMember
 
         ```python
         import pulumi
@@ -319,7 +319,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
+        ## compute.SnapshotIamPolicy
 
         ```python
         import pulumi
@@ -335,7 +335,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_binding
+        ## compute.SnapshotIamBinding
 
         ```python
         import pulumi
@@ -348,7 +348,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_member
+        ## compute.SnapshotIamMember
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
+        ## compute.SnapshotIamPolicy
 
         ```python
         import pulumi
@@ -377,7 +377,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_binding
+        ## compute.SnapshotIamBinding
 
         ```python
         import pulumi
@@ -390,7 +390,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_snapshot\\_iam\\_member
+        ## compute.SnapshotIamMember
 
         ```python
         import pulumi

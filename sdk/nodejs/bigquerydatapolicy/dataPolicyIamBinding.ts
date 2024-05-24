@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `gcp.bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+ * ## gcp.bigquerydatapolicy.DataPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+ * ## gcp.bigquerydatapolicy.DataPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+ * ## gcp.bigquerydatapolicy.DataPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+ * ## gcp.bigquerydatapolicy.DataPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+ * ## gcp.bigquerydatapolicy.DataPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+ * ## gcp.bigquerydatapolicy.DataPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

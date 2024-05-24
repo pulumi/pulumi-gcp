@@ -206,7 +206,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
+        ## bigqueryanalyticshub.DataExchangeIamPolicy
 
         ```python
         import pulumi
@@ -223,7 +223,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
+        ## bigqueryanalyticshub.DataExchangeIamBinding
 
         ```python
         import pulumi
@@ -237,7 +237,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
+        ## bigqueryanalyticshub.DataExchangeIamMember
 
         ```python
         import pulumi
@@ -251,7 +251,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
+        ## bigqueryanalyticshub.DataExchangeIamPolicy
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
+        ## bigqueryanalyticshub.DataExchangeIamBinding
 
         ```python
         import pulumi
@@ -282,7 +282,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
+        ## bigqueryanalyticshub.DataExchangeIamMember
 
         ```python
         import pulumi
@@ -365,7 +365,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
+        ## bigqueryanalyticshub.DataExchangeIamPolicy
 
         ```python
         import pulumi
@@ -382,7 +382,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
+        ## bigqueryanalyticshub.DataExchangeIamBinding
 
         ```python
         import pulumi
@@ -396,7 +396,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
+        ## bigqueryanalyticshub.DataExchangeIamMember
 
         ```python
         import pulumi
@@ -410,7 +410,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
+        ## bigqueryanalyticshub.DataExchangeIamPolicy
 
         ```python
         import pulumi
@@ -427,7 +427,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
+        ## bigqueryanalyticshub.DataExchangeIamBinding
 
         ```python
         import pulumi
@@ -441,7 +441,7 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
+        ## bigqueryanalyticshub.DataExchangeIamMember
 
         ```python
         import pulumi

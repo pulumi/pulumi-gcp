@@ -1127,7 +1127,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortRange = "80",
     ///         Target = defaultRegionTargetHttpProxy.Id,
     ///         Network = defaultNetwork.Id,
-    ///         IpAddress = defaultAddress.Id,
+    ///         IpAddress = defaultAddress.IPAddress,
     ///         NetworkTier = "STANDARD",
     ///     });
     /// 
@@ -1513,7 +1513,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "steering-rule",
     ///         Region = "us-central1",
-    ///         IpAddress = basic.SelfLink,
+    ///         IpAddress = basic.IPAddress,
     ///         BackendService = external.SelfLink,
     ///         LoadBalancingScheme = "EXTERNAL",
     ///         SourceIpRanges = new[]
@@ -1527,7 +1527,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "external-forwarding-rule",
     ///         Region = "us-central1",
-    ///         IpAddress = basic.SelfLink,
+    ///         IpAddress = basic.IPAddress,
     ///         BackendService = external.SelfLink,
     ///         LoadBalancingScheme = "EXTERNAL",
     ///     });

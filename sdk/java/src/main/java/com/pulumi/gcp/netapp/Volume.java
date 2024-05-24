@@ -490,14 +490,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.securityStyle;
     }
     /**
-     * Service level of the volume. Inherited from storage pool.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      * 
      */
     @Export(name="serviceLevel", refs={String.class}, tree="[0]")
     private Output<String> serviceLevel;
 
     /**
-     * @return Service level of the volume. Inherited from storage pool.
+     * @return Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      * 
      */
     public Output<String> serviceLevel() {

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
- * ## google\_storage\_bucket\_iam\_policy
+ * ## gcp.storage.BucketIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_storage\_bucket\_iam\_binding
+ * ## gcp.storage.BucketIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_storage\_bucket\_iam\_member
+ * ## gcp.storage.BucketIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -283,7 +283,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_storage\_bucket\_iam\_policy
+ * ## gcp.storage.BucketIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_storage\_bucket\_iam\_binding
+ * ## gcp.storage.BucketIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -456,7 +456,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_storage\_bucket\_iam\_member
+ * ## gcp.storage.BucketIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

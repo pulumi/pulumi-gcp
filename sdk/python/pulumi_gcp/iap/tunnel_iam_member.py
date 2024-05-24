@@ -254,7 +254,7 @@ class TunnelIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_iam\\_policy
+        ## iap.TunnelIamPolicy
 
         ```python
         import pulumi
@@ -288,7 +288,7 @@ class TunnelIamMember(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_binding
+        ## iap.TunnelIamBinding
 
         ```python
         import pulumi
@@ -316,7 +316,7 @@ class TunnelIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_member
+        ## iap.TunnelIamMember
 
         ```python
         import pulumi
@@ -345,7 +345,7 @@ class TunnelIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_iam\\_policy
+        ## iap.TunnelIamPolicy
 
         ```python
         import pulumi
@@ -379,7 +379,7 @@ class TunnelIamMember(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_binding
+        ## iap.TunnelIamBinding
 
         ```python
         import pulumi
@@ -407,7 +407,7 @@ class TunnelIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_member
+        ## iap.TunnelIamMember
 
         ```python
         import pulumi
@@ -514,7 +514,7 @@ class TunnelIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_iam\\_policy
+        ## iap.TunnelIamPolicy
 
         ```python
         import pulumi
@@ -548,7 +548,7 @@ class TunnelIamMember(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_binding
+        ## iap.TunnelIamBinding
 
         ```python
         import pulumi
@@ -576,7 +576,7 @@ class TunnelIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_member
+        ## iap.TunnelIamMember
 
         ```python
         import pulumi
@@ -605,7 +605,7 @@ class TunnelIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_iam\\_policy
+        ## iap.TunnelIamPolicy
 
         ```python
         import pulumi
@@ -639,7 +639,7 @@ class TunnelIamMember(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_binding
+        ## iap.TunnelIamBinding
 
         ```python
         import pulumi
@@ -667,7 +667,7 @@ class TunnelIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_iam\\_member
+        ## iap.TunnelIamMember
 
         ```python
         import pulumi

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_kms\_key\_ring\_iam\_policy
+ * ## gcp.kms.KeyRingIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_kms\_key\_ring\_iam\_binding
+ * ## gcp.kms.KeyRingIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_kms\_key\_ring\_iam\_member
+ * ## gcp.kms.KeyRingIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_kms\_key\_ring\_iam\_policy
+ * ## gcp.kms.KeyRingIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -402,7 +402,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_kms\_key\_ring\_iam\_binding
+ * ## gcp.kms.KeyRingIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -482,7 +482,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_kms\_key\_ring\_iam\_member
+ * ## gcp.kms.KeyRingIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// Retrieves the current IAM policy data for certificatetemplate
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Retrieves the current IAM policy data for certificatetemplate
-        /// 
         /// 
         /// 
         /// ## example

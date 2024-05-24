@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  * 
  *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()
  *             .region("southamerica-west1")
- *             .name("tf-test-policyddos_88717")
+ *             .name("tf-test-policyddos_85794")
  *             .description("ddos protection security policy to set target instance")
  *             .type("CLOUD_ARMOR_NETWORK")
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
@@ -248,7 +248,7 @@ import javax.annotation.Nullable;
  * 
  *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()
  *             .region("southamerica-west1")
- *             .name("tf-test-edgesec_85794")
+ *             .name("tf-test-edgesec_21197")
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 

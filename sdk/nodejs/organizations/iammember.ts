@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_organization\_iam\_policy
+ * ## gcp.organizations.IAMPolicy
  *
  * !> **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_binding
+ * ## gcp.organizations.IAMBinding
  *
  * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
  *
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_member
+ * ## gcp.organizations.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -135,7 +135,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_audit\_config
+ * ## gcp.organizations.IamAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -156,7 +156,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_policy
+ * ## gcp.organizations.IAMPolicy
  *
  * !> **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
@@ -209,7 +209,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_binding
+ * ## gcp.organizations.IAMBinding
  *
  * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
  *
@@ -242,7 +242,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_member
+ * ## gcp.organizations.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -273,7 +273,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_organization\_iam\_audit\_config
+ * ## gcp.organizations.IamAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -134,7 +134,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_storage\\_bucket\\_iam\\_policy
+        ## storage.BucketIAMPolicy
 
         ```python
         import pulumi
@@ -168,7 +168,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             bucket=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
+        ## storage.BucketIAMBinding
 
         ```python
         import pulumi
@@ -196,7 +196,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_storage\\_bucket\\_iam\\_member
+        ## storage.BucketIAMMember
 
         ```python
         import pulumi
@@ -225,7 +225,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_storage\\_bucket\\_iam\\_policy
+        ## storage.BucketIAMPolicy
 
         ```python
         import pulumi
@@ -259,7 +259,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             bucket=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
+        ## storage.BucketIAMBinding
 
         ```python
         import pulumi
@@ -287,7 +287,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_storage\\_bucket\\_iam\\_member
+        ## storage.BucketIAMMember
 
         ```python
         import pulumi
@@ -379,7 +379,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_storage\\_bucket\\_iam\\_policy
+        ## storage.BucketIAMPolicy
 
         ```python
         import pulumi
@@ -413,7 +413,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             bucket=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
+        ## storage.BucketIAMBinding
 
         ```python
         import pulumi
@@ -441,7 +441,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_storage\\_bucket\\_iam\\_member
+        ## storage.BucketIAMMember
 
         ```python
         import pulumi
@@ -470,7 +470,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_storage\\_bucket\\_iam\\_policy
+        ## storage.BucketIAMPolicy
 
         ```python
         import pulumi
@@ -504,7 +504,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             bucket=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
+        ## storage.BucketIAMBinding
 
         ```python
         import pulumi
@@ -532,7 +532,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_storage\\_bucket\\_iam\\_member
+        ## storage.BucketIAMMember
 
         ```python
         import pulumi

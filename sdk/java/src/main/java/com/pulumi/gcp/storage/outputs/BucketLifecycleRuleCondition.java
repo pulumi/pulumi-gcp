@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleCondition {
     /**
-     * @return Minimum age of an object in days to satisfy this condition.
+     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
      * 
      */
     private @Nullable Integer age;
@@ -30,12 +30,13 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable String customTimeBefore;
     /**
-     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+     * @return Number of days elapsed since the user-specified timestamp set on an object.
      * 
      */
     private @Nullable Integer daysSinceCustomTime;
     /**
-     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+     * @return Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
      * 
      */
     private @Nullable Integer daysSinceNoncurrentTime;
@@ -55,12 +56,12 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable List<String> matchesSuffixes;
     /**
-     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
      * 
      */
     private @Nullable Boolean noAge;
     /**
-     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
     private @Nullable String noncurrentTimeBefore;
@@ -77,7 +78,7 @@ public final class BucketLifecycleRuleCondition {
 
     private BucketLifecycleRuleCondition() {}
     /**
-     * @return Minimum age of an object in days to satisfy this condition.
+     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
      * 
      */
     public Optional<Integer> age() {
@@ -98,14 +99,15 @@ public final class BucketLifecycleRuleCondition {
         return Optional.ofNullable(this.customTimeBefore);
     }
     /**
-     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+     * @return Number of days elapsed since the user-specified timestamp set on an object.
      * 
      */
     public Optional<Integer> daysSinceCustomTime() {
         return Optional.ofNullable(this.daysSinceCustomTime);
     }
     /**
-     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+     * @return Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
      * 
      */
     public Optional<Integer> daysSinceNoncurrentTime() {
@@ -133,14 +135,14 @@ public final class BucketLifecycleRuleCondition {
         return this.matchesSuffixes == null ? List.of() : this.matchesSuffixes;
     }
     /**
-     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
      * 
      */
     public Optional<Boolean> noAge() {
         return Optional.ofNullable(this.noAge);
     }
     /**
-     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
     public Optional<String> noncurrentTimeBefore() {

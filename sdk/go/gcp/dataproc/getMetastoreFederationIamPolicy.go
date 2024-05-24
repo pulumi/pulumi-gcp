@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the current IAM policy data for federation
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.LookupMetastoreFederationIamPolicy(ctx, &dataproc.LookupMetastoreFederationIamPolicyArgs{
+//				Project:      pulumi.StringRef(_default.Project),
+//				Location:     pulumi.StringRef(_default.Location),
+//				FederationId: _default.FederationId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMetastoreFederationIamPolicy(ctx *pulumi.Context, args *LookupMetastoreFederationIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreFederationIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreFederationIamPolicyResult

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `gcp.dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+ * ## gcp.dataproc.AutoscalingPolicyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+ * ## gcp.dataproc.AutoscalingPolicyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_member
+ * ## gcp.dataproc.AutoscalingPolicyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+ * ## gcp.dataproc.AutoscalingPolicyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+ * ## gcp.dataproc.AutoscalingPolicyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_autoscaling\_policy\_iam\_member
+ * ## gcp.dataproc.AutoscalingPolicyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

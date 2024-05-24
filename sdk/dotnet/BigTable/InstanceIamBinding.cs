@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// &gt; **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_bigtable\_instance\_iam\_policy
+    /// ## gcp.bigtable.InstanceIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.BigTable
     /// });
     /// ```
     /// 
-    /// ## google\_bigtable\_instance\_iam\_binding
+    /// ## gcp.bigtable.InstanceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.BigTable
     /// });
     /// ```
     /// 
-    /// ## google\_bigtable\_instance\_iam\_member
+    /// ## gcp.bigtable.InstanceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.BigTable
     /// });
     /// ```
     /// 
-    /// ## google\_bigtable\_instance\_iam\_policy
+    /// ## gcp.bigtable.InstanceIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.BigTable
     /// });
     /// ```
     /// 
-    /// ## google\_bigtable\_instance\_iam\_binding
+    /// ## gcp.bigtable.InstanceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.BigTable
     /// });
     /// ```
     /// 
-    /// ## google\_bigtable\_instance\_iam\_member
+    /// ## gcp.bigtable.InstanceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

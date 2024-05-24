@@ -549,15 +549,179 @@ public final class DataprocFunctions {
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", TypeShape.of(GetJobIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for federation
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .federationId(default_.federationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs args) {
         return getMetastoreFederationIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for federation
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .federationId(default_.federationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicyPlain(GetMetastoreFederationIamPolicyPlainArgs args) {
         return getMetastoreFederationIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for federation
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .federationId(default_.federationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", TypeShape.of(GetMetastoreFederationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for federation
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .federationId(default_.federationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicyPlain(GetMetastoreFederationIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", TypeShape.of(GetMetastoreFederationIamPolicyResult.class), args, Utilities.withVersion(options));
     }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,28 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
         return Optional.ofNullable(this.bigQueryTarget);
     }
 
+    /**
+     * Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudSqlTarget")
+    private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetArgs> cloudSqlTarget;
+
+    /**
+     * @return Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetCloudSqlTargetArgs>> cloudSqlTarget() {
+        return Optional.ofNullable(this.cloudSqlTarget);
+    }
+
     private PreventionDiscoveryConfigTargetArgs() {}
 
     private PreventionDiscoveryConfigTargetArgs(PreventionDiscoveryConfigTargetArgs $) {
         this.bigQueryTarget = $.bigQueryTarget;
+        this.cloudSqlTarget = $.cloudSqlTarget;
     }
 
     public static Builder builder() {
@@ -77,6 +96,29 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
          */
         public Builder bigQueryTarget(PreventionDiscoveryConfigTargetBigQueryTargetArgs bigQueryTarget) {
             return bigQueryTarget(Output.of(bigQueryTarget));
+        }
+
+        /**
+         * @param cloudSqlTarget Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlTarget(@Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetArgs> cloudSqlTarget) {
+            $.cloudSqlTarget = cloudSqlTarget;
+            return this;
+        }
+
+        /**
+         * @param cloudSqlTarget Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlTarget(PreventionDiscoveryConfigTargetCloudSqlTargetArgs cloudSqlTarget) {
+            return cloudSqlTarget(Output.of(cloudSqlTarget));
         }
 
         public PreventionDiscoveryConfigTargetArgs build() {

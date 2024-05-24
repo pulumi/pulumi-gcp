@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_policy
+ * ## gcp.datacatalog.TaxonomyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_binding
+ * ## gcp.datacatalog.TaxonomyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_member
+ * ## gcp.datacatalog.TaxonomyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_policy
+ * ## gcp.datacatalog.TaxonomyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_binding
+ * ## gcp.datacatalog.TaxonomyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_taxonomy\_iam\_member
+ * ## gcp.datacatalog.TaxonomyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

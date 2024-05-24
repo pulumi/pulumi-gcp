@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// &gt; **Note:** `gcp.dataplex.AssetIamBinding` resources **can be** used in conjunction with `gcp.dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_dataplex\_asset\_iam\_policy
+    /// ## gcp.dataplex.AssetIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_asset\_iam\_binding
+    /// ## gcp.dataplex.AssetIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_asset\_iam\_member
+    /// ## gcp.dataplex.AssetIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_asset\_iam\_policy
+    /// ## gcp.dataplex.AssetIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_asset\_iam\_binding
+    /// ## gcp.dataplex.AssetIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_asset\_iam\_member
+    /// ## gcp.dataplex.AssetIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

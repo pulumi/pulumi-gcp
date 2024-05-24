@@ -115,7 +115,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_machine\_image\_iam\_binding
+// ## compute.MachineImageIamBinding
 //
 // ```go
 // package main
@@ -181,7 +181,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_machine\_image\_iam\_member
+// ## compute.MachineImageIamMember
 //
 // ```go
 // package main
@@ -332,7 +332,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_machine\_image\_iam\_binding
+// ## compute.MachineImageIamBinding
 //
 // ```go
 // package main
@@ -398,7 +398,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_machine\_image\_iam\_member
+// ## compute.MachineImageIamMember
 //
 // ```go
 // package main

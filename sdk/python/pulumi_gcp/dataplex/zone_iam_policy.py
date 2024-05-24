@@ -218,7 +218,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.ZoneIamBinding` resources **can be** used in conjunction with `dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_zone\\_iam\\_policy
+        ## dataplex.ZoneIamPolicy
 
         ```python
         import pulumi
@@ -236,7 +236,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_binding
+        ## dataplex.ZoneIamBinding
 
         ```python
         import pulumi
@@ -251,7 +251,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_member
+        ## dataplex.ZoneIamMember
 
         ```python
         import pulumi
@@ -266,7 +266,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_policy
+        ## dataplex.ZoneIamPolicy
 
         ```python
         import pulumi
@@ -284,7 +284,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_binding
+        ## dataplex.ZoneIamBinding
 
         ```python
         import pulumi
@@ -299,7 +299,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_member
+        ## dataplex.ZoneIamMember
 
         ```python
         import pulumi
@@ -381,7 +381,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.ZoneIamBinding` resources **can be** used in conjunction with `dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_zone\\_iam\\_policy
+        ## dataplex.ZoneIamPolicy
 
         ```python
         import pulumi
@@ -399,7 +399,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_binding
+        ## dataplex.ZoneIamBinding
 
         ```python
         import pulumi
@@ -414,7 +414,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_member
+        ## dataplex.ZoneIamMember
 
         ```python
         import pulumi
@@ -429,7 +429,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_policy
+        ## dataplex.ZoneIamPolicy
 
         ```python
         import pulumi
@@ -447,7 +447,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_binding
+        ## dataplex.ZoneIamBinding
 
         ```python
         import pulumi
@@ -462,7 +462,7 @@ class ZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_zone\\_iam\\_member
+        ## dataplex.ZoneIamMember
 
         ```python
         import pulumi

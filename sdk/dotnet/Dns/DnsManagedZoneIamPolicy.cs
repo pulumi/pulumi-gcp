@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_policy
+    /// ## gcp.dns.DnsManagedZoneIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_binding
+    /// ## gcp.dns.DnsManagedZoneIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_member
+    /// ## gcp.dns.DnsManagedZoneIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_policy
+    /// ## gcp.dns.DnsManagedZoneIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_binding
+    /// ## gcp.dns.DnsManagedZoneIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ## google\_dns\_managed\_zone\_iam\_member
+    /// ## gcp.dns.DnsManagedZoneIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

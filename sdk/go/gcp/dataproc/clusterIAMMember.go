@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataproc\_cluster\_iam\_policy
+// ## dataproc.ClusterIAMPolicy
 //
 // ```go
 // package main
@@ -65,7 +65,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_cluster\_iam\_binding
+// ## dataproc.ClusterIAMBinding
 //
 // ```go
 // package main
@@ -95,7 +95,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_cluster\_iam\_member
+// ## dataproc.ClusterIAMMember
 //
 // ```go
 // package main
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_cluster\_iam\_policy
+// ## dataproc.ClusterIAMPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_cluster\_iam\_binding
+// ## dataproc.ClusterIAMBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_cluster\_iam\_member
+// ## dataproc.ClusterIAMMember
 //
 // ```go
 // package main

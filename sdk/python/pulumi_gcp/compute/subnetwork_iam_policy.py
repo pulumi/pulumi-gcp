@@ -216,7 +216,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_subnetwork\\_iam\\_policy
+        ## compute.SubnetworkIAMPolicy
 
         ```python
         import pulumi
@@ -254,7 +254,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_binding
+        ## compute.SubnetworkIAMBinding
 
         ```python
         import pulumi
@@ -286,7 +286,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_member
+        ## compute.SubnetworkIAMMember
 
         ```python
         import pulumi
@@ -319,7 +319,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_subnetwork\\_iam\\_policy
+        ## compute.SubnetworkIAMPolicy
 
         ```python
         import pulumi
@@ -357,7 +357,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_binding
+        ## compute.SubnetworkIAMBinding
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_member
+        ## compute.SubnetworkIAMMember
 
         ```python
         import pulumi
@@ -495,7 +495,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_subnetwork\\_iam\\_policy
+        ## compute.SubnetworkIAMPolicy
 
         ```python
         import pulumi
@@ -533,7 +533,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_binding
+        ## compute.SubnetworkIAMBinding
 
         ```python
         import pulumi
@@ -565,7 +565,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_member
+        ## compute.SubnetworkIAMMember
 
         ```python
         import pulumi
@@ -598,7 +598,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_subnetwork\\_iam\\_policy
+        ## compute.SubnetworkIAMPolicy
 
         ```python
         import pulumi
@@ -636,7 +636,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_binding
+        ## compute.SubnetworkIAMBinding
 
         ```python
         import pulumi
@@ -668,7 +668,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_subnetwork\\_iam\\_member
+        ## compute.SubnetworkIAMMember
 
         ```python
         import pulumi

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// &gt; **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_dataplex\_task\_iam\_policy
+    /// ## gcp.dataplex.TaskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_task\_iam\_binding
+    /// ## gcp.dataplex.TaskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_task\_iam\_member
+    /// ## gcp.dataplex.TaskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_task\_iam\_policy
+    /// ## gcp.dataplex.TaskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_task\_iam\_binding
+    /// ## gcp.dataplex.TaskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.DataPlex
     /// });
     /// ```
     /// 
-    /// ## google\_dataplex\_task\_iam\_member
+    /// ## gcp.dataplex.TaskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

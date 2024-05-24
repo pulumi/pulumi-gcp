@@ -203,7 +203,7 @@ class QueueIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+        ## cloudtasks.QueueIamPolicy
 
         ```python
         import pulumi
@@ -220,7 +220,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+        ## cloudtasks.QueueIamBinding
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+        ## cloudtasks.QueueIamMember
 
         ```python
         import pulumi
@@ -248,7 +248,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+        ## cloudtasks.QueueIamPolicy
 
         ```python
         import pulumi
@@ -265,7 +265,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+        ## cloudtasks.QueueIamBinding
 
         ```python
         import pulumi
@@ -279,7 +279,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+        ## cloudtasks.QueueIamMember
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class QueueIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+        ## cloudtasks.QueueIamPolicy
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+        ## cloudtasks.QueueIamBinding
 
         ```python
         import pulumi
@@ -392,7 +392,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+        ## cloudtasks.QueueIamMember
 
         ```python
         import pulumi
@@ -406,7 +406,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+        ## cloudtasks.QueueIamPolicy
 
         ```python
         import pulumi
@@ -423,7 +423,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+        ## cloudtasks.QueueIamBinding
 
         ```python
         import pulumi
@@ -437,7 +437,7 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+        ## cloudtasks.QueueIamMember
 
         ```python
         import pulumi

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_compute\_disk\_iam\_policy
+ * ## gcp.compute.DiskIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_compute\_disk\_iam\_binding
+ * ## gcp.compute.DiskIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_compute\_disk\_iam\_member
+ * ## gcp.compute.DiskIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_compute\_disk\_iam\_policy
+ * ## gcp.compute.DiskIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_compute\_disk\_iam\_binding
+ * ## gcp.compute.DiskIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_compute\_disk\_iam\_member
+ * ## gcp.compute.DiskIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

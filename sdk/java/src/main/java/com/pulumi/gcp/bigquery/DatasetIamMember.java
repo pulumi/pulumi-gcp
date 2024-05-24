@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.bigquery.DatasetIamBinding` resources **can be** used in conjunction with `gcp.bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_bigquery\_dataset\_iam\_policy
+ * ## gcp.bigquery.DatasetIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_dataset\_iam\_binding
+ * ## gcp.bigquery.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_dataset\_iam\_member
+ * ## gcp.bigquery.DatasetIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_dataset\_iam\_policy
+ * ## gcp.bigquery.DatasetIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -222,7 +222,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_dataset\_iam\_binding
+ * ## gcp.bigquery.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -265,7 +265,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_dataset\_iam\_member
+ * ## gcp.bigquery.DatasetIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
-    /// ## google\_privateca\_certificate\_template\_iam\_policy
+    /// ## gcp.certificateauthority.CertificateTemplateIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_certificate\_template\_iam\_binding
+    /// ## gcp.certificateauthority.CertificateTemplateIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_certificate\_template\_iam\_member
+    /// ## gcp.certificateauthority.CertificateTemplateIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// });
     /// ```
     /// 
-    /// ## google\_privateca\_certificate\_template\_iam\_policy
+    /// ## gcp.certificateauthority.CertificateTemplateIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_certificate\_template\_iam\_binding
+    /// ## gcp.certificateauthority.CertificateTemplateIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_certificate\_template\_iam\_member
+    /// ## gcp.certificateauthority.CertificateTemplateIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

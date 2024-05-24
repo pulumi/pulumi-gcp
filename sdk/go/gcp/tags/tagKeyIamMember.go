@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_tags\_tag\_key\_iam\_policy
+// ## tags.TagKeyIamPolicy
 //
 // ```go
 // package main
@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_tags\_tag\_key\_iam\_binding
+// ## tags.TagKeyIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_tags\_tag\_key\_iam\_member
+// ## tags.TagKeyIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_tags\_tag\_key\_iam\_policy
+// ## tags.TagKeyIamPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_tags\_tag\_key\_iam\_binding
+// ## tags.TagKeyIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_tags\_tag\_key\_iam\_member
+// ## tags.TagKeyIamMember
 //
 // ```go
 // package main

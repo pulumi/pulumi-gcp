@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataproc\_metastore\_service\_iam\_policy
+// ## dataproc.MetastoreServiceIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_metastore\_service\_iam\_binding
+// ## dataproc.MetastoreServiceIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_metastore\_service\_iam\_member
+// ## dataproc.MetastoreServiceIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_metastore\_service\_iam\_policy
+// ## dataproc.MetastoreServiceIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_metastore\_service\_iam\_binding
+// ## dataproc.MetastoreServiceIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_metastore\_service\_iam\_member
+// ## dataproc.MetastoreServiceIamMember
 //
 // ```go
 // package main

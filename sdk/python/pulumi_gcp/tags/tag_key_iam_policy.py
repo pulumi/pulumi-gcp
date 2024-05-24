@@ -132,7 +132,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+        ## tags.TagKeyIamPolicy
 
         ```python
         import pulumi
@@ -147,7 +147,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+        ## tags.TagKeyIamBinding
 
         ```python
         import pulumi
@@ -159,7 +159,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
+        ## tags.TagKeyIamMember
 
         ```python
         import pulumi
@@ -171,7 +171,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+        ## tags.TagKeyIamPolicy
 
         ```python
         import pulumi
@@ -186,7 +186,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+        ## tags.TagKeyIamBinding
 
         ```python
         import pulumi
@@ -198,7 +198,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
+        ## tags.TagKeyIamMember
 
         ```python
         import pulumi
@@ -271,7 +271,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+        ## tags.TagKeyIamPolicy
 
         ```python
         import pulumi
@@ -286,7 +286,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+        ## tags.TagKeyIamBinding
 
         ```python
         import pulumi
@@ -298,7 +298,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
+        ## tags.TagKeyIamMember
 
         ```python
         import pulumi
@@ -310,7 +310,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+        ## tags.TagKeyIamPolicy
 
         ```python
         import pulumi
@@ -325,7 +325,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+        ## tags.TagKeyIamBinding
 
         ```python
         import pulumi
@@ -337,7 +337,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
+        ## tags.TagKeyIamMember
 
         ```python
         import pulumi

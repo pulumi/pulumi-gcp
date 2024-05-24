@@ -30,7 +30,7 @@ import (
 //
 // > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigquery\_dataset\_iam\_policy
+// ## bigquery.DatasetIamPolicy
 //
 // ```go
 // package main
@@ -77,7 +77,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_dataset\_iam\_binding
+// ## bigquery.DatasetIamBinding
 //
 // ```go
 // package main
@@ -113,7 +113,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_dataset\_iam\_member
+// ## bigquery.DatasetIamMember
 //
 // ```go
 // package main
@@ -147,7 +147,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_dataset\_iam\_policy
+// ## bigquery.DatasetIamPolicy
 //
 // ```go
 // package main
@@ -194,7 +194,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_dataset\_iam\_binding
+// ## bigquery.DatasetIamBinding
 //
 // ```go
 // package main
@@ -230,7 +230,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_dataset\_iam\_member
+// ## bigquery.DatasetIamMember
 //
 // ```go
 // package main

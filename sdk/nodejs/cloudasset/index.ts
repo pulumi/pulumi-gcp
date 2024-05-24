@@ -15,6 +15,11 @@ export const getResourcesSearchAll: typeof import("./getResourcesSearchAll").get
 export const getResourcesSearchAllOutput: typeof import("./getResourcesSearchAll").getResourcesSearchAllOutput = null as any;
 utilities.lazyLoad(exports, ["getResourcesSearchAll","getResourcesSearchAllOutput"], () => require("./getResourcesSearchAll"));
 
+export { GetSearchAllResourcesArgs, GetSearchAllResourcesResult, GetSearchAllResourcesOutputArgs } from "./getSearchAllResources";
+export const getSearchAllResources: typeof import("./getSearchAllResources").getSearchAllResources = null as any;
+export const getSearchAllResourcesOutput: typeof import("./getSearchAllResources").getSearchAllResourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getSearchAllResources","getSearchAllResourcesOutput"], () => require("./getSearchAllResources"));
+
 export { OrganizationFeedArgs, OrganizationFeedState } from "./organizationFeed";
 export type OrganizationFeed = import("./organizationFeed").OrganizationFeed;
 export const OrganizationFeed: typeof import("./organizationFeed").OrganizationFeed = null as any;

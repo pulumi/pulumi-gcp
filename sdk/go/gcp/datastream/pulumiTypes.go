@@ -1599,6 +1599,223 @@ func (o ConnectionProfilePrivateConnectivityPtrOutput) PrivateConnection() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionProfileSqlServerProfile struct {
+	// Database for the SQL Server connection.
+	Database string `pulumi:"database"`
+	// Hostname for the SQL Server connection.
+	Hostname string `pulumi:"hostname"`
+	// Password for the SQL Server connection.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password string `pulumi:"password"`
+	// Port for the SQL Server connection.
+	Port *int `pulumi:"port"`
+	// Username for the SQL Server connection.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionProfileSqlServerProfileInput is an input type that accepts ConnectionProfileSqlServerProfileArgs and ConnectionProfileSqlServerProfileOutput values.
+// You can construct a concrete instance of `ConnectionProfileSqlServerProfileInput` via:
+//
+//	ConnectionProfileSqlServerProfileArgs{...}
+type ConnectionProfileSqlServerProfileInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSqlServerProfileOutput() ConnectionProfileSqlServerProfileOutput
+	ToConnectionProfileSqlServerProfileOutputWithContext(context.Context) ConnectionProfileSqlServerProfileOutput
+}
+
+type ConnectionProfileSqlServerProfileArgs struct {
+	// Database for the SQL Server connection.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Hostname for the SQL Server connection.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Password for the SQL Server connection.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Port for the SQL Server connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Username for the SQL Server connection.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionProfileSqlServerProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSqlServerProfile)(nil)).Elem()
+}
+
+func (i ConnectionProfileSqlServerProfileArgs) ToConnectionProfileSqlServerProfileOutput() ConnectionProfileSqlServerProfileOutput {
+	return i.ToConnectionProfileSqlServerProfileOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSqlServerProfileArgs) ToConnectionProfileSqlServerProfileOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSqlServerProfileOutput)
+}
+
+func (i ConnectionProfileSqlServerProfileArgs) ToConnectionProfileSqlServerProfilePtrOutput() ConnectionProfileSqlServerProfilePtrOutput {
+	return i.ToConnectionProfileSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSqlServerProfileArgs) ToConnectionProfileSqlServerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSqlServerProfileOutput).ToConnectionProfileSqlServerProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileSqlServerProfilePtrInput is an input type that accepts ConnectionProfileSqlServerProfileArgs, ConnectionProfileSqlServerProfilePtr and ConnectionProfileSqlServerProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileSqlServerProfilePtrInput` via:
+//
+//	        ConnectionProfileSqlServerProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileSqlServerProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSqlServerProfilePtrOutput() ConnectionProfileSqlServerProfilePtrOutput
+	ToConnectionProfileSqlServerProfilePtrOutputWithContext(context.Context) ConnectionProfileSqlServerProfilePtrOutput
+}
+
+type connectionProfileSqlServerProfilePtrType ConnectionProfileSqlServerProfileArgs
+
+func ConnectionProfileSqlServerProfilePtr(v *ConnectionProfileSqlServerProfileArgs) ConnectionProfileSqlServerProfilePtrInput {
+	return (*connectionProfileSqlServerProfilePtrType)(v)
+}
+
+func (*connectionProfileSqlServerProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSqlServerProfile)(nil)).Elem()
+}
+
+func (i *connectionProfileSqlServerProfilePtrType) ToConnectionProfileSqlServerProfilePtrOutput() ConnectionProfileSqlServerProfilePtrOutput {
+	return i.ToConnectionProfileSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileSqlServerProfilePtrType) ToConnectionProfileSqlServerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSqlServerProfilePtrOutput)
+}
+
+type ConnectionProfileSqlServerProfileOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSqlServerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSqlServerProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSqlServerProfileOutput) ToConnectionProfileSqlServerProfileOutput() ConnectionProfileSqlServerProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSqlServerProfileOutput) ToConnectionProfileSqlServerProfileOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSqlServerProfileOutput) ToConnectionProfileSqlServerProfilePtrOutput() ConnectionProfileSqlServerProfilePtrOutput {
+	return o.ToConnectionProfileSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileSqlServerProfileOutput) ToConnectionProfileSqlServerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileSqlServerProfile) *ConnectionProfileSqlServerProfile {
+		return &v
+	}).(ConnectionProfileSqlServerProfilePtrOutput)
+}
+
+// Database for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfileOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Hostname for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfileOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Password for the SQL Server connection.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileSqlServerProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfileOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Username for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionProfileSqlServerProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSqlServerProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSqlServerProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSqlServerProfilePtrOutput) ToConnectionProfileSqlServerProfilePtrOutput() ConnectionProfileSqlServerProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSqlServerProfilePtrOutput) ToConnectionProfileSqlServerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSqlServerProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSqlServerProfilePtrOutput) Elem() ConnectionProfileSqlServerProfileOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) ConnectionProfileSqlServerProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileSqlServerProfile
+		return ret
+	}).(ConnectionProfileSqlServerProfileOutput)
+}
+
+// Database for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfilePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for the SQL Server connection.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileSqlServerProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfilePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username for the SQL Server connection.
+func (o ConnectionProfileSqlServerProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrivateConnectionError struct {
 	// A list of messages that carry the error details.
 	Details map[string]string `pulumi:"details"`
@@ -1883,6 +2100,9 @@ type StreamBackfillAll struct {
 	// PostgreSQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	PostgresqlExcludedObjects *StreamBackfillAllPostgresqlExcludedObjects `pulumi:"postgresqlExcludedObjects"`
+	// SQL Server data source objects to avoid backfilling.
+	// Structure is documented below.
+	SqlServerExcludedObjects *StreamBackfillAllSqlServerExcludedObjects `pulumi:"sqlServerExcludedObjects"`
 }
 
 // StreamBackfillAllInput is an input type that accepts StreamBackfillAllArgs and StreamBackfillAllOutput values.
@@ -1906,6 +2126,9 @@ type StreamBackfillAllArgs struct {
 	// PostgreSQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	PostgresqlExcludedObjects StreamBackfillAllPostgresqlExcludedObjectsPtrInput `pulumi:"postgresqlExcludedObjects"`
+	// SQL Server data source objects to avoid backfilling.
+	// Structure is documented below.
+	SqlServerExcludedObjects StreamBackfillAllSqlServerExcludedObjectsPtrInput `pulumi:"sqlServerExcludedObjects"`
 }
 
 func (StreamBackfillAllArgs) ElementType() reflect.Type {
@@ -2005,6 +2228,14 @@ func (o StreamBackfillAllOutput) PostgresqlExcludedObjects() StreamBackfillAllPo
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
 }
 
+// SQL Server data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) SqlServerExcludedObjects() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllSqlServerExcludedObjects {
+		return v.SqlServerExcludedObjects
+	}).(StreamBackfillAllSqlServerExcludedObjectsPtrOutput)
+}
+
 type StreamBackfillAllPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPtrOutput) ElementType() reflect.Type {
@@ -2060,6 +2291,17 @@ func (o StreamBackfillAllPtrOutput) PostgresqlExcludedObjects() StreamBackfillAl
 		}
 		return v.PostgresqlExcludedObjects
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
+}
+
+// SQL Server data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) SqlServerExcludedObjects() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllSqlServerExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerExcludedObjects
+	}).(StreamBackfillAllSqlServerExcludedObjectsPtrOutput)
 }
 
 type StreamBackfillAllMysqlExcludedObjects struct {
@@ -3725,6 +3967,552 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
+type StreamBackfillAllSqlServerExcludedObjects struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas []StreamBackfillAllSqlServerExcludedObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsArgs and StreamBackfillAllSqlServerExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsArgs{...}
+type StreamBackfillAllSqlServerExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsOutput() StreamBackfillAllSqlServerExcludedObjectsOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsArgs struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas StreamBackfillAllSqlServerExcludedObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamBackfillAllSqlServerExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsArgs) ToStreamBackfillAllSqlServerExcludedObjectsOutput() StreamBackfillAllSqlServerExcludedObjectsOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsArgs) ToStreamBackfillAllSqlServerExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsArgs) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutput() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsArgs) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsOutput).ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsArgs, StreamBackfillAllSqlServerExcludedObjectsPtr and StreamBackfillAllSqlServerExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllSqlServerExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllSqlServerExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsPtrOutput() StreamBackfillAllSqlServerExcludedObjectsPtrOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllSqlServerExcludedObjectsPtrType StreamBackfillAllSqlServerExcludedObjectsArgs
+
+func StreamBackfillAllSqlServerExcludedObjectsPtr(v *StreamBackfillAllSqlServerExcludedObjectsArgs) StreamBackfillAllSqlServerExcludedObjectsPtrInput {
+	return (*streamBackfillAllSqlServerExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllSqlServerExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSqlServerExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllSqlServerExcludedObjectsPtrType) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutput() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllSqlServerExcludedObjectsPtrType) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsOutput) ToStreamBackfillAllSqlServerExcludedObjectsOutput() StreamBackfillAllSqlServerExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsOutput) ToStreamBackfillAllSqlServerExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsOutput) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutput() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsOutput) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllSqlServerExcludedObjects) *StreamBackfillAllSqlServerExcludedObjects {
+		return &v
+	}).(StreamBackfillAllSqlServerExcludedObjectsPtrOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamBackfillAllSqlServerExcludedObjectsOutput) Schemas() StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjects) []StreamBackfillAllSqlServerExcludedObjectsSchema {
+		return v.Schemas
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSqlServerExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsPtrOutput) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutput() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsPtrOutput) ToStreamBackfillAllSqlServerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsPtrOutput) Elem() StreamBackfillAllSqlServerExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSqlServerExcludedObjects) StreamBackfillAllSqlServerExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllSqlServerExcludedObjects
+		return ret
+	}).(StreamBackfillAllSqlServerExcludedObjectsOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamBackfillAllSqlServerExcludedObjectsPtrOutput) Schemas() StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSqlServerExcludedObjects) []StreamBackfillAllSqlServerExcludedObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables []StreamBackfillAllSqlServerExcludedObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaArgs and StreamBackfillAllSqlServerExcludedObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaArgs{...}
+type StreamBackfillAllSqlServerExcludedObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaOutput)
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaArrayInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaArray and StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaArrayInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaArray{ StreamBackfillAllSqlServerExcludedObjectsSchemaArgs{...} }
+type StreamBackfillAllSqlServerExcludedObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaArray []StreamBackfillAllSqlServerExcludedObjectsSchemaInput
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) Tables() StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchema) []StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
+		return v.Tables
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSqlServerExcludedObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSqlServerExcludedObjectsSchema {
+		return vs[0].([]StreamBackfillAllSqlServerExcludedObjectsSchema)[vs[1].(int)]
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTable struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs and StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs{...}
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput)
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray and StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray{ StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs{...} }
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray []StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput {
+	return o
+}
+
+// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) Columns() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTable) []StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
+		return vs[0].([]StreamBackfillAllSqlServerExcludedObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length *int `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs and StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs{...}
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput)
+}
+
+// StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput is an input type that accepts StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray and StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray{ StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs{...} }
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput
+	ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray []StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The SQL Server data type. Full data types list can be found here:
+// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Column length.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column can accept a null value.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *int { return v.OrdinalPosition }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Column precision.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *int { return v.Precision }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column represents a primary key.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *bool { return v.PrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Column scale.
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput) ToStreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
+		return vs[0].([]StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput)
+}
+
 type StreamBackfillNone struct {
 }
 
@@ -5241,6 +6029,9 @@ type StreamSourceConfig struct {
 	PostgresqlSourceConfig *StreamSourceConfigPostgresqlSourceConfig `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
+	// SQL Server data source configuration.
+	// Structure is documented below.
+	SqlServerSourceConfig *StreamSourceConfigSqlServerSourceConfig `pulumi:"sqlServerSourceConfig"`
 }
 
 // StreamSourceConfigInput is an input type that accepts StreamSourceConfigArgs and StreamSourceConfigOutput values.
@@ -5266,6 +6057,9 @@ type StreamSourceConfigArgs struct {
 	PostgresqlSourceConfig StreamSourceConfigPostgresqlSourceConfigPtrInput `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
+	// SQL Server data source configuration.
+	// Structure is documented below.
+	SqlServerSourceConfig StreamSourceConfigSqlServerSourceConfigPtrInput `pulumi:"sqlServerSourceConfig"`
 }
 
 func (StreamSourceConfigArgs) ElementType() reflect.Type {
@@ -5368,6 +6162,12 @@ func (o StreamSourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput 
 	return o.ApplyT(func(v StreamSourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
 }
 
+// SQL Server data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) SqlServerSourceConfig() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigSqlServerSourceConfig { return v.SqlServerSourceConfig }).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
+}
+
 type StreamSourceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPtrOutput) ElementType() reflect.Type {
@@ -5433,6 +6233,17 @@ func (o StreamSourceConfigPtrOutput) SourceConnectionProfile() pulumi.StringPtrO
 		}
 		return &v.SourceConnectionProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) SqlServerSourceConfig() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigSqlServerSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerSourceConfig
+	}).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
 }
 
 type StreamSourceConfigMysqlSourceConfig struct {
@@ -9720,6 +10531,1328 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
+type StreamSourceConfigSqlServerSourceConfig struct {
+	// SQL Server objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigSqlServerSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// SQL Server objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigSqlServerSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigArgs and StreamSourceConfigSqlServerSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigArgs{...}
+type StreamSourceConfigSqlServerSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigOutput() StreamSourceConfigSqlServerSourceConfigOutput
+	ToStreamSourceConfigSqlServerSourceConfigOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigArgs struct {
+	// SQL Server objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// SQL Server objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigArgs) ToStreamSourceConfigSqlServerSourceConfigOutput() StreamSourceConfigSqlServerSourceConfigOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigArgs) ToStreamSourceConfigSqlServerSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigOutput)
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigArgs) ToStreamSourceConfigSqlServerSourceConfigPtrOutput() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigArgs) ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigOutput).ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSqlServerSourceConfigPtrInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigArgs, StreamSourceConfigSqlServerSourceConfigPtr and StreamSourceConfigSqlServerSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigSqlServerSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSqlServerSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigPtrOutput() StreamSourceConfigSqlServerSourceConfigPtrOutput
+	ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigPtrOutput
+}
+
+type streamSourceConfigSqlServerSourceConfigPtrType StreamSourceConfigSqlServerSourceConfigArgs
+
+func StreamSourceConfigSqlServerSourceConfigPtr(v *StreamSourceConfigSqlServerSourceConfigArgs) StreamSourceConfigSqlServerSourceConfigPtrInput {
+	return (*streamSourceConfigSqlServerSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigSqlServerSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigPtrType) ToStreamSourceConfigSqlServerSourceConfigPtrOutput() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigPtrType) ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ToStreamSourceConfigSqlServerSourceConfigOutput() StreamSourceConfigSqlServerSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ToStreamSourceConfigSqlServerSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ToStreamSourceConfigSqlServerSourceConfigPtrOutput() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfig {
+		return &v
+	}).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
+}
+
+// SQL Server objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ExcludeObjects() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// SQL Server objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) IncludeObjects() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) ToStreamSourceConfigSqlServerSourceConfigPtrOutput() StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) ToStreamSourceConfigSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) Elem() StreamSourceConfigSqlServerSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) StreamSourceConfigSqlServerSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSqlServerSourceConfig
+		return ret
+	}).(StreamSourceConfigSqlServerSourceConfigOutput)
+}
+
+// SQL Server objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// SQL Server objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjects struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs and StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput).ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs, StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtr and StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigSqlServerSourceConfigExcludeObjectsPtrType StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtr(v *StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigSqlServerSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSqlServerSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSqlServerSourceConfigExcludeObjects) *StreamSourceConfigSqlServerSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) Schemas() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjects) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
+		return v.Schemas
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigExcludeObjects) StreamSourceConfigSqlServerSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSqlServerSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) Schemas() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigExcludeObjects) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs{...}
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray{ StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) Tables() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
+		return v.Tables
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs{...}
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray{ StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput {
+	return o
+}
+
+// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length *int `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs{...}
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray and StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray{ StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL Server data type. Full data types list can be found here:
+// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Column length.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Column precision.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Column scale.
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjects struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs and StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs struct {
+	// SQL Server schemas/databases in the database server
+	// Structure is documented below.
+	Schemas StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput).ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs, StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtr and StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigSqlServerSourceConfigIncludeObjectsPtrType StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtr(v *StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigSqlServerSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSqlServerSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSqlServerSourceConfigIncludeObjects) *StreamSourceConfigSqlServerSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) Schemas() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjects) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
+		return v.Schemas
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigIncludeObjects) StreamSourceConfigSqlServerSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSqlServerSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput)
+}
+
+// SQL Server schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) Schemas() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigIncludeObjects) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs{...}
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the database.
+	// Structure is documented below.
+	Tables StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{ StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) Tables() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
+		return v.Tables
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs{...}
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs struct {
+	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray{ StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput {
+	return o
+}
+
+// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length *int `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs{...}
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The SQL Server data type. Full data types list can be found here:
+	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput)
+}
+
+// StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray and StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray{ StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs{...} }
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput
+	ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL Server data type. Full data types list can be found here:
+// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Column length.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Column precision.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Column scale.
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn {
+		return vs[0].([]StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfileInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfilePtrInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
@@ -9737,6 +11870,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfileInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfilePtrInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
@@ -9767,6 +11902,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaArrayInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNoneInput)(nil)).Elem(), StreamBackfillNoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNonePtrInput)(nil)).Elem(), StreamBackfillNoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigArgs{})
@@ -9845,6 +11988,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
@@ -9861,6 +12022,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfilePtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
@@ -9891,6 +12054,14 @@ func init() {
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillNoneOutput{})
 	pulumi.RegisterOutputType(StreamBackfillNonePtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigOutput{})
@@ -9969,4 +12140,22 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput{})
 }

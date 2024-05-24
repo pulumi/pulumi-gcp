@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// &gt; **Note:** `gcp.apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `gcp.apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_apigee\_environment\_iam\_policy
+    /// ## gcp.apigee.EnvironmentIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Apigee
     /// });
     /// ```
     /// 
-    /// ## google\_apigee\_environment\_iam\_binding
+    /// ## gcp.apigee.EnvironmentIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Apigee
     /// });
     /// ```
     /// 
-    /// ## google\_apigee\_environment\_iam\_member
+    /// ## gcp.apigee.EnvironmentIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Apigee
     /// });
     /// ```
     /// 
-    /// ## google\_apigee\_environment\_iam\_policy
+    /// ## gcp.apigee.EnvironmentIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Apigee
     /// });
     /// ```
     /// 
-    /// ## google\_apigee\_environment\_iam\_binding
+    /// ## gcp.apigee.EnvironmentIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.Apigee
     /// });
     /// ```
     /// 
-    /// ## google\_apigee\_environment\_iam\_member
+    /// ## gcp.apigee.EnvironmentIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

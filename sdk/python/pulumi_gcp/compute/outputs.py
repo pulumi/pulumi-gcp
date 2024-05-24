@@ -182,6 +182,10 @@ __all__ = [
     'InstanceTemplateServiceAccount',
     'InstanceTemplateShieldedInstanceConfig',
     'InterconnectAttachmentPrivateInterconnectInfo',
+    'InterconnectCircuitInfo',
+    'InterconnectExpectedOutage',
+    'InterconnectMacsec',
+    'InterconnectMacsecPreSharedKey',
     'MachineImageIamBindingCondition',
     'MachineImageIamMemberCondition',
     'MachineImageMachineImageEncryptionKey',
@@ -310,6 +314,7 @@ __all__ = [
     'RegionSecurityPolicyDdosProtectionConfig',
     'RegionSecurityPolicyRuleMatch',
     'RegionSecurityPolicyRuleMatchConfig',
+    'RegionSecurityPolicyRuleMatchExpr',
     'RegionSecurityPolicyRuleNetworkMatch',
     'RegionSecurityPolicyRuleNetworkMatchUserDefinedField',
     'RegionSecurityPolicyRulePreconfiguredWafConfig',
@@ -13314,6 +13319,382 @@ class InterconnectAttachmentPrivateInterconnectInfo(dict):
 
 
 @pulumi.output_type
+class InterconnectCircuitInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerDemarcId":
+            suggest = "customer_demarc_id"
+        elif key == "googleCircuitId":
+            suggest = "google_circuit_id"
+        elif key == "googleDemarcId":
+            suggest = "google_demarc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectCircuitInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectCircuitInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectCircuitInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_demarc_id: Optional[str] = None,
+                 google_circuit_id: Optional[str] = None,
+                 google_demarc_id: Optional[str] = None):
+        """
+        :param str customer_demarc_id: (Output)
+               Customer-side demarc ID for this circuit.
+        :param str google_circuit_id: (Output)
+               Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
+        :param str google_demarc_id: (Output)
+               Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by
+               Google to the customer in the LOA.
+        """
+        if customer_demarc_id is not None:
+            pulumi.set(__self__, "customer_demarc_id", customer_demarc_id)
+        if google_circuit_id is not None:
+            pulumi.set(__self__, "google_circuit_id", google_circuit_id)
+        if google_demarc_id is not None:
+            pulumi.set(__self__, "google_demarc_id", google_demarc_id)
+
+    @property
+    @pulumi.getter(name="customerDemarcId")
+    def customer_demarc_id(self) -> Optional[str]:
+        """
+        (Output)
+        Customer-side demarc ID for this circuit.
+        """
+        return pulumi.get(self, "customer_demarc_id")
+
+    @property
+    @pulumi.getter(name="googleCircuitId")
+    def google_circuit_id(self) -> Optional[str]:
+        """
+        (Output)
+        Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
+        """
+        return pulumi.get(self, "google_circuit_id")
+
+    @property
+    @pulumi.getter(name="googleDemarcId")
+    def google_demarc_id(self) -> Optional[str]:
+        """
+        (Output)
+        Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by
+        Google to the customer in the LOA.
+        """
+        return pulumi.get(self, "google_demarc_id")
+
+
+@pulumi.output_type
+class InterconnectExpectedOutage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "affectedCircuits":
+            suggest = "affected_circuits"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "issueType":
+            suggest = "issue_type"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectExpectedOutage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectExpectedOutage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectExpectedOutage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 affected_circuits: Optional[Sequence[str]] = None,
+                 description: Optional[str] = None,
+                 end_time: Optional[str] = None,
+                 issue_type: Optional[str] = None,
+                 name: Optional[str] = None,
+                 source: Optional[str] = None,
+                 start_time: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param Sequence[str] affected_circuits: (Output)
+               If issueType is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+               affected.
+        :param str description: An optional description of this resource. Provide this property when you create the resource.
+        :param str end_time: (Output)
+               Scheduled end time for the outage (milliseconds since Unix epoch).
+        :param str issue_type: (Output)
+               Form this outage is expected to take. Note that the versions of this enum prefixed with
+               "IT_" have been deprecated in favor of the unprefixed values. Can take one of the
+               following values:
+               - OUTAGE: The Interconnect may be completely out of service for some or all of the
+               specified window.
+               - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain
+               up, but with reduced bandwidth.
+        :param str name: Name of the resource. Provided by the client when the resource is created. The name must be
+               1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?` which means the first
+               character must be a lowercase letter, and all following characters must be a dash,
+               lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param str source: (Output)
+               The party that generated this notification. Note that the value of NSRC_GOOGLE has been
+               deprecated in favor of GOOGLE. Can take the following value:
+               - GOOGLE: this notification as generated by Google.
+        :param str start_time: (Output)
+               Scheduled start time for the outage (milliseconds since Unix epoch).
+        :param str state: (Output)
+               State of this notification. Note that the versions of this enum prefixed with "NS_" have
+               been deprecated in favor of the unprefixed values. Can take one of the following values:
+               - ACTIVE: This outage notification is active. The event could be in the past, present,
+               or future. See startTime and endTime for scheduling.
+               - CANCELLED: The outage associated with this notification was cancelled before the
+               outage was due to start.
+               - COMPLETED: The outage associated with this notification is complete.
+        """
+        if affected_circuits is not None:
+            pulumi.set(__self__, "affected_circuits", affected_circuits)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if issue_type is not None:
+            pulumi.set(__self__, "issue_type", issue_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="affectedCircuits")
+    def affected_circuits(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        If issueType is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+        affected.
+        """
+        return pulumi.get(self, "affected_circuits")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        (Output)
+        Scheduled end time for the outage (milliseconds since Unix epoch).
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> Optional[str]:
+        """
+        (Output)
+        Form this outage is expected to take. Note that the versions of this enum prefixed with
+        "IT_" have been deprecated in favor of the unprefixed values. Can take one of the
+        following values:
+        - OUTAGE: The Interconnect may be completely out of service for some or all of the
+        specified window.
+        - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain
+        up, but with reduced bandwidth.
+        """
+        return pulumi.get(self, "issue_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be
+        1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which means the first
+        character must be a lowercase letter, and all following characters must be a dash,
+        lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        (Output)
+        The party that generated this notification. Note that the value of NSRC_GOOGLE has been
+        deprecated in favor of GOOGLE. Can take the following value:
+        - GOOGLE: this notification as generated by Google.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        (Output)
+        Scheduled start time for the outage (milliseconds since Unix epoch).
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        State of this notification. Note that the versions of this enum prefixed with "NS_" have
+        been deprecated in favor of the unprefixed values. Can take one of the following values:
+        - ACTIVE: This outage notification is active. The event could be in the past, present,
+        or future. See startTime and endTime for scheduling.
+        - CANCELLED: The outage associated with this notification was cancelled before the
+        outage was due to start.
+        - COMPLETED: The outage associated with this notification is complete.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class InterconnectMacsec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preSharedKeys":
+            suggest = "pre_shared_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectMacsec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectMacsec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectMacsec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pre_shared_keys: Sequence['outputs.InterconnectMacsecPreSharedKey']):
+        """
+        :param Sequence['InterconnectMacsecPreSharedKeyArgs'] pre_shared_keys: A keychain placeholder describing a set of named key objects along with their
+               start times. A MACsec CKN/CAK is generated for each key in the key chain.
+               Google router automatically picks the key with the most recent startTime when establishing
+               or re-establishing a MACsec secure link.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "pre_shared_keys", pre_shared_keys)
+
+    @property
+    @pulumi.getter(name="preSharedKeys")
+    def pre_shared_keys(self) -> Sequence['outputs.InterconnectMacsecPreSharedKey']:
+        """
+        A keychain placeholder describing a set of named key objects along with their
+        start times. A MACsec CKN/CAK is generated for each key in the key chain.
+        Google router automatically picks the key with the most recent startTime when establishing
+        or re-establishing a MACsec secure link.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pre_shared_keys")
+
+
+@pulumi.output_type
+class InterconnectMacsecPreSharedKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectMacsecPreSharedKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectMacsecPreSharedKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectMacsecPreSharedKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 fail_open: Optional[bool] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param str name: A name for this pre-shared key. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the first character
+               must be a lowercase letter, and all following characters must be a dash, lowercase
+               letter, or digit, except the last character, which cannot be a dash.
+        :param bool fail_open: If set to true, the Interconnect connection is configured with a should-secure
+               MACsec security policy, that allows the Google router to fallback to cleartext
+               traffic if the MKA session cannot be established. By default, the Interconnect
+               connection is configured with a must-secure security policy that drops all traffic
+               if the MKA session cannot be established with your router.
+        :param str start_time: A RFC3339 timestamp on or after which the key is valid. startTime can be in the
+               future. If the keychain has a single key, startTime can be omitted. If the keychain
+               has multiple keys, startTime is mandatory for each key. The start times of keys must
+               be in increasing order. The start times of two consecutive keys must be at least 6
+               hours apart.
+        """
+        pulumi.set(__self__, "name", name)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for this pre-shared key. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the first character
+        must be a lowercase letter, and all following characters must be a dash, lowercase
+        letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[bool]:
+        """
+        If set to true, the Interconnect connection is configured with a should-secure
+        MACsec security policy, that allows the Google router to fallback to cleartext
+        traffic if the MKA session cannot be established. By default, the Interconnect
+        connection is configured with a must-secure security policy that drops all traffic
+        if the MKA session cannot be established with your router.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        A RFC3339 timestamp on or after which the key is valid. startTime can be in the
+        future. If the keychain has a single key, startTime can be omitted. If the keychain
+        has multiple keys, startTime is mandatory for each key. The start times of keys must
+        be in increasing order. The start times of two consecutive keys must be at least 6
+        hours apart.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
 class MachineImageIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
@@ -22274,10 +22655,13 @@ class RegionSecurityPolicyRuleMatch(dict):
 
     def __init__(__self__, *,
                  config: Optional['outputs.RegionSecurityPolicyRuleMatchConfig'] = None,
+                 expr: Optional['outputs.RegionSecurityPolicyRuleMatchExpr'] = None,
                  versioned_expr: Optional[str] = None):
         """
         :param 'RegionSecurityPolicyRuleMatchConfigArgs' config: The configuration options available when specifying versionedExpr.
                This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+               Structure is documented below.
+        :param 'RegionSecurityPolicyRuleMatchExprArgs' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
         :param str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
                Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
@@ -22285,6 +22669,8 @@ class RegionSecurityPolicyRuleMatch(dict):
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if expr is not None:
+            pulumi.set(__self__, "expr", expr)
         if versioned_expr is not None:
             pulumi.set(__self__, "versioned_expr", versioned_expr)
 
@@ -22297,6 +22683,15 @@ class RegionSecurityPolicyRuleMatch(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def expr(self) -> Optional['outputs.RegionSecurityPolicyRuleMatchExpr']:
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expr")
 
     @property
     @pulumi.getter(name="versionedExpr")
@@ -22343,6 +22738,24 @@ class RegionSecurityPolicyRuleMatchConfig(dict):
         CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
         """
         return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleMatchExpr(dict):
+    def __init__(__self__, *,
+                 expression: str):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        return pulumi.get(self, "expression")
 
 
 @pulumi.output_type

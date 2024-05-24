@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// Retrieves the current IAM policy data for entrygroup
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Retrieves the current IAM policy data for entrygroup
-        /// 
         /// 
         /// 
         /// ## example

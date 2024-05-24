@@ -172,7 +172,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
+        ## healthcare.ConsentStoreIamPolicy
 
         ```python
         import pulumi
@@ -188,7 +188,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
+        ## healthcare.ConsentStoreIamBinding
 
         ```python
         import pulumi
@@ -201,7 +201,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
+        ## healthcare.ConsentStoreIamMember
 
         ```python
         import pulumi
@@ -214,7 +214,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
+        ## healthcare.ConsentStoreIamPolicy
 
         ```python
         import pulumi
@@ -230,7 +230,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
+        ## healthcare.ConsentStoreIamBinding
 
         ```python
         import pulumi
@@ -243,7 +243,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
+        ## healthcare.ConsentStoreIamMember
 
         ```python
         import pulumi
@@ -320,7 +320,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
+        ## healthcare.ConsentStoreIamPolicy
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
+        ## healthcare.ConsentStoreIamBinding
 
         ```python
         import pulumi
@@ -349,7 +349,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
+        ## healthcare.ConsentStoreIamMember
 
         ```python
         import pulumi
@@ -362,7 +362,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
+        ## healthcare.ConsentStoreIamPolicy
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
+        ## healthcare.ConsentStoreIamBinding
 
         ```python
         import pulumi
@@ -391,7 +391,7 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
+        ## healthcare.ConsentStoreIamMember
 
         ```python
         import pulumi

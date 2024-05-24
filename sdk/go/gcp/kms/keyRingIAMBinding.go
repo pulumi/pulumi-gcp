@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `kms.KeyRingIAMBinding` resources **can be** used in conjunction with `kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_kms\_key\_ring\_iam\_policy
+// ## kms.KeyRingIAMPolicy
 //
 // ```go
 // package main
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_kms\_key\_ring\_iam\_binding
+// ## kms.KeyRingIAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_kms\_key\_ring\_iam\_member
+// ## kms.KeyRingIAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_kms\_key\_ring\_iam\_policy
+// ## kms.KeyRingIAMPolicy
 //
 // ```go
 // package main
@@ -350,7 +350,7 @@ import (
 //
 // ```
 //
-// ## google\_kms\_key\_ring\_iam\_binding
+// ## kms.KeyRingIAMBinding
 //
 // ```go
 // package main
@@ -415,7 +415,7 @@ import (
 //
 // ```
 //
-// ## google\_kms\_key\_ring\_iam\_member
+// ## kms.KeyRingIAMMember
 //
 // ```go
 // package main

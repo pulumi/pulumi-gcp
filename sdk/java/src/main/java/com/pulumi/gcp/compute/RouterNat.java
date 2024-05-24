@@ -415,6 +415,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/routerNat:RouterNat")
 public class RouterNat extends com.pulumi.resources.CustomResource {
     /**
+     * The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     * 
+     */
+    @Export(name="autoNetworkTier", refs={String.class}, tree="[0]")
+    private Output<String> autoNetworkTier;
+
+    /**
+     * @return The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     * 
+     */
+    public Output<String> autoNetworkTier() {
+        return this.autoNetworkTier;
+    }
+    /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      * 

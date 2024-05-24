@@ -50,7 +50,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
@@ -62,7 +62,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * @return Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
@@ -183,7 +183,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * @param members Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
          * Each entry can have one of the following values:
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
          * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
@@ -199,7 +199,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * @param members Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
          * Each entry can have one of the following values:
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
          * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
@@ -214,7 +214,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * @param members Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
          * Each entry can have one of the following values:
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
          * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.

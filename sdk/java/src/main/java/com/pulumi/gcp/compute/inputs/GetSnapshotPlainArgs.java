@@ -19,6 +19,7 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
      * A filter to retrieve the compute snapshot.
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
      * If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+     * If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq &#39;.*(.*{@literal /}data-disk$).*&#39;`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
      * 
      */
     @Import(name="filter")
@@ -28,6 +29,7 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
      * @return A filter to retrieve the compute snapshot.
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
      * If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+     * If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq &#39;.*(.*{@literal /}data-disk$).*&#39;`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
      * 
      */
     public Optional<String> filter() {
@@ -116,6 +118,7 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
          * @param filter A filter to retrieve the compute snapshot.
          * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
          * If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+         * If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq &#39;.*(.*{@literal /}data-disk$).*&#39;`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
          * 
          * @return builder
          * 

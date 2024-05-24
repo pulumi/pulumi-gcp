@@ -280,7 +280,7 @@ class ApiIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+        ## apigateway.ApiIamBinding
 
         ```python
         import pulumi
@@ -293,7 +293,7 @@ class ApiIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_member
+        ## apigateway.ApiIamMember
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class ApiIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+        ## apigateway.ApiIamBinding
 
         ```python
         import pulumi
@@ -335,7 +335,7 @@ class ApiIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_member
+        ## apigateway.ApiIamMember
 
         ```python
         import pulumi
@@ -440,7 +440,7 @@ class ApiIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+        ## apigateway.ApiIamBinding
 
         ```python
         import pulumi
@@ -453,7 +453,7 @@ class ApiIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_member
+        ## apigateway.ApiIamMember
 
         ```python
         import pulumi
@@ -482,7 +482,7 @@ class ApiIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+        ## apigateway.ApiIamBinding
 
         ```python
         import pulumi
@@ -495,7 +495,7 @@ class ApiIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_iam\\_member
+        ## apigateway.ApiIamMember
 
         ```python
         import pulumi

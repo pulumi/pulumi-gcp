@@ -93,7 +93,7 @@ export class TargetPool extends pulumi.CustomResource {
 
     /**
      * URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      */
     public readonly backupPool!: pulumi.Output<string | undefined>;
     /**
@@ -145,8 +145,8 @@ export class TargetPool extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * How to distribute load. Options are "NONE" (no
-     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     * affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
      */
     public readonly sessionAffinity!: pulumi.Output<string | undefined>;
 
@@ -199,7 +199,7 @@ export class TargetPool extends pulumi.CustomResource {
 export interface TargetPoolState {
     /**
      * URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      */
     backupPool?: pulumi.Input<string>;
     /**
@@ -251,8 +251,8 @@ export interface TargetPoolState {
     selfLink?: pulumi.Input<string>;
     /**
      * How to distribute load. Options are "NONE" (no
-     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     * affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
      */
     sessionAffinity?: pulumi.Input<string>;
 }
@@ -263,7 +263,7 @@ export interface TargetPoolState {
 export interface TargetPoolArgs {
     /**
      * URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      */
     backupPool?: pulumi.Input<string>;
     /**
@@ -311,8 +311,8 @@ export interface TargetPoolArgs {
     securityPolicy?: pulumi.Input<string>;
     /**
      * How to distribute load. Options are "NONE" (no
-     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     * affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
      */
     sessionAffinity?: pulumi.Input<string>;
 }

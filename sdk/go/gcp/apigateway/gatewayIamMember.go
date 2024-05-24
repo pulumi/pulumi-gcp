@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_gateway\_iam\_binding
+// ## apigateway.GatewayIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_gateway\_iam\_member
+// ## apigateway.GatewayIamMember
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_gateway\_iam\_binding
+// ## apigateway.GatewayIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_api\_gateway\_gateway\_iam\_member
+// ## apigateway.GatewayIamMember
 //
 // ```go
 // package main

@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_endpoints\_service\_iam\_policy
+// ## endpoints.ServiceIamPolicy
 //
 // ```go
 // package main
@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_endpoints\_service\_iam\_binding
+// ## endpoints.ServiceIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_endpoints\_service\_iam\_member
+// ## endpoints.ServiceIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_endpoints\_service\_iam\_policy
+// ## endpoints.ServiceIamPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_endpoints\_service\_iam\_binding
+// ## endpoints.ServiceIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_endpoints\_service\_iam\_member
+// ## endpoints.ServiceIamMember
 //
 // ```go
 // package main

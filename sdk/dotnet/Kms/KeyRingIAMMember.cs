@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_policy
+    /// ## gcp.kms.KeyRingIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_binding
+    /// ## gcp.kms.KeyRingIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_member
+    /// ## gcp.kms.KeyRingIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_policy
+    /// ## gcp.kms.KeyRingIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -290,7 +290,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_binding
+    /// ## gcp.kms.KeyRingIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// ## google\_kms\_key\_ring\_iam\_member
+    /// ## gcp.kms.KeyRingIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

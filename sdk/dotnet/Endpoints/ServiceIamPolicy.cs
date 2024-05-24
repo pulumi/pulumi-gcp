@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Endpoints
     /// 
     /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_endpoints\_service\_iam\_policy
+    /// ## gcp.endpoints.ServiceIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Endpoints
     /// });
     /// ```
     /// 
-    /// ## google\_endpoints\_service\_iam\_binding
+    /// ## gcp.endpoints.ServiceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Endpoints
     /// });
     /// ```
     /// 
-    /// ## google\_endpoints\_service\_iam\_member
+    /// ## gcp.endpoints.ServiceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Endpoints
     /// });
     /// ```
     /// 
-    /// ## google\_endpoints\_service\_iam\_policy
+    /// ## gcp.endpoints.ServiceIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Endpoints
     /// });
     /// ```
     /// 
-    /// ## google\_endpoints\_service\_iam\_binding
+    /// ## gcp.endpoints.ServiceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Endpoints
     /// });
     /// ```
     /// 
-    /// ## google\_endpoints\_service\_iam\_member
+    /// ## gcp.endpoints.ServiceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

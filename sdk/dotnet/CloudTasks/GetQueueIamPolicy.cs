@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CloudTasks
         /// Retrieves the current IAM policy data for queue
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// Retrieves the current IAM policy data for queue
-        /// 
         /// 
         /// 
         /// ## example

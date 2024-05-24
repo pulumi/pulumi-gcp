@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Service level of the storage pool.
-        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
         [Output("serviceLevel")]
         public Output<string> ServiceLevel { get; private set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Service level of the storage pool.
-        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
         [Input("serviceLevel", required: true)]
         public Input<string> ServiceLevel { get; set; } = null!;
@@ -487,7 +487,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Service level of the storage pool.
-        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }

@@ -168,6 +168,23 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
      * with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -257,6 +274,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.friendlyName = $.friendlyName;
         this.hasCredential = $.hasCredential;
+        this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -478,6 +496,29 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hasCredential(Boolean hasCredential) {
             return hasCredential(Output.of(hasCredential));
+        }
+
+        /**
+         * @param kmsKeyName Optional. The Cloud KMS key that is used for encryption.
+         * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName Optional. The Cloud KMS key that is used for encryption.
+         * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**

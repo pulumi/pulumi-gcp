@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Retrieves the current IAM policy data for cloudfunction
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Retrieves the current IAM policy data for cloudfunction
-        /// 
         /// 
         /// 
         /// ## example

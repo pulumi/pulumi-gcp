@@ -812,6 +812,93 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Datastream Stream Sql Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-4096",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ))
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
+                hostname=instance.public_ip_address,
+                port=1433,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="SQL Server to BigQuery",
+            location="us-central1",
+            stream_id="stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                sql_server_source_config=gcp.datastream.StreamSourceConfigSqlServerSourceConfigArgs(
+                    include_objects=gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs(
+                        schemas=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs(
+                            schema="schema",
+                            tables=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs(
+                                table="table",
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
+        ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -1381,6 +1468,93 @@ class Stream(pulumi.CustomResource):
                     )],
                 ),
             ))
+        ```
+        ### Datastream Stream Sql Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-4096",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ))
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
+                hostname=instance.public_ip_address,
+                port=1433,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="SQL Server to BigQuery",
+            location="us-central1",
+            stream_id="stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                sql_server_source_config=gcp.datastream.StreamSourceConfigSqlServerSourceConfigArgs(
+                    include_objects=gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs(
+                        schemas=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs(
+                            schema="schema",
+                            tables=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs(
+                                table="table",
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 

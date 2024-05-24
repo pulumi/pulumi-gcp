@@ -381,6 +381,71 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Connection Kms
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database-instance"),
+//				DatabaseVersion: pulumi.String("POSTGRES_11"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
+//				Instance: instance.Name,
+//				Password: pulumi.String("tf-test-my-password_77884"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnection(ctx, "bq-connection-cmek", &bigquery.ConnectionArgs{
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
+//				Location:     pulumi.String("US"),
+//				KmsKeyName:   pulumi.String("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key"),
+//				CloudSql: &bigquery.ConnectionCloudSqlArgs{
+//					InstanceId: instance.ConnectionName,
+//					Database:   db.Name,
+//					Type:       pulumi.String("POSTGRES"),
+//					Credential: &bigquery.ConnectionCloudSqlCredentialArgs{
+//						Username: user.Name,
+//						Password: user.Password,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -431,6 +496,9 @@ type Connection struct {
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// True if the connection has credential assigned.
 	HasCredential pulumi.BoolOutput `pulumi:"hasCredential"`
+	// Optional. The Cloud KMS key that is used for encryption.
+	// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -503,6 +571,9 @@ type connectionState struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// True if the connection has credential assigned.
 	HasCredential *bool `pulumi:"hasCredential"`
+	// Optional. The Cloud KMS key that is used for encryption.
+	// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -546,6 +617,9 @@ type ConnectionState struct {
 	FriendlyName pulumi.StringPtrInput
 	// True if the connection has credential assigned.
 	HasCredential pulumi.BoolPtrInput
+	// Optional. The Cloud KMS key that is used for encryption.
+	// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrInput
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -591,6 +665,9 @@ type connectionArgs struct {
 	Description *string `pulumi:"description"`
 	// A descriptive name for the connection
 	FriendlyName *string `pulumi:"friendlyName"`
+	// Optional. The Cloud KMS key that is used for encryption.
+	// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -630,6 +707,9 @@ type ConnectionArgs struct {
 	Description pulumi.StringPtrInput
 	// A descriptive name for the connection
 	FriendlyName pulumi.StringPtrInput
+	// Optional. The Cloud KMS key that is used for encryption.
+	// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrInput
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -781,6 +861,12 @@ func (o ConnectionOutput) FriendlyName() pulumi.StringPtrOutput {
 // True if the connection has credential assigned.
 func (o ConnectionOutput) HasCredential() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.HasCredential }).(pulumi.BoolOutput)
+}
+
+// Optional. The Cloud KMS key that is used for encryption.
+// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+func (o ConnectionOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // The geographic location where the connection should reside.

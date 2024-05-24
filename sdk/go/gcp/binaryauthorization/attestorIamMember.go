@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_binary\_authorization\_attestor\_iam\_policy
+// ## binaryauthorization.AttestorIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_binary\_authorization\_attestor\_iam\_binding
+// ## binaryauthorization.AttestorIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_binary\_authorization\_attestor\_iam\_member
+// ## binaryauthorization.AttestorIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_binary\_authorization\_attestor\_iam\_policy
+// ## binaryauthorization.AttestorIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_binary\_authorization\_attestor\_iam\_binding
+// ## binaryauthorization.AttestorIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_binary\_authorization\_attestor\_iam\_member
+// ## binaryauthorization.AttestorIamMember
 //
 // ```go
 // package main

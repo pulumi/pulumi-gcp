@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("bigQueryTarget")]
         public Input<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetArgs>? BigQueryTarget { get; set; }
 
+        /// <summary>
+        /// Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudSqlTarget")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetArgs>? CloudSqlTarget { get; set; }
+
         public PreventionDiscoveryConfigTargetArgs()
         {
         }

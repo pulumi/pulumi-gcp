@@ -10839,6 +10839,394 @@ func (o HttpRouteRuleMatchQueryParameterArrayOutput) Index(i pulumi.IntInput) Ht
 	}).(HttpRouteRuleMatchQueryParameterOutput)
 }
 
+type LbTrafficExtensionExtensionChain struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Structure is documented below.
+	Extensions []LbTrafficExtensionExtensionChainExtension `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition LbTrafficExtensionExtensionChainMatchCondition `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name string `pulumi:"name"`
+}
+
+// LbTrafficExtensionExtensionChainInput is an input type that accepts LbTrafficExtensionExtensionChainArgs and LbTrafficExtensionExtensionChainOutput values.
+// You can construct a concrete instance of `LbTrafficExtensionExtensionChainInput` via:
+//
+//	LbTrafficExtensionExtensionChainArgs{...}
+type LbTrafficExtensionExtensionChainInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionExtensionChainOutput() LbTrafficExtensionExtensionChainOutput
+	ToLbTrafficExtensionExtensionChainOutputWithContext(context.Context) LbTrafficExtensionExtensionChainOutput
+}
+
+type LbTrafficExtensionExtensionChainArgs struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Structure is documented below.
+	Extensions LbTrafficExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition LbTrafficExtensionExtensionChainMatchConditionInput `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LbTrafficExtensionExtensionChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i LbTrafficExtensionExtensionChainArgs) ToLbTrafficExtensionExtensionChainOutput() LbTrafficExtensionExtensionChainOutput {
+	return i.ToLbTrafficExtensionExtensionChainOutputWithContext(context.Background())
+}
+
+func (i LbTrafficExtensionExtensionChainArgs) ToLbTrafficExtensionExtensionChainOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbTrafficExtensionExtensionChainOutput)
+}
+
+// LbTrafficExtensionExtensionChainArrayInput is an input type that accepts LbTrafficExtensionExtensionChainArray and LbTrafficExtensionExtensionChainArrayOutput values.
+// You can construct a concrete instance of `LbTrafficExtensionExtensionChainArrayInput` via:
+//
+//	LbTrafficExtensionExtensionChainArray{ LbTrafficExtensionExtensionChainArgs{...} }
+type LbTrafficExtensionExtensionChainArrayInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionExtensionChainArrayOutput() LbTrafficExtensionExtensionChainArrayOutput
+	ToLbTrafficExtensionExtensionChainArrayOutputWithContext(context.Context) LbTrafficExtensionExtensionChainArrayOutput
+}
+
+type LbTrafficExtensionExtensionChainArray []LbTrafficExtensionExtensionChainInput
+
+func (LbTrafficExtensionExtensionChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbTrafficExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i LbTrafficExtensionExtensionChainArray) ToLbTrafficExtensionExtensionChainArrayOutput() LbTrafficExtensionExtensionChainArrayOutput {
+	return i.ToLbTrafficExtensionExtensionChainArrayOutputWithContext(context.Background())
+}
+
+func (i LbTrafficExtensionExtensionChainArray) ToLbTrafficExtensionExtensionChainArrayOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbTrafficExtensionExtensionChainArrayOutput)
+}
+
+type LbTrafficExtensionExtensionChainOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionExtensionChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionExtensionChainOutput) ToLbTrafficExtensionExtensionChainOutput() LbTrafficExtensionExtensionChainOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainOutput) ToLbTrafficExtensionExtensionChainOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainOutput {
+	return o
+}
+
+// A set of extensions to execute for the matching request.
+// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+// Structure is documented below.
+func (o LbTrafficExtensionExtensionChainOutput) Extensions() LbTrafficExtensionExtensionChainExtensionArrayOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) []LbTrafficExtensionExtensionChainExtension {
+		return v.Extensions
+	}).(LbTrafficExtensionExtensionChainExtensionArrayOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+// Structure is documented below.
+func (o LbTrafficExtensionExtensionChainOutput) MatchCondition() LbTrafficExtensionExtensionChainMatchConditionOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) LbTrafficExtensionExtensionChainMatchCondition {
+		return v.MatchCondition
+	}).(LbTrafficExtensionExtensionChainMatchConditionOutput)
+}
+
+// The name for this extension chain. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last a letter or a number.
+func (o LbTrafficExtensionExtensionChainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LbTrafficExtensionExtensionChainArrayOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionExtensionChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbTrafficExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionExtensionChainArrayOutput) ToLbTrafficExtensionExtensionChainArrayOutput() LbTrafficExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainArrayOutput) ToLbTrafficExtensionExtensionChainArrayOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainArrayOutput) Index(i pulumi.IntInput) LbTrafficExtensionExtensionChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LbTrafficExtensionExtensionChain {
+		return vs[0].([]LbTrafficExtensionExtensionChain)[vs[1].(int)]
+	}).(LbTrafficExtensionExtensionChainOutput)
+}
+
+type LbTrafficExtensionExtensionChainExtension struct {
+	// The :authority header in the gRPC request sent from Envoy to the extension service.
+	Authority string `pulumi:"authority"`
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	// When set to FALSE: * If response headers have not been delivered to the downstream client,
+	// a generic 500 error is returned to the client. The error response can be tailored by
+	// configuring a custom error response in the load balancer.
+	FailOpen *bool `pulumi:"failOpen"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name string `pulumi:"name"`
+	// The reference to the service that runs the extension. Must be a reference to a backend service
+	Service string `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+	// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+	// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+	//
+	// ***
+	SupportedEvents []string `pulumi:"supportedEvents"`
+	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout string `pulumi:"timeout"`
+}
+
+// LbTrafficExtensionExtensionChainExtensionInput is an input type that accepts LbTrafficExtensionExtensionChainExtensionArgs and LbTrafficExtensionExtensionChainExtensionOutput values.
+// You can construct a concrete instance of `LbTrafficExtensionExtensionChainExtensionInput` via:
+//
+//	LbTrafficExtensionExtensionChainExtensionArgs{...}
+type LbTrafficExtensionExtensionChainExtensionInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionExtensionChainExtensionOutput() LbTrafficExtensionExtensionChainExtensionOutput
+	ToLbTrafficExtensionExtensionChainExtensionOutputWithContext(context.Context) LbTrafficExtensionExtensionChainExtensionOutput
+}
+
+type LbTrafficExtensionExtensionChainExtensionArgs struct {
+	// The :authority header in the gRPC request sent from Envoy to the extension service.
+	Authority pulumi.StringInput `pulumi:"authority"`
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	// When set to FALSE: * If response headers have not been delivered to the downstream client,
+	// a generic 500 error is returned to the client. The error response can be tailored by
+	// configuring a custom error response in the load balancer.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The reference to the service that runs the extension. Must be a reference to a backend service
+	Service pulumi.StringInput `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+	// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+	// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+	//
+	// ***
+	SupportedEvents pulumi.StringArrayInput `pulumi:"supportedEvents"`
+	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+}
+
+func (LbTrafficExtensionExtensionChainExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i LbTrafficExtensionExtensionChainExtensionArgs) ToLbTrafficExtensionExtensionChainExtensionOutput() LbTrafficExtensionExtensionChainExtensionOutput {
+	return i.ToLbTrafficExtensionExtensionChainExtensionOutputWithContext(context.Background())
+}
+
+func (i LbTrafficExtensionExtensionChainExtensionArgs) ToLbTrafficExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbTrafficExtensionExtensionChainExtensionOutput)
+}
+
+// LbTrafficExtensionExtensionChainExtensionArrayInput is an input type that accepts LbTrafficExtensionExtensionChainExtensionArray and LbTrafficExtensionExtensionChainExtensionArrayOutput values.
+// You can construct a concrete instance of `LbTrafficExtensionExtensionChainExtensionArrayInput` via:
+//
+//	LbTrafficExtensionExtensionChainExtensionArray{ LbTrafficExtensionExtensionChainExtensionArgs{...} }
+type LbTrafficExtensionExtensionChainExtensionArrayInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionExtensionChainExtensionArrayOutput() LbTrafficExtensionExtensionChainExtensionArrayOutput
+	ToLbTrafficExtensionExtensionChainExtensionArrayOutputWithContext(context.Context) LbTrafficExtensionExtensionChainExtensionArrayOutput
+}
+
+type LbTrafficExtensionExtensionChainExtensionArray []LbTrafficExtensionExtensionChainExtensionInput
+
+func (LbTrafficExtensionExtensionChainExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbTrafficExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i LbTrafficExtensionExtensionChainExtensionArray) ToLbTrafficExtensionExtensionChainExtensionArrayOutput() LbTrafficExtensionExtensionChainExtensionArrayOutput {
+	return i.ToLbTrafficExtensionExtensionChainExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i LbTrafficExtensionExtensionChainExtensionArray) ToLbTrafficExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbTrafficExtensionExtensionChainExtensionArrayOutput)
+}
+
+type LbTrafficExtensionExtensionChainExtensionOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionExtensionChainExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionExtensionChainExtensionOutput) ToLbTrafficExtensionExtensionChainExtensionOutput() LbTrafficExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainExtensionOutput) ToLbTrafficExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+// The :authority header in the gRPC request sent from Envoy to the extension service.
+func (o LbTrafficExtensionExtensionChainExtensionOutput) Authority() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Authority }).(pulumi.StringOutput)
+}
+
+// Determines how the proxy behaves if the call to the extension fails or times out.
+// When set to TRUE, request or response processing continues without error.
+// Any subsequent extensions in the extension chain are also executed.
+// When set to FALSE: * If response headers have not been delivered to the downstream client,
+// a generic 500 error is returned to the client. The error response can be tailored by
+// configuring a custom error response in the load balancer.
+func (o LbTrafficExtensionExtensionChainExtensionOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// List of the HTTP headers to forward to the extension (from the client or backend).
+// If omitted, all headers are sent. Each element is a string indicating the header name.
+func (o LbTrafficExtensionExtensionChainExtensionOutput) ForwardHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The name for this extension. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last a letter or a number.
+func (o LbTrafficExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference to the service that runs the extension. Must be a reference to a backend service
+func (o LbTrafficExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A set of events during request or response processing for which this extension is called.
+// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+//
+// ***
+func (o LbTrafficExtensionExtensionChainExtensionOutput) SupportedEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o LbTrafficExtensionExtensionChainExtensionOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type LbTrafficExtensionExtensionChainExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionExtensionChainExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbTrafficExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionExtensionChainExtensionArrayOutput) ToLbTrafficExtensionExtensionChainExtensionArrayOutput() LbTrafficExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainExtensionArrayOutput) ToLbTrafficExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainExtensionArrayOutput) Index(i pulumi.IntInput) LbTrafficExtensionExtensionChainExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LbTrafficExtensionExtensionChainExtension {
+		return vs[0].([]LbTrafficExtensionExtensionChainExtension)[vs[1].(int)]
+	}).(LbTrafficExtensionExtensionChainExtensionOutput)
+}
+
+type LbTrafficExtensionExtensionChainMatchCondition struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression string `pulumi:"celExpression"`
+}
+
+// LbTrafficExtensionExtensionChainMatchConditionInput is an input type that accepts LbTrafficExtensionExtensionChainMatchConditionArgs and LbTrafficExtensionExtensionChainMatchConditionOutput values.
+// You can construct a concrete instance of `LbTrafficExtensionExtensionChainMatchConditionInput` via:
+//
+//	LbTrafficExtensionExtensionChainMatchConditionArgs{...}
+type LbTrafficExtensionExtensionChainMatchConditionInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionExtensionChainMatchConditionOutput() LbTrafficExtensionExtensionChainMatchConditionOutput
+	ToLbTrafficExtensionExtensionChainMatchConditionOutputWithContext(context.Context) LbTrafficExtensionExtensionChainMatchConditionOutput
+}
+
+type LbTrafficExtensionExtensionChainMatchConditionArgs struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression pulumi.StringInput `pulumi:"celExpression"`
+}
+
+func (LbTrafficExtensionExtensionChainMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (i LbTrafficExtensionExtensionChainMatchConditionArgs) ToLbTrafficExtensionExtensionChainMatchConditionOutput() LbTrafficExtensionExtensionChainMatchConditionOutput {
+	return i.ToLbTrafficExtensionExtensionChainMatchConditionOutputWithContext(context.Background())
+}
+
+func (i LbTrafficExtensionExtensionChainMatchConditionArgs) ToLbTrafficExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbTrafficExtensionExtensionChainMatchConditionOutput)
+}
+
+type LbTrafficExtensionExtensionChainMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionExtensionChainMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionExtensionChainMatchConditionOutput) ToLbTrafficExtensionExtensionChainMatchConditionOutput() LbTrafficExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+func (o LbTrafficExtensionExtensionChainMatchConditionOutput) ToLbTrafficExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) LbTrafficExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+func (o LbTrafficExtensionExtensionChainMatchConditionOutput) CelExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
+}
+
 type TcpRouteRule struct {
 	// A detailed rule defining how to route traffic.
 	// Structure is documented below.
@@ -11761,6 +12149,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatchPtrInput)(nil)).Elem(), HttpRouteRuleMatchHeaderRangeMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterArrayInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainInput)(nil)).Elem(), LbTrafficExtensionExtensionChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainArrayInput)(nil)).Elem(), LbTrafficExtensionExtensionChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainMatchConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleInput)(nil)).Elem(), TcpRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleArrayInput)(nil)).Elem(), TcpRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionInput)(nil)).Elem(), TcpRouteRuleActionArgs{})
@@ -11899,6 +12292,11 @@ func init() {
 	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderRangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainArrayOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionArrayOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainMatchConditionOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleActionOutput{})

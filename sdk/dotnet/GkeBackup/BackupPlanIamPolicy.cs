@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// &gt; **Note:** `gcp.gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_policy
+    /// ## gcp.gkebackup.BackupPlanIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_binding
+    /// ## gcp.gkebackup.BackupPlanIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_member
+    /// ## gcp.gkebackup.BackupPlanIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_policy
+    /// ## gcp.gkebackup.BackupPlanIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_binding
+    /// ## gcp.gkebackup.BackupPlanIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_backup\_backup\_plan\_iam\_member
+    /// ## gcp.gkebackup.BackupPlanIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

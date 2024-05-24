@@ -140,7 +140,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
+        ## healthcare.FhirStoreIamPolicy
 
         ```python
         import pulumi
@@ -155,7 +155,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
+        ## healthcare.FhirStoreIamBinding
 
         ```python
         import pulumi
@@ -167,7 +167,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
+        ## healthcare.FhirStoreIamMember
 
         ```python
         import pulumi
@@ -179,7 +179,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
+        ## healthcare.FhirStoreIamPolicy
 
         ```python
         import pulumi
@@ -194,7 +194,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
+        ## healthcare.FhirStoreIamBinding
 
         ```python
         import pulumi
@@ -206,7 +206,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
+        ## healthcare.FhirStoreIamMember
 
         ```python
         import pulumi
@@ -270,7 +270,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
+        ## healthcare.FhirStoreIamPolicy
 
         ```python
         import pulumi
@@ -285,7 +285,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
+        ## healthcare.FhirStoreIamBinding
 
         ```python
         import pulumi
@@ -297,7 +297,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
+        ## healthcare.FhirStoreIamMember
 
         ```python
         import pulumi
@@ -309,7 +309,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
+        ## healthcare.FhirStoreIamPolicy
 
         ```python
         import pulumi
@@ -324,7 +324,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
+        ## healthcare.FhirStoreIamBinding
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
+        ## healthcare.FhirStoreIamMember
 
         ```python
         import pulumi

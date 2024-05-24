@@ -475,6 +475,82 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Connection Kms
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .databaseVersion("POSTGRES_11")
+ *             .region("us-central1")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .build())
+ *             .deletionProtection("true")
+ *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .instance(instance.name())
+ *             .name("db")
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name("user")
+ *             .instance(instance.name())
+ *             .password("tf-test-my-password_77884")
+ *             .build());
+ * 
+ *         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
+ *             .location("US")
+ *             .kmsKeyName("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key")
+ *             .cloudSql(ConnectionCloudSqlArgs.builder()
+ *                 .instanceId(instance.connectionName())
+ *                 .database(db.name())
+ *                 .type("POSTGRES")
+ *                 .credential(ConnectionCloudSqlCredentialArgs.builder()
+ *                     .username(user.name())
+ *                     .password(user.password())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -638,6 +714,22 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> hasCredential() {
         return this.hasCredential;
+    }
+    /**
+     * Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
     }
     /**
      * The geographic location where the connection should reside.

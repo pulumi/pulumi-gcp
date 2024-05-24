@@ -22,7 +22,10 @@ class GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
-    def __init__(__self__, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
+    def __init__(__self__, auto_network_tier=None, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
+        if auto_network_tier and not isinstance(auto_network_tier, str):
+            raise TypeError("Expected argument 'auto_network_tier' to be a str")
+        pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         if drain_nat_ips and not isinstance(drain_nat_ips, list):
             raise TypeError("Expected argument 'drain_nat_ips' to be a list")
         pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
@@ -92,6 +95,11 @@ class GetRouterNatResult:
         if udp_idle_timeout_sec and not isinstance(udp_idle_timeout_sec, int):
             raise TypeError("Expected argument 'udp_idle_timeout_sec' to be a int")
         pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> str:
+        return pulumi.get(self, "auto_network_tier")
 
     @property
     @pulumi.getter(name="drainNatIps")
@@ -218,6 +226,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
         if False:
             yield self
         return GetRouterNatResult(
+            auto_network_tier=self.auto_network_tier,
             drain_nat_ips=self.drain_nat_ips,
             enable_dynamic_port_allocation=self.enable_dynamic_port_allocation,
             enable_endpoint_independent_mapping=self.enable_endpoint_independent_mapping,
@@ -284,6 +293,7 @@ def get_router_nat(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRouterNat:getRouterNat', __args__, opts=opts, typ=GetRouterNatResult).value
 
     return AwaitableGetRouterNatResult(
+        auto_network_tier=pulumi.get(__ret__, 'auto_network_tier'),
         drain_nat_ips=pulumi.get(__ret__, 'drain_nat_ips'),
         enable_dynamic_port_allocation=pulumi.get(__ret__, 'enable_dynamic_port_allocation'),
         enable_endpoint_independent_mapping=pulumi.get(__ret__, 'enable_endpoint_independent_mapping'),

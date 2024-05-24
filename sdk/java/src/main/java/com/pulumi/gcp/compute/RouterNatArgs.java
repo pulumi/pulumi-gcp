@@ -23,6 +23,27 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     public static final RouterNatArgs Empty = new RouterNatArgs();
 
     /**
+     * The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     * 
+     */
+    @Import(name="autoNetworkTier")
+    private @Nullable Output<String> autoNetworkTier;
+
+    /**
+     * @return The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> autoNetworkTier() {
+        return Optional.ofNullable(this.autoNetworkTier);
+    }
+
+    /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      * 
@@ -437,6 +458,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     private RouterNatArgs() {}
 
     private RouterNatArgs(RouterNatArgs $) {
+        this.autoNetworkTier = $.autoNetworkTier;
         this.drainNatIps = $.drainNatIps;
         this.enableDynamicPortAllocation = $.enableDynamicPortAllocation;
         this.enableEndpointIndependentMapping = $.enableEndpointIndependentMapping;
@@ -477,6 +499,33 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RouterNatArgs defaults) {
             $ = new RouterNatArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoNetworkTier The network tier to use when automatically reserving NAT IP addresses.
+         * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+         * project-level default tier is used.
+         * Possible values are: `PREMIUM`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoNetworkTier(@Nullable Output<String> autoNetworkTier) {
+            $.autoNetworkTier = autoNetworkTier;
+            return this;
+        }
+
+        /**
+         * @param autoNetworkTier The network tier to use when automatically reserving NAT IP addresses.
+         * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+         * project-level default tier is used.
+         * Possible values are: `PREMIUM`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoNetworkTier(String autoNetworkTier) {
+            return autoNetworkTier(Output.of(autoNetworkTier));
         }
 
         /**

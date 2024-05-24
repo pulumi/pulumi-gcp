@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_policy
+ * ## gcp.datacatalog.TagTemplateIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_binding
+ * ## gcp.datacatalog.TagTemplateIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_member
+ * ## gcp.datacatalog.TagTemplateIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_policy
+ * ## gcp.datacatalog.TagTemplateIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_binding
+ * ## gcp.datacatalog.TagTemplateIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_data\_catalog\_tag\_template\_iam\_member
+ * ## gcp.datacatalog.TagTemplateIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_healthcare\_fhir\_store\_iam\_policy
+ * ## gcp.healthcare.FhirStoreIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_fhir\_store\_iam\_binding
+ * ## gcp.healthcare.FhirStoreIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_fhir\_store\_iam\_member
+ * ## gcp.healthcare.FhirStoreIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_fhir\_store\_iam\_policy
+ * ## gcp.healthcare.FhirStoreIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_fhir\_store\_iam\_binding
+ * ## gcp.healthcare.FhirStoreIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_fhir\_store\_iam\_member
+ * ## gcp.healthcare.FhirStoreIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

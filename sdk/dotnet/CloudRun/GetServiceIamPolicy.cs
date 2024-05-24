@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CloudRun
         /// Retrieves the current IAM policy data for service
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Retrieves the current IAM policy data for service
-        /// 
         /// 
         /// 
         /// ## example

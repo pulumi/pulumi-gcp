@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_cloud\_run\_service\_iam\_policy
+ * ## gcp.cloudrun.IamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_run\_service\_iam\_binding
+ * ## gcp.cloudrun.IamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_run\_service\_iam\_member
+ * ## gcp.cloudrun.IamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_run\_service\_iam\_policy
+ * ## gcp.cloudrun.IamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_run\_service\_iam\_binding
+ * ## gcp.cloudrun.IamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloud\_run\_service\_iam\_member
+ * ## gcp.cloudrun.IamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

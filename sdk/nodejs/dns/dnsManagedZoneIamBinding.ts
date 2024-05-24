@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dns\_managed\_zone\_iam\_policy
+ * ## gcp.dns.DnsManagedZoneIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dns\_managed\_zone\_iam\_binding
+ * ## gcp.dns.DnsManagedZoneIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dns\_managed\_zone\_iam\_member
+ * ## gcp.dns.DnsManagedZoneIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dns\_managed\_zone\_iam\_policy
+ * ## gcp.dns.DnsManagedZoneIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dns\_managed\_zone\_iam\_binding
+ * ## gcp.dns.DnsManagedZoneIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dns\_managed\_zone\_iam\_member
+ * ## gcp.dns.DnsManagedZoneIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

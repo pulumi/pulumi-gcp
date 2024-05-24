@@ -215,7 +215,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly securityStyle!: pulumi.Output<string>;
     /**
-     * Service level of the volume. Inherited from storage pool.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      */
     public /*out*/ readonly serviceLevel!: pulumi.Output<string>;
     /**
@@ -482,7 +482,7 @@ export interface VolumeState {
      */
     securityStyle?: pulumi.Input<string>;
     /**
-     * Service level of the volume. Inherited from storage pool.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      */
     serviceLevel?: pulumi.Input<string>;
     /**

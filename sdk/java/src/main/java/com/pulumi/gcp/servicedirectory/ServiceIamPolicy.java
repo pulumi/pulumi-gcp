@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_service\_directory\_service\_iam\_binding
+ * ## gcp.servicedirectory.ServiceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_service\_directory\_service\_iam\_member
+ * ## gcp.servicedirectory.ServiceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_service\_directory\_service\_iam\_binding
+ * ## gcp.servicedirectory.ServiceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_service\_directory\_service\_iam\_member
+ * ## gcp.servicedirectory.ServiceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_policy
+ * ## gcp.gkebackup.BackupPlanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_binding
+ * ## gcp.gkebackup.BackupPlanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_member
+ * ## gcp.gkebackup.BackupPlanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_policy
+ * ## gcp.gkebackup.BackupPlanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_binding
+ * ## gcp.gkebackup.BackupPlanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_backup\_backup\_plan\_iam\_member
+ * ## gcp.gkebackup.BackupPlanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

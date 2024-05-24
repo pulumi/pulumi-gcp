@@ -341,7 +341,7 @@ class ListingIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
+        ## bigqueryanalyticshub.ListingIamPolicy
 
         ```python
         import pulumi
@@ -359,7 +359,7 @@ class ListingIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
+        ## bigqueryanalyticshub.ListingIamBinding
 
         ```python
         import pulumi
@@ -374,7 +374,7 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
+        ## bigqueryanalyticshub.ListingIamMember
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class ListingIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
+        ## bigqueryanalyticshub.ListingIamPolicy
 
         ```python
         import pulumi
@@ -407,7 +407,7 @@ class ListingIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
+        ## bigqueryanalyticshub.ListingIamBinding
 
         ```python
         import pulumi
@@ -422,7 +422,7 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
+        ## bigqueryanalyticshub.ListingIamMember
 
         ```python
         import pulumi
@@ -519,7 +519,7 @@ class ListingIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
+        ## bigqueryanalyticshub.ListingIamPolicy
 
         ```python
         import pulumi
@@ -537,7 +537,7 @@ class ListingIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
+        ## bigqueryanalyticshub.ListingIamBinding
 
         ```python
         import pulumi
@@ -552,7 +552,7 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
+        ## bigqueryanalyticshub.ListingIamMember
 
         ```python
         import pulumi
@@ -567,7 +567,7 @@ class ListingIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
+        ## bigqueryanalyticshub.ListingIamPolicy
 
         ```python
         import pulumi
@@ -585,7 +585,7 @@ class ListingIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
+        ## bigqueryanalyticshub.ListingIamBinding
 
         ```python
         import pulumi
@@ -600,7 +600,7 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
+        ## bigqueryanalyticshub.ListingIamMember
 
         ```python
         import pulumi

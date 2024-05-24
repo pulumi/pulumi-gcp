@@ -169,7 +169,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
+        ## dns.DnsManagedZoneIamPolicy
 
         ```python
         import pulumi
@@ -185,7 +185,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
+        ## dns.DnsManagedZoneIamBinding
 
         ```python
         import pulumi
@@ -198,7 +198,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
+        ## dns.DnsManagedZoneIamMember
 
         ```python
         import pulumi
@@ -211,7 +211,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
+        ## dns.DnsManagedZoneIamPolicy
 
         ```python
         import pulumi
@@ -227,7 +227,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
+        ## dns.DnsManagedZoneIamBinding
 
         ```python
         import pulumi
@@ -240,7 +240,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
+        ## dns.DnsManagedZoneIamMember
 
         ```python
         import pulumi
@@ -318,7 +318,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
+        ## dns.DnsManagedZoneIamPolicy
 
         ```python
         import pulumi
@@ -334,7 +334,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
+        ## dns.DnsManagedZoneIamBinding
 
         ```python
         import pulumi
@@ -347,7 +347,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
+        ## dns.DnsManagedZoneIamMember
 
         ```python
         import pulumi
@@ -360,7 +360,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
+        ## dns.DnsManagedZoneIamPolicy
 
         ```python
         import pulumi
@@ -376,7 +376,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
+        ## dns.DnsManagedZoneIamBinding
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
+        ## dns.DnsManagedZoneIamMember
 
         ```python
         import pulumi

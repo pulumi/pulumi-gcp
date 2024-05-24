@@ -11,9 +11,57 @@ namespace Pulumi.Gcp.Dataproc
 {
     public static class GetMetastoreFederationIamPolicy
     {
+        /// <summary>
+        /// Retrieves the current IAM policy data for federation
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetMetastoreFederationIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         FederationId = @default.FederationId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMetastoreFederationIamPolicyResult> InvokeAsync(GetMetastoreFederationIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreFederationIamPolicyResult>("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args ?? new GetMetastoreFederationIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the current IAM policy data for federation
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetMetastoreFederationIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         FederationId = @default.FederationId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMetastoreFederationIamPolicyResult> Invoke(GetMetastoreFederationIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreFederationIamPolicyResult>("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args ?? new GetMetastoreFederationIamPolicyInvokeArgs(), options.WithDefaults());
     }

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -85,6 +86,23 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         return this.sourceConnectionProfile;
     }
 
+    /**
+     * SQL Server data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sqlServerSourceConfig")
+    private @Nullable Output<StreamSourceConfigSqlServerSourceConfigArgs> sqlServerSourceConfig;
+
+    /**
+     * @return SQL Server data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigSqlServerSourceConfigArgs>> sqlServerSourceConfig() {
+        return Optional.ofNullable(this.sqlServerSourceConfig);
+    }
+
     private StreamSourceConfigArgs() {}
 
     private StreamSourceConfigArgs(StreamSourceConfigArgs $) {
@@ -92,6 +110,7 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         this.oracleSourceConfig = $.oracleSourceConfig;
         this.postgresqlSourceConfig = $.postgresqlSourceConfig;
         this.sourceConnectionProfile = $.sourceConnectionProfile;
+        this.sqlServerSourceConfig = $.sqlServerSourceConfig;
     }
 
     public static Builder builder() {
@@ -200,6 +219,29 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceConnectionProfile(String sourceConnectionProfile) {
             return sourceConnectionProfile(Output.of(sourceConnectionProfile));
+        }
+
+        /**
+         * @param sqlServerSourceConfig SQL Server data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerSourceConfig(@Nullable Output<StreamSourceConfigSqlServerSourceConfigArgs> sqlServerSourceConfig) {
+            $.sqlServerSourceConfig = sqlServerSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param sqlServerSourceConfig SQL Server data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerSourceConfig(StreamSourceConfigSqlServerSourceConfigArgs sqlServerSourceConfig) {
+            return sqlServerSourceConfig(Output.of(sqlServerSourceConfig));
         }
 
         public StreamSourceConfigArgs build() {

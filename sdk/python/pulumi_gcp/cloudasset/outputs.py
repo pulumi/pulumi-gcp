@@ -21,6 +21,7 @@ __all__ = [
     'ProjectFeedFeedOutputConfig',
     'ProjectFeedFeedOutputConfigPubsubDestination',
     'GetResourcesSearchAllResultResult',
+    'GetSearchAllResourcesResultResult',
 ]
 
 @pulumi.output_type
@@ -484,5 +485,188 @@ class GetResourcesSearchAllResultResult(dict):
         The project that this resource belongs to, in the form of `projects/{project_number}`.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetSearchAllResourcesResultResult(dict):
+    def __init__(__self__, *,
+                 asset_type: str,
+                 create_time: str,
+                 description: str,
+                 display_name: str,
+                 folders: Sequence[str],
+                 kms_keys: Sequence[str],
+                 labels: Mapping[str, str],
+                 location: str,
+                 name: str,
+                 network_tags: Sequence[str],
+                 organization: str,
+                 parent_asset_type: str,
+                 parent_full_resource_name: str,
+                 project: str,
+                 state: str,
+                 update_time: str):
+        """
+        :param str asset_type: The type of this resource.
+        :param str create_time: The create timestamp of this resource, at which the resource was created.
+        :param str description: One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+        :param str display_name: The display name of this resource.
+        :param Sequence[str] folders: The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+        :param Sequence[str] kms_keys: The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+        :param Mapping[str, str] labels: Labels associated with this resource.
+        :param str location: Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+        :param str name: The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        :param Sequence[str] network_tags: Network tags associated with this resource.
+        :param str organization: The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+        :param str parent_asset_type: The type of this resource's immediate parent, if there is one.
+        :param str parent_full_resource_name: The full resource name of this resource's parent, if it has one.
+        :param str project: The project that this resource belongs to, in the form of `projects/{project_number}`.
+        :param str state: The state of this resource.
+        :param str update_time: The last update timestamp of this resource, at which the resource was last modified or deleted.
+        """
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "folders", folders)
+        pulumi.set(__self__, "kms_keys", kms_keys)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "parent_asset_type", parent_asset_type)
+        pulumi.set(__self__, "parent_full_resource_name", parent_full_resource_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> str:
+        """
+        The type of this resource.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create timestamp of this resource, at which the resource was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of this resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def folders(self) -> Sequence[str]:
+        """
+        The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+        """
+        return pulumi.get(self, "folders")
+
+    @property
+    @pulumi.getter(name="kmsKeys")
+    def kms_keys(self) -> Sequence[str]:
+        """
+        The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+        """
+        return pulumi.get(self, "kms_keys")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels associated with this resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        Network tags associated with this resource.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        """
+        The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+        """
+        return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="parentAssetType")
+    def parent_asset_type(self) -> str:
+        """
+        The type of this resource's immediate parent, if there is one.
+        """
+        return pulumi.get(self, "parent_asset_type")
+
+    @property
+    @pulumi.getter(name="parentFullResourceName")
+    def parent_full_resource_name(self) -> str:
+        """
+        The full resource name of this resource's parent, if it has one.
+        """
+        return pulumi.get(self, "parent_full_resource_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project that this resource belongs to, in the form of `projects/{project_number}`.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of this resource.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The last update timestamp of this resource, at which the resource was last modified or deleted.
+        """
+        return pulumi.get(self, "update_time")
 
 

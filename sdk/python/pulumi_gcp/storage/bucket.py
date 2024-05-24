@@ -933,6 +933,28 @@ class Bucket(pulumi.CustomResource):
             ])
         ```
 
+        ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        no_age_enabled = gcp.storage.Bucket("no-age-enabled",
+            name="no-age-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
+                action=gcp.storage.BucketLifecycleRuleActionArgs(
+                    type="Delete",
+                ),
+                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                    days_since_noncurrent_time=3,
+                    no_age=True,
+                ),
+            )])
+        ```
+
         ### Enabling Public Access Prevention
 
         ```python
@@ -1084,6 +1106,28 @@ class Bucket(pulumi.CustomResource):
                     ),
                 ),
             ])
+        ```
+
+        ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        no_age_enabled = gcp.storage.Bucket("no-age-enabled",
+            name="no-age-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
+                action=gcp.storage.BucketLifecycleRuleActionArgs(
+                    type="Delete",
+                ),
+                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                    days_since_noncurrent_time=3,
+                    no_age=True,
+                ),
+            )])
         ```
 
         ### Enabling Public Access Prevention

@@ -213,7 +213,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+        ## apigateway.ApiConfigIamBinding
 
         ```python
         import pulumi
@@ -226,7 +226,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+        ## apigateway.ApiConfigIamMember
 
         ```python
         import pulumi
@@ -255,7 +255,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+        ## apigateway.ApiConfigIamBinding
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+        ## apigateway.ApiConfigIamMember
 
         ```python
         import pulumi
@@ -365,7 +365,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+        ## apigateway.ApiConfigIamBinding
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+        ## apigateway.ApiConfigIamMember
 
         ```python
         import pulumi
@@ -407,7 +407,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+        ## apigateway.ApiConfigIamBinding
 
         ```python
         import pulumi
@@ -420,7 +420,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+        ## apigateway.ApiConfigIamMember
 
         ```python
         import pulumi

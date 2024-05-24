@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
+// ## bigqueryanalyticshub.ListingIamPolicy
 //
 // ```go
 // package main
@@ -70,7 +70,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
+// ## bigqueryanalyticshub.ListingIamBinding
 //
 // ```go
 // package main
@@ -103,7 +103,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
+// ## bigqueryanalyticshub.ListingIamMember
 //
 // ```go
 // package main
@@ -134,7 +134,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
+// ## bigqueryanalyticshub.ListingIamPolicy
 //
 // ```go
 // package main
@@ -178,7 +178,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
+// ## bigqueryanalyticshub.ListingIamBinding
 //
 // ```go
 // package main
@@ -211,7 +211,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
+// ## bigqueryanalyticshub.ListingIamMember
 //
 // ```go
 // package main

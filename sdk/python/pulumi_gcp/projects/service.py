@@ -25,7 +25,6 @@ class ServiceArgs:
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
-        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project
                is used.
         """
@@ -67,9 +66,6 @@ class ServiceArgs:
     @property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        """
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
@@ -103,7 +99,6 @@ class _ServiceState:
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
-        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[str] service: The service to enable.
@@ -135,9 +130,6 @@ class _ServiceState:
     @property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        """
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
@@ -181,20 +173,6 @@ class Service(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows management of a single API service for a Google Cloud Platform project.
-
-        For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
-        or run `gcloud services list --available`.
-
-        This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
-        to use.
-
-        To get more information about `projects.Service`, see:
-
-        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
-        * How-to Guides
-            * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
-
         ## Example Usage
 
         ```python
@@ -204,7 +182,7 @@ class Service(pulumi.CustomResource):
         project = gcp.projects.Service("project",
             project="your-project-id",
             service="iam.googleapis.com",
-            disable_dependent_services=True)
+            disable_on_destroy=False)
         ```
 
         ## Import
@@ -235,7 +213,6 @@ class Service(pulumi.CustomResource):
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
-        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[str] service: The service to enable.
@@ -247,20 +224,6 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows management of a single API service for a Google Cloud Platform project.
-
-        For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
-        or run `gcloud services list --available`.
-
-        This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
-        to use.
-
-        To get more information about `projects.Service`, see:
-
-        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
-        * How-to Guides
-            * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
-
         ## Example Usage
 
         ```python
@@ -270,7 +233,7 @@ class Service(pulumi.CustomResource):
         project = gcp.projects.Service("project",
             project="your-project-id",
             service="iam.googleapis.com",
-            disable_dependent_services=True)
+            disable_on_destroy=False)
         ```
 
         ## Import
@@ -354,7 +317,6 @@ class Service(pulumi.CustomResource):
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
-        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[str] service: The service to enable.
@@ -383,9 +345,6 @@ class Service(pulumi.CustomResource):
     @property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        """
         return pulumi.get(self, "disable_on_destroy")
 
     @property

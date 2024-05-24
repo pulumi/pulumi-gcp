@@ -27,6 +27,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? BootDiskType;
         /// <summary>
+        /// Optional. Interface type of local SSDs (default is "scsi").
+        /// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+        /// Memory Express). See
+        /// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+        /// </summary>
+        public readonly string? LocalSsdInterface;
+        /// <summary>
         /// The amount of local SSD disks that will be
         /// attached to each master cluster node. Defaults to 0.
         /// </summary>
@@ -38,10 +45,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? bootDiskType,
 
+            string? localSsdInterface,
+
             int? numLocalSsds)
         {
             BootDiskSizeGb = bootDiskSizeGb;
             BootDiskType = bootDiskType;
+            LocalSsdInterface = localSsdInterface;
             NumLocalSsds = numLocalSsds;
         }
     }

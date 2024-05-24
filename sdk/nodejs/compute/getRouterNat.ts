@@ -66,6 +66,7 @@ export interface GetRouterNatArgs {
  * A collection of values returned by getRouterNat.
  */
 export interface GetRouterNatResult {
+    readonly autoNetworkTier: string;
     readonly drainNatIps: string[];
     readonly enableDynamicPortAllocation: boolean;
     readonly enableEndpointIndependentMapping: boolean;

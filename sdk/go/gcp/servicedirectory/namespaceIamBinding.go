@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_service\_directory\_namespace\_iam\_binding
+// ## servicedirectory.NamespaceIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_service\_directory\_namespace\_iam\_member
+// ## servicedirectory.NamespaceIamMember
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_service\_directory\_namespace\_iam\_binding
+// ## servicedirectory.NamespaceIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_service\_directory\_namespace\_iam\_member
+// ## servicedirectory.NamespaceIamMember
 //
 // ```go
 // package main

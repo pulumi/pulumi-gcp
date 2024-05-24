@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSqlServerSourceConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +39,12 @@ public final class StreamSourceConfig {
      * 
      */
     private String sourceConnectionProfile;
+    /**
+     * @return SQL Server data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig;
 
     private StreamSourceConfig() {}
     /**
@@ -71,6 +78,14 @@ public final class StreamSourceConfig {
     public String sourceConnectionProfile() {
         return this.sourceConnectionProfile;
     }
+    /**
+     * @return SQL Server data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigSqlServerSourceConfig> sqlServerSourceConfig() {
+        return Optional.ofNullable(this.sqlServerSourceConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -85,6 +100,7 @@ public final class StreamSourceConfig {
         private @Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig;
         private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
         private String sourceConnectionProfile;
+        private @Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig;
         public Builder() {}
         public Builder(StreamSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,6 +108,7 @@ public final class StreamSourceConfig {
     	      this.oracleSourceConfig = defaults.oracleSourceConfig;
     	      this.postgresqlSourceConfig = defaults.postgresqlSourceConfig;
     	      this.sourceConnectionProfile = defaults.sourceConnectionProfile;
+    	      this.sqlServerSourceConfig = defaults.sqlServerSourceConfig;
         }
 
         @CustomType.Setter
@@ -120,12 +137,19 @@ public final class StreamSourceConfig {
             this.sourceConnectionProfile = sourceConnectionProfile;
             return this;
         }
+        @CustomType.Setter
+        public Builder sqlServerSourceConfig(@Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig) {
+
+            this.sqlServerSourceConfig = sqlServerSourceConfig;
+            return this;
+        }
         public StreamSourceConfig build() {
             final var _resultValue = new StreamSourceConfig();
             _resultValue.mysqlSourceConfig = mysqlSourceConfig;
             _resultValue.oracleSourceConfig = oracleSourceConfig;
             _resultValue.postgresqlSourceConfig = postgresqlSourceConfig;
             _resultValue.sourceConnectionProfile = sourceConnectionProfile;
+            _resultValue.sqlServerSourceConfig = sqlServerSourceConfig;
             return _resultValue;
         }
     }

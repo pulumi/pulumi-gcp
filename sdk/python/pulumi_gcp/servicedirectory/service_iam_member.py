@@ -251,7 +251,7 @@ class ServiceIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_binding
+        ## servicedirectory.ServiceIamBinding
 
         ```python
         import pulumi
@@ -263,7 +263,7 @@ class ServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_member
+        ## servicedirectory.ServiceIamMember
 
         ```python
         import pulumi
@@ -290,7 +290,7 @@ class ServiceIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_binding
+        ## servicedirectory.ServiceIamBinding
 
         ```python
         import pulumi
@@ -302,7 +302,7 @@ class ServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_member
+        ## servicedirectory.ServiceIamMember
 
         ```python
         import pulumi
@@ -404,7 +404,7 @@ class ServiceIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_binding
+        ## servicedirectory.ServiceIamBinding
 
         ```python
         import pulumi
@@ -416,7 +416,7 @@ class ServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_member
+        ## servicedirectory.ServiceIamMember
 
         ```python
         import pulumi
@@ -443,7 +443,7 @@ class ServiceIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_binding
+        ## servicedirectory.ServiceIamBinding
 
         ```python
         import pulumi
@@ -455,7 +455,7 @@ class ServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_service\\_directory\\_service\\_iam\\_member
+        ## servicedirectory.ServiceIamMember
 
         ```python
         import pulumi

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,21 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
      */
     public Output<String> caPool() {
         return this.caPool;
+    }
+
+    /**
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    @Import(name="customTlsFeatures")
+    private @Nullable Output<List<String>> customTlsFeatures;
+
+    /**
+     * @return List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    public Optional<Output<List<String>>> customTlsFeatures() {
+        return Optional.ofNullable(this.customTlsFeatures);
     }
 
     /**
@@ -78,6 +94,23 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     * 
+     */
+    @Import(name="minTlsVersion")
+    private @Nullable Output<String> minTlsVersion;
+
+    /**
+     * @return Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     * 
+     */
+    public Optional<Output<String>> minTlsVersion() {
+        return Optional.ofNullable(this.minTlsVersion);
+    }
+
+    /**
      * Short name of the TlsInspectionPolicy resource to be created.
      * 
      * ***
@@ -113,15 +146,51 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     * 
+     */
+    @Import(name="tlsFeatureProfile")
+    private @Nullable Output<String> tlsFeatureProfile;
+
+    /**
+     * @return The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     * 
+     */
+    public Optional<Output<String>> tlsFeatureProfile() {
+        return Optional.ofNullable(this.tlsFeatureProfile);
+    }
+
+    /**
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    @Import(name="trustConfig")
+    private @Nullable Output<String> trustConfig;
+
+    /**
+     * @return A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    public Optional<Output<String>> trustConfig() {
+        return Optional.ofNullable(this.trustConfig);
+    }
+
     private TlsInspectionPolicyArgs() {}
 
     private TlsInspectionPolicyArgs(TlsInspectionPolicyArgs $) {
         this.caPool = $.caPool;
+        this.customTlsFeatures = $.customTlsFeatures;
         this.description = $.description;
         this.excludePublicCaSet = $.excludePublicCaSet;
         this.location = $.location;
+        this.minTlsVersion = $.minTlsVersion;
         this.name = $.name;
         this.project = $.project;
+        this.tlsFeatureProfile = $.tlsFeatureProfile;
+        this.trustConfig = $.trustConfig;
     }
 
     public static Builder builder() {
@@ -161,6 +230,37 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
          */
         public Builder caPool(String caPool) {
             return caPool(Output.of(caPool));
+        }
+
+        /**
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTlsFeatures(@Nullable Output<List<String>> customTlsFeatures) {
+            $.customTlsFeatures = customTlsFeatures;
+            return this;
+        }
+
+        /**
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTlsFeatures(List<String> customTlsFeatures) {
+            return customTlsFeatures(Output.of(customTlsFeatures));
+        }
+
+        /**
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTlsFeatures(String... customTlsFeatures) {
+            return customTlsFeatures(List.of(customTlsFeatures));
         }
 
         /**
@@ -227,6 +327,29 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param minTlsVersion Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minTlsVersion(@Nullable Output<String> minTlsVersion) {
+            $.minTlsVersion = minTlsVersion;
+            return this;
+        }
+
+        /**
+         * @param minTlsVersion Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minTlsVersion(String minTlsVersion) {
+            return minTlsVersion(Output.of(minTlsVersion));
+        }
+
+        /**
          * @param name Short name of the TlsInspectionPolicy resource to be created.
          * 
          * ***
@@ -272,6 +395,50 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsFeatureProfile(@Nullable Output<String> tlsFeatureProfile) {
+            $.tlsFeatureProfile = tlsFeatureProfile;
+            return this;
+        }
+
+        /**
+         * @param tlsFeatureProfile The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+         * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsFeatureProfile(String tlsFeatureProfile) {
+            return tlsFeatureProfile(Output.of(tlsFeatureProfile));
+        }
+
+        /**
+         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustConfig(@Nullable Output<String> trustConfig) {
+            $.trustConfig = trustConfig;
+            return this;
+        }
+
+        /**
+         * @param trustConfig A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustConfig(String trustConfig) {
+            return trustConfig(Output.of(trustConfig));
         }
 
         public TlsInspectionPolicyArgs build() {

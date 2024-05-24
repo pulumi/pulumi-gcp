@@ -13,21 +13,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence {
     /**
-     * @return How frequently profiles may be updated when schemas are modified. Default to monthly
+     * @return Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
     private @Nullable String frequency;
     /**
-     * @return The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-     * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+     * @return The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+     * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
      * 
      */
     private @Nullable List<String> types;
 
     private PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence() {}
     /**
-     * @return How frequently profiles may be updated when schemas are modified. Default to monthly
+     * @return Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -35,8 +35,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaMod
         return Optional.ofNullable(this.frequency);
     }
     /**
-     * @return The type of events to consider when deciding if the table&#39;s schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-     * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+     * @return The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+     * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
      * 
      */
     public List<String> types() {

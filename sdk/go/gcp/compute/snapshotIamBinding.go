@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_compute\_snapshot\_iam\_policy
+// ## compute.SnapshotIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_snapshot\_iam\_binding
+// ## compute.SnapshotIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_snapshot\_iam\_member
+// ## compute.SnapshotIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_snapshot\_iam\_policy
+// ## compute.SnapshotIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_snapshot\_iam\_binding
+// ## compute.SnapshotIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_snapshot\_iam\_member
+// ## compute.SnapshotIamMember
 //
 // ```go
 // package main

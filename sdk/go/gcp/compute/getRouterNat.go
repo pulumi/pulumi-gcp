@@ -71,6 +71,7 @@ type LookupRouterNatArgs struct {
 
 // A collection of values returned by getRouterNat.
 type LookupRouterNatResult struct {
+	AutoNetworkTier                  string   `pulumi:"autoNetworkTier"`
 	DrainNatIps                      []string `pulumi:"drainNatIps"`
 	EnableDynamicPortAllocation      bool     `pulumi:"enableDynamicPortAllocation"`
 	EnableEndpointIndependentMapping bool     `pulumi:"enableEndpointIndependentMapping"`
@@ -143,6 +144,10 @@ func (o LookupRouterNatResultOutput) ToLookupRouterNatResultOutput() LookupRoute
 
 func (o LookupRouterNatResultOutput) ToLookupRouterNatResultOutputWithContext(ctx context.Context) LookupRouterNatResultOutput {
 	return o
+}
+
+func (o LookupRouterNatResultOutput) AutoNetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) string { return v.AutoNetworkTier }).(pulumi.StringOutput)
 }
 
 func (o LookupRouterNatResultOutput) DrainNatIps() pulumi.StringArrayOutput {

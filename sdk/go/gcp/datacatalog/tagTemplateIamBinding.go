@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_policy
+// ## datacatalog.TagTemplateIamPolicy
 //
 // ```go
 // package main
@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_binding
+// ## datacatalog.TagTemplateIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_member
+// ## datacatalog.TagTemplateIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_policy
+// ## datacatalog.TagTemplateIamPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_binding
+// ## datacatalog.TagTemplateIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_tag\_template\_iam\_member
+// ## datacatalog.TagTemplateIamMember
 //
 // ```go
 // package main

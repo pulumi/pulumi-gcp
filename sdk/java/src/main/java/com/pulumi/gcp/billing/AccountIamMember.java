@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_billing\_account\_iam\_policy
+ * ## gcp.billing.AccountIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_billing\_account\_iam\_binding
+ * ## gcp.billing.AccountIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_billing\_account\_iam\_member
+ * ## gcp.billing.AccountIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_billing\_account\_iam\_policy
+ * ## gcp.billing.AccountIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_billing\_account\_iam\_binding
+ * ## gcp.billing.AccountIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_billing\_account\_iam\_member
+ * ## gcp.billing.AccountIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

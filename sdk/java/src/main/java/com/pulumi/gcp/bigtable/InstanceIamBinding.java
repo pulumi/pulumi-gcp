@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_bigtable\_instance\_iam\_policy
+ * ## gcp.bigtable.InstanceIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_instance\_iam\_binding
+ * ## gcp.bigtable.InstanceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_instance\_iam\_member
+ * ## gcp.bigtable.InstanceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_instance\_iam\_policy
+ * ## gcp.bigtable.InstanceIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_instance\_iam\_binding
+ * ## gcp.bigtable.InstanceIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_instance\_iam\_member
+ * ## gcp.bigtable.InstanceIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

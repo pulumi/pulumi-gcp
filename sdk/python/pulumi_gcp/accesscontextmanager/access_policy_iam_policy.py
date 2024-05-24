@@ -133,7 +133,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
+        ## accesscontextmanager.AccessPolicyIamPolicy
 
         ```python
         import pulumi
@@ -148,7 +148,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
+        ## accesscontextmanager.AccessPolicyIamBinding
 
         ```python
         import pulumi
@@ -160,7 +160,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
+        ## accesscontextmanager.AccessPolicyIamMember
 
         ```python
         import pulumi
@@ -172,7 +172,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
+        ## accesscontextmanager.AccessPolicyIamPolicy
 
         ```python
         import pulumi
@@ -187,7 +187,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
+        ## accesscontextmanager.AccessPolicyIamBinding
 
         ```python
         import pulumi
@@ -199,7 +199,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
+        ## accesscontextmanager.AccessPolicyIamMember
 
         ```python
         import pulumi
@@ -272,7 +272,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
+        ## accesscontextmanager.AccessPolicyIamPolicy
 
         ```python
         import pulumi
@@ -287,7 +287,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
+        ## accesscontextmanager.AccessPolicyIamBinding
 
         ```python
         import pulumi
@@ -299,7 +299,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
+        ## accesscontextmanager.AccessPolicyIamMember
 
         ```python
         import pulumi
@@ -311,7 +311,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
+        ## accesscontextmanager.AccessPolicyIamPolicy
 
         ```python
         import pulumi
@@ -326,7 +326,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
+        ## accesscontextmanager.AccessPolicyIamBinding
 
         ```python
         import pulumi
@@ -338,7 +338,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
+        ## accesscontextmanager.AccessPolicyIamMember
 
         ```python
         import pulumi

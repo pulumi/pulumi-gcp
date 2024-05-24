@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+ * ## gcp.accesscontextmanager.AccessPolicyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+ * ## gcp.accesscontextmanager.AccessPolicyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_member
+ * ## gcp.accesscontextmanager.AccessPolicyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+ * ## gcp.accesscontextmanager.AccessPolicyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+ * ## gcp.accesscontextmanager.AccessPolicyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_access\_context\_manager\_access\_policy\_iam\_member
+ * ## gcp.accesscontextmanager.AccessPolicyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

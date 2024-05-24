@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_healthcare\_dataset\_iam\_policy
+ * ## gcp.healthcare.DatasetIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_dataset\_iam\_binding
+ * ## gcp.healthcare.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_dataset\_iam\_member
+ * ## gcp.healthcare.DatasetIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_dataset\_iam\_policy
+ * ## gcp.healthcare.DatasetIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_dataset\_iam\_binding
+ * ## gcp.healthcare.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_healthcare\_dataset\_iam\_member
+ * ## gcp.healthcare.DatasetIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

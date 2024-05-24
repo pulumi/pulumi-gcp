@@ -268,7 +268,7 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
+        ## bigquery.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -284,7 +284,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
+        ## bigquery.DatasetIamBinding
 
         ```python
         import pulumi
@@ -297,7 +297,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_member
+        ## bigquery.DatasetIamMember
 
         ```python
         import pulumi
@@ -310,7 +310,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
+        ## bigquery.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -326,7 +326,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
+        ## bigquery.DatasetIamBinding
 
         ```python
         import pulumi
@@ -339,7 +339,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_member
+        ## bigquery.DatasetIamMember
 
         ```python
         import pulumi
@@ -421,7 +421,7 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
+        ## bigquery.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -437,7 +437,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
+        ## bigquery.DatasetIamBinding
 
         ```python
         import pulumi
@@ -450,7 +450,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_member
+        ## bigquery.DatasetIamMember
 
         ```python
         import pulumi
@@ -463,7 +463,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
+        ## bigquery.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -479,7 +479,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
+        ## bigquery.DatasetIamBinding
 
         ```python
         import pulumi
@@ -492,7 +492,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_dataset\\_iam\\_member
+        ## bigquery.DatasetIamMember
 
         ```python
         import pulumi

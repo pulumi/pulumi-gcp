@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// Retrieves the current IAM policy data for listing
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -42,7 +41,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Retrieves the current IAM policy data for listing
-        /// 
         /// 
         /// 
         /// ## example

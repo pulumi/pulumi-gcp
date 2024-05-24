@@ -393,6 +393,11 @@ import (
 type RouterNat struct {
 	pulumi.CustomResourceState
 
+	// The network tier to use when automatically reserving NAT IP addresses.
+	// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+	// project-level default tier is used.
+	// Possible values are: `PREMIUM`, `STANDARD`.
+	AutoNetworkTier pulumi.StringOutput `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayOutput `pulumi:"drainNatIps"`
@@ -516,6 +521,11 @@ func GetRouterNat(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterNat resources.
 type routerNatState struct {
+	// The network tier to use when automatically reserving NAT IP addresses.
+	// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+	// project-level default tier is used.
+	// Possible values are: `PREMIUM`, `STANDARD`.
+	AutoNetworkTier *string `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -604,6 +614,11 @@ type routerNatState struct {
 }
 
 type RouterNatState struct {
+	// The network tier to use when automatically reserving NAT IP addresses.
+	// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+	// project-level default tier is used.
+	// Possible values are: `PREMIUM`, `STANDARD`.
+	AutoNetworkTier pulumi.StringPtrInput
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
@@ -696,6 +711,11 @@ func (RouterNatState) ElementType() reflect.Type {
 }
 
 type routerNatArgs struct {
+	// The network tier to use when automatically reserving NAT IP addresses.
+	// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+	// project-level default tier is used.
+	// Possible values are: `PREMIUM`, `STANDARD`.
+	AutoNetworkTier *string `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -785,6 +805,11 @@ type routerNatArgs struct {
 
 // The set of arguments for constructing a RouterNat resource.
 type RouterNatArgs struct {
+	// The network tier to use when automatically reserving NAT IP addresses.
+	// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+	// project-level default tier is used.
+	// Possible values are: `PREMIUM`, `STANDARD`.
+	AutoNetworkTier pulumi.StringPtrInput
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
@@ -957,6 +982,14 @@ func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
 
 func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return o
+}
+
+// The network tier to use when automatically reserving NAT IP addresses.
+// Must be one of: PREMIUM, STANDARD. If not specified, then the current
+// project-level default tier is used.
+// Possible values are: `PREMIUM`, `STANDARD`.
+func (o RouterNatOutput) AutoNetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.AutoNetworkTier }).(pulumi.StringOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be

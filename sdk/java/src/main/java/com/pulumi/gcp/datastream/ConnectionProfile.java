@@ -17,6 +17,7 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePrivateConnectivity;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfileSqlServerProfile;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -342,6 +343,98 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Datastream Connection Profile Sql Server
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("sql-server")
+ *             .databaseVersion("SQLSERVER_2019_STANDARD")
+ *             .region("us-central1")
+ *             .rootPassword("root-password")
+ *             .deletionProtection("true")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-4096")
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.71.242.81")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.28.29")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.6.157")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.234.134")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.239.218")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .name("db")
+ *             .instance(instance.name())
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name("user")
+ *             .instance(instance.name())
+ *             .password("password")
+ *             .build());
+ * 
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
+ *             .displayName("SQL Server Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
+ *             .sqlServerProfile(ConnectionProfileSqlServerProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .port(1433)
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .database(db.name())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -603,6 +696,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * SQL Server database profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sqlServerProfile", refs={ConnectionProfileSqlServerProfile.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileSqlServerProfile> sqlServerProfile;
+
+    /**
+     * @return SQL Server database profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfileSqlServerProfile>> sqlServerProfile() {
+        return Codegen.optional(this.sqlServerProfile);
     }
 
     /**

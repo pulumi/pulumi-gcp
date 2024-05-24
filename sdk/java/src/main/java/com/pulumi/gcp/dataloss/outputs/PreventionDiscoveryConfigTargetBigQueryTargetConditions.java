@@ -31,8 +31,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
      */
     private @Nullable String typeCollection;
     /**
-     * @return Restrict discovery to specific table type
-     * Structure is documented below.
+     * @return Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+     * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes types;
@@ -62,8 +62,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
         return Optional.ofNullable(this.typeCollection);
     }
     /**
-     * @return Restrict discovery to specific table type
-     * Structure is documented below.
+     * @return Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+     * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
      * 
      */
     public Optional<PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes> types() {

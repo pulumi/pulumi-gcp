@@ -351,7 +351,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
      */
     @Export(name="serviceLevel", refs={String.class}, tree="[0]")
@@ -359,7 +359,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
      */
     public Output<String> serviceLevel() {

@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dns\_managed\_zone\_iam\_policy
+// ## dns.DnsManagedZoneIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_dns\_managed\_zone\_iam\_binding
+// ## dns.DnsManagedZoneIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_dns\_managed\_zone\_iam\_member
+// ## dns.DnsManagedZoneIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_dns\_managed\_zone\_iam\_policy
+// ## dns.DnsManagedZoneIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_dns\_managed\_zone\_iam\_binding
+// ## dns.DnsManagedZoneIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_dns\_managed\_zone\_iam\_member
+// ## dns.DnsManagedZoneIamMember
 //
 // ```go
 // package main

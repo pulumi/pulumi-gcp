@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gcp.gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_gke\_hub\_scope\_iam\_policy
+ * ## gcp.gkehub.ScopeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_hub\_scope\_iam\_binding
+ * ## gcp.gkehub.ScopeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_hub\_scope\_iam\_member
+ * ## gcp.gkehub.ScopeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_hub\_scope\_iam\_policy
+ * ## gcp.gkehub.ScopeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_hub\_scope\_iam\_binding
+ * ## gcp.gkehub.ScopeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_gke\_hub\_scope\_iam\_member
+ * ## gcp.gkehub.ScopeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

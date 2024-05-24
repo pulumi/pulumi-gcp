@@ -177,7 +177,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigtable\\_instance\\_iam\\_policy
+        ## bigtable.InstanceIamPolicy
 
         ```python
         import pulumi
@@ -193,7 +193,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_binding
+        ## bigtable.InstanceIamBinding
 
         ```python
         import pulumi
@@ -205,7 +205,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_member
+        ## bigtable.InstanceIamMember
 
         ```python
         import pulumi
@@ -217,7 +217,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_policy
+        ## bigtable.InstanceIamPolicy
 
         ```python
         import pulumi
@@ -233,7 +233,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_binding
+        ## bigtable.InstanceIamBinding
 
         ```python
         import pulumi
@@ -245,7 +245,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_member
+        ## bigtable.InstanceIamMember
 
         ```python
         import pulumi
@@ -311,7 +311,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigtable\\_instance\\_iam\\_policy
+        ## bigtable.InstanceIamPolicy
 
         ```python
         import pulumi
@@ -327,7 +327,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_binding
+        ## bigtable.InstanceIamBinding
 
         ```python
         import pulumi
@@ -339,7 +339,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_member
+        ## bigtable.InstanceIamMember
 
         ```python
         import pulumi
@@ -351,7 +351,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_policy
+        ## bigtable.InstanceIamPolicy
 
         ```python
         import pulumi
@@ -367,7 +367,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_binding
+        ## bigtable.InstanceIamBinding
 
         ```python
         import pulumi
@@ -379,7 +379,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_instance\\_iam\\_member
+        ## bigtable.InstanceIamMember
 
         ```python
         import pulumi

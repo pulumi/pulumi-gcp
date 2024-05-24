@@ -235,7 +235,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
      */
     @Import(name="serviceLevel")
@@ -243,7 +243,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Service level of the storage pool.
-     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+     * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
      */
     public Optional<Output<String>> serviceLevel() {
@@ -614,7 +614,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceLevel Service level of the storage pool.
-         * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+         * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceLevel Service level of the storage pool.
-         * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+         * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
          * 
          * @return builder
          * 

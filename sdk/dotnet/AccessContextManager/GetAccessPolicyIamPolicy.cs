@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Retrieves the current IAM policy data for accesspolicy
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Retrieves the current IAM policy data for accesspolicy
-        /// 
         /// 
         /// 
         /// ## example

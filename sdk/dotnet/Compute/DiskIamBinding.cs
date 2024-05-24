@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_compute\_disk\_iam\_policy
+    /// ## gcp.compute.DiskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_disk\_iam\_binding
+    /// ## gcp.compute.DiskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_disk\_iam\_member
+    /// ## gcp.compute.DiskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_disk\_iam\_policy
+    /// ## gcp.compute.DiskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_disk\_iam\_binding
+    /// ## gcp.compute.DiskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_disk\_iam\_member
+    /// ## gcp.compute.DiskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

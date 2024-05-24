@@ -31,7 +31,7 @@ class StoragePoolArgs:
         :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] service_level: Service level of the storage pool.
-               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -110,7 +110,7 @@ class StoragePoolArgs:
     def service_level(self) -> pulumi.Input[str]:
         """
         Service level of the storage pool.
-        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         """
         return pulumi.get(self, "service_level")
 
@@ -259,7 +259,7 @@ class _StoragePoolState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] service_level: Service level of the storage pool.
-               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[int] volume_count: Number of volume in the storage pool.
         """
@@ -468,7 +468,7 @@ class _StoragePoolState:
     def service_level(self) -> Optional[pulumi.Input[str]]:
         """
         Service level of the storage pool.
-        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         """
         return pulumi.get(self, "service_level")
 
@@ -625,7 +625,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_level: Service level of the storage pool.
-               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         """
         ...
     @overload
@@ -836,7 +836,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] service_level: Service level of the storage pool.
-               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+               Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[int] volume_count: Number of volume in the storage pool.
         """
@@ -982,7 +982,7 @@ class StoragePool(pulumi.CustomResource):
     def service_level(self) -> pulumi.Output[str]:
         """
         Service level of the storage pool.
-        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+        Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         """
         return pulumi.get(self, "service_level")
 

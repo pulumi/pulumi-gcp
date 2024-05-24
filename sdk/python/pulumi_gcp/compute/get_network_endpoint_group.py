@@ -178,7 +178,7 @@ def get_network_endpoint_group(name: Optional[str] = None,
            Provide either this or a `self_link`.
     :param str project: The ID of the project to list versions in.
            If it is not provided, the provider project is used.
-    :param str self_link: The Network Endpoint Group self\\_link.
+    :param str self_link: The Network Endpoint Group self_link.
     :param str zone: The Network Endpoint Group availability zone.
     """
     __args__ = dict()
@@ -230,7 +230,7 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]
            Provide either this or a `self_link`.
     :param str project: The ID of the project to list versions in.
            If it is not provided, the provider project is used.
-    :param str self_link: The Network Endpoint Group self\\_link.
+    :param str self_link: The Network Endpoint Group self_link.
     :param str zone: The Network Endpoint Group availability zone.
     """
     ...

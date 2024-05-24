@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc
 {
     /// <summary>
+    /// A managed metastore federation.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Dataproc Metastore Federation Basic

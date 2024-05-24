@@ -19,6 +19,7 @@ __all__ = [
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
     'ConnectionProfilePrivateConnectivity',
+    'ConnectionProfileSqlServerProfile',
     'PrivateConnectionError',
     'PrivateConnectionVpcPeeringConfig',
     'StreamBackfillAll',
@@ -34,6 +35,10 @@ __all__ = [
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema',
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable',
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
+    'StreamBackfillAllSqlServerExcludedObjects',
+    'StreamBackfillAllSqlServerExcludedObjectsSchema',
+    'StreamBackfillAllSqlServerExcludedObjectsSchemaTable',
+    'StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn',
     'StreamBackfillNone',
     'StreamDestinationConfig',
     'StreamDestinationConfigBigqueryDestinationConfig',
@@ -73,6 +78,15 @@ __all__ = [
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema',
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable',
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
+    'StreamSourceConfigSqlServerSourceConfig',
+    'StreamSourceConfigSqlServerSourceConfigExcludeObjects',
+    'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema',
+    'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable',
+    'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn',
+    'StreamSourceConfigSqlServerSourceConfigIncludeObjects',
+    'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema',
+    'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable',
+    'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn',
 ]
 
 @pulumi.output_type
@@ -626,6 +640,71 @@ class ConnectionProfilePrivateConnectivity(dict):
 
 
 @pulumi.output_type
+class ConnectionProfileSqlServerProfile(dict):
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 password: str,
+                 username: str,
+                 port: Optional[int] = None):
+        """
+        :param str database: Database for the SQL Server connection.
+        :param str hostname: Hostname for the SQL Server connection.
+        :param str password: Password for the SQL Server connection.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str username: Username for the SQL Server connection.
+        :param int port: Port for the SQL Server connection.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database for the SQL Server connection.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname for the SQL Server connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the SQL Server connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username for the SQL Server connection.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port for the SQL Server connection.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
 class PrivateConnectionError(dict):
     def __init__(__self__, *,
                  details: Optional[Mapping[str, str]] = None,
@@ -702,6 +781,8 @@ class StreamBackfillAll(dict):
             suggest = "oracle_excluded_objects"
         elif key == "postgresqlExcludedObjects":
             suggest = "postgresql_excluded_objects"
+        elif key == "sqlServerExcludedObjects":
+            suggest = "sql_server_excluded_objects"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAll. Access the value via the '{suggest}' property getter instead.")
@@ -717,13 +798,16 @@ class StreamBackfillAll(dict):
     def __init__(__self__, *,
                  mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None,
                  oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
-                 postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None):
+                 postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None,
+                 sql_server_excluded_objects: Optional['outputs.StreamBackfillAllSqlServerExcludedObjects'] = None):
         """
         :param 'StreamBackfillAllMysqlExcludedObjectsArgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
                Structure is documented below.
         :param 'StreamBackfillAllOracleExcludedObjectsArgs' oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         :param 'StreamBackfillAllPostgresqlExcludedObjectsArgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param 'StreamBackfillAllSqlServerExcludedObjectsArgs' sql_server_excluded_objects: SQL Server data source objects to avoid backfilling.
                Structure is documented below.
         """
         if mysql_excluded_objects is not None:
@@ -732,6 +816,8 @@ class StreamBackfillAll(dict):
             pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
         if postgresql_excluded_objects is not None:
             pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
+        if sql_server_excluded_objects is not None:
+            pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -759,6 +845,15 @@ class StreamBackfillAll(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "postgresql_excluded_objects")
+
+    @property
+    @pulumi.getter(name="sqlServerExcludedObjects")
+    def sql_server_excluded_objects(self) -> Optional['outputs.StreamBackfillAllSqlServerExcludedObjects']:
+        """
+        SQL Server data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_excluded_objects")
 
 
 @pulumi.output_type
@@ -1567,6 +1662,228 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 
 
 @pulumi.output_type
+class StreamBackfillAllSqlServerExcludedObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchema']):
+        """
+        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaArgs'] schemas: SQL Server schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchema']:
+        """
+        SQL Server schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamBackfillAllSqlServerExcludedObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: str,
+                 tables: Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs'] tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamBackfillAllSqlServerExcludedObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: str,
+                 columns: Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn']]:
+        """
+        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The SQL Server data type. Full data types list can be found here:
+               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The SQL Server data type. Full data types list can be found here:
+        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        (Output)
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        (Output)
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        (Output)
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        (Output)
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        (Output)
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
 class StreamBackfillNone(dict):
     def __init__(__self__):
         pass
@@ -2027,6 +2344,8 @@ class StreamSourceConfig(dict):
             suggest = "oracle_source_config"
         elif key == "postgresqlSourceConfig":
             suggest = "postgresql_source_config"
+        elif key == "sqlServerSourceConfig":
+            suggest = "sql_server_source_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfig. Access the value via the '{suggest}' property getter instead.")
@@ -2043,7 +2362,8 @@ class StreamSourceConfig(dict):
                  source_connection_profile: str,
                  mysql_source_config: Optional['outputs.StreamSourceConfigMysqlSourceConfig'] = None,
                  oracle_source_config: Optional['outputs.StreamSourceConfigOracleSourceConfig'] = None,
-                 postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None):
+                 postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None,
+                 sql_server_source_config: Optional['outputs.StreamSourceConfigSqlServerSourceConfig'] = None):
         """
         :param str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         :param 'StreamSourceConfigMysqlSourceConfigArgs' mysql_source_config: MySQL data source configuration.
@@ -2051,6 +2371,8 @@ class StreamSourceConfig(dict):
         :param 'StreamSourceConfigOracleSourceConfigArgs' oracle_source_config: MySQL data source configuration.
                Structure is documented below.
         :param 'StreamSourceConfigPostgresqlSourceConfigArgs' postgresql_source_config: PostgreSQL data source configuration.
+               Structure is documented below.
+        :param 'StreamSourceConfigSqlServerSourceConfigArgs' sql_server_source_config: SQL Server data source configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
@@ -2060,6 +2382,8 @@ class StreamSourceConfig(dict):
             pulumi.set(__self__, "oracle_source_config", oracle_source_config)
         if postgresql_source_config is not None:
             pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
+        if sql_server_source_config is not None:
+            pulumi.set(__self__, "sql_server_source_config", sql_server_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -2095,6 +2419,15 @@ class StreamSourceConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "postgresql_source_config")
+
+    @property
+    @pulumi.getter(name="sqlServerSourceConfig")
+    def sql_server_source_config(self) -> Optional['outputs.StreamSourceConfigSqlServerSourceConfig']:
+        """
+        SQL Server data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_source_config")
 
 
 @pulumi.output_type
@@ -4003,6 +4336,532 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[bool]:
         """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        (Output)
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSqlServerSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSqlServerSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSqlServerSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_objects: Optional['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjects'] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjects'] = None,
+                 max_concurrent_backfill_tasks: Optional[int] = None,
+                 max_concurrent_cdc_tasks: Optional[int] = None):
+        """
+        :param 'StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs' exclude_objects: SQL Server objects to exclude from the stream.
+               Structure is documented below.
+        :param 'StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs' include_objects: SQL Server objects to retrieve from the source.
+               Structure is documented below.
+        :param int max_concurrent_backfill_tasks: Max concurrent backfill tasks.
+        :param int max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        """
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjects']:
+        """
+        SQL Server objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjects']:
+        """
+        SQL Server objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[int]:
+        """
+        Max concurrent backfill tasks.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[int]:
+        """
+        Max concurrent CDC tasks.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigExcludeObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema']):
+        """
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs'] schemas: SQL Server schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema']:
+        """
+        SQL Server schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: str,
+                 tables: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs'] tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: str,
+                 columns: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn']]:
+        """
+        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The SQL Server data type. Full data types list can be found here:
+               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The SQL Server data type. Full data types list can be found here:
+        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        (Output)
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        (Output)
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        (Output)
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        (Output)
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        (Output)
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigIncludeObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema']):
+        """
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs'] schemas: SQL Server schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema']:
+        """
+        SQL Server schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: str,
+                 tables: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs'] tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: str,
+                 columns: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn']]:
+        """
+        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The SQL Server data type. Full data types list can be found here:
+               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The SQL Server data type. Full data types list can be found here:
+        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        (Output)
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        (Output)
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        (Output)
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")

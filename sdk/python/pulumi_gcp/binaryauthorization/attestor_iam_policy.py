@@ -169,7 +169,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
 
         > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
+        ## binaryauthorization.AttestorIamPolicy
 
         ```python
         import pulumi
@@ -185,7 +185,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
+        ## binaryauthorization.AttestorIamBinding
 
         ```python
         import pulumi
@@ -198,7 +198,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
+        ## binaryauthorization.AttestorIamMember
 
         ```python
         import pulumi
@@ -211,7 +211,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
+        ## binaryauthorization.AttestorIamPolicy
 
         ```python
         import pulumi
@@ -227,7 +227,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
+        ## binaryauthorization.AttestorIamBinding
 
         ```python
         import pulumi
@@ -240,7 +240,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
+        ## binaryauthorization.AttestorIamMember
 
         ```python
         import pulumi
@@ -318,7 +318,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
 
         > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
+        ## binaryauthorization.AttestorIamPolicy
 
         ```python
         import pulumi
@@ -334,7 +334,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
+        ## binaryauthorization.AttestorIamBinding
 
         ```python
         import pulumi
@@ -347,7 +347,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
+        ## binaryauthorization.AttestorIamMember
 
         ```python
         import pulumi
@@ -360,7 +360,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
+        ## binaryauthorization.AttestorIamPolicy
 
         ```python
         import pulumi
@@ -376,7 +376,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
+        ## binaryauthorization.AttestorIamBinding
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class AttestorIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
+        ## binaryauthorization.AttestorIamMember
 
         ```python
         import pulumi

@@ -198,7 +198,7 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_job\\_iam\\_policy
+        ## dataproc.JobIAMPolicy
 
         ```python
         import pulumi
@@ -215,7 +215,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_binding
+        ## dataproc.JobIAMBinding
 
         ```python
         import pulumi
@@ -227,7 +227,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_member
+        ## dataproc.JobIAMMember
 
         ```python
         import pulumi
@@ -239,7 +239,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_policy
+        ## dataproc.JobIAMPolicy
 
         ```python
         import pulumi
@@ -256,7 +256,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_binding
+        ## dataproc.JobIAMBinding
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_member
+        ## dataproc.JobIAMMember
 
         ```python
         import pulumi
@@ -333,7 +333,7 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_job\\_iam\\_policy
+        ## dataproc.JobIAMPolicy
 
         ```python
         import pulumi
@@ -350,7 +350,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_binding
+        ## dataproc.JobIAMBinding
 
         ```python
         import pulumi
@@ -362,7 +362,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_member
+        ## dataproc.JobIAMMember
 
         ```python
         import pulumi
@@ -374,7 +374,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_policy
+        ## dataproc.JobIAMPolicy
 
         ```python
         import pulumi
@@ -391,7 +391,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_binding
+        ## dataproc.JobIAMBinding
 
         ```python
         import pulumi
@@ -403,7 +403,7 @@ class JobIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_job\\_iam\\_member
+        ## dataproc.JobIAMMember
 
         ```python
         import pulumi

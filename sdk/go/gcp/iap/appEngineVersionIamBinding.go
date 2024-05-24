@@ -28,7 +28,7 @@ import (
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
-// ## google\_iap\_app\_engine\_version\_iam\_policy
+// ## iap.AppEngineVersionIamPolicy
 //
 // ```go
 // package main
@@ -120,7 +120,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_app\_engine\_version\_iam\_binding
+// ## iap.AppEngineVersionIamBinding
 //
 // ```go
 // package main
@@ -190,7 +190,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_app\_engine\_version\_iam\_member
+// ## iap.AppEngineVersionIamMember
 //
 // ```go
 // package main
@@ -257,7 +257,7 @@ import (
 //
 // ```
 //
-// ## google\_iap\_app\_engine\_version\_iam\_policy
+// ## iap.AppEngineVersionIamPolicy
 //
 // ```go
 // package main
@@ -349,7 +349,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_app\_engine\_version\_iam\_binding
+// ## iap.AppEngineVersionIamBinding
 //
 // ```go
 // package main
@@ -419,7 +419,7 @@ import (
 //	}
 //
 // ```
-// ## google\_iap\_app\_engine\_version\_iam\_member
+// ## iap.AppEngineVersionIamMember
 //
 // ```go
 // package main

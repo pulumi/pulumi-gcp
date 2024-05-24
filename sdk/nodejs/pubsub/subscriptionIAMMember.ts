@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_pubsub\_subscription\_iam\_policy
+ * ## gcp.pubsub.SubscriptionIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_subscription\_iam\_binding
+ * ## gcp.pubsub.SubscriptionIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_subscription\_iam\_member
+ * ## gcp.pubsub.SubscriptionIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_subscription\_iam\_policy
+ * ## gcp.pubsub.SubscriptionIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_subscription\_iam\_binding
+ * ## gcp.pubsub.SubscriptionIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_subscription\_iam\_member
+ * ## gcp.pubsub.SubscriptionIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_machine\_image\_iam\_binding
+    /// ## gcp.compute.MachineImageIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_machine\_image\_iam\_member
+    /// ## gcp.compute.MachineImageIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_machine\_image\_iam\_binding
+    /// ## gcp.compute.MachineImageIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_machine\_image\_iam\_member
+    /// ## gcp.compute.MachineImageIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

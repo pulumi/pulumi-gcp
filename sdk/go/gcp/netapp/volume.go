@@ -168,7 +168,7 @@ type Volume struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle pulumi.StringOutput `pulumi:"securityStyle"`
-	// Service level of the volume. Inherited from storage pool.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName pulumi.StringOutput `pulumi:"shareName"`
@@ -307,7 +307,7 @@ type volumeState struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle *string `pulumi:"securityStyle"`
-	// Service level of the volume. Inherited from storage pool.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
 	ServiceLevel *string `pulumi:"serviceLevel"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName *string `pulumi:"shareName"`
@@ -397,7 +397,7 @@ type VolumeState struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle pulumi.StringPtrInput
-	// Service level of the volume. Inherited from storage pool.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
 	ServiceLevel pulumi.StringPtrInput
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName pulumi.StringPtrInput
@@ -766,7 +766,7 @@ func (o VolumeOutput) SecurityStyle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SecurityStyle }).(pulumi.StringOutput)
 }
 
-// Service level of the volume. Inherited from storage pool.
+// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
 func (o VolumeOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ServiceLevel }).(pulumi.StringOutput)
 }

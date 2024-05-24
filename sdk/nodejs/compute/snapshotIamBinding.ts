@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.SnapshotIamBinding` resources **can be** used in conjunction with `gcp.compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_compute\_snapshot\_iam\_policy
+ * ## gcp.compute.SnapshotIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_snapshot\_iam\_binding
+ * ## gcp.compute.SnapshotIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_snapshot\_iam\_member
+ * ## gcp.compute.SnapshotIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_snapshot\_iam\_policy
+ * ## gcp.compute.SnapshotIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_snapshot\_iam\_binding
+ * ## gcp.compute.SnapshotIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_snapshot\_iam\_member
+ * ## gcp.compute.SnapshotIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

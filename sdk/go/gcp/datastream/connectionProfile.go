@@ -294,6 +294,88 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Sql Server
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:               pulumi.String("sql-server"),
+//				DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+//				Region:             pulumi.String("us-central1"),
+//				RootPassword:       pulumi.String("root-password"),
+//				DeletionProtection: pulumi.Bool(true),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-custom-2-4096"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Name:     pulumi.String("db"),
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
+//				Instance: instance.Name,
+//				Password: pulumi.String("password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("SQL Server Source"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				SqlServerProfile: &datastream.ConnectionProfileSqlServerProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Port:     pulumi.Int(1433),
+//					Username: user.Name,
+//					Password: user.Password,
+//					Database: db.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -363,6 +445,9 @@ type ConnectionProfile struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// SQL Server database profile.
+	// Structure is documented below.
+	SqlServerProfile ConnectionProfileSqlServerProfilePtrOutput `pulumi:"sqlServerProfile"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -451,6 +536,9 @@ type connectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// SQL Server database profile.
+	// Structure is documented below.
+	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
 }
 
 type ConnectionProfileState struct {
@@ -496,6 +584,9 @@ type ConnectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// SQL Server database profile.
+	// Structure is documented below.
+	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
 }
 
 func (ConnectionProfileState) ElementType() reflect.Type {
@@ -538,6 +629,9 @@ type connectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// SQL Server database profile.
+	// Structure is documented below.
+	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -577,6 +671,9 @@ type ConnectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// SQL Server database profile.
+	// Structure is documented below.
+	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {
@@ -753,6 +850,12 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// SQL Server database profile.
+// Structure is documented below.
+func (o ConnectionProfileOutput) SqlServerProfile() ConnectionProfileSqlServerProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileSqlServerProfilePtrOutput { return v.SqlServerProfile }).(ConnectionProfileSqlServerProfilePtrOutput)
 }
 
 type ConnectionProfileArrayOutput struct{ *pulumi.OutputState }

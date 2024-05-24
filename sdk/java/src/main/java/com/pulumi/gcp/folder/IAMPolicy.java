@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
  * 
- * ## google\_folder\_iam\_policy
+ * ## gcp.folder.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your folder
  *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_binding
+ * ## gcp.folder.IAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_member
+ * ## gcp.folder.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -291,7 +291,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_audit\_config
+ * ## gcp.folder.IamAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -336,7 +336,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_policy
+ * ## gcp.folder.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your folder
  *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_binding
+ * ## gcp.folder.IAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -519,7 +519,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_member
+ * ## gcp.folder.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -599,7 +599,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_folder\_iam\_audit\_config
+ * ## gcp.folder.IamAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

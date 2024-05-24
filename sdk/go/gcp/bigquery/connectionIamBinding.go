@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigquery\_connection\_iam\_policy
+// ## bigquery.ConnectionIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_connection\_iam\_binding
+// ## bigquery.ConnectionIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_connection\_iam\_member
+// ## bigquery.ConnectionIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_connection\_iam\_policy
+// ## bigquery.ConnectionIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_connection\_iam\_binding
+// ## bigquery.ConnectionIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_connection\_iam\_member
+// ## bigquery.ConnectionIamMember
 //
 // ```go
 // package main

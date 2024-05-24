@@ -61,14 +61,14 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
     }
 
     /**
-     * The Network Endpoint Group self\_link.
+     * The Network Endpoint Group self_link.
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The Network Endpoint Group self\_link.
+     * @return The Network Endpoint Group self_link.
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -166,7 +166,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param selfLink The Network Endpoint Group self\_link.
+         * @param selfLink The Network Endpoint Group self_link.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param selfLink The Network Endpoint Group self\_link.
+         * @param selfLink The Network Endpoint Group self_link.
          * 
          * @return builder
          * 

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     /// &gt; **Note:** `gcp.cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_policy
+    /// ## gcp.cloudfunctions.FunctionIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// });
     /// ```
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_binding
+    /// ## gcp.cloudfunctions.FunctionIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// });
     /// ```
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_member
+    /// ## gcp.cloudfunctions.FunctionIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// });
     /// ```
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_policy
+    /// ## gcp.cloudfunctions.FunctionIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// });
     /// ```
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_binding
+    /// ## gcp.cloudfunctions.FunctionIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// });
     /// ```
     /// 
-    /// ## google\_cloudfunctions\_function\_iam\_member
+    /// ## gcp.cloudfunctions.FunctionIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

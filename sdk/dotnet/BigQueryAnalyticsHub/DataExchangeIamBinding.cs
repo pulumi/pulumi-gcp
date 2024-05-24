@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+    /// ## gcp.bigqueryanalyticshub.DataExchangeIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

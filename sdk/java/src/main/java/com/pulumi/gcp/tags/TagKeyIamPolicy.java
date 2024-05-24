@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_tags\_tag\_key\_iam\_policy
+ * ## gcp.tags.TagKeyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_tags\_tag\_key\_iam\_binding
+ * ## gcp.tags.TagKeyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_tags\_tag\_key\_iam\_member
+ * ## gcp.tags.TagKeyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_tags\_tag\_key\_iam\_policy
+ * ## gcp.tags.TagKeyIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_tags\_tag\_key\_iam\_binding
+ * ## gcp.tags.TagKeyIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_tags\_tag\_key\_iam\_member
+ * ## gcp.tags.TagKeyIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// &gt; **Note:** `gcp.gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gcp.gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_policy
+    /// ## gcp.gkehub.ScopeIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_binding
+    /// ## gcp.gkehub.ScopeIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_member
+    /// ## gcp.gkehub.ScopeIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_policy
+    /// ## gcp.gkehub.ScopeIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_binding
+    /// ## gcp.gkehub.ScopeIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_scope\_iam\_member
+    /// ## gcp.gkehub.ScopeIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

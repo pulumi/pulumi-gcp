@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_spanner\_database\_iam\_policy
+ * ## gcp.spanner.DatabaseIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_database\_iam\_binding
+ * ## gcp.spanner.DatabaseIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_database\_iam\_member
+ * ## gcp.spanner.DatabaseIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_database\_iam\_policy
+ * ## gcp.spanner.DatabaseIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -172,7 +172,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_database\_iam\_binding
+ * ## gcp.spanner.DatabaseIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -205,7 +205,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_database\_iam\_member
+ * ## gcp.spanner.DatabaseIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

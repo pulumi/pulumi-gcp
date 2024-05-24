@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_spanner\_database\_iam\_policy
+ * ## gcp.spanner.DatabaseIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_database\_iam\_binding
+ * ## gcp.spanner.DatabaseIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_database\_iam\_member
+ * ## gcp.spanner.DatabaseIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_database\_iam\_policy
+ * ## gcp.spanner.DatabaseIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -387,7 +387,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_database\_iam\_binding
+ * ## gcp.spanner.DatabaseIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -469,7 +469,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_spanner\_database\_iam\_member
+ * ## gcp.spanner.DatabaseIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

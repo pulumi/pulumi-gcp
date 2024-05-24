@@ -227,7 +227,7 @@ class ServiceIamBinding(pulumi.CustomResource):
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_endpoints\\_service\\_iam\\_policy
+        ## endpoints.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -242,7 +242,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_binding
+        ## endpoints.ServiceIamBinding
 
         ```python
         import pulumi
@@ -254,7 +254,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_member
+        ## endpoints.ServiceIamMember
 
         ```python
         import pulumi
@@ -266,7 +266,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_policy
+        ## endpoints.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -281,7 +281,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_binding
+        ## endpoints.ServiceIamBinding
 
         ```python
         import pulumi
@@ -293,7 +293,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_member
+        ## endpoints.ServiceIamMember
 
         ```python
         import pulumi
@@ -377,7 +377,7 @@ class ServiceIamBinding(pulumi.CustomResource):
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_endpoints\\_service\\_iam\\_policy
+        ## endpoints.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -392,7 +392,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_binding
+        ## endpoints.ServiceIamBinding
 
         ```python
         import pulumi
@@ -404,7 +404,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_member
+        ## endpoints.ServiceIamMember
 
         ```python
         import pulumi
@@ -416,7 +416,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_policy
+        ## endpoints.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -431,7 +431,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_binding
+        ## endpoints.ServiceIamBinding
 
         ```python
         import pulumi
@@ -443,7 +443,7 @@ class ServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_endpoints\\_service\\_iam\\_member
+        ## endpoints.ServiceIamMember
 
         ```python
         import pulumi

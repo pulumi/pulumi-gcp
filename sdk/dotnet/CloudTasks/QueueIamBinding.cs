@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// &gt; **Note:** `gcp.cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `gcp.cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_policy
+    /// ## gcp.cloudtasks.QueueIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_binding
+    /// ## gcp.cloudtasks.QueueIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_member
+    /// ## gcp.cloudtasks.QueueIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_policy
+    /// ## gcp.cloudtasks.QueueIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_binding
+    /// ## gcp.cloudtasks.QueueIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
-    /// ## google\_cloud\_tasks\_queue\_iam\_member
+    /// ## gcp.cloudtasks.QueueIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.notebooks.InstanceIamBinding` resources **can be** used in conjunction with `gcp.notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_notebooks\_instance\_iam\_policy
+ * ## gcp.notebooks.InstanceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_notebooks\_instance\_iam\_binding
+ * ## gcp.notebooks.InstanceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_notebooks\_instance\_iam\_member
+ * ## gcp.notebooks.InstanceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_notebooks\_instance\_iam\_policy
+ * ## gcp.notebooks.InstanceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_notebooks\_instance\_iam\_binding
+ * ## gcp.notebooks.InstanceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_notebooks\_instance\_iam\_member
+ * ## gcp.notebooks.InstanceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

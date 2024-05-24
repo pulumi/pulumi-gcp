@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_dataproc\_cluster\_iam\_policy
+ * ## gcp.dataproc.ClusterIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_cluster\_iam\_binding
+ * ## gcp.dataproc.ClusterIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_cluster\_iam\_member
+ * ## gcp.dataproc.ClusterIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_cluster\_iam\_policy
+ * ## gcp.dataproc.ClusterIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_cluster\_iam\_binding
+ * ## gcp.dataproc.ClusterIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_dataproc\_cluster\_iam\_member
+ * ## gcp.dataproc.ClusterIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

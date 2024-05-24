@@ -169,7 +169,7 @@ class NoteIamPolicy(pulumi.CustomResource):
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
+        ## containeranalysis.NoteIamPolicy
 
         ```python
         import pulumi
@@ -185,7 +185,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
+        ## containeranalysis.NoteIamBinding
 
         ```python
         import pulumi
@@ -198,7 +198,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
+        ## containeranalysis.NoteIamMember
 
         ```python
         import pulumi
@@ -211,7 +211,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
+        ## containeranalysis.NoteIamPolicy
 
         ```python
         import pulumi
@@ -227,7 +227,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
+        ## containeranalysis.NoteIamBinding
 
         ```python
         import pulumi
@@ -240,7 +240,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
+        ## containeranalysis.NoteIamMember
 
         ```python
         import pulumi
@@ -318,7 +318,7 @@ class NoteIamPolicy(pulumi.CustomResource):
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
+        ## containeranalysis.NoteIamPolicy
 
         ```python
         import pulumi
@@ -334,7 +334,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
+        ## containeranalysis.NoteIamBinding
 
         ```python
         import pulumi
@@ -347,7 +347,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
+        ## containeranalysis.NoteIamMember
 
         ```python
         import pulumi
@@ -360,7 +360,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
+        ## containeranalysis.NoteIamPolicy
 
         ```python
         import pulumi
@@ -376,7 +376,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
+        ## containeranalysis.NoteIamBinding
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
+        ## containeranalysis.NoteIamMember
 
         ```python
         import pulumi

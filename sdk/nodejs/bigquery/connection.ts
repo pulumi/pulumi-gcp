@@ -227,6 +227,46 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Connection Kms
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     password: "tf-test-my-password_77884",
+ * });
+ * const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     location: "US",
+ *     kmsKeyName: "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+ *     cloudSql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             password: user.password,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -322,6 +362,11 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly hasCredential!: pulumi.Output<boolean>;
     /**
+     * Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
      * with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -369,6 +414,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["hasCredential"] = state ? state.hasCredential : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -383,6 +429,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spark"] = args ? args.spark : undefined;
@@ -439,6 +486,11 @@ export interface ConnectionState {
      * True if the connection has credential assigned.
      */
     hasCredential?: pulumi.Input<boolean>;
+    /**
+     * Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
@@ -507,6 +559,11 @@ export interface ConnectionArgs {
      * A descriptive name for the connection
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * Optional. The Cloud KMS key that is used for encryption.
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection

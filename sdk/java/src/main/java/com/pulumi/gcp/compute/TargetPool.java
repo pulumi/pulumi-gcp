@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
 public class TargetPool extends com.pulumi.resources.CustomResource {
     /**
      * URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      * 
      */
     @Export(name="backupPool", refs={String.class}, tree="[0]")
@@ -114,7 +114,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return URL to the backup target pool. Must also set
-     * failover\_ratio.
+     * failover_ratio.
      * 
      */
     public Output<Optional<String>> backupPool() {
@@ -270,8 +270,8 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * How to distribute load. Options are &#34;NONE&#34; (no
-     * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-     * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+     * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+     * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
      * 
      */
     @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
@@ -279,8 +279,8 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return How to distribute load. Options are &#34;NONE&#34; (no
-     * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
-     * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
+     * affinity). &#34;CLIENT_IP&#34; (hash of the source/dest addresses / ports), and
+     * &#34;CLIENT_IP_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
      * 
      */
     public Output<Optional<String>> sessionAffinity() {

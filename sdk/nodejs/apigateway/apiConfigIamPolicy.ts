@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_api\_gateway\_api\_config\_iam\_binding
+ * ## gcp.apigateway.ApiConfigIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_api\_gateway\_api\_config\_iam\_member
+ * ## gcp.apigateway.ApiConfigIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_api\_gateway\_api\_config\_iam\_binding
+ * ## gcp.apigateway.ApiConfigIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_api\_gateway\_api\_config\_iam\_member
+ * ## gcp.apigateway.ApiConfigIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

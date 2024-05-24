@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GrpcRoute{}
 	case "gcp:networkservices/httpRoute:HttpRoute":
 		r = &HttpRoute{}
+	case "gcp:networkservices/lbTrafficExtension:LbTrafficExtension":
+		r = &LbTrafficExtension{}
 	case "gcp:networkservices/mesh:Mesh":
 		r = &Mesh{}
 	case "gcp:networkservices/serviceBinding:ServiceBinding":
@@ -89,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/httpRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/lbTrafficExtension",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

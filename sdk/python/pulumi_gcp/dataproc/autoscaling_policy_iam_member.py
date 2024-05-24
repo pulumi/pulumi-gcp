@@ -325,7 +325,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+        ## dataproc.AutoscalingPolicyIamPolicy
 
         ```python
         import pulumi
@@ -342,7 +342,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+        ## dataproc.AutoscalingPolicyIamBinding
 
         ```python
         import pulumi
@@ -356,7 +356,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+        ## dataproc.AutoscalingPolicyIamMember
 
         ```python
         import pulumi
@@ -370,7 +370,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+        ## dataproc.AutoscalingPolicyIamPolicy
 
         ```python
         import pulumi
@@ -387,7 +387,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+        ## dataproc.AutoscalingPolicyIamBinding
 
         ```python
         import pulumi
@@ -401,7 +401,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+        ## dataproc.AutoscalingPolicyIamMember
 
         ```python
         import pulumi
@@ -500,7 +500,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+        ## dataproc.AutoscalingPolicyIamPolicy
 
         ```python
         import pulumi
@@ -517,7 +517,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+        ## dataproc.AutoscalingPolicyIamBinding
 
         ```python
         import pulumi
@@ -531,7 +531,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+        ## dataproc.AutoscalingPolicyIamMember
 
         ```python
         import pulumi
@@ -545,7 +545,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+        ## dataproc.AutoscalingPolicyIamPolicy
 
         ```python
         import pulumi
@@ -562,7 +562,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+        ## dataproc.AutoscalingPolicyIamBinding
 
         ```python
         import pulumi
@@ -576,7 +576,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+        ## dataproc.AutoscalingPolicyIamMember
 
         ```python
         import pulumi

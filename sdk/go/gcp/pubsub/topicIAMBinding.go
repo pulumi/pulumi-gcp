@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_pubsub\_topic\_iam\_policy
+// ## pubsub.TopicIAMPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_topic\_iam\_binding
+// ## pubsub.TopicIAMBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_topic\_iam\_member
+// ## pubsub.TopicIAMMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_topic\_iam\_policy
+// ## pubsub.TopicIAMPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_topic\_iam\_binding
+// ## pubsub.TopicIAMBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_topic\_iam\_member
+// ## pubsub.TopicIAMMember
 //
 // ```go
 // package main
