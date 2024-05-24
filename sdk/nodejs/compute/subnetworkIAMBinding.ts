@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
- * ## google\_compute\_subnetwork\_iam\_policy
+ * ## gcp.compute.SubnetworkIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_compute\_subnetwork\_iam\_binding
+ * ## gcp.compute.SubnetworkIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_compute\_subnetwork\_iam\_member
+ * ## gcp.compute.SubnetworkIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -136,7 +136,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_compute\_subnetwork\_iam\_policy
+ * ## gcp.compute.SubnetworkIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -180,7 +180,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_compute\_subnetwork\_iam\_binding
+ * ## gcp.compute.SubnetworkIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -214,7 +214,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_compute\_subnetwork\_iam\_member
+ * ## gcp.compute.SubnetworkIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

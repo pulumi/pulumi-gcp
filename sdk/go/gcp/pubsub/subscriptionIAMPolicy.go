@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_pubsub\_subscription\_iam\_policy
+// ## pubsub.SubscriptionIAMPolicy
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_subscription\_iam\_binding
+// ## pubsub.SubscriptionIAMBinding
 //
 // ```go
 // package main
@@ -93,7 +93,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_subscription\_iam\_member
+// ## pubsub.SubscriptionIAMMember
 //
 // ```go
 // package main
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_subscription\_iam\_policy
+// ## pubsub.SubscriptionIAMPolicy
 //
 // ```go
 // package main
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_subscription\_iam\_binding
+// ## pubsub.SubscriptionIAMBinding
 //
 // ```go
 // package main
@@ -192,7 +192,7 @@ import (
 //
 // ```
 //
-// ## google\_pubsub\_subscription\_iam\_member
+// ## pubsub.SubscriptionIAMMember
 //
 // ```go
 // package main

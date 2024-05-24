@@ -27,7 +27,7 @@ import (
 //
 //	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -383,7 +383,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -448,7 +448,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -509,7 +509,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main
@@ -582,7 +582,7 @@ type IAMAuditConfig struct {
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -632,7 +632,7 @@ type iamauditConfigState struct {
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project *string `pulumi:"project"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service *string `pulumi:"service"`
 }
 
@@ -644,7 +644,7 @@ type IAMAuditConfigState struct {
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringPtrInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringPtrInput
 }
 
@@ -658,7 +658,7 @@ type iamauditConfigArgs struct {
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project string `pulumi:"project"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service string `pulumi:"service"`
 }
 
@@ -669,7 +669,7 @@ type IAMAuditConfigArgs struct {
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringInput
 }
 
@@ -776,7 +776,7 @@ func (o IAMAuditConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMAuditConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 func (o IAMAuditConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMAuditConfig) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

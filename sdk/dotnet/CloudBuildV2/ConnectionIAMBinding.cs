@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// &gt; **Note:** `gcp.cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_policy
+    /// ## gcp.cloudbuildv2.ConnectionIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// });
     /// ```
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_binding
+    /// ## gcp.cloudbuildv2.ConnectionIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// });
     /// ```
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_member
+    /// ## gcp.cloudbuildv2.ConnectionIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// });
     /// ```
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_policy
+    /// ## gcp.cloudbuildv2.ConnectionIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// });
     /// ```
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_binding
+    /// ## gcp.cloudbuildv2.ConnectionIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// });
     /// ```
     /// 
-    /// ## google\_cloudbuildv2\_connection\_iam\_member
+    /// ## gcp.cloudbuildv2.ConnectionIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

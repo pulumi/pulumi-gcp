@@ -168,7 +168,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
+        ## spanner.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -183,7 +183,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_binding
+        ## spanner.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -195,7 +195,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_member
+        ## spanner.InstanceIAMMember
 
         ```python
         import pulumi
@@ -207,7 +207,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
+        ## spanner.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -222,7 +222,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_binding
+        ## spanner.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_member
+        ## spanner.InstanceIAMMember
 
         ```python
         import pulumi
@@ -300,7 +300,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
+        ## spanner.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -315,7 +315,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_binding
+        ## spanner.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -327,7 +327,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_member
+        ## spanner.InstanceIAMMember
 
         ```python
         import pulumi
@@ -339,7 +339,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
+        ## spanner.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -354,7 +354,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_binding
+        ## spanner.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -366,7 +366,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_spanner\\_instance\\_iam\\_member
+        ## spanner.InstanceIAMMember
 
         ```python
         import pulumi

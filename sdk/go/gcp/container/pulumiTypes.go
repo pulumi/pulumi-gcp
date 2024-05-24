@@ -18628,7 +18628,7 @@ func (o ClusterMeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOut
 type ClusterMonitoringConfig struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
 	AdvancedDatapathObservabilityConfigs []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
-	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 	EnableComponents []string `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
 	ManagedPrometheus *ClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheus"`
@@ -18648,7 +18648,7 @@ type ClusterMonitoringConfigInput interface {
 type ClusterMonitoringConfigArgs struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
 	AdvancedDatapathObservabilityConfigs ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
-	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
 	ManagedPrometheus ClusterMonitoringConfigManagedPrometheusPtrInput `pulumi:"managedPrometheus"`
@@ -18738,7 +18738,7 @@ func (o ClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs() Cl
 	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
 }
 
-// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -18782,7 +18782,7 @@ func (o ClusterMonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfigs()
 	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
 }
 
-// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
 		if v == nil {
@@ -45496,7 +45496,7 @@ func (o GetClusterMeshCertificateArrayOutput) Index(i pulumi.IntInput) GetCluste
 type GetClusterMonitoringConfig struct {
 	// Configuration of Advanced Datapath Observability features.
 	AdvancedDatapathObservabilityConfigs []GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
-	// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+	// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
 	EnableComponents []string `pulumi:"enableComponents"`
 	// Configuration for Google Cloud Managed Services for Prometheus.
 	ManagedPrometheuses []GetClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheuses"`
@@ -45516,7 +45516,7 @@ type GetClusterMonitoringConfigInput interface {
 type GetClusterMonitoringConfigArgs struct {
 	// Configuration of Advanced Datapath Observability features.
 	AdvancedDatapathObservabilityConfigs GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
-	// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+	// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 	// Configuration for Google Cloud Managed Services for Prometheus.
 	ManagedPrometheuses GetClusterMonitoringConfigManagedPrometheusArrayInput `pulumi:"managedPrometheuses"`
@@ -45580,7 +45580,7 @@ func (o GetClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs()
 	}).(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
 }
 
-// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
 func (o GetClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }

@@ -311,7 +311,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
+        ## iap.WebRegionBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -349,7 +349,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
+        ## iap.WebRegionBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -381,7 +381,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
+        ## iap.WebRegionBackendServiceIamMember
 
         ```python
         import pulumi
@@ -414,7 +414,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
+        ## iap.WebRegionBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -452,7 +452,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
+        ## iap.WebRegionBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -484,7 +484,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
+        ## iap.WebRegionBackendServiceIamMember
 
         ```python
         import pulumi
@@ -600,7 +600,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
+        ## iap.WebRegionBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -638,7 +638,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
+        ## iap.WebRegionBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -670,7 +670,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
+        ## iap.WebRegionBackendServiceIamMember
 
         ```python
         import pulumi
@@ -703,7 +703,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
+        ## iap.WebRegionBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -741,7 +741,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
+        ## iap.WebRegionBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -773,7 +773,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
+        ## iap.WebRegionBackendServiceIamMember
 
         ```python
         import pulumi

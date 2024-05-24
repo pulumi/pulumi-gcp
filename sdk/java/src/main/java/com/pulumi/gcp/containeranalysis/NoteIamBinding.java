@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `gcp.containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_container\_analysis\_note\_iam\_policy
+ * ## gcp.containeranalysis.NoteIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_container\_analysis\_note\_iam\_binding
+ * ## gcp.containeranalysis.NoteIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_container\_analysis\_note\_iam\_member
+ * ## gcp.containeranalysis.NoteIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_container\_analysis\_note\_iam\_policy
+ * ## gcp.containeranalysis.NoteIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_container\_analysis\_note\_iam\_binding
+ * ## gcp.containeranalysis.NoteIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -237,7 +237,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_container\_analysis\_note\_iam\_member
+ * ## gcp.containeranalysis.NoteIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

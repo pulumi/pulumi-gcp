@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_policy
+// ## datacatalog.EntryGroupIamPolicy
 //
 // ```go
 // package main
@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_binding
+// ## datacatalog.EntryGroupIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_member
+// ## datacatalog.EntryGroupIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_policy
+// ## datacatalog.EntryGroupIamPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_binding
+// ## datacatalog.EntryGroupIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_data\_catalog\_entry\_group\_iam\_member
+// ## datacatalog.EntryGroupIamMember
 //
 // ```go
 // package main

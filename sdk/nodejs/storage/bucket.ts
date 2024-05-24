@@ -81,6 +81,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+ * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const no_age_enabled = new gcp.storage.Bucket("no-age-enabled", {
+ *     name: "no-age-enabled-bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     lifecycleRules: [{
+ *         action: {
+ *             type: "Delete",
+ *         },
+ *         condition: {
+ *             daysSinceNoncurrentTime: 3,
+ *             noAge: true,
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ### Enabling Public Access Prevention
  *
  * ```typescript

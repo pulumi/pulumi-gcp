@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_healthcare\_consent\_store\_iam\_policy
+// ## healthcare.ConsentStoreIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_consent\_store\_iam\_binding
+// ## healthcare.ConsentStoreIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_consent\_store\_iam\_member
+// ## healthcare.ConsentStoreIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_consent\_store\_iam\_policy
+// ## healthcare.ConsentStoreIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_consent\_store\_iam\_binding
+// ## healthcare.ConsentStoreIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_consent\_store\_iam\_member
+// ## healthcare.ConsentStoreIamMember
 //
 // ```go
 // package main

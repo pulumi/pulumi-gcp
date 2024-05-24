@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigtable\_table\_iam\_policy
+// ## bigtable.TableIamPolicy
 //
 // ```go
 // package main
@@ -65,7 +65,7 @@ import (
 //
 // ```
 //
-// ## google\_bigtable\_table\_iam\_binding
+// ## bigtable.TableIamBinding
 //
 // ```go
 // package main
@@ -96,7 +96,7 @@ import (
 //
 // ```
 //
-// ## google\_bigtable\_table\_iam\_member
+// ## bigtable.TableIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_bigtable\_table\_iam\_policy
+// ## bigtable.TableIamPolicy
 //
 // ```go
 // package main
@@ -168,7 +168,7 @@ import (
 //
 // ```
 //
-// ## google\_bigtable\_table\_iam\_binding
+// ## bigtable.TableIamBinding
 //
 // ```go
 // package main
@@ -199,7 +199,7 @@ import (
 //
 // ```
 //
-// ## google\_bigtable\_table\_iam\_member
+// ## bigtable.TableIamMember
 //
 // ```go
 // package main

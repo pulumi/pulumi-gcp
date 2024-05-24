@@ -1664,6 +1664,238 @@ func (o GetResourcesSearchAllResultArrayOutput) Index(i pulumi.IntInput) GetReso
 	}).(GetResourcesSearchAllResultOutput)
 }
 
+type GetSearchAllResourcesResult struct {
+	// The type of this resource.
+	AssetType string `pulumi:"assetType"`
+	// The create timestamp of this resource, at which the resource was created.
+	CreateTime string `pulumi:"createTime"`
+	// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+	Description string `pulumi:"description"`
+	// The display name of this resource.
+	DisplayName string `pulumi:"displayName"`
+	// The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+	Folders []string `pulumi:"folders"`
+	// The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+	KmsKeys []string `pulumi:"kmsKeys"`
+	// Labels associated with this resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+	Location string `pulumi:"location"`
+	// The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+	Name string `pulumi:"name"`
+	// Network tags associated with this resource.
+	NetworkTags []string `pulumi:"networkTags"`
+	// The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+	Organization string `pulumi:"organization"`
+	// The type of this resource's immediate parent, if there is one.
+	ParentAssetType string `pulumi:"parentAssetType"`
+	// The full resource name of this resource's parent, if it has one.
+	ParentFullResourceName string `pulumi:"parentFullResourceName"`
+	// The project that this resource belongs to, in the form of `projects/{project_number}`.
+	Project string `pulumi:"project"`
+	// The state of this resource.
+	State string `pulumi:"state"`
+	// The last update timestamp of this resource, at which the resource was last modified or deleted.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetSearchAllResourcesResultInput is an input type that accepts GetSearchAllResourcesResultArgs and GetSearchAllResourcesResultOutput values.
+// You can construct a concrete instance of `GetSearchAllResourcesResultInput` via:
+//
+//	GetSearchAllResourcesResultArgs{...}
+type GetSearchAllResourcesResultInput interface {
+	pulumi.Input
+
+	ToGetSearchAllResourcesResultOutput() GetSearchAllResourcesResultOutput
+	ToGetSearchAllResourcesResultOutputWithContext(context.Context) GetSearchAllResourcesResultOutput
+}
+
+type GetSearchAllResourcesResultArgs struct {
+	// The type of this resource.
+	AssetType pulumi.StringInput `pulumi:"assetType"`
+	// The create timestamp of this resource, at which the resource was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of this resource.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+	Folders pulumi.StringArrayInput `pulumi:"folders"`
+	// The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+	KmsKeys pulumi.StringArrayInput `pulumi:"kmsKeys"`
+	// Labels associated with this resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network tags associated with this resource.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// The type of this resource's immediate parent, if there is one.
+	ParentAssetType pulumi.StringInput `pulumi:"parentAssetType"`
+	// The full resource name of this resource's parent, if it has one.
+	ParentFullResourceName pulumi.StringInput `pulumi:"parentFullResourceName"`
+	// The project that this resource belongs to, in the form of `projects/{project_number}`.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The state of this resource.
+	State pulumi.StringInput `pulumi:"state"`
+	// The last update timestamp of this resource, at which the resource was last modified or deleted.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetSearchAllResourcesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchAllResourcesResult)(nil)).Elem()
+}
+
+func (i GetSearchAllResourcesResultArgs) ToGetSearchAllResourcesResultOutput() GetSearchAllResourcesResultOutput {
+	return i.ToGetSearchAllResourcesResultOutputWithContext(context.Background())
+}
+
+func (i GetSearchAllResourcesResultArgs) ToGetSearchAllResourcesResultOutputWithContext(ctx context.Context) GetSearchAllResourcesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchAllResourcesResultOutput)
+}
+
+// GetSearchAllResourcesResultArrayInput is an input type that accepts GetSearchAllResourcesResultArray and GetSearchAllResourcesResultArrayOutput values.
+// You can construct a concrete instance of `GetSearchAllResourcesResultArrayInput` via:
+//
+//	GetSearchAllResourcesResultArray{ GetSearchAllResourcesResultArgs{...} }
+type GetSearchAllResourcesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetSearchAllResourcesResultArrayOutput() GetSearchAllResourcesResultArrayOutput
+	ToGetSearchAllResourcesResultArrayOutputWithContext(context.Context) GetSearchAllResourcesResultArrayOutput
+}
+
+type GetSearchAllResourcesResultArray []GetSearchAllResourcesResultInput
+
+func (GetSearchAllResourcesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchAllResourcesResult)(nil)).Elem()
+}
+
+func (i GetSearchAllResourcesResultArray) ToGetSearchAllResourcesResultArrayOutput() GetSearchAllResourcesResultArrayOutput {
+	return i.ToGetSearchAllResourcesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetSearchAllResourcesResultArray) ToGetSearchAllResourcesResultArrayOutputWithContext(ctx context.Context) GetSearchAllResourcesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchAllResourcesResultArrayOutput)
+}
+
+type GetSearchAllResourcesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSearchAllResourcesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchAllResourcesResult)(nil)).Elem()
+}
+
+func (o GetSearchAllResourcesResultOutput) ToGetSearchAllResourcesResultOutput() GetSearchAllResourcesResultOutput {
+	return o
+}
+
+func (o GetSearchAllResourcesResultOutput) ToGetSearchAllResourcesResultOutputWithContext(ctx context.Context) GetSearchAllResourcesResultOutput {
+	return o
+}
+
+// The type of this resource.
+func (o GetSearchAllResourcesResultOutput) AssetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.AssetType }).(pulumi.StringOutput)
+}
+
+// The create timestamp of this resource, at which the resource was created.
+func (o GetSearchAllResourcesResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+func (o GetSearchAllResourcesResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of this resource.
+func (o GetSearchAllResourcesResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The folder(s) that this resource belongs to, in the form of `folders/{FOLDER_NUMBER}`. This field is available when the resource belongs to one or more folders.
+func (o GetSearchAllResourcesResultOutput) Folders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) []string { return v.Folders }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud KMS CryptoKey names or CryptoKeyVersion names. This field is available only when the resource's Protobuf contains it.
+func (o GetSearchAllResourcesResultOutput) KmsKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) []string { return v.KmsKeys }).(pulumi.StringArrayOutput)
+}
+
+// Labels associated with this resource.
+func (o GetSearchAllResourcesResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+func (o GetSearchAllResourcesResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The full resource name of this resource.. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+func (o GetSearchAllResourcesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network tags associated with this resource.
+func (o GetSearchAllResourcesResultOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// The organization that this resource belongs to, in the form of `organizations/{ORGANIZATION_NUMBER}`. This field is available when the resource belongs to an organization.
+func (o GetSearchAllResourcesResultOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The type of this resource's immediate parent, if there is one.
+func (o GetSearchAllResourcesResultOutput) ParentAssetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.ParentAssetType }).(pulumi.StringOutput)
+}
+
+// The full resource name of this resource's parent, if it has one.
+func (o GetSearchAllResourcesResultOutput) ParentFullResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.ParentFullResourceName }).(pulumi.StringOutput)
+}
+
+// The project that this resource belongs to, in the form of `projects/{project_number}`.
+func (o GetSearchAllResourcesResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The state of this resource.
+func (o GetSearchAllResourcesResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of this resource, at which the resource was last modified or deleted.
+func (o GetSearchAllResourcesResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchAllResourcesResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetSearchAllResourcesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSearchAllResourcesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchAllResourcesResult)(nil)).Elem()
+}
+
+func (o GetSearchAllResourcesResultArrayOutput) ToGetSearchAllResourcesResultArrayOutput() GetSearchAllResourcesResultArrayOutput {
+	return o
+}
+
+func (o GetSearchAllResourcesResultArrayOutput) ToGetSearchAllResourcesResultArrayOutputWithContext(ctx context.Context) GetSearchAllResourcesResultArrayOutput {
+	return o
+}
+
+func (o GetSearchAllResourcesResultArrayOutput) Index(i pulumi.IntInput) GetSearchAllResourcesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSearchAllResourcesResult {
+		return vs[0].([]GetSearchAllResourcesResult)[vs[1].(int)]
+	}).(GetSearchAllResourcesResultOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionInput)(nil)).Elem(), FolderFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionPtrInput)(nil)).Elem(), FolderFeedConditionArgs{})
@@ -1685,6 +1917,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPubsubDestinationPtrInput)(nil)).Elem(), ProjectFeedFeedOutputConfigPubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcesSearchAllResultInput)(nil)).Elem(), GetResourcesSearchAllResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcesSearchAllResultArrayInput)(nil)).Elem(), GetResourcesSearchAllResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchAllResourcesResultInput)(nil)).Elem(), GetSearchAllResourcesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchAllResourcesResultArrayInput)(nil)).Elem(), GetSearchAllResourcesResultArray{})
 	pulumi.RegisterOutputType(FolderFeedConditionOutput{})
 	pulumi.RegisterOutputType(FolderFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigOutput{})
@@ -1705,4 +1939,6 @@ func init() {
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(GetResourcesSearchAllResultOutput{})
 	pulumi.RegisterOutputType(GetResourcesSearchAllResultArrayOutput{})
+	pulumi.RegisterOutputType(GetSearchAllResourcesResultOutput{})
+	pulumi.RegisterOutputType(GetSearchAllResourcesResultArrayOutput{})
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class BucketLifecycleRuleConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum age of an object in days to satisfy this condition.
+        /// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
         /// </summary>
         [Input("age")]
         public Input<int>? Age { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? CustomTimeBefore { get; set; }
 
         /// <summary>
-        /// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+        /// Number of days elapsed since the user-specified timestamp set on an object.
         /// </summary>
         [Input("daysSinceCustomTime")]
         public Input<int>? DaysSinceCustomTime { get; set; }
 
         /// <summary>
-        /// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        /// Number of days elapsed since the noncurrent timestamp of an object. This
+        /// 										condition is relevant only for versioned objects.
         /// </summary>
         [Input("daysSinceNoncurrentTime")]
         public Input<int>? DaysSinceNoncurrentTime { get; set; }
@@ -79,13 +80,13 @@ namespace Pulumi.Gcp.Storage.Inputs
         }
 
         /// <summary>
-        /// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        /// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         /// </summary>
         [Input("noAge")]
         public Input<bool>? NoAge { get; set; }
 
         /// <summary>
-        /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         /// </summary>
         [Input("noncurrentTimeBefore")]
         public Input<string>? NoncurrentTimeBefore { get; set; }

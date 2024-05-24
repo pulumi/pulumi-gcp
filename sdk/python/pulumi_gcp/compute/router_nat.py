@@ -18,6 +18,7 @@ class RouterNatArgs:
     def __init__(__self__, *,
                  router: pulumi.Input[str],
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[str],
+                 auto_network_tier: Optional[pulumi.Input[str]] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -55,6 +56,10 @@ class RouterNatArgs:
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
                Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
+        :param pulumi.Input[str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
+               Must be one of: PREMIUM, STANDARD. If not specified, then the current
+               project-level default tier is used.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -107,6 +112,8 @@ class RouterNatArgs:
         """
         pulumi.set(__self__, "router", router)
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
+        if auto_network_tier is not None:
+            pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -184,6 +191,21 @@ class RouterNatArgs:
     @source_subnetwork_ip_ranges_to_nat.setter
     def source_subnetwork_ip_ranges_to_nat(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_subnetwork_ip_ranges_to_nat", value)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network tier to use when automatically reserving NAT IP addresses.
+        Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        project-level default tier is used.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "auto_network_tier")
+
+    @auto_network_tier.setter
+    def auto_network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_network_tier", value)
 
     @property
     @pulumi.getter(name="drainNatIps")
@@ -458,6 +480,7 @@ class RouterNatArgs:
 @pulumi.input_type
 class _RouterNatState:
     def __init__(__self__, *,
+                 auto_network_tier: Optional[pulumi.Input[str]] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -482,6 +505,10 @@ class _RouterNatState:
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering RouterNat resources.
+        :param pulumi.Input[str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
+               Must be one of: PREMIUM, STANDARD. If not specified, then the current
+               project-level default tier is used.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -547,6 +574,8 @@ class _RouterNatState:
                Possible values are: `PUBLIC`, `PRIVATE`.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
+        if auto_network_tier is not None:
+            pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -591,6 +620,21 @@ class _RouterNatState:
             pulumi.set(__self__, "type", type)
         if udp_idle_timeout_sec is not None:
             pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network tier to use when automatically reserving NAT IP addresses.
+        Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        project-level default tier is used.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "auto_network_tier")
+
+    @auto_network_tier.setter
+    def auto_network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_network_tier", value)
 
     @property
     @pulumi.getter(name="drainNatIps")
@@ -904,6 +948,7 @@ class RouterNat(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_network_tier: Optional[pulumi.Input[str]] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -1139,6 +1184,10 @@ class RouterNat(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
+               Must be one of: PREMIUM, STANDARD. If not specified, then the current
+               project-level default tier is used.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -1435,6 +1484,7 @@ class RouterNat(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_network_tier: Optional[pulumi.Input[str]] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -1466,6 +1516,7 @@ class RouterNat(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterNatArgs.__new__(RouterNatArgs)
 
+            __props__.__dict__["auto_network_tier"] = auto_network_tier
             __props__.__dict__["drain_nat_ips"] = drain_nat_ips
             __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
@@ -1502,6 +1553,7 @@ class RouterNat(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_network_tier: Optional[pulumi.Input[str]] = None,
             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -1531,6 +1583,10 @@ class RouterNat(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_network_tier: The network tier to use when automatically reserving NAT IP addresses.
+               Must be one of: PREMIUM, STANDARD. If not specified, then the current
+               project-level default tier is used.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -1600,6 +1656,7 @@ class RouterNat(pulumi.CustomResource):
 
         __props__ = _RouterNatState.__new__(_RouterNatState)
 
+        __props__.__dict__["auto_network_tier"] = auto_network_tier
         __props__.__dict__["drain_nat_ips"] = drain_nat_ips
         __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
         __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
@@ -1623,6 +1680,17 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> pulumi.Output[str]:
+        """
+        The network tier to use when automatically reserving NAT IP addresses.
+        Must be one of: PREMIUM, STANDARD. If not specified, then the current
+        project-level default tier is used.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "auto_network_tier")
 
     @property
     @pulumi.getter(name="drainNatIps")

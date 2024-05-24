@@ -22,7 +22,7 @@ import (
 //
 // > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_healthcare\_dicom\_store\_iam\_policy
+// ## healthcare.DicomStoreIamPolicy
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dicom\_store\_iam\_binding
+// ## healthcare.DicomStoreIamBinding
 //
 // ```go
 // package main
@@ -93,7 +93,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dicom\_store\_iam\_member
+// ## healthcare.DicomStoreIamMember
 //
 // ```go
 // package main
@@ -121,7 +121,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dicom\_store\_iam\_policy
+// ## healthcare.DicomStoreIamPolicy
 //
 // ```go
 // package main
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dicom\_store\_iam\_binding
+// ## healthcare.DicomStoreIamBinding
 //
 // ```go
 // package main
@@ -192,7 +192,7 @@ import (
 //
 // ```
 //
-// ## google\_healthcare\_dicom\_store\_iam\_member
+// ## healthcare.DicomStoreIamMember
 //
 // ```go
 // package main

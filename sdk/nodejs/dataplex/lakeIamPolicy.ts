@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.LakeIamBinding` resources **can be** used in conjunction with `gcp.dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataplex\_lake\_iam\_policy
+ * ## gcp.dataplex.LakeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_lake\_iam\_binding
+ * ## gcp.dataplex.LakeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_lake\_iam\_member
+ * ## gcp.dataplex.LakeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_lake\_iam\_policy
+ * ## gcp.dataplex.LakeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_lake\_iam\_binding
+ * ## gcp.dataplex.LakeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_lake\_iam\_member
+ * ## gcp.dataplex.LakeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

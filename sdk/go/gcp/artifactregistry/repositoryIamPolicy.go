@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_artifact\_registry\_repository\_iam\_policy
+// ## artifactregistry.RepositoryIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_artifact\_registry\_repository\_iam\_binding
+// ## artifactregistry.RepositoryIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_artifact\_registry\_repository\_iam\_member
+// ## artifactregistry.RepositoryIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_artifact\_registry\_repository\_iam\_policy
+// ## artifactregistry.RepositoryIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_artifact\_registry\_repository\_iam\_binding
+// ## artifactregistry.RepositoryIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_artifact\_registry\_repository\_iam\_member
+// ## artifactregistry.RepositoryIamMember
 //
 // ```go
 // package main

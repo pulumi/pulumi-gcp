@@ -351,7 +351,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_74391",
+            membership_id="tf-test-membership_16511",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -359,7 +359,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_16511",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_8493",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
@@ -427,7 +427,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_74391",
+            membership_id="tf-test-membership_16511",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -435,7 +435,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_16511",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_8493",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(

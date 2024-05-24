@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTarget;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTarget;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,12 @@ public final class PreventionDiscoveryConfigTarget {
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetBigQueryTarget bigQueryTarget;
+    /**
+     * @return Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetCloudSqlTarget cloudSqlTarget;
 
     private PreventionDiscoveryConfigTarget() {}
     /**
@@ -26,6 +33,14 @@ public final class PreventionDiscoveryConfigTarget {
      */
     public Optional<PreventionDiscoveryConfigTargetBigQueryTarget> bigQueryTarget() {
         return Optional.ofNullable(this.bigQueryTarget);
+    }
+    /**
+     * @return Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetCloudSqlTarget> cloudSqlTarget() {
+        return Optional.ofNullable(this.cloudSqlTarget);
     }
 
     public static Builder builder() {
@@ -38,10 +53,12 @@ public final class PreventionDiscoveryConfigTarget {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTarget bigQueryTarget;
+        private @Nullable PreventionDiscoveryConfigTargetCloudSqlTarget cloudSqlTarget;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigQueryTarget = defaults.bigQueryTarget;
+    	      this.cloudSqlTarget = defaults.cloudSqlTarget;
         }
 
         @CustomType.Setter
@@ -50,9 +67,16 @@ public final class PreventionDiscoveryConfigTarget {
             this.bigQueryTarget = bigQueryTarget;
             return this;
         }
+        @CustomType.Setter
+        public Builder cloudSqlTarget(@Nullable PreventionDiscoveryConfigTargetCloudSqlTarget cloudSqlTarget) {
+
+            this.cloudSqlTarget = cloudSqlTarget;
+            return this;
+        }
         public PreventionDiscoveryConfigTarget build() {
             final var _resultValue = new PreventionDiscoveryConfigTarget();
             _resultValue.bigQueryTarget = bigQueryTarget;
+            _resultValue.cloudSqlTarget = cloudSqlTarget;
             return _resultValue;
         }
     }

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.DataPlex
         /// Retrieves the current IAM policy data for task
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -42,7 +41,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Retrieves the current IAM policy data for task
-        /// 
         /// 
         /// 
         /// ## example

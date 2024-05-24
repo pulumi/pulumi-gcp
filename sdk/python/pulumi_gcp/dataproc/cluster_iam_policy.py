@@ -214,7 +214,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
+        ## dataproc.ClusterIAMPolicy
 
         ```python
         import pulumi
@@ -231,7 +231,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
+        ## dataproc.ClusterIAMBinding
 
         ```python
         import pulumi
@@ -243,7 +243,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_member
+        ## dataproc.ClusterIAMMember
 
         ```python
         import pulumi
@@ -255,7 +255,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
+        ## dataproc.ClusterIAMPolicy
 
         ```python
         import pulumi
@@ -272,7 +272,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
+        ## dataproc.ClusterIAMBinding
 
         ```python
         import pulumi
@@ -284,7 +284,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_member
+        ## dataproc.ClusterIAMMember
 
         ```python
         import pulumi
@@ -352,7 +352,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
+        ## dataproc.ClusterIAMPolicy
 
         ```python
         import pulumi
@@ -369,7 +369,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
+        ## dataproc.ClusterIAMBinding
 
         ```python
         import pulumi
@@ -381,7 +381,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_member
+        ## dataproc.ClusterIAMMember
 
         ```python
         import pulumi
@@ -393,7 +393,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
+        ## dataproc.ClusterIAMPolicy
 
         ```python
         import pulumi
@@ -410,7 +410,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
+        ## dataproc.ClusterIAMBinding
 
         ```python
         import pulumi
@@ -422,7 +422,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataproc\\_cluster\\_iam\\_member
+        ## dataproc.ClusterIAMMember
 
         ```python
         import pulumi

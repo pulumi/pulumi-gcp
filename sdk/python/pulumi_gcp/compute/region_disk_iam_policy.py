@@ -195,7 +195,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_disk\\_iam\\_policy
+        ## compute.DiskIamPolicy
 
         ```python
         import pulumi
@@ -212,7 +212,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_binding
+        ## compute.DiskIamBinding
 
         ```python
         import pulumi
@@ -226,7 +226,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_member
+        ## compute.DiskIamMember
 
         ```python
         import pulumi
@@ -240,7 +240,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_policy
+        ## compute.DiskIamPolicy
 
         ```python
         import pulumi
@@ -257,7 +257,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_binding
+        ## compute.DiskIamBinding
 
         ```python
         import pulumi
@@ -271,7 +271,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_member
+        ## compute.DiskIamMember
 
         ```python
         import pulumi
@@ -352,7 +352,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_disk\\_iam\\_policy
+        ## compute.DiskIamPolicy
 
         ```python
         import pulumi
@@ -369,7 +369,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_binding
+        ## compute.DiskIamBinding
 
         ```python
         import pulumi
@@ -383,7 +383,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_member
+        ## compute.DiskIamMember
 
         ```python
         import pulumi
@@ -397,7 +397,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_policy
+        ## compute.DiskIamPolicy
 
         ```python
         import pulumi
@@ -414,7 +414,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_binding
+        ## compute.DiskIamBinding
 
         ```python
         import pulumi
@@ -428,7 +428,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_compute\\_disk\\_iam\\_member
+        ## compute.DiskIamMember
 
         ```python
         import pulumi

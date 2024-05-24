@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// &gt; **Note:** `gcp.bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `gcp.bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+    /// ## gcp.bigquerydatapolicy.DataPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

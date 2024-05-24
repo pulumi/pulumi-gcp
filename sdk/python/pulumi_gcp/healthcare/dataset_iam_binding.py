@@ -231,7 +231,7 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
+        ## healthcare.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -246,7 +246,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
+        ## healthcare.DatasetIamBinding
 
         ```python
         import pulumi
@@ -258,7 +258,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_member
+        ## healthcare.DatasetIamMember
 
         ```python
         import pulumi
@@ -270,7 +270,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
+        ## healthcare.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -285,7 +285,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
+        ## healthcare.DatasetIamBinding
 
         ```python
         import pulumi
@@ -297,7 +297,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_member
+        ## healthcare.DatasetIamMember
 
         ```python
         import pulumi
@@ -370,7 +370,7 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
+        ## healthcare.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -385,7 +385,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
+        ## healthcare.DatasetIamBinding
 
         ```python
         import pulumi
@@ -397,7 +397,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_member
+        ## healthcare.DatasetIamMember
 
         ```python
         import pulumi
@@ -409,7 +409,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
+        ## healthcare.DatasetIamPolicy
 
         ```python
         import pulumi
@@ -424,7 +424,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
+        ## healthcare.DatasetIamBinding
 
         ```python
         import pulumi
@@ -436,7 +436,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_healthcare\\_dataset\\_iam\\_member
+        ## healthcare.DatasetIamMember
 
         ```python
         import pulumi

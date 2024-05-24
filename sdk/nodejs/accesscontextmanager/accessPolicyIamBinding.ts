@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+ * ## gcp.accesscontextmanager.AccessPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+ * ## gcp.accesscontextmanager.AccessPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_member
+ * ## gcp.accesscontextmanager.AccessPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+ * ## gcp.accesscontextmanager.AccessPolicyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+ * ## gcp.accesscontextmanager.AccessPolicyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_access\_context\_manager\_access\_policy\_iam\_member
+ * ## gcp.accesscontextmanager.AccessPolicyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

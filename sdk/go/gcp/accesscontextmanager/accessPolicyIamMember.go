@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+// ## accesscontextmanager.AccessPolicyIamPolicy
 //
 // ```go
 // package main
@@ -67,7 +67,7 @@ import (
 //
 // ```
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+// ## accesscontextmanager.AccessPolicyIamBinding
 //
 // ```go
 // package main
@@ -97,7 +97,7 @@ import (
 //
 // ```
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_member
+// ## accesscontextmanager.AccessPolicyIamMember
 //
 // ```go
 // package main
@@ -125,7 +125,7 @@ import (
 //
 // ```
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_policy
+// ## accesscontextmanager.AccessPolicyIamPolicy
 //
 // ```go
 // package main
@@ -166,7 +166,7 @@ import (
 //
 // ```
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_binding
+// ## accesscontextmanager.AccessPolicyIamBinding
 //
 // ```go
 // package main
@@ -196,7 +196,7 @@ import (
 //
 // ```
 //
-// ## google\_access\_context\_manager\_access\_policy\_iam\_member
+// ## accesscontextmanager.AccessPolicyIamMember
 //
 // ```go
 // package main

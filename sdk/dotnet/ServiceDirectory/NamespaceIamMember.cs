@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// });
     /// ```
     /// 
-    /// ## google\_service\_directory\_namespace\_iam\_binding
+    /// ## gcp.servicedirectory.NamespaceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// });
     /// ```
     /// 
-    /// ## google\_service\_directory\_namespace\_iam\_member
+    /// ## gcp.servicedirectory.NamespaceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// });
     /// ```
     /// 
-    /// ## google\_service\_directory\_namespace\_iam\_binding
+    /// ## gcp.servicedirectory.NamespaceIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// });
     /// ```
     /// 
-    /// ## google\_service\_directory\_namespace\_iam\_member
+    /// ## gcp.servicedirectory.NamespaceIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

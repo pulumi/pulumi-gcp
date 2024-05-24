@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchExprArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +37,23 @@ public final class RegionSecurityPolicyRuleMatchArgs extends com.pulumi.resource
     }
 
     /**
+     * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="expr")
+    private @Nullable Output<RegionSecurityPolicyRuleMatchExprArgs> expr;
+
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionSecurityPolicyRuleMatchExprArgs>> expr() {
+        return Optional.ofNullable(this.expr);
+    }
+
+    /**
      * Preconfigured versioned expression. If this field is specified, config must also be specified.
      * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
      * Possible values are: `SRC_IPS_V1`.
@@ -58,6 +76,7 @@ public final class RegionSecurityPolicyRuleMatchArgs extends com.pulumi.resource
 
     private RegionSecurityPolicyRuleMatchArgs(RegionSecurityPolicyRuleMatchArgs $) {
         this.config = $.config;
+        this.expr = $.expr;
         this.versionedExpr = $.versionedExpr;
     }
 
@@ -102,6 +121,29 @@ public final class RegionSecurityPolicyRuleMatchArgs extends com.pulumi.resource
          */
         public Builder config(RegionSecurityPolicyRuleMatchConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expr(@Nullable Output<RegionSecurityPolicyRuleMatchExprArgs> expr) {
+            $.expr = expr;
+            return this;
+        }
+
+        /**
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expr(RegionSecurityPolicyRuleMatchExprArgs expr) {
+            return expr(Output.of(expr));
         }
 
         /**

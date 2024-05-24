@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_spanner\_instance\_iam\_policy
+    /// ## gcp.spanner.InstanceIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_instance\_iam\_binding
+    /// ## gcp.spanner.InstanceIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_instance\_iam\_member
+    /// ## gcp.spanner.InstanceIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_instance\_iam\_policy
+    /// ## gcp.spanner.InstanceIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_instance\_iam\_binding
+    /// ## gcp.spanner.InstanceIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_instance\_iam\_member
+    /// ## gcp.spanner.InstanceIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

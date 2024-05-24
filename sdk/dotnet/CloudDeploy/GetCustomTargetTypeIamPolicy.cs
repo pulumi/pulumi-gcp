@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// Retrieves the current IAM policy data for customtargettype
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Retrieves the current IAM policy data for customtargettype
-        /// 
         /// 
         /// 
         /// ## example

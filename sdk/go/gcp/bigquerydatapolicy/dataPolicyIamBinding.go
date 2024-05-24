@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+// ## bigquerydatapolicy.DataPolicyIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+// ## bigquerydatapolicy.DataPolicyIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+// ## bigquerydatapolicy.DataPolicyIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+// ## bigquerydatapolicy.DataPolicyIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+// ## bigquerydatapolicy.DataPolicyIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+// ## bigquerydatapolicy.DataPolicyIamMember
 //
 // ```go
 // package main

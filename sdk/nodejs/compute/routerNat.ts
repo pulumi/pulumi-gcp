@@ -265,6 +265,13 @@ export class RouterNat extends pulumi.CustomResource {
     }
 
     /**
+     * The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    public readonly autoNetworkTier!: pulumi.Output<string>;
+    /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
@@ -408,6 +415,7 @@ export class RouterNat extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterNatState | undefined;
+            resourceInputs["autoNetworkTier"] = state ? state.autoNetworkTier : undefined;
             resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
             resourceInputs["enableDynamicPortAllocation"] = state ? state.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
@@ -438,6 +446,7 @@ export class RouterNat extends pulumi.CustomResource {
             if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
+            resourceInputs["autoNetworkTier"] = args ? args.autoNetworkTier : undefined;
             resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
             resourceInputs["enableDynamicPortAllocation"] = args ? args.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
@@ -470,6 +479,13 @@ export class RouterNat extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterNat resources.
  */
 export interface RouterNatState {
+    /**
+     * The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    autoNetworkTier?: pulumi.Input<string>;
     /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
@@ -606,6 +622,13 @@ export interface RouterNatState {
  * The set of arguments for constructing a RouterNat resource.
  */
 export interface RouterNatArgs {
+    /**
+     * The network tier to use when automatically reserving NAT IP addresses.
+     * Must be one of: PREMIUM, STANDARD. If not specified, then the current
+     * project-level default tier is used.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    autoNetworkTier?: pulumi.Input<string>;
     /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.

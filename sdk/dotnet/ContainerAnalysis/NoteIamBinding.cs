@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// &gt; **Note:** `gcp.containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `gcp.containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_policy
+    /// ## gcp.containeranalysis.NoteIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// });
     /// ```
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_binding
+    /// ## gcp.containeranalysis.NoteIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// });
     /// ```
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_member
+    /// ## gcp.containeranalysis.NoteIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// });
     /// ```
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_policy
+    /// ## gcp.containeranalysis.NoteIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// });
     /// ```
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_binding
+    /// ## gcp.containeranalysis.NoteIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// });
     /// ```
     /// 
-    /// ## google\_container\_analysis\_note\_iam\_member
+    /// ## gcp.containeranalysis.NoteIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -17,7 +17,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
     public static final PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs Empty = new PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs();
 
     /**
-     * A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+     * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
     private @Nullable Output<List<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs>> patterns;
 
     /**
-     * @return A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+     * @return A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +70,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +81,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder

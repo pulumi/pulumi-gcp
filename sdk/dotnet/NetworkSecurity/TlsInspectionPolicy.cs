@@ -107,16 +107,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         },
     ///     });
     /// 
-    ///     var nsSa = new Gcp.Projects.ServiceIdentity("ns_sa", new()
-    ///     {
-    ///         Service = "networksecurity.googleapis.com",
-    ///     });
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var tlsInspectionPermission = new Gcp.CertificateAuthority.CaPoolIamMember("tls_inspection_permission", new()
     ///     {
     ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
-    ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-networksecurity.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("default", new()
@@ -125,6 +122,170 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Location = "us-central1",
     ///         CaPool = @default.Id,
     ///         ExcludePublicCaSet = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Security Tls Inspection Policy Custom
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Name = "my-basic-ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "DEVOPS",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = false,
+    ///             PublishCrl = false,
+    ///         },
+    ///         IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
+    ///         {
+    ///             MaximumLifetime = "1209600s",
+    ///             BaselineValues = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs
+    ///                 {
+    ///                     IsCa = false,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = null,
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Pool = @default.Name,
+    ///         CertificateAuthorityId = "my-basic-certificate-authority",
+    ///         Location = "us-central1",
+    ///         Lifetime = "86400s",
+    ///         Type = "SELF_SIGNED",
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "Test LLC",
+    ///                     CommonName = "my-ca",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///     });
+    /// 
+    ///     var nsSa = new Gcp.Projects.ServiceIdentity("ns_sa", new()
+    ///     {
+    ///         Service = "networksecurity.googleapis.com",
+    ///     });
+    /// 
+    ///     var defaultCaPoolIamMember = new Gcp.CertificateAuthority.CaPoolIamMember("default", new()
+    ///     {
+    ///         CaPool = @default.Id,
+    ///         Role = "roles/privateca.certificateManager",
+    ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
+    ///     {
+    ///         Name = "my-trust-config",
+    ///         Description = "sample trust config description",
+    ///         Location = "us-central1",
+    ///         TrustStores = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("default", new()
+    ///     {
+    ///         Name = "my-tls-inspection-policy",
+    ///         Location = "us-central1",
+    ///         CaPool = @default.Id,
+    ///         ExcludePublicCaSet = false,
+    ///         MinTlsVersion = "TLS_1_0",
+    ///         TrustConfig = defaultTrustConfig.Id,
+    ///         TlsFeatureProfile = "PROFILE_CUSTOM",
+    ///         CustomTlsFeatures = new[]
+    ///         {
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    ///             "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+    ///             "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+    ///             "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    ///             "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+    ///             "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    ///             "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+    ///             "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+    ///             "TLS_RSA_WITH_AES_128_CBC_SHA",
+    ///             "TLS_RSA_WITH_AES_128_GCM_SHA256",
+    ///             "TLS_RSA_WITH_AES_256_CBC_SHA",
+    ///             "TLS_RSA_WITH_AES_256_GCM_SHA384",
+    ///         },
     ///     });
     /// 
     /// });
@@ -170,6 +331,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("customTlsFeatures")]
+        public Output<ImmutableArray<string>> CustomTlsFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Free-text description of the resource.
         /// </summary>
         [Output("description")]
@@ -188,6 +355,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+        /// </summary>
+        [Output("minTlsVersion")]
+        public Output<string?> MinTlsVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
         /// 
         /// 
@@ -202,6 +376,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+        /// </summary>
+        [Output("tlsFeatureProfile")]
+        public Output<string?> TlsFeatureProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("trustConfig")]
+        public Output<string?> TrustConfig { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.
@@ -261,6 +448,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("caPool", required: true)]
         public Input<string> CaPool { get; set; } = null!;
 
+        [Input("customTlsFeatures")]
+        private InputList<string>? _customTlsFeatures;
+
+        /// <summary>
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        public InputList<string> CustomTlsFeatures
+        {
+            get => _customTlsFeatures ?? (_customTlsFeatures = new InputList<string>());
+            set => _customTlsFeatures = value;
+        }
+
         /// <summary>
         /// Free-text description of the resource.
         /// </summary>
@@ -280,6 +479,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+        /// </summary>
+        [Input("minTlsVersion")]
+        public Input<string>? MinTlsVersion { get; set; }
+
+        /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
         /// 
         /// 
@@ -294,6 +500,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+        /// </summary>
+        [Input("tlsFeatureProfile")]
+        public Input<string>? TlsFeatureProfile { get; set; }
+
+        /// <summary>
+        /// A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("trustConfig")]
+        public Input<string>? TrustConfig { get; set; }
 
         public TlsInspectionPolicyArgs()
         {
@@ -315,6 +534,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("customTlsFeatures")]
+        private InputList<string>? _customTlsFeatures;
+
+        /// <summary>
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        public InputList<string> CustomTlsFeatures
+        {
+            get => _customTlsFeatures ?? (_customTlsFeatures = new InputList<string>());
+            set => _customTlsFeatures = value;
+        }
+
         /// <summary>
         /// Free-text description of the resource.
         /// </summary>
@@ -334,6 +565,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+        /// </summary>
+        [Input("minTlsVersion")]
+        public Input<string>? MinTlsVersion { get; set; }
+
+        /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
         /// 
         /// 
@@ -348,6 +586,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+        /// </summary>
+        [Input("tlsFeatureProfile")]
+        public Input<string>? TlsFeatureProfile { get; set; }
+
+        /// <summary>
+        /// A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("trustConfig")]
+        public Input<string>? TrustConfig { get; set; }
 
         /// <summary>
         /// The timestamp when the resource was updated.

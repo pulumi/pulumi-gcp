@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_policy
+ * ## gcp.gkebackup.BackupPlanIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_binding
+ * ## gcp.gkebackup.BackupPlanIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_member
+ * ## gcp.gkebackup.BackupPlanIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_policy
+ * ## gcp.gkebackup.BackupPlanIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_binding
+ * ## gcp.gkebackup.BackupPlanIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_backup\_backup\_plan\_iam\_member
+ * ## gcp.gkebackup.BackupPlanIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

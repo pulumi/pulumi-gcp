@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+// ## dataproc.AutoscalingPolicyIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+// ## dataproc.AutoscalingPolicyIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_member
+// ## dataproc.AutoscalingPolicyIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+// ## dataproc.AutoscalingPolicyIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+// ## dataproc.AutoscalingPolicyIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_dataproc\_autoscaling\_policy\_iam\_member
+// ## dataproc.AutoscalingPolicyIamMember
 //
 // ```go
 // package main

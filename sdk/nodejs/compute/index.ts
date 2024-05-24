@@ -520,6 +520,11 @@ export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
 export const InstanceTemplate: typeof import("./instanceTemplate").InstanceTemplate = null as any;
 utilities.lazyLoad(exports, ["InstanceTemplate"], () => require("./instanceTemplate"));
 
+export { InterconnectArgs, InterconnectState } from "./interconnect";
+export type Interconnect = import("./interconnect").Interconnect;
+export const Interconnect: typeof import("./interconnect").Interconnect = null as any;
+utilities.lazyLoad(exports, ["Interconnect"], () => require("./interconnect"));
+
 export { InterconnectAttachmentArgs, InterconnectAttachmentState } from "./interconnectAttachment";
 export type InterconnectAttachment = import("./interconnectAttachment").InterconnectAttachment;
 export const InterconnectAttachment: typeof import("./interconnectAttachment").InterconnectAttachment = null as any;
@@ -1085,6 +1090,8 @@ const _module = {
                 return new InstanceSettings(name, <any>undefined, { urn })
             case "gcp:compute/instanceTemplate:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
+            case "gcp:compute/interconnect:Interconnect":
+                return new Interconnect(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
                 return new InterconnectAttachment(name, <any>undefined, { urn })
             case "gcp:compute/machineImage:MachineImage":
@@ -1322,6 +1329,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMMember", _modul
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/interconnect", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImageIamBinding", _module)

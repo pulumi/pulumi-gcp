@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_gke\_hub\_scope\_iam\_policy
+// ## gkehub.ScopeIamPolicy
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_scope\_iam\_binding
+// ## gkehub.ScopeIamBinding
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_scope\_iam\_member
+// ## gkehub.ScopeIamMember
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_scope\_iam\_policy
+// ## gkehub.ScopeIamPolicy
 //
 // ```go
 // package main
@@ -170,7 +170,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_scope\_iam\_binding
+// ## gkehub.ScopeIamBinding
 //
 // ```go
 // package main
@@ -201,7 +201,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_hub\_scope\_iam\_member
+// ## gkehub.ScopeIamMember
 //
 // ```go
 // package main

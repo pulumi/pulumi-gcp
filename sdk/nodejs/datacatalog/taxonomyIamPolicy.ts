@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_policy
+ * ## gcp.datacatalog.TaxonomyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_binding
+ * ## gcp.datacatalog.TaxonomyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_member
+ * ## gcp.datacatalog.TaxonomyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_policy
+ * ## gcp.datacatalog.TaxonomyIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_binding
+ * ## gcp.datacatalog.TaxonomyIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_data\_catalog\_taxonomy\_iam\_member
+ * ## gcp.datacatalog.TaxonomyIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

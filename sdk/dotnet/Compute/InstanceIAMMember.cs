@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
-    /// ## google\_compute\_instance\_iam\_policy
+    /// ## gcp.compute.InstanceIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_instance\_iam\_binding
+    /// ## gcp.compute.InstanceIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_instance\_iam\_member
+    /// ## gcp.compute.InstanceIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## google\_compute\_instance\_iam\_policy
+    /// ## gcp.compute.InstanceIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -285,7 +285,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_instance\_iam\_binding
+    /// ## gcp.compute.InstanceIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -340,7 +340,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ## google\_compute\_instance\_iam\_member
+    /// ## gcp.compute.InstanceIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

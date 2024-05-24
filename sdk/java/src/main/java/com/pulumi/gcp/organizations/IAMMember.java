@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_organization\_iam\_policy
+ * ## gcp.organizations.IAMPolicy
  * 
  * !&gt; **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_binding
+ * ## gcp.organizations.IAMBinding
  * 
  * &gt; **Note:** If `role` is set to `roles/owner` and you don&#39;t specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
  * 
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_member
+ * ## gcp.organizations.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -296,7 +296,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_audit\_config
+ * ## gcp.organizations.IamAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -341,7 +341,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_policy
+ * ## gcp.organizations.IAMPolicy
  * 
  * !&gt; **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
@@ -448,7 +448,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_binding
+ * ## gcp.organizations.IAMBinding
  * 
  * &gt; **Note:** If `role` is set to `roles/owner` and you don&#39;t specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
  * 
@@ -530,7 +530,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_member
+ * ## gcp.organizations.IAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -610,7 +610,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_organization\_iam\_audit\_config
+ * ## gcp.organizations.IamAuditConfig
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

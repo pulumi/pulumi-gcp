@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
-        /// failover\_ratio.
+        /// failover_ratio.
         /// </summary>
         [Output("backupPool")]
         public Output<string?> BackupPool { get; private set; } = null!;
@@ -155,8 +155,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// How to distribute load. Options are "NONE" (no
-        /// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-        /// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+        /// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        /// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string?> SessionAffinity { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
-        /// failover\_ratio.
+        /// failover_ratio.
         /// </summary>
         [Input("backupPool")]
         public Input<string>? BackupPool { get; set; }
@@ -281,8 +281,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// How to distribute load. Options are "NONE" (no
-        /// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-        /// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+        /// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        /// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
-        /// failover\_ratio.
+        /// failover_ratio.
         /// </summary>
         [Input("backupPool")]
         public Input<string>? BackupPool { get; set; }
@@ -375,8 +375,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// How to distribute load. Options are "NONE" (no
-        /// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
-        /// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+        /// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
+        /// "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }

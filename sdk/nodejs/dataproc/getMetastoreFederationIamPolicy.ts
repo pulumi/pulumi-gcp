@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the current IAM policy data for federation
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getMetastoreFederationIamPolicy({
+ *     project: _default.project,
+ *     location: _default.location,
+ *     federationId: _default.federationId,
+ * });
+ * ```
+ */
 export function getMetastoreFederationIamPolicy(args: GetMetastoreFederationIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreFederationIamPolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,6 +68,22 @@ export interface GetMetastoreFederationIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * Retrieves the current IAM policy data for federation
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getMetastoreFederationIamPolicy({
+ *     project: _default.project,
+ *     location: _default.location,
+ *     federationId: _default.federationId,
+ * });
+ * ```
+ */
 export function getMetastoreFederationIamPolicyOutput(args: GetMetastoreFederationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreFederationIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getMetastoreFederationIamPolicy(a, opts))
 }

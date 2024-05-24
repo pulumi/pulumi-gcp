@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_cloudfunctions\_function\_iam\_policy
+// ## cloudfunctions.FunctionIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions\_function\_iam\_binding
+// ## cloudfunctions.FunctionIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions\_function\_iam\_member
+// ## cloudfunctions.FunctionIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions\_function\_iam\_policy
+// ## cloudfunctions.FunctionIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions\_function\_iam\_binding
+// ## cloudfunctions.FunctionIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions\_function\_iam\_member
+// ## cloudfunctions.FunctionIamMember
 //
 // ```go
 // package main

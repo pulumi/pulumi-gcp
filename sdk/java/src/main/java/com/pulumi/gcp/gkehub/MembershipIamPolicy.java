@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gcp.gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_gke\_hub\_membership\_iam\_policy
+ * ## gcp.gkehub.MembershipIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_hub\_membership\_iam\_binding
+ * ## gcp.gkehub.MembershipIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_hub\_membership\_iam\_member
+ * ## gcp.gkehub.MembershipIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_hub\_membership\_iam\_policy
+ * ## gcp.gkehub.MembershipIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_hub\_membership\_iam\_binding
+ * ## gcp.gkehub.MembershipIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_gke\_hub\_membership\_iam\_member
+ * ## gcp.gkehub.MembershipIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

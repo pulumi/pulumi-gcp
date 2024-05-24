@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_spanner\_instance\_iam\_policy
+ * ## gcp.spanner.InstanceIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_instance\_iam\_binding
+ * ## gcp.spanner.InstanceIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_instance\_iam\_member
+ * ## gcp.spanner.InstanceIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_instance\_iam\_policy
+ * ## gcp.spanner.InstanceIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_instance\_iam\_binding
+ * ## gcp.spanner.InstanceIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_spanner\_instance\_iam\_member
+ * ## gcp.spanner.InstanceIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

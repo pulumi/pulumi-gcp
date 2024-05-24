@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
- * ## google\_iap\_tunnel\_instance\_iam\_policy
+ * ## gcp.iap.TunnelInstanceIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_iap\_tunnel\_instance\_iam\_binding
+ * ## gcp.iap.TunnelInstanceIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_iap\_tunnel\_instance\_iam\_member
+ * ## gcp.iap.TunnelInstanceIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,7 +134,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_iap\_tunnel\_instance\_iam\_policy
+ * ## gcp.iap.TunnelInstanceIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -178,7 +178,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_iap\_tunnel\_instance\_iam\_binding
+ * ## gcp.iap.TunnelInstanceIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -212,7 +212,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_iap\_tunnel\_instance\_iam\_member
+ * ## gcp.iap.TunnelInstanceIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

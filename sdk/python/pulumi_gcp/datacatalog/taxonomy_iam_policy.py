@@ -194,7 +194,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+        ## datacatalog.TaxonomyIamPolicy
 
         ```python
         import pulumi
@@ -209,7 +209,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+        ## datacatalog.TaxonomyIamBinding
 
         ```python
         import pulumi
@@ -221,7 +221,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+        ## datacatalog.TaxonomyIamMember
 
         ```python
         import pulumi
@@ -233,7 +233,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+        ## datacatalog.TaxonomyIamPolicy
 
         ```python
         import pulumi
@@ -248,7 +248,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+        ## datacatalog.TaxonomyIamBinding
 
         ```python
         import pulumi
@@ -260,7 +260,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+        ## datacatalog.TaxonomyIamMember
 
         ```python
         import pulumi
@@ -339,7 +339,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+        ## datacatalog.TaxonomyIamPolicy
 
         ```python
         import pulumi
@@ -354,7 +354,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+        ## datacatalog.TaxonomyIamBinding
 
         ```python
         import pulumi
@@ -366,7 +366,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+        ## datacatalog.TaxonomyIamMember
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+        ## datacatalog.TaxonomyIamPolicy
 
         ```python
         import pulumi
@@ -393,7 +393,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+        ## datacatalog.TaxonomyIamBinding
 
         ```python
         import pulumi
@@ -405,7 +405,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+        ## datacatalog.TaxonomyIamMember
 
         ```python
         import pulumi

@@ -5,20 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Allows management of a single API service for a Google Cloud Platform project.
- *
- * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
- * or run `gcloud services list --available`.
- *
- * This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
- * to use.
- *
- * To get more information about `gcp.projects.Service`, see:
- *
- * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
- * * How-to Guides
- *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
- *
  * ## Example Usage
  *
  * ```typescript
@@ -28,7 +14,7 @@ import * as utilities from "../utilities";
  * const project = new gcp.projects.Service("project", {
  *     project: "your-project-id",
  *     service: "iam.googleapis.com",
- *     disableDependentServices: true,
+ *     disableOnDestroy: false,
  * });
  * ```
  *
@@ -89,9 +75,6 @@ export class Service extends pulumi.CustomResource {
      * services depend on this service when destroying it.
      */
     public readonly disableDependentServices!: pulumi.Output<boolean | undefined>;
-    /**
-     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project
@@ -146,9 +129,6 @@ export interface ServiceState {
      * services depend on this service when destroying it.
      */
     disableDependentServices?: pulumi.Input<boolean>;
-    /**
-     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID. If not provided, the provider project
@@ -172,9 +152,6 @@ export interface ServiceArgs {
      * services depend on this service when destroying it.
      */
     disableDependentServices?: pulumi.Input<boolean>;
-    /**
-     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID. If not provided, the provider project

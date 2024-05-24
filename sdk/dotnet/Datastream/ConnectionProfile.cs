@@ -272,6 +272,85 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Sql Server
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "sql-server",
+    ///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+    ///         Region = "us-central1",
+    ///         RootPassword = "root-password",
+    ///         DeletionProtection = true,
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-4096",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Name = "db",
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Password = "password",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "SQL Server Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         SqlServerProfile = new Gcp.Datastream.Inputs.ConnectionProfileSqlServerProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Port = 1433,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///             Database = db.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -402,6 +481,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// SQL Server database profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sqlServerProfile")]
+        public Output<Outputs.ConnectionProfileSqlServerProfile?> SqlServerProfile { get; private set; } = null!;
 
 
         /// <summary>
@@ -544,6 +630,13 @@ namespace Pulumi.Gcp.Datastream
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// SQL Server database profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sqlServerProfile")]
+        public Input<Inputs.ConnectionProfileSqlServerProfileArgs>? SqlServerProfile { get; set; }
+
         public ConnectionProfileArgs()
         {
         }
@@ -680,6 +773,13 @@ namespace Pulumi.Gcp.Datastream
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// SQL Server database profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sqlServerProfile")]
+        public Input<Inputs.ConnectionProfileSqlServerProfileGetArgs>? SqlServerProfile { get; set; }
 
         public ConnectionProfileState()
         {

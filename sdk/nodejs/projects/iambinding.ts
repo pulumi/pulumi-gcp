@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
  *
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -132,7 +132,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -153,7 +153,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_policy
+ * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
@@ -202,7 +202,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_binding
+ * ## gcp.projects.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -233,7 +233,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_member
+ * ## gcp.projects.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -264,7 +264,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_project\_iam\_audit\_config
+ * ## gcp.projects.IAMAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -349,7 +349,7 @@ export class IAMBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -423,7 +423,7 @@ export interface IAMBindingState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -454,7 +454,7 @@ export interface IAMBindingArgs {
      */
     condition?: pulumi.Input<inputs.projects.IAMBindingCondition>;
     /**
-     * Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

@@ -210,7 +210,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_policy
+        ## cloudfunctions.FunctionIamPolicy
 
         ```python
         import pulumi
@@ -227,7 +227,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_binding
+        ## cloudfunctions.FunctionIamBinding
 
         ```python
         import pulumi
@@ -241,7 +241,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_member
+        ## cloudfunctions.FunctionIamMember
 
         ```python
         import pulumi
@@ -255,7 +255,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_policy
+        ## cloudfunctions.FunctionIamPolicy
 
         ```python
         import pulumi
@@ -272,7 +272,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_binding
+        ## cloudfunctions.FunctionIamBinding
 
         ```python
         import pulumi
@@ -286,7 +286,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_member
+        ## cloudfunctions.FunctionIamMember
 
         ```python
         import pulumi
@@ -370,7 +370,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_policy
+        ## cloudfunctions.FunctionIamPolicy
 
         ```python
         import pulumi
@@ -387,7 +387,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_binding
+        ## cloudfunctions.FunctionIamBinding
 
         ```python
         import pulumi
@@ -401,7 +401,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_member
+        ## cloudfunctions.FunctionIamMember
 
         ```python
         import pulumi
@@ -415,7 +415,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_policy
+        ## cloudfunctions.FunctionIamPolicy
 
         ```python
         import pulumi
@@ -432,7 +432,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_binding
+        ## cloudfunctions.FunctionIamBinding
 
         ```python
         import pulumi
@@ -446,7 +446,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudfunctions\\_function\\_iam\\_member
+        ## cloudfunctions.FunctionIamMember
 
         ```python
         import pulumi

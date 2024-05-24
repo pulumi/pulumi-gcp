@@ -13,6 +13,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -226,6 +227,23 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * SQL Server database profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sqlServerProfile")
+    private @Nullable Output<ConnectionProfileSqlServerProfileArgs> sqlServerProfile;
+
+    /**
+     * @return SQL Server database profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfileSqlServerProfileArgs>> sqlServerProfile() {
+        return Optional.ofNullable(this.sqlServerProfile);
+    }
+
     private ConnectionProfileArgs() {}
 
     private ConnectionProfileArgs(ConnectionProfileArgs $) {
@@ -241,6 +259,7 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         this.postgresqlProfile = $.postgresqlProfile;
         this.privateConnectivity = $.privateConnectivity;
         this.project = $.project;
+        this.sqlServerProfile = $.sqlServerProfile;
     }
 
     public static Builder builder() {
@@ -533,6 +552,29 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sqlServerProfile SQL Server database profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerProfile(@Nullable Output<ConnectionProfileSqlServerProfileArgs> sqlServerProfile) {
+            $.sqlServerProfile = sqlServerProfile;
+            return this;
+        }
+
+        /**
+         * @param sqlServerProfile SQL Server database profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlServerProfile(ConnectionProfileSqlServerProfileArgs sqlServerProfile) {
+            return sqlServerProfile(Output.of(sqlServerProfile));
         }
 
         public ConnectionProfileArgs build() {

@@ -65,7 +65,7 @@ type LookupRegionNetworkEndpointGroupArgs struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
 	Region *string `pulumi:"region"`
-	// The Network Endpoint Group self\_link.
+	// The Network Endpoint Group self_link.
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -114,7 +114,7 @@ type LookupRegionNetworkEndpointGroupOutputArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The Network Endpoint Group self\_link.
+	// The Network Endpoint Group self_link.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 }
 

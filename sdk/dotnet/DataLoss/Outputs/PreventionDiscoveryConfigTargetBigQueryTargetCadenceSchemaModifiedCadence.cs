@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence
     {
         /// <summary>
-        /// How frequently profiles may be updated when schemas are modified. Default to monthly
+        /// Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
         /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         /// </summary>
         public readonly string? Frequency;
         /// <summary>
-        /// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
-        /// Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+        /// The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+        /// Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
         /// </summary>
         public readonly ImmutableArray<string> Types;
 

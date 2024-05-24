@@ -209,7 +209,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigtable\\_table\\_iam\\_policy
+        ## bigtable.TableIamPolicy
 
         ```python
         import pulumi
@@ -226,7 +226,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_binding
+        ## bigtable.TableIamBinding
 
         ```python
         import pulumi
@@ -239,7 +239,7 @@ class TableIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_member
+        ## bigtable.TableIamMember
 
         ```python
         import pulumi
@@ -252,7 +252,7 @@ class TableIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_policy
+        ## bigtable.TableIamPolicy
 
         ```python
         import pulumi
@@ -269,7 +269,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_binding
+        ## bigtable.TableIamBinding
 
         ```python
         import pulumi
@@ -282,7 +282,7 @@ class TableIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_member
+        ## bigtable.TableIamMember
 
         ```python
         import pulumi
@@ -350,7 +350,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigtable\\_table\\_iam\\_policy
+        ## bigtable.TableIamPolicy
 
         ```python
         import pulumi
@@ -367,7 +367,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_binding
+        ## bigtable.TableIamBinding
 
         ```python
         import pulumi
@@ -380,7 +380,7 @@ class TableIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_member
+        ## bigtable.TableIamMember
 
         ```python
         import pulumi
@@ -393,7 +393,7 @@ class TableIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_policy
+        ## bigtable.TableIamPolicy
 
         ```python
         import pulumi
@@ -410,7 +410,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_binding
+        ## bigtable.TableIamBinding
 
         ```python
         import pulumi
@@ -423,7 +423,7 @@ class TableIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigtable\\_table\\_iam\\_member
+        ## bigtable.TableIamMember
 
         ```python
         import pulumi

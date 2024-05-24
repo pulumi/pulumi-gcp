@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// &gt; **Note:** `gcp.gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gcp.gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_policy
+    /// ## gcp.gkehub.MembershipIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_binding
+    /// ## gcp.gkehub.MembershipIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_member
+    /// ## gcp.gkehub.MembershipIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_policy
+    /// ## gcp.gkehub.MembershipIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_binding
+    /// ## gcp.gkehub.MembershipIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ## google\_gke\_hub\_membership\_iam\_member
+    /// ## gcp.gkehub.MembershipIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

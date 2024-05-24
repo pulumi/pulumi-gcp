@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_spanner\_database\_iam\_policy
+    /// ## gcp.spanner.DatabaseIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_database\_iam\_binding
+    /// ## gcp.spanner.DatabaseIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_database\_iam\_member
+    /// ## gcp.spanner.DatabaseIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_database\_iam\_policy
+    /// ## gcp.spanner.DatabaseIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_database\_iam\_binding
+    /// ## gcp.spanner.DatabaseIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -331,7 +331,7 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
-    /// ## google\_spanner\_database\_iam\_member
+    /// ## gcp.spanner.DatabaseIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

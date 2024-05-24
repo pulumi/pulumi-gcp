@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> SecurityStyle { get; private set; } = null!;
 
         /// <summary>
-        /// Service level of the volume. Inherited from storage pool.
+        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         /// </summary>
         [Output("serviceLevel")]
         public Output<string> ServiceLevel { get; private set; } = null!;
@@ -738,7 +738,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? SecurityStyle { get; set; }
 
         /// <summary>
-        /// Service level of the volume. Inherited from storage pool.
+        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }

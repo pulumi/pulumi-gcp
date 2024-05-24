@@ -256,7 +256,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
+        ## pubsub.SubscriptionIAMPolicy
 
         ```python
         import pulumi
@@ -271,7 +271,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
+        ## pubsub.SubscriptionIAMBinding
 
         ```python
         import pulumi
@@ -283,7 +283,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_member
+        ## pubsub.SubscriptionIAMMember
 
         ```python
         import pulumi
@@ -295,7 +295,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
+        ## pubsub.SubscriptionIAMPolicy
 
         ```python
         import pulumi
@@ -310,7 +310,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
+        ## pubsub.SubscriptionIAMBinding
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_member
+        ## pubsub.SubscriptionIAMMember
 
         ```python
         import pulumi
@@ -394,7 +394,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
+        ## pubsub.SubscriptionIAMPolicy
 
         ```python
         import pulumi
@@ -409,7 +409,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
+        ## pubsub.SubscriptionIAMBinding
 
         ```python
         import pulumi
@@ -421,7 +421,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_member
+        ## pubsub.SubscriptionIAMMember
 
         ```python
         import pulumi
@@ -433,7 +433,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
+        ## pubsub.SubscriptionIAMPolicy
 
         ```python
         import pulumi
@@ -448,7 +448,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
+        ## pubsub.SubscriptionIAMBinding
 
         ```python
         import pulumi
@@ -460,7 +460,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_pubsub\\_subscription\\_iam\\_member
+        ## pubsub.SubscriptionIAMMember
 
         ```python
         import pulumi

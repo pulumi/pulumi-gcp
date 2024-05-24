@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.RegionSecurityPolicyRuleMatchConfig? Config;
         /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RegionSecurityPolicyRuleMatchExpr? Expr;
+        /// <summary>
         /// Preconfigured versioned expression. If this field is specified, config must also be specified.
         /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
         /// Possible values are: `SRC_IPS_V1`.
@@ -30,9 +35,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         private RegionSecurityPolicyRuleMatch(
             Outputs.RegionSecurityPolicyRuleMatchConfig? config,
 
+            Outputs.RegionSecurityPolicyRuleMatchExpr? expr,
+
             string? versionedExpr)
         {
             Config = config;
+            Expr = expr;
             VersionedExpr = versionedExpr;
         }
     }

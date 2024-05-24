@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_cloudfunctions2\_function\_iam\_policy
+// ## cloudfunctionsv2.FunctionIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions2\_function\_iam\_binding
+// ## cloudfunctionsv2.FunctionIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions2\_function\_iam\_member
+// ## cloudfunctionsv2.FunctionIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions2\_function\_iam\_policy
+// ## cloudfunctionsv2.FunctionIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions2\_function\_iam\_binding
+// ## cloudfunctionsv2.FunctionIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_cloudfunctions2\_function\_iam\_member
+// ## cloudfunctionsv2.FunctionIamMember
 //
 // ```go
 // package main

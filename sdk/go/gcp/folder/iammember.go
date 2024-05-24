@@ -27,7 +27,7 @@ import (
 //
 //	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 //
-// ## google\_folder\_iam\_policy
+// ## folder.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
 //
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_binding
+// ## folder.IAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_member
+// ## folder.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_audit\_config
+// ## folder.IamAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_policy
+// ## folder.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
 //
@@ -383,7 +383,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_binding
+// ## folder.IAMBinding
 //
 // ```go
 // package main
@@ -448,7 +448,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_member
+// ## folder.IAMMember
 //
 // ```go
 // package main
@@ -509,7 +509,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_audit\_config
+// ## folder.IamAuditConfig
 //
 // ```go
 // package main

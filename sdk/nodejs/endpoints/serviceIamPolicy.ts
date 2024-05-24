@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_endpoints\_service\_iam\_policy
+ * ## gcp.endpoints.ServiceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_endpoints\_service\_iam\_binding
+ * ## gcp.endpoints.ServiceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_endpoints\_service\_iam\_member
+ * ## gcp.endpoints.ServiceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_endpoints\_service\_iam\_policy
+ * ## gcp.endpoints.ServiceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_endpoints\_service\_iam\_binding
+ * ## gcp.endpoints.ServiceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_endpoints\_service\_iam\_member
+ * ## gcp.endpoints.ServiceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

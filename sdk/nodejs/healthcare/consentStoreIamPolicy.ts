@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_healthcare\_consent\_store\_iam\_policy
+ * ## gcp.healthcare.ConsentStoreIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_consent\_store\_iam\_binding
+ * ## gcp.healthcare.ConsentStoreIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_consent\_store\_iam\_member
+ * ## gcp.healthcare.ConsentStoreIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_consent\_store\_iam\_policy
+ * ## gcp.healthcare.ConsentStoreIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_consent\_store\_iam\_binding
+ * ## gcp.healthcare.ConsentStoreIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_healthcare\_consent\_store\_iam\_member
+ * ## gcp.healthcare.ConsentStoreIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -65,7 +65,7 @@ type LookupNetworkEndpointGroupArgs struct {
 	// The ID of the project to list versions in.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Network Endpoint Group self\_link.
+	// The Network Endpoint Group self_link.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Network Endpoint Group availability zone.
 	Zone *string `pulumi:"zone"`
@@ -114,7 +114,7 @@ type LookupNetworkEndpointGroupOutputArgs struct {
 	// The ID of the project to list versions in.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The Network Endpoint Group self\_link.
+	// The Network Endpoint Group self_link.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 	// The Network Endpoint Group availability zone.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`

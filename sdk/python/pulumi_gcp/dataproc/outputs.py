@@ -1239,6 +1239,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
             suggest = "boot_disk_size_gb"
         elif key == "bootDiskType":
             suggest = "boot_disk_type"
+        elif key == "localSsdInterface":
+            suggest = "local_ssd_interface"
         elif key == "numLocalSsds":
             suggest = "num_local_ssds"
 
@@ -1256,6 +1258,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
+                 local_ssd_interface: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
         :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified
@@ -1265,6 +1268,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param str local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
         :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node. 
                Defaults to 0.
         """
@@ -1272,6 +1276,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
 
@@ -1295,6 +1301,14 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
         One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> Optional[str]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
 
     @property
     @pulumi.getter(name="numLocalSsds")
@@ -2180,6 +2194,8 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
             suggest = "boot_disk_size_gb"
         elif key == "bootDiskType":
             suggest = "boot_disk_type"
+        elif key == "localSsdInterface":
+            suggest = "local_ssd_interface"
         elif key == "numLocalSsds":
             suggest = "num_local_ssds"
 
@@ -2197,6 +2213,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
+                 local_ssd_interface: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
         :param int boot_disk_size_gb: Size of the primary disk attached to each node, specified
@@ -2206,6 +2223,10 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param str local_ssd_interface: Optional. Interface type of local SSDs (default is "scsi").
+               Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+               Memory Express). See
+               [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each master cluster node. Defaults to 0.
         """
@@ -2213,6 +2234,8 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
 
@@ -2236,6 +2259,17 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> Optional[str]:
+        """
+        Optional. Interface type of local SSDs (default is "scsi").
+        Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+        Memory Express). See
+        [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+        """
+        return pulumi.get(self, "local_ssd_interface")
 
     @property
     @pulumi.getter(name="numLocalSsds")
@@ -2401,6 +2435,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
             suggest = "boot_disk_size_gb"
         elif key == "bootDiskType":
             suggest = "boot_disk_type"
+        elif key == "localSsdInterface":
+            suggest = "local_ssd_interface"
         elif key == "numLocalSsds":
             suggest = "num_local_ssds"
 
@@ -2418,6 +2454,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
+                 local_ssd_interface: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
         :param int boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
@@ -2426,6 +2463,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each preemptible worker node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param str local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
         :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each preemptible worker node. Defaults to 0.
         """
@@ -2433,6 +2471,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
 
@@ -2455,6 +2495,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
         One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> Optional[str]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
 
     @property
     @pulumi.getter(name="numLocalSsds")
@@ -3240,6 +3288,8 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
             suggest = "boot_disk_size_gb"
         elif key == "bootDiskType":
             suggest = "boot_disk_type"
+        elif key == "localSsdInterface":
+            suggest = "local_ssd_interface"
         elif key == "numLocalSsds":
             suggest = "num_local_ssds"
 
@@ -3257,6 +3307,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
+                 local_ssd_interface: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
         :param int boot_disk_size_gb: Size of the primary disk attached to each worker node, specified
@@ -3265,6 +3316,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        :param str local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
         :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each worker cluster node. Defaults to 0.
         """
@@ -3272,6 +3324,8 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
 
@@ -3294,6 +3348,14 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
         One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> Optional[str]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
 
     @property
     @pulumi.getter(name="numLocalSsds")

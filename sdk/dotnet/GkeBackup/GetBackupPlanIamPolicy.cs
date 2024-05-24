@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// Retrieves the current IAM policy data for backupplan
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// Retrieves the current IAM policy data for backupplan
-        /// 
         /// 
         /// 
         /// ## example

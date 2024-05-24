@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// &gt; **Note:** `gcp.dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `gcp.dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+    /// ## gcp.dataproc.AutoscalingPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+    /// ## gcp.dataproc.AutoscalingPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_member
+    /// ## gcp.dataproc.AutoscalingPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_policy
+    /// ## gcp.dataproc.AutoscalingPolicyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_binding
+    /// ## gcp.dataproc.AutoscalingPolicyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ## google\_dataproc\_autoscaling\_policy\_iam\_member
+    /// ## gcp.dataproc.AutoscalingPolicyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

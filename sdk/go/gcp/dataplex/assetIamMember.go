@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataplex\_asset\_iam\_policy
+// ## dataplex.AssetIamPolicy
 //
 // ```go
 // package main
@@ -71,7 +71,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_asset\_iam\_binding
+// ## dataplex.AssetIamBinding
 //
 // ```go
 // package main
@@ -105,7 +105,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_asset\_iam\_member
+// ## dataplex.AssetIamMember
 //
 // ```go
 // package main
@@ -137,7 +137,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_asset\_iam\_policy
+// ## dataplex.AssetIamPolicy
 //
 // ```go
 // package main
@@ -182,7 +182,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_asset\_iam\_binding
+// ## dataplex.AssetIamBinding
 //
 // ```go
 // package main
@@ -216,7 +216,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_asset\_iam\_member
+// ## dataplex.AssetIamMember
 //
 // ```go
 // package main

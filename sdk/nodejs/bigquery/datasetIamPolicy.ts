@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigquery.DatasetIamBinding` resources **can be** used in conjunction with `gcp.bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigquery\_dataset\_iam\_policy
+ * ## gcp.bigquery.DatasetIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_dataset\_iam\_binding
+ * ## gcp.bigquery.DatasetIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_dataset\_iam\_member
+ * ## gcp.bigquery.DatasetIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_dataset\_iam\_policy
+ * ## gcp.bigquery.DatasetIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_dataset\_iam\_binding
+ * ## gcp.bigquery.DatasetIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_dataset\_iam\_member
+ * ## gcp.bigquery.DatasetIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

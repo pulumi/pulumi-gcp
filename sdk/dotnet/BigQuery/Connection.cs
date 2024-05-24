@@ -322,6 +322,62 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Connection Kms
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Name = "db",
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Password = "tf-test-my-password_77884",
+    ///     });
+    /// 
+    ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()
+    ///     {
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         Location = "US",
+    ///         KmsKeyName = "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 Password = user.Password,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -408,6 +464,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("hasCredential")]
         public Output<bool> HasCredential { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that is used for encryption.
+        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The geographic location where the connection should reside.
@@ -542,6 +605,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
+        /// Optional. The Cloud KMS key that is used for encryption.
+        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
+        /// <summary>
         /// The geographic location where the connection should reside.
         /// Cloud SQL instance must be in the same location as the connection
         /// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -633,6 +703,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("hasCredential")]
         public Input<bool>? HasCredential { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that is used for encryption.
+        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// The geographic location where the connection should reside.

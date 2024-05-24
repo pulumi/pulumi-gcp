@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dns
         /// Retrieves the current IAM policy data for managedzone
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Retrieves the current IAM policy data for managedzone
-        /// 
         /// 
         /// 
         /// ## example

@@ -206,7 +206,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
 
         > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
+        ## artifactregistry.RepositoryIamPolicy
 
         ```python
         import pulumi
@@ -223,7 +223,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
+        ## artifactregistry.RepositoryIamBinding
 
         ```python
         import pulumi
@@ -237,7 +237,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
+        ## artifactregistry.RepositoryIamMember
 
         ```python
         import pulumi
@@ -251,7 +251,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
+        ## artifactregistry.RepositoryIamPolicy
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
+        ## artifactregistry.RepositoryIamBinding
 
         ```python
         import pulumi
@@ -282,7 +282,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
+        ## artifactregistry.RepositoryIamMember
 
         ```python
         import pulumi
@@ -365,7 +365,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
 
         > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
+        ## artifactregistry.RepositoryIamPolicy
 
         ```python
         import pulumi
@@ -382,7 +382,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
+        ## artifactregistry.RepositoryIamBinding
 
         ```python
         import pulumi
@@ -396,7 +396,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
+        ## artifactregistry.RepositoryIamMember
 
         ```python
         import pulumi
@@ -410,7 +410,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
+        ## artifactregistry.RepositoryIamPolicy
 
         ```python
         import pulumi
@@ -427,7 +427,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
+        ## artifactregistry.RepositoryIamBinding
 
         ```python
         import pulumi
@@ -441,7 +441,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
+        ## artifactregistry.RepositoryIamMember
 
         ```python
         import pulumi

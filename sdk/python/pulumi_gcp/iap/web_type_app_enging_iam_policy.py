@@ -171,7 +171,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_policy
+        ## iap.WebTypeAppEngingIamPolicy
 
         ```python
         import pulumi
@@ -207,7 +207,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
+        ## iap.WebTypeAppEngingIamBinding
 
         ```python
         import pulumi
@@ -237,7 +237,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_member
+        ## iap.WebTypeAppEngingIamMember
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_policy
+        ## iap.WebTypeAppEngingIamPolicy
 
         ```python
         import pulumi
@@ -304,7 +304,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
+        ## iap.WebTypeAppEngingIamBinding
 
         ```python
         import pulumi
@@ -334,7 +334,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_member
+        ## iap.WebTypeAppEngingIamMember
 
         ```python
         import pulumi
@@ -432,7 +432,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_policy
+        ## iap.WebTypeAppEngingIamPolicy
 
         ```python
         import pulumi
@@ -468,7 +468,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
+        ## iap.WebTypeAppEngingIamBinding
 
         ```python
         import pulumi
@@ -498,7 +498,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_member
+        ## iap.WebTypeAppEngingIamMember
 
         ```python
         import pulumi
@@ -529,7 +529,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_policy
+        ## iap.WebTypeAppEngingIamPolicy
 
         ```python
         import pulumi
@@ -565,7 +565,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
+        ## iap.WebTypeAppEngingIamBinding
 
         ```python
         import pulumi
@@ -595,7 +595,7 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_member
+        ## iap.WebTypeAppEngingIamMember
 
         ```python
         import pulumi

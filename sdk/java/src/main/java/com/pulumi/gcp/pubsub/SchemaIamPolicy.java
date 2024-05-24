@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.pubsub.SchemaIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_pubsub\_schema\_iam\_policy
+ * ## gcp.pubsub.SchemaIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_pubsub\_schema\_iam\_binding
+ * ## gcp.pubsub.SchemaIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_pubsub\_schema\_iam\_member
+ * ## gcp.pubsub.SchemaIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_pubsub\_schema\_iam\_policy
+ * ## gcp.pubsub.SchemaIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_pubsub\_schema\_iam\_binding
+ * ## gcp.pubsub.SchemaIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_pubsub\_schema\_iam\_member
+ * ## gcp.pubsub.SchemaIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

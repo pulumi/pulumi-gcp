@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataplex\_task\_iam\_policy
+ * ## gcp.dataplex.TaskIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_task\_iam\_binding
+ * ## gcp.dataplex.TaskIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_task\_iam\_member
+ * ## gcp.dataplex.TaskIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_task\_iam\_policy
+ * ## gcp.dataplex.TaskIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_task\_iam\_binding
+ * ## gcp.dataplex.TaskIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_task\_iam\_member
+ * ## gcp.dataplex.TaskIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

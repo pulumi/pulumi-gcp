@@ -28,7 +28,7 @@ import (
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
-// ## google\_storage\_bucket\_iam\_policy
+// ## storage.BucketIAMPolicy
 //
 // ```go
 // package main
@@ -114,7 +114,7 @@ import (
 //	}
 //
 // ```
-// ## google\_storage\_bucket\_iam\_binding
+// ## storage.BucketIAMBinding
 //
 // ```go
 // package main
@@ -178,7 +178,7 @@ import (
 //	}
 //
 // ```
-// ## google\_storage\_bucket\_iam\_member
+// ## storage.BucketIAMMember
 //
 // ```go
 // package main
@@ -239,7 +239,7 @@ import (
 //
 // ```
 //
-// ## google\_storage\_bucket\_iam\_policy
+// ## storage.BucketIAMPolicy
 //
 // ```go
 // package main
@@ -325,7 +325,7 @@ import (
 //	}
 //
 // ```
-// ## google\_storage\_bucket\_iam\_binding
+// ## storage.BucketIAMBinding
 //
 // ```go
 // package main
@@ -389,7 +389,7 @@ import (
 //	}
 //
 // ```
-// ## google\_storage\_bucket\_iam\_member
+// ## storage.BucketIAMMember
 //
 // ```go
 // package main

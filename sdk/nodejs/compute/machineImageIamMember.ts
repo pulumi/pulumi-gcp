@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_compute\_machine\_image\_iam\_binding
+ * ## gcp.compute.MachineImageIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_compute\_machine\_image\_iam\_member
+ * ## gcp.compute.MachineImageIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,7 +171,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_compute\_machine\_image\_iam\_binding
+ * ## gcp.compute.MachineImageIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -203,7 +203,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_compute\_machine\_image\_iam\_member
+ * ## gcp.compute.MachineImageIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

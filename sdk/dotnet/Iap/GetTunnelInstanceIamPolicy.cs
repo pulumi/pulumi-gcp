@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Iap
         /// Retrieves the current IAM policy data for tunnelinstance
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Retrieves the current IAM policy data for tunnelinstance
-        /// 
         /// 
         /// 
         /// ## example

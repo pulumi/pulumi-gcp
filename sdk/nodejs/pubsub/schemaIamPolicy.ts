@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.pubsub.SchemaIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_pubsub\_schema\_iam\_policy
+ * ## gcp.pubsub.SchemaIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_schema\_iam\_binding
+ * ## gcp.pubsub.SchemaIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_schema\_iam\_member
+ * ## gcp.pubsub.SchemaIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_schema\_iam\_policy
+ * ## gcp.pubsub.SchemaIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_schema\_iam\_binding
+ * ## gcp.pubsub.SchemaIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_pubsub\_schema\_iam\_member
+ * ## gcp.pubsub.SchemaIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.GkeHub
         /// Retrieves the current IAM policy data for membership
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Retrieves the current IAM policy data for membership
-        /// 
         /// 
         /// 
         /// ## example

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketLifecycleRuleCondition
     {
         /// <summary>
-        /// Minimum age of an object in days to satisfy this condition.
+        /// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
         /// </summary>
         public readonly int? Age;
         /// <summary>
@@ -26,11 +26,12 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? CustomTimeBefore;
         /// <summary>
-        /// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+        /// Number of days elapsed since the user-specified timestamp set on an object.
         /// </summary>
         public readonly int? DaysSinceCustomTime;
         /// <summary>
-        /// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        /// Number of days elapsed since the noncurrent timestamp of an object. This
+        /// 										condition is relevant only for versioned objects.
         /// </summary>
         public readonly int? DaysSinceNoncurrentTime;
         /// <summary>
@@ -46,11 +47,11 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MatchesSuffixes;
         /// <summary>
-        /// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        /// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         /// </summary>
         public readonly bool? NoAge;
         /// <summary>
-        /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         /// </summary>
         public readonly string? NoncurrentTimeBefore;
         /// <summary>

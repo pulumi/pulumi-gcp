@@ -39,6 +39,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("sourceConnectionProfile", required: true)]
         public Input<string> SourceConnectionProfile { get; set; } = null!;
 
+        /// <summary>
+        /// SQL Server data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sqlServerSourceConfig")]
+        public Input<Inputs.StreamSourceConfigSqlServerSourceConfigArgs>? SqlServerSourceConfig { get; set; }
+
         public StreamSourceConfigArgs()
         {
         }

@@ -242,7 +242,7 @@ class AssetIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
+        ## dataplex.AssetIamPolicy
 
         ```python
         import pulumi
@@ -261,7 +261,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_binding
+        ## dataplex.AssetIamBinding
 
         ```python
         import pulumi
@@ -277,7 +277,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_member
+        ## dataplex.AssetIamMember
 
         ```python
         import pulumi
@@ -293,7 +293,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
+        ## dataplex.AssetIamPolicy
 
         ```python
         import pulumi
@@ -312,7 +312,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_binding
+        ## dataplex.AssetIamBinding
 
         ```python
         import pulumi
@@ -328,7 +328,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_member
+        ## dataplex.AssetIamMember
 
         ```python
         import pulumi
@@ -411,7 +411,7 @@ class AssetIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
+        ## dataplex.AssetIamPolicy
 
         ```python
         import pulumi
@@ -430,7 +430,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_binding
+        ## dataplex.AssetIamBinding
 
         ```python
         import pulumi
@@ -446,7 +446,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_member
+        ## dataplex.AssetIamMember
 
         ```python
         import pulumi
@@ -462,7 +462,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
+        ## dataplex.AssetIamPolicy
 
         ```python
         import pulumi
@@ -481,7 +481,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_binding
+        ## dataplex.AssetIamBinding
 
         ```python
         import pulumi
@@ -497,7 +497,7 @@ class AssetIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_asset\\_iam\\_member
+        ## dataplex.AssetIamMember
 
         ```python
         import pulumi

@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A managed metastore federation.
+ *
  * ## Example Usage
  *
  * ### Dataproc Metastore Federation Basic

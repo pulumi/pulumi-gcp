@@ -194,7 +194,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_policy
+        ## datacatalog.EntryGroupIamPolicy
 
         ```python
         import pulumi
@@ -209,7 +209,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_binding
+        ## datacatalog.EntryGroupIamBinding
 
         ```python
         import pulumi
@@ -221,7 +221,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_member
+        ## datacatalog.EntryGroupIamMember
 
         ```python
         import pulumi
@@ -233,7 +233,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_policy
+        ## datacatalog.EntryGroupIamPolicy
 
         ```python
         import pulumi
@@ -248,7 +248,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_binding
+        ## datacatalog.EntryGroupIamBinding
 
         ```python
         import pulumi
@@ -260,7 +260,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_member
+        ## datacatalog.EntryGroupIamMember
 
         ```python
         import pulumi
@@ -339,7 +339,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_policy
+        ## datacatalog.EntryGroupIamPolicy
 
         ```python
         import pulumi
@@ -354,7 +354,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_binding
+        ## datacatalog.EntryGroupIamBinding
 
         ```python
         import pulumi
@@ -366,7 +366,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_member
+        ## datacatalog.EntryGroupIamMember
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_policy
+        ## datacatalog.EntryGroupIamPolicy
 
         ```python
         import pulumi
@@ -393,7 +393,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_binding
+        ## datacatalog.EntryGroupIamBinding
 
         ```python
         import pulumi
@@ -405,7 +405,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_entry\\_group\\_iam\\_member
+        ## datacatalog.EntryGroupIamMember
 
         ```python
         import pulumi

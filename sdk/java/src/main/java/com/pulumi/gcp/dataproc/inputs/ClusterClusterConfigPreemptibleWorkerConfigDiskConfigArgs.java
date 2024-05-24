@@ -55,6 +55,21 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
     }
 
     /**
+     * Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    @Import(name="localSsdInterface")
+    private @Nullable Output<String> localSsdInterface;
+
+    /**
+     * @return Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    public Optional<Output<String>> localSsdInterface() {
+        return Optional.ofNullable(this.localSsdInterface);
+    }
+
+    /**
      * The amount of local SSD disks that will be
      * attached to each preemptible worker node. Defaults to 0.
      * 
@@ -76,6 +91,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
     private ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs $) {
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.bootDiskType = $.bootDiskType;
+        this.localSsdInterface = $.localSsdInterface;
         this.numLocalSsds = $.numLocalSsds;
     }
 
@@ -145,6 +161,27 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
          */
         public Builder bootDiskType(String bootDiskType) {
             return bootDiskType(Output.of(bootDiskType));
+        }
+
+        /**
+         * @param localSsdInterface Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdInterface(@Nullable Output<String> localSsdInterface) {
+            $.localSsdInterface = localSsdInterface;
+            return this;
+        }
+
+        /**
+         * @param localSsdInterface Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdInterface(String localSsdInterface) {
+            return localSsdInterface(Output.of(localSsdInterface));
         }
 
         /**

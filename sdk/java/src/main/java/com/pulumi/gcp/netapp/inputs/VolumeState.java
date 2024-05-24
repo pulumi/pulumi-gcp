@@ -415,14 +415,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service level of the volume. Inherited from storage pool.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      * 
      */
     @Import(name="serviceLevel")
     private @Nullable Output<String> serviceLevel;
 
     /**
-     * @return Service level of the volume. Inherited from storage pool.
+     * @return Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
      * 
      */
     public Optional<Output<String>> serviceLevel() {
@@ -1197,7 +1197,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceLevel Service level of the volume. Inherited from storage pool.
+         * @param serviceLevel Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
          * 
          * @return builder
          * 
@@ -1208,7 +1208,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceLevel Service level of the volume. Inherited from storage pool.
+         * @param serviceLevel Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
          * 
          * @return builder
          * 

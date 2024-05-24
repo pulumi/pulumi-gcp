@@ -297,7 +297,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
+        ## datacatalog.TagTemplateIamPolicy
 
         ```python
         import pulumi
@@ -312,7 +312,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
+        ## datacatalog.TagTemplateIamBinding
 
         ```python
         import pulumi
@@ -324,7 +324,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
+        ## datacatalog.TagTemplateIamMember
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
+        ## datacatalog.TagTemplateIamPolicy
 
         ```python
         import pulumi
@@ -351,7 +351,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
+        ## datacatalog.TagTemplateIamBinding
 
         ```python
         import pulumi
@@ -363,7 +363,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
+        ## datacatalog.TagTemplateIamMember
 
         ```python
         import pulumi
@@ -454,7 +454,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
+        ## datacatalog.TagTemplateIamPolicy
 
         ```python
         import pulumi
@@ -469,7 +469,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
+        ## datacatalog.TagTemplateIamBinding
 
         ```python
         import pulumi
@@ -481,7 +481,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
+        ## datacatalog.TagTemplateIamMember
 
         ```python
         import pulumi
@@ -493,7 +493,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
+        ## datacatalog.TagTemplateIamPolicy
 
         ```python
         import pulumi
@@ -508,7 +508,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
+        ## datacatalog.TagTemplateIamBinding
 
         ```python
         import pulumi
@@ -520,7 +520,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
+        ## datacatalog.TagTemplateIamMember
 
         ```python
         import pulumi

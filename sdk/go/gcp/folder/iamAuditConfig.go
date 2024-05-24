@@ -27,7 +27,7 @@ import (
 //
 //	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 //
-// ## google\_folder\_iam\_policy
+// ## folder.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
 //
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_binding
+// ## folder.IAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_member
+// ## folder.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_audit\_config
+// ## folder.IamAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_policy
+// ## folder.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
 //
@@ -383,7 +383,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_binding
+// ## folder.IAMBinding
 //
 // ```go
 // package main
@@ -448,7 +448,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_member
+// ## folder.IAMMember
 //
 // ```go
 // package main
@@ -509,7 +509,7 @@ import (
 //
 // ```
 //
-// ## google\_folder\_iam\_audit\_config
+// ## folder.IamAuditConfig
 //
 // ```go
 // package main
@@ -581,7 +581,7 @@ type IamAuditConfig struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder pulumi.StringOutput `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -630,7 +630,7 @@ type iamAuditConfigState struct {
 	Etag *string `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder *string `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service *string `pulumi:"service"`
 }
 
@@ -641,7 +641,7 @@ type IamAuditConfigState struct {
 	Etag pulumi.StringPtrInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder pulumi.StringPtrInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringPtrInput
 }
 
@@ -654,7 +654,7 @@ type iamAuditConfigArgs struct {
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder string `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service string `pulumi:"service"`
 }
 
@@ -664,7 +664,7 @@ type IamAuditConfigArgs struct {
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder pulumi.StringInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringInput
 }
 
@@ -770,7 +770,7 @@ func (o IamAuditConfigOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }
 
-// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 func (o IamAuditConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

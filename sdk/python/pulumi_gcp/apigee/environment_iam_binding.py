@@ -259,7 +259,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
+        ## apigee.EnvironmentIamPolicy
 
         ```python
         import pulumi
@@ -275,7 +275,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_binding
+        ## apigee.EnvironmentIamBinding
 
         ```python
         import pulumi
@@ -288,7 +288,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_member
+        ## apigee.EnvironmentIamMember
 
         ```python
         import pulumi
@@ -301,7 +301,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
+        ## apigee.EnvironmentIamPolicy
 
         ```python
         import pulumi
@@ -317,7 +317,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_binding
+        ## apigee.EnvironmentIamBinding
 
         ```python
         import pulumi
@@ -330,7 +330,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_member
+        ## apigee.EnvironmentIamMember
 
         ```python
         import pulumi
@@ -416,7 +416,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
+        ## apigee.EnvironmentIamPolicy
 
         ```python
         import pulumi
@@ -432,7 +432,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_binding
+        ## apigee.EnvironmentIamBinding
 
         ```python
         import pulumi
@@ -445,7 +445,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_member
+        ## apigee.EnvironmentIamMember
 
         ```python
         import pulumi
@@ -458,7 +458,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
+        ## apigee.EnvironmentIamPolicy
 
         ```python
         import pulumi
@@ -474,7 +474,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_binding
+        ## apigee.EnvironmentIamBinding
 
         ```python
         import pulumi
@@ -487,7 +487,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_apigee\\_environment\\_iam\\_member
+        ## apigee.EnvironmentIamMember
 
         ```python
         import pulumi

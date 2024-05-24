@@ -101,7 +101,19 @@ def get_metastore_federation_iam_policy(federation_id: Optional[str] = None,
                                         project: Optional[str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreFederationIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for federation
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataproc.get_metastore_federation_iam_policy(project=default["project"],
+        location=default["location"],
+        federation_id=default["federationId"])
+    ```
+
 
     :param str location: The location where the metastore federation should reside.
            Used to find the parent resource to bind the IAM policy to
@@ -130,7 +142,19 @@ def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.In
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreFederationIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for federation
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataproc.get_metastore_federation_iam_policy(project=default["project"],
+        location=default["location"],
+        federation_id=default["federationId"])
+    ```
+
 
     :param str location: The location where the metastore federation should reside.
            Used to find the parent resource to bind the IAM policy to

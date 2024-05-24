@@ -2602,6 +2602,8 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig st
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be attached to each master cluster node.
 	// Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -2628,6 +2630,8 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArg
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be attached to each master cluster node.
 	// Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -2729,6 +2733,13 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(pulumi.StringPtrOutput)
 }
 
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
 // The amount of local SSD disks that will be attached to each master cluster node.
 // Defaults to 0.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
@@ -2783,6 +2794,16 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 			return nil
 		}
 		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5022,6 +5043,11 @@ type ClusterClusterConfigMasterConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi").
+	// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+	// Memory Express). See
+	// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -5048,6 +5074,11 @@ type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi").
+	// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+	// Memory Express). See
+	// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -5145,6 +5176,14 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Interface type of local SSDs (default is "scsi").
+// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+// Memory Express). See
+// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o ClusterClusterConfigMasterConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
+}
+
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
@@ -5197,6 +5236,19 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulu
 			return nil
 		}
 		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Interface type of local SSDs (default is "scsi").
+// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+// Memory Express). See
+// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5614,6 +5666,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each preemptible worker node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each preemptible worker node. Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -5639,6 +5693,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each preemptible worker node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each preemptible worker node. Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -5735,6 +5791,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskTyp
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
+}
+
 // The amount of local SSD disks that will be
 // attached to each preemptible worker node. Defaults to 0.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
@@ -5786,6 +5847,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDisk
 			return nil
 		}
 		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7495,6 +7566,8 @@ type ClusterClusterConfigWorkerConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each worker cluster node. Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -7520,6 +7593,8 @@ type ClusterClusterConfigWorkerConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// The amount of local SSD disks that will be
 	// attached to each worker cluster node. Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -7616,6 +7691,11 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
+}
+
 // The amount of local SSD disks that will be
 // attached to each worker cluster node. Defaults to 0.
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
@@ -7667,6 +7747,16 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulu
 			return nil
 		}
 		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
 	}).(pulumi.StringPtrOutput)
 }
 

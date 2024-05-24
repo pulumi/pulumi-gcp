@@ -139,7 +139,7 @@ class WebIamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_iam\\_policy
+        ## iap.WebIamPolicy
 
         ```python
         import pulumi
@@ -173,7 +173,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_iam\\_binding
+        ## iap.WebIamBinding
 
         ```python
         import pulumi
@@ -201,7 +201,7 @@ class WebIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_iam\\_member
+        ## iap.WebIamMember
 
         ```python
         import pulumi
@@ -230,7 +230,7 @@ class WebIamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_iam\\_policy
+        ## iap.WebIamPolicy
 
         ```python
         import pulumi
@@ -264,7 +264,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_iam\\_binding
+        ## iap.WebIamBinding
 
         ```python
         import pulumi
@@ -292,7 +292,7 @@ class WebIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_iam\\_member
+        ## iap.WebIamMember
 
         ```python
         import pulumi
@@ -385,7 +385,7 @@ class WebIamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_iam\\_policy
+        ## iap.WebIamPolicy
 
         ```python
         import pulumi
@@ -419,7 +419,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_iam\\_binding
+        ## iap.WebIamBinding
 
         ```python
         import pulumi
@@ -447,7 +447,7 @@ class WebIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_iam\\_member
+        ## iap.WebIamMember
 
         ```python
         import pulumi
@@ -476,7 +476,7 @@ class WebIamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_iam\\_policy
+        ## iap.WebIamPolicy
 
         ```python
         import pulumi
@@ -510,7 +510,7 @@ class WebIamPolicy(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_iam\\_binding
+        ## iap.WebIamBinding
 
         ```python
         import pulumi
@@ -538,7 +538,7 @@ class WebIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_iam\\_member
+        ## iap.WebIamMember
 
         ```python
         import pulumi

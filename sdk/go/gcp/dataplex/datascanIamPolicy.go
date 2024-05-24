@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataplex.DatascanIamBinding` resources **can be** used in conjunction with `dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataplex\_datascan\_iam\_policy
+// ## dataplex.DatascanIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_datascan\_iam\_binding
+// ## dataplex.DatascanIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_datascan\_iam\_member
+// ## dataplex.DatascanIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_datascan\_iam\_policy
+// ## dataplex.DatascanIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_datascan\_iam\_binding
+// ## dataplex.DatascanIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_datascan\_iam\_member
+// ## dataplex.DatascanIamMember
 //
 // ```go
 // package main

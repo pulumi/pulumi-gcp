@@ -357,6 +357,8 @@ class MetastoreFederation(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A managed metastore federation.
+
         ## Example Usage
 
         ### Dataproc Metastore Federation Basic
@@ -460,6 +462,8 @@ class MetastoreFederation(pulumi.CustomResource):
                  args: MetastoreFederationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A managed metastore federation.
+
         ## Example Usage
 
         ### Dataproc Metastore Federation Basic

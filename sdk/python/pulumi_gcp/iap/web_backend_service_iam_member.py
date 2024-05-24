@@ -286,7 +286,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
+        ## iap.WebBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
+        ## iap.WebBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -352,7 +352,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
+        ## iap.WebBackendServiceIamMember
 
         ```python
         import pulumi
@@ -383,7 +383,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
+        ## iap.WebBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -419,7 +419,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
+        ## iap.WebBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -449,7 +449,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
+        ## iap.WebBackendServiceIamMember
 
         ```python
         import pulumi
@@ -561,7 +561,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
+        ## iap.WebBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -597,7 +597,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
+        ## iap.WebBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -627,7 +627,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
+        ## iap.WebBackendServiceIamMember
 
         ```python
         import pulumi
@@ -658,7 +658,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
+        ## iap.WebBackendServiceIamPolicy
 
         ```python
         import pulumi
@@ -694,7 +694,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
+        ## iap.WebBackendServiceIamBinding
 
         ```python
         import pulumi
@@ -724,7 +724,7 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
+        ## iap.WebBackendServiceIamMember
 
         ```python
         import pulumi

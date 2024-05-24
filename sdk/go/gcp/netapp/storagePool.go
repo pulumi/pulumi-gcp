@@ -171,7 +171,7 @@ type StoragePool struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Service level of the storage pool.
-	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringOutput `pulumi:"volumeCapacityGib"`
@@ -263,7 +263,7 @@ type storagePoolState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Service level of the storage pool.
-	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel *string `pulumi:"serviceLevel"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib *string `pulumi:"volumeCapacityGib"`
@@ -309,7 +309,7 @@ type StoragePoolState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Service level of the storage pool.
-	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringPtrInput
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringPtrInput
@@ -352,7 +352,7 @@ type storagePoolArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Service level of the storage pool.
-	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel string `pulumi:"serviceLevel"`
 }
 
@@ -388,7 +388,7 @@ type StoragePoolArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Service level of the storage pool.
-	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringInput
 }
 
@@ -555,7 +555,7 @@ func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Service level of the storage pool.
-// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`.
+// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 func (o StoragePoolOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ServiceLevel }).(pulumi.StringOutput)
 }

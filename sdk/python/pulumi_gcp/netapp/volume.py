@@ -436,7 +436,7 @@ class _VolumeState:
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
                Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
                Possible values are: `NTFS`, `UNIX`.
-        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool.
+        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -828,7 +828,7 @@ class _VolumeState:
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Service level of the volume. Inherited from storage pool.
+        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         """
         return pulumi.get(self, "service_level")
 
@@ -1326,7 +1326,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
                Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
                Possible values are: `NTFS`, `UNIX`.
-        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool.
+        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -1593,7 +1593,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> pulumi.Output[str]:
         """
-        Service level of the volume. Inherited from storage pool.
+        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
         """
         return pulumi.get(self, "service_level")
 

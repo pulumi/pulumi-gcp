@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_compute\_disk\_iam\_policy
+// ## compute.DiskIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_disk\_iam\_binding
+// ## compute.DiskIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_disk\_iam\_member
+// ## compute.DiskIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_disk\_iam\_policy
+// ## compute.DiskIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_disk\_iam\_binding
+// ## compute.DiskIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_disk\_iam\_member
+// ## compute.DiskIamMember
 //
 // ```go
 // package main

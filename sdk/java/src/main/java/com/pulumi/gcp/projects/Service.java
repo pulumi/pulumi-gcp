@@ -16,20 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows management of a single API service for a Google Cloud Platform project.
- * 
- * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
- * or run `gcloud services list --available`.
- * 
- * This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
- * to use.
- * 
- * To get more information about `gcp.projects.Service`, see:
- * 
- * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
- * * How-to Guides
- *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -58,7 +44,7 @@ import javax.annotation.Nullable;
  *         var project = new Service("project", ServiceArgs.builder()
  *             .project("your-project-id")
  *             .service("iam.googleapis.com")
- *             .disableDependentServices(true)
+ *             .disableOnDestroy(false)
  *             .build());
  * 
  *     }
@@ -112,17 +98,9 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableDependentServices() {
         return Codegen.optional(this.disableDependentServices);
     }
-    /**
-     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     * 
-     */
     @Export(name="disableOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableOnDestroy;
 
-    /**
-     * @return If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     * 
-     */
     public Output<Optional<Boolean>> disableOnDestroy() {
         return Codegen.optional(this.disableOnDestroy);
     }

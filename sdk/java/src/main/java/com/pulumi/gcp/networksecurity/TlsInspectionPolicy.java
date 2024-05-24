@@ -12,6 +12,7 @@ import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
 import com.pulumi.gcp.networksecurity.inputs.TlsInspectionPolicyState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -56,10 +57,142 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
+ * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
+ * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
+ *             .name("my-basic-ca-pool")
+ *             .location("us-central1")
+ *             .tier("DEVOPS")
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(false)
+ *                 .publishCrl(false)
+ *                 .build())
+ *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
+ *                 .maximumLifetime("1209600s")
+ *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()
+ *                     .caOptions(CaPoolIssuancePolicyBaselineValuesCaOptionsArgs.builder()
+ *                         .isCa(false)
+ *                         .build())
+ *                     .keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs.builder()
+ *                         .baseKeyUsage()
+ *                         .extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+ *             .pool(default_.name())
+ *             .certificateAuthorityId("my-basic-certificate-authority")
+ *             .location("us-central1")
+ *             .lifetime("86400s")
+ *             .type("SELF_SIGNED")
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("Test LLC")
+ *                         .commonName("my-ca")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(false)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
+ *             .caPool(default_.id())
+ *             .role("roles/privateca.certificateManager")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
+ *             .name("my-tls-inspection-policy")
+ *             .location("us-central1")
+ *             .caPool(default_.id())
+ *             .excludePublicCaSet(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Security Tls Inspection Policy Custom
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import java.util.List;
@@ -139,10 +272,28 @@ import javax.annotation.Nullable;
  *             .service("networksecurity.googleapis.com")
  *             .build());
  * 
- *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
+ *         var defaultCaPoolIamMember = new CaPoolIamMember("defaultCaPoolIamMember", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
  *             .member(nsSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .build());
+ * 
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
+ *             .name("my-trust-config")
+ *             .description("sample trust config description")
+ *             .location("us-central1")
+ *             .trustStores(TrustConfigTrustStoreArgs.builder()
+ *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/ca_cert.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/ca_cert.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
@@ -150,6 +301,25 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .caPool(default_.id())
  *             .excludePublicCaSet(false)
+ *             .minTlsVersion("TLS_1_0")
+ *             .trustConfig(defaultTrustConfig.id())
+ *             .tlsFeatureProfile("PROFILE_CUSTOM")
+ *             .customTlsFeatures(            
+ *                 "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+ *                 "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+ *                 "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+ *                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+ *                 "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+ *                 "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+ *                 "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+ *                 "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+ *                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+ *                 "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+ *                 "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+ *                 "TLS_RSA_WITH_AES_128_CBC_SHA",
+ *                 "TLS_RSA_WITH_AES_128_GCM_SHA256",
+ *                 "TLS_RSA_WITH_AES_256_CBC_SHA",
+ *                 "TLS_RSA_WITH_AES_256_GCM_SHA384")
  *             .build());
  * 
  *     }
@@ -214,6 +384,20 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    @Export(name="customTlsFeatures", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> customTlsFeatures;
+
+    /**
+     * @return List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    public Output<Optional<List<String>>> customTlsFeatures() {
+        return Codegen.optional(this.customTlsFeatures);
+    }
+    /**
      * Free-text description of the resource.
      * 
      */
@@ -256,6 +440,22 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
+     * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     * 
+     */
+    @Export(name="minTlsVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minTlsVersion;
+
+    /**
+     * @return Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
+     * 
+     */
+    public Output<Optional<String>> minTlsVersion() {
+        return Codegen.optional(this.minTlsVersion);
+    }
+    /**
      * Short name of the TlsInspectionPolicy resource to be created.
      * 
      * ***
@@ -288,6 +488,36 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     * 
+     */
+    @Export(name="tlsFeatureProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tlsFeatureProfile;
+
+    /**
+     * @return The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\&#34;PROFILE_COMPATIBLE\&#34;). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
+     * 
+     */
+    public Output<Optional<String>> tlsFeatureProfile() {
+        return Codegen.optional(this.tlsFeatureProfile);
+    }
+    /**
+     * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    @Export(name="trustConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> trustConfig;
+
+    /**
+     * @return A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \&#34;projects/{project}/locations/{location}/trustConfigs/{trust_config}\&#34;. This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
+     * 
+     */
+    public Output<Optional<String>> trustConfig() {
+        return Codegen.optional(this.trustConfig);
     }
     /**
      * The timestamp when the resource was updated.

@@ -19,14 +19,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     public static final BucketLifecycleRuleConditionArgs Empty = new BucketLifecycleRuleConditionArgs();
 
     /**
-     * Minimum age of an object in days to satisfy this condition.
+     * Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
      * 
      */
     @Import(name="age")
     private @Nullable Output<Integer> age;
 
     /**
-     * @return Minimum age of an object in days to satisfy this condition.
+     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
      * 
      */
     public Optional<Output<Integer>> age() {
@@ -64,14 +64,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+     * Number of days elapsed since the user-specified timestamp set on an object.
      * 
      */
     @Import(name="daysSinceCustomTime")
     private @Nullable Output<Integer> daysSinceCustomTime;
 
     /**
-     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+     * @return Number of days elapsed since the user-specified timestamp set on an object.
      * 
      */
     public Optional<Output<Integer>> daysSinceCustomTime() {
@@ -79,14 +79,16 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+     * Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
      * 
      */
     @Import(name="daysSinceNoncurrentTime")
     private @Nullable Output<Integer> daysSinceNoncurrentTime;
 
     /**
-     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+     * @return Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
      * 
      */
     public Optional<Output<Integer>> daysSinceNoncurrentTime() {
@@ -139,14 +141,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
      * 
      */
     @Import(name="noAge")
     private @Nullable Output<Boolean> noAge;
 
     /**
-     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
      * 
      */
     public Optional<Output<Boolean>> noAge() {
@@ -154,14 +156,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+     * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
     @Import(name="noncurrentTimeBefore")
     private @Nullable Output<String> noncurrentTimeBefore;
 
     /**
-     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
     public Optional<Output<String>> noncurrentTimeBefore() {
@@ -234,7 +236,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition.
+         * @param age Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
          * 
          * @return builder
          * 
@@ -245,7 +247,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition.
+         * @param age Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
          * 
          * @return builder
          * 
@@ -297,7 +299,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceCustomTime Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+         * @param daysSinceCustomTime Number of days elapsed since the user-specified timestamp set on an object.
          * 
          * @return builder
          * 
@@ -308,7 +310,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceCustomTime Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+         * @param daysSinceCustomTime Number of days elapsed since the user-specified timestamp set on an object.
          * 
          * @return builder
          * 
@@ -318,7 +320,8 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceNoncurrentTime Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         * @param daysSinceNoncurrentTime Number of days elapsed since the noncurrent timestamp of an object. This
+         * 										condition is relevant only for versioned objects.
          * 
          * @return builder
          * 
@@ -329,7 +332,8 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceNoncurrentTime Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         * @param daysSinceNoncurrentTime Number of days elapsed since the noncurrent timestamp of an object. This
+         * 										condition is relevant only for versioned objects.
          * 
          * @return builder
          * 
@@ -432,7 +436,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noAge While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         * @param noAge While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
          * 
          * @return builder
          * 
@@ -443,7 +447,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noAge While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         * @param noAge While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
          * 
          * @return builder
          * 
@@ -453,7 +457,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noncurrentTimeBefore Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         * @param noncurrentTimeBefore Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
          * 
          * @return builder
          * 
@@ -464,7 +468,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noncurrentTimeBefore Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         * @param noncurrentTimeBefore Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
          * 
          * @return builder
          * 

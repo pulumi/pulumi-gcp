@@ -33,8 +33,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string>? TypeCollection { get; set; }
 
         /// <summary>
-        /// Restrict discovery to specific table type
-        /// Structure is documented below.
+        /// Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+        /// Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
         /// </summary>
         [Input("types")]
         public Input<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs>? Types { get; set; }

@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_cloud\_run\_service\_iam\_policy
+// ## cloudrun.IamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_service\_iam\_binding
+// ## cloudrun.IamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_service\_iam\_member
+// ## cloudrun.IamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_service\_iam\_policy
+// ## cloudrun.IamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_service\_iam\_binding
+// ## cloudrun.IamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_run\_service\_iam\_member
+// ## cloudrun.IamMember
 //
 // ```go
 // package main

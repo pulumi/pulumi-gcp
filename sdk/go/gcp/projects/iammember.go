@@ -27,7 +27,7 @@ import (
 //
 //	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -383,7 +383,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -448,7 +448,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -509,7 +509,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main
@@ -580,7 +580,7 @@ type IAMMember struct {
 	Condition IAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -640,7 +640,7 @@ type iammemberState struct {
 	Condition *IAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -662,7 +662,7 @@ type IAMMemberState struct {
 	Condition IAMMemberConditionPtrInput
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringPtrInput
-	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -686,7 +686,7 @@ type iammemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMMemberCondition `pulumi:"condition"`
-	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -707,7 +707,7 @@ type IAMMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrInput
-	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -821,7 +821,7 @@ func (o IAMMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+// Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
 // Each entry can have one of the following values:
 // * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 // * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

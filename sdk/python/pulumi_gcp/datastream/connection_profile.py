@@ -27,7 +27,8 @@ class ConnectionProfileArgs:
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
@@ -54,6 +55,8 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
+               Structure is documented below.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -76,6 +79,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "private_connectivity", private_connectivity)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sql_server_profile is not None:
+            pulumi.set(__self__, "sql_server_profile", sql_server_profile)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -233,6 +238,19 @@ class ConnectionProfileArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]:
+        """
+        SQL Server database profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_profile")
+
+    @sql_server_profile.setter
+    def sql_server_profile(self, value: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]):
+        pulumi.set(self, "sql_server_profile", value)
+
 
 @pulumi.input_type
 class _ConnectionProfileState:
@@ -251,7 +269,8 @@ class _ConnectionProfileState:
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
@@ -282,6 +301,8 @@ class _ConnectionProfileState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
+               Structure is documented below.
         """
         if bigquery_profile is not None:
             pulumi.set(__self__, "bigquery_profile", bigquery_profile)
@@ -313,6 +334,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if sql_server_profile is not None:
+            pulumi.set(__self__, "sql_server_profile", sql_server_profile)
 
     @property
     @pulumi.getter(name="bigqueryProfile")
@@ -507,6 +530,19 @@ class _ConnectionProfileState:
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
+    @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]:
+        """
+        SQL Server database profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_profile")
+
+    @sql_server_profile.setter
+    def sql_server_profile(self, value: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]):
+        pulumi.set(self, "sql_server_profile", value)
+
 
 class ConnectionProfile(pulumi.CustomResource):
     @overload
@@ -525,6 +561,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileSqlServerProfileArgs']]] = None,
                  __props__=None):
         """
         A set of reusable connection configurations to be used as a source or destination for a stream.
@@ -701,6 +738,59 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
+        ### Datastream Connection Profile Sql Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-4096",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ))
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
+                hostname=instance.public_ip_address,
+                port=1433,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        ```
 
         ## Import
 
@@ -752,6 +842,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileSqlServerProfileArgs']] sql_server_profile: SQL Server database profile.
+               Structure is documented below.
         """
         ...
     @overload
@@ -934,6 +1026,59 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
+        ### Datastream Connection Profile Sql Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-4096",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ))
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
+                hostname=instance.public_ip_address,
+                port=1433,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        ```
 
         ## Import
 
@@ -986,6 +1131,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileSqlServerProfileArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1013,6 +1159,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["postgresql_profile"] = postgresql_profile
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
+            __props__.__dict__["sql_server_profile"] = sql_server_profile
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -1042,7 +1189,8 @@ class ConnectionProfile(pulumi.CustomResource):
             postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
             private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConnectionProfile':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            sql_server_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileSqlServerProfileArgs']]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1078,6 +1226,8 @@ class ConnectionProfile(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileSqlServerProfileArgs']] sql_server_profile: SQL Server database profile.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1098,6 +1248,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["private_connectivity"] = private_connectivity
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["sql_server_profile"] = sql_server_profile
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1232,4 +1383,13 @@ class ConnectionProfile(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileSqlServerProfile']]:
+        """
+        SQL Server database profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_profile")
 

@@ -754,7 +754,7 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  *     target: defaultRegionTargetHttpProxy.id,
  *     network: defaultNetwork.id,
- *     ipAddress: defaultAddress.id,
+ *     ipAddress: defaultAddress.address,
  *     networkTier: "STANDARD",
  * });
  * const fw1 = new gcp.compute.Firewall("fw1", {
@@ -1010,7 +1010,7 @@ import * as utilities from "../utilities";
  * const steering = new gcp.compute.ForwardingRule("steering", {
  *     name: "steering-rule",
  *     region: "us-central1",
- *     ipAddress: basic.selfLink,
+ *     ipAddress: basic.address,
  *     backendService: external.selfLink,
  *     loadBalancingScheme: "EXTERNAL",
  *     sourceIpRanges: [
@@ -1021,7 +1021,7 @@ import * as utilities from "../utilities";
  * const externalForwardingRule = new gcp.compute.ForwardingRule("external", {
  *     name: "external-forwarding-rule",
  *     region: "us-central1",
- *     ipAddress: basic.selfLink,
+ *     ipAddress: basic.address,
  *     backendService: external.selfLink,
  *     loadBalancingScheme: "EXTERNAL",
  * });

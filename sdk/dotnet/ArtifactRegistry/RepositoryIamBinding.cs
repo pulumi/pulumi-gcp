@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// &gt; **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_policy
+    /// ## gcp.artifactregistry.RepositoryIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_binding
+    /// ## gcp.artifactregistry.RepositoryIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_member
+    /// ## gcp.artifactregistry.RepositoryIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_policy
+    /// ## gcp.artifactregistry.RepositoryIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_binding
+    /// ## gcp.artifactregistry.RepositoryIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
-    /// ## google\_artifact\_registry\_repository\_iam\_member
+    /// ## gcp.artifactregistry.RepositoryIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

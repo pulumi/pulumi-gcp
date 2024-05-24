@@ -122,6 +122,46 @@ import (
 //
 // ```
 //
+// ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "no-age-enabled", &storage.BucketArgs{
+//				Name:         pulumi.String("no-age-enabled-bucket"),
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//				LifecycleRules: storage.BucketLifecycleRuleArray{
+//					&storage.BucketLifecycleRuleArgs{
+//						Action: &storage.BucketLifecycleRuleActionArgs{
+//							Type: pulumi.String("Delete"),
+//						},
+//						Condition: &storage.BucketLifecycleRuleConditionArgs{
+//							DaysSinceNoncurrentTime: pulumi.Int(3),
+//							NoAge:                   pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Enabling Public Access Prevention
 //
 // ```go

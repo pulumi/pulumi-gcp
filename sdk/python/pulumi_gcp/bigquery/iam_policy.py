@@ -187,7 +187,7 @@ class IamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
+        ## bigquery.IamPolicy
 
         ```python
         import pulumi
@@ -225,7 +225,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
+        ## bigquery.IamBinding
 
         ```python
         import pulumi
@@ -257,7 +257,7 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_bigquery\\_table\\_iam\\_member
+        ## bigquery.IamMember
 
         ```python
         import pulumi
@@ -290,7 +290,7 @@ class IamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
+        ## bigquery.IamPolicy
 
         ```python
         import pulumi
@@ -328,7 +328,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
+        ## bigquery.IamBinding
 
         ```python
         import pulumi
@@ -360,7 +360,7 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_bigquery\\_table\\_iam\\_member
+        ## bigquery.IamMember
 
         ```python
         import pulumi
@@ -461,7 +461,7 @@ class IamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
+        ## bigquery.IamPolicy
 
         ```python
         import pulumi
@@ -499,7 +499,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
+        ## bigquery.IamBinding
 
         ```python
         import pulumi
@@ -531,7 +531,7 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_bigquery\\_table\\_iam\\_member
+        ## bigquery.IamMember
 
         ```python
         import pulumi
@@ -564,7 +564,7 @@ class IamPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
+        ## bigquery.IamPolicy
 
         ```python
         import pulumi
@@ -602,7 +602,7 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
+        ## bigquery.IamBinding
 
         ```python
         import pulumi
@@ -634,7 +634,7 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_bigquery\\_table\\_iam\\_member
+        ## bigquery.IamMember
 
         ```python
         import pulumi

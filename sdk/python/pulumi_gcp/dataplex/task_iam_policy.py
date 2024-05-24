@@ -234,7 +234,7 @@ class TaskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.TaskIamBinding` resources **can be** used in conjunction with `dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_task\\_iam\\_policy
+        ## dataplex.TaskIamPolicy
 
         ```python
         import pulumi
@@ -252,7 +252,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_binding
+        ## dataplex.TaskIamBinding
 
         ```python
         import pulumi
@@ -267,7 +267,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_member
+        ## dataplex.TaskIamMember
 
         ```python
         import pulumi
@@ -282,7 +282,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_policy
+        ## dataplex.TaskIamPolicy
 
         ```python
         import pulumi
@@ -300,7 +300,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_binding
+        ## dataplex.TaskIamBinding
 
         ```python
         import pulumi
@@ -315,7 +315,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_member
+        ## dataplex.TaskIamMember
 
         ```python
         import pulumi
@@ -400,7 +400,7 @@ class TaskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.TaskIamBinding` resources **can be** used in conjunction with `dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_task\\_iam\\_policy
+        ## dataplex.TaskIamPolicy
 
         ```python
         import pulumi
@@ -418,7 +418,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_binding
+        ## dataplex.TaskIamBinding
 
         ```python
         import pulumi
@@ -433,7 +433,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_member
+        ## dataplex.TaskIamMember
 
         ```python
         import pulumi
@@ -448,7 +448,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_policy
+        ## dataplex.TaskIamPolicy
 
         ```python
         import pulumi
@@ -466,7 +466,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_binding
+        ## dataplex.TaskIamBinding
 
         ```python
         import pulumi
@@ -481,7 +481,7 @@ class TaskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_task\\_iam\\_member
+        ## dataplex.TaskIamMember
 
         ```python
         import pulumi

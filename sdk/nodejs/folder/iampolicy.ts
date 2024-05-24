@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
  *
- * ## google\_folder\_iam\_policy
+ * ## gcp.folder.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your folder
  *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_binding
+ * ## gcp.folder.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_member
+ * ## gcp.folder.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_audit\_config
+ * ## gcp.folder.IamAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,7 +151,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_policy
+ * ## gcp.folder.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your folder
  *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
@@ -200,7 +200,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_binding
+ * ## gcp.folder.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -231,7 +231,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_member
+ * ## gcp.folder.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -262,7 +262,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_folder\_iam\_audit\_config
+ * ## gcp.folder.IamAuditConfig
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

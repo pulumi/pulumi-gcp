@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_policy
+    /// ## gcp.iap.WebTypeAppEngingIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_binding
+    /// ## gcp.iap.WebTypeAppEngingIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_member
+    /// ## gcp.iap.WebTypeAppEngingIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.Iap
     /// });
     /// ```
     /// 
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_policy
+    /// ## gcp.iap.WebTypeAppEngingIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_binding
+    /// ## gcp.iap.WebTypeAppEngingIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
-    /// ## google\_iap\_web\_type\_app\_engine\_iam\_member
+    /// ## gcp.iap.WebTypeAppEngingIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

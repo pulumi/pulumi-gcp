@@ -156,7 +156,7 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -199,7 +199,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -228,7 +228,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -257,7 +257,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -277,7 +277,7 @@ class IAMPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -320,7 +320,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -349,7 +349,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -457,7 +457,7 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -500,7 +500,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -529,7 +529,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -558,7 +558,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi
@@ -578,7 +578,7 @@ class IAMPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## google\\_folder\\_iam\\_policy
+        ## folder.IAMPolicy
 
         !> **Be careful!** You can accidentally lock yourself out of your folder
            using this resource. Deleting a `folder.IAMPolicy` removes access
@@ -621,7 +621,7 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_folder\\_iam\\_binding
+        ## folder.IAMBinding
 
         ```python
         import pulumi
@@ -650,7 +650,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_member
+        ## folder.IAMMember
 
         ```python
         import pulumi
@@ -679,7 +679,7 @@ class IAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_folder\\_iam\\_audit\\_config
+        ## folder.IamAuditConfig
 
         ```python
         import pulumi

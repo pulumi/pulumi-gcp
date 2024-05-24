@@ -200,7 +200,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_database\\_iam\\_policy
+        ## spanner.DatabaseIAMPolicy
 
         ```python
         import pulumi
@@ -237,7 +237,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_binding
+        ## spanner.DatabaseIAMBinding
 
         ```python
         import pulumi
@@ -268,7 +268,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_member
+        ## spanner.DatabaseIAMMember
 
         ```python
         import pulumi
@@ -299,7 +299,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_policy
+        ## spanner.DatabaseIAMPolicy
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_binding
+        ## spanner.DatabaseIAMBinding
 
         ```python
         import pulumi
@@ -367,7 +367,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_member
+        ## spanner.DatabaseIAMMember
 
         ```python
         import pulumi
@@ -453,7 +453,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_database\\_iam\\_policy
+        ## spanner.DatabaseIAMPolicy
 
         ```python
         import pulumi
@@ -490,7 +490,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_binding
+        ## spanner.DatabaseIAMBinding
 
         ```python
         import pulumi
@@ -521,7 +521,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_member
+        ## spanner.DatabaseIAMMember
 
         ```python
         import pulumi
@@ -552,7 +552,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_policy
+        ## spanner.DatabaseIAMPolicy
 
         ```python
         import pulumi
@@ -589,7 +589,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_binding
+        ## spanner.DatabaseIAMBinding
 
         ```python
         import pulumi
@@ -620,7 +620,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_spanner\\_database\\_iam\\_member
+        ## spanner.DatabaseIAMMember
 
         ```python
         import pulumi

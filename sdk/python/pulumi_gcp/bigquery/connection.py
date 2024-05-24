@@ -24,6 +24,7 @@ class ConnectionArgs:
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input['ConnectionSparkArgs']] = None):
@@ -42,6 +43,8 @@ class ConnectionArgs:
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
+        :param pulumi.Input[str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
+               Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -70,6 +73,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -179,6 +184,19 @@ class ConnectionArgs:
         pulumi.set(self, "friendly_name", value)
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key that is used for encryption.
+        Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -235,6 +253,7 @@ class _ConnectionState:
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  has_credential: Optional[pulumi.Input[bool]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -255,6 +274,8 @@ class _ConnectionState:
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[bool] has_credential: True if the connection has credential assigned.
+        :param pulumi.Input[str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
+               Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -287,6 +308,8 @@ class _ConnectionState:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if has_credential is not None:
             pulumi.set(__self__, "has_credential", has_credential)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -410,6 +433,19 @@ class _ConnectionState:
         pulumi.set(self, "has_credential", value)
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key that is used for encryption.
+        Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -480,6 +516,7 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[pulumi.InputType['ConnectionSparkArgs']]] = None,
@@ -688,6 +725,42 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Bigquery Connection Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="tf-test-my-password_77884")
+        bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -728,6 +801,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
+        :param pulumi.Input[str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
+               Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -950,6 +1025,42 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Bigquery Connection Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="tf-test-my-password_77884")
+        bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -998,6 +1109,7 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[pulumi.InputType['ConnectionSparkArgs']]] = None,
@@ -1018,6 +1130,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["spark"] = spark
@@ -1042,6 +1155,7 @@ class Connection(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             has_credential: Optional[pulumi.Input[bool]] = None,
+            kms_key_name: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1067,6 +1181,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[bool] has_credential: True if the connection has credential assigned.
+        :param pulumi.Input[str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
+               Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -1094,6 +1210,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["has_credential"] = has_credential
+        __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -1176,6 +1293,15 @@ class Connection(pulumi.CustomResource):
         True if the connection has credential assigned.
         """
         return pulumi.get(self, "has_credential")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The Cloud KMS key that is used for encryption.
+        Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

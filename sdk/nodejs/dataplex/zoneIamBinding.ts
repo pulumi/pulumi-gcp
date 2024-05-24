@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.ZoneIamBinding` resources **can be** used in conjunction with `gcp.dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataplex\_zone\_iam\_policy
+ * ## gcp.dataplex.ZoneIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_zone\_iam\_binding
+ * ## gcp.dataplex.ZoneIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_zone\_iam\_member
+ * ## gcp.dataplex.ZoneIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_zone\_iam\_policy
+ * ## gcp.dataplex.ZoneIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_zone\_iam\_binding
+ * ## gcp.dataplex.ZoneIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataplex\_zone\_iam\_member
+ * ## gcp.dataplex.ZoneIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

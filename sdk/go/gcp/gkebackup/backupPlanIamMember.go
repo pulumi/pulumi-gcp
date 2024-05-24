@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_policy
+// ## gkebackup.BackupPlanIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_binding
+// ## gkebackup.BackupPlanIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_member
+// ## gkebackup.BackupPlanIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_policy
+// ## gkebackup.BackupPlanIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_binding
+// ## gkebackup.BackupPlanIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_gke\_backup\_backup\_plan\_iam\_member
+// ## gkebackup.BackupPlanIamMember
 //
 // ```go
 // package main

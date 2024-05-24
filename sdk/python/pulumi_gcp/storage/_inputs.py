@@ -448,16 +448,17 @@ class BucketLifecycleRuleConditionArgs:
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition.
+        :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
         :param pulumi.Input[str] created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         :param pulumi.Input[str] custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
-        :param pulumi.Input[int] days_since_custom_time: Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
-        :param pulumi.Input[int] days_since_noncurrent_time: Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        :param pulumi.Input[int] days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object.
+        :param pulumi.Input[int] days_since_noncurrent_time: Number of days elapsed since the noncurrent timestamp of an object. This
+               										condition is relevant only for versioned objects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_suffixes: One or more matching name suffixes to satisfy this condition.
-        :param pulumi.Input[bool] no_age: While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
-        :param pulumi.Input[str] noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        :param pulumi.Input[bool] no_age: While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
+        :param pulumi.Input[str] noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param pulumi.Input[str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
@@ -490,7 +491,7 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter
     def age(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum age of an object in days to satisfy this condition.
+        Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
         """
         return pulumi.get(self, "age")
 
@@ -526,7 +527,7 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter(name="daysSinceCustomTime")
     def days_since_custom_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
+        Number of days elapsed since the user-specified timestamp set on an object.
         """
         return pulumi.get(self, "days_since_custom_time")
 
@@ -538,7 +539,8 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter(name="daysSinceNoncurrentTime")
     def days_since_noncurrent_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        Number of days elapsed since the noncurrent timestamp of an object. This
+        										condition is relevant only for versioned objects.
         """
         return pulumi.get(self, "days_since_noncurrent_time")
 
@@ -586,7 +588,7 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter(name="noAge")
     def no_age(self) -> Optional[pulumi.Input[bool]]:
         """
-        While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         """
         return pulumi.get(self, "no_age")
 
@@ -598,7 +600,7 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> Optional[pulumi.Input[str]]:
         """
-        Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         """
         return pulumi.get(self, "noncurrent_time_before")
 

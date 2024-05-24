@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

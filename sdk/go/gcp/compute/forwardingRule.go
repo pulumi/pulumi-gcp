@@ -1157,7 +1157,7 @@ import (
 //				PortRange:           pulumi.String("80"),
 //				Target:              defaultRegionTargetHttpProxy.ID(),
 //				Network:             defaultNetwork.ID(),
-//				IpAddress:           defaultAddress.ID(),
+//				IpAddress:           defaultAddress.Address,
 //				NetworkTier:         pulumi.String("STANDARD"),
 //			})
 //			if err != nil {
@@ -1567,7 +1567,7 @@ import (
 //			_, err = compute.NewForwardingRule(ctx, "steering", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("steering-rule"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           basic.SelfLink,
+//				IpAddress:           basic.Address,
 //				BackendService:      external.SelfLink,
 //				LoadBalancingScheme: pulumi.String("EXTERNAL"),
 //				SourceIpRanges: pulumi.StringArray{
@@ -1581,7 +1581,7 @@ import (
 //			_, err = compute.NewForwardingRule(ctx, "external", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("external-forwarding-rule"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           basic.SelfLink,
+//				IpAddress:           basic.Address,
 //				BackendService:      external.SelfLink,
 //				LoadBalancingScheme: pulumi.String("EXTERNAL"),
 //			})

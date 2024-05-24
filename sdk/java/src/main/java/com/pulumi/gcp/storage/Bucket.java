@@ -154,6 +154,56 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+ * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var no_age_enabled = new Bucket("no-age-enabled", BucketArgs.builder()
+ *             .name("no-age-enabled-bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .action(BucketLifecycleRuleActionArgs.builder()
+ *                     .type("Delete")
+ *                     .build())
+ *                 .condition(BucketLifecycleRuleConditionArgs.builder()
+ *                     .daysSinceNoncurrentTime(3)
+ *                     .noAge(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enabling Public Access Prevention
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

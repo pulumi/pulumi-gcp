@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRuleMatchConfig;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRuleMatchExpr;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +20,12 @@ public final class RegionSecurityPolicyRuleMatch {
      * 
      */
     private @Nullable RegionSecurityPolicyRuleMatchConfig config;
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RegionSecurityPolicyRuleMatchExpr expr;
     /**
      * @return Preconfigured versioned expression. If this field is specified, config must also be specified.
      * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
@@ -36,6 +43,14 @@ public final class RegionSecurityPolicyRuleMatch {
      */
     public Optional<RegionSecurityPolicyRuleMatchConfig> config() {
         return Optional.ofNullable(this.config);
+    }
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RegionSecurityPolicyRuleMatchExpr> expr() {
+        return Optional.ofNullable(this.expr);
     }
     /**
      * @return Preconfigured versioned expression. If this field is specified, config must also be specified.
@@ -57,11 +72,13 @@ public final class RegionSecurityPolicyRuleMatch {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable RegionSecurityPolicyRuleMatchConfig config;
+        private @Nullable RegionSecurityPolicyRuleMatchExpr expr;
         private @Nullable String versionedExpr;
         public Builder() {}
         public Builder(RegionSecurityPolicyRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
+    	      this.expr = defaults.expr;
     	      this.versionedExpr = defaults.versionedExpr;
         }
 
@@ -69,6 +86,12 @@ public final class RegionSecurityPolicyRuleMatch {
         public Builder config(@Nullable RegionSecurityPolicyRuleMatchConfig config) {
 
             this.config = config;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expr(@Nullable RegionSecurityPolicyRuleMatchExpr expr) {
+
+            this.expr = expr;
             return this;
         }
         @CustomType.Setter
@@ -80,6 +103,7 @@ public final class RegionSecurityPolicyRuleMatch {
         public RegionSecurityPolicyRuleMatch build() {
             final var _resultValue = new RegionSecurityPolicyRuleMatch();
             _resultValue.config = config;
+            _resultValue.expr = expr;
             _resultValue.versionedExpr = versionedExpr;
             return _resultValue;
         }

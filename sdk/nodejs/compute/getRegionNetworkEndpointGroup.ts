@@ -55,7 +55,7 @@ export interface GetRegionNetworkEndpointGroupArgs {
      */
     region?: string;
     /**
-     * The Network Endpoint Group self\_link.
+     * The Network Endpoint Group self_link.
      */
     selfLink?: string;
 }
@@ -138,7 +138,7 @@ export interface GetRegionNetworkEndpointGroupOutputArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The Network Endpoint Group self\_link.
+     * The Network Endpoint Group self_link.
      */
     selfLink?: pulumi.Input<string>;
 }

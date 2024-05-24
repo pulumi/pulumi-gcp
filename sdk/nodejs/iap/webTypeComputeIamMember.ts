@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
- * ## google\_iap\_web\_type\_compute\_iam\_policy
+ * ## gcp.iap.WebTypeComputeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_iap\_web\_type\_compute\_iam\_binding
+ * ## gcp.iap.WebTypeComputeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_iap\_web\_type\_compute\_iam\_member
+ * ## gcp.iap.WebTypeComputeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,7 +124,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_iap\_web\_type\_compute\_iam\_policy
+ * ## gcp.iap.WebTypeComputeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -164,7 +164,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ## google\_iap\_web\_type\_compute\_iam\_binding
+ * ## gcp.iap.WebTypeComputeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -194,7 +194,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## google\_iap\_web\_type\_compute\_iam\_member
+ * ## gcp.iap.WebTypeComputeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

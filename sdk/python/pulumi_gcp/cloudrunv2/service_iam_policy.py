@@ -203,7 +203,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+        ## cloudrunv2.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -220,7 +220,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+        ## cloudrunv2.ServiceIamBinding
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+        ## cloudrunv2.ServiceIamMember
 
         ```python
         import pulumi
@@ -248,7 +248,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+        ## cloudrunv2.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -265,7 +265,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+        ## cloudrunv2.ServiceIamBinding
 
         ```python
         import pulumi
@@ -279,7 +279,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+        ## cloudrunv2.ServiceIamMember
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+        ## cloudrunv2.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+        ## cloudrunv2.ServiceIamBinding
 
         ```python
         import pulumi
@@ -392,7 +392,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+        ## cloudrunv2.ServiceIamMember
 
         ```python
         import pulumi
@@ -406,7 +406,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+        ## cloudrunv2.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -423,7 +423,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+        ## cloudrunv2.ServiceIamBinding
 
         ```python
         import pulumi
@@ -437,7 +437,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+        ## cloudrunv2.ServiceIamMember
 
         ```python
         import pulumi

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.SecretManager
         /// Retrieves the current IAM policy data for secret
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Retrieves the current IAM policy data for secret
-        /// 
         /// 
         /// 
         /// ## example

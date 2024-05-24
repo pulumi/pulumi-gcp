@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_policy
+    /// ## gcp.pubsub.SubscriptionIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_binding
+    /// ## gcp.pubsub.SubscriptionIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_member
+    /// ## gcp.pubsub.SubscriptionIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_policy
+    /// ## gcp.pubsub.SubscriptionIAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_binding
+    /// ## gcp.pubsub.SubscriptionIAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## google\_pubsub\_subscription\_iam\_member
+    /// ## gcp.pubsub.SubscriptionIAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

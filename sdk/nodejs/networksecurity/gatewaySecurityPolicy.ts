@@ -89,11 +89,11 @@ import * as utilities from "../utilities";
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
  * });
- * const nsSa = new gcp.projects.ServiceIdentity("ns_sa", {service: "networksecurity.googleapis.com"});
+ * const project = gcp.organizations.getProject({});
  * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission", {
  *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
- *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com`),
  * });
  * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("default", {
  *     name: "my-tls-inspection-policy",

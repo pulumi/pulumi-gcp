@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// &gt; **Note:** `gcp.datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_policy
+    /// ## gcp.datacatalog.TaxonomyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_binding
+    /// ## gcp.datacatalog.TaxonomyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_member
+    /// ## gcp.datacatalog.TaxonomyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_policy
+    /// ## gcp.datacatalog.TaxonomyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_binding
+    /// ## gcp.datacatalog.TaxonomyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## google\_data\_catalog\_taxonomy\_iam\_member
+    /// ## gcp.datacatalog.TaxonomyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

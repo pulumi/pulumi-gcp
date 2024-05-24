@@ -27,6 +27,11 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
      */
     private @Nullable String bootDiskType;
     /**
+     * @return Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    private @Nullable String localSsdInterface;
+    /**
      * @return The amount of local SSD disks that will be
      * attached to each preemptible worker node. Defaults to 0.
      * 
@@ -53,6 +58,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         return Optional.ofNullable(this.bootDiskType);
     }
     /**
+     * @return Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    public Optional<String> localSsdInterface() {
+        return Optional.ofNullable(this.localSsdInterface);
+    }
+    /**
      * @return The amount of local SSD disks that will be
      * attached to each preemptible worker node. Defaults to 0.
      * 
@@ -72,12 +84,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
     public static final class Builder {
         private @Nullable Integer bootDiskSizeGb;
         private @Nullable String bootDiskType;
+        private @Nullable String localSsdInterface;
         private @Nullable Integer numLocalSsds;
         public Builder() {}
         public Builder(ClusterClusterConfigPreemptibleWorkerConfigDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
     	      this.bootDiskType = defaults.bootDiskType;
+    	      this.localSsdInterface = defaults.localSsdInterface;
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
@@ -94,6 +108,12 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder localSsdInterface(@Nullable String localSsdInterface) {
+
+            this.localSsdInterface = localSsdInterface;
+            return this;
+        }
+        @CustomType.Setter
         public Builder numLocalSsds(@Nullable Integer numLocalSsds) {
 
             this.numLocalSsds = numLocalSsds;
@@ -103,6 +123,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
             final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigDiskConfig();
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;
             _resultValue.bootDiskType = bootDiskType;
+            _resultValue.localSsdInterface = localSsdInterface;
             _resultValue.numLocalSsds = numLocalSsds;
             return _resultValue;
         }

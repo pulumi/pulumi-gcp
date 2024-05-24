@@ -25,7 +25,7 @@ import (
 //
 // > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_spanner\_database\_iam\_policy
+// ## spanner.DatabaseIAMPolicy
 //
 // ```go
 // package main
@@ -114,7 +114,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_database\_iam\_binding
+// ## spanner.DatabaseIAMBinding
 //
 // ```go
 // package main
@@ -181,7 +181,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_database\_iam\_member
+// ## spanner.DatabaseIAMMember
 //
 // ```go
 // package main
@@ -244,7 +244,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_database\_iam\_policy
+// ## spanner.DatabaseIAMPolicy
 //
 // ```go
 // package main
@@ -333,7 +333,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_database\_iam\_binding
+// ## spanner.DatabaseIAMBinding
 //
 // ```go
 // package main
@@ -400,7 +400,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_database\_iam\_member
+// ## spanner.DatabaseIAMMember
 //
 // ```go
 // package main

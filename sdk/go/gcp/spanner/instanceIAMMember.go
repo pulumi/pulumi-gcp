@@ -25,7 +25,7 @@ import (
 //
 // > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_spanner\_instance\_iam\_policy
+// ## spanner.InstanceIAMPolicy
 //
 // ```go
 // package main
@@ -66,7 +66,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_instance\_iam\_binding
+// ## spanner.InstanceIAMBinding
 //
 // ```go
 // package main
@@ -96,7 +96,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_instance\_iam\_member
+// ## spanner.InstanceIAMMember
 //
 // ```go
 // package main
@@ -124,7 +124,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_instance\_iam\_policy
+// ## spanner.InstanceIAMPolicy
 //
 // ```go
 // package main
@@ -165,7 +165,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_instance\_iam\_binding
+// ## spanner.InstanceIAMBinding
 //
 // ```go
 // package main
@@ -195,7 +195,7 @@ import (
 //
 // ```
 //
-// ## google\_spanner\_instance\_iam\_member
+// ## spanner.InstanceIAMMember
 //
 // ```go
 // package main

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_cloudfunctions\_function\_iam\_policy
+ * ## gcp.cloudfunctions.FunctionIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudfunctions\_function\_iam\_binding
+ * ## gcp.cloudfunctions.FunctionIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudfunctions\_function\_iam\_member
+ * ## gcp.cloudfunctions.FunctionIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudfunctions\_function\_iam\_policy
+ * ## gcp.cloudfunctions.FunctionIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudfunctions\_function\_iam\_binding
+ * ## gcp.cloudfunctions.FunctionIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_cloudfunctions\_function\_iam\_member
+ * ## gcp.cloudfunctions.FunctionIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

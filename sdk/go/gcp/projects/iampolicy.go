@@ -27,7 +27,7 @@ import (
 //
 //	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -123,7 +123,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -188,7 +188,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -249,7 +249,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main
@@ -287,7 +287,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_policy
+// ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
@@ -383,7 +383,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_binding
+// ## projects.IAMBinding
 //
 // ```go
 // package main
@@ -448,7 +448,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_member
+// ## projects.IAMMember
 //
 // ```go
 // package main
@@ -509,7 +509,7 @@ import (
 //
 // ```
 //
-// ## google\_project\_iam\_audit\_config
+// ## projects.IAMAuditConfig
 //
 // ```go
 // package main

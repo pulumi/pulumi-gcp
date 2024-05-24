@@ -28,7 +28,7 @@ import (
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
-// ## google\_compute\_image\_iam\_policy
+// ## compute.ImageIamPolicy
 //
 // ```go
 // package main
@@ -116,7 +116,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_image\_iam\_binding
+// ## compute.ImageIamBinding
 //
 // ```go
 // package main
@@ -182,7 +182,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_image\_iam\_member
+// ## compute.ImageIamMember
 //
 // ```go
 // package main
@@ -245,7 +245,7 @@ import (
 //
 // ```
 //
-// ## google\_compute\_image\_iam\_policy
+// ## compute.ImageIamPolicy
 //
 // ```go
 // package main
@@ -333,7 +333,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_image\_iam\_binding
+// ## compute.ImageIamBinding
 //
 // ```go
 // package main
@@ -399,7 +399,7 @@ import (
 //	}
 //
 // ```
-// ## google\_compute\_image\_iam\_member
+// ## compute.ImageIamMember
 //
 // ```go
 // package main

@@ -306,7 +306,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
 
         > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+        ## cloudbuildv2.ConnectionIAMPolicy
 
         ```python
         import pulumi
@@ -323,7 +323,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+        ## cloudbuildv2.ConnectionIAMBinding
 
         ```python
         import pulumi
@@ -337,7 +337,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+        ## cloudbuildv2.ConnectionIAMMember
 
         ```python
         import pulumi
@@ -351,7 +351,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+        ## cloudbuildv2.ConnectionIAMPolicy
 
         ```python
         import pulumi
@@ -368,7 +368,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+        ## cloudbuildv2.ConnectionIAMBinding
 
         ```python
         import pulumi
@@ -382,7 +382,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+        ## cloudbuildv2.ConnectionIAMMember
 
         ```python
         import pulumi
@@ -476,7 +476,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
 
         > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+        ## cloudbuildv2.ConnectionIAMPolicy
 
         ```python
         import pulumi
@@ -493,7 +493,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+        ## cloudbuildv2.ConnectionIAMBinding
 
         ```python
         import pulumi
@@ -507,7 +507,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+        ## cloudbuildv2.ConnectionIAMMember
 
         ```python
         import pulumi
@@ -521,7 +521,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+        ## cloudbuildv2.ConnectionIAMPolicy
 
         ```python
         import pulumi
@@ -538,7 +538,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+        ## cloudbuildv2.ConnectionIAMBinding
 
         ```python
         import pulumi
@@ -552,7 +552,7 @@ class ConnectionIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+        ## cloudbuildv2.ConnectionIAMMember
 
         ```python
         import pulumi

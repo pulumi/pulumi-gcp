@@ -108,6 +108,7 @@ from .instance_iam_member import *
 from .instance_iam_policy import *
 from .instance_settings import *
 from .instance_template import *
+from .interconnect import *
 from .interconnect_attachment import *
 from .machine_image import *
 from .machine_image_iam_binding import *

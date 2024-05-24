@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// &gt; **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_policy
+    /// ## gcp.healthcare.DicomStoreIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_binding
+    /// ## gcp.healthcare.DicomStoreIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_member
+    /// ## gcp.healthcare.DicomStoreIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_policy
+    /// ## gcp.healthcare.DicomStoreIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_binding
+    /// ## gcp.healthcare.DicomStoreIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## google\_healthcare\_dicom\_store\_iam\_member
+    /// ## gcp.healthcare.DicomStoreIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

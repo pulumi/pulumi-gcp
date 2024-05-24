@@ -207,7 +207,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+        ## gkebackup.BackupPlanIamPolicy
 
         ```python
         import pulumi
@@ -224,7 +224,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+        ## gkebackup.BackupPlanIamBinding
 
         ```python
         import pulumi
@@ -238,7 +238,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+        ## gkebackup.BackupPlanIamMember
 
         ```python
         import pulumi
@@ -252,7 +252,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+        ## gkebackup.BackupPlanIamPolicy
 
         ```python
         import pulumi
@@ -269,7 +269,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+        ## gkebackup.BackupPlanIamBinding
 
         ```python
         import pulumi
@@ -283,7 +283,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+        ## gkebackup.BackupPlanIamMember
 
         ```python
         import pulumi
@@ -366,7 +366,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+        ## gkebackup.BackupPlanIamPolicy
 
         ```python
         import pulumi
@@ -383,7 +383,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+        ## gkebackup.BackupPlanIamBinding
 
         ```python
         import pulumi
@@ -397,7 +397,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+        ## gkebackup.BackupPlanIamMember
 
         ```python
         import pulumi
@@ -411,7 +411,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+        ## gkebackup.BackupPlanIamPolicy
 
         ```python
         import pulumi
@@ -428,7 +428,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+        ## gkebackup.BackupPlanIamBinding
 
         ```python
         import pulumi
@@ -442,7 +442,7 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+        ## gkebackup.BackupPlanIamMember
 
         ```python
         import pulumi

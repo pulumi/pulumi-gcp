@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_cloud\_tasks\_queue\_iam\_policy
+// ## cloudtasks.QueueIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_tasks\_queue\_iam\_binding
+// ## cloudtasks.QueueIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_tasks\_queue\_iam\_member
+// ## cloudtasks.QueueIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_tasks\_queue\_iam\_policy
+// ## cloudtasks.QueueIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_tasks\_queue\_iam\_binding
+// ## cloudtasks.QueueIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_cloud\_tasks\_queue\_iam\_member
+// ## cloudtasks.QueueIamMember
 //
 // ```go
 // package main

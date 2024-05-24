@@ -196,7 +196,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_policy
+        ## iap.TunnelInstanceIAMPolicy
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
+        ## iap.TunnelInstanceIAMBinding
 
         ```python
         import pulumi
@@ -266,7 +266,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_member
+        ## iap.TunnelInstanceIAMMember
 
         ```python
         import pulumi
@@ -299,7 +299,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_policy
+        ## iap.TunnelInstanceIAMPolicy
 
         ```python
         import pulumi
@@ -337,7 +337,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
+        ## iap.TunnelInstanceIAMBinding
 
         ```python
         import pulumi
@@ -369,7 +369,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_member
+        ## iap.TunnelInstanceIAMMember
 
         ```python
         import pulumi
@@ -473,7 +473,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_policy
+        ## iap.TunnelInstanceIAMPolicy
 
         ```python
         import pulumi
@@ -511,7 +511,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
+        ## iap.TunnelInstanceIAMBinding
 
         ```python
         import pulumi
@@ -543,7 +543,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_member
+        ## iap.TunnelInstanceIAMMember
 
         ```python
         import pulumi
@@ -576,7 +576,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_policy
+        ## iap.TunnelInstanceIAMPolicy
 
         ```python
         import pulumi
@@ -614,7 +614,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
+        ## iap.TunnelInstanceIAMBinding
 
         ```python
         import pulumi
@@ -646,7 +646,7 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_instance\\_iam\\_member
+        ## iap.TunnelInstanceIAMMember
 
         ```python
         import pulumi

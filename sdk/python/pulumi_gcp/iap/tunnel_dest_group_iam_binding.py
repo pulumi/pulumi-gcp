@@ -323,7 +323,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_policy
+        ## iap.TunnelDestGroupIamPolicy
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_binding
+        ## iap.TunnelDestGroupIamBinding
 
         ```python
         import pulumi
@@ -393,7 +393,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_member
+        ## iap.TunnelDestGroupIamMember
 
         ```python
         import pulumi
@@ -426,7 +426,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_policy
+        ## iap.TunnelDestGroupIamPolicy
 
         ```python
         import pulumi
@@ -464,7 +464,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_binding
+        ## iap.TunnelDestGroupIamBinding
 
         ```python
         import pulumi
@@ -496,7 +496,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_member
+        ## iap.TunnelDestGroupIamMember
 
         ```python
         import pulumi
@@ -617,7 +617,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_policy
+        ## iap.TunnelDestGroupIamPolicy
 
         ```python
         import pulumi
@@ -655,7 +655,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_binding
+        ## iap.TunnelDestGroupIamBinding
 
         ```python
         import pulumi
@@ -687,7 +687,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_member
+        ## iap.TunnelDestGroupIamMember
 
         ```python
         import pulumi
@@ -720,7 +720,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_policy
+        ## iap.TunnelDestGroupIamPolicy
 
         ```python
         import pulumi
@@ -758,7 +758,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_binding
+        ## iap.TunnelDestGroupIamBinding
 
         ```python
         import pulumi
@@ -790,7 +790,7 @@ class TunnelDestGroupIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_iap\\_tunnel\\_dest\\_group\\_iam\\_member
+        ## iap.TunnelDestGroupIamMember
 
         ```python
         import pulumi

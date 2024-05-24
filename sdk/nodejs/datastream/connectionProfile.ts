@@ -194,6 +194,63 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Connection Profile Sql Server
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "sql-server",
+ *     databaseVersion: "SQLSERVER_2019_STANDARD",
+ *     region: "us-central1",
+ *     rootPassword: "root-password",
+ *     deletionProtection: true,
+ *     settings: {
+ *         tier: "db-custom-2-4096",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     name: "db",
+ *     instance: instance.name,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     password: "password",
+ * });
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "SQL Server Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     sqlServerProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         port: 1433,
+ *         username: user.name,
+ *         password: user.password,
+ *         database: db.name,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -320,6 +377,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * SQL Server database profile.
+     * Structure is documented below.
+     */
+    public readonly sqlServerProfile!: pulumi.Output<outputs.datastream.ConnectionProfileSqlServerProfile | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -349,6 +411,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["privateConnectivity"] = state ? state.privateConnectivity : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["sqlServerProfile"] = state ? state.sqlServerProfile : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
@@ -372,6 +435,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
             resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sqlServerProfile"] = args ? args.sqlServerProfile : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -460,6 +524,11 @@ export interface ConnectionProfileState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * SQL Server database profile.
+     * Structure is documented below.
+     */
+    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile>;
 }
 
 /**
@@ -526,4 +595,9 @@ export interface ConnectionProfileArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * SQL Server database profile.
+     * Structure is documented below.
+     */
+    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile>;
 }

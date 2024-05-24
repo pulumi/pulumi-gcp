@@ -202,7 +202,7 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
     :param str name: The Network Endpoint Group name. Provide either this or a `self_link`.
     :param str project: The ID of the project to list versions in. If it is not provided, the provider project is used.
     :param str region: A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
-    :param str self_link: The Network Endpoint Group self\\_link.
+    :param str self_link: The Network Endpoint Group self_link.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -255,6 +255,6 @@ def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optiona
     :param str name: The Network Endpoint Group name. Provide either this or a `self_link`.
     :param str project: The ID of the project to list versions in. If it is not provided, the provider project is used.
     :param str region: A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
-    :param str self_link: The Network Endpoint Group self\\_link.
+    :param str self_link: The Network Endpoint Group self_link.
     """
     ...

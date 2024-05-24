@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         /// </summary>
         public readonly string SourceConnectionProfile;
+        /// <summary>
+        /// SQL Server data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigSqlServerSourceConfig? SqlServerSourceConfig;
 
         [OutputConstructor]
         private StreamSourceConfig(
@@ -41,12 +46,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamSourceConfigPostgresqlSourceConfig? postgresqlSourceConfig,
 
-            string sourceConnectionProfile)
+            string sourceConnectionProfile,
+
+            Outputs.StreamSourceConfigSqlServerSourceConfig? sqlServerSourceConfig)
         {
             MysqlSourceConfig = mysqlSourceConfig;
             OracleSourceConfig = oracleSourceConfig;
             PostgresqlSourceConfig = postgresqlSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
+            SqlServerSourceConfig = sqlServerSourceConfig;
         }
     }
 }

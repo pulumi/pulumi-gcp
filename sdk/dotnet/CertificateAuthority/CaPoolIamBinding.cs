@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
-    /// ## google\_privateca\_ca\_pool\_iam\_policy
+    /// ## gcp.certificateauthority.CaPoolIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_ca\_pool\_iam\_binding
+    /// ## gcp.certificateauthority.CaPoolIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_ca\_pool\_iam\_member
+    /// ## gcp.certificateauthority.CaPoolIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// });
     /// ```
     /// 
-    /// ## google\_privateca\_ca\_pool\_iam\_policy
+    /// ## gcp.certificateauthority.CaPoolIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_ca\_pool\_iam\_binding
+    /// ## gcp.certificateauthority.CaPoolIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ## google\_privateca\_ca\_pool\_iam\_member
+    /// ## gcp.certificateauthority.CaPoolIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

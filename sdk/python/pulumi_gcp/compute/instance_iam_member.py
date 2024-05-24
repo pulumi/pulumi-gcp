@@ -327,7 +327,7 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_instance\\_iam\\_policy
+        ## compute.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -365,7 +365,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_instance\\_iam\\_binding
+        ## compute.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -397,7 +397,7 @@ class InstanceIAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_instance\\_iam\\_member
+        ## compute.InstanceIAMMember
 
         ```python
         import pulumi
@@ -430,7 +430,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_instance\\_iam\\_policy
+        ## compute.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -468,7 +468,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_instance\\_iam\\_binding
+        ## compute.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -500,7 +500,7 @@ class InstanceIAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_instance\\_iam\\_member
+        ## compute.InstanceIAMMember
 
         ```python
         import pulumi
@@ -619,7 +619,7 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_instance\\_iam\\_policy
+        ## compute.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -657,7 +657,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_instance\\_iam\\_binding
+        ## compute.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -689,7 +689,7 @@ class InstanceIAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_instance\\_iam\\_member
+        ## compute.InstanceIAMMember
 
         ```python
         import pulumi
@@ -722,7 +722,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_compute\\_instance\\_iam\\_policy
+        ## compute.InstanceIAMPolicy
 
         ```python
         import pulumi
@@ -760,7 +760,7 @@ class InstanceIAMMember(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_compute\\_instance\\_iam\\_binding
+        ## compute.InstanceIAMBinding
 
         ```python
         import pulumi
@@ -792,7 +792,7 @@ class InstanceIAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_compute\\_instance\\_iam\\_member
+        ## compute.InstanceIAMMember
 
         ```python
         import pulumi

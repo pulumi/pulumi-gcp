@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// });
     /// ```
     /// 
-    /// ## google\_api\_gateway\_gateway\_iam\_binding
+    /// ## gcp.apigateway.GatewayIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// });
     /// ```
     /// 
-    /// ## google\_api\_gateway\_gateway\_iam\_member
+    /// ## gcp.apigateway.GatewayIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// });
     /// ```
     /// 
-    /// ## google\_api\_gateway\_gateway\_iam\_binding
+    /// ## gcp.apigateway.GatewayIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// });
     /// ```
     /// 
-    /// ## google\_api\_gateway\_gateway\_iam\_member
+    /// ## gcp.apigateway.GatewayIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

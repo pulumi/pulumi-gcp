@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         private InputList<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternGetArgs>? _patterns;
 
         /// <summary>
-        /// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        /// A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternGetArgs> Patterns

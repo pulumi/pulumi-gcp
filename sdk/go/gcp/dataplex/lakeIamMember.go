@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataplex\_lake\_iam\_policy
+// ## dataplex.LakeIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_lake\_iam\_binding
+// ## dataplex.LakeIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_lake\_iam\_member
+// ## dataplex.LakeIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_lake\_iam\_policy
+// ## dataplex.LakeIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_lake\_iam\_binding
+// ## dataplex.LakeIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_lake\_iam\_member
+// ## dataplex.LakeIamMember
 //
 // ```go
 // package main

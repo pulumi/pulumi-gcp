@@ -301,7 +301,7 @@ class DatascanIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataplex.DatascanIamBinding` resources **can be** used in conjunction with `dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
+        ## dataplex.DatascanIamPolicy
 
         ```python
         import pulumi
@@ -318,7 +318,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
+        ## dataplex.DatascanIamBinding
 
         ```python
         import pulumi
@@ -332,7 +332,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_member
+        ## dataplex.DatascanIamMember
 
         ```python
         import pulumi
@@ -346,7 +346,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
+        ## dataplex.DatascanIamPolicy
 
         ```python
         import pulumi
@@ -363,7 +363,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
+        ## dataplex.DatascanIamBinding
 
         ```python
         import pulumi
@@ -377,7 +377,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_member
+        ## dataplex.DatascanIamMember
 
         ```python
         import pulumi
@@ -471,7 +471,7 @@ class DatascanIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataplex.DatascanIamBinding` resources **can be** used in conjunction with `dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
+        ## dataplex.DatascanIamPolicy
 
         ```python
         import pulumi
@@ -488,7 +488,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
+        ## dataplex.DatascanIamBinding
 
         ```python
         import pulumi
@@ -502,7 +502,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_member
+        ## dataplex.DatascanIamMember
 
         ```python
         import pulumi
@@ -516,7 +516,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
+        ## dataplex.DatascanIamPolicy
 
         ```python
         import pulumi
@@ -533,7 +533,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
+        ## dataplex.DatascanIamBinding
 
         ```python
         import pulumi
@@ -547,7 +547,7 @@ class DatascanIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_dataplex\\_datascan\\_iam\\_member
+        ## dataplex.DatascanIamMember
 
         ```python
         import pulumi

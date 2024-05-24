@@ -305,7 +305,7 @@ class RuntimeIamMember(pulumi.CustomResource):
 
         > **Note:** `notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
+        ## notebooks.RuntimeIamPolicy
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
+        ## notebooks.RuntimeIamBinding
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_member
+        ## notebooks.RuntimeIamMember
 
         ```python
         import pulumi
@@ -350,7 +350,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
+        ## notebooks.RuntimeIamPolicy
 
         ```python
         import pulumi
@@ -367,7 +367,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
+        ## notebooks.RuntimeIamBinding
 
         ```python
         import pulumi
@@ -381,7 +381,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_member
+        ## notebooks.RuntimeIamMember
 
         ```python
         import pulumi
@@ -475,7 +475,7 @@ class RuntimeIamMember(pulumi.CustomResource):
 
         > **Note:** `notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
+        ## notebooks.RuntimeIamPolicy
 
         ```python
         import pulumi
@@ -492,7 +492,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
+        ## notebooks.RuntimeIamBinding
 
         ```python
         import pulumi
@@ -506,7 +506,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_member
+        ## notebooks.RuntimeIamMember
 
         ```python
         import pulumi
@@ -520,7 +520,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
+        ## notebooks.RuntimeIamPolicy
 
         ```python
         import pulumi
@@ -537,7 +537,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
+        ## notebooks.RuntimeIamBinding
 
         ```python
         import pulumi
@@ -551,7 +551,7 @@ class RuntimeIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_notebooks\\_runtime\\_iam\\_member
+        ## notebooks.RuntimeIamMember
 
         ```python
         import pulumi

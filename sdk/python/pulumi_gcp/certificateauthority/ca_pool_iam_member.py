@@ -327,7 +327,7 @@ class CaPoolIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+        ## certificateauthority.CaPoolIamPolicy
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+        ## certificateauthority.CaPoolIamBinding
 
         ```python
         import pulumi
@@ -389,7 +389,7 @@ class CaPoolIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+        ## certificateauthority.CaPoolIamMember
 
         ```python
         import pulumi
@@ -418,7 +418,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+        ## certificateauthority.CaPoolIamPolicy
 
         ```python
         import pulumi
@@ -452,7 +452,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+        ## certificateauthority.CaPoolIamBinding
 
         ```python
         import pulumi
@@ -480,7 +480,7 @@ class CaPoolIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+        ## certificateauthority.CaPoolIamMember
 
         ```python
         import pulumi
@@ -593,7 +593,7 @@ class CaPoolIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+        ## certificateauthority.CaPoolIamPolicy
 
         ```python
         import pulumi
@@ -627,7 +627,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+        ## certificateauthority.CaPoolIamBinding
 
         ```python
         import pulumi
@@ -655,7 +655,7 @@ class CaPoolIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+        ## certificateauthority.CaPoolIamMember
 
         ```python
         import pulumi
@@ -684,7 +684,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ))
         ```
 
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+        ## certificateauthority.CaPoolIamPolicy
 
         ```python
         import pulumi
@@ -718,7 +718,7 @@ class CaPoolIamMember(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+        ## certificateauthority.CaPoolIamBinding
 
         ```python
         import pulumi
@@ -746,7 +746,7 @@ class CaPoolIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+        ## certificateauthority.CaPoolIamMember
 
         ```python
         import pulumi

@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `dataplex.ZoneIamBinding` resources **can be** used in conjunction with `dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_dataplex\_zone\_iam\_policy
+// ## dataplex.ZoneIamPolicy
 //
 // ```go
 // package main
@@ -70,7 +70,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_zone\_iam\_binding
+// ## dataplex.ZoneIamBinding
 //
 // ```go
 // package main
@@ -103,7 +103,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_zone\_iam\_member
+// ## dataplex.ZoneIamMember
 //
 // ```go
 // package main
@@ -134,7 +134,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_zone\_iam\_policy
+// ## dataplex.ZoneIamPolicy
 //
 // ```go
 // package main
@@ -178,7 +178,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_zone\_iam\_binding
+// ## dataplex.ZoneIamBinding
 //
 // ```go
 // package main
@@ -211,7 +211,7 @@ import (
 //
 // ```
 //
-// ## google\_dataplex\_zone\_iam\_member
+// ## dataplex.ZoneIamMember
 //
 // ```go
 // package main

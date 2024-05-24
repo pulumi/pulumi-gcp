@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
- * ## google\_iap\_tunnel\_instance\_iam\_policy
+ * ## gcp.iap.TunnelInstanceIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_iap\_tunnel\_instance\_iam\_binding
+ * ## gcp.iap.TunnelInstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -214,7 +214,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_iap\_tunnel\_instance\_iam\_member
+ * ## gcp.iap.TunnelInstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -298,7 +298,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_iap\_tunnel\_instance\_iam\_policy
+ * ## gcp.iap.TunnelInstanceIAMPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -396,7 +396,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_iap\_tunnel\_instance\_iam\_binding
+ * ## gcp.iap.TunnelInstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -479,7 +479,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_iap\_tunnel\_instance\_iam\_member
+ * ## gcp.iap.TunnelInstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

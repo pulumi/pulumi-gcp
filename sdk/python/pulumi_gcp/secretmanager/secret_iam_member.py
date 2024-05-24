@@ -264,7 +264,7 @@ class SecretIamMember(pulumi.CustomResource):
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
+        ## secretmanager.SecretIamPolicy
 
         ```python
         import pulumi
@@ -280,7 +280,7 @@ class SecretIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
+        ## secretmanager.SecretIamBinding
 
         ```python
         import pulumi
@@ -293,7 +293,7 @@ class SecretIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
+        ## secretmanager.SecretIamMember
 
         ```python
         import pulumi
@@ -306,7 +306,7 @@ class SecretIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
+        ## secretmanager.SecretIamPolicy
 
         ```python
         import pulumi
@@ -322,7 +322,7 @@ class SecretIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
+        ## secretmanager.SecretIamBinding
 
         ```python
         import pulumi
@@ -335,7 +335,7 @@ class SecretIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
+        ## secretmanager.SecretIamMember
 
         ```python
         import pulumi
@@ -424,7 +424,7 @@ class SecretIamMember(pulumi.CustomResource):
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
+        ## secretmanager.SecretIamPolicy
 
         ```python
         import pulumi
@@ -440,7 +440,7 @@ class SecretIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
+        ## secretmanager.SecretIamBinding
 
         ```python
         import pulumi
@@ -453,7 +453,7 @@ class SecretIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
+        ## secretmanager.SecretIamMember
 
         ```python
         import pulumi
@@ -466,7 +466,7 @@ class SecretIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
+        ## secretmanager.SecretIamPolicy
 
         ```python
         import pulumi
@@ -482,7 +482,7 @@ class SecretIamMember(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
+        ## secretmanager.SecretIamBinding
 
         ```python
         import pulumi
@@ -495,7 +495,7 @@ class SecretIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
+        ## secretmanager.SecretIamMember
 
         ```python
         import pulumi

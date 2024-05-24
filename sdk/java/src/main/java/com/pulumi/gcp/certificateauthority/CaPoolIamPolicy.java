@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
- * ## google\_privateca\_ca\_pool\_iam\_policy
+ * ## gcp.certificateauthority.CaPoolIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_privateca\_ca\_pool\_iam\_binding
+ * ## gcp.certificateauthority.CaPoolIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_privateca\_ca\_pool\_iam\_member
+ * ## gcp.certificateauthority.CaPoolIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -283,7 +283,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_privateca\_ca\_pool\_iam\_policy
+ * ## gcp.certificateauthority.CaPoolIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_privateca\_ca\_pool\_iam\_binding
+ * ## gcp.certificateauthority.CaPoolIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -456,7 +456,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_privateca\_ca\_pool\_iam\_member
+ * ## gcp.certificateauthority.CaPoolIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

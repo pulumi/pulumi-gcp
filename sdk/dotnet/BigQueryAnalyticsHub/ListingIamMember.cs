@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// &gt; **Note:** `gcp.bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
+    /// ## gcp.bigqueryanalyticshub.ListingIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
+    /// ## gcp.bigqueryanalyticshub.ListingIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
+    /// ## gcp.bigqueryanalyticshub.ListingIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
+    /// ## gcp.bigqueryanalyticshub.ListingIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
+    /// ## gcp.bigqueryanalyticshub.ListingIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
-    /// ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
+    /// ## gcp.bigqueryanalyticshub.ListingIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ * ## gcp.bigqueryanalyticshub.DataExchangeIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

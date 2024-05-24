@@ -301,7 +301,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+        ## bigquerydatapolicy.DataPolicyIamPolicy
 
         ```python
         import pulumi
@@ -318,7 +318,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+        ## bigquerydatapolicy.DataPolicyIamBinding
 
         ```python
         import pulumi
@@ -332,7 +332,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+        ## bigquerydatapolicy.DataPolicyIamMember
 
         ```python
         import pulumi
@@ -346,7 +346,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+        ## bigquerydatapolicy.DataPolicyIamPolicy
 
         ```python
         import pulumi
@@ -363,7 +363,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+        ## bigquerydatapolicy.DataPolicyIamBinding
 
         ```python
         import pulumi
@@ -377,7 +377,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+        ## bigquerydatapolicy.DataPolicyIamMember
 
         ```python
         import pulumi
@@ -471,7 +471,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+        ## bigquerydatapolicy.DataPolicyIamPolicy
 
         ```python
         import pulumi
@@ -488,7 +488,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+        ## bigquerydatapolicy.DataPolicyIamBinding
 
         ```python
         import pulumi
@@ -502,7 +502,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+        ## bigquerydatapolicy.DataPolicyIamMember
 
         ```python
         import pulumi
@@ -516,7 +516,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+        ## bigquerydatapolicy.DataPolicyIamPolicy
 
         ```python
         import pulumi
@@ -533,7 +533,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+        ## bigquerydatapolicy.DataPolicyIamBinding
 
         ```python
         import pulumi
@@ -547,7 +547,7 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+        ## bigquerydatapolicy.DataPolicyIamMember
 
         ```python
         import pulumi

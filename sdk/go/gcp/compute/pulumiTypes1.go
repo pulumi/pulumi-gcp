@@ -13,6 +13,910 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendService struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService string `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight int `pulumi:"weight"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{...}
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput)
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{ URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{...} }
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+// The full or partial URL to the default BackendService resource. Before forwarding the
+// request to backendService, the loadbalancer applies any relevant headerActions
+// specified as part of this backendServiceWeight.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendService) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// Specifies changes to request and response headers that need to take effect for
+// the selected backendService.
+// headerAction specified here take effect before headerAction in the enclosing
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendService) *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+		return v.HeaderAction
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Specifies the fraction of traffic sent to backendService, computed as
+// weight / (sum of all weightedBackendService weights in routeAction) .
+// The selection of a backend service is determined only for new traffic. Once a user's request
+// has been directed to a backendService, subsequent requests will be sent to the same backendService
+// as determined by the BackendService's session affinity policy.
+// The value must be between 0 and 1000
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendService) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+		return vs[0].([]URLMapPathMatcherPathRuleRouteActionWeightedBackendService)[vs[1].(int)]
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves []string `pulumi:"responseHeadersToRemoves"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{...}
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves pulumi.StringArrayInput `pulumi:"responseHeadersToRemoves"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput).ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs, URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtr and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrType URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
+
+func URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtr(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...}
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{ URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...} }
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) string {
+		return v.HeaderName
+	}).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) string {
+		return v.HeaderValue
+	}).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) bool {
+		return v.Replace
+	}).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...}
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+// URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray and URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{ URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...} }
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+	ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) string {
+		return v.HeaderName
+	}).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) string {
+		return v.HeaderValue
+	}).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) bool {
+		return v.Replace
+	}).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+type URLMapPathMatcherPathRuleUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set
+	// to false, the URL scheme of the redirected request will remain the same as that
+	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+	// specified. The value must be between 1 and 1024 characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed
+	// prior to redirecting the request. If set to false, the query portion of the
+	// original URL is retained. Defaults to false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// URLMapPathMatcherPathRuleUrlRedirectInput is an input type that accepts URLMapPathMatcherPathRuleUrlRedirectArgs and URLMapPathMatcherPathRuleUrlRedirectOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleUrlRedirectInput` via:
+//
+//	URLMapPathMatcherPathRuleUrlRedirectArgs{...}
+type URLMapPathMatcherPathRuleUrlRedirectInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleUrlRedirectOutput() URLMapPathMatcherPathRuleUrlRedirectOutput
+	ToURLMapPathMatcherPathRuleUrlRedirectOutputWithContext(context.Context) URLMapPathMatcherPathRuleUrlRedirectOutput
+}
+
+type URLMapPathMatcherPathRuleUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set
+	// to false, the URL scheme of the redirected request will remain the same as that
+	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+	// specified. The value must be between 1 and 1024 characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed
+	// prior to redirecting the request. If set to false, the query portion of the
+	// original URL is retained. Defaults to false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (URLMapPathMatcherPathRuleUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleUrlRedirect)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleUrlRedirectArgs) ToURLMapPathMatcherPathRuleUrlRedirectOutput() URLMapPathMatcherPathRuleUrlRedirectOutput {
+	return i.ToURLMapPathMatcherPathRuleUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleUrlRedirectArgs) ToURLMapPathMatcherPathRuleUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleUrlRedirectOutput)
+}
+
+func (i URLMapPathMatcherPathRuleUrlRedirectArgs) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutput() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleUrlRedirectArgs) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleUrlRedirectOutput).ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleUrlRedirectPtrInput is an input type that accepts URLMapPathMatcherPathRuleUrlRedirectArgs, URLMapPathMatcherPathRuleUrlRedirectPtr and URLMapPathMatcherPathRuleUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleUrlRedirectPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleUrlRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleUrlRedirectPtrOutput() URLMapPathMatcherPathRuleUrlRedirectPtrOutput
+	ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleUrlRedirectPtrOutput
+}
+
+type urlmapPathMatcherPathRuleUrlRedirectPtrType URLMapPathMatcherPathRuleUrlRedirectArgs
+
+func URLMapPathMatcherPathRuleUrlRedirectPtr(v *URLMapPathMatcherPathRuleUrlRedirectArgs) URLMapPathMatcherPathRuleUrlRedirectPtrInput {
+	return (*urlmapPathMatcherPathRuleUrlRedirectPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleUrlRedirect)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleUrlRedirectPtrType) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutput() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleUrlRedirectPtrType) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleUrlRedirectPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) ToURLMapPathMatcherPathRuleUrlRedirectOutput() URLMapPathMatcherPathRuleUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) ToURLMapPathMatcherPathRuleUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutput() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleUrlRedirect) *URLMapPathMatcherPathRuleUrlRedirect {
+		return &v
+	}).(URLMapPathMatcherPathRuleUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set
+// to false, the URL scheme of the redirected request will remain the same as that
+// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+// specified. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed
+// prior to redirecting the request. If set to false, the query portion of the
+// original URL is retained. Defaults to false.
+func (o URLMapPathMatcherPathRuleUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherPathRuleUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutput() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) ToURLMapPathMatcherPathRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) Elem() URLMapPathMatcherPathRuleUrlRedirectOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) URLMapPathMatcherPathRuleUrlRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleUrlRedirect
+		return ret
+	}).(URLMapPathMatcherPathRuleUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set
+// to false, the URL scheme of the redirected request will remain the same as that
+// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+// specified. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed
+// prior to redirecting the request. If set to false, the query portion of the
+// original URL is retained. Defaults to false.
+func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
 type URLMapPathMatcherRouteRule struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. The headerAction specified here are applied before
@@ -28255,6 +29159,16 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleUrlRedirectInput)(nil)).Elem(), URLMapPathMatcherPathRuleUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleUrlRedirectPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleInput)(nil)).Elem(), URLMapPathMatcherRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleHeaderActionArgs{})
@@ -28639,6 +29553,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleUrlRedirectOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleHeaderActionOutput{})

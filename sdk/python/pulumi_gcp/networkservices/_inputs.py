@@ -72,6 +72,9 @@ __all__ = [
     'HttpRouteRuleMatchHeaderArgs',
     'HttpRouteRuleMatchHeaderRangeMatchArgs',
     'HttpRouteRuleMatchQueryParameterArgs',
+    'LbTrafficExtensionExtensionChainArgs',
+    'LbTrafficExtensionExtensionChainExtensionArgs',
+    'LbTrafficExtensionExtensionChainMatchConditionArgs',
     'TcpRouteRuleArgs',
     'TcpRouteRuleActionArgs',
     'TcpRouteRuleActionDestinationArgs',
@@ -4270,6 +4273,239 @@ class HttpRouteRuleMatchQueryParameterArgs:
     @regex_match.setter
     def regex_match(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex_match", value)
+
+
+@pulumi.input_type
+class LbTrafficExtensionExtensionChainArgs:
+    def __init__(__self__, *,
+                 extensions: pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgs']]],
+                 match_condition: pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgs'],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgs']]] extensions: A set of extensions to execute for the matching request.
+               At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+               LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Structure is documented below.
+        :param pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgs'] match_condition: Conditions under which this chain is invoked for a request.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The name for this extension chain. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgs']]]:
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgs']]]):
+        pulumi.set(self, "extensions", value)
+
+    @property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgs']:
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @match_condition.setter
+    def match_condition(self, value: pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgs']):
+        pulumi.set(self, "match_condition", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class LbTrafficExtensionExtensionChainExtensionArgs:
+    def __init__(__self__, *,
+                 authority: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 timeout: pulumi.Input[str],
+                 fail_open: Optional[pulumi.Input[bool]] = None,
+                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 supported_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
+        :param pulumi.Input[str] name: The name for this extension. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        :param pulumi.Input[str] service: The reference to the service that runs the extension. Must be a reference to a backend service
+        :param pulumi.Input[str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[bool] fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
+               When set to TRUE, request or response processing continues without error.
+               Any subsequent extensions in the extension chain are also executed.
+               When set to FALSE: * If response headers have not been delivered to the downstream client,
+               a generic 500 error is returned to the client. The error response can be tailored by
+               configuring a custom error response in the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
+               If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_events: A set of events during request or response processing for which this extension is called.
+               This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+               resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+               `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+               
+               - - -
+        """
+        pulumi.set(__self__, "authority", authority)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "timeout", timeout)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if forward_headers is not None:
+            pulumi.set(__self__, "forward_headers", forward_headers)
+        if supported_events is not None:
+            pulumi.set(__self__, "supported_events", supported_events)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> pulumi.Input[str]:
+        """
+        The :authority header in the gRPC request sent from Envoy to the extension service.
+        """
+        return pulumi.get(self, "authority")
+
+    @authority.setter
+    def authority(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authority", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The reference to the service that runs the extension. Must be a reference to a backend service
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[str]:
+        """
+        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        When set to FALSE: * If response headers have not been delivered to the downstream client,
+        a generic 500 error is returned to the client. The error response can be tailored by
+        configuring a custom error response in the load balancer.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @fail_open.setter
+    def fail_open(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fail_open", value)
+
+    @property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @forward_headers.setter
+    def forward_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "forward_headers", value)
+
+    @property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of events during request or response processing for which this extension is called.
+        This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+        resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+        `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+
+        - - -
+        """
+        return pulumi.get(self, "supported_events")
+
+    @supported_events.setter
+    def supported_events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "supported_events", value)
+
+
+@pulumi.input_type
+class LbTrafficExtensionExtensionChainMatchConditionArgs:
+    def __init__(__self__, *,
+                 cel_expression: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> pulumi.Input[str]:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+    @cel_expression.setter
+    def cel_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cel_expression", value)
 
 
 @pulumi.input_type

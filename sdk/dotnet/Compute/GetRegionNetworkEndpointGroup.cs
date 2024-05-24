@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         /// <summary>
-        /// The Network Endpoint Group self\_link.
+        /// The Network Endpoint Group self_link.
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The Network Endpoint Group self\_link.
+        /// The Network Endpoint Group self_link.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

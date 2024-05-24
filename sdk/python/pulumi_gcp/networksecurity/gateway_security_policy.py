@@ -360,11 +360,11 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
-        ns_sa = gcp.projects.ServiceIdentity("ns_sa", service="networksecurity.googleapis.com")
+        project = gcp.organizations.get_project()
         tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission",
             ca_pool=default.id,
             role="roles/privateca.certificateManager",
-            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=f"serviceAccount:service-{project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com")
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("default",
             name="my-tls-inspection-policy",
             location="us-central1",
@@ -502,11 +502,11 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
-        ns_sa = gcp.projects.ServiceIdentity("ns_sa", service="networksecurity.googleapis.com")
+        project = gcp.organizations.get_project()
         tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission",
             ca_pool=default.id,
             role="roles/privateca.certificateManager",
-            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=f"serviceAccount:service-{project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com")
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("default",
             name="my-tls-inspection-policy",
             location="us-central1",

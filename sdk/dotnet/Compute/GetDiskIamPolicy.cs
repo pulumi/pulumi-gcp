@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Compute
         /// Retrieves the current IAM policy data for disk
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Retrieves the current IAM policy data for disk
-        /// 
         /// 
         /// 
         /// ## example

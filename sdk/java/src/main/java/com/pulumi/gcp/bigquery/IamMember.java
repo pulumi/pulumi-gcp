@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
- * ## google\_bigquery\_table\_iam\_policy
+ * ## gcp.bigquery.IamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_bigquery\_table\_iam\_binding
+ * ## gcp.bigquery.IamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_bigquery\_table\_iam\_member
+ * ## gcp.bigquery.IamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -297,7 +297,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigquery\_table\_iam\_policy
+ * ## gcp.bigquery.IamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -395,7 +395,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_bigquery\_table\_iam\_binding
+ * ## gcp.bigquery.IamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -478,7 +478,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ## google\_bigquery\_table\_iam\_member
+ * ## gcp.bigquery.IamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

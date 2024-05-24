@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+// ## bigqueryanalyticshub.DataExchangeIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+// ## bigqueryanalyticshub.DataExchangeIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+// ## bigqueryanalyticshub.DataExchangeIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+// ## bigqueryanalyticshub.DataExchangeIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+// ## bigqueryanalyticshub.DataExchangeIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+// ## bigqueryanalyticshub.DataExchangeIamMember
 //
 // ```go
 // package main

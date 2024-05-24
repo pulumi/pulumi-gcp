@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.tags.TagValueIamBinding` resources **can be** used in conjunction with `gcp.tags.TagValueIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_tags\_tag\_value\_iam\_policy
+ * ## gcp.tags.TagValueIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_tags\_tag\_value\_iam\_binding
+ * ## gcp.tags.TagValueIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_tags\_tag\_value\_iam\_member
+ * ## gcp.tags.TagValueIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_tags\_tag\_value\_iam\_policy
+ * ## gcp.tags.TagValueIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_tags\_tag\_value\_iam\_binding
+ * ## gcp.tags.TagValueIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_tags\_tag\_value\_iam\_member
+ * ## gcp.tags.TagValueIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

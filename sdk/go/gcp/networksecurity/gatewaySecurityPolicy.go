@@ -57,7 +57,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,18 +128,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			nsSa, err := projects.NewServiceIdentity(ctx, "ns_sa", &projects.ServiceIdentityArgs{
-//				Service: pulumi.String("networksecurity.googleapis.com"),
-//			})
+//			project, err := organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
-//				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number)),
 //			})
 //			if err != nil {
 //				return err

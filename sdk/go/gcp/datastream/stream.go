@@ -525,6 +525,134 @@ import (
 //	}
 //
 // ```
+// ### Datastream Stream Sql Server
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:               pulumi.String("sql-server"),
+//				DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+//				Region:             pulumi.String("us-central1"),
+//				RootPassword:       pulumi.String("root-password"),
+//				DeletionProtection: pulumi.Bool(true),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-custom-2-4096"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Name:     pulumi.String("db"),
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
+//				Instance: instance.Name,
+//				Password: pulumi.String("password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			source, err := datastream.NewConnectionProfile(ctx, "source", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("SQL Server Source"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				SqlServerProfile: &datastream.ConnectionProfileSqlServerProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Port:     pulumi.Int(1433),
+//					Username: user.Name,
+//					Password: user.Password,
+//					Database: db.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destination, err := datastream.NewConnectionProfile(ctx, "destination", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("BigQuery Destination"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				DisplayName: pulumi.String("SQL Server to BigQuery"),
+//				Location:    pulumi.String("us-central1"),
+//				StreamId:    pulumi.String("stream"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: source.ID(),
+//					SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
+//						IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
+//							Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
+//								&datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs{
+//									Schema: pulumi.String("schema"),
+//									Tables: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray{
+//										&datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs{
+//											Table: pulumi.String("table"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destination.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						DataFreshness: pulumi.String("900s"),
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//				BackfillNone: nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Stream Postgresql Bigquery Dataset Id
 //
 // ```go

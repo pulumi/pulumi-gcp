@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// &gt; **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_policy
+    /// ## gcp.tags.TagKeyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_binding
+    /// ## gcp.tags.TagKeyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_member
+    /// ## gcp.tags.TagKeyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_policy
+    /// ## gcp.tags.TagKeyIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_binding
+    /// ## gcp.tags.TagKeyIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
-    /// ## google\_tags\_tag\_key\_iam\_member
+    /// ## gcp.tags.TagKeyIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

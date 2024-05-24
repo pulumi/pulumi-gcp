@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_notebooks\_runtime\_iam\_policy
+// ## notebooks.RuntimeIamPolicy
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## google\_notebooks\_runtime\_iam\_binding
+// ## notebooks.RuntimeIamBinding
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## google\_notebooks\_runtime\_iam\_member
+// ## notebooks.RuntimeIamMember
 //
 // ```go
 // package main
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## google\_notebooks\_runtime\_iam\_policy
+// ## notebooks.RuntimeIamPolicy
 //
 // ```go
 // package main
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## google\_notebooks\_runtime\_iam\_binding
+// ## notebooks.RuntimeIamBinding
 //
 // ```go
 // package main
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## google\_notebooks\_runtime\_iam\_member
+// ## notebooks.RuntimeIamMember
 //
 // ```go
 // package main

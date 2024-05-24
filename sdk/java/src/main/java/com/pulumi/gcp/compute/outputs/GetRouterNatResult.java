@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRouterNatResult {
+    private String autoNetworkTier;
     private List<String> drainNatIps;
     private Boolean enableDynamicPortAllocation;
     private Boolean enableEndpointIndependentMapping;
@@ -47,6 +48,9 @@ public final class GetRouterNatResult {
     private Integer udpIdleTimeoutSec;
 
     private GetRouterNatResult() {}
+    public String autoNetworkTier() {
+        return this.autoNetworkTier;
+    }
     public List<String> drainNatIps() {
         return this.drainNatIps;
     }
@@ -130,6 +134,7 @@ public final class GetRouterNatResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String autoNetworkTier;
         private List<String> drainNatIps;
         private Boolean enableDynamicPortAllocation;
         private Boolean enableEndpointIndependentMapping;
@@ -156,6 +161,7 @@ public final class GetRouterNatResult {
         public Builder() {}
         public Builder(GetRouterNatResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoNetworkTier = defaults.autoNetworkTier;
     	      this.drainNatIps = defaults.drainNatIps;
     	      this.enableDynamicPortAllocation = defaults.enableDynamicPortAllocation;
     	      this.enableEndpointIndependentMapping = defaults.enableEndpointIndependentMapping;
@@ -181,6 +187,14 @@ public final class GetRouterNatResult {
     	      this.udpIdleTimeoutSec = defaults.udpIdleTimeoutSec;
         }
 
+        @CustomType.Setter
+        public Builder autoNetworkTier(String autoNetworkTier) {
+            if (autoNetworkTier == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "autoNetworkTier");
+            }
+            this.autoNetworkTier = autoNetworkTier;
+            return this;
+        }
         @CustomType.Setter
         public Builder drainNatIps(List<String> drainNatIps) {
             if (drainNatIps == null) {
@@ -381,6 +395,7 @@ public final class GetRouterNatResult {
         }
         public GetRouterNatResult build() {
             final var _resultValue = new GetRouterNatResult();
+            _resultValue.autoNetworkTier = autoNetworkTier;
             _resultValue.drainNatIps = drainNatIps;
             _resultValue.enableDynamicPortAllocation = enableDynamicPortAllocation;
             _resultValue.enableEndpointIndependentMapping = enableEndpointIndependentMapping;

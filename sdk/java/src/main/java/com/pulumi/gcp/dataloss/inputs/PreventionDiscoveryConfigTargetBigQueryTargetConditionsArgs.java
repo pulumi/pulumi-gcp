@@ -67,16 +67,16 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
     }
 
     /**
-     * Restrict discovery to specific table type
-     * Structure is documented below.
+     * Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+     * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
      * 
      */
     @Import(name="types")
     private @Nullable Output<PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs> types;
 
     /**
-     * @return Restrict discovery to specific table type
-     * Structure is documented below.
+     * @return Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+     * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
      * 
      */
     public Optional<Output<PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs>> types() {
@@ -178,8 +178,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
         }
 
         /**
-         * @param types Restrict discovery to specific table type
-         * Structure is documented below.
+         * @param types Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+         * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
          * 
          * @return builder
          * 
@@ -190,8 +190,8 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
         }
 
         /**
-         * @param types Restrict discovery to specific table type
-         * Structure is documented below.
+         * @param types Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+         * Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
          * 
          * @return builder
          * 

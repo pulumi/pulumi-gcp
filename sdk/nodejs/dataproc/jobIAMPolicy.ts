@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataproc\_job\_iam\_policy
+ * ## gcp.dataproc.JobIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_job\_iam\_binding
+ * ## gcp.dataproc.JobIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_job\_iam\_member
+ * ## gcp.dataproc.JobIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_job\_iam\_policy
+ * ## gcp.dataproc.JobIAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_job\_iam\_binding
+ * ## gcp.dataproc.JobIAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_dataproc\_job\_iam\_member
+ * ## gcp.dataproc.JobIAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

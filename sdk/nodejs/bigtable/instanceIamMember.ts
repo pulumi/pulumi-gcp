@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigtable\_instance\_iam\_policy
+ * ## gcp.bigtable.InstanceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigtable\_instance\_iam\_binding
+ * ## gcp.bigtable.InstanceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigtable\_instance\_iam\_member
+ * ## gcp.bigtable.InstanceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigtable\_instance\_iam\_policy
+ * ## gcp.bigtable.InstanceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigtable\_instance\_iam\_binding
+ * ## gcp.bigtable.InstanceIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## google\_bigtable\_instance\_iam\_member
+ * ## gcp.bigtable.InstanceIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

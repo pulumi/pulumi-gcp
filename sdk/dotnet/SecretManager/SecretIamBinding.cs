@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_policy
+    /// ## gcp.secretmanager.SecretIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_binding
+    /// ## gcp.secretmanager.SecretIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_member
+    /// ## gcp.secretmanager.SecretIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_policy
+    /// ## gcp.secretmanager.SecretIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_binding
+    /// ## gcp.secretmanager.SecretIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
-    /// ## google\_secret\_manager\_secret\_iam\_member
+    /// ## gcp.secretmanager.SecretIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

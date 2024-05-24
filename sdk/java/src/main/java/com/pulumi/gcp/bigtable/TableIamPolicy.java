@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_bigtable\_table\_iam\_policy
+ * ## gcp.bigtable.TableIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_table\_iam\_binding
+ * ## gcp.bigtable.TableIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_table\_iam\_member
+ * ## gcp.bigtable.TableIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_table\_iam\_policy
+ * ## gcp.bigtable.TableIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_table\_iam\_binding
+ * ## gcp.bigtable.TableIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## google\_bigtable\_table\_iam\_member
+ * ## gcp.bigtable.TableIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

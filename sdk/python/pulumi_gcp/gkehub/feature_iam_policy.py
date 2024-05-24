@@ -203,7 +203,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkehub.FeatureIamBinding` resources **can be** used in conjunction with `gkehub.FeatureIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+        ## gkehub.FeatureIamPolicy
 
         ```python
         import pulumi
@@ -220,7 +220,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+        ## gkehub.FeatureIamBinding
 
         ```python
         import pulumi
@@ -234,7 +234,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+        ## gkehub.FeatureIamMember
 
         ```python
         import pulumi
@@ -248,7 +248,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+        ## gkehub.FeatureIamPolicy
 
         ```python
         import pulumi
@@ -265,7 +265,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+        ## gkehub.FeatureIamBinding
 
         ```python
         import pulumi
@@ -279,7 +279,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+        ## gkehub.FeatureIamMember
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkehub.FeatureIamBinding` resources **can be** used in conjunction with `gkehub.FeatureIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+        ## gkehub.FeatureIamPolicy
 
         ```python
         import pulumi
@@ -378,7 +378,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+        ## gkehub.FeatureIamBinding
 
         ```python
         import pulumi
@@ -392,7 +392,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+        ## gkehub.FeatureIamMember
 
         ```python
         import pulumi
@@ -406,7 +406,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+        ## gkehub.FeatureIamPolicy
 
         ```python
         import pulumi
@@ -423,7 +423,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+        ## gkehub.FeatureIamBinding
 
         ```python
         import pulumi
@@ -437,7 +437,7 @@ class FeatureIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+        ## gkehub.FeatureIamMember
 
         ```python
         import pulumi

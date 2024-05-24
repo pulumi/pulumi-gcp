@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Workbench
         /// Retrieves the current IAM policy data for instance
         /// 
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// Retrieves the current IAM policy data for instance
-        /// 
         /// 
         /// 
         /// ## example

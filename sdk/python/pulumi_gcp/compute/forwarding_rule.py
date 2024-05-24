@@ -2366,7 +2366,7 @@ class ForwardingRule(pulumi.CustomResource):
             port_range="80",
             target=default_region_target_http_proxy.id,
             network=default_network.id,
-            ip_address=default_address.id,
+            ip_address=default_address.address,
             network_tier="STANDARD")
         fw1 = gcp.compute.Firewall("fw1",
             name="website-fw-1",
@@ -2592,7 +2592,7 @@ class ForwardingRule(pulumi.CustomResource):
         steering = gcp.compute.ForwardingRule("steering",
             name="steering-rule",
             region="us-central1",
-            ip_address=basic.self_link,
+            ip_address=basic.address,
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL",
             source_ip_ranges=[
@@ -2602,7 +2602,7 @@ class ForwardingRule(pulumi.CustomResource):
         external_forwarding_rule = gcp.compute.ForwardingRule("external",
             name="external-forwarding-rule",
             region="us-central1",
-            ip_address=basic.self_link,
+            ip_address=basic.address,
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL")
         ```
@@ -3560,7 +3560,7 @@ class ForwardingRule(pulumi.CustomResource):
             port_range="80",
             target=default_region_target_http_proxy.id,
             network=default_network.id,
-            ip_address=default_address.id,
+            ip_address=default_address.address,
             network_tier="STANDARD")
         fw1 = gcp.compute.Firewall("fw1",
             name="website-fw-1",
@@ -3786,7 +3786,7 @@ class ForwardingRule(pulumi.CustomResource):
         steering = gcp.compute.ForwardingRule("steering",
             name="steering-rule",
             region="us-central1",
-            ip_address=basic.self_link,
+            ip_address=basic.address,
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL",
             source_ip_ranges=[
@@ -3796,7 +3796,7 @@ class ForwardingRule(pulumi.CustomResource):
         external_forwarding_rule = gcp.compute.ForwardingRule("external",
             name="external-forwarding-rule",
             region="us-central1",
-            ip_address=basic.self_link,
+            ip_address=basic.address,
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL")
         ```
