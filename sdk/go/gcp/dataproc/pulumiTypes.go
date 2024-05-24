@@ -2209,17 +2209,24 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput) Index(i pulu
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig struct {
-	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+	// multiple times.
 	Accelerators []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator `pulumi:"accelerators"`
 	// Disk Config
 	DiskConfig *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig `pulumi:"diskConfig"`
 	// List of auxiliary node group instance names which have been assigned to the cluster.
 	InstanceNames []string `pulumi:"instanceNames"`
-	// The name of a Google Compute Engine machine type to create for the master
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType *string `pulumi:"machineType"`
-	// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+	// Specifies the number of master nodes to create.
+	// Please set a number greater than 0. Node Group must have at least 1 instance.
 	NumInstances *int `pulumi:"numInstances"`
 }
 
@@ -2235,17 +2242,24 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigInput interfa
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs struct {
-	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+	// multiple times.
 	Accelerators ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput `pulumi:"accelerators"`
 	// Disk Config
 	DiskConfig ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput `pulumi:"diskConfig"`
 	// List of auxiliary node group instance names which have been assigned to the cluster.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
-	// The name of a Google Compute Engine machine type to create for the master
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+	// Specifies the number of master nodes to create.
+	// Please set a number greater than 0. Node Group must have at least 1 instance.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
 }
 
@@ -2326,7 +2340,8 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) To
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 }
 
-// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+// multiple times.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) Accelerators() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
 		return v.Accelerators
@@ -2347,19 +2362,25 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) In
 	}).(pulumi.StringArrayOutput)
 }
 
-// The name of a Google Compute Engine machine type to create for the master
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
 		return v.MinCpuPlatform
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+// Specifies the number of master nodes to create.
+// Please set a number greater than 0. Node Group must have at least 1 instance.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
 }
@@ -2388,7 +2409,8 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput)
 }
 
-// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+// multiple times.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) Accelerators() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
 		if v == nil {
@@ -2418,7 +2440,9 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 	}).(pulumi.StringArrayOutput)
 }
 
-// The name of a Google Compute Engine machine type to create for the master
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
 		if v == nil {
@@ -2428,7 +2452,10 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
 		if v == nil {
@@ -2438,7 +2465,8 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
+// Specifies the number of master nodes to create.
+// Please set a number greater than 0. Node Group must have at least 1 instance.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *int {
 		if v == nil {
@@ -2449,9 +2477,11 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator struct {
-	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+	//
+	// ***
 	AcceleratorCount int `pulumi:"acceleratorCount"`
-	// The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 	AcceleratorType string `pulumi:"acceleratorType"`
 }
 
@@ -2467,9 +2497,11 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorIn
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs struct {
-	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+	//
+	// ***
 	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
-	// The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
 }
 
@@ -2524,14 +2556,16 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerato
 	return o
 }
 
-// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+//
+// ***
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator) int {
 		return v.AcceleratorCount
 	}).(pulumi.IntOutput)
 }
 
-// The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator) string {
 		return v.AcceleratorType
@@ -2559,11 +2593,17 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerato
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig struct {
-	// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -2579,11 +2619,17 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInp
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs struct {
-	// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -2664,21 +2710,27 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
 }
 
-// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
 		return v.BootDiskSizeGb
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
 		return v.BootDiskType
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -2709,7 +2761,11 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput)
 }
 
-// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
 		if v == nil {
@@ -2719,7 +2775,8 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
 		if v == nil {
@@ -2729,7 +2786,8 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
 		if v == nil {
@@ -4955,11 +5013,17 @@ func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.I
 }
 
 type ClusterClusterConfigMasterConfigDiskConfig struct {
-	// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be
+	// attached to each master cluster node. Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -4975,11 +5039,17 @@ type ClusterClusterConfigMasterConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
-	// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be
+	// attached to each master cluster node. Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -5060,17 +5130,23 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfig
 	}).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
-// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be
+// attached to each master cluster node. Defaults to 0.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -5099,7 +5175,11 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClust
 	}).(ClusterClusterConfigMasterConfigDiskConfigOutput)
 }
 
-// Size of the primary disk attached to each node, specified in GB. The primary disk contains the boot volume and system libraries, and the smallest allowed disk size is 10GB. GCP will default to a predetermined computed value if not set (currently 500GB). Note: If SSDs are not attached, it also contains the HDFS data blocks and Hadoop working directories.
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -5109,7 +5189,8 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard". Defaults to "pd-standard".
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *string {
 		if v == nil {
@@ -5119,7 +5200,8 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be
+// attached to each master cluster node. Defaults to 0.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -5532,7 +5614,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each preemptible worker node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+	// The amount of local SSD disks that will be
+	// attached to each preemptible worker node. Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -5556,7 +5639,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each preemptible worker node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+	// The amount of local SSD disks that will be
+	// attached to each preemptible worker node. Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -5651,7 +5735,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskTyp
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+// The amount of local SSD disks that will be
+// attached to each preemptible worker node. Defaults to 0.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -5704,7 +5789,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDisk
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be attached to each preemptible worker node. Defaults to 0.
+// The amount of local SSD disks that will be
+// attached to each preemptible worker node. Defaults to 0.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -5875,9 +5961,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrO
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
-	// Full machine-type names, e.g. "n1-standard-16".
+	// Full machine-type names, e.g. `"n1-standard-16"`.
 	MachineTypes []string `pulumi:"machineTypes"`
-	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	//
+	// ***
 	Rank *int `pulumi:"rank"`
 }
 
@@ -5893,9 +5981,11 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
-	// Full machine-type names, e.g. "n1-standard-16".
+	// Full machine-type names, e.g. `"n1-standard-16"`.
 	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
-	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	//
+	// ***
 	Rank pulumi.IntPtrInput `pulumi:"rank"`
 }
 
@@ -5950,14 +6040,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	return o
 }
 
-// Full machine-type names, e.g. "n1-standard-16".
+// Full machine-type names, e.g. `"n1-standard-16"`.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
 		return v.MachineTypes
 	}).(pulumi.StringArrayOutput)
 }
 
-// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+//
+// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
 		return v.Rank
@@ -8936,11 +9028,15 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOut
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget struct {
-	// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
+	// The target GKE node pool.
 	NodePool string `pulumi:"nodePool"`
-	// Input only. The configuration for the GKE node pool.
+	// The configuration for the GKE node pool.
+	// If specified, Dataproc attempts to create a node pool with the specified shape.
+	// If one with the same name already exists, it is verified against all specified fields.
+	// If a field differs, the virtual cluster creation will fail.
 	NodePoolConfig *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig `pulumi:"nodePoolConfig"`
 	// The roles associated with the GKE node pool.
+	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
 	Roles []string `pulumi:"roles"`
 }
 
@@ -8956,11 +9052,15 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs struct {
-	// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
+	// The target GKE node pool.
 	NodePool pulumi.StringInput `pulumi:"nodePool"`
-	// Input only. The configuration for the GKE node pool.
+	// The configuration for the GKE node pool.
+	// If specified, Dataproc attempts to create a node pool with the specified shape.
+	// If one with the same name already exists, it is verified against all specified fields.
+	// If a field differs, the virtual cluster creation will fail.
 	NodePoolConfig ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
 	// The roles associated with the GKE node pool.
+	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
@@ -9015,14 +9115,17 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	return o
 }
 
-// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
+// The target GKE node pool.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) NodePool() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) string {
 		return v.NodePool
 	}).(pulumi.StringOutput)
 }
 
-// Input only. The configuration for the GKE node pool.
+// The configuration for the GKE node pool.
+// If specified, Dataproc attempts to create a node pool with the specified shape.
+// If one with the same name already exists, it is verified against all specified fields.
+// If a field differs, the virtual cluster creation will fail.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) NodePoolConfig() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
 		return v.NodePoolConfig
@@ -9030,6 +9133,7 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 }
 
 // The roles associated with the GKE node pool.
+// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) []string {
 		return v.Roles
@@ -9057,11 +9161,14 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig struct {
-	// The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+	// The autoscaler configuration for this node pool.
+	// The autoscaler is enabled only when a valid configuration is present.
 	Autoscaling *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling `pulumi:"autoscaling"`
 	// The node pool configuration.
 	Config *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig `pulumi:"config"`
-	// The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+	// The list of Compute Engine zones where node pool nodes associated
+	// with a Dataproc on GKE virtual cluster will be located.
+	// ***
 	Locations []string `pulumi:"locations"`
 }
 
@@ -9077,11 +9184,14 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs struct {
-	// The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+	// The autoscaler configuration for this node pool.
+	// The autoscaler is enabled only when a valid configuration is present.
 	Autoscaling ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput `pulumi:"autoscaling"`
 	// The node pool configuration.
 	Config ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput `pulumi:"config"`
-	// The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+	// The list of Compute Engine zones where node pool nodes associated
+	// with a Dataproc on GKE virtual cluster will be located.
+	// ***
 	Locations pulumi.StringArrayInput `pulumi:"locations"`
 }
 
@@ -9162,7 +9272,8 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
 }
 
-// The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+// The autoscaler configuration for this node pool.
+// The autoscaler is enabled only when a valid configuration is present.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) Autoscaling() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
 		return v.Autoscaling
@@ -9176,7 +9287,9 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
 }
 
-// The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+// The list of Compute Engine zones where node pool nodes associated
+// with a Dataproc on GKE virtual cluster will be located.
+// ***
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) []string {
 		return v.Locations
@@ -9207,7 +9320,8 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput)
 }
 
-// The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
+// The autoscaler configuration for this node pool.
+// The autoscaler is enabled only when a valid configuration is present.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Autoscaling() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
 		if v == nil {
@@ -9227,7 +9341,9 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
 }
 
-// The list of Compute Engine zones where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.
+// The list of Compute Engine zones where node pool nodes associated
+// with a Dataproc on GKE virtual cluster will be located.
+// ***
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) []string {
 		if v == nil {
@@ -9398,13 +9514,18 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig struct {
-	// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+	// The number of local SSD disks to attach to the node,
+	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
-	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or a newer CPU platform.
+	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	// Whether the nodes are created as preemptible VM instances.
+	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+	// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Preemptible *bool `pulumi:"preemptible"`
 	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
 	Spot *bool `pulumi:"spot"`
@@ -9422,13 +9543,18 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 }
 
 type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs struct {
-	// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+	// The number of local SSD disks to attach to the node,
+	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or a newer CPU platform.
+	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	// Whether the nodes are created as preemptible VM instances.
+	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+	// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
@@ -9511,7 +9637,8 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
 }
 
-// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+// The number of local SSD disks to attach to the node,
+// which is limited by the maximum number of disks allowable per zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *int {
 		return v.LocalSsdCount
@@ -9525,14 +9652,18 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or a newer CPU platform.
+// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		return v.MinCpuPlatform
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+// Whether the nodes are created as preemptible VM instances.
+// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
 		return v.Preemptible
@@ -9570,7 +9701,8 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput)
 }
 
-// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+// The number of local SSD disks to attach to the node,
+// which is limited by the maximum number of disks allowable per zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *int {
 		if v == nil {
@@ -9590,7 +9722,9 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or a newer CPU platform.
+// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		if v == nil {
@@ -9600,7 +9734,9 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+// Whether the nodes are created as preemptible VM instances.
+// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
 		if v == nil {

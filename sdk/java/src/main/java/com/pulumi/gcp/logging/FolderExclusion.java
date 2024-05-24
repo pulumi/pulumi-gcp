@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_folder = new Folder("my-folder", FolderArgs.builder()        
+ *         var my_folder = new Folder("my-folder", FolderArgs.builder()
  *             .displayName("My folder")
  *             .parent("organizations/123456")
  *             .build());
  * 
- *         var my_exclusion = new FolderExclusion("my-exclusion", FolderExclusionArgs.builder()        
+ *         var my_exclusion = new FolderExclusion("my-exclusion", FolderExclusionArgs.builder()
  *             .name("my-instance-debug-exclusion")
  *             .folder(my_folder.name())
  *             .description("Exclude GCE instance debug logs")

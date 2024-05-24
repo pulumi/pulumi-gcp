@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigDataJob = new Job("bigDataJob", JobArgs.builder()        
+ *         var bigDataJob = new Job("bigDataJob", JobArgs.builder()
  *             .name("dataflow-job")
  *             .templateGcsPath("gs://my-bucket/templates/template_file")
  *             .tempGcsLocation("gs://my-bucket/tmp_dir")
@@ -94,23 +94,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("dataflow-job1")
  *             .build());
  * 
- *         var bucket1 = new Bucket("bucket1", BucketArgs.builder()        
+ *         var bucket1 = new Bucket("bucket1", BucketArgs.builder()
  *             .name("tf-test-bucket1")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var bucket2 = new Bucket("bucket2", BucketArgs.builder()        
+ *         var bucket2 = new Bucket("bucket2", BucketArgs.builder()
  *             .name("tf-test-bucket2")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var pubsubStream = new Job("pubsubStream", JobArgs.builder()        
+ *         var pubsubStream = new Job("pubsubStream", JobArgs.builder()
  *             .name("tf-test-dataflow-job1")
  *             .templateGcsPath("gs://my-bucket/templates/template_file")
  *             .tempGcsLocation("gs://my-bucket/tmp_dir")
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId").orElse("projects/myproject/subscriptions/messages");
- *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()        
+ *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
  *                 Map.entry("region", region),
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
  *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
  *             .region(region)
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")

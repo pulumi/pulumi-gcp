@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
  * 
- *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()        
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .privateConnectionId("my-connection")

@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
  *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
  *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
  *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Instance("foobar", InstanceArgs.builder()        
+ *         var foobar = new Instance("foobar", InstanceArgs.builder()
  *             .name("patch-deploy-inst")
  *             .machineType("e2-medium")
  *             .zone("us-central1-a")
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  *             .metadata(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
  *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .instances(foobar.id())

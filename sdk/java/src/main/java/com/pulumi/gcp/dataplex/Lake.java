@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Lake("primary", LakeArgs.builder()        
+ *         var primary = new Lake("primary", LakeArgs.builder()
  *             .location("us-west1")
  *             .name("lake")
  *             .description("Lake for DCL")

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(defaultHealthCheck.id())
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("tf-test-region-service-external")
  *             .region("us-central1")
  *             .protocol("HTTP")
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(defaultRegionHealthCheck.id())
@@ -218,14 +218,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -316,7 +316,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -324,7 +324,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -371,14 +371,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .region("us-central1")
  *             .name("region-service")
  *             .healthChecks(healthCheck.id())
@@ -455,20 +455,20 @@ import javax.annotation.Nullable;
  *             .project("debian-cloud")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("rbs-net")
  *             .autoCreateSubnetworks(false)
  *             .routingMode("REGIONAL")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("rbs-net-default")
  *             .ipCidrRange("10.1.2.0/24")
  *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
  *             .name("template-region-service")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
@@ -485,7 +485,7 @@ import javax.annotation.Nullable;
  *                 "load-balanced-backend")
  *             .build());
  * 
- *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()        
+ *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()
  *             .region("us-central1")
  *             .name("rbs-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
@@ -496,7 +496,7 @@ import javax.annotation.Nullable;
  *             .targetSize(1)
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("rbs-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
@@ -552,7 +552,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
  *             .name("rbs-health-check")
  *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
@@ -560,7 +560,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
  *             .name("region-service")
  *             .region("us-central1")
  *             .healthChecks(healthCheck.id())
@@ -904,6 +904,51 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
+     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+     *   is selected in round robin order.
+     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+     *   hosts and picks the host which has fewer active requests.
+     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+     *   hashing to backends. The algorithm has the property that the
+     *   addition/removal of a host from a set of N hosts only affects
+     *   1/N of the requests.
+     * * `RANDOM`: The load balancer selects a random healthy host.
+     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+     *   connection metadata, i.e., connections are opened
+     *   to the same address as the destination address of
+     *   the incoming connection before the connection
+     *   was redirected to the load balancer.
+     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+     *   Maglev is not as stable as ring hash but has faster table lookup
+     *   build times and host selection times. For more information about
+     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+     *   reported weights. If set, the Backend Service must
+     *   configure a non legacy HTTP-based Health Check, and
+     *   health check replies are expected to contain
+     *   non-standard HTTP response header field
+     *   X-Load-Balancing-Endpoint-Weight to specify the
+     *   per-instance weights. If set, Load Balancing is weight
+     *   based on the per-instance weights reported in the last
+     *   processed health check replies, as long as every
+     *   instance either reported a valid weight or had
+     *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+     *   equal-weight.
+     * 
+     * This field is applicable to either:
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     *   and loadBalancingScheme set to INTERNAL_MANAGED.
+     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+     *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+     *   Network Load Balancing. The default is MAGLEV.
+     * 
+     * If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+     * or RING_HASH, session affinity settings will not take effect.
+     * Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+     * by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     * field set to true.
+     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
      * 
      */
     @Export(name="localityLbPolicy", refs={String.class}, tree="[0]")
@@ -912,6 +957,51 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return The load balancing algorithm used within the scope of the locality.
      * The possible values are:
+     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+     *   is selected in round robin order.
+     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+     *   hosts and picks the host which has fewer active requests.
+     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+     *   hashing to backends. The algorithm has the property that the
+     *   addition/removal of a host from a set of N hosts only affects
+     *   1/N of the requests.
+     * * `RANDOM`: The load balancer selects a random healthy host.
+     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+     *   connection metadata, i.e., connections are opened
+     *   to the same address as the destination address of
+     *   the incoming connection before the connection
+     *   was redirected to the load balancer.
+     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+     *   Maglev is not as stable as ring hash but has faster table lookup
+     *   build times and host selection times. For more information about
+     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
+     *   reported weights. If set, the Backend Service must
+     *   configure a non legacy HTTP-based Health Check, and
+     *   health check replies are expected to contain
+     *   non-standard HTTP response header field
+     *   X-Load-Balancing-Endpoint-Weight to specify the
+     *   per-instance weights. If set, Load Balancing is weight
+     *   based on the per-instance weights reported in the last
+     *   processed health check replies, as long as every
+     *   instance either reported a valid weight or had
+     *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
+     *   equal-weight.
+     * 
+     * This field is applicable to either:
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     *   and loadBalancingScheme set to INTERNAL_MANAGED.
+     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
+     *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
+     *   Network Load Balancing. The default is MAGLEV.
+     * 
+     * If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+     * or RING_HASH, session affinity settings will not take effect.
+     * Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+     * by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     * field set to true.
+     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
      * 
      */
     public Output<Optional<String>> localityLbPolicy() {

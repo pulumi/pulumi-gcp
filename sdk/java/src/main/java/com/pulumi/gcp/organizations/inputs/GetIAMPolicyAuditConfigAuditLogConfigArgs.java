@@ -17,16 +17,32 @@ public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.
 
     public static final GetIAMPolicyAuditConfigAuditLogConfigArgs Empty = new GetIAMPolicyAuditConfigAuditLogConfigArgs();
 
+    /**
+     * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+     * 
+     */
     @Import(name="exemptedMembers")
     private @Nullable Output<List<String>> exemptedMembers;
 
+    /**
+     * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+     * 
+     */
     public Optional<Output<List<String>>> exemptedMembers() {
         return Optional.ofNullable(this.exemptedMembers);
     }
 
+    /**
+     * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+     * 
+     */
     @Import(name="logType", required=true)
     private Output<String> logType;
 
+    /**
+     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+     * 
+     */
     public Output<String> logType() {
         return this.logType;
     }
@@ -56,24 +72,54 @@ public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.
             $ = new GetIAMPolicyAuditConfigAuditLogConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param exemptedMembers Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exemptedMembers(@Nullable Output<List<String>> exemptedMembers) {
             $.exemptedMembers = exemptedMembers;
             return this;
         }
 
+        /**
+         * @param exemptedMembers Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exemptedMembers(List<String> exemptedMembers) {
             return exemptedMembers(Output.of(exemptedMembers));
         }
 
+        /**
+         * @param exemptedMembers Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exemptedMembers(String... exemptedMembers) {
             return exemptedMembers(List.of(exemptedMembers));
         }
 
+        /**
+         * @param logType Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logType(Output<String> logType) {
             $.logType = logType;
             return this;
         }
 
+        /**
+         * @param logType Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logType(String logType) {
             return logType(Output.of(logType));
         }

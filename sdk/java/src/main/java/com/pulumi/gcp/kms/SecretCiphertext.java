@@ -65,23 +65,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("keyring-example")
  *             .location("global")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()        
+ *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()
  *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
  *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var myPassword = new SecretCiphertext("myPassword", SecretCiphertextArgs.builder()        
+ *         var myPassword = new SecretCiphertext("myPassword", SecretCiphertextArgs.builder()
  *             .cryptoKey(cryptokey.id())
  *             .plaintext("my-secret-password")
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network("default")

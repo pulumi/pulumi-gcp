@@ -61,20 +61,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicBucket = new Bucket("basicBucket", BucketArgs.builder()        
+ *         var basicBucket = new Bucket("basicBucket", BucketArgs.builder()
  *             .name("bucket")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .project("my-project-name")
  *             .build());
  * 
- *         var basicLake = new Lake("basicLake", LakeArgs.builder()        
+ *         var basicLake = new Lake("basicLake", LakeArgs.builder()
  *             .name("lake")
  *             .location("us-west1")
  *             .project("my-project-name")
  *             .build());
  * 
- *         var basicZone = new Zone("basicZone", ZoneArgs.builder()        
+ *         var basicZone = new Zone("basicZone", ZoneArgs.builder()
  *             .name("zone")
  *             .location("us-west1")
  *             .lake(basicLake.name())
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new Asset("primary", AssetArgs.builder()        
+ *         var primary = new Asset("primary", AssetArgs.builder()
  *             .name("asset")
  *             .location("us-west1")
  *             .lake(basicLake.name())

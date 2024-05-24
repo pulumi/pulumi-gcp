@@ -58,14 +58,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()        
+ *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()        
+ *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -116,14 +116,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()        
+ *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()        
+ *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()
  *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")

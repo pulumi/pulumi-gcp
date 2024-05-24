@@ -1119,6 +1119,14 @@ class DatasetAccess(dict):
                needs to be granted again via an update operation.
                Structure is documented below.
         :param str special_group: A special group to grant access to. Possible values include:
+               
+               * `projectOwners`: Owners of the enclosing project.
+               
+               * `projectReaders`: Readers of the enclosing project.
+               
+               * `projectWriters`: Writers of the enclosing project.
+               
+               * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param str user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
         :param 'DatasetAccessViewArgs' view: A view from a different dataset to grant access to. Queries
@@ -1212,6 +1220,14 @@ class DatasetAccess(dict):
     def special_group(self) -> Optional[str]:
         """
         A special group to grant access to. Possible values include:
+
+        * `projectOwners`: Owners of the enclosing project.
+
+        * `projectReaders`: Readers of the enclosing project.
+
+        * `projectWriters`: Writers of the enclosing project.
+
+        * `allAuthenticatedUsers`: All authenticated BigQuery users.
         """
         return pulumi.get(self, "special_group")
 

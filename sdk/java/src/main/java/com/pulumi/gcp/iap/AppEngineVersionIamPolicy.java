@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()        
+ *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()        
+ *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()        
+ *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()        
+ *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()        
+ *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -281,7 +281,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()        
+ *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()        
+ *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -388,7 +388,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()        
+ *         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -426,7 +426,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()        
+ *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -467,7 +467,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()        
+ *         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -511,7 +511,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()        
+ *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
@@ -552,7 +552,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()        
+ *         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())

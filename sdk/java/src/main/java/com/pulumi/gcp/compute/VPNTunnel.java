@@ -64,16 +64,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network-1")
  *             .build());
  * 
- *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()        
+ *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()
  *             .name("vpn-1")
  *             .network(network1.id())
  *             .build());
  * 
- *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()        
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
  *             .name("tunnel-1")
  *             .peerIp("15.0.0.120")
  *             .sharedSecret("a secret message")
@@ -81,18 +81,18 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()        
+ *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()
  *             .name("vpn-static-ip")
  *             .build());
  * 
- *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()        
+ *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()
  *             .name("fr-esp")
  *             .ipProtocol("ESP")
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()        
+ *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()
  *             .name("fr-udp500")
  *             .ipProtocol("UDP")
  *             .portRange("500")
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()        
+ *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()
  *             .name("fr-udp4500")
  *             .ipProtocol("UDP")
  *             .portRange("4500")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var route1 = new Route("route1", RouteArgs.builder()        
+ *         var route1 = new Route("route1", RouteArgs.builder()
  *             .name("route1")
  *             .network(network1.name())
  *             .destRange("15.0.0.0/24")

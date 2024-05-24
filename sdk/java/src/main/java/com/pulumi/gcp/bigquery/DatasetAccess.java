@@ -50,15 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()
  *             .accountId("bqowner")
  *             .build());
  * 
- *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()
  *             .datasetId(dataset.datasetId())
  *             .role("OWNER")
  *             .userByEmail(bqowner.email())
@@ -100,15 +100,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *         var private_ = new Dataset("private", DatasetArgs.builder()
  *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("example_dataset2")
  *             .build());
  * 
- *         var publicTable = new Table("publicTable", TableArgs.builder()        
+ *         var publicTable = new Table("publicTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(public_.datasetId())
  *             .tableId("example_table")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()
  *             .datasetId(private_.datasetId())
  *             .view(DatasetAccessViewArgs.builder()
  *                 .projectId(publicTable.project())
@@ -161,15 +161,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *         var private_ = new Dataset("private", DatasetArgs.builder()
  *             .datasetId("private")
  *             .build());
  * 
- *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("public")
  *             .build());
  * 
- *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()
  *             .datasetId(private_.datasetId())
  *             .authorizedDataset(DatasetAccessAuthorizedDatasetArgs.builder()
  *                 .dataset(DatasetAccessAuthorizedDatasetDatasetArgs.builder()
@@ -217,12 +217,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("public_dataset")
  *             .description("This dataset is public")
  *             .build());
  * 
- *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()        
+ *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()
  *             .datasetId(public_.datasetId())
  *             .routineId("public_routine")
  *             .routineType("TABLE_VALUED_FUNCTION")
@@ -249,12 +249,12 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *         var private_ = new Dataset("private", DatasetArgs.builder()
  *             .datasetId("private_dataset")
  *             .description("This dataset is private")
  *             .build());
  * 
- *         var authorizedRoutine = new DatasetAccess("authorizedRoutine", DatasetAccessArgs.builder()        
+ *         var authorizedRoutine = new DatasetAccess("authorizedRoutine", DatasetAccessArgs.builder()
  *             .datasetId(private_.datasetId())
  *             .routine(DatasetAccessRoutineArgs.builder()
  *                 .projectId(publicRoutine.project())
@@ -443,12 +443,28 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
     /**
      * A special group to grant access to. Possible values include:
      * 
+     * * `projectOwners`: Owners of the enclosing project.
+     * 
+     * * `projectReaders`: Readers of the enclosing project.
+     * 
+     * * `projectWriters`: Writers of the enclosing project.
+     * 
+     * * `allAuthenticatedUsers`: All authenticated BigQuery users.
+     * 
      */
     @Export(name="specialGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specialGroup;
 
     /**
      * @return A special group to grant access to. Possible values include:
+     * 
+     * * `projectOwners`: Owners of the enclosing project.
+     * 
+     * * `projectReaders`: Readers of the enclosing project.
+     * 
+     * * `projectWriters`: Writers of the enclosing project.
+     * 
+     * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */
     public Output<Optional<String>> specialGroup() {

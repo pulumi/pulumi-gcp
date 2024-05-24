@@ -56,19 +56,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()        
+ *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .ipCidrRange("192.168.0.0/24")
  *             .region("us-central1")
  *             .network(myNetwork.id())
  *             .build());
  * 
- *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()        
+ *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
  *             .targetGoogleApi("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com")
@@ -114,19 +114,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()        
+ *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .ipCidrRange("192.168.0.0/24")
  *             .region("us-central1")
  *             .network(myNetwork.id())
  *             .build());
  * 
- *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()        
+ *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
  *             .targetGoogleApi("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com")

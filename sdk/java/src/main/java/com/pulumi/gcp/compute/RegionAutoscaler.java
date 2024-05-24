@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()        
+ *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()
  *             .name("my-instance-template")
  *             .machineType("e2-standard-4")
  *             .disks(InstanceTemplateDiskArgs.builder()
@@ -94,11 +94,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()        
+ *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()
  *             .name("my-target-pool")
  *             .build());
  * 
- *         var foobarRegionInstanceGroupManager = new RegionInstanceGroupManager("foobarRegionInstanceGroupManager", RegionInstanceGroupManagerArgs.builder()        
+ *         var foobarRegionInstanceGroupManager = new RegionInstanceGroupManager("foobarRegionInstanceGroupManager", RegionInstanceGroupManagerArgs.builder()
  *             .name("my-region-igm")
  *             .region("us-central1")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .baseInstanceName("foobar")
  *             .build());
  * 
- *         var foobar = new RegionAutoscaler("foobar", RegionAutoscalerArgs.builder()        
+ *         var foobar = new RegionAutoscaler("foobar", RegionAutoscalerArgs.builder()
  *             .name("my-region-autoscaler")
  *             .region("us-central1")
  *             .target(foobarRegionInstanceGroupManager.id())

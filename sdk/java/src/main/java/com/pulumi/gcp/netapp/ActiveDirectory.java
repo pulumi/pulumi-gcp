@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testActiveDirectoryFull = new ActiveDirectory("testActiveDirectoryFull", ActiveDirectoryArgs.builder()        
+ *         var testActiveDirectoryFull = new ActiveDirectory("testActiveDirectoryFull", ActiveDirectoryArgs.builder()
  *             .name("test-active-directory-full")
  *             .location("us-central1")
  *             .domain("ad.internal")

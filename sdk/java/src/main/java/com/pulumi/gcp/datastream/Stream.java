@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-instance")
  *             .databaseVersion("MYSQL_8_0")
  *             .region("us-central1")
@@ -122,24 +122,24 @@ import javax.annotation.Nullable;
  *             .deletionProtection(true)
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Source connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("source-profile")
@@ -150,37 +150,37 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("my-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectViewer")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var creator = new BucketIAMMember("creator", BucketIAMMemberArgs.builder()        
+ *         var creator = new BucketIAMMember("creator", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectCreator")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var reader = new BucketIAMMember("reader", BucketIAMMemberArgs.builder()        
+ *         var reader = new BucketIAMMember("reader", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.legacyBucketReader")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var keyUser = new CryptoKeyIAMMember("keyUser", CryptoKeyIAMMemberArgs.builder()        
+ *         var keyUser = new CryptoKeyIAMMember("keyUser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("destination-profile")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Stream("default", StreamArgs.builder()        
+ *         var default_ = new Stream("default", StreamArgs.builder()
  *             .streamId("my-stream")
  *             .desiredState("NOT_STARTED")
  *             .location("us-central1")
@@ -315,7 +315,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()        
+ *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()
  *             .displayName("Postgresql Source")
  *             .location("us-central1")
  *             .connectionProfileId("source-profile")
@@ -328,14 +328,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()        
+ *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()
  *             .displayName("BigQuery Destination")
  *             .location("us-central1")
  *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var default_ = new Stream("default", StreamArgs.builder()        
+ *         var default_ = new Stream("default", StreamArgs.builder()
  *             .displayName("Postgres to BigQuery")
  *             .location("us-central1")
  *             .streamId("my-stream")
@@ -441,7 +441,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()        
+ *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()
  *             .displayName("Oracle Source")
  *             .location("us-central1")
  *             .connectionProfileId("source-profile")
@@ -454,14 +454,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()        
+ *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()
  *             .displayName("BigQuery Destination")
  *             .location("us-central1")
  *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var stream5 = new Stream("stream5", StreamArgs.builder()        
+ *         var stream5 = new Stream("stream5", StreamArgs.builder()
  *             .displayName("Oracle to BigQuery")
  *             .location("us-central1")
  *             .streamId("my-stream")
@@ -575,21 +575,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres = new Dataset("postgres", DatasetArgs.builder()        
+ *         var postgres = new Dataset("postgres", DatasetArgs.builder()
  *             .datasetId("postgres")
  *             .friendlyName("postgres")
  *             .description("Database of postgres")
  *             .location("us-central1")
  *             .build());
  * 
- *         var destinationConnectionProfile2 = new ConnectionProfile("destinationConnectionProfile2", ConnectionProfileArgs.builder()        
+ *         var destinationConnectionProfile2 = new ConnectionProfile("destinationConnectionProfile2", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("dest-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("instance-name")
  *             .databaseVersion("MYSQL_8_0")
  *             .region("us-central1")
@@ -621,19 +621,19 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("my-user")
  *             .instance(instance.name())
  *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Source connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("source-profile")
@@ -644,7 +644,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Stream("default", StreamArgs.builder()        
+ *         var default_ = new Stream("default", StreamArgs.builder()
  *             .displayName("postgres to bigQuery")
  *             .location("us-central1")
  *             .streamId("postgres-bigquery")
@@ -664,7 +664,7 @@ import javax.annotation.Nullable;
  *             .backfillAll()
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
@@ -729,7 +729,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-instance")
  *             .databaseVersion("MYSQL_8_0")
  *             .region("us-central1")
@@ -761,24 +761,24 @@ import javax.annotation.Nullable;
  *             .deletionProtection(true)
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()
  *             .instance(instance.name())
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Source connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("source-profile")
@@ -791,20 +791,20 @@ import javax.annotation.Nullable;
  * 
  *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
  * 
- *         var bigqueryKeyUser = new CryptoKeyIAMMember("bigqueryKeyUser", CryptoKeyIAMMemberArgs.builder()        
+ *         var bigqueryKeyUser = new CryptoKeyIAMMember("bigqueryKeyUser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("bigquery-kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
  *             .build());
  * 
- *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()        
+ *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var default_ = new Stream("default", StreamArgs.builder()        
+ *         var default_ = new Stream("default", StreamArgs.builder()
  *             .streamId("my-stream")
  *             .location("us-central1")
  *             .displayName("my stream")

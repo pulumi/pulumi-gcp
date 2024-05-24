@@ -22,6 +22,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     /**
      * @return The parameters to copy from the verified token to the generated token.
      * Only the following parameters may be copied:
+     * * `PathGlobs`
      * 
      */
     private @Nullable List<String> copiedParameters;
@@ -29,6 +30,8 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * @return The keyset to use for signature generation.
      * The following are both valid paths to an EdgeCacheKeyset resource:
      * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+     * * `yourKeyset`
+     *   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
      * 
      */
     private @Nullable String keyset;
@@ -62,6 +65,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     /**
      * @return The parameters to copy from the verified token to the generated token.
      * Only the following parameters may be copied:
+     * * `PathGlobs`
      * 
      */
     public List<String> copiedParameters() {
@@ -71,6 +75,8 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * @return The keyset to use for signature generation.
      * The following are both valid paths to an EdgeCacheKeyset resource:
      * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+     * * `yourKeyset`
+     *   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
      * 
      */
     public Optional<String> keyset() {

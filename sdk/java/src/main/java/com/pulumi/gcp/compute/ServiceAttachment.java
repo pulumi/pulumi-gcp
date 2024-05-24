@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()        
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
  *             .name("producer-service-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -76,25 +76,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()        
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
  *             .name("producer-service")
  *             .region("us-west2")
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
- *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()        
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
  *             .name("psc-ilb-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()        
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
  *             .name("psc-ilb-producer-subnetwork")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()        
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
  *             .name("producer-forwarding-rule")
  *             .region("us-west2")
  *             .loadBalancingScheme("INTERNAL")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(pscIlbProducerSubnetwork.name())
  *             .build());
  * 
- *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()        
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
  *             .name("psc-ilb-nat")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.1.0.0/16")
  *             .build());
  * 
- *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()        
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
  *             .name("my-psc-ilb")
  *             .region("us-west2")
  *             .description("A service attachment configured with Terraform")
@@ -123,14 +123,14 @@ import javax.annotation.Nullable;
  *             .targetService(pscIlbTargetService.id())
  *             .build());
  * 
- *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()        
+ *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()
  *             .name("psc-ilb-consumer-address")
  *             .region("us-west2")
  *             .subnetwork("default")
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()        
+ *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()
  *             .name("psc-ilb-consumer-forwarding-rule")
  *             .region("us-west2")
  *             .target(pscIlbServiceAttachment.id())
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()        
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
  *             .name("producer-service-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -192,25 +192,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()        
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
  *             .name("producer-service")
  *             .region("us-west2")
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
- *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()        
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
  *             .name("psc-ilb-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()        
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
  *             .name("psc-ilb-producer-subnetwork")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()        
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
  *             .name("producer-forwarding-rule")
  *             .region("us-west2")
  *             .loadBalancingScheme("INTERNAL")
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(pscIlbProducerSubnetwork.name())
  *             .build());
  * 
- *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()        
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
  *             .name("psc-ilb-nat")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.1.0.0/16")
  *             .build());
  * 
- *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()        
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
  *             .name("my-psc-ilb")
  *             .region("us-west2")
  *             .description("A service attachment configured with Terraform")
@@ -246,14 +246,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()        
+ *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()
  *             .name("psc-ilb-consumer-address")
  *             .region("us-west2")
  *             .subnetwork("default")
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()        
+ *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()
  *             .name("psc-ilb-consumer-forwarding-rule")
  *             .region("us-west2")
  *             .target(pscIlbServiceAttachment.id())
@@ -306,12 +306,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pscIlbConsumerNetwork = new Network("pscIlbConsumerNetwork", NetworkArgs.builder()        
+ *         var pscIlbConsumerNetwork = new Network("pscIlbConsumerNetwork", NetworkArgs.builder()
  *             .name("psc-ilb-consumer-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()        
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
  *             .name("producer-service-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -320,25 +320,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()        
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
  *             .name("producer-service")
  *             .region("us-west2")
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
- *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()        
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
  *             .name("psc-ilb-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()        
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
  *             .name("psc-ilb-producer-subnetwork")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()        
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
  *             .name("producer-forwarding-rule")
  *             .region("us-west2")
  *             .loadBalancingScheme("INTERNAL")
@@ -348,7 +348,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(pscIlbProducerSubnetwork.name())
  *             .build());
  * 
- *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()        
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
  *             .name("psc-ilb-nat")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
@@ -356,7 +356,7 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.1.0.0/16")
  *             .build());
  * 
- *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()        
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
  *             .name("my-psc-ilb")
  *             .region("us-west2")
  *             .description("A service attachment configured with Terraform")
@@ -370,21 +370,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var pscIlbConsumerSubnetwork = new Subnetwork("pscIlbConsumerSubnetwork", SubnetworkArgs.builder()        
+ *         var pscIlbConsumerSubnetwork = new Subnetwork("pscIlbConsumerSubnetwork", SubnetworkArgs.builder()
  *             .name("psc-ilb-consumer-network")
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-west2")
  *             .network(pscIlbConsumerNetwork.id())
  *             .build());
  * 
- *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()        
+ *         var pscIlbConsumerAddress = new Address("pscIlbConsumerAddress", AddressArgs.builder()
  *             .name("psc-ilb-consumer-address")
  *             .region("us-west2")
  *             .subnetwork(pscIlbConsumerSubnetwork.id())
  *             .addressType("INTERNAL")
  *             .build());
  * 
- *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()        
+ *         var pscIlbConsumer = new ForwardingRule("pscIlbConsumer", ForwardingRuleArgs.builder()
  *             .name("psc-ilb-consumer-forwarding-rule")
  *             .region("us-west2")
  *             .target(pscIlbServiceAttachment.id())
@@ -436,7 +436,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()        
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
  *             .name("producer-service-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
@@ -445,25 +445,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()        
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
  *             .name("producer-service")
  *             .region("us-west2")
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
- *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()        
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
  *             .name("psc-ilb-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()        
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
  *             .name("psc-ilb-producer-subnetwork")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()        
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
  *             .name("producer-forwarding-rule")
  *             .region("us-west2")
  *             .loadBalancingScheme("INTERNAL")
@@ -473,7 +473,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(pscIlbProducerSubnetwork.name())
  *             .build());
  * 
- *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()        
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
  *             .name("psc-ilb-nat")
  *             .region("us-west2")
  *             .network(pscIlbNetwork.id())
@@ -481,7 +481,7 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.1.0.0/16")
  *             .build());
  * 
- *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()        
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
  *             .name("my-psc-ilb")
  *             .region("us-west2")
  *             .description("A service attachment configured with Terraform")

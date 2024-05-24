@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var disk = new Disk("disk", DiskArgs.builder()        
+ *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("my-base-disk")
  *             .image("debian-cloud/debian-11")
  *             .size(50)
@@ -67,13 +67,13 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()        
+ *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()
  *             .name("my-snapshot")
  *             .sourceDisk(disk.name())
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var ssd = new RegionDisk("ssd", RegionDiskArgs.builder()        
+ *         var ssd = new RegionDisk("ssd", RegionDiskArgs.builder()
  *             .name("my-disk")
  *             .replicaZones(            
  *                 "us-central1-a",
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .build());
  * 
- *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()        
+ *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()
  *             .name("my-resource-policy")
  *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attachment = new RegionDiskResourcePolicyAttachment("attachment", RegionDiskResourcePolicyAttachmentArgs.builder()        
+ *         var attachment = new RegionDiskResourcePolicyAttachment("attachment", RegionDiskResourcePolicyAttachmentArgs.builder()
  *             .name(policy.name())
  *             .disk(ssd.name())
  *             .region("us-central1")

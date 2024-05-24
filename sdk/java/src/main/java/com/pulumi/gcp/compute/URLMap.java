@@ -68,14 +68,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var login = new BackendService("login", BackendServiceArgs.builder()        
+ *         var login = new BackendService("login", BackendServiceArgs.builder()
  *             .name("login")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -83,18 +83,18 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()        
+ *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()
  *             .name("static-asset-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()        
+ *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()
  *             .name("static-asset-backend-bucket")
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(static_.id())
@@ -174,14 +174,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
  *             .name("home")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(home.id())
@@ -291,14 +291,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
  *             .name("home")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -307,7 +307,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(home.id())
@@ -379,14 +379,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
  *             .name("home")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -395,7 +395,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(home.id())
@@ -518,14 +518,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
  *             .name("home")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -534,7 +534,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(home.id())
@@ -622,14 +622,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("default")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -637,7 +637,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()        
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
  *             .name("service-a")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -645,7 +645,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()        
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()
  *             .name("service-b")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -653,7 +653,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("header-based routing example")
  *             .defaultService(default_.id())
@@ -728,14 +728,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("default")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -743,7 +743,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()        
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
  *             .name("service-a")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -751,7 +751,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()        
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()
  *             .name("service-b")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -759,7 +759,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("parameter-based routing example")
  *             .defaultService(default_.id())
@@ -838,14 +838,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var cart_backend = new BackendService("cart-backend", BackendServiceArgs.builder()        
+ *         var cart_backend = new BackendService("cart-backend", BackendServiceArgs.builder()
  *             .name("cart-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -854,7 +854,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var user_backend = new BackendService("user-backend", BackendServiceArgs.builder()        
+ *         var user_backend = new BackendService("user-backend", BackendServiceArgs.builder()
  *             .name("user-service")
  *             .portName("http")
  *             .protocol("HTTP")
@@ -863,18 +863,18 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()        
+ *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()
  *             .name("static-asset-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()        
+ *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()
  *             .name("static-asset-backend-bucket")
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(static_.id())

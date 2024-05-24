@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image("example", ImageArgs.builder()        
+ *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
  *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image("example", ImageArgs.builder()        
+ *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
  *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image("example", ImageArgs.builder()        
+ *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-sl-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
  *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")

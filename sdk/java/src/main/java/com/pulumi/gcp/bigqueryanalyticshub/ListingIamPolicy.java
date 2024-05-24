@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()        
+ *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()        
+ *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()        
+ *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()        
+ *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()        
+ *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()        
+ *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var openapiService = new Service("openapiService", ServiceArgs.builder()        
+ *         var openapiService = new Service("openapiService", ServiceArgs.builder()
  *             .serviceName("api-name.endpoints.project-id.cloud.goog")
  *             .project("project-id")
  *             .openapiConfig(StdFunctions.file(FileArgs.builder()
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var grpcService = new Service("grpcService", ServiceArgs.builder()        
+ *         var grpcService = new Service("grpcService", ServiceArgs.builder()
  *             .serviceName("api-name.endpoints.project-id.cloud.goog")
  *             .project("project-id")
  *             .grpcConfig(StdFunctions.file(FileArgs.builder()

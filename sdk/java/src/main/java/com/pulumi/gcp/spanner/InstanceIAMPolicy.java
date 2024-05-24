@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()        
+ *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMBinding("instance", InstanceIAMBindingArgs.builder()        
+ *         var instance = new InstanceIAMBinding("instance", InstanceIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .role("roles/spanner.databaseAdmin")
  *             .members("user:jane{@literal @}example.com")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMMember("instance", InstanceIAMMemberArgs.builder()        
+ *         var instance = new InstanceIAMMember("instance", InstanceIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .role("roles/spanner.databaseAdmin")
  *             .member("user:jane{@literal @}example.com")
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()        
+ *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMBinding("instance", InstanceIAMBindingArgs.builder()        
+ *         var instance = new InstanceIAMBinding("instance", InstanceIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .role("roles/spanner.databaseAdmin")
  *             .members("user:jane{@literal @}example.com")
@@ -253,7 +253,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMMember("instance", InstanceIAMMemberArgs.builder()        
+ *         var instance = new InstanceIAMMember("instance", InstanceIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .role("roles/spanner.databaseAdmin")
  *             .member("user:jane{@literal @}example.com")

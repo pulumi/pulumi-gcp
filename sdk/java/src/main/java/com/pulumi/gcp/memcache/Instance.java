@@ -74,11 +74,11 @@ import javax.annotation.Nullable;
  *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
  *         // this from "data"to "resource"
- *         var memcacheNetwork = new Network("memcacheNetwork", NetworkArgs.builder()        
+ *         var memcacheNetwork = new Network("memcacheNetwork", NetworkArgs.builder()
  *             .name("test-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()
  *             .name("address")
  *             .purpose("VPC_PEERING")
  *             .addressType("INTERNAL")
@@ -86,13 +86,13 @@ import javax.annotation.Nullable;
  *             .network(memcacheNetwork.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()
  *             .network(memcacheNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .authorizedNetwork(privateServiceConnection.network())
  *             .labels(Map.of("env", "test"))

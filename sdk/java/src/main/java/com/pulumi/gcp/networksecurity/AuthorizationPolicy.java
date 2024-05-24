@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()        
+ *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()
  *             .name("my-authorization-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()        
+ *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()
  *             .name("my-authorization-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")

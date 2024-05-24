@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.Organizations.Inputs
     {
         [Input("exemptedMembers")]
         private List<string>? _exemptedMembers;
+
+        /// <summary>
+        /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        /// </summary>
         public List<string> ExemptedMembers
         {
             get => _exemptedMembers ?? (_exemptedMembers = new List<string>());
             set => _exemptedMembers = value;
         }
 
+        /// <summary>
+        /// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+        /// </summary>
         [Input("logType", required: true)]
         public string LogType { get; set; } = null!;
 

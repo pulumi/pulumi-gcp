@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("(default)")
  *             .locationId("nam5")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var default_ = new DataStoreIndex("default", DataStoreIndexArgs.builder()        
+ *         var default_ = new DataStoreIndex("default", DataStoreIndexArgs.builder()
  *             .kind("foo")
  *             .properties(            
  *                 DataStoreIndexPropertyArgs.builder()

@@ -12,26 +12,30 @@ import java.util.Objects;
 @CustomType
 public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
     /**
-     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+     * 
+     * ***
      * 
      */
     private Integer acceleratorCount;
     /**
-     * @return The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+     * @return The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
      * 
      */
     private String acceleratorType;
 
     private ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator() {}
     /**
-     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
+     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+     * 
+     * ***
      * 
      */
     public Integer acceleratorCount() {
         return this.acceleratorCount;
     }
     /**
-     * @return The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
+     * @return The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
      * 
      */
     public String acceleratorType() {
