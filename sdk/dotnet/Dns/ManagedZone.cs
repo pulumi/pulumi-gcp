@@ -462,7 +462,7 @@ namespace Pulumi.Gcp.Dns
         /// Unique identifier for the resource; defined by the server.
         /// </summary>
         [Output("managedZoneId")]
-        public Output<int> ManagedZoneId { get; private set; } = null!;
+        public Output<string> ManagedZoneId { get; private set; } = null!;
 
         /// <summary>
         /// User assigned name for this resource.
@@ -789,7 +789,7 @@ namespace Pulumi.Gcp.Dns
         /// Unique identifier for the resource; defined by the server.
         /// </summary>
         [Input("managedZoneId")]
-        public Input<int>? ManagedZoneId { get; set; }
+        public Input<string>? ManagedZoneId { get; set; }
 
         /// <summary>
         /// User assigned name for this resource.

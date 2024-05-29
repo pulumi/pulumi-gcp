@@ -17,7 +17,6 @@ import com.pulumi.gcp.dns.outputs.ManagedZonePeeringConfig;
 import com.pulumi.gcp.dns.outputs.ManagedZonePrivateVisibilityConfig;
 import com.pulumi.gcp.dns.outputs.ManagedZoneServiceDirectoryConfig;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -645,14 +644,14 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * Unique identifier for the resource; defined by the server.
      * 
      */
-    @Export(name="managedZoneId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> managedZoneId;
+    @Export(name="managedZoneId", refs={String.class}, tree="[0]")
+    private Output<String> managedZoneId;
 
     /**
      * @return Unique identifier for the resource; defined by the server.
      * 
      */
-    public Output<Integer> managedZoneId() {
+    public Output<String> managedZoneId() {
         return this.managedZoneId;
     }
     /**

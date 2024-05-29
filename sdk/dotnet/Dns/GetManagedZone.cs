@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public readonly string DnsName;
         public readonly string Id;
-        public readonly int ManagedZoneId;
+        public readonly string ManagedZoneId;
         public readonly string Name;
         /// <summary>
         /// The list of nameservers that will be authoritative for this
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Dns
 
             string id,
 
-            int managedZoneId,
+            string managedZoneId,
 
             string name,
 

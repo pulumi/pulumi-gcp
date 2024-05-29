@@ -31,8 +31,8 @@ class GetManagedZoneResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if managed_zone_id and not isinstance(managed_zone_id, int):
-            raise TypeError("Expected argument 'managed_zone_id' to be a int")
+        if managed_zone_id and not isinstance(managed_zone_id, str):
+            raise TypeError("Expected argument 'managed_zone_id' to be a str")
         pulumi.set(__self__, "managed_zone_id", managed_zone_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -70,7 +70,7 @@ class GetManagedZoneResult:
 
     @property
     @pulumi.getter(name="managedZoneId")
-    def managed_zone_id(self) -> int:
+    def managed_zone_id(self) -> str:
         return pulumi.get(self, "managed_zone_id")
 
     @property

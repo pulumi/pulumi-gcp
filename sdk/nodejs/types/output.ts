@@ -55380,7 +55380,7 @@ export namespace dns {
         description: string;
         dnsName: string;
         id: string;
-        managedZoneId: number;
+        managedZoneId: string;
         name?: string;
         nameServers: string[];
         /**

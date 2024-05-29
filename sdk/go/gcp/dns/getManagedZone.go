@@ -79,7 +79,7 @@ type LookupManagedZoneResult struct {
 	// The fully qualified DNS name of this zone, e.g. `example.io.`.
 	DnsName       string `pulumi:"dnsName"`
 	Id            string `pulumi:"id"`
-	ManagedZoneId int    `pulumi:"managedZoneId"`
+	ManagedZoneId string `pulumi:"managedZoneId"`
 	Name          string `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this
 	// domain. Use NS records to redirect from your DNS provider to these names,
@@ -145,8 +145,8 @@ func (o LookupManagedZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupManagedZoneResultOutput) ManagedZoneId() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupManagedZoneResult) int { return v.ManagedZoneId }).(pulumi.IntOutput)
+func (o LookupManagedZoneResultOutput) ManagedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.ManagedZoneId }).(pulumi.StringOutput)
 }
 
 func (o LookupManagedZoneResultOutput) Name() pulumi.StringOutput {

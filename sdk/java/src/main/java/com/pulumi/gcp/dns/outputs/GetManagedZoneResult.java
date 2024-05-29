@@ -5,7 +5,6 @@ package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +24,7 @@ public final class GetManagedZoneResult {
      */
     private String dnsName;
     private String id;
-    private Integer managedZoneId;
+    private String managedZoneId;
     private String name;
     /**
      * @return The list of nameservers that will be authoritative for this
@@ -60,7 +59,7 @@ public final class GetManagedZoneResult {
     public String id() {
         return this.id;
     }
-    public Integer managedZoneId() {
+    public String managedZoneId() {
         return this.managedZoneId;
     }
     public String name() {
@@ -99,7 +98,7 @@ public final class GetManagedZoneResult {
         private String description;
         private String dnsName;
         private String id;
-        private Integer managedZoneId;
+        private String managedZoneId;
         private String name;
         private List<String> nameServers;
         private @Nullable String project;
@@ -142,7 +141,7 @@ public final class GetManagedZoneResult {
             return this;
         }
         @CustomType.Setter
-        public Builder managedZoneId(Integer managedZoneId) {
+        public Builder managedZoneId(String managedZoneId) {
             if (managedZoneId == null) {
               throw new MissingRequiredPropertyException("GetManagedZoneResult", "managedZoneId");
             }

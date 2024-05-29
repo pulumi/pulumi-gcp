@@ -5424,7 +5424,7 @@ type GetManagedZonesManagedZone struct {
 	Description   string   `pulumi:"description"`
 	DnsName       string   `pulumi:"dnsName"`
 	Id            string   `pulumi:"id"`
-	ManagedZoneId int      `pulumi:"managedZoneId"`
+	ManagedZoneId string   `pulumi:"managedZoneId"`
 	Name          *string  `pulumi:"name"`
 	NameServers   []string `pulumi:"nameServers"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
@@ -5447,7 +5447,7 @@ type GetManagedZonesManagedZoneArgs struct {
 	Description   pulumi.StringInput      `pulumi:"description"`
 	DnsName       pulumi.StringInput      `pulumi:"dnsName"`
 	Id            pulumi.StringInput      `pulumi:"id"`
-	ManagedZoneId pulumi.IntInput         `pulumi:"managedZoneId"`
+	ManagedZoneId pulumi.StringInput      `pulumi:"managedZoneId"`
 	Name          pulumi.StringPtrInput   `pulumi:"name"`
 	NameServers   pulumi.StringArrayInput `pulumi:"nameServers"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
@@ -5518,8 +5518,8 @@ func (o GetManagedZonesManagedZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetManagedZonesManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetManagedZonesManagedZone) int { return v.ManagedZoneId }).(pulumi.IntOutput)
+func (o GetManagedZonesManagedZoneOutput) ManagedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.ManagedZoneId }).(pulumi.StringOutput)
 }
 
 func (o GetManagedZonesManagedZoneOutput) Name() pulumi.StringPtrOutput {

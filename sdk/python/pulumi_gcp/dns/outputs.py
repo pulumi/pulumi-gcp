@@ -2187,7 +2187,7 @@ class GetManagedZonesManagedZoneResult(dict):
                  description: str,
                  dns_name: str,
                  id: str,
-                 managed_zone_id: int,
+                 managed_zone_id: str,
                  name_servers: Sequence[str],
                  visibility: str,
                  name: Optional[str] = None,
@@ -2223,7 +2223,7 @@ class GetManagedZonesManagedZoneResult(dict):
 
     @property
     @pulumi.getter(name="managedZoneId")
-    def managed_zone_id(self) -> int:
+    def managed_zone_id(self) -> str:
         return pulumi.get(self, "managed_zone_id")
 
     @property

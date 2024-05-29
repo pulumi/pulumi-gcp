@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly string Description;
         public readonly string DnsName;
         public readonly string Id;
-        public readonly int ManagedZoneId;
+        public readonly string ManagedZoneId;
         public readonly string? Name;
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dns.Outputs
 
             string id,
 
-            int managedZoneId,
+            string managedZoneId,
 
             string? name,
 
