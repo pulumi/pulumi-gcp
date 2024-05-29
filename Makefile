@@ -118,7 +118,7 @@ install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource tls 5.0.2
 	.pulumi/bin/pulumi plugin install resource http 0.0.3
 	.pulumi/bin/pulumi plugin install resource time 0.0.15
-	.pulumi/bin/pulumi plugin install converter terraform 1.0.15
+	.pulumi/bin/pulumi plugin install converter terraform 1.0.17
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
