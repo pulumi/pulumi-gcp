@@ -29,7 +29,7 @@ plugins:
   - name: time
     version: "0.0.15"
   - name: terraform
-    version: "1.0.15"
+    version: "1.0.17"
     kind: converter
 goBuildParallelism: 2
 skipGoReleaserHooks: true
