@@ -13,7 +13,6 @@ import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneServiceDirectoryConfigArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -184,13 +183,13 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="managedZoneId")
-    private @Nullable Output<Integer> managedZoneId;
+    private @Nullable Output<String> managedZoneId;
 
     /**
      * @return Unique identifier for the resource; defined by the server.
      * 
      */
-    public Optional<Output<Integer>> managedZoneId() {
+    public Optional<Output<String>> managedZoneId() {
         return Optional.ofNullable(this.managedZoneId);
     }
 
@@ -616,7 +615,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder managedZoneId(@Nullable Output<Integer> managedZoneId) {
+        public Builder managedZoneId(@Nullable Output<String> managedZoneId) {
             $.managedZoneId = managedZoneId;
             return this;
         }
@@ -627,7 +626,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder managedZoneId(Integer managedZoneId) {
+        public Builder managedZoneId(String managedZoneId) {
             return managedZoneId(Output.of(managedZoneId));
         }
 

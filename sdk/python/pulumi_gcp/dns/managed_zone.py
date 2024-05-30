@@ -302,7 +302,7 @@ class _ManagedZoneState:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_zone_id: Optional[pulumi.Input[int]] = None,
+                 managed_zone_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
@@ -332,7 +332,7 @@ class _ManagedZoneState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
+        :param pulumi.Input[str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
                
@@ -519,14 +519,14 @@ class _ManagedZoneState:
 
     @property
     @pulumi.getter(name="managedZoneId")
-    def managed_zone_id(self) -> Optional[pulumi.Input[int]]:
+    def managed_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier for the resource; defined by the server.
         """
         return pulumi.get(self, "managed_zone_id")
 
     @managed_zone_id.setter
-    def managed_zone_id(self, value: Optional[pulumi.Input[int]]):
+    def managed_zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "managed_zone_id", value)
 
     @property
@@ -1311,7 +1311,7 @@ class ManagedZone(pulumi.CustomResource):
             force_destroy: Optional[pulumi.Input[bool]] = None,
             forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            managed_zone_id: Optional[pulumi.Input[int]] = None,
+            managed_zone_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
@@ -1346,7 +1346,7 @@ class ManagedZone(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
+        :param pulumi.Input[str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
                
@@ -1481,7 +1481,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedZoneId")
-    def managed_zone_id(self) -> pulumi.Output[int]:
+    def managed_zone_id(self) -> pulumi.Output[str]:
         """
         Unique identifier for the resource; defined by the server.
         """

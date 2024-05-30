@@ -31268,6 +31268,21 @@
             ]
         }
     },
+    "managed_zone": {
+        "resources": {
+            "google_dns_managed_zone": [
+                "managed_zone_id"
+            ]
+        },
+        "dataSources": {
+            "google_dns_managed_zone": [
+                "managed_zone_id"
+            ],
+            "google_dns_managed_zones": [
+                "managed_zones.$.managed_zone_id"
+            ]
+        }
+    },
     "mux": {
         "resources": {
             "gcp:accesscontextmanager/accessLevel:AccessLevel": 0,

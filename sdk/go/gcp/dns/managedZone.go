@@ -467,7 +467,7 @@ type ManagedZone struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique identifier for the resource; defined by the server.
-	ManagedZoneId pulumi.IntOutput `pulumi:"managedZoneId"`
+	ManagedZoneId pulumi.StringOutput `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	//
@@ -573,7 +573,7 @@ type managedZoneState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique identifier for the resource; defined by the server.
-	ManagedZoneId *int `pulumi:"managedZoneId"`
+	ManagedZoneId *string `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	//
@@ -639,7 +639,7 @@ type ManagedZoneState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique identifier for the resource; defined by the server.
-	ManagedZoneId pulumi.IntPtrInput
+	ManagedZoneId pulumi.StringPtrInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	//
@@ -929,8 +929,8 @@ func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Unique identifier for the resource; defined by the server.
-func (o ManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ManagedZone) pulumi.IntOutput { return v.ManagedZoneId }).(pulumi.IntOutput)
+func (o ManagedZoneOutput) ManagedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.ManagedZoneId }).(pulumi.StringOutput)
 }
 
 // User assigned name for this resource.

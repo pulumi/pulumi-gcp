@@ -26,10 +26,12 @@ import (
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
@@ -4017,6 +4019,23 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	fixLabelNames(&prov)
+
+	// managed_zone_id is an ID masquerading as an int64. Since it uses the full 64
+	// bits it has, we need to stringify it to keep more data then a number (float64)
+	// will allow.
+	//
+	// https://github.com/pulumi/pulumi-gcp/issues/1036
+	tfbridge.MustTraverseProperties(&prov, "managed_zone",
+		func(info tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+			p := info.SchemaPath()
+			if n, ok := p[len(p)-1].(walk.GetAttrStep); ok && n.Name == "managed_zone_id" {
+				contract.Assertf(info.ShimSchema().Type() == shim.TypeInt,
+					"unexpected type for managed_zone_id")
+				info.SchemaInfo().Type = "string"
+				return tfbridge.PropertyVisitResult{HasEffect: true}, nil
+			}
+			return tfbridge.PropertyVisitResult{}, nil
+		})
 
 	allowMissingResourceDocs := []string{
 		"google_clouddeploy_delivery_pipeline_iam_binding",
