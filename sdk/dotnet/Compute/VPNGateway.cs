@@ -80,6 +80,14 @@ namespace Pulumi.Gcp.Compute
     ///         PeerIp = "15.0.0.120",
     ///         SharedSecret = "a secret message",
     ///         TargetVpnGateway = targetGateway.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             frEsp,
+    ///             frUdp500,
+    ///             frUdp4500,
+    ///         },
     ///     });
     /// 
     ///     var route1 = new Gcp.Compute.Route("route1", new()

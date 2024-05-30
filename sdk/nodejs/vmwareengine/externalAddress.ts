@@ -52,6 +52,8 @@ import * as utilities from "../utilities";
  *     parent: external_address_pc.id,
  *     internalIp: "192.168.0.66",
  *     description: "Sample description.",
+ * }, {
+ *     dependsOn: [external_address_np],
  * });
  * ```
  *

@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.cloudids.Endpoint;
  * import com.pulumi.gcp.cloudids.EndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,7 +79,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1-f")
  *             .network(default_.id())
  *             .severity("INFORMATIONAL")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(privateServiceConnection)
+ *                 .build());
  * 
  *     }
  * }

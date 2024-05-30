@@ -28,12 +28,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Enable notifications by giving the correct IAM permission to the unique service account.
+ * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "default_topic"});
+ * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ *     topic: topic.id,
+ *     role: "roles/pubsub.publisher",
+ *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
+ * });
  * // End enabling notifications
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     name: "default_bucket",
  *     location: "US",
  * });
- * const topic = new gcp.pubsub.Topic("topic", {name: "default_topic"});
  * const notification = new gcp.storage.Notification("notification", {
  *     bucket: bucket.name,
  *     payloadFormat: "JSON_API_V1",
@@ -45,13 +52,8 @@ import * as utilities from "../utilities";
  *     customAttributes: {
  *         "new-attribute": "new-attribute-value",
  *     },
- * });
- * // Enable notifications by giving the correct IAM permission to the unique service account.
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     topic: topic.id,
- *     role: "roles/pubsub.publisher",
- *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
+ * }, {
+ *     dependsOn: [binding],
  * });
  * ```
  *

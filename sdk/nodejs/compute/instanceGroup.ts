@@ -54,62 +54,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Example Usage - Recreating an instance group in use
- * Recreating an instance group that's in use by another resource will give a
- * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
- * as shown in this example to avoid this type of error.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const debianImage = gcp.compute.getImage({
- *     family: "debian-11",
- *     project: "debian-cloud",
- * });
- * const stagingVm = new gcp.compute.Instance("staging_vm", {
- *     name: "staging-vm",
- *     machineType: "e2-medium",
- *     zone: "us-central1-c",
- *     bootDisk: {
- *         initializeParams: {
- *             image: debianImage.then(debianImage => debianImage.selfLink),
- *         },
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *     }],
- * });
- * const stagingGroup = new gcp.compute.InstanceGroup("staging_group", {
- *     name: "staging-instance-group",
- *     zone: "us-central1-c",
- *     instances: [stagingVm.id],
- *     namedPorts: [
- *         {
- *             name: "http",
- *             port: 8080,
- *         },
- *         {
- *             name: "https",
- *             port: 8443,
- *         },
- *     ],
- * });
- * const stagingHealth = new gcp.compute.HttpsHealthCheck("staging_health", {
- *     name: "staging-health",
- *     requestPath: "/health_check",
- * });
- * const stagingService = new gcp.compute.BackendService("staging_service", {
- *     name: "staging-service",
- *     portName: "https",
- *     protocol: "HTTPS",
- *     backends: [{
- *         group: stagingGroup.id,
- *     }],
- *     healthChecks: stagingHealth.id,
- * });
- * ```
- *
  * ## Import
  *
  * Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g.

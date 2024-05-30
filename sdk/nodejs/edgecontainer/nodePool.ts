@@ -97,6 +97,8 @@ import * as utilities from "../utilities";
  *     localDiskEncryption: {
  *         kmsKey: cryptoKeyCryptoKey.id,
  *     },
+ * }, {
+ *     dependsOn: [cryptoKey],
  * });
  * ```
  * ### Edgecontainer Local Control Plane Node Pool

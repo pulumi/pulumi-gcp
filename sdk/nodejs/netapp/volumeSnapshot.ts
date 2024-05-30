@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     location: defaultVolume.location,
  *     volumeName: defaultVolume.name,
  *     name: "testvolumesnap",
+ * }, {
+ *     dependsOn: [defaultVolume],
  * });
  * ```
  *

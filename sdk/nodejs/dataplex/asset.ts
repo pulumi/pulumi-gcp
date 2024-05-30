@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  *         "my-asset": "exists",
  *     },
  *     project: "my-project-name",
+ * }, {
+ *     dependsOn: [basicBucket],
  * });
  * ```
  *

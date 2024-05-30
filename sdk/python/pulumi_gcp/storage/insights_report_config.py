@@ -270,6 +270,10 @@ class InsightsReportConfig(pulumi.CustomResource):
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=report_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         config = gcp.storage.InsightsReportConfig("config",
             display_name="Test Report Config",
             location="us-central1",
@@ -304,11 +308,8 @@ class InsightsReportConfig(pulumi.CustomResource):
                     bucket=report_bucket.name,
                     destination_path="test-insights-reports",
                 ),
-            ))
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=report_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[admin]))
         ```
 
         ## Import
@@ -374,6 +375,10 @@ class InsightsReportConfig(pulumi.CustomResource):
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=report_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         config = gcp.storage.InsightsReportConfig("config",
             display_name="Test Report Config",
             location="us-central1",
@@ -408,11 +413,8 @@ class InsightsReportConfig(pulumi.CustomResource):
                     bucket=report_bucket.name,
                     destination_path="test-insights-reports",
                 ),
-            ))
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=report_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[admin]))
         ```
 
         ## Import

@@ -89,6 +89,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.compute.Disk;
  * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.tpu.V2Vm;
  * import com.pulumi.gcp.tpu.V2VmArgs;
  * import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
@@ -97,8 +99,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tpu.inputs.V2VmShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.tpu.inputs.V2VmServiceAccountArgs;
  * import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -141,6 +142,13 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-c")
  *             .build());
  * 
+ *         // Wait after service account creation to limit eventual consistency errors.
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sa)
+ *                 .build());
+ * 
  *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-c")
@@ -174,12 +182,9 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .metadata(Map.of("foo", "bar"))
  *             .tags("foo")
- *             .build());
- * 
- *         // Wait after service account creation to limit eventual consistency errors.
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *     }
  * }

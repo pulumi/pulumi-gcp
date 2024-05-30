@@ -499,6 +499,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -595,7 +596,9 @@ import javax.annotation.Nullable;
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultAuthority)
+ *                 .build());
  * 
  *     }
  * }
@@ -638,6 +641,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -737,7 +741,9 @@ import javax.annotation.Nullable;
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultAuthority)
+ *                 .build());
  * 
  *     }
  * }

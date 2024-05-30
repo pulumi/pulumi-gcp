@@ -31,10 +31,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
- * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.time.sleep;
  * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
+ * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,13 +55,17 @@ import javax.annotation.Nullable;
  *             .orgId("123456789")
  *             .build());
  * 
- *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()
- *             .serviceProjectAttachmentId(serviceProject.projectId())
- *             .build());
- * 
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(serviceProject)
+ *                 .build());
+ * 
+ *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()
+ *             .serviceProjectAttachmentId(serviceProject.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *     }
  * }
@@ -79,10 +84,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
- * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.time.sleep;
  * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
+ * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,14 +108,18 @@ import javax.annotation.Nullable;
  *             .orgId("123456789")
  *             .build());
  * 
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(serviceProjectFull)
+ *                 .build());
+ * 
  *         var example2 = new ServiceProjectAttachment("example2", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProjectFull.projectId())
  *             .serviceProject(serviceProjectFull.projectId())
- *             .build());
- * 
- *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
- *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *     }
  * }

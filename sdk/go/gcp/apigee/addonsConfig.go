@@ -77,14 +77,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: pulumi.String(current.Project),
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: pulumi.String(current.Project),
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -101,7 +101,9 @@ import (
 //			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
 //				Name:    pulumi.String("apigee-network"),
 //				Project: pulumi.String(current.Project),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -116,7 +118,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -131,7 +133,10 @@ import (
 //				ProjectId:         pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //				BillingType:       pulumi.String("EVALUATION"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigee,
+//			}))
 //			if err != nil {
 //				return err
 //			}

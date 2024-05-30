@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
  * import com.pulumi.gcp.cloudbuildv2.Repository;
  * import com.pulumi.gcp.cloudbuildv2.RepositoryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -118,7 +119,11 @@ import javax.annotation.Nullable;
  *                 .appSlug("gcb-app")
  *                 .appInstallationId(300)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     policy_pk,
+ *                     policy_whs)
+ *                 .build());
  * 
  *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()
  *             .name("my-terraform-ghe-repo")

@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -269,7 +270,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .customerManagedEncryptionKey("kms-name")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(keyUser)
+ *                 .build());
  * 
  *     }
  * }
@@ -541,10 +544,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
- * import com.pulumi.gcp.sql.Database;
- * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
@@ -559,6 +562,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -601,16 +605,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var db = new Database("db", DatabaseArgs.builder()
- *             .name("db")
- *             .instance(instance.name())
- *             .build());
- * 
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
  *             .password("password")
  *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .name("db")
+ *             .instance(instance.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(user)
+ *                 .build());
  * 
  *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()
  *             .displayName("SQL Server Source")
@@ -855,6 +861,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -965,7 +972,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .backfillNone()
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bigqueryKeyUser)
+ *                 .build());
  * 
  *     }
  * }

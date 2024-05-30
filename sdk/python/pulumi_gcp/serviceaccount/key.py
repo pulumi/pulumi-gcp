@@ -401,7 +401,7 @@ class Key(pulumi.CustomResource):
                 name="google-application-credentials",
             ),
             data={
-                "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
+                "credentials.json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
 
@@ -487,7 +487,7 @@ class Key(pulumi.CustomResource):
                 name="google-application-credentials",
             ),
             data={
-                "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
+                "credentials.json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
 

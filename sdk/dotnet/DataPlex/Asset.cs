@@ -76,6 +76,12 @@ namespace Pulumi.Gcp.DataPlex
     ///             { "my-asset", "exists" },
     ///         },
     ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             basicBucket,
+    ///         },
     ///     });
     /// 
     /// });

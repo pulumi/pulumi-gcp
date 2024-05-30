@@ -67,7 +67,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edgecontainer.NewNodePool(ctx, "node_pool", &edgecontainer.NodePoolArgs{
+//			nodePool, err := edgecontainer.NewNodePool(ctx, "node_pool", &edgecontainer.NodePoolArgs{
 //				Name:         pulumi.String("nodepool-1"),
 //				Cluster:      cluster.Name,
 //				Location:     pulumi.String("us-central1"),
@@ -95,7 +95,9 @@ import (
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				nodePool,
+//			}))
 //			if err != nil {
 //				return err
 //			}

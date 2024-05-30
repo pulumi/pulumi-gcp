@@ -138,6 +138,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Name = "my-tls-inspection-policy",
     ///         Location = "us-central1",
     ///         CaPool = @default.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///             defaultAuthority,
+    ///             tlsInspectionPermission,
+    ///         },
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
@@ -146,6 +154,12 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Location = "us-central1",
     ///         Description = "my description",
     ///         TlsInspectionPolicy = defaultTlsInspectionPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultTlsInspectionPolicy,
+    ///         },
     ///     });
     /// 
     /// });

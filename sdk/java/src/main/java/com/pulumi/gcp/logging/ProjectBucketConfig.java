@@ -170,6 +170,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.logging.ProjectBucketConfig;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
  * import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -212,7 +213,9 @@ import javax.annotation.Nullable;
  *             .cmekSettings(ProjectBucketConfigCmekSettingsArgs.builder()
  *                 .kmsKeyName(key.id())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
  * 
  *     }
  * }

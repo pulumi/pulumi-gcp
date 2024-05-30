@@ -41,17 +41,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiEndpoint;
  * import com.pulumi.gcp.vertex.AiEndpointArgs;
  * import com.pulumi.gcp.vertex.inputs.AiEndpointEncryptionSpecArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,21 +70,6 @@ import javax.annotation.Nullable;
  *             .name("network-name")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name")
- *             .displayName("sample-endpoint")
- *             .description("A sample vertex endpoint")
- *             .location("us-central1")
- *             .region("us-central1")
- *             .labels(Map.of("label-one", "value-one"))
- *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
- *             .encryptionSpec(AiEndpointEncryptionSpecArgs.builder()
- *                 .kmsKeyName("kms-name")
- *                 .build())
- *             .build());
- * 
  *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()
  *             .name("address-name")
  *             .purpose("VPC_PEERING")
@@ -97,6 +83,23 @@ import javax.annotation.Nullable;
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
+ *             .name("endpoint-name")
+ *             .displayName("sample-endpoint")
+ *             .description("A sample vertex endpoint")
+ *             .location("us-central1")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .encryptionSpec(AiEndpointEncryptionSpecArgs.builder()
+ *                 .kmsKeyName("kms-name")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vertexVpcConnection)
+ *                 .build());
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")

@@ -130,6 +130,14 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "overlapping-subnet",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
     ///     var @default = new Gcp.NetworkConnectivity.InternalRange("default", new()
     ///     {
     ///         Name = "overlap-range",
@@ -142,14 +150,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             "OVERLAP_EXISTING_SUBNET_RANGE",
     ///         },
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Name = "overlapping-subnet",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         DependsOn =
+    ///         {
+    ///             defaultSubnetwork,
+    ///         },
     ///     });
     /// 
     /// });

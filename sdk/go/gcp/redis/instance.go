@@ -186,7 +186,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
+//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
 //				Network: redis_network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -206,7 +206,9 @@ import (
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_4_0"),
 //				DisplayName:           pulumi.String("Test Instance"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				privateServiceConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

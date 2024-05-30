@@ -146,14 +146,6 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuild_service_account", {accountId: "cloud-sa"});
- * const service_account_trigger = new gcp.cloudbuild.Trigger("service-account-trigger", {
- *     triggerTemplate: {
- *         branchName: "main",
- *         repoName: "my-repo",
- *     },
- *     serviceAccount: cloudbuildServiceAccount.id,
- *     filename: "cloudbuild.yaml",
- * });
  * const actAs = new gcp.projects.IAMMember("act_as", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",
@@ -163,6 +155,19 @@ import * as utilities from "../utilities";
  *     project: project.then(project => project.projectId),
  *     role: "roles/logging.logWriter",
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const service_account_trigger = new gcp.cloudbuild.Trigger("service-account-trigger", {
+ *     triggerTemplate: {
+ *         branchName: "main",
+ *         repoName: "my-repo",
+ *     },
+ *     serviceAccount: cloudbuildServiceAccount.id,
+ *     filename: "cloudbuild.yaml",
+ * }, {
+ *     dependsOn: [
+ *         actAs,
+ *         logsWriter,
+ *     ],
  * });
  * ```
  * ### Cloudbuild Trigger Include Build Logs

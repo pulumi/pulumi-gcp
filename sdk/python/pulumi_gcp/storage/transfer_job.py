@@ -384,7 +384,8 @@ class TransferJob(pulumi.CustomResource):
         s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucket",
             bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}")
+            member=f"serviceAccount:{default.email}",
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
         topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
         notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
@@ -439,7 +440,11 @@ class TransferJob(pulumi.CustomResource):
                     "TRANSFER_OPERATION_FAILED",
                 ],
                 payload_format="JSON",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    s3_backup_bucket_bucket_iam_member,
+                    notification_config,
+                ]))
         ```
 
         ## Import
@@ -501,7 +506,8 @@ class TransferJob(pulumi.CustomResource):
         s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucket",
             bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}")
+            member=f"serviceAccount:{default.email}",
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
         topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
         notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
@@ -556,7 +562,11 @@ class TransferJob(pulumi.CustomResource):
                     "TRANSFER_OPERATION_FAILED",
                 ],
                 payload_format="JSON",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    s3_backup_bucket_bucket_iam_member,
+                    notification_config,
+                ]))
         ```
 
         ## Import

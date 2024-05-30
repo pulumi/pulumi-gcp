@@ -174,6 +174,8 @@ import * as utilities from "../utilities";
  *         size: 2,
  *         mask: "0x8F00",
  *     }],
+ * }, {
+ *     dependsOn: [edgeSecService],
  * });
  * const policyRuleNetworkMatch = new gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match", {
  *     region: "us-west2",

@@ -455,21 +455,6 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            labels={
-                "name": "wrench",
-                "count": "3",
-            })
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -505,6 +490,22 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            labels={
+                "name": "wrench",
+                "count": "3",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
         ```
 
         ## Import
@@ -579,21 +580,6 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            labels={
-                "name": "wrench",
-                "count": "3",
-            })
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -629,6 +615,22 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            labels={
+                "name": "wrench",
+                "count": "3",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
         ```
 
         ## Import

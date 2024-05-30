@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     location: "us-central1-f",
  *     network: _default.id,
  *     severity: "INFORMATIONAL",
+ * }, {
+ *     dependsOn: [privateServiceConnection],
  * });
  * ```
  *

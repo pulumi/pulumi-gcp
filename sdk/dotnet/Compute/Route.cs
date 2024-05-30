@@ -224,6 +224,13 @@ namespace Pulumi.Gcp.Compute
     ///             "tag1",
     ///             "tag2",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             peering1,
+    ///             peering2,
+    ///         },
     ///     });
     /// 
     /// });

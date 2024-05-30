@@ -28,69 +28,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Example Usage
     /// 
-    /// ### Access Context Manager Service Perimeter Egress Policy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
-    ///     {
-    ///         Parent = "organizations/123456789",
-    ///         Title = "Storage Policy",
-    ///     });
-    /// 
-    ///     var storage_perimeter = new Gcp.AccessContextManager.ServicePerimeter("storage-perimeter", new()
-    ///     {
-    ///         Parent = access_policy.Name.Apply(name =&gt; $"accesspolicies/{name}"),
-    ///         Name = access_policy.Name.Apply(name =&gt; $"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
-    ///         Title = "Storage Perimeter",
-    ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
-    ///         {
-    ///             RestrictedServices = new[]
-    ///             {
-    ///                 "storage.googleapis.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var egressPolicy = new Gcp.AccessContextManager.ServicePerimeterEgressPolicy("egress_policy", new()
-    ///     {
-    ///         Perimeter = storage_perimeter.Name,
-    ///         EgressFrom = new Gcp.AccessContextManager.Inputs.ServicePerimeterEgressPolicyEgressFromArgs
-    ///         {
-    ///             IdentityType = "ANY_IDENTITY",
-    ///         },
-    ///         EgressTo = new Gcp.AccessContextManager.Inputs.ServicePerimeterEgressPolicyEgressToArgs
-    ///         {
-    ///             Resources = new[]
-    ///             {
-    ///                 "*",
-    ///             },
-    ///             Operations = new[]
-    ///             {
-    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimeterEgressPolicyEgressToOperationArgs
-    ///                 {
-    ///                     ServiceName = "bigquery.googleapis.com",
-    ///                     MethodSelectors = new[]
-    ///                     {
-    ///                         new Gcp.AccessContextManager.Inputs.ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs
-    ///                         {
-    ///                             Method = "*",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ServicePerimeterEgressPolicy can be imported using any of these accepted formats:

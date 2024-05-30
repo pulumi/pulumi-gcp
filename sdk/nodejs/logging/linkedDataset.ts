@@ -53,6 +53,8 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project-name",
  *     location: "global",
  *     description: "Linked dataset test",
+ * }, {
+ *     dependsOn: [loggingLinkedDataset],
  * });
  * ```
  *

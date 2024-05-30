@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
  * import com.pulumi.gcp.vmwareengine.ExternalAddress;
  * import com.pulumi.gcp.vmwareengine.ExternalAddressArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -92,7 +93,9 @@ import javax.annotation.Nullable;
  *             .parent(external_address_pc.id())
  *             .internalIp("192.168.0.66")
  *             .description("Sample description.")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(external_address_np)
+ *                 .build());
  * 
  *     }
  * }

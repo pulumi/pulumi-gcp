@@ -211,7 +211,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
+//			edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 //				Region:         pulumi.String("southamerica-west1"),
 //				Name:           pulumi.String("tf-test-edgesec_21197"),
 //				SecurityPolicy: policyddosprotection.SelfLink,
@@ -224,7 +224,9 @@ import (
 //				Region:      pulumi.String("southamerica-west1"),
 //				Description: pulumi.String("basic security policy for target instance"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				edgeSecService,
+//			}))
 //			if err != nil {
 //				return err
 //			}

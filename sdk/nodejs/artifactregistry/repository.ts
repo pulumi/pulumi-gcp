@@ -52,18 +52,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: "kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository with cmek",
  *     format: "DOCKER",
  *     kmsKeyName: "kms-key",
- * });
- * const project = gcp.organizations.getProject({});
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
- *     cryptoKeyId: "kms-key",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [cryptoKey],
  * });
  * ```
  * ### Artifact Registry Repository Virtual

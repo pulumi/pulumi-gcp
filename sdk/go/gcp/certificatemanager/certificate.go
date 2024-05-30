@@ -94,37 +94,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
-//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
-//				Name:        pulumi.String("issuance-config"),
-//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
-//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
-//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
-//					},
-//				},
-//				Lifetime:                 pulumi.String("1814400s"),
-//				RotationWindowPercentage: pulumi.Int(34),
-//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Name:        pulumi.String("issuance-config-cert"),
-//				Description: pulumi.String("The default cert"),
-//				Scope:       pulumi.String("EDGE_CACHE"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						pulumi.String("terraform.subdomain1.com"),
-//					},
-//					IssuanceConfig: issuanceconfig.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
+//			caAuthority, err := certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
 //				CertificateAuthorityId: pulumi.String("ca-authority"),
@@ -161,6 +131,38 @@ import (
 //				DeletionProtection:                 pulumi.Bool(false),
 //				SkipGracePeriod:                    pulumi.Bool(true),
 //				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// creating certificate_issuance_config to use it in the managed certificate
+//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Name:        pulumi.String("issuance-config"),
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caAuthority,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("issuance-config-cert"),
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("EDGE_CACHE"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						pulumi.String("terraform.subdomain1.com"),
+//					},
+//					IssuanceConfig: issuanceconfig.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -290,37 +292,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
-//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
-//				Name:        pulumi.String("issuance-config"),
-//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
-//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
-//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
-//					},
-//				},
-//				Lifetime:                 pulumi.String("1814400s"),
-//				RotationWindowPercentage: pulumi.Int(34),
-//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Name:        pulumi.String("issuance-config-cert"),
-//				Description: pulumi.String("sample google managed all_regions certificate with issuance config for terraform"),
-//				Scope:       pulumi.String("ALL_REGIONS"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						pulumi.String("terraform.subdomain1.com"),
-//					},
-//					IssuanceConfig: issuanceconfig.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
+//			caAuthority, err := certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
 //				CertificateAuthorityId: pulumi.String("ca-authority"),
@@ -357,6 +329,38 @@ import (
 //				DeletionProtection:                 pulumi.Bool(false),
 //				SkipGracePeriod:                    pulumi.Bool(true),
 //				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// creating certificate_issuance_config to use it in the managed certificate
+//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Name:        pulumi.String("issuance-config"),
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caAuthority,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("issuance-config-cert"),
+//				Description: pulumi.String("sample google managed all_regions certificate with issuance config for terraform"),
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						pulumi.String("terraform.subdomain1.com"),
+//					},
+//					IssuanceConfig: issuanceconfig.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -315,7 +315,8 @@ class ExternalAddress(pulumi.CustomResource):
             name="sample-external-address",
             parent=external_address_pc.id,
             internal_ip="192.168.0.66",
-            description="Sample description.")
+            description="Sample description.",
+            opts=pulumi.ResourceOptions(depends_on=[external_address_np]))
         ```
 
         ## Import
@@ -392,7 +393,8 @@ class ExternalAddress(pulumi.CustomResource):
             name="sample-external-address",
             parent=external_address_pc.id,
             internal_ip="192.168.0.66",
-            description="Sample description.")
+            description="Sample description.",
+            opts=pulumi.ResourceOptions(depends_on=[external_address_np]))
         ```
 
         ## Import

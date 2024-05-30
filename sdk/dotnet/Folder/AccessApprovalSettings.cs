@@ -122,6 +122,12 @@ namespace Pulumi.Gcp.Folder
     ///                 CloudProduct = "all",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             iam,
+    ///         },
     ///     });
     /// 
     /// });

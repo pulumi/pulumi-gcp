@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     bandwidthLimit: {
  *         limitMbps: "120",
  *     },
+ * }, {
+ *     dependsOn: [pubsubEditorRole],
  * });
  * ```
  *

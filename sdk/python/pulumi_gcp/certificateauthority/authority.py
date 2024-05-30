@@ -973,7 +973,11 @@ class Authority(pulumi.CustomResource):
                         excluded_uris=[".deny.example.com"],
                     ),
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    privateca_sa_keyuser_signerverifier,
+                    privateca_sa_keyuser_viewer,
+                ]))
         ```
         ### Privateca Certificate Authority Custom Ski
 
@@ -1310,7 +1314,11 @@ class Authority(pulumi.CustomResource):
                         excluded_uris=[".deny.example.com"],
                     ),
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    privateca_sa_keyuser_signerverifier,
+                    privateca_sa_keyuser_viewer,
+                ]))
         ```
         ### Privateca Certificate Authority Custom Ski
 

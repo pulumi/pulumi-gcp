@@ -57,6 +57,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///     {
     ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
+    ///         },
     ///     });
     /// 
     ///     var workerRange = new Gcp.Compute.GlobalAddress("worker_range", new()
@@ -76,6 +82,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///         {
     ///             workerRange.Name,
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
+    ///         },
     ///     });
     /// 
     ///     var pool = new Gcp.CloudBuild.WorkerPool("pool", new()
@@ -92,6 +104,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///         {
     ///             PeeredNetwork = network.Id,
     ///             PeeredNetworkIpRange = "/29",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             workerPoolConn,
     ///         },
     ///     });
     /// 

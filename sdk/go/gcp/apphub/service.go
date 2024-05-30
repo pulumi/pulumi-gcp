@@ -56,22 +56,26 @@ import (
 //				return err
 //			}
 //			// Enable Compute API
-//			_, err = projects.NewService(ctx, "compute_service_project", &projects.ServiceArgs{
+//			computeServiceProject, err := projects.NewService(ctx, "compute_service_project", &projects.ServiceArgs{
 //				Project: serviceProject.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
+//			wait120s, err := time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
 //				CreateDuration: "120s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				computeServiceProject,
+//			}))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apphub.NewServiceProjectAttachment(ctx, "service_project_attachment", &apphub.ServiceProjectAttachmentArgs{
 //				ServiceProjectAttachmentId: serviceProject.ProjectId,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -80,7 +84,9 @@ import (
 //				Name:                  pulumi.String("l7-ilb-network"),
 //				Project:               serviceProject.ProjectId,
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -104,7 +110,9 @@ import (
 //				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
 //					Port: pulumi.Int(80),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -142,7 +150,9 @@ import (
 //			}, nil)
 //			_, err = time.NewSleep(ctx, "wait_120s_for_resource_ingestion", &time.SleepArgs{
 //				CreateDuration: "120s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				forwardingRule,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -202,22 +212,26 @@ import (
 //				return err
 //			}
 //			// Enable Compute API
-//			_, err = projects.NewService(ctx, "compute_service_project", &projects.ServiceArgs{
+//			computeServiceProject, err := projects.NewService(ctx, "compute_service_project", &projects.ServiceArgs{
 //				Project: serviceProject.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
+//			wait120s, err := time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
 //				CreateDuration: "120s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				computeServiceProject,
+//			}))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apphub.NewServiceProjectAttachment(ctx, "service_project_attachment", &apphub.ServiceProjectAttachmentArgs{
 //				ServiceProjectAttachmentId: serviceProject.ProjectId,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -226,7 +240,9 @@ import (
 //				Name:                  pulumi.String("l7-ilb-network"),
 //				Project:               serviceProject.ProjectId,
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -250,7 +266,9 @@ import (
 //				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
 //					Port: pulumi.Int(80),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -288,7 +306,9 @@ import (
 //			}, nil)
 //			_, err = time.NewSleep(ctx, "wait_120s_for_resource_ingestion", &time.SleepArgs{
 //				CreateDuration: "120s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				forwardingRule,
+//			}))
 //			if err != nil {
 //				return err
 //			}

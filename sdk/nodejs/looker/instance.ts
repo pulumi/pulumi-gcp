@@ -95,6 +95,11 @@ import * as utilities from "../utilities";
  *     prefixLength: 20,
  *     network: lookerNetwork.id,
  * });
+ * const lookerVpcConnection = new gcp.servicenetworking.Connection("looker_vpc_connection", {
+ *     network: lookerNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [lookerRange.name],
+ * });
  * const looker_instance = new gcp.looker.Instance("looker-instance", {
  *     name: "my-instance",
  *     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
@@ -140,11 +145,8 @@ import * as utilities from "../utilities";
  *         clientId: "my-client-id",
  *         clientSecret: "my-client-secret",
  *     },
- * });
- * const lookerVpcConnection = new gcp.servicenetworking.Connection("looker_vpc_connection", {
- *     network: lookerNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [lookerRange.name],
+ * }, {
+ *     dependsOn: [lookerVpcConnection],
  * });
  * const project = gcp.organizations.getProject({});
  * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {

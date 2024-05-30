@@ -1309,7 +1309,8 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance")
+            display_name="Test Instance",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
 
@@ -1604,7 +1605,8 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance")
+            display_name="Test Instance",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
 

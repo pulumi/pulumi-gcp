@@ -71,7 +71,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiTensorboard(ctx, "tensorboard", &vertex.AiTensorboardArgs{
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiTensorboard(ctx, "tensorboard", &vertex.AiTensorboardArgs{
 //				DisplayName: pulumi.String("terraform"),
 //				Description: pulumi.String("sample description"),
 //				Labels: pulumi.StringMap{
@@ -82,19 +94,9 @@ import (
 //				EncryptionSpec: &vertex.AiTensorboardEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("kms-name"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String("kms-name"),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKey,
+//			}))
 //			if err != nil {
 //				return err
 //			}

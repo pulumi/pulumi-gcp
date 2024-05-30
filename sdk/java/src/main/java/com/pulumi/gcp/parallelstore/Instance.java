@@ -31,12 +31,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.parallelstore.Instance;
- * import com.pulumi.gcp.parallelstore.InstanceArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.parallelstore.Instance;
+ * import com.pulumi.gcp.parallelstore.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,15 +57,6 @@ import javax.annotation.Nullable;
  *             .mtu(8896)
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .instanceId("instance")
- *             .location("us-central1-a")
- *             .description("test instance")
- *             .capacityGib(12000)
- *             .network(network.name())
- *             .labels(Map.of("test", "value"))
- *             .build());
- * 
  *         // Create an IP address
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("address")
@@ -80,6 +72,17 @@ import javax.annotation.Nullable;
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
+ * 
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .instanceId("instance")
+ *             .location("us-central1-a")
+ *             .description("test instance")
+ *             .capacityGib(12000)
+ *             .network(network.name())
+ *             .labels(Map.of("test", "value"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }

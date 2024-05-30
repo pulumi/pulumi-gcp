@@ -258,7 +258,8 @@ class TransferAgentPool(pulumi.CustomResource):
             display_name="Source A to destination Z",
             bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
                 limit_mbps="120",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```
 
         ## Import
@@ -337,7 +338,8 @@ class TransferAgentPool(pulumi.CustomResource):
             display_name="Source A to destination Z",
             bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
                 limit_mbps="120",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```
 
         ## Import

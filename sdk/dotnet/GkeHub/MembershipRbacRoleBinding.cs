@@ -42,6 +42,12 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primary,
+    ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -56,6 +62,12 @@ namespace Pulumi.Gcp.GkeHub
     ///             PredefinedRole = "ANTHOS_SUPPORT",
     ///         },
     ///         Location = "global",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             membership,
+    ///         },
     ///     });
     /// 
     /// });

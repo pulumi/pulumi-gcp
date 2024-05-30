@@ -72,6 +72,8 @@ import * as utilities from "../utilities";
  *     encryption: {
  *         defaultKmsKeyName: "your-crypto-key-id",
  *     },
+ * }, {
+ *     dependsOn: [binding],
  * });
  * ```
  */
@@ -188,6 +190,8 @@ export interface GetProjectServiceAccountResult {
  *     encryption: {
  *         defaultKmsKeyName: "your-crypto-key-id",
  *     },
+ * }, {
+ *     dependsOn: [binding],
  * });
  * ```
  */

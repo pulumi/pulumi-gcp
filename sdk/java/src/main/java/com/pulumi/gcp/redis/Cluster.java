@@ -45,14 +45,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.redis.Cluster;
- * import com.pulumi.gcp.redis.ClusterArgs;
- * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
  * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
  * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,20 +70,6 @@ import javax.annotation.Nullable;
  *         var producerNet = new Network("producerNet", NetworkArgs.builder()
  *             .name("mynetwork")
  *             .autoCreateSubnetworks(false)
- *             .build());
- * 
- *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()
- *             .name("ha-cluster")
- *             .shardCount(3)
- *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
- *                 .build())
- *             .region("us-central1")
- *             .replicaCount(1)
- *             .nodeType("REDIS_SHARED_CORE_NANO")
- *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
- *             .authorizationMode("AUTH_MODE_DISABLED")
- *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .build());
  * 
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
@@ -102,6 +89,22 @@ import javax.annotation.Nullable;
  *                 .subnetworks(producerSubnet.id())
  *                 .build())
  *             .build());
+ * 
+ *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()
+ *             .name("ha-cluster")
+ *             .shardCount(3)
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .region("us-central1")
+ *             .replicaCount(1)
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }

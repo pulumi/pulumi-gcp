@@ -364,13 +364,15 @@ import (
 //				return err
 //			}
 //			// Permissions on the service account used by the function and Eventarc trigger
-//			_, err = projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gcs_pubsub_publishing,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -380,7 +382,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				invoking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -390,7 +394,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -434,7 +440,10 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//				artifactregistry_reader,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -501,7 +510,7 @@ import (
 //				return err
 //			}
 //			// Permissions on the service account used by the function and Eventarc trigger
-//			_, err = projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -517,7 +526,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				invoking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -527,7 +538,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -583,7 +596,10 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//				artifactregistry_reader,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -620,7 +636,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "log_writer", &projects.IAMMemberArgs{
+//			logWriter, err := projects.NewIAMMember(ctx, "log_writer", &projects.IAMMemberArgs{
 //				Project: account.Project,
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -630,7 +646,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "artifact_registry_writer", &projects.IAMMemberArgs{
+//			artifactRegistryWriter, err := projects.NewIAMMember(ctx, "artifact_registry_writer", &projects.IAMMemberArgs{
 //				Project: account.Project,
 //				Role:    pulumi.String("roles/artifactregistry.writer"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -640,7 +656,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "storage_object_admin", &projects.IAMMemberArgs{
+//			storageObjectAdmin, err := projects.NewIAMMember(ctx, "storage_object_admin", &projects.IAMMemberArgs{
 //				Project: account.Project,
 //				Role:    pulumi.String("roles/storage.objectAdmin"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -667,9 +683,13 @@ import (
 //				return err
 //			}
 //			// builder permissions need to stablize before it can pull the source zip
-//			_, err = time.NewSleep(ctx, "wait_60s", &time.SleepArgs{
+//			wait60s, err := time.NewSleep(ctx, "wait_60s", &time.SleepArgs{
 //				CreateDuration: "60s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				logWriter,
+//				artifactRegistryWriter,
+//				storageObjectAdmin,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -693,7 +713,9 @@ import (
 //					AvailableMemory:  pulumi.String("256M"),
 //					TimeoutSeconds:   pulumi.Int(60),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -755,6 +777,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			secretSecretVersion, err := secretmanager.NewSecretVersion(ctx, "secret", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret"),
+//				Enabled:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
 //				Name:        pulumi.String("function-secret"),
 //				Location:    pulumi.String("us-central1"),
@@ -782,15 +812,9 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret"),
-//				Enabled:    pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secretSecretVersion,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -849,6 +873,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			secretSecretVersion, err := secretmanager.NewSecretVersion(ctx, "secret", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret"),
+//				Enabled:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
 //				Name:        pulumi.String("function-secret"),
 //				Location:    pulumi.String("us-central1"),
@@ -875,15 +907,9 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret"),
-//				Enabled:    pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secretSecretVersion,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -1025,27 +1051,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = artifactregistry.NewRepository(ctx, "encoded-ar-repo", &artifactregistry.RepositoryArgs{
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("cmek-repo"),
-//				Format:       pulumi.String("DOCKER"),
-//				KmsKeyName:   pulumi.String("cmek-key"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
-//				Location:   encoded_ar_repo.Location,
-//				Repository: encoded_ar_repo.Name,
-//				Role:       pulumi.String("roles/artifactregistry.admin"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number)),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "gcf_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//			gcfCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "gcf_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
 //				CryptoKeyId: pulumi.String("cmek-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
@@ -1056,6 +1062,30 @@ import (
 //					eaSa.Email.ApplyT(func(email string) (string, error) {
 //						return fmt.Sprintf("serviceAccount:%v", email), nil
 //					}).(pulumi.StringOutput),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				eaSa,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = artifactregistry.NewRepository(ctx, "encoded-ar-repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("cmek-repo"),
+//				Format:       pulumi.String("DOCKER"),
+//				KmsKeyName:   pulumi.String("cmek-key"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gcfCmekKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
+//				Location:   encoded_ar_repo.Location,
+//				Repository: encoded_ar_repo.Name,
+//				Role:       pulumi.String("roles/artifactregistry.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number)),
 //				},
 //			})
 //			if err != nil {
@@ -1082,7 +1112,9 @@ import (
 //					AvailableMemory:  pulumi.String("256M"),
 //					TimeoutSeconds:   pulumi.Int(60),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gcfCmekKeyuser,
+//			}))
 //			if err != nil {
 //				return err
 //			}

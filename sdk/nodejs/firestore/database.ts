@@ -70,6 +70,11 @@ import * as utilities from "../utilities";
  *     keyRing: keyRing.id,
  *     purpose: "ENCRYPT_DECRYPT",
  * });
+ * const firestoreCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
+ * });
  * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
  *     name: "cmek-database-id",
@@ -83,11 +88,8 @@ import * as utilities from "../utilities";
  *     cmekConfig: {
  *         kmsKeyName: cryptoKey.id,
  *     },
- * });
- * const firestoreCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", {
- *     cryptoKeyId: cryptoKey.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
+ * }, {
+ *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
  * ### Firestore Default Database In Datastore Mode
@@ -137,6 +139,11 @@ import * as utilities from "../utilities";
  *     keyRing: keyRing.id,
  *     purpose: "ENCRYPT_DECRYPT",
  * });
+ * const firestoreCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
+ * });
  * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
  *     name: "cmek-database-id",
@@ -150,11 +157,8 @@ import * as utilities from "../utilities";
  *     cmekConfig: {
  *         kmsKeyName: cryptoKey.id,
  *     },
- * });
- * const firestoreCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", {
- *     cryptoKeyId: cryptoKey.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
+ * }, {
+ *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
  *

@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
  * import com.pulumi.gcp.logging.LinkedDataset;
  * import com.pulumi.gcp.logging.LinkedDatasetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,7 +113,9 @@ import javax.annotation.Nullable;
  *             .parent("projects/my-project-name")
  *             .location("global")
  *             .description("Linked dataset test")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(loggingLinkedDataset)
+ *                 .build());
  * 
  *     }
  * }

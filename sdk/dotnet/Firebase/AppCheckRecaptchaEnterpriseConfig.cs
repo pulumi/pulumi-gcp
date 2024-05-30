@@ -50,6 +50,12 @@ namespace Pulumi.Gcp.Firebase
     ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     ///     var defaultAppCheckRecaptchaEnterpriseConfig = new Gcp.Firebase.AppCheckRecaptchaEnterpriseConfig("default", new()
@@ -58,6 +64,12 @@ namespace Pulumi.Gcp.Firebase
     ///         AppId = @default.AppId,
     ///         SiteKey = "6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw",
     ///         TokenTtl = "7200s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait30s,
+    ///         },
     ///     });
     /// 
     /// });

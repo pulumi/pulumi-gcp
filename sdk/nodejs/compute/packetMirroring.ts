@@ -66,6 +66,8 @@ import * as utilities from "../utilities";
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     networkTier: "PREMIUM",
+ * }, {
+ *     dependsOn: [defaultSubnetwork],
  * });
  * const foobar = new gcp.compute.PacketMirroring("foobar", {
  *     name: "my-mirroring",

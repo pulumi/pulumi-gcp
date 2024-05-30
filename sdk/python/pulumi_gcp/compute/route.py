@@ -804,7 +804,11 @@ class Route(pulumi.CustomResource):
             tags=[
                 "tag1",
                 "tag2",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    peering1,
+                    peering2,
+                ]))
         ```
 
         ## Import
@@ -1039,7 +1043,11 @@ class Route(pulumi.CustomResource):
             tags=[
                 "tag1",
                 "tag2",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    peering1,
+                    peering2,
+                ]))
         ```
 
         ## Import

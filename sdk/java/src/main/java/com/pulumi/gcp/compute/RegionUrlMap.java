@@ -774,10 +774,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Int Https Lb Https Redirect
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map Path Template Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -399,14 +399,14 @@ class CxTestCase(pulumi.CustomResource):
                             ),
                         ),
                         injected_parameters=json.dumps({
-                            "someParam": "1",
+                            "some_param": "1",
                         }),
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
                     virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
                         session_parameters=json.dumps({
-                            "someParam": "1",
+                            "some_param": "1",
                         }),
                         triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
                             name=intent.id,
@@ -575,14 +575,14 @@ class CxTestCase(pulumi.CustomResource):
                             ),
                         ),
                         injected_parameters=json.dumps({
-                            "someParam": "1",
+                            "some_param": "1",
                         }),
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
                     virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
                         session_parameters=json.dumps({
-                            "someParam": "1",
+                            "some_param": "1",
                         }),
                         triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
                             name=intent.id,

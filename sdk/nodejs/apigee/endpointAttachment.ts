@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
  * });
  * const apigeeEndpointAttachment = new gcp.apigee.EndpointAttachment("apigee_endpoint_attachment", {
  *     orgId: apigeeOrg.id,

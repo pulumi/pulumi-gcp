@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
+//			basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
@@ -55,7 +55,9 @@ import (
 //						"name": pulumi.String("wrench"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
 //			if err != nil {
 //				return err
 //			}

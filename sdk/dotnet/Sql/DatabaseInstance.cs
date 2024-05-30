@@ -104,6 +104,12 @@ namespace Pulumi.Gcp.Sql
     ///                 EnablePrivatePathForGoogleCloudServices = true,
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privateVpcConnection,
+    ///         },
     ///     });
     /// 
     /// });

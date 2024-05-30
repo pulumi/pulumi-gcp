@@ -104,6 +104,12 @@ namespace Pulumi.Gcp.Projects
     ///                 CloudProduct = "all",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             iam,
+    ///         },
     ///     });
     /// 
     /// });

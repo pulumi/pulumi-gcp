@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -149,7 +150,12 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .caPool(default_.id())
  *             .excludePublicCaSet(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     default_,
+ *                     defaultAuthority,
+ *                     tlsInspectionPermission)
+ *                 .build());
  * 
  *     }
  * }
@@ -195,6 +201,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -320,7 +327,11 @@ import javax.annotation.Nullable;
  *                 "TLS_RSA_WITH_AES_128_GCM_SHA256",
  *                 "TLS_RSA_WITH_AES_256_CBC_SHA",
  *                 "TLS_RSA_WITH_AES_256_GCM_SHA384")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     defaultAuthority,
+ *                     defaultCaPoolIamMember)
+ *                 .build());
  * 
  *     }
  * }

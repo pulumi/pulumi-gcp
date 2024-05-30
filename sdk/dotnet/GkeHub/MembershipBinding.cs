@@ -50,6 +50,12 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primary,
+    ///         },
     ///     });
     /// 
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
@@ -68,6 +74,13 @@ namespace Pulumi.Gcp.GkeHub
     ///             { "keyb", "valueb" },
     ///             { "keya", "valuea" },
     ///             { "keyc", "valuec" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             membership,
+    ///             scope,
     ///         },
     ///     });
     /// 

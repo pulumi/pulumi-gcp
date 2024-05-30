@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -182,14 +183,21 @@ import javax.annotation.Nullable;
  *             .name("my-tls-inspection-policy")
  *             .location("us-central1")
  *             .caPool(default_.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     default_,
+ *                     defaultAuthority,
+ *                     tlsInspectionPermission)
+ *                 .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()
  *             .name("my-gateway-security-policy")
  *             .location("us-central1")
  *             .description("my description")
  *             .tlsInspectionPolicy(defaultTlsInspectionPolicy.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultTlsInspectionPolicy)
+ *                 .build());
  * 
  *     }
  * }

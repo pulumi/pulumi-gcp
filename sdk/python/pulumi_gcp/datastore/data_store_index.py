@@ -251,7 +251,8 @@ class DataStoreIndex(pulumi.CustomResource):
                     name="property_b",
                     direction="ASCENDING",
                 ),
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[database]))
         ```
 
         ## Import
@@ -339,7 +340,8 @@ class DataStoreIndex(pulumi.CustomResource):
                     name="property_b",
                     direction="ASCENDING",
                 ),
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[database]))
         ```
 
         ## Import

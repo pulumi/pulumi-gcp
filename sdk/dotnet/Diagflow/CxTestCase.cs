@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     },
     ///                     InjectedParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["someParam"] = "1",
+    ///                         ["some_param"] = "1",
     ///                     }),
     ///                     IsWebhookEnabled = true,
     ///                     EnableSentimentAnalysis = true,
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                 {
     ///                     SessionParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["someParam"] = "1",
+    ///                         ["some_param"] = "1",
     ///                     }),
     ///                     TriggeredIntent = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs
     ///                     {

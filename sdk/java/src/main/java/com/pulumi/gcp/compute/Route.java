@@ -203,6 +203,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -286,7 +287,11 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "tag1",
  *                 "tag2")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     peering1,
+ *                     peering2)
+ *                 .build());
  * 
  *     }
  * }

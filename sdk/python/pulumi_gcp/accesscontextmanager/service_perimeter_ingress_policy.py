@@ -181,41 +181,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Access Context Manager Service Perimeter Ingress Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="Storage Policy")
-        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
-            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
-            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
-            title="Storage Perimeter",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
-        ingress_policy = gcp.accesscontextmanager.ServicePerimeterIngressPolicy("ingress_policy",
-            perimeter=storage_perimeter.name,
-            ingress_from=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromArgs(
-                identity_type="any_identity",
-                sources=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromSourceArgs(
-                    access_level="*",
-                )],
-            ),
-            ingress_to=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToArgs(
-                resources=["*"],
-                operations=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationArgs(
-                    service_name="bigquery.googleapis.com",
-                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs(
-                        method="*",
-                    )],
-                )],
-            ))
-        ```
-
         ## Import
 
         ServicePerimeterIngressPolicy can be imported using any of these accepted formats:
@@ -266,41 +231,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
 
         ## Example Usage
-
-        ### Access Context Manager Service Perimeter Ingress Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="Storage Policy")
-        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
-            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
-            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
-            title="Storage Perimeter",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
-        ingress_policy = gcp.accesscontextmanager.ServicePerimeterIngressPolicy("ingress_policy",
-            perimeter=storage_perimeter.name,
-            ingress_from=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromArgs(
-                identity_type="any_identity",
-                sources=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromSourceArgs(
-                    access_level="*",
-                )],
-            ),
-            ingress_to=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToArgs(
-                resources=["*"],
-                operations=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationArgs(
-                    service_name="bigquery.googleapis.com",
-                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs(
-                        method="*",
-                    )],
-                )],
-            ))
-        ```
 
         ## Import
 

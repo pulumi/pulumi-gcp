@@ -103,6 +103,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Wait after service account creation to limit eventual consistency errors.
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sa,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
 //				Name:           pulumi.String("test-tpu"),
 //				Zone:           pulumi.String("us-central1-c"),
@@ -146,14 +155,9 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Wait after service account creation to limit eventual consistency errors.
-//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -27,15 +27,6 @@ import * as utilities from "../utilities";
  *     name: "vpn-1",
  *     network: network1.id,
  * });
- * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
- *     name: "tunnel-1",
- *     peerIp: "15.0.0.120",
- *     sharedSecret: "a secret message",
- *     targetVpnGateway: targetGateway.id,
- *     labels: {
- *         foo: "bar",
- *     },
- * });
  * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {name: "vpn-static-ip"});
  * const frEsp = new gcp.compute.ForwardingRule("fr_esp", {
  *     name: "fr-esp",
@@ -56,6 +47,21 @@ import * as utilities from "../utilities";
  *     portRange: "4500",
  *     ipAddress: vpnStaticIp.address,
  *     target: targetGateway.id,
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "tunnel-1",
+ *     peerIp: "15.0.0.120",
+ *     sharedSecret: "a secret message",
+ *     targetVpnGateway: targetGateway.id,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         frEsp,
+ *         frUdp500,
+ *         frUdp4500,
+ *     ],
  * });
  * const route1 = new gcp.compute.Route("route1", {
  *     name: "route1",

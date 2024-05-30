@@ -460,26 +460,6 @@ class Certificate(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256")
-        default = gcp.certificatemanager.Certificate("default",
-            name="issuance-config-cert",
-            description="The default cert",
-            scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -515,6 +495,27 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
         ```
         ### Certificate Manager Certificate Basic
 
@@ -571,26 +572,6 @@ class Certificate(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256")
-        default = gcp.certificatemanager.Certificate("default",
-            name="issuance-config-cert",
-            description="sample google managed all_regions certificate with issuance config for terraform",
-            scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -626,6 +607,27 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
@@ -785,26 +787,6 @@ class Certificate(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256")
-        default = gcp.certificatemanager.Certificate("default",
-            name="issuance-config-cert",
-            description="The default cert",
-            scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -840,6 +822,27 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
         ```
         ### Certificate Manager Certificate Basic
 
@@ -896,26 +899,6 @@ class Certificate(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            name="issuance-config",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256")
-        default = gcp.certificatemanager.Certificate("default",
-            name="issuance-config-cert",
-            description="sample google managed all_regions certificate with issuance config for terraform",
-            scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
@@ -951,6 +934,27 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 

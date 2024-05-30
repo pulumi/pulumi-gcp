@@ -105,6 +105,12 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         },
     ///     });
     /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "cloudrun-sql",
@@ -186,21 +192,27 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 Percent = 100,
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secret_version_data,
+    ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
-    ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret-data",
-    ///     });
     /// 
     ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
     ///     {
     ///         SecretId = secret.Id,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secret,
+    ///         },
     ///     });
     /// 
     /// });
@@ -376,6 +388,12 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         },
     ///     });
     /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
     ///     var @default = new Gcp.CloudRunV2.Service("default", new()
     ///     {
     ///         Name = "cloudrun-service",
@@ -419,21 +437,27 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secret_version_data,
+    ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
-    ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret-data",
-    ///     });
     /// 
     ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
     ///     {
     ///         SecretId = secret.Id,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secret,
+    ///         },
     ///     });
     /// 
     /// });

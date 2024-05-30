@@ -45,6 +45,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertex_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address-name"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(24),
+//				Network:      vertexNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: vertexNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					vertexRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			project, err := organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
@@ -59,27 +79,9 @@ import (
 //				Network: vertexNetwork.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
 //				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertex_range", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("address-name"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					vertexRange.Name,
-//				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vertexVpcConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

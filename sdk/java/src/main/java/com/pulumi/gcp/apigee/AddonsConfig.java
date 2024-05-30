@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigMonetizationConfigArgs;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -133,7 +134,9 @@ import javax.annotation.Nullable;
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
  * 
  *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
  *             .name("apigee-range")
@@ -155,7 +158,11 @@ import javax.annotation.Nullable;
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .billingType("EVALUATION")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigee)
+ *                 .build());
  * 
  *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()
  *             .org(org.name())

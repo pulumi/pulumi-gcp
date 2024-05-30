@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  *     displayName: "dob",
  *     description: "The users date of birth",
  *     parentPolicyTag: parentPolicy.id,
+ * }, {
+ *     dependsOn: [childPolicy],
  * });
  * ```
  *

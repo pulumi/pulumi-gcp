@@ -109,7 +109,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
@@ -130,7 +130,9 @@ import (
 //						CloudProduct: pulumi.String("all"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				iam,
+//			}))
 //			if err != nil {
 //				return err
 //			}

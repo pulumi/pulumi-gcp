@@ -109,6 +109,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -143,7 +144,9 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .instanceId("rtdb-project-default-rtdb")
  *             .type("DEFAULT_DATABASE")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firebaseDatabase)
+ *                 .build());
  * 
  *     }
  * }

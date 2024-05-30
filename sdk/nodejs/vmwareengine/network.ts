@@ -43,9 +43,14 @@ import * as utilities from "../utilities";
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [acceptanceProject],
+ * });
  * const acceptance = new gcp.projects.Service("acceptance", {
  *     project: acceptanceProject.projectId,
  *     service: "vmwareengine.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * const vmw_engine_network = new gcp.vmwareengine.Network("vmw-engine-network", {
  *     project: acceptance.project,
@@ -54,7 +59,6 @@ import * as utilities from "../utilities";
  *     type: "LEGACY",
  *     description: "VMwareEngine legacy network sample",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
  *
  * ## Import

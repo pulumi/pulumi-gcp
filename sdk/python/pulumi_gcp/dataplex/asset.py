@@ -559,7 +559,8 @@ class Asset(pulumi.CustomResource):
                 "env": "foo",
                 "my-asset": "exists",
             },
-            project="my-project-name")
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
         ```
 
         ## Import
@@ -654,7 +655,8 @@ class Asset(pulumi.CustomResource):
                 "env": "foo",
                 "my-asset": "exists",
             },
-            project="my-project-name")
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
         ```
 
         ## Import

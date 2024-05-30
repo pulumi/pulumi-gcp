@@ -330,7 +330,12 @@ class VPNGateway(pulumi.CustomResource):
             name="tunnel1",
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id)
+            target_vpn_gateway=target_gateway.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
         route1 = gcp.compute.Route("route1",
             name="route1",
             network=network1.name,
@@ -438,7 +443,12 @@ class VPNGateway(pulumi.CustomResource):
             name="tunnel1",
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id)
+            target_vpn_gateway=target_gateway.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
         route1 = gcp.compute.Route("route1",
             name="route1",
             network=network1.name,

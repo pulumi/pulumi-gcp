@@ -129,7 +129,7 @@ import (
 //					Name: pulumi.String("google-application-credentials"),
 //				},
 //				Data: pulumi.StringMap{
-//					"json": std.Base64decodeOutput(ctx, std.Base64decodeOutputArgs{
+//					"credentials.json": std.Base64decodeOutput(ctx, std.Base64decodeOutputArgs{
 //						Input: mykey.PrivateKey,
 //					}, nil).ApplyT(func(invoke std.Base64decodeResult) (*string, error) {
 //						return invoke.Result, nil

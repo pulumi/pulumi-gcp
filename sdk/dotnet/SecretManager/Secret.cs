@@ -143,6 +143,12 @@ namespace Pulumi.Gcp.SecretManager
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             kms_secret_binding,
+    ///         },
     ///     });
     /// 
     /// });

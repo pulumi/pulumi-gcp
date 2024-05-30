@@ -92,6 +92,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const project = gcp.organizations.getProject({});
+ * const viewer = new gcp.projects.IAMMember("viewer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.metadataViewer",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const editor = new gcp.projects.IAMMember("editor", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.dataEditor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "example_dataset"});
  * const testTable = new gcp.bigquery.Table("test", {
  *     deletionProtection: false,
@@ -113,7 +124,20 @@ import * as utilities from "../utilities";
  *     bigqueryConfig: {
  *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
  *     },
+ * }, {
+ *     dependsOn: [
+ *         viewer,
+ *         editor,
+ *     ],
  * });
+ * ```
+ * ### Pubsub Subscription Push Bq Table Schema
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
  * const project = gcp.organizations.getProject({});
  * const viewer = new gcp.projects.IAMMember("viewer", {
  *     project: project.then(project => project.projectId),
@@ -125,14 +149,6 @@ import * as utilities from "../utilities";
  *     role: "roles/bigquery.dataEditor",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
  * });
- * ```
- * ### Pubsub Subscription Push Bq Table Schema
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "example_dataset"});
  * const testTable = new gcp.bigquery.Table("test", {
  *     deletionProtection: false,
@@ -155,17 +171,11 @@ import * as utilities from "../utilities";
  *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
  *         useTableSchema: true,
  *     },
- * });
- * const project = gcp.organizations.getProject({});
- * const viewer = new gcp.projects.IAMMember("viewer", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.metadataViewer",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
- * });
- * const editor = new gcp.projects.IAMMember("editor", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.dataEditor",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [
+ *         viewer,
+ *         editor,
+ *     ],
  * });
  * ```
  * ### Pubsub Subscription Push Cloudstorage
@@ -180,6 +190,12 @@ import * as utilities from "../utilities";
  *     uniformBucketLevelAccess: true,
  * });
  * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const project = gcp.organizations.getProject({});
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     name: "example-subscription",
  *     topic: exampleTopic.id,
@@ -190,12 +206,11 @@ import * as utilities from "../utilities";
  *         maxBytes: 1000,
  *         maxDuration: "300s",
  *     },
- * });
- * const project = gcp.organizations.getProject({});
- * const admin = new gcp.storage.BucketIAMMember("admin", {
- *     bucket: example.name,
- *     role: "roles/storage.admin",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [
+ *         example,
+ *         admin,
+ *     ],
  * });
  * ```
  * ### Pubsub Subscription Push Cloudstorage Avro
@@ -210,6 +225,12 @@ import * as utilities from "../utilities";
  *     uniformBucketLevelAccess: true,
  * });
  * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const project = gcp.organizations.getProject({});
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     name: "example-subscription",
  *     topic: exampleTopic.id,
@@ -223,12 +244,11 @@ import * as utilities from "../utilities";
  *             writeMetadata: true,
  *         },
  *     },
- * });
- * const project = gcp.organizations.getProject({});
- * const admin = new gcp.storage.BucketIAMMember("admin", {
- *     bucket: example.name,
- *     role: "roles/storage.admin",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [
+ *         example,
+ *         admin,
+ *     ],
  * });
  * ```
  *

@@ -30,12 +30,6 @@ import * as utilities from "../utilities";
  *         password: "cluster_secret",
  *     },
  * });
- * const _default = new gcp.alloydb.Instance("default", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * });
- * const project = gcp.organizations.getProject({});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
@@ -48,12 +42,22 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
+ * const _default = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const project = gcp.organizations.getProject({});
  * const user1 = new gcp.alloydb.User("user1", {
  *     cluster: defaultCluster.name,
  *     userId: "user1",
  *     userType: "ALLOYDB_BUILT_IN",
  *     password: "user_secret",
  *     databaseRoles: ["alloydbsuperuser"],
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  * ### Alloydb User Iam
@@ -71,12 +75,6 @@ import * as utilities from "../utilities";
  *         password: "cluster_secret",
  *     },
  * });
- * const _default = new gcp.alloydb.Instance("default", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * });
- * const project = gcp.organizations.getProject({});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
@@ -89,11 +87,21 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
+ * const _default = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const project = gcp.organizations.getProject({});
  * const user2 = new gcp.alloydb.User("user2", {
  *     cluster: defaultCluster.name,
  *     userId: "user2@foo.com",
  *     userType: "ALLOYDB_IAM_USER",
  *     databaseRoles: ["alloydbiamuser"],
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  *

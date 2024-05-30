@@ -516,7 +516,8 @@ class TargetInstance(pulumi.CustomResource):
             name="region-secpolicy",
             region="southamerica-west1",
             description="basic security policy for target instance",
-            type="CLOUD_ARMOR_NETWORK")
+            type="CLOUD_ARMOR_NETWORK",
+            opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         default_target_instance = gcp.compute.TargetInstance("default",
             name="target-instance",
             zone="southamerica-west1-a",
@@ -705,7 +706,8 @@ class TargetInstance(pulumi.CustomResource):
             name="region-secpolicy",
             region="southamerica-west1",
             description="basic security policy for target instance",
-            type="CLOUD_ARMOR_NETWORK")
+            type="CLOUD_ARMOR_NETWORK",
+            opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         default_target_instance = gcp.compute.TargetInstance("default",
             name="target-instance",
             zone="southamerica-west1-a",

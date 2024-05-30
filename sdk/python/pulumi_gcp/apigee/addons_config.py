@@ -162,7 +162,8 @@ class AddonsConfig(pulumi.CustomResource):
             service="servicenetworking.googleapis.com")
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
-            project=current.project)
+            project=current.project,
+            opts=pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -178,7 +179,11 @@ class AddonsConfig(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            billing_type="EVALUATION")
+            billing_type="EVALUATION",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
@@ -279,7 +284,8 @@ class AddonsConfig(pulumi.CustomResource):
             service="servicenetworking.googleapis.com")
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
-            project=current.project)
+            project=current.project,
+            opts=pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -295,7 +301,11 @@ class AddonsConfig(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            billing_type="EVALUATION")
+            billing_type="EVALUATION",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(

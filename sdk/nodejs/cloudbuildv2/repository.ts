@@ -69,6 +69,11 @@ import * as utilities from "../utilities";
  *         appSlug: "gcb-app",
  *         appInstallationId: 300,
  *     },
+ * }, {
+ *     dependsOn: [
+ *         policy_pk,
+ *         policy_whs,
+ *     ],
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     name: "my-terraform-ghe-repo",

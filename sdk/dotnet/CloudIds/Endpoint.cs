@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.CloudIds
     ///         Location = "us-central1-f",
     ///         Network = @default.Id,
     ///         Severity = "INFORMATIONAL",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privateServiceConnection,
+    ///         },
     ///     });
     /// 
     /// });

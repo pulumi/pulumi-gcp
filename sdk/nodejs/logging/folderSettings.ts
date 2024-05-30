@@ -25,12 +25,6 @@ import * as utilities from "../utilities";
  *     displayName: "folder-name",
  *     parent: "organizations/123456789",
  * });
- * const example = new gcp.logging.FolderSettings("example", {
- *     disableDefaultSink: true,
- *     folder: myFolder.folderId,
- *     kmsKeyName: "kms-key",
- *     storageLocation: "us-central1",
- * });
  * const settings = gcp.logging.getFolderSettingsOutput({
  *     folder: myFolder.folderId,
  * });
@@ -38,6 +32,14 @@ import * as utilities from "../utilities";
  *     cryptoKeyId: "kms-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: settings.apply(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
+ * });
+ * const example = new gcp.logging.FolderSettings("example", {
+ *     disableDefaultSink: true,
+ *     folder: myFolder.folderId,
+ *     kmsKeyName: "kms-key",
+ *     storageLocation: "us-central1",
+ * }, {
+ *     dependsOn: [iam],
  * });
  * ```
  *

@@ -74,15 +74,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
-    ///         Description = "example docker repository with cmek",
-    ///         Format = "DOCKER",
-    ///         KmsKeyName = "kms-key",
-    ///     });
-    /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
@@ -90,6 +81,21 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         CryptoKeyId = "kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository with cmek",
+    ///         Format = "DOCKER",
+    ///         KmsKeyName = "kms-key",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKey,
+    ///         },
     ///     });
     /// 
     /// });

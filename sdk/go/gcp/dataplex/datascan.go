@@ -73,7 +73,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewDatascan(ctx, "full_profile", &dataplex.DatascanArgs{
+//			source, err := bigquery.NewDataset(ctx, "source", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("dataplex_dataset"),
+//				FriendlyName:            pulumi.String("test"),
+//				Description:             pulumi.String("This is a test description"),
+//				Location:                pulumi.String("US"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "full_profile", &dataplex.DatascanArgs{
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("Full Datascan Profile"),
 //				DataScanId:  pulumi.String("dataprofile-full"),
@@ -111,17 +121,9 @@ import (
 //					},
 //				},
 //				Project: pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDataset(ctx, "source", &bigquery.DatasetArgs{
-//				DatasetId:               pulumi.String("dataplex_dataset"),
-//				FriendlyName:            pulumi.String("test"),
-//				Description:             pulumi.String("This is a test description"),
-//				Location:                pulumi.String("US"),
-//				DeleteContentsOnDestroy: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				source,
+//			}))
 //			if err != nil {
 //				return err
 //			}

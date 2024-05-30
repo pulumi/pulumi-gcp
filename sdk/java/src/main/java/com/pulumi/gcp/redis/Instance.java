@@ -202,6 +202,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.redis.Instance;
  * import com.pulumi.gcp.redis.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -251,7 +252,9 @@ import javax.annotation.Nullable;
  *             .connectMode("PRIVATE_SERVICE_ACCESS")
  *             .redisVersion("REDIS_4_0")
  *             .displayName("Test Instance")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(privateServiceConnection)
+ *                 .build());
  * 
  *     }
  * }

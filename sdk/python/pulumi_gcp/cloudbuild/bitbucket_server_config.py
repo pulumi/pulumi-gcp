@@ -483,7 +483,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         servicenetworking = gcp.projects.Service("servicenetworking",
             service="servicenetworking.googleapis.com",
             disable_on_destroy=False)
-        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
+        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="private-ip-alloc",
             purpose="VPC_PEERING",
@@ -493,7 +494,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         default = gcp.servicenetworking.Connection("default",
             network=vpc_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
+            reserved_peering_ranges=[private_ip_alloc.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
             config_id="bbs-config",
             location="us-central1",
@@ -512,7 +514,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
         -----END CERTIFICATE-----
-        \"\"\")
+        \"\"\",
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -633,7 +636,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         servicenetworking = gcp.projects.Service("servicenetworking",
             service="servicenetworking.googleapis.com",
             disable_on_destroy=False)
-        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
+        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="private-ip-alloc",
             purpose="VPC_PEERING",
@@ -643,7 +647,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         default = gcp.servicenetworking.Connection("default",
             network=vpc_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
+            reserved_peering_ranges=[private_ip_alloc.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
             config_id="bbs-config",
             location="us-central1",
@@ -662,7 +667,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
         -----END CERTIFICATE-----
-        \"\"\")
+        \"\"\",
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

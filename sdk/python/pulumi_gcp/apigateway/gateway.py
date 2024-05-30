@@ -342,28 +342,6 @@ class Gateway(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Apigateway Gateway Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_gw = gcp.apigateway.Api("api_gw", api_id="my-api")
-        api_gw_api_config = gcp.apigateway.ApiConfig("api_gw",
-            api=api_gw.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=std.filebase64(input="test-fixtures/openapi.yaml").result,
-                ),
-            )])
-        api_gw_gateway = gcp.apigateway.Gateway("api_gw",
-            api_config=api_gw_api_config.id,
-            gateway_id="my-gateway")
-        ```
-
         ## Import
 
         Gateway can be imported using any of these accepted formats:
@@ -428,28 +406,6 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
-
-        ### Apigateway Gateway Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_gw = gcp.apigateway.Api("api_gw", api_id="my-api")
-        api_gw_api_config = gcp.apigateway.ApiConfig("api_gw",
-            api=api_gw.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=std.filebase64(input="test-fixtures/openapi.yaml").result,
-                ),
-            )])
-        api_gw_gateway = gcp.apigateway.Gateway("api_gw",
-            api_config=api_gw_api_config.id,
-            gateway_id="my-gateway")
-        ```
 
         ## Import
 

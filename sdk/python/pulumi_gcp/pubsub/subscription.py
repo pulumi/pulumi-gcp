@@ -955,6 +955,15 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
@@ -974,7 +983,19 @@ class Subscription(pulumi.CustomResource):
             topic=example.id,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
+        ### Pubsub Subscription Push Bq Table Schema
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
         project = gcp.organizations.get_project()
         viewer = gcp.projects.IAMMember("viewer",
             project=project.project_id,
@@ -984,14 +1005,6 @@ class Subscription(pulumi.CustomResource):
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        ```
-        ### Pubsub Subscription Push Bq Table Schema
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example", name="example-topic")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
@@ -1012,16 +1025,11 @@ class Subscription(pulumi.CustomResource):
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 use_table_schema=True,
-            ))
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
         ```
         ### Pubsub Subscription Push Cloudstorage
 
@@ -1034,6 +1042,11 @@ class Subscription(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example_topic.id,
@@ -1043,12 +1056,11 @@ class Subscription(pulumi.CustomResource):
                 filename_suffix="-_2067",
                 max_bytes=1000,
                 max_duration="300s",
-            ))
-        project = gcp.organizations.get_project()
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=example.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
         ```
         ### Pubsub Subscription Push Cloudstorage Avro
 
@@ -1061,6 +1073,11 @@ class Subscription(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example_topic.id,
@@ -1073,12 +1090,11 @@ class Subscription(pulumi.CustomResource):
                 avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(
                     write_metadata=True,
                 ),
-            ))
-        project = gcp.organizations.get_project()
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=example.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
         ```
 
         ## Import
@@ -1282,6 +1298,15 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
@@ -1301,7 +1326,19 @@ class Subscription(pulumi.CustomResource):
             topic=example.id,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
+        ### Pubsub Subscription Push Bq Table Schema
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
         project = gcp.organizations.get_project()
         viewer = gcp.projects.IAMMember("viewer",
             project=project.project_id,
@@ -1311,14 +1348,6 @@ class Subscription(pulumi.CustomResource):
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        ```
-        ### Pubsub Subscription Push Bq Table Schema
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example", name="example-topic")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
@@ -1339,16 +1368,11 @@ class Subscription(pulumi.CustomResource):
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 use_table_schema=True,
-            ))
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
         ```
         ### Pubsub Subscription Push Cloudstorage
 
@@ -1361,6 +1385,11 @@ class Subscription(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example_topic.id,
@@ -1370,12 +1399,11 @@ class Subscription(pulumi.CustomResource):
                 filename_suffix="-_2067",
                 max_bytes=1000,
                 max_duration="300s",
-            ))
-        project = gcp.organizations.get_project()
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=example.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
         ```
         ### Pubsub Subscription Push Cloudstorage Avro
 
@@ -1388,6 +1416,11 @@ class Subscription(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example_topic.id,
@@ -1400,12 +1433,11 @@ class Subscription(pulumi.CustomResource):
                 avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(
                     write_metadata=True,
                 ),
-            ))
-        project = gcp.organizations.get_project()
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=example.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    example,
+                    admin,
+                ]))
         ```
 
         ## Import

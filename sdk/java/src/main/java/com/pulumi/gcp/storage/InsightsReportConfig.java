@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
  * import com.pulumi.gcp.storage.InsightsReportConfig;
  * import com.pulumi.gcp.storage.InsightsReportConfigArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
@@ -51,8 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs;
- * import com.pulumi.gcp.storage.BucketIAMMember;
- * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,6 +74,12 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
+ *             .bucket(reportBucket.name())
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()
@@ -111,13 +118,9 @@ import javax.annotation.Nullable;
  *                     .destinationPath("test-insights-reports")
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
- *             .bucket(reportBucket.name())
- *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(admin)
+ *                 .build());
  * 
  *     }
  * }

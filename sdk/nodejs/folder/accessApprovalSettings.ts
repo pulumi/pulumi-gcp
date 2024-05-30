@@ -81,6 +81,8 @@ import * as utilities from "../utilities";
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],
+ * }, {
+ *     dependsOn: [iam],
  * });
  * ```
  *

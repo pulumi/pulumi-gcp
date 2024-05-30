@@ -346,7 +346,8 @@ class VolumeSnapshot(pulumi.CustomResource):
         test_snapshot = gcp.netapp.VolumeSnapshot("test_snapshot",
             location=default_volume.location,
             volume_name=default_volume.name,
-            name="testvolumesnap")
+            name="testvolumesnap",
+            opts=pulumi.ResourceOptions(depends_on=[default_volume]))
         ```
 
         ## Import
@@ -434,7 +435,8 @@ class VolumeSnapshot(pulumi.CustomResource):
         test_snapshot = gcp.netapp.VolumeSnapshot("test_snapshot",
             location=default_volume.location,
             volume_name=default_volume.name,
-            name="testvolumesnap")
+            name="testvolumesnap",
+            opts=pulumi.ResourceOptions(depends_on=[default_volume]))
         ```
 
         ## Import

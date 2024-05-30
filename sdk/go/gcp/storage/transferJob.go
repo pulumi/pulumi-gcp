@@ -59,7 +59,9 @@ import (
 //				Bucket: s3_backup_bucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				s3_backup_bucket,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -69,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
+//			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
 //				Topic:  topic.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
@@ -129,7 +131,10 @@ import (
 //					},
 //					PayloadFormat: pulumi.String("JSON"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				s3_backup_bucketBucketIAMMember,
+//				notificationConfig,
+//			}))
 //			if err != nil {
 //				return err
 //			}

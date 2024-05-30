@@ -153,6 +153,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: lookerNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					lookerRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
 //				Name:             pulumi.String("my-instance"),
 //				PlatformEdition:  pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
@@ -200,17 +210,9 @@ import (
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: lookerNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					lookerRange.Name,
-//				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				lookerVpcConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

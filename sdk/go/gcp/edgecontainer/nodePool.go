@@ -144,7 +144,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKeyCryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-edgecontainer.iam.gserviceaccount.com", project.Number)),
@@ -161,7 +161,9 @@ import (
 //				LocalDiskEncryption: &edgecontainer.NodePoolLocalDiskEncryptionArgs{
 //					KmsKey: cryptoKeyCryptoKey.ID(),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKey,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -75,7 +75,9 @@ import (
 //				Location:   defaultVolume.Location,
 //				VolumeName: defaultVolume.Name,
 //				Name:       pulumi.String("testvolumesnap"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultVolume,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -126,6 +126,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
 //				Project:                       pulumi.String("my-project-name"),
 //				Name:                          pulumi.String("cmek-database-id"),
@@ -139,17 +149,9 @@ import (
 //				CmekConfig: &firestore.DatabaseCmekConfigArgs{
 //					KmsKeyName: cryptoKey.ID(),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: cryptoKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
-//				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestoreCmekKeyuser,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -256,6 +258,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
 //				Project:                       pulumi.String("my-project-name"),
 //				Name:                          pulumi.String("cmek-database-id"),
@@ -269,17 +281,9 @@ import (
 //				CmekConfig: &firestore.DatabaseCmekConfigArgs{
 //					KmsKeyName: cryptoKey.ID(),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: cryptoKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
-//				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestoreCmekKeyuser,
+//			}))
 //			if err != nil {
 //				return err
 //			}

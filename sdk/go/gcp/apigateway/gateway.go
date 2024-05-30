@@ -22,61 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Apigateway Gateway Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiGw, err := apigateway.NewApi(ctx, "api_gw", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("my-api"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "test-fixtures/openapi.yaml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "api_gw", &apigateway.ApiConfigArgs{
-//				Api:         apiGw.ApiId,
-//				ApiConfigId: pulumi.String("my-config"),
-//				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
-//					&apigateway.ApiConfigOpenapiDocumentArgs{
-//						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
-//							Path:     pulumi.String("spec.yaml"),
-//							Contents: invokeFilebase64.Result,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewGateway(ctx, "api_gw", &apigateway.GatewayArgs{
-//				ApiConfig: apiGwApiConfig.ID(),
-//				GatewayId: pulumi.String("my-gateway"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Gateway can be imported using any of these accepted formats:

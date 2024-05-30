@@ -706,14 +706,6 @@ class Backup(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        default = gcp.alloydb.Backup("default",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name)
-        default_instance = gcp.alloydb.Instance("default",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -724,6 +716,16 @@ class Backup(pulumi.CustomResource):
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name,
+            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -736,19 +738,6 @@ class Backup(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        default = gcp.alloydb.Backup("default",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            description="example description",
-            type="ON_DEMAND",
-            labels={
-                "label": "key",
-            })
-        default_instance = gcp.alloydb.Instance("default",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -759,6 +748,21 @@ class Backup(pulumi.CustomResource):
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name,
+            description="example description",
+            type="ON_DEMAND",
+            labels={
+                "label": "key",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
 
         ## Import
@@ -839,14 +843,6 @@ class Backup(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        default = gcp.alloydb.Backup("default",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name)
-        default_instance = gcp.alloydb.Instance("default",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -857,6 +853,16 @@ class Backup(pulumi.CustomResource):
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name,
+            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -869,19 +875,6 @@ class Backup(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        default = gcp.alloydb.Backup("default",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            description="example description",
-            type="ON_DEMAND",
-            labels={
-                "label": "key",
-            })
-        default_instance = gcp.alloydb.Instance("default",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -892,6 +885,21 @@ class Backup(pulumi.CustomResource):
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name,
+            description="example description",
+            type="ON_DEMAND",
+            labels={
+                "label": "key",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
 
         ## Import

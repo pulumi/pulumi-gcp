@@ -81,38 +81,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     // creating certificate_issuance_config to use it in the managed certificate
-    ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
-    ///     {
-    ///         Name = "issuance-config",
-    ///         Description = "sample description for the certificate issuanceConfigs",
-    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
-    ///         {
-    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
-    ///             {
-    ///                 CaPool = pool.Id,
-    ///             },
-    ///         },
-    ///         Lifetime = "1814400s",
-    ///         RotationWindowPercentage = 34,
-    ///         KeyAlgorithm = "ECDSA_P256",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
-    ///     {
-    ///         Name = "issuance-config-cert",
-    ///         Description = "The default cert",
-    ///         Scope = "EDGE_CACHE",
-    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
-    ///         {
-    ///             Domains = new[]
-    ///             {
-    ///                 "terraform.subdomain1.com",
-    ///             },
-    ///             IssuanceConfig = issuanceconfig.Id,
-    ///         },
-    ///     });
-    /// 
     ///     var caAuthority = new Gcp.CertificateAuthority.Authority("ca_authority", new()
     ///     {
     ///         Location = "us-central1",
@@ -162,6 +130,44 @@ namespace Pulumi.Gcp.CertificateManager
     ///         DeletionProtection = false,
     ///         SkipGracePeriod = true,
     ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///     });
+    /// 
+    ///     // creating certificate_issuance_config to use it in the managed certificate
+    ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
+    ///     {
+    ///         Name = "issuance-config",
+    ///         Description = "sample description for the certificate issuanceConfigs",
+    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
+    ///         {
+    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+    ///             {
+    ///                 CaPool = pool.Id,
+    ///             },
+    ///         },
+    ///         Lifetime = "1814400s",
+    ///         RotationWindowPercentage = 34,
+    ///         KeyAlgorithm = "ECDSA_P256",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caAuthority,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "issuance-config-cert",
+    ///         Description = "The default cert",
+    ///         Scope = "EDGE_CACHE",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 "terraform.subdomain1.com",
+    ///             },
+    ///             IssuanceConfig = issuanceconfig.Id,
+    ///         },
     ///     });
     /// 
     /// });
@@ -260,38 +266,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     // creating certificate_issuance_config to use it in the managed certificate
-    ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
-    ///     {
-    ///         Name = "issuance-config",
-    ///         Description = "sample description for the certificate issuanceConfigs",
-    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
-    ///         {
-    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
-    ///             {
-    ///                 CaPool = pool.Id,
-    ///             },
-    ///         },
-    ///         Lifetime = "1814400s",
-    ///         RotationWindowPercentage = 34,
-    ///         KeyAlgorithm = "ECDSA_P256",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
-    ///     {
-    ///         Name = "issuance-config-cert",
-    ///         Description = "sample google managed all_regions certificate with issuance config for terraform",
-    ///         Scope = "ALL_REGIONS",
-    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
-    ///         {
-    ///             Domains = new[]
-    ///             {
-    ///                 "terraform.subdomain1.com",
-    ///             },
-    ///             IssuanceConfig = issuanceconfig.Id,
-    ///         },
-    ///     });
-    /// 
     ///     var caAuthority = new Gcp.CertificateAuthority.Authority("ca_authority", new()
     ///     {
     ///         Location = "us-central1",
@@ -341,6 +315,44 @@ namespace Pulumi.Gcp.CertificateManager
     ///         DeletionProtection = false,
     ///         SkipGracePeriod = true,
     ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///     });
+    /// 
+    ///     // creating certificate_issuance_config to use it in the managed certificate
+    ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
+    ///     {
+    ///         Name = "issuance-config",
+    ///         Description = "sample description for the certificate issuanceConfigs",
+    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
+    ///         {
+    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+    ///             {
+    ///                 CaPool = pool.Id,
+    ///             },
+    ///         },
+    ///         Lifetime = "1814400s",
+    ///         RotationWindowPercentage = 34,
+    ///         KeyAlgorithm = "ECDSA_P256",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caAuthority,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "issuance-config-cert",
+    ///         Description = "sample google managed all_regions certificate with issuance config for terraform",
+    ///         Scope = "ALL_REGIONS",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 "terraform.subdomain1.com",
+    ///             },
+    ///             IssuanceConfig = issuanceconfig.Id,
+    ///         },
     ///     });
     /// 
     /// });

@@ -171,6 +171,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -211,7 +212,9 @@ import javax.annotation.Nullable;
  *                 .schema("projects/my-project-name/schemas/example")
  *                 .encoding("JSON")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example)
+ *                 .build());
  * 
  *     }
  * }

@@ -47,25 +47,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = logging.NewFolderSettings(ctx, "example", &logging.FolderSettingsArgs{
-//				DisableDefaultSink: pulumi.Bool(true),
-//				Folder:             myFolder.FolderId,
-//				KmsKeyName:         pulumi.String("kms-key"),
-//				StorageLocation:    pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			settings := logging.LookupFolderSettingsOutput(ctx, logging.GetFolderSettingsOutputArgs{
 //				Folder: myFolder.FolderId,
 //			}, nil)
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member: settings.ApplyT(func(settings logging.GetFolderSettingsResult) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId), nil
 //				}).(pulumi.StringOutput),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewFolderSettings(ctx, "example", &logging.FolderSettingsArgs{
+//				DisableDefaultSink: pulumi.Bool(true),
+//				Folder:             myFolder.FolderId,
+//				KmsKeyName:         pulumi.String("kms-key"),
+//				StorageLocation:    pulumi.String("us-central1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				iam,
+//			}))
 //			if err != nil {
 //				return err
 //			}

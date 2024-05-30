@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.ManagedZone;
  * import com.pulumi.gcp.integrationconnectors.ManagedZoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,7 +95,9 @@ import javax.annotation.Nullable;
  *             .project(targetProject.projectId())
  *             .name("test")
  *             .autoCreateSubnetworks(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
  * 
  *         var zone = new ManagedZone("zone", ManagedZoneArgs.builder()
  *             .name("tf-test-dns_22375")
@@ -105,7 +108,9 @@ import javax.annotation.Nullable;
  *                     .networkUrl(network.id())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(dns)
+ *                 .build());
  * 
  *         var testmanagedzone = new ManagedZone("testmanagedzone", ManagedZoneArgs.builder()
  *             .name("test")
@@ -114,7 +119,11 @@ import javax.annotation.Nullable;
  *             .targetProject(targetProject.projectId())
  *             .targetVpc("test")
  *             .dns(zone.dnsName())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     dnsPeerBinding,
+ *                     zone)
+ *                 .build());
  * 
  *     }
  * }

@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckDebugToken;
  * import com.pulumi.gcp.firebase.AppCheckDebugTokenArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,14 +67,18 @@ import javax.annotation.Nullable;
  *         // If your app already exists, you don't have to wait 30 seconds.
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *         var defaultAppCheckDebugToken = new AppCheckDebugToken("defaultAppCheckDebugToken", AppCheckDebugTokenArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .displayName("Debug Token")
  *             .token("00000000-AAAA-BBBB-CCCC-000000000000")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait30s)
+ *                 .build());
  * 
  *     }
  * }

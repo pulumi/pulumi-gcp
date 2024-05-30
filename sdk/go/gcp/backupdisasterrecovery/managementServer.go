@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//			defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -66,7 +66,9 @@ import (
 //						PeeringMode: pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

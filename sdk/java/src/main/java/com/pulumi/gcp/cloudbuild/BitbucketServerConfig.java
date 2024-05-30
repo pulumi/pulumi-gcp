@@ -149,6 +149,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.BitbucketServerConfig;
  * import com.pulumi.gcp.cloudbuild.BitbucketServerConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigSecretsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -171,7 +172,9 @@ import javax.annotation.Nullable;
  * 
  *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
  *             .name("vpc-network")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("private-ip-alloc")
@@ -185,7 +188,9 @@ import javax.annotation.Nullable;
  *             .network(vpcNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var bbs_config_with_peered_network = new BitbucketServerConfig("bbs-config-with-peered-network", BitbucketServerConfigArgs.builder()
  *             .configId("bbs-config")
@@ -205,7 +210,9 @@ import javax.annotation.Nullable;
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  *             """)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }

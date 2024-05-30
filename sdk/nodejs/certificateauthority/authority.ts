@@ -227,6 +227,11 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * }, {
+ *     dependsOn: [
+ *         privatecaSaKeyuserSignerverifier,
+ *         privatecaSaKeyuserViewer,
+ *     ],
  * });
  * ```
  * ### Privateca Certificate Authority Custom Ski

@@ -186,6 +186,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkEdgeSecurityServiceArgs;
  * import com.pulumi.gcp.compute.TargetInstance;
  * import com.pulumi.gcp.compute.TargetInstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -257,7 +258,9 @@ import javax.annotation.Nullable;
  *             .region("southamerica-west1")
  *             .description("basic security policy for target instance")
  *             .type("CLOUD_ARMOR_NETWORK")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(edgeSecService)
+ *                 .build());
  * 
  *         var defaultTargetInstance = new TargetInstance("defaultTargetInstance", TargetInstanceArgs.builder()
  *             .name("target-instance")

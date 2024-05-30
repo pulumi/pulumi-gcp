@@ -93,7 +93,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
+//			privateVpcConnection, err := servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: privateNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -123,7 +123,9 @@ import (
 //						EnablePrivatePathForGoogleCloudServices: pulumi.Bool(true),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				privateVpcConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

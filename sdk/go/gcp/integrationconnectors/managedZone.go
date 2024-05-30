@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "dns_peer_binding", &projects.IAMMemberArgs{
+//			dnsPeerBinding, err := projects.NewIAMMember(ctx, "dns_peer_binding", &projects.IAMMemberArgs{
 //				Project: targetProject.ProjectId,
 //				Role:    pulumi.String("roles/dns.peer"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-connectors.iam.gserviceaccount.com", testProject.Number)),
@@ -63,14 +63,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "dns", &projects.ServiceArgs{
+//			dns, err := projects.NewService(ctx, "dns", &projects.ServiceArgs{
 //				Project: targetProject.ProjectId,
 //				Service: pulumi.String("dns.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: targetProject.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -81,7 +81,9 @@ import (
 //				Project:               targetProject.ProjectId,
 //				Name:                  pulumi.String("test"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -96,7 +98,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dns,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -109,7 +113,10 @@ import (
 //				TargetProject: targetProject.ProjectId,
 //				TargetVpc:     pulumi.String("test"),
 //				Dns:           zone.DnsName,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dnsPeerBinding,
+//				zone,
+//			}))
 //			if err != nil {
 //				return err
 //			}

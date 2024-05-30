@@ -20,51 +20,6 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// ## Example Usage
     /// 
-    /// ### Apigateway Gateway Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var apiGw = new Gcp.ApiGateway.Api("api_gw", new()
-    ///     {
-    ///         ApiId = "my-api",
-    ///     });
-    /// 
-    ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("api_gw", new()
-    ///     {
-    ///         Api = apiGw.ApiId,
-    ///         ApiConfigId = "my-config",
-    ///         OpenapiDocuments = new[]
-    ///         {
-    ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
-    ///             {
-    ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
-    ///                 {
-    ///                     Path = "spec.yaml",
-    ///                     Contents = Std.Filebase64.Invoke(new()
-    ///                     {
-    ///                         Input = "test-fixtures/openapi.yaml",
-    ///                     }).Apply(invoke =&gt; invoke.Result),
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("api_gw", new()
-    ///     {
-    ///         ApiConfig = apiGwApiConfig.Id,
-    ///         GatewayId = "my-gateway",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Gateway can be imported using any of these accepted formats:

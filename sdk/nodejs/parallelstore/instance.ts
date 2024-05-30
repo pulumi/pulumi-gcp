@@ -18,16 +18,6 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: true,
  *     mtu: 8896,
  * });
- * const instance = new gcp.parallelstore.Instance("instance", {
- *     instanceId: "instance",
- *     location: "us-central1-a",
- *     description: "test instance",
- *     capacityGib: "12000",
- *     network: network.name,
- *     labels: {
- *         test: "value",
- *     },
- * });
  * // Create an IP address
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "address",
@@ -41,6 +31,18 @@ import * as utilities from "../utilities";
  *     network: network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const instance = new gcp.parallelstore.Instance("instance", {
+ *     instanceId: "instance",
+ *     location: "us-central1-a",
+ *     description: "test instance",
+ *     capacityGib: "12000",
+ *     network: network.name,
+ *     labels: {
+ *         test: "value",
+ *     },
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  *

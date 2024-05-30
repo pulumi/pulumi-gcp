@@ -126,6 +126,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.NodePool;
  * import com.pulumi.gcp.edgecontainer.NodePoolArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.NodePoolLocalDiskEncryptionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -183,7 +184,9 @@ import javax.annotation.Nullable;
  *             .localDiskEncryption(NodePoolLocalDiskEncryptionArgs.builder()
  *                 .kmsKey(cryptoKeyCryptoKey.id())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKey)
+ *                 .build());
  * 
  *     }
  * }

@@ -494,6 +494,16 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
+        vertex_range = gcp.compute.GlobalAddress("vertex_range",
+            name="address-name",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -507,17 +517,8 @@ class AiEndpoint(pulumi.CustomResource):
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ))
-        vertex_range = gcp.compute.GlobalAddress("vertex_range",
-            name="address-name",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -591,6 +592,16 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
+        vertex_range = gcp.compute.GlobalAddress("vertex_range",
+            name="address-name",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -604,17 +615,8 @@ class AiEndpoint(pulumi.CustomResource):
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ))
-        vertex_range = gcp.compute.GlobalAddress("vertex_range",
-            name="address-name",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",

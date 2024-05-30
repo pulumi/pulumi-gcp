@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datacatalog.TaxonomyArgs;
  * import com.pulumi.gcp.datacatalog.PolicyTag;
  * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -121,7 +122,9 @@ import javax.annotation.Nullable;
  *             .displayName("dob")
  *             .description("The users date of birth")
  *             .parentPolicyTag(parentPolicy.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(childPolicy)
+ *                 .build());
  * 
  *     }
  * }

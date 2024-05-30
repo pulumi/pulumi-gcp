@@ -194,7 +194,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             disable_on_destroy=False)
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
-            service_id="firestore.googleapis.com")
+            service_id="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
         ### Firebase App Check Service Config Enforced
 
@@ -209,7 +210,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firebasestorage.googleapis.com",
-            enforcement_mode="ENFORCED")
+            enforcement_mode="ENFORCED",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
         ### Firebase App Check Service Config Unenforced
 
@@ -224,7 +226,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="identitytoolkit.googleapis.com",
-            enforcement_mode="UNENFORCED")
+            enforcement_mode="UNENFORCED",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
 
         ## Import
@@ -293,7 +296,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             disable_on_destroy=False)
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
-            service_id="firestore.googleapis.com")
+            service_id="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
         ### Firebase App Check Service Config Enforced
 
@@ -308,7 +312,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firebasestorage.googleapis.com",
-            enforcement_mode="ENFORCED")
+            enforcement_mode="ENFORCED",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
         ### Firebase App Check Service Config Unenforced
 
@@ -323,7 +328,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="identitytoolkit.googleapis.com",
-            enforcement_mode="UNENFORCED")
+            enforcement_mode="UNENFORCED",
+            opts=pulumi.ResourceOptions(depends_on=[appcheck]))
         ```
 
         ## Import

@@ -590,7 +590,8 @@ class Intent(pulumi.CustomResource):
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
+        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent",
+        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
         ### Dialogflow Intent Full
 
@@ -630,7 +631,8 @@ class Intent(pulumi.CustomResource):
             default_response_platforms=[
                 "FACEBOOK",
                 "SLACK",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -708,7 +710,8 @@ class Intent(pulumi.CustomResource):
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
+        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent",
+        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
         ### Dialogflow Intent Full
 
@@ -748,7 +751,8 @@ class Intent(pulumi.CustomResource):
             default_response_platforms=[
                 "FACEBOOK",
                 "SLACK",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import

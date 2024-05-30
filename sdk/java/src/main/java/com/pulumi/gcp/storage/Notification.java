@@ -44,16 +44,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.storage.Notification;
- * import com.pulumi.gcp.storage.NotificationArgs;
  * import com.pulumi.gcp.storage.StorageFunctions;
  * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.TopicIAMBinding;
  * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.Notification;
+ * import com.pulumi.gcp.storage.NotificationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,14 +68,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Enable notifications by giving the correct IAM permission to the unique service account.
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ * 
+ *         var topic = new Topic("topic", TopicArgs.builder()
+ *             .name("default_topic")
+ *             .build());
+ * 
+ *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
+ *             .topic(topic.id())
+ *             .role("roles/pubsub.publisher")
+ *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+ *             .build());
+ * 
  *         // End enabling notifications
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("default_bucket")
  *             .location("US")
- *             .build());
- * 
- *         var topic = new Topic("topic", TopicArgs.builder()
- *             .name("default_topic")
  *             .build());
  * 
  *         var notification = new Notification("notification", NotificationArgs.builder()
@@ -85,16 +95,9 @@ import javax.annotation.Nullable;
  *                 "OBJECT_FINALIZE",
  *                 "OBJECT_METADATA_UPDATE")
  *             .customAttributes(Map.of("new-attribute", "new-attribute-value"))
- *             .build());
- * 
- *         // Enable notifications by giving the correct IAM permission to the unique service account.
- *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
- * 
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
- *             .topic(topic.id())
- *             .role("roles/pubsub.publisher")
- *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(binding)
+ *                 .build());
  * 
  *     }
  * }

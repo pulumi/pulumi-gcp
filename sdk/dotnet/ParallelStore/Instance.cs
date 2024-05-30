@@ -29,19 +29,6 @@ namespace Pulumi.Gcp.ParallelStore
     ///         Mtu = 8896,
     ///     });
     /// 
-    ///     var instance = new Gcp.ParallelStore.Instance("instance", new()
-    ///     {
-    ///         InstanceId = "instance",
-    ///         Location = "us-central1-a",
-    ///         Description = "test instance",
-    ///         CapacityGib = "12000",
-    ///         Network = network.Name,
-    ///         Labels = 
-    ///         {
-    ///             { "test", "value" },
-    ///         },
-    ///     });
-    /// 
     ///     // Create an IP address
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
@@ -60,6 +47,25 @@ namespace Pulumi.Gcp.ParallelStore
     ///         ReservedPeeringRanges = new[]
     ///         {
     ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.ParallelStore.Instance("instance", new()
+    ///     {
+    ///         InstanceId = "instance",
+    ///         Location = "us-central1-a",
+    ///         Description = "test instance",
+    ///         CapacityGib = "12000",
+    ///         Network = network.Name,
+    ///         Labels = 
+    ///         {
+    ///             { "test", "value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
     ///         },
     ///     });
     /// 

@@ -37,12 +37,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumi.gcp.logging.FolderSettings;
- * import com.pulumi.gcp.logging.FolderSettingsArgs;
  * import com.pulumi.gcp.logging.LoggingFunctions;
  * import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.logging.FolderSettings;
+ * import com.pulumi.gcp.logging.FolderSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,13 +62,6 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var example = new FolderSettings("example", FolderSettingsArgs.builder()
- *             .disableDefaultSink(true)
- *             .folder(myFolder.folderId())
- *             .kmsKeyName("kms-key")
- *             .storageLocation("us-central1")
- *             .build());
- * 
  *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
  *             .folder(myFolder.folderId())
  *             .build());
@@ -77,6 +71,15 @@ import javax.annotation.Nullable;
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult).applyValue(settings -> String.format("serviceAccount:%s", settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult.kmsServiceAccountId()))))
  *             .build());
+ * 
+ *         var example = new FolderSettings("example", FolderSettingsArgs.builder()
+ *             .disableDefaultSink(true)
+ *             .folder(myFolder.folderId())
+ *             .kmsKeyName("kms-key")
+ *             .storageLocation("us-central1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(iam)
+ *                 .build());
  * 
  *     }
  * }

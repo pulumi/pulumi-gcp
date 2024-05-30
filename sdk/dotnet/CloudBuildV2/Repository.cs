@@ -104,6 +104,13 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///             AppSlug = "gcb-app",
     ///             AppInstallationId = 300,
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             policy_pk,
+    ///             policy_whs,
+    ///         },
     ///     });
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()

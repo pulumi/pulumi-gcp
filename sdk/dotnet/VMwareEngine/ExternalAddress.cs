@@ -74,6 +74,12 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         Parent = external_address_pc.Id,
     ///         InternalIp = "192.168.0.66",
     ///         Description = "Sample description.",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             external_address_np,
+    ///         },
     ///     });
     /// 
     /// });

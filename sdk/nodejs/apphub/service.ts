@@ -36,13 +36,19 @@ import * as utilities from "../utilities";
  *     project: serviceProject.projectId,
  *     service: "compute.googleapis.com",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
- * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId});
+ * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ *     dependsOn: [computeServiceProject],
+ * });
+ * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId}, {
+ *     dependsOn: [wait120s],
+ * });
  * // VPC network
  * const ilbNetwork = new gcp.compute.Network("ilb_network", {
  *     name: "l7-ilb-network",
  *     project: serviceProject.projectId,
  *     autoCreateSubnetworks: false,
+ * }, {
+ *     dependsOn: [wait120s],
  * });
  * // backend subnet
  * const ilbSubnet = new gcp.compute.Subnetwork("ilb_subnet", {
@@ -61,6 +67,8 @@ import * as utilities from "../utilities";
  *     tcpHealthCheck: {
  *         port: 80,
  *     },
+ * }, {
+ *     dependsOn: [wait120s],
  * });
  * // backend service
  * const backend = new gcp.compute.RegionBackendService("backend", {
@@ -86,7 +94,9 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });
- * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"});
+ * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
+ *     dependsOn: [forwardingRule],
+ * });
  * const example = new gcp.apphub.Service("example", {
  *     location: "us-central1",
  *     applicationId: application.applicationId,
@@ -119,13 +129,19 @@ import * as utilities from "../utilities";
  *     project: serviceProject.projectId,
  *     service: "compute.googleapis.com",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
- * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId});
+ * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ *     dependsOn: [computeServiceProject],
+ * });
+ * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId}, {
+ *     dependsOn: [wait120s],
+ * });
  * // VPC network
  * const ilbNetwork = new gcp.compute.Network("ilb_network", {
  *     name: "l7-ilb-network",
  *     project: serviceProject.projectId,
  *     autoCreateSubnetworks: false,
+ * }, {
+ *     dependsOn: [wait120s],
  * });
  * // backend subnet
  * const ilbSubnet = new gcp.compute.Subnetwork("ilb_subnet", {
@@ -144,6 +160,8 @@ import * as utilities from "../utilities";
  *     tcpHealthCheck: {
  *         port: 80,
  *     },
+ * }, {
+ *     dependsOn: [wait120s],
  * });
  * // backend service
  * const backend = new gcp.compute.RegionBackendService("backend", {
@@ -169,7 +187,9 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });
- * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"});
+ * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
+ *     dependsOn: [forwardingRule],
+ * });
  * const example = new gcp.apphub.Service("example", {
  *     location: "us-central1",
  *     applicationId: application.applicationId,

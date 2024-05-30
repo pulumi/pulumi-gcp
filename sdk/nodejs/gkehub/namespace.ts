@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *         keya: "valuea",
  *         keyc: "valuec",
  *     },
+ * }, {
+ *     dependsOn: [scope],
  * });
  * ```
  *

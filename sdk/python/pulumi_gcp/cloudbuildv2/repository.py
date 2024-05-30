@@ -367,7 +367,11 @@ class Repository(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-terraform-ghe-repo",
             location="us-central1",
@@ -511,7 +515,11 @@ class Repository(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-terraform-ghe-repo",
             location="us-central1",

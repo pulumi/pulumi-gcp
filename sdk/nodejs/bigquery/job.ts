@@ -179,6 +179,8 @@ import * as utilities from "../utilities";
  *         sourceFormat: "NEWLINE_DELIMITED_JSON",
  *         jsonExtension: "GEOJSON",
  *     },
+ * }, {
+ *     dependsOn: [object],
  * });
  * ```
  * ### Bigquery Job Load Parquet
@@ -290,6 +292,14 @@ import * as utilities from "../utilities";
  *     name: "example-key",
  *     keyRing: keyRing.id,
  * });
+ * const project = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const encryptRole = new gcp.projects.IAMMember("encrypt_role", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
+ * });
  * const dest = new gcp.bigquery.Table("dest", {
  *     deletionProtection: false,
  *     datasetId: destDataset.datasetId,
@@ -315,14 +325,8 @@ import * as utilities from "../utilities";
  *     encryptionConfiguration: {
  *         kmsKeyName: cryptoKey.id,
  *     },
- * });
- * const project = gcp.organizations.getProject({
- *     projectId: "my-project-name",
- * });
- * const encryptRole = new gcp.projects.IAMMember("encrypt_role", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [encryptRole],
  * });
  * const job = new gcp.bigquery.Job("job", {
  *     jobId: "job_copy",
@@ -348,6 +352,8 @@ import * as utilities from "../utilities";
  *             kmsKeyName: cryptoKey.id,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [encryptRole],
  * });
  * ```
  * ### Bigquery Job Extract

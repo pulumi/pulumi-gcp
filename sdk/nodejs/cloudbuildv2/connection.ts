@@ -88,6 +88,11 @@ import * as utilities from "../utilities";
  *         appSlug: "gcb-app",
  *         appInstallationId: 300,
  *     },
+ * }, {
+ *     dependsOn: [
+ *         policy_pk,
+ *         policy_whs,
+ *     ],
  * });
  * ```
  * ### Cloudbuildv2 Connection Github

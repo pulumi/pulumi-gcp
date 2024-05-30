@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                               _default.Name,
 //				CertificateAuthorityId:             pulumi.String("my-basic-certificate-authority"),
 //				Location:                           pulumi.String("us-central1"),
@@ -132,7 +132,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
+//			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number)),
@@ -144,7 +144,11 @@ import (
 //				Name:     pulumi.String("my-tls-inspection-policy"),
 //				Location: pulumi.String("us-central1"),
 //				CaPool:   _default.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//				defaultAuthority,
+//				tlsInspectionPermission,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -153,7 +157,9 @@ import (
 //				Location:            pulumi.String("us-central1"),
 //				Description:         pulumi.String("my description"),
 //				TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultTlsInspectionPolicy,
+//			}))
 //			if err != nil {
 //				return err
 //			}

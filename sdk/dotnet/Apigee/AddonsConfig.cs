@@ -82,6 +82,12 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Name = "apigee-network",
     ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
     ///     });
     /// 
     ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
@@ -110,6 +116,13 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         BillingType = "EVALUATION",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigee,
+    ///         },
     ///     });
     /// 
     ///     var testOrganization = new Gcp.Apigee.AddonsConfig("test_organization", new()

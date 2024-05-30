@@ -166,6 +166,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
     ///     });
     /// 
     /// });
@@ -264,6 +270,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
     ///     });
     /// 
     ///     var gateway2 = new Gcp.NetworkServices.Gateway("gateway2", new()
@@ -288,6 +300,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
     ///     });
     /// 
     /// });

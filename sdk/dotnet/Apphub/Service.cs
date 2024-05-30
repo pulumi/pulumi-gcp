@@ -53,11 +53,23 @@ namespace Pulumi.Gcp.Apphub
     ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             computeServiceProject,
+    ///         },
     ///     });
     /// 
     ///     var serviceProjectAttachment = new Gcp.Apphub.ServiceProjectAttachment("service_project_attachment", new()
     ///     {
     ///         ServiceProjectAttachmentId = serviceProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     ///     // VPC network
@@ -66,6 +78,12 @@ namespace Pulumi.Gcp.Apphub
     ///         Name = "l7-ilb-network",
     ///         Project = serviceProject.ProjectId,
     ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     ///     // backend subnet
@@ -88,6 +106,12 @@ namespace Pulumi.Gcp.Apphub
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
     ///         {
     ///             Port = 80,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
     ///         },
     ///     });
     /// 
@@ -124,6 +148,12 @@ namespace Pulumi.Gcp.Apphub
     ///     var wait120sForResourceIngestion = new Time.Index.Sleep("wait_120s_for_resource_ingestion", new()
     ///     {
     ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             forwardingRule,
+    ///         },
     ///     });
     /// 
     ///     var example = new Gcp.Apphub.Service("example", new()
@@ -175,11 +205,23 @@ namespace Pulumi.Gcp.Apphub
     ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             computeServiceProject,
+    ///         },
     ///     });
     /// 
     ///     var serviceProjectAttachment = new Gcp.Apphub.ServiceProjectAttachment("service_project_attachment", new()
     ///     {
     ///         ServiceProjectAttachmentId = serviceProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     ///     // VPC network
@@ -188,6 +230,12 @@ namespace Pulumi.Gcp.Apphub
     ///         Name = "l7-ilb-network",
     ///         Project = serviceProject.ProjectId,
     ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     ///     // backend subnet
@@ -210,6 +258,12 @@ namespace Pulumi.Gcp.Apphub
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
     ///         {
     ///             Port = 80,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
     ///         },
     ///     });
     /// 
@@ -246,6 +300,12 @@ namespace Pulumi.Gcp.Apphub
     ///     var wait120sForResourceIngestion = new Time.Index.Sleep("wait_120s_for_resource_ingestion", new()
     ///     {
     ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             forwardingRule,
+    ///         },
     ///     });
     /// 
     ///     var example = new Gcp.Apphub.Service("example", new()

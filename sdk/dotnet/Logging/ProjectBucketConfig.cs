@@ -135,6 +135,12 @@ namespace Pulumi.Gcp.Logging
     ///         {
     ///             KmsKeyName = key.Id,
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
     ///     });
     /// 
     /// });

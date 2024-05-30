@@ -87,6 +87,12 @@ import * as utilities from "../utilities";
  *     name: "internal-ranges",
  *     autoCreateSubnetworks: false,
  * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "overlapping-subnet",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
  * const _default = new gcp.networkconnectivity.InternalRange("default", {
  *     name: "overlap-range",
  *     description: "Test internal range",
@@ -95,12 +101,8 @@ import * as utilities from "../utilities";
  *     peering: "FOR_SELF",
  *     ipCidrRange: "10.0.0.0/30",
  *     overlaps: ["OVERLAP_EXISTING_SUBNET_RANGE"],
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "overlapping-subnet",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.id,
+ * }, {
+ *     dependsOn: [defaultSubnetwork],
  * });
  * ```
  *

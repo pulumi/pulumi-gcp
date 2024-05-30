@@ -295,7 +295,8 @@ class EntityType(pulumi.CustomResource):
                         "synonym4",
                     ],
                 ),
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -373,7 +374,8 @@ class EntityType(pulumi.CustomResource):
                         "synonym4",
                     ],
                 ),
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import

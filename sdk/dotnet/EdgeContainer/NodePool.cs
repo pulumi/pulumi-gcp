@@ -146,6 +146,12 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         {
     ///             KmsKey = cryptoKeyCryptoKey.Id,
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKey,
+    ///         },
     ///     });
     /// 
     /// });

@@ -41,6 +41,12 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceId = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             appcheck,
+    ///         },
     ///     });
     /// 
     /// });
@@ -67,6 +73,12 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         ServiceId = "firebasestorage.googleapis.com",
     ///         EnforcementMode = "ENFORCED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             appcheck,
+    ///         },
     ///     });
     /// 
     /// });
@@ -93,6 +105,12 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         ServiceId = "identitytoolkit.googleapis.com",
     ///         EnforcementMode = "UNENFORCED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             appcheck,
+    ///         },
     ///     });
     /// 
     /// });

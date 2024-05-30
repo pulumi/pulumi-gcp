@@ -59,7 +59,9 @@ import (
 //			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
 //				CommonName: pulumi.String("my-cert"),
 //				Instance:   cloudsqldb.Name,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cloudsqldb,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -67,11 +69,13 @@ import (
 //				Name:     pulumi.String("my-username"),
 //				Instance: cloudsqldb.Name,
 //				Password: pulumi.String("my-password"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqlClientCert,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
+//			cloudsqlprofile, err := databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-fromprofileid"),
 //				DisplayName:         pulumi.String("my-fromprofileid_display"),
@@ -92,7 +96,9 @@ import (
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqldbUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -125,7 +131,9 @@ import (
 //						RootPassword:        pulumi.String("testpasscloudsql"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cloudsqlprofile,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -163,7 +171,9 @@ import (
 //			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
 //				CommonName: pulumi.String("my-cert"),
 //				Instance:   postgresqldb.Name,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				postgresqldb,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -171,7 +181,9 @@ import (
 //				Name:     pulumi.String("my-username"),
 //				Instance: postgresqldb.Name,
 //				Password: pulumi.String("my-password"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqlClientCert,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -196,7 +208,9 @@ import (
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqldbUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -280,7 +294,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -320,7 +334,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
 //			if err != nil {
 //				return err
 //			}

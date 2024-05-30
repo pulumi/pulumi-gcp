@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: project.projectId,
  *     runtimeType: "HYBRID",
+ * }, {
+ *     dependsOn: [apigee],
  * });
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "my-account",
@@ -48,6 +50,8 @@ import * as utilities from "../utilities";
  * const apigeeSyncAuthorization = new gcp.apigee.SyncAuthorization("apigee_sync_authorization", {
  *     name: apigeeOrg.name,
  *     identities: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
+ * }, {
+ *     dependsOn: [synchronizer_iam],
  * });
  * ```
  *

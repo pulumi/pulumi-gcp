@@ -78,6 +78,12 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
     ///         KmsKey = cryptoKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
     ///     });
     /// 
     /// });
@@ -161,6 +167,18 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         },
     ///     });
     /// 
+    ///     // ca pool IAM permissions can take time to propagate
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caPoolBinding,
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
     ///     {
     ///         InstanceId = "my-instance",
@@ -170,12 +188,13 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             IsPrivate = true,
     ///             CaPool = caPool.Id,
     ///         },
-    ///     });
-    /// 
-    ///     // ca pool IAM permissions can take time to propagate
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CreateDuration = "60s",
+    ///         DependsOn =
+    ///         {
+    ///             rootCa,
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     /// });

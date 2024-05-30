@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     friendlyName: "foo",
  *     description: "bar",
  *     location: "asia-northeast1",
+ * }, {
+ *     dependsOn: [permissions],
  * });
  * const queryConfig = new gcp.bigquery.DataTransferConfig("query_config", {
  *     displayName: "my-query",
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *         write_disposition: "WRITE_APPEND",
  *         query: "SELECT name FROM tabl WHERE x = 'y'",
  *     },
+ * }, {
+ *     dependsOn: [permissions],
  * });
  * ```
  *

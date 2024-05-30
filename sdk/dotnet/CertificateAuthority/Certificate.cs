@@ -597,6 +597,12 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 }).Apply(invoke =&gt; invoke.Result),
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultAuthority,
+    ///         },
     ///     });
     /// 
     /// });
@@ -724,6 +730,12 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     Input = "test-fixtures/rsa_public.pem",
     ///                 }).Apply(invoke =&gt; invoke.Result),
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultAuthority,
     ///         },
     ///     });
     /// 

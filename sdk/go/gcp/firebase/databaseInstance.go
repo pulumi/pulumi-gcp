@@ -103,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "firebase_database", &projects.ServiceArgs{
+//			firebaseDatabase, err := projects.NewService(ctx, "firebase_database", &projects.ServiceArgs{
 //				Project: defaultProject.Project,
 //				Service: pulumi.String("firebasedatabase.googleapis.com"),
 //			})
@@ -115,7 +115,9 @@ import (
 //				Region:     pulumi.String("us-central1"),
 //				InstanceId: pulumi.String("rtdb-project-default-rtdb"),
 //				Type:       pulumi.String("DEFAULT_DATABASE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firebaseDatabase,
+//			}))
 //			if err != nil {
 //				return err
 //			}

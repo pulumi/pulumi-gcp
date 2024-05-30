@@ -54,6 +54,15 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
+    ///     {
+    ///         CryptoKeyId = "kms-name",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-aiplatform.iam.gserviceaccount.com",
+    ///     });
+    /// 
     ///     var tensorboard = new Gcp.Vertex.AiTensorboard("tensorboard", new()
     ///     {
     ///         DisplayName = "terraform",
@@ -68,15 +77,12 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CryptoKeyId = "kms-name",
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-aiplatform.iam.gserviceaccount.com",
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKey,
+    ///         },
     ///     });
     /// 
     /// });

@@ -500,7 +500,12 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             name="my-tls-inspection-policy",
             location="us-central1",
             ca_pool=default.id,
-            exclude_public_ca_set=False)
+            exclude_public_ca_set=False,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    default,
+                    default_authority,
+                    tls_inspection_permission,
+                ]))
         ```
         ### Network Security Tls Inspection Policy Custom
 
@@ -606,7 +611,11 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 "TLS_RSA_WITH_AES_128_GCM_SHA256",
                 "TLS_RSA_WITH_AES_256_CBC_SHA",
                 "TLS_RSA_WITH_AES_256_GCM_SHA384",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    default_authority,
+                    default_ca_pool_iam_member,
+                ]))
         ```
 
         ## Import
@@ -740,7 +749,12 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             name="my-tls-inspection-policy",
             location="us-central1",
             ca_pool=default.id,
-            exclude_public_ca_set=False)
+            exclude_public_ca_set=False,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    default,
+                    default_authority,
+                    tls_inspection_permission,
+                ]))
         ```
         ### Network Security Tls Inspection Policy Custom
 
@@ -846,7 +860,11 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 "TLS_RSA_WITH_AES_128_GCM_SHA256",
                 "TLS_RSA_WITH_AES_256_CBC_SHA",
                 "TLS_RSA_WITH_AES_256_GCM_SHA384",
-            ])
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    default_authority,
+                    default_ca_pool_iam_member,
+                ]))
         ```
 
         ## Import

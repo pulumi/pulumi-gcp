@@ -50,6 +50,12 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///                 Password = "test-password",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             client,
+    ///         },
     ///     });
     /// 
     /// });

@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     project: testProject.then(testProject => testProject.projectId),
  *     cryptoKeyName: key1.id,
  *     thirdPartyProvider: testProject.then(testProject => `projects/${testProject.projectId}/locations/us-west1/providers/datadog`),
+ * }, {
+ *     dependsOn: [key1Member],
  * });
  * ```
  *

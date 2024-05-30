@@ -39,6 +39,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: "kms-name",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
+ * });
  * const tensorboard = new gcp.vertex.AiTensorboard("tensorboard", {
  *     displayName: "terraform",
  *     description: "sample description",
@@ -50,12 +56,8 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
- * });
- * const project = gcp.organizations.getProject({});
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
- *     cryptoKeyId: "kms-name",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [cryptoKey],
  * });
  * ```
  *

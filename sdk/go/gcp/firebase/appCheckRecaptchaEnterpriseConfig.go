@@ -56,9 +56,11 @@ import (
 //			}
 //			// It takes a while for App Check to recognize the new app
 //			// If your app already exists, you don't have to wait 30 seconds.
-//			_, err = time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
+//			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
 //				CreateDuration: "30s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -67,7 +69,9 @@ import (
 //				AppId:    _default.AppId,
 //				SiteKey:  pulumi.String("6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw"),
 //				TokenTtl: pulumi.String("7200s"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait30s,
+//			}))
 //			if err != nil {
 //				return err
 //			}

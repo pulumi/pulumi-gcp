@@ -272,7 +272,8 @@ class Fulfillment(pulumi.CustomResource):
                 request_headers={
                     "name": "wrench",
                 },
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -338,7 +339,8 @@ class Fulfillment(pulumi.CustomResource):
                 request_headers={
                     "name": "wrench",
                 },
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import

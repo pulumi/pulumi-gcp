@@ -57,16 +57,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
 //				CreateDuration: "60s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firestore.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -75,7 +79,9 @@ import (
 //				Name:       pulumi.String("(default)"),
 //				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("FIRESTORE_NATIVE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestore,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -121,16 +127,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
 //				CreateDuration: "60s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firestore.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -139,7 +149,9 @@ import (
 //				Name:       pulumi.String("(default)"),
 //				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("FIRESTORE_NATIVE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestore,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -257,6 +257,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -301,7 +302,9 @@ import javax.annotation.Nullable;
  *                 .size(2)
  *                 .mask("0x8F00")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(edgeSecService)
+ *                 .build());
  * 
  *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule("policyRuleNetworkMatch", RegionSecurityPolicyRuleArgs.builder()
  *             .region("us-west2")

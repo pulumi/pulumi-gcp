@@ -200,7 +200,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+//			peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("peering-producer-to-consumer"),
 //				Network:     consumer.ID(),
 //				PeerNetwork: producer.ID(),
@@ -208,7 +208,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+//			peering2, err := compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("peering-consumer-to-producer"),
 //				Network:     producer.ID(),
 //				PeerNetwork: consumer.ID(),
@@ -257,7 +257,10 @@ import (
 //					pulumi.String("tag1"),
 //					pulumi.String("tag2"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				peering1,
+//				peering2,
+//			}))
 //			if err != nil {
 //				return err
 //			}

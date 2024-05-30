@@ -57,28 +57,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
- * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
- *     name: "issuance-config",
- *     description: "sample description for the certificate issuanceConfigs",
- *     certificateAuthorityConfig: {
- *         certificateAuthorityServiceConfig: {
- *             caPool: pool.id,
- *         },
- *     },
- *     lifetime: "1814400s",
- *     rotationWindowPercentage: 34,
- *     keyAlgorithm: "ECDSA_P256",
- * });
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     name: "issuance-config-cert",
- *     description: "The default cert",
- *     scope: "EDGE_CACHE",
- *     managed: {
- *         domains: ["terraform.subdomain1.com"],
- *         issuanceConfig: issuanceconfig.id,
- *     },
- * });
  * const caAuthority = new gcp.certificateauthority.Authority("ca_authority", {
  *     location: "us-central1",
  *     pool: pool.name,
@@ -114,6 +92,30 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * // creating certificate_issuance_config to use it in the managed certificate
+ * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
+ *     name: "issuance-config",
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ * }, {
+ *     dependsOn: [caAuthority],
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "issuance-config-cert",
+ *     description: "The default cert",
+ *     scope: "EDGE_CACHE",
+ *     managed: {
+ *         domains: ["terraform.subdomain1.com"],
+ *         issuanceConfig: issuanceconfig.id,
+ *     },
  * });
  * ```
  * ### Certificate Manager Certificate Basic
@@ -180,28 +182,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
- * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
- *     name: "issuance-config",
- *     description: "sample description for the certificate issuanceConfigs",
- *     certificateAuthorityConfig: {
- *         certificateAuthorityServiceConfig: {
- *             caPool: pool.id,
- *         },
- *     },
- *     lifetime: "1814400s",
- *     rotationWindowPercentage: 34,
- *     keyAlgorithm: "ECDSA_P256",
- * });
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     name: "issuance-config-cert",
- *     description: "sample google managed all_regions certificate with issuance config for terraform",
- *     scope: "ALL_REGIONS",
- *     managed: {
- *         domains: ["terraform.subdomain1.com"],
- *         issuanceConfig: issuanceconfig.id,
- *     },
- * });
  * const caAuthority = new gcp.certificateauthority.Authority("ca_authority", {
  *     location: "us-central1",
  *     pool: pool.name,
@@ -237,6 +217,30 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * // creating certificate_issuance_config to use it in the managed certificate
+ * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
+ *     name: "issuance-config",
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ * }, {
+ *     dependsOn: [caAuthority],
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "issuance-config-cert",
+ *     description: "sample google managed all_regions certificate with issuance config for terraform",
+ *     scope: "ALL_REGIONS",
+ *     managed: {
+ *         domains: ["terraform.subdomain1.com"],
+ *         issuanceConfig: issuanceconfig.id,
+ *     },
  * });
  * ```
  * ### Certificate Manager Google Managed Certificate Dns All Regions

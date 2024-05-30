@@ -203,6 +203,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -210,10 +214,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -229,6 +230,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.metadataViewer")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -259,24 +274,14 @@ import javax.annotation.Nullable;
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format("%s.%s.%s", project,datasetId,tableId);
+ *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
  *                 }))
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     viewer,
+ *                     editor)
+ *                 .build());
  * 
  *     }
  * }
@@ -295,6 +300,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -302,10 +311,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -321,6 +327,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.metadataViewer")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -351,25 +371,15 @@ import javax.annotation.Nullable;
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format("%s.%s.%s", project,datasetId,tableId);
+ *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
  *                 }))
  *                 .useTableSchema(true)
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     viewer,
+ *                     editor)
+ *                 .build());
  * 
  *     }
  * }
@@ -390,13 +400,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.pubsub.Subscription;
- * import com.pulumi.gcp.pubsub.SubscriptionArgs;
- * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.storage.BucketIAMMember;
  * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -420,6 +431,14 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .build());
  * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
+ *             .bucket(example.name())
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(exampleTopic.id())
@@ -430,15 +449,11 @@ import javax.annotation.Nullable;
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
- *             .bucket(example.name())
- *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     example,
+ *                     admin)
+ *                 .build());
  * 
  *     }
  * }
@@ -459,14 +474,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.pubsub.Subscription;
- * import com.pulumi.gcp.pubsub.SubscriptionArgs;
- * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
- * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.storage.BucketIAMMember;
  * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -490,6 +506,14 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .build());
  * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
+ *             .bucket(example.name())
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(exampleTopic.id())
@@ -503,15 +527,11 @@ import javax.annotation.Nullable;
  *                     .writeMetadata(true)
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
- *             .bucket(example.name())
- *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     example,
+ *                     admin)
+ *                 .build());
  * 
  *     }
  * }

@@ -74,12 +74,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.vmwareengine.Network;
  * import com.pulumi.gcp.vmwareengine.NetworkArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,10 +103,18 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(acceptanceProject)
+ *                 .build());
+ * 
  *         var acceptance = new Service("acceptance", ServiceArgs.builder()
  *             .project(acceptanceProject.projectId())
  *             .service("vmwareengine.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()
  *             .project(acceptance.project())
@@ -113,10 +122,6 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .type("LEGACY")
  *             .description("VMwareEngine legacy network sample")
- *             .build());
- * 
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
  *             .build());
  * 
  *     }

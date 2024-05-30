@@ -195,7 +195,11 @@ class NatAddress(pulumi.CustomResource):
             description="Terraform-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="apigee-instance",
             location="us-central1",
@@ -290,7 +294,11 @@ class NatAddress(pulumi.CustomResource):
             description="Terraform-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="apigee-instance",
             location="us-central1",

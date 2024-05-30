@@ -554,6 +554,12 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         full_profile = gcp.dataplex.Datascan("full_profile",
             location="us-central1",
             display_name="Full Datascan Profile",
@@ -587,13 +593,8 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            project="my-project-name")
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -813,6 +814,12 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         full_profile = gcp.dataplex.Datascan("full_profile",
             location="us-central1",
             display_name="Full Datascan Profile",
@@ -846,13 +853,8 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            project="my-project-name")
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 

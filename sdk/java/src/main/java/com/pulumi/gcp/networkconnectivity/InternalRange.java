@@ -179,10 +179,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.networkconnectivity.InternalRange;
- * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -201,6 +202,13 @@ import javax.annotation.Nullable;
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("overlapping-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
  *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("overlap-range")
  *             .description("Test internal range")
@@ -209,14 +217,9 @@ import javax.annotation.Nullable;
  *             .peering("FOR_SELF")
  *             .ipCidrRange("10.0.0.0/30")
  *             .overlaps("OVERLAP_EXISTING_SUBNET_RANGE")
- *             .build());
- * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
- *             .name("overlapping-subnet")
- *             .ipCidrRange("10.0.0.0/24")
- *             .region("us-central1")
- *             .network(defaultNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultSubnetwork)
+ *                 .build());
  * 
  *     }
  * }

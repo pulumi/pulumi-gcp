@@ -127,6 +127,8 @@ import * as utilities from "../utilities";
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_4_0",
  *     displayName: "Test Instance",
+ * }, {
+ *     dependsOn: [privateServiceConnection],
  * });
  * ```
  * ### Redis Instance Mrr

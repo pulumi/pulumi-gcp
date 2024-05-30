@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,7 +62,9 @@ import javax.annotation.Nullable;
  *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
  *             .project("my-project-name")
  *             .serviceId("firestore.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(appcheck)
+ *                 .build());
  * 
  *     }
  * }
@@ -82,6 +85,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,7 +109,9 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .serviceId("firebasestorage.googleapis.com")
  *             .enforcementMode("ENFORCED")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(appcheck)
+ *                 .build());
  * 
  *     }
  * }
@@ -126,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -149,7 +156,9 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .serviceId("identitytoolkit.googleapis.com")
  *             .enforcementMode("UNENFORCED")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(appcheck)
+ *                 .build());
  * 
  *     }
  * }

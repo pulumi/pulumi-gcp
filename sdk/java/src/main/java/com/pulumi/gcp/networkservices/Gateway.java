@@ -129,6 +129,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -206,7 +207,9 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
  * 
  *     }
  * }
@@ -236,6 +239,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -313,7 +317,9 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
  * 
  *         var gateway2 = new Gateway("gateway2", GatewayArgs.builder()
  *             .name("my-gateway2")
@@ -327,7 +333,9 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
  * 
  *     }
  * }

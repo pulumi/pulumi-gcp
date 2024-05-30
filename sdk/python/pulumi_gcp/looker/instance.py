@@ -860,6 +860,10 @@ class Instance(pulumi.CustomResource):
             address_type="INTERNAL",
             prefix_length=20,
             network=looker_network.id)
+        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
+            network=looker_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[looker_range.name])
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
             platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
@@ -904,11 +908,8 @@ class Instance(pulumi.CustomResource):
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ))
-        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",
@@ -1106,6 +1107,10 @@ class Instance(pulumi.CustomResource):
             address_type="INTERNAL",
             prefix_length=20,
             network=looker_network.id)
+        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
+            network=looker_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[looker_range.name])
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
             platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
@@ -1150,11 +1155,8 @@ class Instance(pulumi.CustomResource):
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ))
-        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",

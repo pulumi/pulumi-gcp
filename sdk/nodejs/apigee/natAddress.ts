@@ -60,6 +60,11 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
  * });
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "apigee-instance",

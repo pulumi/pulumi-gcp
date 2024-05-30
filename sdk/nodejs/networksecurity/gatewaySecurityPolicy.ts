@@ -99,12 +99,20 @@ import * as utilities from "../utilities";
  *     name: "my-tls-inspection-policy",
  *     location: "us-central1",
  *     caPool: _default.id,
+ * }, {
+ *     dependsOn: [
+ *         _default,
+ *         defaultAuthority,
+ *         tlsInspectionPermission,
+ *     ],
  * });
  * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("default", {
  *     name: "my-gateway-security-policy",
  *     location: "us-central1",
  *     description: "my description",
  *     tlsInspectionPolicy: defaultTlsInspectionPolicy.id,
+ * }, {
+ *     dependsOn: [defaultTlsInspectionPolicy],
  * });
  * ```
  *

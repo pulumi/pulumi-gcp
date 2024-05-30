@@ -42,18 +42,6 @@ namespace Pulumi.Gcp.Compute
     ///         Network = network1.Id,
     ///     });
     /// 
-    ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
-    ///     {
-    ///         Name = "tunnel-1",
-    ///         PeerIp = "15.0.0.120",
-    ///         SharedSecret = "a secret message",
-    ///         TargetVpnGateway = targetGateway.Id,
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
     ///     var vpnStaticIp = new Gcp.Compute.Address("vpn_static_ip", new()
     ///     {
     ///         Name = "vpn-static-ip",
@@ -83,6 +71,26 @@ namespace Pulumi.Gcp.Compute
     ///         PortRange = "4500",
     ///         IpAddress = vpnStaticIp.IPAddress,
     ///         Target = targetGateway.Id,
+    ///     });
+    /// 
+    ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
+    ///     {
+    ///         Name = "tunnel-1",
+    ///         PeerIp = "15.0.0.120",
+    ///         SharedSecret = "a secret message",
+    ///         TargetVpnGateway = targetGateway.Id,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             frEsp,
+    ///             frUdp500,
+    ///             frUdp4500,
+    ///         },
     ///     });
     /// 
     ///     var route1 = new Gcp.Compute.Route("route1", new()

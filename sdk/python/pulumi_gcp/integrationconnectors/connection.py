@@ -902,7 +902,8 @@ class Connection(pulumi.CustomResource):
         secret_iam = gcp.secretmanager.SecretIamMember("secret_iam",
             secret_id=secret_basic.id,
             role="roles/secretmanager.admin",
-            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_basic]))
         zendeskconnection = gcp.integrationconnectors.Connection("zendeskconnection",
             name="test-zendesk",
             description="tf updated description",
@@ -1236,7 +1237,8 @@ class Connection(pulumi.CustomResource):
         secret_iam = gcp.secretmanager.SecretIamMember("secret_iam",
             secret_id=secret_basic.id,
             role="roles/secretmanager.admin",
-            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_basic]))
         zendeskconnection = gcp.integrationconnectors.Connection("zendeskconnection",
             name="test-zendesk",
             description="tf updated description",

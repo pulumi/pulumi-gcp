@@ -124,6 +124,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 //				Name:            pulumi.String("cloudrun-sql"),
 //				Region:          pulumi.String("us-central1"),
@@ -187,7 +194,9 @@ import (
 //						Percent: pulumi.Int(100),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secret_version_data,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -195,18 +204,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secret,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -404,6 +408,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
 //				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
@@ -436,7 +447,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secret_version_data,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -444,18 +457,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secret,
+//			}))
 //			if err != nil {
 //				return err
 //			}

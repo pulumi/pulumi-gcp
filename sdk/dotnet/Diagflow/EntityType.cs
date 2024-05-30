@@ -62,6 +62,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             basicAgent,
+    ///         },
     ///     });
     /// 
     /// });

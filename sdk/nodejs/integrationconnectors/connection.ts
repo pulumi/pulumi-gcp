@@ -66,6 +66,8 @@ import * as utilities from "../utilities";
  *     secretId: secret_basic.id,
  *     role: "roles/secretmanager.admin",
  *     member: testProject.then(testProject => `serviceAccount:${testProject.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret_version_basic],
  * });
  * const zendeskconnection = new gcp.integrationconnectors.Connection("zendeskconnection", {
  *     name: "test-zendesk",

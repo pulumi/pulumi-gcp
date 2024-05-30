@@ -95,14 +95,14 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 injectedParameters: JSON.stringify({
- *                     someParam: "1",
+ *                     some_param: "1",
  *                 }),
  *                 isWebhookEnabled: true,
  *                 enableSentimentAnalysis: true,
  *             },
  *             virtualAgentOutput: {
  *                 sessionParameters: JSON.stringify({
- *                     someParam: "1",
+ *                     some_param: "1",
  *                 }),
  *                 triggeredIntent: {
  *                     name: intent.id,

@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.Document;
  * import com.pulumi.gcp.firestore.DocumentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,19 +77,25 @@ import javax.annotation.Nullable;
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("firestore.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()
  *             .project(project.projectId())
  *             .name("(default)")
  *             .locationId("nam5")
  *             .type("FIRESTORE_NATIVE")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestore)
+ *                 .build());
  * 
  *         var mydoc = new Document("mydoc", DocumentArgs.builder()
  *             .project(project.projectId())
@@ -123,6 +130,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.Document;
  * import com.pulumi.gcp.firestore.DocumentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -144,19 +152,25 @@ import javax.annotation.Nullable;
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("firestore.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()
  *             .project(project.projectId())
  *             .name("(default)")
  *             .locationId("nam5")
  *             .type("FIRESTORE_NATIVE")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestore)
+ *                 .build());
  * 
  *         var mydoc = new Document("mydoc", DocumentArgs.builder()
  *             .project(project.projectId())

@@ -78,7 +78,9 @@ import (
 //				Parent:      external_address_pc.ID(),
 //				InternalIp:  pulumi.String("192.168.0.66"),
 //				Description: pulumi.String("Sample description."),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				external_address_np,
+//			}))
 //			if err != nil {
 //				return err
 //			}

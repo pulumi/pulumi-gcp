@@ -96,6 +96,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///         SecretId = secret_basic.Id,
     ///         Role = "roles/secretmanager.admin",
     ///         Member = $"serviceAccount:{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secret_version_basic,
+    ///         },
     ///     });
     /// 
     ///     var zendeskconnection = new Gcp.IntegrationConnectors.Connection("zendeskconnection", new()

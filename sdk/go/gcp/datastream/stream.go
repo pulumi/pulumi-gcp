@@ -150,7 +150,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "key_user", &kms.CryptoKeyIAMMemberArgs{
+//			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -268,7 +268,9 @@ import (
 //					},
 //				},
 //				CustomerManagedEncryptionKey: pulumi.String("kms-name"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				keyUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -572,18 +574,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
-//				Name:     pulumi.String("db"),
-//				Instance: instance.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
 //				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Password: pulumi.String("password"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Name:     pulumi.String("db"),
+//				Instance: instance.Name,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				user,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -886,7 +890,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "bigquery_key_user", &kms.CryptoKeyIAMMemberArgs{
+//			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigquery_key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("bigquery-kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),
@@ -923,7 +927,9 @@ import (
 //					},
 //				},
 //				BackfillNone: nil,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bigqueryKeyUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}

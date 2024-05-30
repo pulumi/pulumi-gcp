@@ -38,19 +38,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = parallelstore.NewInstance(ctx, "instance", &parallelstore.InstanceArgs{
-//				InstanceId:  pulumi.String("instance"),
-//				Location:    pulumi.String("us-central1-a"),
-//				Description: pulumi.String("test instance"),
-//				CapacityGib: pulumi.String("12000"),
-//				Network:     network.Name,
-//				Labels: pulumi.StringMap{
-//					"test": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			// Create an IP address
 //			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
 //				Name:         pulumi.String("address"),
@@ -70,6 +57,21 @@ import (
 //					privateIpAlloc.Name,
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parallelstore.NewInstance(ctx, "instance", &parallelstore.InstanceArgs{
+//				InstanceId:  pulumi.String("instance"),
+//				Location:    pulumi.String("us-central1-a"),
+//				Description: pulumi.String("test instance"),
+//				CapacityGib: pulumi.String("12000"),
+//				Network:     network.Name,
+//				Labels: pulumi.StringMap{
+//					"test": pulumi.String("value"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
 //			if err != nil {
 //				return err
 //			}

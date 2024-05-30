@@ -859,14 +859,6 @@ class VPNTunnel(pulumi.CustomResource):
         target_gateway = gcp.compute.VPNGateway("target_gateway",
             name="vpn-1",
             network=network1.id)
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            name="tunnel-1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            })
         vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
         fr_esp = gcp.compute.ForwardingRule("fr_esp",
             name="fr-esp",
@@ -885,6 +877,19 @@ class VPNTunnel(pulumi.CustomResource):
             port_range="4500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel-1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway.id,
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
         route1 = gcp.compute.Route("route1",
             name="route1",
             network=network1.name,
@@ -999,14 +1004,6 @@ class VPNTunnel(pulumi.CustomResource):
         target_gateway = gcp.compute.VPNGateway("target_gateway",
             name="vpn-1",
             network=network1.id)
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            name="tunnel-1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            })
         vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
         fr_esp = gcp.compute.ForwardingRule("fr_esp",
             name="fr-esp",
@@ -1025,6 +1022,19 @@ class VPNTunnel(pulumi.CustomResource):
             port_range="4500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel-1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway.id,
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
         route1 = gcp.compute.Route("route1",
             name="route1",
             network=network1.name,

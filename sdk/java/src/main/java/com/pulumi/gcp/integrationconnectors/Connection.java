@@ -132,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -167,7 +168,9 @@ import javax.annotation.Nullable;
  *             .secretId(secret_basic.id())
  *             .role("roles/secretmanager.admin")
  *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secret_version_basic)
+ *                 .build());
  * 
  *         var zendeskconnection = new Connection("zendeskconnection", ConnectionArgs.builder()
  *             .name("test-zendesk")

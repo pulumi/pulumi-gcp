@@ -45,12 +45,24 @@ namespace Pulumi.Gcp.Firebase
     ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     ///     var defaultAppCheckAppAttestConfig = new Gcp.Firebase.AppCheckAppAttestConfig("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         AppId = @default.AppId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait30s,
+    ///         },
     ///     });
     /// 
     /// });
@@ -79,6 +91,12 @@ namespace Pulumi.Gcp.Firebase
     ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     ///     var defaultAppCheckAppAttestConfig = new Gcp.Firebase.AppCheckAppAttestConfig("default", new()
@@ -86,6 +104,12 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         AppId = @default.AppId,
     ///         TokenTtl = "7200s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait30s,
+    ///         },
     ///     });
     /// 
     /// });

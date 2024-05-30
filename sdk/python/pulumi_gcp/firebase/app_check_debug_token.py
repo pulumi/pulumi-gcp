@@ -256,12 +256,14 @@ class AppCheckDebugToken(pulumi.CustomResource):
             display_name="Web App for debug token")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        opts=pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
             project="my-project-name",
             app_id=default.app_id,
             display_name="Debug Token",
-            token="00000000-AAAA-BBBB-CCCC-000000000000")
+            token="00000000-AAAA-BBBB-CCCC-000000000000",
+            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import
@@ -340,12 +342,14 @@ class AppCheckDebugToken(pulumi.CustomResource):
             display_name="Web App for debug token")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        opts=pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
             project="my-project-name",
             app_id=default.app_id,
             display_name="Debug Token",
-            token="00000000-AAAA-BBBB-CCCC-000000000000")
+            token="00000000-AAAA-BBBB-CCCC-000000000000",
+            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import

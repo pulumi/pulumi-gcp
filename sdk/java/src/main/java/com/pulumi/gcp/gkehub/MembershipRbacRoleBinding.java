@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.MembershipRbacRoleBinding;
  * import com.pulumi.gcp.gkehub.MembershipRbacRoleBindingArgs;
  * import com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingRoleArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,7 +69,9 @@ import javax.annotation.Nullable;
  *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primary)
+ *                 .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -80,7 +83,9 @@ import javax.annotation.Nullable;
  *                 .predefinedRole("ANTHOS_SUPPORT")
  *                 .build())
  *             .location("global")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(membership)
+ *                 .build());
  * 
  *     }
  * }

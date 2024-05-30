@@ -53,6 +53,12 @@ namespace Pulumi.Gcp.Eventarc
     ///         Name = "channel",
     ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         CryptoKeyName = key1.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             key1Member,
+    ///         },
     ///     });
     /// 
     /// });

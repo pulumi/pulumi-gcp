@@ -54,6 +54,12 @@ import * as utilities from "../utilities";
  *     peerIp: "15.0.0.120",
  *     sharedSecret: "a secret message",
  *     targetVpnGateway: targetGateway.id,
+ * }, {
+ *     dependsOn: [
+ *         frEsp,
+ *         frUdp500,
+ *         frUdp4500,
+ *     ],
  * });
  * const route1 = new gcp.compute.Route("route1", {
  *     name: "route1",

@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.ScopeArgs;
  * import com.pulumi.gcp.gkehub.Namespace;
  * import com.pulumi.gcp.gkehub.NamespaceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,7 +73,9 @@ import javax.annotation.Nullable;
  *                 Map.entry("keya", "valuea"),
  *                 Map.entry("keyc", "valuec")
  *             ))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(scope)
+ *                 .build());
  * 
  *     }
  * }

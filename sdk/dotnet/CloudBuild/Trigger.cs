@@ -234,17 +234,6 @@ namespace Pulumi.Gcp.CloudBuild
     ///         AccountId = "cloud-sa",
     ///     });
     /// 
-    ///     var service_account_trigger = new Gcp.CloudBuild.Trigger("service-account-trigger", new()
-    ///     {
-    ///         TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
-    ///         {
-    ///             BranchName = "main",
-    ///             RepoName = "my-repo",
-    ///         },
-    ///         ServiceAccount = cloudbuildServiceAccount.Id,
-    ///         Filename = "cloudbuild.yaml",
-    ///     });
-    /// 
     ///     var actAs = new Gcp.Projects.IAMMember("act_as", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -257,6 +246,24 @@ namespace Pulumi.Gcp.CloudBuild
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/logging.logWriter",
     ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var service_account_trigger = new Gcp.CloudBuild.Trigger("service-account-trigger", new()
+    ///     {
+    ///         TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///         {
+    ///             BranchName = "main",
+    ///             RepoName = "my-repo",
+    ///         },
+    ///         ServiceAccount = cloudbuildServiceAccount.Id,
+    ///         Filename = "cloudbuild.yaml",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             actAs,
+    ///             logsWriter,
+    ///         },
     ///     });
     /// 
     /// });
