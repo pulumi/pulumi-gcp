@@ -44,6 +44,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const source = new gcp.bigquery.Dataset("source", {
+ *     datasetId: "dataplex_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * });
  * const fullProfile = new gcp.dataplex.Datascan("full_profile", {
  *     location: "us-central1",
  *     displayName: "Full Datascan Profile",
@@ -78,13 +85,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     project: "my-project-name",
- * });
- * const source = new gcp.bigquery.Dataset("source", {
- *     datasetId: "dataplex_dataset",
- *     friendlyName: "test",
- *     description: "This is a test description",
- *     location: "US",
- *     deleteContentsOnDestroy: true,
+ * }, {
+ *     dependsOn: [source],
  * });
  * ```
  * ### Dataplex Datascan Basic Quality

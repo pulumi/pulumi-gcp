@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsIpConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -87,13 +88,17 @@ import javax.annotation.Nullable;
  *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
  *             .commonName("my-cert")
  *             .instance(cloudsqldb.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cloudsqldb)
+ *                 .build());
  * 
  *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
  *             .name("my-username")
  *             .instance(cloudsqldb.name())
  *             .password("my-password")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqlClientCert)
+ *                 .build());
  * 
  *         var cloudsqlprofile = new ConnectionProfile("cloudsqlprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
@@ -112,7 +117,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .cloudSqlId("my-database")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqldbUser)
+ *                 .build());
  * 
  *         var cloudsqlprofileDestination = new ConnectionProfile("cloudsqlprofileDestination", ConnectionProfileArgs.builder()
  *             .location("us-central1")
@@ -139,7 +146,9 @@ import javax.annotation.Nullable;
  *                     .rootPassword("testpasscloudsql")
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cloudsqlprofile)
+ *                 .build());
  * 
  *     }
  * }
@@ -167,6 +176,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -192,13 +202,17 @@ import javax.annotation.Nullable;
  *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
  *             .commonName("my-cert")
  *             .instance(postgresqldb.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(postgresqldb)
+ *                 .build());
  * 
  *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
  *             .name("my-username")
  *             .instance(postgresqldb.name())
  *             .password("my-password")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqlClientCert)
+ *                 .build());
  * 
  *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
  *             .location("us-central1")
@@ -217,7 +231,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .cloudSqlId("my-database")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqldbUser)
+ *                 .build());
  * 
  *     }
  * }
@@ -296,6 +312,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsInitialUserArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -353,7 +370,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
  * 
  *     }
  * }

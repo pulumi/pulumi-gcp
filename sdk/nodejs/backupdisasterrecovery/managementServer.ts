@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *         network: _default.id,
  *         peeringMode: "PRIVATE_SERVICE_ACCESS",
  *     }],
+ * }, {
+ *     dependsOn: [defaultConnection],
  * });
  * ```
  *

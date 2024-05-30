@@ -43,7 +43,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
 //				Project:               pulumi.String("my-project-name"),
 //				Name:                  pulumi.String("(default)"),
 //				LocationId:            pulumi.String("nam5"),
@@ -66,7 +66,9 @@ import (
 //						Direction: pulumi.String("ASCENDING"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				database,
+//			}))
 //			if err != nil {
 //				return err
 //			}

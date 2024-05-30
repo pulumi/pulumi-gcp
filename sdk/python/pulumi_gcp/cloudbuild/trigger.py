@@ -1164,13 +1164,6 @@ class Trigger(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuild_service_account", account_id="cloud-sa")
-        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            service_account=cloudbuild_service_account.id,
-            filename="cloudbuild.yaml")
         act_as = gcp.projects.IAMMember("act_as",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1179,6 +1172,17 @@ class Trigger(pulumi.CustomResource):
             project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
         ```
         ### Cloudbuild Trigger Include Build Logs
 
@@ -1874,13 +1878,6 @@ class Trigger(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuild_service_account", account_id="cloud-sa")
-        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            service_account=cloudbuild_service_account.id,
-            filename="cloudbuild.yaml")
         act_as = gcp.projects.IAMMember("act_as",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1889,6 +1886,17 @@ class Trigger(pulumi.CustomResource):
             project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
         ```
         ### Cloudbuild Trigger Include Build Logs
 

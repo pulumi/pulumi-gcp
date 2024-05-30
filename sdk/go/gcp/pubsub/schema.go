@@ -79,7 +79,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
+//			example, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
 //				Name: pulumi.String("example"),
 //				Type: pulumi.String("PROTOCOL_BUFFER"),
 //				Definition: pulumi.String(`syntax = "proto3";
@@ -101,7 +101,9 @@ import (
 //					Schema:   pulumi.String("projects/my-project-name/schemas/example"),
 //					Encoding: pulumi.String("JSON"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//			}))
 //			if err != nil {
 //				return err
 //			}

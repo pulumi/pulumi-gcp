@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.Firebase
     ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     ///     var defaultAppCheckDeviceCheckConfig = new Gcp.Firebase.AppCheckDeviceCheckConfig("default", new()
@@ -58,6 +64,12 @@ namespace Pulumi.Gcp.Firebase
     ///         {
     ///             Input = "path/to/private-key.p8",
     ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait30s,
+    ///         },
     ///     });
     /// 
     /// });

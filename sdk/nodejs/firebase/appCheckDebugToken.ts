@@ -31,12 +31,16 @@ import * as utilities from "../utilities";
  * });
  * // It takes a while for App Check to recognize the new app
  * // If your app already exists, you don't have to wait 30 seconds.
- * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"});
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
+ *     dependsOn: [_default],
+ * });
  * const defaultAppCheckDebugToken = new gcp.firebase.AppCheckDebugToken("default", {
  *     project: "my-project-name",
  *     appId: _default.appId,
  *     displayName: "Debug Token",
  *     token: "00000000-AAAA-BBBB-CCCC-000000000000",
+ * }, {
+ *     dependsOn: [wait30s],
  * });
  * ```
  *

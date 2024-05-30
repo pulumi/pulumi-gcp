@@ -122,6 +122,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Location = "us-central1",
     ///         CaPool = @default.Id,
     ///         ExcludePublicCaSet = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///             defaultAuthority,
+    ///             tlsInspectionPermission,
+    ///         },
     ///     });
     /// 
     /// });
@@ -285,6 +293,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///             "TLS_RSA_WITH_AES_128_GCM_SHA256",
     ///             "TLS_RSA_WITH_AES_256_CBC_SHA",
     ///             "TLS_RSA_WITH_AES_256_GCM_SHA384",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultAuthority,
+    ///             defaultCaPoolIamMember,
     ///         },
     ///     });
     /// 

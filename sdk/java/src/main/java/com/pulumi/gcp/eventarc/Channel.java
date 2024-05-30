@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.eventarc.Channel;
  * import com.pulumi.gcp.eventarc.ChannelArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +77,9 @@ import javax.annotation.Nullable;
  *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .cryptoKeyName(key1.id())
  *             .thirdPartyProvider(String.format("projects/%s/locations/us-west1/providers/datadog", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(key1Member)
+ *                 .build());
  * 
  *     }
  * }

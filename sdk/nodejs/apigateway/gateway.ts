@@ -15,32 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Apigateway Gateway Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const apiGw = new gcp.apigateway.Api("api_gw", {apiId: "my-api"});
- * const apiGwApiConfig = new gcp.apigateway.ApiConfig("api_gw", {
- *     api: apiGw.apiId,
- *     apiConfigId: "my-config",
- *     openapiDocuments: [{
- *         document: {
- *             path: "spec.yaml",
- *             contents: std.filebase64({
- *                 input: "test-fixtures/openapi.yaml",
- *             }).then(invoke => invoke.result),
- *         },
- *     }],
- * });
- * const apiGwGateway = new gcp.apigateway.Gateway("api_gw", {
- *     apiConfig: apiGwApiConfig.id,
- *     gatewayId: "my-gateway",
- * });
- * ```
- *
  * ## Import
  *
  * Gateway can be imported using any of these accepted formats:

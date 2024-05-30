@@ -9,61 +9,6 @@ import * as utilities from "../utilities";
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  *
- * ### Firestore_release
- * Creates a Firebase Rules Release to Cloud Firestore
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const firestore = new gcp.firebaserules.Ruleset("firestore", {
- *     source: {
- *         files: [{
- *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
- *             name: "firestore.rules",
- *         }],
- *     },
- *     project: "my-project-name",
- * });
- * const primary = new gcp.firebaserules.Release("primary", {
- *     name: "cloud.firestore/database",
- *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
- *     project: "my-project-name",
- * });
- * ```
- * ### Storage_release
- * Creates a Firebase Rules Release for a Storage bucket
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Provision a non-default Cloud Storage bucket.
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     project: "my-project-name",
- *     name: "bucket",
- *     location: "us-west1",
- * });
- * // Create a ruleset of Firebase Security Rules from a local file.
- * const storage = new gcp.firebaserules.Ruleset("storage", {
- *     project: "my-project-name",
- *     source: {
- *         files: [{
- *             name: "storage.rules",
- *             content: "service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
- *         }],
- *     },
- * });
- * const primary = new gcp.firebaserules.Release("primary", {
- *     name: pulumi.interpolate`firebase.storage/${bucket.name}`,
- *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${storage.name}`,
- *     project: "my-project-name",
- * });
- * // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
- * const bucketStorageBucket = new gcp.firebase.StorageBucket("bucket", {
- *     project: "my-project-name",
- *     bucketId: bucket.name,
- * });
- * ```
- *
  * ## Import
  *
  * Release can be imported using any of these accepted formats:

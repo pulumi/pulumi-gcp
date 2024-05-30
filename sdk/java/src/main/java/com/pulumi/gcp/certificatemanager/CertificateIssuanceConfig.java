@@ -41,10 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -57,6 +53,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,23 +75,6 @@ import javax.annotation.Nullable;
  *             .name("ca-pool")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
- *             .build());
- * 
- *         var default_ = new CertificateIssuanceConfig("default", CertificateIssuanceConfigArgs.builder()
- *             .name("issuance-config")
- *             .description("sample description for the certificate issuanceConfigs")
- *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
- *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
- *                     .caPool(pool.id())
- *                     .build())
- *                 .build())
- *             .lifetime("1814400s")
- *             .rotationWindowPercentage(34)
- *             .keyAlgorithm("ECDSA_P256")
- *             .labels(Map.ofEntries(
- *                 Map.entry("name", "wrench"),
- *                 Map.entry("count", "3")
- *             ))
  *             .build());
  * 
  *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()
@@ -129,6 +113,25 @@ import javax.annotation.Nullable;
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
+ * 
+ *         var default_ = new CertificateIssuanceConfig("default", CertificateIssuanceConfigArgs.builder()
+ *             .name("issuance-config")
+ *             .description("sample description for the certificate issuanceConfigs")
+ *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
+ *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
+ *                     .caPool(pool.id())
+ *                     .build())
+ *                 .build())
+ *             .lifetime("1814400s")
+ *             .rotationWindowPercentage(34)
+ *             .keyAlgorithm("ECDSA_P256")
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("name", "wrench"),
+ *                 Map.entry("count", "3")
+ *             ))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(caAuthority)
+ *                 .build());
  * 
  *     }
  * }

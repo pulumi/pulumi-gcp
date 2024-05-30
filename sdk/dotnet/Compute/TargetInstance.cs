@@ -206,6 +206,12 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "southamerica-west1",
     ///         Description = "basic security policy for target instance",
     ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             edgeSecService,
+    ///         },
     ///     });
     /// 
     ///     var defaultTargetInstance = new Gcp.Compute.TargetInstance("default", new()

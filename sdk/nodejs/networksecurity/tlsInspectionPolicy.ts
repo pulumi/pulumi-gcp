@@ -90,6 +90,12 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     caPool: _default.id,
  *     excludePublicCaSet: false,
+ * }, {
+ *     dependsOn: [
+ *         _default,
+ *         defaultAuthority,
+ *         tlsInspectionPermission,
+ *     ],
  * });
  * ```
  * ### Network Security Tls Inspection Policy Custom
@@ -204,6 +210,11 @@ import * as utilities from "../utilities";
  *         "TLS_RSA_WITH_AES_128_GCM_SHA256",
  *         "TLS_RSA_WITH_AES_256_CBC_SHA",
  *         "TLS_RSA_WITH_AES_256_GCM_SHA384",
+ *     ],
+ * }, {
+ *     dependsOn: [
+ *         defaultAuthority,
+ *         defaultCaPoolIamMember,
  *     ],
  * });
  * ```

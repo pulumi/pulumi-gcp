@@ -151,13 +151,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.datafusion.Instance;
- * import com.pulumi.gcp.datafusion.InstanceArgs;
- * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -181,15 +182,6 @@ import javax.annotation.Nullable;
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cmek = new Instance("cmek", InstanceArgs.builder()
- *             .name("my-instance")
- *             .region("us-central1")
- *             .type("BASIC")
- *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
- *                 .keyReference(cryptoKey.id())
- *                 .build())
- *             .build());
- * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()
@@ -197,6 +189,17 @@ import javax.annotation.Nullable;
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
+ * 
+ *         var cmek = new Instance("cmek", InstanceArgs.builder()
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
+ *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
+ *                 .keyReference(cryptoKey.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyMember)
+ *                 .build());
  * 
  *     }
  * }

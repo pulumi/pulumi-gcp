@@ -83,7 +83,9 @@ import (
 //				},
 //				DeleteDestinationVolume: pulumi.Bool(true),
 //				WaitForMirror:           pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceVolume,
+//			}))
 //			if err != nil {
 //				return err
 //			}

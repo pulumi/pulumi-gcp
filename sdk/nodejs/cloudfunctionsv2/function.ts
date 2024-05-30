@@ -225,16 +225,22 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [gcs_pubsub_publishing],
  * });
  * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "gcf-function",
@@ -274,6 +280,11 @@ import * as utilities from "../utilities";
  *             value: trigger_bucket.name,
  *         }],
  *     },
+ * }, {
+ *     dependsOn: [
+ *         event_receiving,
+ *         artifactregistry_reader,
+ *     ],
  * });
  * ```
  * ### Cloudfunctions2 Basic Auditlogs
@@ -318,11 +329,15 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "gcf-function",
@@ -374,6 +389,11 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
+ * }, {
+ *     dependsOn: [
+ *         event_receiving,
+ *         artifactregistry_reader,
+ *     ],
  * });
  * ```
  * ### Cloudfunctions2 Basic Builder
@@ -414,7 +434,13 @@ import * as utilities from "../utilities";
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
  * // builder permissions need to stablize before it can pull the source zip
- * const wait60s = new time.index.Sleep("wait_60s", {createDuration: "60s"});
+ * const wait60s = new time.index.Sleep("wait_60s", {createDuration: "60s"}, {
+ *     dependsOn: [
+ *         logWriter,
+ *         artifactRegistryWriter,
+ *         storageObjectAdmin,
+ *     ],
+ * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "function-v2",
  *     location: "us-central1",
@@ -435,6 +461,8 @@ import * as utilities from "../utilities";
  *         availableMemory: "256M",
  *         timeoutSeconds: 60,
  *     },
+ * }, {
+ *     dependsOn: [wait60s],
  * });
  * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
  * ```
@@ -465,6 +493,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
+ *     secret: secret.name,
+ *     secretData: "secret",
+ *     enabled: true,
+ * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "function-secret",
  *     location: "us-central1",
@@ -490,11 +523,8 @@ import * as utilities from "../utilities";
  *             version: "latest",
  *         }],
  *     },
- * });
- * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
- *     secret: secret.name,
- *     secretData: "secret",
- *     enabled: true,
+ * }, {
+ *     dependsOn: [secretSecretVersion],
  * });
  * ```
  * ### Cloudfunctions2 Secret Volume
@@ -524,6 +554,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
+ *     secret: secret.name,
+ *     secretData: "secret",
+ *     enabled: true,
+ * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "function-secret",
  *     location: "us-central1",
@@ -548,11 +583,8 @@ import * as utilities from "../utilities";
  *             secret: secret.secretId,
  *         }],
  *     },
- * });
- * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
- *     secret: secret.name,
- *     secretData: "secret",
- *     enabled: true,
+ * }, {
+ *     dependsOn: [secretSecretVersion],
  * });
  * ```
  * ### Cloudfunctions2 Private Workerpool
@@ -630,18 +662,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     format: "DOCKER",
  * });
- * const encoded_ar_repo = new gcp.artifactregistry.Repository("encoded-ar-repo", {
- *     location: "us-central1",
- *     repositoryId: "cmek-repo",
- *     format: "DOCKER",
- *     kmsKeyName: "cmek-key",
- * });
- * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
- *     location: encoded_ar_repo.location,
- *     repository: encoded_ar_repo.name,
- *     role: "roles/artifactregistry.admin",
- *     members: [projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com`)],
- * });
  * const gcfCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("gcf_cmek_keyuser", {
  *     cryptoKeyId: "cmek-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -652,6 +672,22 @@ import * as utilities from "../utilities";
  *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com`),
  *         pulumi.interpolate`serviceAccount:${eaSa.email}`,
  *     ],
+ * }, {
+ *     dependsOn: [eaSa],
+ * });
+ * const encoded_ar_repo = new gcp.artifactregistry.Repository("encoded-ar-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "cmek-repo",
+ *     format: "DOCKER",
+ *     kmsKeyName: "cmek-key",
+ * }, {
+ *     dependsOn: [gcfCmekKeyuser],
+ * });
+ * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
+ *     location: encoded_ar_repo.location,
+ *     repository: encoded_ar_repo.name,
+ *     role: "roles/artifactregistry.admin",
+ *     members: [projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com`)],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     name: "function-cmek",
@@ -674,6 +710,8 @@ import * as utilities from "../utilities";
  *         availableMemory: "256M",
  *         timeoutSeconds: 60,
  *     },
+ * }, {
+ *     dependsOn: [gcfCmekKeyuser],
  * });
  * ```
  *

@@ -168,6 +168,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.looker.Instance;
  * import com.pulumi.gcp.looker.InstanceArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
@@ -179,12 +181,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -208,6 +209,12 @@ import javax.annotation.Nullable;
  *             .addressType("INTERNAL")
  *             .prefixLength(20)
  *             .network(lookerNetwork.id())
+ *             .build());
+ * 
+ *         var lookerVpcConnection = new Connection("lookerVpcConnection", ConnectionArgs.builder()
+ *             .network(lookerNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(lookerRange.name())
  *             .build());
  * 
  *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
@@ -255,13 +262,9 @@ import javax.annotation.Nullable;
  *                 .clientId("my-client-id")
  *                 .clientSecret("my-client-secret")
  *                 .build())
- *             .build());
- * 
- *         var lookerVpcConnection = new Connection("lookerVpcConnection", ConnectionArgs.builder()
- *             .network(lookerNetwork.id())
- *             .service("servicenetworking.googleapis.com")
- *             .reservedPeeringRanges(lookerRange.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(lookerVpcConnection)
+ *                 .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 

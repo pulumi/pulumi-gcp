@@ -23,485 +23,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Internal Http Lb With Mig Backend
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Internal HTTP load balancer with a managed instance group backend
-//			// VPC network
-//			ilbNetwork, err := compute.NewNetwork(ctx, "ilb_network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("l7-ilb-network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// proxy-only subnet
-//			_, err = compute.NewSubnetwork(ctx, "proxy_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("l7-ilb-proxy-subnet"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("europe-west1"),
-//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
-//				Role:        pulumi.String("ACTIVE"),
-//				Network:     ilbNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// backend subnet
-//			ilbSubnet, err := compute.NewSubnetwork(ctx, "ilb_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("l7-ilb-subnet"),
-//				IpCidrRange: pulumi.String("10.0.1.0/24"),
-//				Region:      pulumi.String("europe-west1"),
-//				Network:     ilbNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// health check
-//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-//				Name:   pulumi.String("l7-ilb-hc"),
-//				Region: pulumi.String("europe-west1"),
-//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
-//					PortSpecification: pulumi.String("USE_SERVING_PORT"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// instance template
-//			instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-//					&compute.InstanceTemplateNetworkInterfaceArgs{
-//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//						Network:    ilbNetwork.ID(),
-//						Subnetwork: ilbSubnet.ID(),
-//					},
-//				},
-//				Name:        pulumi.String("l7-ilb-mig-template"),
-//				MachineType: pulumi.String("e2-small"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("http-server"),
-//				},
-//				Disks: compute.InstanceTemplateDiskArray{
-//					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("debian-cloud/debian-10"),
-//						AutoDelete:  pulumi.Bool(true),
-//						Boot:        pulumi.Bool(true),
-//					},
-//				},
-//				Metadata: pulumi.Map{
-//					"startup-script": pulumi.Any(`#! /bin/bash
-//
-// set -euo pipefail
-//
-// export DEBIAN_FRONTEND=noninteractive
-// apt-get update
-// apt-get install -y nginx-light jq
-//
-// NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
-// IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
-// METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
-//
-// cat <<EOF > /var/www/html/index.html
-// <pre>
-// Name: $NAME
-// IP: $IP
-// Metadata: $METADATA
-// </pre>
-// EOF
-// `),
-//
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// MIG
-//			mig, err := compute.NewRegionInstanceGroupManager(ctx, "mig", &compute.RegionInstanceGroupManagerArgs{
-//				Name:   pulumi.String("l7-ilb-mig1"),
-//				Region: pulumi.String("europe-west1"),
-//				Versions: compute.RegionInstanceGroupManagerVersionArray{
-//					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: instanceTemplate.ID(),
-//						Name:             pulumi.String("primary"),
-//					},
-//				},
-//				BaseInstanceName: pulumi.String("vm"),
-//				TargetSize:       pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// backend service
-//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-//				Name:                pulumi.String("l7-ilb-backend-subnet"),
-//				Region:              pulumi.String("europe-west1"),
-//				Protocol:            pulumi.String("HTTP"),
-//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
-//				Backends: compute.RegionBackendServiceBackendArray{
-//					&compute.RegionBackendServiceBackendArgs{
-//						Group:          mig.InstanceGroup,
-//						BalancingMode:  pulumi.String("UTILIZATION"),
-//						CapacityScaler: pulumi.Float64(1),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// URL map
-//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
-//				Name:           pulumi.String("l7-ilb-regional-url-map"),
-//				Region:         pulumi.String("europe-west1"),
-//				DefaultService: defaultRegionBackendService.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// HTTP target proxy
-//			_, err = compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
-//				Name:   pulumi.String("l7-ilb-target-http-proxy"),
-//				Region: pulumi.String("europe-west1"),
-//				UrlMap: defaultRegionUrlMap.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// forwarding rule
-//			_, err = compute.NewForwardingRule(ctx, "google_compute_forwarding_rule", &compute.ForwardingRuleArgs{
-//				Name:                pulumi.String("l7-ilb-forwarding-rule"),
-//				Region:              pulumi.String("europe-west1"),
-//				IpProtocol:          pulumi.String("TCP"),
-//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				PortRange:           pulumi.String("80"),
-//				Target:              _default.ID(),
-//				Network:             ilbNetwork.ID(),
-//				Subnetwork:          ilbSubnet.ID(),
-//				NetworkTier:         pulumi.String("PREMIUM"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// allow all access from IAP and health check ranges
-//			_, err = compute.NewFirewall(ctx, "fw-iap", &compute.FirewallArgs{
-//				Name:      pulumi.String("l7-ilb-fw-allow-iap-hc"),
-//				Direction: pulumi.String("INGRESS"),
-//				Network:   ilbNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("130.211.0.0/22"),
-//					pulumi.String("35.191.0.0/16"),
-//					pulumi.String("35.235.240.0/20"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// allow http from proxy subnet to backends
-//			_, err = compute.NewFirewall(ctx, "fw-ilb-to-backends", &compute.FirewallArgs{
-//				Name:      pulumi.String("l7-ilb-fw-allow-ilb-to-backends"),
-//				Direction: pulumi.String("INGRESS"),
-//				Network:   ilbNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.0.0.0/24"),
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("http-server"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("80"),
-//							pulumi.String("443"),
-//							pulumi.String("8080"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// test instance
-//			_, err = compute.NewInstance(ctx, "vm-test", &compute.InstanceArgs{
-//				Name:        pulumi.String("l7-ilb-test-vm"),
-//				Zone:        pulumi.String("europe-west1-b"),
-//				MachineType: pulumi.String("e2-small"),
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network:    ilbNetwork.ID(),
-//						Subnetwork: ilbSubnet.ID(),
-//					},
-//				},
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-10"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Internal Tcp Udp Lb With Mig Backend
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Internal TCP/UDP load balancer with a managed instance group backend
-//			// VPC
-//			ilbNetwork, err := compute.NewNetwork(ctx, "ilb_network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("l4-ilb-network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// backed subnet
-//			ilbSubnet, err := compute.NewSubnetwork(ctx, "ilb_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("l4-ilb-subnet"),
-//				IpCidrRange: pulumi.String("10.0.1.0/24"),
-//				Region:      pulumi.String("europe-west1"),
-//				Network:     ilbNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// health check
-//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-//				Name:   pulumi.String("l4-ilb-hc"),
-//				Region: pulumi.String("europe-west1"),
-//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
-//					Port: pulumi.Int(80),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// instance template
-//			instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-//					&compute.InstanceTemplateNetworkInterfaceArgs{
-//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//						Network:    ilbNetwork.ID(),
-//						Subnetwork: ilbSubnet.ID(),
-//					},
-//				},
-//				Name:        pulumi.String("l4-ilb-mig-template"),
-//				MachineType: pulumi.String("e2-small"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("allow-ssh"),
-//					pulumi.String("allow-health-check"),
-//				},
-//				Disks: compute.InstanceTemplateDiskArray{
-//					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("debian-cloud/debian-10"),
-//						AutoDelete:  pulumi.Bool(true),
-//						Boot:        pulumi.Bool(true),
-//					},
-//				},
-//				Metadata: pulumi.Map{
-//					"startup-script": pulumi.Any(`#! /bin/bash
-//
-// set -euo pipefail
-//
-// export DEBIAN_FRONTEND=noninteractive
-// apt-get update
-// apt-get install -y nginx-light jq
-//
-// NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
-// IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
-// METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
-//
-// cat <<EOF > /var/www/html/index.html
-// <pre>
-// Name: $NAME
-// IP: $IP
-// Metadata: $METADATA
-// </pre>
-// EOF
-// `),
-//
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// MIG
-//			mig, err := compute.NewRegionInstanceGroupManager(ctx, "mig", &compute.RegionInstanceGroupManagerArgs{
-//				Name:   pulumi.String("l4-ilb-mig1"),
-//				Region: pulumi.String("europe-west1"),
-//				Versions: compute.RegionInstanceGroupManagerVersionArray{
-//					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: instanceTemplate.ID(),
-//						Name:             pulumi.String("primary"),
-//					},
-//				},
-//				BaseInstanceName: pulumi.String("vm"),
-//				TargetSize:       pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// backend service
-//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-//				Name:                pulumi.String("l4-ilb-backend-subnet"),
-//				Region:              pulumi.String("europe-west1"),
-//				Protocol:            pulumi.String("TCP"),
-//				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
-//				Backends: compute.RegionBackendServiceBackendArray{
-//					&compute.RegionBackendServiceBackendArgs{
-//						Group:         mig.InstanceGroup,
-//						BalancingMode: pulumi.String("CONNECTION"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// forwarding rule
-//			_, err = compute.NewForwardingRule(ctx, "google_compute_forwarding_rule", &compute.ForwardingRuleArgs{
-//				Name:                pulumi.String("l4-ilb-forwarding-rule"),
-//				BackendService:      _default.ID(),
-//				Region:              pulumi.String("europe-west1"),
-//				IpProtocol:          pulumi.String("TCP"),
-//				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				AllPorts:            pulumi.Bool(true),
-//				AllowGlobalAccess:   pulumi.Bool(true),
-//				Network:             ilbNetwork.ID(),
-//				Subnetwork:          ilbSubnet.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// allow all access from health check ranges
-//			_, err = compute.NewFirewall(ctx, "fw_hc", &compute.FirewallArgs{
-//				Name:      pulumi.String("l4-ilb-fw-allow-hc"),
-//				Direction: pulumi.String("INGRESS"),
-//				Network:   ilbNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("130.211.0.0/22"),
-//					pulumi.String("35.191.0.0/16"),
-//					pulumi.String("35.235.240.0/20"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("allow-health-check"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// allow communication within the subnet
-//			_, err = compute.NewFirewall(ctx, "fw_ilb_to_backends", &compute.FirewallArgs{
-//				Name:      pulumi.String("l4-ilb-fw-allow-ilb-to-backends"),
-//				Direction: pulumi.String("INGRESS"),
-//				Network:   ilbNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.0.1.0/24"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("udp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("icmp"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// allow SSH
-//			_, err = compute.NewFirewall(ctx, "fw_ilb_ssh", &compute.FirewallArgs{
-//				Name:      pulumi.String("l4-ilb-fw-ssh"),
-//				Direction: pulumi.String("INGRESS"),
-//				Network:   ilbNetwork.ID(),
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("22"),
-//						},
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("allow-ssh"),
-//				},
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("0.0.0.0/0"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// test instance
-//			_, err = compute.NewInstance(ctx, "vm_test", &compute.InstanceArgs{
-//				Name:        pulumi.String("l4-ilb-test-vm"),
-//				Zone:        pulumi.String("europe-west1-b"),
-//				MachineType: pulumi.String("e2-small"),
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network:    ilbNetwork.ID(),
-//						Subnetwork: ilbSubnet.ID(),
-//					},
-//				},
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-10"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Forwarding Rule Externallb
 //
 // ```go
@@ -846,13 +367,119 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			fw1, err := compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-1"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("10.1.2.0/24"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("udp"),
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("icmp"),
+//					},
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fw2, err := compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-2"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("22"),
+//						},
+//					},
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("allow-ssh"),
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw1,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			fw3, err := compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-3"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("130.211.0.0/22"),
+//					pulumi.String("35.191.0.0/16"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//					},
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("load-balanced-backend"),
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			fw4, err := compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-4"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("10.129.0.0/26"),
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("load-balanced-backend"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("443"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("8000"),
+//						},
+//					},
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw3,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("website-hc"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					PortSpecification: pulumi.String("USE_SERVING_PORT"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw4,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -890,6 +517,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			proxy, err := compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("website-net-proxy"),
+//				IpCidrRange: pulumi.String("10.129.0.0/26"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				Role:        pulumi.String("ACTIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Forwarding rule for Internal Load Balancing
 //			_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("website-forwarding-rule"),
@@ -901,116 +539,9 @@ import (
 //				Network:             defaultNetwork.ID(),
 //				Subnetwork:          defaultSubnetwork.ID(),
 //				NetworkTier:         pulumi.String("PREMIUM"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-1"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.1.2.0/24"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("udp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("icmp"),
-//					},
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-2"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("0.0.0.0/0"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("22"),
-//						},
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("allow-ssh"),
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-3"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("130.211.0.0/22"),
-//					pulumi.String("35.191.0.0/16"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("load-balanced-backend"),
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-4"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.129.0.0/26"),
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("load-balanced-backend"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("80"),
-//						},
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("443"),
-//						},
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("8000"),
-//						},
-//					},
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("website-net-proxy"),
-//				IpCidrRange: pulumi.String("10.129.0.0/26"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
-//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
-//				Role:        pulumi.String("ACTIVE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxy,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -1096,13 +627,119 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			fw1, err := compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-1"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("10.1.2.0/24"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("udp"),
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("icmp"),
+//					},
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fw2, err := compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-2"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("22"),
+//						},
+//					},
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("allow-ssh"),
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw1,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			fw3, err := compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-3"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("130.211.0.0/22"),
+//					pulumi.String("35.191.0.0/16"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//					},
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("load-balanced-backend"),
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			fw4, err := compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
+//				Name:    pulumi.String("website-fw-4"),
+//				Network: defaultNetwork.ID(),
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String("10.129.0.0/26"),
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("load-balanced-backend"),
+//				},
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("443"),
+//						},
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("8000"),
+//						},
+//					},
+//				},
+//				Direction: pulumi.String("INGRESS"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw3,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("website-hc"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					PortSpecification: pulumi.String("USE_SERVING_PORT"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fw4,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -1148,6 +785,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			proxy, err := compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("website-net-proxy"),
+//				IpCidrRange: pulumi.String("10.129.0.0/26"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				Role:        pulumi.String("ACTIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Forwarding rule for Regional External Load Balancing
 //			_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("website-forwarding-rule"),
@@ -1159,116 +807,9 @@ import (
 //				Network:             defaultNetwork.ID(),
 //				IpAddress:           defaultAddress.Address,
 //				NetworkTier:         pulumi.String("STANDARD"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-1"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.1.2.0/24"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("udp"),
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("icmp"),
-//					},
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-2"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("0.0.0.0/0"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("22"),
-//						},
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("allow-ssh"),
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-3"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("130.211.0.0/22"),
-//					pulumi.String("35.191.0.0/16"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//					},
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("load-balanced-backend"),
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
-//				Name:    pulumi.String("website-fw-4"),
-//				Network: defaultNetwork.ID(),
-//				SourceRanges: pulumi.StringArray{
-//					pulumi.String("10.129.0.0/26"),
-//				},
-//				TargetTags: pulumi.StringArray{
-//					pulumi.String("load-balanced-backend"),
-//				},
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("80"),
-//						},
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("443"),
-//						},
-//					},
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("8000"),
-//						},
-//					},
-//				},
-//				Direction: pulumi.String("INGRESS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("website-net-proxy"),
-//				IpCidrRange: pulumi.String("10.129.0.0/26"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
-//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
-//				Role:        pulumi.String("ACTIVE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxy,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -1564,6 +1105,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			externalForwardingRule, err := compute.NewForwardingRule(ctx, "external", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("external-forwarding-rule"),
+//				Region:              pulumi.String("us-central1"),
+//				IpAddress:           basic.Address,
+//				BackendService:      external.SelfLink,
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = compute.NewForwardingRule(ctx, "steering", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("steering-rule"),
 //				Region:              pulumi.String("us-central1"),
@@ -1574,17 +1125,9 @@ import (
 //					pulumi.String("34.121.88.0/24"),
 //					pulumi.String("35.187.239.137"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewForwardingRule(ctx, "external", &compute.ForwardingRuleArgs{
-//				Name:                pulumi.String("external-forwarding-rule"),
-//				Region:              pulumi.String("us-central1"),
-//				IpAddress:           basic.Address,
-//				BackendService:      external.SelfLink,
-//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				externalForwardingRule,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -98,6 +98,8 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * }, {
+ *     dependsOn: [kms_secret_binding],
  * });
  * ```
  *

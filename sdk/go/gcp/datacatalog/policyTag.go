@@ -91,7 +91,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewPolicyTag(ctx, "child_policy", &datacatalog.PolicyTagArgs{
+//			childPolicy, err := datacatalog.NewPolicyTag(ctx, "child_policy", &datacatalog.PolicyTagArgs{
 //				Taxonomy:        myTaxonomy.ID(),
 //				DisplayName:     pulumi.String("ssn"),
 //				Description:     pulumi.String("A hash of the users ssn"),
@@ -105,7 +105,9 @@ import (
 //				DisplayName:     pulumi.String("dob"),
 //				Description:     pulumi.String("The users date of birth"),
 //				ParentPolicyTag: parentPolicy.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				childPolicy,
+//			}))
 //			if err != nil {
 //				return err
 //			}

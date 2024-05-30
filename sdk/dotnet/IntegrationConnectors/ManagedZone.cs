@@ -64,6 +64,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///         Project = targetProject.ProjectId,
     ///         Name = "test",
     ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
     ///     });
     /// 
     ///     var zone = new Gcp.Dns.ManagedZone("zone", new()
@@ -81,6 +87,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dns,
+    ///         },
     ///     });
     /// 
     ///     var testmanagedzone = new Gcp.IntegrationConnectors.ManagedZone("testmanagedzone", new()
@@ -94,6 +106,13 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///         TargetProject = targetProject.ProjectId,
     ///         TargetVpc = "test",
     ///         Dns = zone.DnsName,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dnsPeerBinding,
+    ///             zone,
+    ///         },
     ///     });
     /// 
     /// });

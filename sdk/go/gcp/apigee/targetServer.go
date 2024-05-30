@@ -49,31 +49,37 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigee,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
 //			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
 //				Name:    pulumi.String("apigee-network"),
 //				Project: project.ProjectId,
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -88,13 +94,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -102,7 +110,10 @@ import (
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         project.ProjectId,
 //				AuthorizedNetwork: apigeeNetwork.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigee,
+//			}))
 //			if err != nil {
 //				return err
 //			}

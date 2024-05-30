@@ -709,7 +709,8 @@ class VolumeReplication(pulumi.CustomResource):
                 description="This is a replicated volume",
             ),
             delete_destination_volume=True,
-            wait_for_mirror=True)
+            wait_for_mirror=True,
+            opts=pulumi.ResourceOptions(depends_on=[source_volume]))
         ```
 
         ## Import
@@ -813,7 +814,8 @@ class VolumeReplication(pulumi.CustomResource):
                 description="This is a replicated volume",
             ),
             delete_destination_volume=True,
-            wait_for_mirror=True)
+            wait_for_mirror=True,
+            opts=pulumi.ResourceOptions(depends_on=[source_volume]))
         ```
 
         ## Import

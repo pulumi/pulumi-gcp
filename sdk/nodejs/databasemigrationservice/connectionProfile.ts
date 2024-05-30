@@ -36,11 +36,15 @@ import * as utilities from "../utilities";
  * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
  *     commonName: "my-cert",
  *     instance: cloudsqldb.name,
+ * }, {
+ *     dependsOn: [cloudsqldb],
  * });
  * const sqldbUser = new gcp.sql.User("sqldb_user", {
  *     name: "my-username",
  *     instance: cloudsqldb.name,
  *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
  * });
  * const cloudsqlprofile = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile", {
  *     location: "us-central1",
@@ -61,6 +65,8 @@ import * as utilities from "../utilities";
  *         },
  *         cloudSqlId: "my-database",
  *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
  * });
  * const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination", {
  *     location: "us-central1",
@@ -91,6 +97,8 @@ import * as utilities from "../utilities";
  *             rootPassword: "testpasscloudsql",
  *         },
  *     },
+ * }, {
+ *     dependsOn: [cloudsqlprofile],
  * });
  * ```
  * ### Database Migration Service Connection Profile Postgres
@@ -110,11 +118,15 @@ import * as utilities from "../utilities";
  * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
  *     commonName: "my-cert",
  *     instance: postgresqldb.name,
+ * }, {
+ *     dependsOn: [postgresqldb],
  * });
  * const sqldbUser = new gcp.sql.User("sqldb_user", {
  *     name: "my-username",
  *     instance: postgresqldb.name,
  *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
  * });
  * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
  *     location: "us-central1",
@@ -135,6 +147,8 @@ import * as utilities from "../utilities";
  *         },
  *         cloudSqlId: "my-database",
  *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
  * });
  * ```
  * ### Database Migration Service Connection Profile Oracle
@@ -210,6 +224,8 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
  * });
  * ```
  *

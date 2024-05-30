@@ -49,6 +49,12 @@ namespace Pulumi.Gcp.Apigee
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = project.ProjectId,
     ///         RuntimeType = "HYBRID",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigee,
+    ///         },
     ///     });
     /// 
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
@@ -70,6 +76,12 @@ namespace Pulumi.Gcp.Apigee
     ///         Identities = new[]
     ///         {
     ///             serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             synchronizer_iam,
     ///         },
     ///     });
     /// 

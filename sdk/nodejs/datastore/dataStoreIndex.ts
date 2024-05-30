@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *             direction: "ASCENDING",
  *         },
  *     ],
+ * }, {
+ *     dependsOn: [database],
  * });
  * ```
  *

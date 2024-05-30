@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  *     project: targetProject.projectId,
  *     name: "test",
  *     autoCreateSubnetworks: false,
+ * }, {
+ *     dependsOn: [compute],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {
  *     name: "tf-test-dns_22375",
@@ -55,6 +57,8 @@ import * as utilities from "../utilities";
  *             networkUrl: network.id,
  *         }],
  *     },
+ * }, {
+ *     dependsOn: [dns],
  * });
  * const testmanagedzone = new gcp.integrationconnectors.ManagedZone("testmanagedzone", {
  *     name: "test",
@@ -65,6 +69,11 @@ import * as utilities from "../utilities";
  *     targetProject: targetProject.projectId,
  *     targetVpc: "test",
  *     dns: zone.dnsName,
+ * }, {
+ *     dependsOn: [
+ *         dnsPeerBinding,
+ *         zone,
+ *     ],
  * });
  * ```
  *

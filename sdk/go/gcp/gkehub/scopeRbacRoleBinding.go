@@ -52,7 +52,9 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				scope,
+//			}))
 //			if err != nil {
 //				return err
 //			}

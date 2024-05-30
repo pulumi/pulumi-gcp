@@ -30,6 +30,11 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  *     uniformBucketLevelAccess: true,
  * });
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: reportBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
+ * });
  * const config = new gcp.storage.InsightsReportConfig("config", {
  *     displayName: "Test Report Config",
  *     location: "us-central1",
@@ -65,11 +70,8 @@ import * as utilities from "../utilities";
  *             destinationPath: "test-insights-reports",
  *         },
  *     },
- * });
- * const admin = new gcp.storage.BucketIAMMember("admin", {
- *     bucket: reportBucket.name,
- *     role: "roles/storage.admin",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [admin],
  * });
  * ```
  *

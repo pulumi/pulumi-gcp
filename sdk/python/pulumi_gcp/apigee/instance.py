@@ -472,7 +472,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -499,7 +500,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -527,7 +529,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -571,7 +574,11 @@ class Instance(pulumi.CustomResource):
             description="Auto-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -664,7 +671,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -691,7 +699,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -719,7 +728,8 @@ class Instance(pulumi.CustomResource):
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",
@@ -763,7 +773,11 @@ class Instance(pulumi.CustomResource):
             description="Auto-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         apigee_instance = gcp.apigee.Instance("apigee_instance",
             name="my-instance-name",
             location="us-central1",

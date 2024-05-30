@@ -147,7 +147,10 @@ import (
 //					AppSlug:                    pulumi.String("gcb-app"),
 //					AppInstallationId:          pulumi.Int(300),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				policy_pk,
+//				policy_whs,
+//			}))
 //			if err != nil {
 //				return err
 //			}

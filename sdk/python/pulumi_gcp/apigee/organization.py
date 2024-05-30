@@ -688,7 +688,8 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
@@ -740,7 +741,11 @@ class Organization(pulumi.CustomResource):
             description="Auto-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         ```
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
@@ -768,7 +773,8 @@ class Organization(pulumi.CustomResource):
             description="Terraform-provisioned Apigee Org without VPC Peering.",
             project_id=current.project,
             disable_vpc_peering=True,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_sa_keyuser]))
         ```
 
         ## Import
@@ -867,7 +873,8 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             project_id=current.project,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
@@ -919,7 +926,11 @@ class Organization(pulumi.CustomResource):
             description="Auto-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
         ```
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
@@ -947,7 +958,8 @@ class Organization(pulumi.CustomResource):
             description="Terraform-provisioned Apigee Org without VPC Peering.",
             project_id=current.project,
             disable_vpc_peering=True,
-            runtime_database_encryption_key_name=apigee_key.id)
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_sa_keyuser]))
         ```
 
         ## Import

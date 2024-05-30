@@ -155,6 +155,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyMember, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = datafusion.NewInstance(ctx, "cmek", &datafusion.InstanceArgs{
 //				Name:   pulumi.String("my-instance"),
 //				Region: pulumi.String("us-central1"),
@@ -162,19 +174,9 @@ import (
 //				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
 //					KeyReference: cryptoKey.ID(),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyMember,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -48,6 +48,12 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             { "key", "value" },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             scope,
+    ///         },
     ///     });
     /// 
     /// });

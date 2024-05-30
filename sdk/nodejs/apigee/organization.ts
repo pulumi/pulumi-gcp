@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
  * });
  * ```
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
@@ -101,6 +103,11 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
  * });
  * ```
  * ### Apigee Organization Cloud Full Disable Vpc Peering
@@ -134,6 +141,8 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     disableVpcPeering: true,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [apigeeSaKeyuser],
  * });
  * ```
  *

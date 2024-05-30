@@ -117,14 +117,14 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"someParam": "1",
+//				"some_param": "1",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"someParam": "1",
+//				"some_param": "1",
 //			})
 //			if err != nil {
 //				return err

@@ -45,26 +45,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = redis.NewCluster(ctx, "cluster-ha", &redis.ClusterArgs{
-//				Name:       pulumi.String("ha-cluster"),
-//				ShardCount: pulumi.Int(3),
-//				PscConfigs: redis.ClusterPscConfigArray{
-//					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
-//					},
-//				},
-//				Region:                pulumi.String("us-central1"),
-//				ReplicaCount:          pulumi.Int(1),
-//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
-//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
-//				RedisConfigs: pulumi.StringMap{
-//					"maxmemory-policy": pulumi.String("volatile-ttl"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("mysubnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
@@ -86,6 +66,28 @@ import (
 //					},
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-ha", &redis.ClusterArgs{
+//				Name:       pulumi.String("ha-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				Region:                pulumi.String("us-central1"),
+//				ReplicaCount:          pulumi.Int(1),
+//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
 //			if err != nil {
 //				return err
 //			}

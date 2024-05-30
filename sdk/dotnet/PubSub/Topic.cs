@@ -138,6 +138,12 @@ namespace Pulumi.Gcp.PubSub
     ///             Schema = "projects/my-project-name/schemas/example",
     ///             Encoding = "JSON",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example,
+    ///         },
     ///     });
     /// 
     /// });

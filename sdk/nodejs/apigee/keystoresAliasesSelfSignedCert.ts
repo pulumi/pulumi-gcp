@@ -36,14 +36,20 @@ import * as utilities from "../utilities";
  * const servicenetworking = new gcp.projects.Service("servicenetworking", {
  *     project: project.projectId,
  *     service: "servicenetworking.googleapis.com",
+ * }, {
+ *     dependsOn: [apigee],
  * });
  * const compute = new gcp.projects.Service("compute", {
  *     project: project.projectId,
  *     service: "compute.googleapis.com",
+ * }, {
+ *     dependsOn: [servicenetworking],
  * });
  * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
  *     name: "apigee-network",
  *     project: project.projectId,
+ * }, {
+ *     dependsOn: [compute],
  * });
  * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
  *     name: "apigee-range",
@@ -57,11 +63,18 @@ import * as utilities from "../utilities";
  *     network: apigeeNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [apigeeRange.name],
+ * }, {
+ *     dependsOn: [servicenetworking],
  * });
  * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
  *     analyticsRegion: "us-central1",
  *     projectId: project.projectId,
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigee,
+ *     ],
  * });
  * const apigeeEnvironmentKeystoreSsAlias = new gcp.apigee.Environment("apigee_environment_keystore_ss_alias", {
  *     orgId: apigeeOrg.id,

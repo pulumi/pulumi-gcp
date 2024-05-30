@@ -100,7 +100,9 @@ import (
 //				Network:              _default.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
 //				NetworkTier:          pulumi.String("PREMIUM"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultSubnetwork,
+//			}))
 //			if err != nil {
 //				return err
 //			}

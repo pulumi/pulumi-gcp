@@ -648,7 +648,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 offset=8,
                 size=2,
                 mask="0x8F00",
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,
@@ -897,7 +898,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 offset=8,
                 size=2,
                 mask="0x8F00",
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,

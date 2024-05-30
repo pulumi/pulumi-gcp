@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.EntityType;
  * import com.pulumi.gcp.diagflow.EntityTypeArgs;
  * import com.pulumi.gcp.diagflow.inputs.EntityTypeEntityArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,7 +79,9 @@ import javax.annotation.Nullable;
  *                         "synonym3",
  *                         "synonym4")
  *                     .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(basicAgent)
+ *                 .build());
  * 
  *     }
  * }

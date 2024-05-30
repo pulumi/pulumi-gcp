@@ -147,7 +147,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-proxy-only-subnetwork"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
@@ -195,7 +195,9 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -264,7 +266,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-proxy-only-subnetwork"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
@@ -312,7 +314,9 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -334,7 +338,9 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
 //			if err != nil {
 //				return err
 //			}

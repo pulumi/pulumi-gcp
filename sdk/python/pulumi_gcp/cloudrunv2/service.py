@@ -1008,6 +1008,9 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         instance = gcp.sql.DatabaseInstance("instance",
             name="cloudrun-sql",
             region="us-central1",
@@ -1056,15 +1059,14 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Service Vpcaccess
 
@@ -1169,6 +1171,9 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
@@ -1192,15 +1197,14 @@ class Service(pulumi.CustomResource):
                         mount_path="/secrets",
                     )],
                 )],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Service Multicontainer
 
@@ -1461,6 +1465,9 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         instance = gcp.sql.DatabaseInstance("instance",
             name="cloudrun-sql",
             region="us-central1",
@@ -1509,15 +1516,14 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Service Vpcaccess
 
@@ -1622,6 +1628,9 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
@@ -1645,15 +1654,14 @@ class Service(pulumi.CustomResource):
                         mount_path="/secrets",
                     )],
                 )],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Service Multicontainer
 

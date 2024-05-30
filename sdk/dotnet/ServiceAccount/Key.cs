@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         },
     ///         Data = 
     ///         {
-    ///             { "json", Std.Base64decode.Invoke(new()
+    ///             { "credentials.json", Std.Base64decode.Invoke(new()
     ///             {
     ///                 Input = mykey.PrivateKey,
     ///             }).Apply(invoke =&gt; invoke.Result) },

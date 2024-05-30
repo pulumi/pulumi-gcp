@@ -59,10 +59,27 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     });
     /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             acceptanceProject,
+    ///         },
+    ///     });
+    /// 
     ///     var acceptance = new Gcp.Projects.Service("acceptance", new()
     ///     {
     ///         Project = acceptanceProject.ProjectId,
     ///         ServiceName = "vmwareengine.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     ///     var vmw_engine_network = new Gcp.VMwareEngine.Network("vmw-engine-network", new()
@@ -72,11 +89,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         Location = "us-west1",
     ///         Type = "LEGACY",
     ///         Description = "VMwareEngine legacy network sample",
-    ///     });
-    /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
-    ///     {
-    ///         CreateDuration = "60s",
     ///     });
     /// 
     /// });

@@ -77,6 +77,18 @@ namespace Pulumi.Gcp.Tpu
     ///         Zone = "us-central1-c",
     ///     });
     /// 
+    ///     // Wait after service account creation to limit eventual consistency errors.
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sa,
+    ///         },
+    ///     });
+    /// 
     ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
     ///     {
     ///         Name = "test-tpu",
@@ -132,12 +144,12 @@ namespace Pulumi.Gcp.Tpu
     ///         {
     ///             "foo",
     ///         },
-    ///     });
-    /// 
-    ///     // Wait after service account creation to limit eventual consistency errors.
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CreateDuration = "60s",
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     /// });

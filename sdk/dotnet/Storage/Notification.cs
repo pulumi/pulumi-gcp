@@ -37,16 +37,29 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Enable notifications by giving the correct IAM permission to the unique service account.
+    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "default_topic",
+    ///     });
+    /// 
+    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     {
+    ///         Topic = topic.Id,
+    ///         Role = "roles/pubsub.publisher",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+    ///         },
+    ///     });
+    /// 
     ///     // End enabling notifications
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Name = "default_bucket",
     ///         Location = "US",
-    ///     });
-    /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic", new()
-    ///     {
-    ///         Name = "default_topic",
     ///     });
     /// 
     ///     var notification = new Gcp.Storage.Notification("notification", new()
@@ -63,18 +76,11 @@ namespace Pulumi.Gcp.Storage
     ///         {
     ///             { "new-attribute", "new-attribute-value" },
     ///         },
-    ///     });
-    /// 
-    ///     // Enable notifications by giving the correct IAM permission to the unique service account.
-    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
-    /// 
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Topic = topic.Id,
-    ///         Role = "roles/pubsub.publisher",
-    ///         Members = new[]
+    ///         DependsOn =
     ///         {
-    ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+    ///             binding,
     ///         },
     ///     });
     /// 

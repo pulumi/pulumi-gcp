@@ -121,12 +121,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.artifactregistry.Repository;
- * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -140,14 +141,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
- *             .location("us-central1")
- *             .repositoryId("my-repository")
- *             .description("example docker repository with cmek")
- *             .format("DOCKER")
- *             .kmsKeyName("kms-key")
- *             .build());
- * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
@@ -155,6 +148,16 @@ import javax.annotation.Nullable;
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
+ * 
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository with cmek")
+ *             .format("DOCKER")
+ *             .kmsKeyName("kms-key")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKey)
+ *                 .build());
  * 
  *     }
  * }

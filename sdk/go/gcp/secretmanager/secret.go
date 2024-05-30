@@ -166,7 +166,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				kms_secret_binding,
+//			}))
 //			if err != nil {
 //				return err
 //			}

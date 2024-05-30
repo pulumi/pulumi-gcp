@@ -463,7 +463,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("my-authority"),
@@ -548,7 +548,9 @@ import (
 //						Key:    invokeFilebase64.Result,
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultAuthority,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -580,7 +582,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("my-authority"),
@@ -668,7 +670,9 @@ import (
 //						Key:    invokeFilebase64.Result,
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultAuthority,
+//			}))
 //			if err != nil {
 //				return err
 //			}

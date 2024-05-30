@@ -40,15 +40,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apphub.NewServiceProjectAttachment(ctx, "example", &apphub.ServiceProjectAttachmentArgs{
-//				ServiceProjectAttachmentId: serviceProject.ProjectId,
-//			})
+//			wait120s, err := time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				serviceProject,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
-//				CreateDuration: "120s",
-//			})
+//			_, err = apphub.NewServiceProjectAttachment(ctx, "example", &apphub.ServiceProjectAttachmentArgs{
+//				ServiceProjectAttachmentId: serviceProject.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -81,16 +85,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apphub.NewServiceProjectAttachment(ctx, "example2", &apphub.ServiceProjectAttachmentArgs{
-//				ServiceProjectAttachmentId: serviceProjectFull.ProjectId,
-//				ServiceProject:             serviceProjectFull.ProjectId,
-//			})
+//			wait120s, err := time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				serviceProjectFull,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
-//				CreateDuration: "120s",
-//			})
+//			_, err = apphub.NewServiceProjectAttachment(ctx, "example2", &apphub.ServiceProjectAttachmentArgs{
+//				ServiceProjectAttachmentId: serviceProjectFull.ProjectId,
+//				ServiceProject:             serviceProjectFull.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
 //			if err != nil {
 //				return err
 //			}

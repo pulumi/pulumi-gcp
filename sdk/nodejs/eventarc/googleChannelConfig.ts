@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     name: "channel",
  *     project: testProject.then(testProject => testProject.projectId),
  *     cryptoKeyName: key1.id,
+ * }, {
+ *     dependsOn: [key1Member],
  * });
  * ```
  *

@@ -27,21 +27,6 @@ import * as utilities from "../utilities";
  *     name: "mynetwork",
  *     autoCreateSubnetworks: false,
  * });
- * const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
- *     name: "ha-cluster",
- *     shardCount: 3,
- *     pscConfigs: [{
- *         network: producerNet.id,
- *     }],
- *     region: "us-central1",
- *     replicaCount: 1,
- *     nodeType: "REDIS_SHARED_CORE_NANO",
- *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
- *     authorizationMode: "AUTH_MODE_DISABLED",
- *     redisConfigs: {
- *         "maxmemory-policy": "volatile-ttl",
- *     },
- * });
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "mysubnet",
  *     ipCidrRange: "10.0.0.248/29",
@@ -57,6 +42,23 @@ import * as utilities from "../utilities";
  *     pscConfig: {
  *         subnetworks: [producerSubnet.id],
  *     },
+ * });
+ * const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
+ *     name: "ha-cluster",
+ *     shardCount: 3,
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     region: "us-central1",
+ *     replicaCount: 1,
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  *

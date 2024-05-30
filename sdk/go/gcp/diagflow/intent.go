@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
+//			basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
@@ -47,7 +47,9 @@ import (
 //			}
 //			_, err = diagflow.NewIntent(ctx, "basic_intent", &diagflow.IntentArgs{
 //				DisplayName: pulumi.String("basic-intent"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -107,7 +109,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
+//			basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				Project:             agentProject.ProjectId,
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
@@ -137,7 +139,9 @@ import (
 //					pulumi.String("FACEBOOK"),
 //					pulumi.String("SLACK"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
 //			if err != nil {
 //				return err
 //			}

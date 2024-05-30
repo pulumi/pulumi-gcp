@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.AssetArgs;
  * import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,7 +106,9 @@ import javax.annotation.Nullable;
  *                 Map.entry("my-asset", "exists")
  *             ))
  *             .project("my-project-name")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(basicBucket)
+ *                 .build());
  * 
  *     }
  * }

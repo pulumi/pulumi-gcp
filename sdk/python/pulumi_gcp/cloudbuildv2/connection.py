@@ -498,7 +498,11 @@ class Connection(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
         ```
         ### Cloudbuildv2 Connection Github
 
@@ -659,7 +663,11 @@ class Connection(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
         ```
         ### Cloudbuildv2 Connection Github
 

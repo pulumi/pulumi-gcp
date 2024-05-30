@@ -29,7 +29,9 @@ import * as utilities from "../utilities";
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });
- * const basicIntent = new gcp.diagflow.Intent("basic_intent", {displayName: "basic-intent"});
+ * const basicIntent = new gcp.diagflow.Intent("basic_intent", {displayName: "basic-intent"}, {
+ *     dependsOn: [basicAgent],
+ * });
  * ```
  * ### Dialogflow Intent Full
  *
@@ -74,6 +76,8 @@ import * as utilities from "../utilities";
  *         "FACEBOOK",
  *         "SLACK",
  *     ],
+ * }, {
+ *     dependsOn: [basicAgent],
  * });
  * ```
  *

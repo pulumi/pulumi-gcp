@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *     },
  *     deleteDestinationVolume: true,
  *     waitForMirror: true,
+ * }, {
+ *     dependsOn: [sourceVolume],
  * });
  * ```
  *

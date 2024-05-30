@@ -57,7 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
+//			frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
+//			frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-udp500"),
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
@@ -76,7 +76,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
+//			frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-udp4500"),
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
@@ -91,7 +91,11 @@ import (
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
 //				TargetVpnGateway: targetGateway.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				frEsp,
+//				frUdp500,
+//				frUdp4500,
+//			}))
 //			if err != nil {
 //				return err
 //			}

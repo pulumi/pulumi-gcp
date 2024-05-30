@@ -38,10 +38,14 @@ import * as utilities from "../utilities";
  * });
  * // It takes a while for App Check to recognize the new app
  * // If your app already exists, you don't have to wait 30 seconds.
- * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"});
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
+ *     dependsOn: [_default],
+ * });
  * const defaultAppCheckPlayIntegrityConfig = new gcp.firebase.AppCheckPlayIntegrityConfig("default", {
  *     project: "my-project-name",
  *     appId: _default.appId,
+ * }, {
+ *     dependsOn: [wait30s],
  * });
  * ```
  * ### Firebase App Check Play Integrity Config Full
@@ -66,11 +70,15 @@ import * as utilities from "../utilities";
  * });
  * // It takes a while for App Check to recognize the new app
  * // If your app already exists, you don't have to wait 30 seconds.
- * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"});
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
+ *     dependsOn: [_default],
+ * });
  * const defaultAppCheckPlayIntegrityConfig = new gcp.firebase.AppCheckPlayIntegrityConfig("default", {
  *     project: "my-project-name",
  *     appId: _default.appId,
  *     tokenTtl: "7200s",
+ * }, {
+ *     dependsOn: [wait30s],
  * });
  * ```
  *

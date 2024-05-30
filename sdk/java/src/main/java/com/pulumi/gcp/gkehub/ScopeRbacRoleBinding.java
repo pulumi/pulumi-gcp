@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.ScopeRbacRoleBinding;
  * import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
  * import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,7 +69,9 @@ import javax.annotation.Nullable;
  *                 .predefinedRole("ADMIN")
  *                 .build())
  *             .labels(Map.of("key", "value"))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(scope)
+ *                 .build());
  * 
  *     }
  * }

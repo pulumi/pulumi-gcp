@@ -497,63 +497,6 @@ class ApiConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Apigateway Api Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_cfg = gcp.apigateway.Api("api_cfg", api_id="my-api")
-        api_cfg_api_config = gcp.apigateway.ApiConfig("api_cfg",
-            api=api_cfg.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=std.filebase64(input="test-fixtures/openapi.yaml").result,
-                ),
-            )])
-        ```
-        ### Apigateway Api Config Grpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_cfg = gcp.apigateway.Api("api_cfg", api_id="my-api")
-        api_cfg_api_config = gcp.apigateway.ApiConfig("api_cfg",
-            api=api_cfg.api_id,
-            api_config_id="my-config",
-            grpc_services=[gcp.apigateway.ApiConfigGrpcServiceArgs(
-                file_descriptor_set=gcp.apigateway.ApiConfigGrpcServiceFileDescriptorSetArgs(
-                    path="api_descriptor.pb",
-                    contents=std.filebase64(input="test-fixtures/api_descriptor.pb").result,
-                ),
-            )],
-            managed_service_configs=[gcp.apigateway.ApiConfigManagedServiceConfigArgs(
-                path="api_config.yaml",
-                contents=std.base64encode_output(input=api_cfg.managed_service.apply(lambda managed_service: f\"\"\"type: google.api.Service
-        config_version: 3
-        name: {managed_service}
-        title: gRPC API example
-        apis:
-          - name: endpoints.examples.bookstore.Bookstore
-        usage:
-          rules:
-          - selector: endpoints.examples.bookstore.Bookstore.ListShelves
-            allow_unregistered_calls: true
-        backend:
-          rules:
-            - selector: "*"
-              address: grpcs://example.com
-              disable_auth: true
-
-        \"\"\")).apply(lambda invoke: invoke.result),
-            )])
-        ```
-
         ## Import
 
         ApiConfig can be imported using any of these accepted formats:
@@ -621,63 +564,6 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
-
-        ### Apigateway Api Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_cfg = gcp.apigateway.Api("api_cfg", api_id="my-api")
-        api_cfg_api_config = gcp.apigateway.ApiConfig("api_cfg",
-            api=api_cfg.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=std.filebase64(input="test-fixtures/openapi.yaml").result,
-                ),
-            )])
-        ```
-        ### Apigateway Api Config Grpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        api_cfg = gcp.apigateway.Api("api_cfg", api_id="my-api")
-        api_cfg_api_config = gcp.apigateway.ApiConfig("api_cfg",
-            api=api_cfg.api_id,
-            api_config_id="my-config",
-            grpc_services=[gcp.apigateway.ApiConfigGrpcServiceArgs(
-                file_descriptor_set=gcp.apigateway.ApiConfigGrpcServiceFileDescriptorSetArgs(
-                    path="api_descriptor.pb",
-                    contents=std.filebase64(input="test-fixtures/api_descriptor.pb").result,
-                ),
-            )],
-            managed_service_configs=[gcp.apigateway.ApiConfigManagedServiceConfigArgs(
-                path="api_config.yaml",
-                contents=std.base64encode_output(input=api_cfg.managed_service.apply(lambda managed_service: f\"\"\"type: google.api.Service
-        config_version: 3
-        name: {managed_service}
-        title: gRPC API example
-        apis:
-          - name: endpoints.examples.bookstore.Bookstore
-        usage:
-          rules:
-          - selector: endpoints.examples.bookstore.Bookstore.ListShelves
-            allow_unregistered_calls: true
-        backend:
-          rules:
-            - selector: "*"
-              address: grpcs://example.com
-              disable_auth: true
-
-        \"\"\")).apply(lambda invoke: invoke.result),
-            )])
-        ```
 
         ## Import
 

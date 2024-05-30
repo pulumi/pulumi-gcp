@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         name: "google-application-credentials",
  *     },
  *     data: {
- *         json: std.base64decodeOutput({
+ *         "credentials.json": std.base64decodeOutput({
  *             input: mykey.privateKey,
  *         }).apply(invoke => invoke.result),
  *     },

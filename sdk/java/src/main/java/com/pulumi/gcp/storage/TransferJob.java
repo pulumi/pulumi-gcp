@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleEndDateArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleStartTimeOfDayArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -91,7 +92,9 @@ import javax.annotation.Nullable;
  *             .bucket(s3_backup_bucket.name())
  *             .role("roles/storage.admin")
  *             .member(String.format("serviceAccount:%s", default_.email()))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(s3_backup_bucket)
+ *                 .build());
  * 
  *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name(pubsubTopicName)
@@ -152,7 +155,11 @@ import javax.annotation.Nullable;
  *                     "TRANSFER_OPERATION_FAILED")
  *                 .payloadFormat("JSON")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     s3_backup_bucketBucketIAMMember,
+ *                     notificationConfig)
+ *                 .build());
  * 
  *     }
  * }

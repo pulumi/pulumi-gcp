@@ -635,6 +635,10 @@ class Database(pulumi.CustomResource):
             name="kms-key",
             key_ring=key_ring.id,
             purpose="ENCRYPT_DECRYPT")
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         database = gcp.firestore.Database("database",
             project="my-project-name",
             name="cmek-database-id",
@@ -647,11 +651,8 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE",
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -696,6 +697,10 @@ class Database(pulumi.CustomResource):
             name="kms-key",
             key_ring=key_ring.id,
             purpose="ENCRYPT_DECRYPT")
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         database = gcp.firestore.Database("database",
             project="my-project-name",
             name="cmek-database-id",
@@ -708,11 +713,8 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE",
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
         ## Import
@@ -840,6 +842,10 @@ class Database(pulumi.CustomResource):
             name="kms-key",
             key_ring=key_ring.id,
             purpose="ENCRYPT_DECRYPT")
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         database = gcp.firestore.Database("database",
             project="my-project-name",
             name="cmek-database-id",
@@ -852,11 +858,8 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE",
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -901,6 +904,10 @@ class Database(pulumi.CustomResource):
             name="kms-key",
             key_ring=key_ring.id,
             purpose="ENCRYPT_DECRYPT")
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         database = gcp.firestore.Database("database",
             project="my-project-name",
             name="cmek-database-id",
@@ -913,11 +920,8 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE",
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
         ## Import

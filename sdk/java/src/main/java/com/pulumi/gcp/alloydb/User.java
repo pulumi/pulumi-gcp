@@ -41,16 +41,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
- * import com.pulumi.gcp.alloydb.Instance;
- * import com.pulumi.gcp.alloydb.InstanceArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.alloydb.User;
  * import com.pulumi.gcp.alloydb.UserArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -77,14 +78,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .cluster(defaultCluster.name())
- *             .instanceId("alloydb-instance")
- *             .instanceType("PRIMARY")
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-cluster")
  *             .addressType("INTERNAL")
@@ -99,13 +92,25 @@ import javax.annotation.Nullable;
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cluster(defaultCluster.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
  *         var user1 = new User("user1", UserArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .userId("user1")
  *             .userType("ALLOYDB_BUILT_IN")
  *             .password("user_secret")
  *             .databaseRoles("alloydbsuperuser")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }
@@ -127,16 +132,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
- * import com.pulumi.gcp.alloydb.Instance;
- * import com.pulumi.gcp.alloydb.InstanceArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.alloydb.User;
  * import com.pulumi.gcp.alloydb.UserArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -163,14 +169,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .cluster(defaultCluster.name())
- *             .instanceId("alloydb-instance")
- *             .instanceType("PRIMARY")
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-cluster")
  *             .addressType("INTERNAL")
@@ -185,12 +183,24 @@ import javax.annotation.Nullable;
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cluster(defaultCluster.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
  *         var user2 = new User("user2", UserArgs.builder()
  *             .cluster(defaultCluster.name())
  *             .userId("user2{@literal @}foo.com")
  *             .userType("ALLOYDB_IAM_USER")
  *             .databaseRoles("alloydbiamuser")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }

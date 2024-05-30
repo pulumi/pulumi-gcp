@@ -78,13 +78,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.vertex.AiTensorboard;
- * import com.pulumi.gcp.vertex.AiTensorboardArgs;
- * import com.pulumi.gcp.vertex.inputs.AiTensorboardEncryptionSpecArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.vertex.AiTensorboard;
+ * import com.pulumi.gcp.vertex.AiTensorboardArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiTensorboardEncryptionSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -98,6 +99,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId("kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()
  *             .displayName("terraform")
  *             .description("sample description")
@@ -109,15 +118,9 @@ import javax.annotation.Nullable;
  *             .encryptionSpec(AiTensorboardEncryptionSpecArgs.builder()
  *                 .kmsKeyName("kms-name")
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId("kms-name")
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKey)
+ *                 .build());
  * 
  *     }
  * }

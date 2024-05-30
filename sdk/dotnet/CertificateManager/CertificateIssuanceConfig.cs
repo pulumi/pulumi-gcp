@@ -37,27 +37,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     var @default = new Gcp.CertificateManager.CertificateIssuanceConfig("default", new()
-    ///     {
-    ///         Name = "issuance-config",
-    ///         Description = "sample description for the certificate issuanceConfigs",
-    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
-    ///         {
-    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
-    ///             {
-    ///                 CaPool = pool.Id,
-    ///             },
-    ///         },
-    ///         Lifetime = "1814400s",
-    ///         RotationWindowPercentage = 34,
-    ///         KeyAlgorithm = "ECDSA_P256",
-    ///         Labels = 
-    ///         {
-    ///             { "name", "wrench" },
-    ///             { "count", "3" },
-    ///         },
-    ///     });
-    /// 
     ///     var caAuthority = new Gcp.CertificateAuthority.Authority("ca_authority", new()
     ///     {
     ///         Location = "us-central1",
@@ -107,6 +86,33 @@ namespace Pulumi.Gcp.CertificateManager
     ///         DeletionProtection = false,
     ///         SkipGracePeriod = true,
     ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.CertificateIssuanceConfig("default", new()
+    ///     {
+    ///         Name = "issuance-config",
+    ///         Description = "sample description for the certificate issuanceConfigs",
+    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
+    ///         {
+    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+    ///             {
+    ///                 CaPool = pool.Id,
+    ///             },
+    ///         },
+    ///         Lifetime = "1814400s",
+    ///         RotationWindowPercentage = 34,
+    ///         KeyAlgorithm = "ECDSA_P256",
+    ///         Labels = 
+    ///         {
+    ///             { "name", "wrench" },
+    ///             { "count", "3" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caAuthority,
+    ///         },
     ///     });
     /// 
     /// });

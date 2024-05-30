@@ -571,6 +571,11 @@ class InternalRange(pulumi.CustomResource):
         default_network = gcp.compute.Network("default",
             name="internal-ranges",
             auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="overlapping-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.id)
         default = gcp.networkconnectivity.InternalRange("default",
             name="overlap-range",
             description="Test internal range",
@@ -578,12 +583,8 @@ class InternalRange(pulumi.CustomResource):
             usage="FOR_VPC",
             peering="FOR_SELF",
             ip_cidr_range="10.0.0.0/30",
-            overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"])
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="overlapping-subnet",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.id)
+            overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
+            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
 
         ## Import
@@ -718,6 +719,11 @@ class InternalRange(pulumi.CustomResource):
         default_network = gcp.compute.Network("default",
             name="internal-ranges",
             auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="overlapping-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.id)
         default = gcp.networkconnectivity.InternalRange("default",
             name="overlap-range",
             description="Test internal range",
@@ -725,12 +731,8 @@ class InternalRange(pulumi.CustomResource):
             usage="FOR_VPC",
             peering="FOR_SELF",
             ip_cidr_range="10.0.0.0/30",
-            overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"])
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="overlapping-subnet",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.id)
+            overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
+            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
 
         ## Import

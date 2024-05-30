@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfig;
  * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,7 +68,9 @@ import javax.annotation.Nullable;
  *         // If your app already exists, you don't have to wait 30 seconds.
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *         var defaultAppCheckDeviceCheckConfig = new AppCheckDeviceCheckConfig("defaultAppCheckDeviceCheckConfig", AppCheckDeviceCheckConfigArgs.builder()
  *             .project("my-project-name")
@@ -77,7 +80,9 @@ import javax.annotation.Nullable;
  *             .privateKey(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/private-key.p8")
  *                 .build()).result())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait30s)
+ *                 .build());
  * 
  *     }
  * }

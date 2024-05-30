@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.VPNTunnelArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,7 +105,12 @@ import javax.annotation.Nullable;
  *             .peerIp("15.0.0.120")
  *             .sharedSecret("a secret message")
  *             .targetVpnGateway(targetGateway.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     frEsp,
+ *                     frUdp500,
+ *                     frUdp4500)
+ *                 .build());
  * 
  *         var route1 = new Route("route1", RouteArgs.builder()
  *             .name("route1")

@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.netapp.VolumeReplication;
  * import com.pulumi.gcp.netapp.VolumeReplicationArgs;
  * import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -98,7 +99,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .deleteDestinationVolume(true)
  *             .waitForMirror(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceVolume)
+ *                 .build());
  * 
  *     }
  * }

@@ -71,6 +71,8 @@ import * as utilities from "../utilities";
  *             enablePrivatePathForGoogleCloudServices: true,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [privateVpcConnection],
  * });
  * ```
  *

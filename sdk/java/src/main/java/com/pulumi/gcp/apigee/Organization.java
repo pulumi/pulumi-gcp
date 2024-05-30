@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.apigee.Organization;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,7 +84,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *     }
  * }
@@ -157,6 +160,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.apigee.Organization;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -218,7 +222,11 @@ import javax.annotation.Nullable;
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigeeSaKeyuser)
+ *                 .build());
  * 
  *     }
  * }
@@ -246,6 +254,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.apigee.Organization;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -289,7 +298,9 @@ import javax.annotation.Nullable;
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .disableVpcPeering(true)
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeSaKeyuser)
+ *                 .build());
  * 
  *     }
  * }

@@ -63,7 +63,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Service:          pulumi.String("servicenetworking.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
 //			})
@@ -73,7 +73,9 @@ import (
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 //				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -87,13 +89,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "worker_pool_conn", &servicenetworking.ConnectionArgs{
+//			workerPoolConn, err := servicenetworking.NewConnection(ctx, "worker_pool_conn", &servicenetworking.ConnectionArgs{
 //				Network: network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					workerRange.Name,
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -109,7 +113,9 @@ import (
 //					PeeredNetwork:        network.ID(),
 //					PeeredNetworkIpRange: pulumi.String("/29"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				workerPoolConn,
+//			}))
 //			if err != nil {
 //				return err
 //			}

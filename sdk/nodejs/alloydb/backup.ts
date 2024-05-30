@@ -29,16 +29,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const _default = new gcp.alloydb.Backup("default", {
- *     location: "us-central1",
- *     backupId: "alloydb-backup",
- *     clusterName: defaultCluster.name,
- * });
- * const defaultInstance = new gcp.alloydb.Instance("default", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
@@ -50,6 +40,20 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const _default = new gcp.alloydb.Backup("default", {
+ *     location: "us-central1",
+ *     backupId: "alloydb-backup",
+ *     clusterName: defaultCluster.name,
+ * }, {
+ *     dependsOn: [defaultInstance],
  * });
  * ```
  * ### Alloydb Backup Full
@@ -64,21 +68,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const _default = new gcp.alloydb.Backup("default", {
- *     location: "us-central1",
- *     backupId: "alloydb-backup",
- *     clusterName: defaultCluster.name,
- *     description: "example description",
- *     type: "ON_DEMAND",
- *     labels: {
- *         label: "key",
- *     },
- * });
- * const defaultInstance = new gcp.alloydb.Instance("default", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
@@ -90,6 +79,25 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const _default = new gcp.alloydb.Backup("default", {
+ *     location: "us-central1",
+ *     backupId: "alloydb-backup",
+ *     clusterName: defaultCluster.name,
+ *     description: "example description",
+ *     type: "ON_DEMAND",
+ *     labels: {
+ *         label: "key",
+ *     },
+ * }, {
+ *     dependsOn: [defaultInstance],
  * });
  * ```
  *

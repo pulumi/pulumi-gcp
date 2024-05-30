@@ -56,7 +56,9 @@ import (
 //					"keya": pulumi.String("valuea"),
 //					"keyc": pulumi.String("valuec"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				scope,
+//			}))
 //			if err != nil {
 //				return err
 //			}

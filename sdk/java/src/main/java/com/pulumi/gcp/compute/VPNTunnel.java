@@ -43,14 +43,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.VPNGateway;
  * import com.pulumi.gcp.compute.VPNGatewayArgs;
- * import com.pulumi.gcp.compute.VPNTunnel;
- * import com.pulumi.gcp.compute.VPNTunnelArgs;
  * import com.pulumi.gcp.compute.Address;
  * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -71,14 +72,6 @@ import javax.annotation.Nullable;
  *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()
  *             .name("vpn-1")
  *             .network(network1.id())
- *             .build());
- * 
- *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
- *             .name("tunnel-1")
- *             .peerIp("15.0.0.120")
- *             .sharedSecret("a secret message")
- *             .targetVpnGateway(targetGateway.id())
- *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()
@@ -107,6 +100,19 @@ import javax.annotation.Nullable;
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
+ * 
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
+ *             .name("tunnel-1")
+ *             .peerIp("15.0.0.120")
+ *             .sharedSecret("a secret message")
+ *             .targetVpnGateway(targetGateway.id())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     frEsp,
+ *                     frUdp500,
+ *                     frUdp4500)
+ *                 .build());
  * 
  *         var route1 = new Route("route1", RouteArgs.builder()
  *             .name("route1")

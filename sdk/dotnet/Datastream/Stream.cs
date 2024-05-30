@@ -284,6 +284,12 @@ namespace Pulumi.Gcp.Datastream
     ///             },
     ///         },
     ///         CustomerManagedEncryptionKey = "kms-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             keyUser,
+    ///         },
     ///     });
     /// 
     /// });
@@ -623,17 +629,23 @@ namespace Pulumi.Gcp.Datastream
     ///         },
     ///     });
     /// 
-    ///     var db = new Gcp.Sql.Database("db", new()
-    ///     {
-    ///         Name = "db",
-    ///         Instance = instance.Name,
-    ///     });
-    /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
     ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Password = "password",
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Name = "db",
+    ///         Instance = instance.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             user,
+    ///         },
     ///     });
     /// 
     ///     var source = new Gcp.Datastream.ConnectionProfile("source", new()
@@ -970,6 +982,12 @@ namespace Pulumi.Gcp.Datastream
     ///             },
     ///         },
     ///         BackfillNone = null,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             bigqueryKeyUser,
+    ///         },
     ///     });
     /// 
     /// });

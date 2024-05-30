@@ -109,6 +109,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
     ///     {
     ///         Name = "vpc-network",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
+    ///         },
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -127,6 +133,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///         ReservedPeeringRanges = new[]
     ///         {
     ///             privateIpAlloc.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
     ///         },
     ///     });
     /// 
@@ -160,6 +172,12 @@ namespace Pulumi.Gcp.CloudBuild
     /// -----BEGIN CERTIFICATE-----
     /// -----END CERTIFICATE-----
     /// ",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     /// });

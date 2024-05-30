@@ -256,6 +256,12 @@ namespace Pulumi.Gcp.BigQuery
     ///             SourceFormat = "NEWLINE_DELIMITED_JSON",
     ///             JsonExtension = "GEOJSON",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @object,
+    ///         },
     ///     });
     /// 
     /// });
@@ -414,6 +420,18 @@ namespace Pulumi.Gcp.BigQuery
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var encryptRole = new Gcp.Projects.IAMMember("encrypt_role", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
+    ///     });
+    /// 
     ///     var dest = new Gcp.BigQuery.Table("dest", new()
     ///     {
     ///         DeletionProtection = false,
@@ -441,18 +459,12 @@ namespace Pulumi.Gcp.BigQuery
     ///         {
     ///             KmsKeyName = cryptoKey.Id,
     ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         ProjectId = "my-project-name",
-    ///     });
-    /// 
-    ///     var encryptRole = new Gcp.Projects.IAMMember("encrypt_role", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
+    ///         DependsOn =
+    ///         {
+    ///             encryptRole,
+    ///         },
     ///     });
     /// 
     ///     var job = new Gcp.BigQuery.Job("job", new()
@@ -485,6 +497,12 @@ namespace Pulumi.Gcp.BigQuery
     ///             {
     ///                 KmsKeyName = cryptoKey.Id,
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             encryptRole,
     ///         },
     ///     });
     /// 

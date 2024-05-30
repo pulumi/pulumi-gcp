@@ -90,6 +90,13 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigeeSaKeyuser,
+    ///         },
     ///     });
     /// 
     ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()

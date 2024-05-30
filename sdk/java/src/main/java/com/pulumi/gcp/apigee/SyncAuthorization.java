@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.apigee.SyncAuthorization;
  * import com.pulumi.gcp.apigee.SyncAuthorizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +77,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .runtimeType("HYBRID")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigee)
+ *                 .build());
  * 
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
@@ -92,7 +95,9 @@ import javax.annotation.Nullable;
  *         var apigeeSyncAuthorization = new SyncAuthorization("apigeeSyncAuthorization", SyncAuthorizationArgs.builder()
  *             .name(apigeeOrg.name())
  *             .identities(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(synchronizer_iam)
+ *                 .build());
  * 
  *     }
  * }

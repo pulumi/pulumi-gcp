@@ -580,7 +580,8 @@ class Job(pulumi.CustomResource):
                 autodetect=True,
                 source_format="NEWLINE_DELIMITED_JSON",
                 json_extension="GEOJSON",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
 
@@ -679,6 +680,11 @@ class Job(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("crypto_key",
             name="example-key",
             key_ring=key_ring.id)
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        encrypt_role = gcp.projects.IAMMember("encrypt_role",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",
             deletion_protection=False,
             dataset_id=dest_dataset.dataset_id,
@@ -703,12 +709,8 @@ class Job(pulumi.CustomResource):
         \"\"\",
             encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        project = gcp.organizations.get_project(project_id="my-project-name")
-        encrypt_role = gcp.projects.IAMMember("encrypt_role",
-            project=project.project_id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy=gcp.bigquery.JobCopyArgs(
@@ -732,7 +734,8 @@ class Job(pulumi.CustomResource):
                 destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
                     kms_key_name=crypto_key.id,
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
 
@@ -1005,7 +1008,8 @@ class Job(pulumi.CustomResource):
                 autodetect=True,
                 source_format="NEWLINE_DELIMITED_JSON",
                 json_extension="GEOJSON",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
 
@@ -1104,6 +1108,11 @@ class Job(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("crypto_key",
             name="example-key",
             key_ring=key_ring.id)
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        encrypt_role = gcp.projects.IAMMember("encrypt_role",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",
             deletion_protection=False,
             dataset_id=dest_dataset.dataset_id,
@@ -1128,12 +1137,8 @@ class Job(pulumi.CustomResource):
         \"\"\",
             encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
                 kms_key_name=crypto_key.id,
-            ))
-        project = gcp.organizations.get_project(project_id="my-project-name")
-        encrypt_role = gcp.projects.IAMMember("encrypt_role",
-            project=project.project_id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy=gcp.bigquery.JobCopyArgs(
@@ -1157,7 +1162,8 @@ class Job(pulumi.CustomResource):
                 destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
                     kms_key_name=crypto_key.id,
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
 

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.netapp.VolumeArgs;
  * import com.pulumi.gcp.netapp.VolumeSnapshot;
  * import com.pulumi.gcp.netapp.VolumeSnapshotArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,7 +90,9 @@ import javax.annotation.Nullable;
  *             .location(defaultVolume.location())
  *             .volumeName(defaultVolume.name())
  *             .name("testvolumesnap")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultVolume)
+ *                 .build());
  * 
  *     }
  * }

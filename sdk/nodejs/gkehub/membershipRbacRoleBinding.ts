@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [primary],
  * });
  * const project = gcp.organizations.getProject({});
  * const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
@@ -40,6 +42,8 @@ import * as utilities from "../utilities";
  *         predefinedRole: "ANTHOS_SUPPORT",
  *     },
  *     location: "global",
+ * }, {
+ *     dependsOn: [membership],
  * });
  * ```
  *

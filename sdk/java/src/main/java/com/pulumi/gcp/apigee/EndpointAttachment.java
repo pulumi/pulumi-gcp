@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.EndpointAttachment;
  * import com.pulumi.gcp.apigee.EndpointAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,7 +83,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *         var apigeeEndpointAttachment = new EndpointAttachment("apigeeEndpointAttachment", EndpointAttachmentArgs.builder()
  *             .orgId(apigeeOrg.id())

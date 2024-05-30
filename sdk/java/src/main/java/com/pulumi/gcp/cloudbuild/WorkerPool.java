@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -106,7 +107,9 @@ import javax.annotation.Nullable;
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("my-network")
  *             .autoCreateSubnetworks(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var workerRange = new GlobalAddress("workerRange", GlobalAddressArgs.builder()
  *             .name("worker-pool-range")
@@ -120,7 +123,9 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(workerRange.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()
  *             .name("my-pool")
@@ -134,7 +139,9 @@ import javax.annotation.Nullable;
  *                 .peeredNetwork(network.id())
  *                 .peeredNetworkIpRange("/29")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(workerPoolConn)
+ *                 .build());
  * 
  *     }
  * }

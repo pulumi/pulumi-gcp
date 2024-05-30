@@ -236,7 +236,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
+//			edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 //				Region:         pulumi.String("us-west2"),
 //				Name:           pulumi.String("edgesecservice"),
 //				Description:    pulumi.String("linking policy to edge security service"),
@@ -260,7 +260,9 @@ import (
 //						Mask:   pulumi.String("0x8F00"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				edgeSecService,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -52,6 +52,10 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     zone: "us-central1-c",
  * });
+ * // Wait after service account creation to limit eventual consistency errors.
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [sa],
+ * });
  * const tpu = new gcp.tpu.V2Vm("tpu", {
  *     name: "test-tpu",
  *     zone: "us-central1-c",
@@ -89,9 +93,9 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     tags: ["foo"],
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
- * // Wait after service account creation to limit eventual consistency errors.
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
  *
  * ## Import

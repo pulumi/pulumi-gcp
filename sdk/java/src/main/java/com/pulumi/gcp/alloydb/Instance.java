@@ -40,15 +40,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
  * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -75,17 +76,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .cluster(defaultCluster.name())
- *             .instanceId("alloydb-instance")
- *             .instanceType("PRIMARY")
- *             .machineConfig(InstanceMachineConfigArgs.builder()
- *                 .cpuCount(2)
- *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-cluster")
  *             .addressType("INTERNAL")
@@ -99,6 +89,19 @@ import javax.annotation.Nullable;
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cluster(defaultCluster.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
@@ -119,6 +122,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
  * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
@@ -126,10 +133,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -153,40 +157,6 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
- *             .cluster(primary.name())
- *             .instanceId("alloydb-primary-instance")
- *             .instanceType("PRIMARY")
- *             .machineConfig(InstanceMachineConfigArgs.builder()
- *                 .cpuCount(2)
- *                 .build())
- *             .build());
- * 
- *         var secondary = new Cluster("secondary", ClusterArgs.builder()
- *             .clusterId("alloydb-secondary-cluster")
- *             .location("us-east1")
- *             .network(default_.id())
- *             .clusterType("SECONDARY")
- *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
- *                 .enabled(false)
- *                 .build())
- *             .secondaryConfig(ClusterSecondaryConfigArgs.builder()
- *                 .primaryClusterName(primary.name())
- *                 .build())
- *             .deletionPolicy("FORCE")
- *             .build());
- * 
- *         var secondaryInstance = new Instance("secondaryInstance", InstanceArgs.builder()
- *             .cluster(secondary.name())
- *             .instanceId("alloydb-secondary-instance")
- *             .instanceType(secondary.clusterType())
- *             .machineConfig(InstanceMachineConfigArgs.builder()
- *                 .cpuCount(2)
- *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
  *             .name("alloydb-secondary-instance")
  *             .addressType("INTERNAL")
@@ -200,6 +170,46 @@ import javax.annotation.Nullable;
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
+ * 
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
+ *             .cluster(primary.name())
+ *             .instanceId("alloydb-primary-instance")
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var secondary = new Cluster("secondary", ClusterArgs.builder()
+ *             .clusterId("alloydb-secondary-cluster")
+ *             .location("us-east1")
+ *             .network(default_.id())
+ *             .clusterType("SECONDARY")
+ *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
+ *             .secondaryConfig(ClusterSecondaryConfigArgs.builder()
+ *                 .primaryClusterName(primary.name())
+ *                 .build())
+ *             .deletionPolicy("FORCE")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryInstance)
+ *                 .build());
+ * 
+ *         var secondaryInstance = new Instance("secondaryInstance", InstanceArgs.builder()
+ *             .cluster(secondary.name())
+ *             .instanceId("alloydb-secondary-instance")
+ *             .instanceType(secondary.clusterType())
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }

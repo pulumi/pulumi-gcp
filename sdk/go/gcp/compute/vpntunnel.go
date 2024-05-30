@@ -50,25 +50,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
-//				Name:             pulumi.String("tunnel-1"),
-//				PeerIp:           pulumi.String("15.0.0.120"),
-//				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			vpnStaticIp, err := compute.NewAddress(ctx, "vpn_static_ip", &compute.AddressArgs{
 //				Name: pulumi.String("vpn-static-ip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
+//			frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
@@ -77,7 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
+//			frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-udp500"),
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
@@ -87,13 +75,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
+//			frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
 //				Name:       pulumi.String("fr-udp4500"),
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
 //				Target:     targetGateway.ID(),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+//				Name:             pulumi.String("tunnel-1"),
+//				PeerIp:           pulumi.String("15.0.0.120"),
+//				SharedSecret:     pulumi.String("a secret message"),
+//				TargetVpnGateway: targetGateway.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				frEsp,
+//				frUdp500,
+//				frUdp4500,
+//			}))
 //			if err != nil {
 //				return err
 //			}

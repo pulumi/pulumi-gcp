@@ -61,6 +61,12 @@ namespace Pulumi.Gcp.Apigee
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
     ///     });
     /// 
     ///     var env = new Gcp.Apigee.Environment("env", new()

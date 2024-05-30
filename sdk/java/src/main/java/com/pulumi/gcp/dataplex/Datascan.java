@@ -92,6 +92,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
@@ -103,8 +105,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecExcludeFieldsArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -118,6 +119,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var source = new Dataset("source", DatasetArgs.builder()
+ *             .datasetId("dataplex_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
+ *             .deleteContentsOnDestroy(true)
+ *             .build());
+ * 
  *         var fullProfile = new Datascan("fullProfile", DatascanArgs.builder()
  *             .location("us-central1")
  *             .displayName("Full Datascan Profile")
@@ -150,15 +159,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .project("my-project-name")
- *             .build());
- * 
- *         var source = new Dataset("source", DatasetArgs.builder()
- *             .datasetId("dataplex_dataset")
- *             .friendlyName("test")
- *             .description("This is a test description")
- *             .location("US")
- *             .deleteContentsOnDestroy(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(source)
+ *                 .build());
  * 
  *     }
  * }

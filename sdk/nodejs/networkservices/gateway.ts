@@ -111,6 +111,8 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
  * });
  * ```
  * ### Network Services Gateway Multiple Swp Same Network
@@ -178,6 +180,8 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
  * });
  * const gateway2 = new gcp.networkservices.Gateway("gateway2", {
  *     name: "my-gateway2",
@@ -191,6 +195,8 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
  * });
  * ```
  *

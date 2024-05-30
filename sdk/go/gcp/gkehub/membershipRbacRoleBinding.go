@@ -52,7 +52,9 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primary,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -68,7 +70,9 @@ import (
 //					PredefinedRole: pulumi.String("ANTHOS_SUPPORT"),
 //				},
 //				Location: pulumi.String("global"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				membership,
+//			}))
 //			if err != nil {
 //				return err
 //			}

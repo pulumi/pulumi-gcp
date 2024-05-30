@@ -92,6 +92,8 @@ import * as utilities from "../utilities";
  *     cmekSettings: {
  *         kmsKeyName: key.id,
  *     },
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  *

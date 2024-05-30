@@ -123,7 +123,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Service:          pulumi.String("servicenetworking.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
 //			})
@@ -132,7 +132,9 @@ import (
 //			}
 //			vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
 //				Name: pulumi.String("vpc-network"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -152,7 +154,9 @@ import (
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -177,7 +181,9 @@ import (
 //					return invoke.Result, nil
 //				}).(pulumi.StringPtrOutput),
 //				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
 //			if err != nil {
 //				return err
 //			}

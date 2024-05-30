@@ -251,6 +251,12 @@ namespace Pulumi.Gcp.Compute
     ///                 Mask = "0x8F00",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             edgeSecService,
+    ///         },
     ///     });
     /// 
     ///     var policyRuleNetworkMatch = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_network_match", new()

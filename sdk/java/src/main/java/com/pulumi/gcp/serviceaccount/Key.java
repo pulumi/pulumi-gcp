@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *             .metadata(ObjectMetaArgs.builder()
  *                 .name("google-application-credentials")
  *                 .build())
- *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+ *             .data(Map.of("credentials.json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
  *             .build());
  * 
  *     }

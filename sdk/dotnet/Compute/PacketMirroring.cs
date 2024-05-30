@@ -96,6 +96,12 @@ namespace Pulumi.Gcp.Compute
     ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         NetworkTier = "PREMIUM",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultSubnetwork,
+    ///         },
     ///     });
     /// 
     ///     var foobar = new Gcp.Compute.PacketMirroring("foobar", new()

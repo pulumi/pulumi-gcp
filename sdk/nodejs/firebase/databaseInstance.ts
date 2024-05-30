@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     instanceId: "rtdb-project-default-rtdb",
  *     type: "DEFAULT_DATABASE",
+ * }, {
+ *     dependsOn: [firebaseDatabase],
  * });
  * ```
  *

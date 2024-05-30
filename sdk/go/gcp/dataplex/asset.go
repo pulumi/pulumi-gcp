@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "basic_bucket", &storage.BucketArgs{
+//			basicBucket, err := storage.NewBucket(ctx, "basic_bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("bucket"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -80,7 +80,9 @@ import (
 //					"my-asset": pulumi.String("exists"),
 //				},
 //				Project: pulumi.String("my-project-name"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicBucket,
+//			}))
 //			if err != nil {
 //				return err
 //			}

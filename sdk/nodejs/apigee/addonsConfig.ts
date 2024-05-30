@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
  *     name: "apigee-network",
  *     project: current.then(current => current.project),
+ * }, {
+ *     dependsOn: [compute],
  * });
  * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
  *     name: "apigee-range",
@@ -76,6 +78,11 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     billingType: "EVALUATION",
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigee,
+ *     ],
  * });
  * const testOrganization = new gcp.apigee.AddonsConfig("test_organization", {
  *     org: org.name,

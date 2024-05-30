@@ -36,14 +36,6 @@ namespace Pulumi.Gcp.Logging
     ///         Parent = "organizations/123456789",
     ///     });
     /// 
-    ///     var example = new Gcp.Logging.FolderSettings("example", new()
-    ///     {
-    ///         DisableDefaultSink = true,
-    ///         Folder = myFolder.FolderId,
-    ///         KmsKeyName = "kms-key",
-    ///         StorageLocation = "us-central1",
-    ///     });
-    /// 
     ///     var settings = Gcp.Logging.GetFolderSettings.Invoke(new()
     ///     {
     ///         Folder = myFolder.FolderId,
@@ -54,6 +46,20 @@ namespace Pulumi.Gcp.Logging
     ///         CryptoKeyId = "kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:{settings.Apply(getFolderSettingsResult =&gt; getFolderSettingsResult.KmsServiceAccountId)}",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Logging.FolderSettings("example", new()
+    ///     {
+    ///         DisableDefaultSink = true,
+    ///         Folder = myFolder.FolderId,
+    ///         KmsKeyName = "kms-key",
+    ///         StorageLocation = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             iam,
+    ///         },
     ///     });
     /// 
     /// });

@@ -59,6 +59,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///                 PeeringMode = "PRIVATE_SERVICE_ACCESS",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultConnection,
+    ///         },
     ///     });
     /// 
     /// });

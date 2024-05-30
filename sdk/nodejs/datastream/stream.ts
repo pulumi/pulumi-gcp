@@ -197,6 +197,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     customerManagedEncryptionKey: "kms-name",
+ * }, {
+ *     dependsOn: [keyUser],
  * });
  * ```
  * ### Datastream Stream Postgresql
@@ -404,14 +406,16 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const db = new gcp.sql.Database("db", {
- *     name: "db",
- *     instance: instance.name,
- * });
  * const user = new gcp.sql.User("user", {
  *     name: "user",
  *     instance: instance.name,
  *     password: "password",
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     name: "db",
+ *     instance: instance.name,
+ * }, {
+ *     dependsOn: [user],
  * });
  * const source = new gcp.datastream.ConnectionProfile("source", {
  *     displayName: "SQL Server Source",
@@ -653,6 +657,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     backfillNone: {},
+ * }, {
+ *     dependsOn: [bigqueryKeyUser],
  * });
  * ```
  *

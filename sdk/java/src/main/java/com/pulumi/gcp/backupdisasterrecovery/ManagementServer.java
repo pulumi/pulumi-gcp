@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServer;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServerArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.ManagementServerNetworkArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,7 +79,9 @@ import javax.annotation.Nullable;
  *                 .network(default_.id())
  *                 .peeringMode("PRIVATE_SERVICE_ACCESS")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultConnection)
+ *                 .build());
  * 
  *     }
  * }

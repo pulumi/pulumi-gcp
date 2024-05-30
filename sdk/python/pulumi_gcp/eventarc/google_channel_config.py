@@ -219,7 +219,8 @@ class GoogleChannelConfig(pulumi.CustomResource):
             location="us-west1",
             name="channel",
             project=test_project.project_id,
-            crypto_key_name=key1["id"])
+            crypto_key_name=key1["id"],
+            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import
@@ -286,7 +287,8 @@ class GoogleChannelConfig(pulumi.CustomResource):
             location="us-west1",
             name="channel",
             project=test_project.project_id,
-            crypto_key_name=key1["id"])
+            crypto_key_name=key1["id"],
+            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import

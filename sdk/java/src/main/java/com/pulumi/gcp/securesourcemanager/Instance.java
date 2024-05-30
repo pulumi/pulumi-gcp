@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -120,7 +121,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .instanceId("my-instance")
  *             .kmsKey(cryptoKey.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
  * 
  *     }
  * }
@@ -155,11 +158,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -225,6 +229,13 @@ import javax.annotation.Nullable;
  *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
+ *         // ca pool IAM permissions can take time to propagate
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(caPoolBinding)
+ *                 .build());
+ * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceId("my-instance")
  *             .location("us-central1")
@@ -232,12 +243,11 @@ import javax.annotation.Nullable;
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
  *                 .build())
- *             .build());
- * 
- *         // ca pool IAM permissions can take time to propagate
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     rootCa,
+ *                     wait60Seconds)
+ *                 .build());
  * 
  *     }
  * }

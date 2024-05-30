@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.EnvGroup;
  * import com.pulumi.gcp.apigee.EnvGroupArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -84,7 +85,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *         var envGrp = new EnvGroup("envGrp", EnvGroupArgs.builder()
  *             .name("my-envgroup")

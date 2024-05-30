@@ -402,6 +402,8 @@ import * as utilities from "../utilities";
  *             }).then(invoke => invoke.result),
  *         },
  *     },
+ * }, {
+ *     dependsOn: [defaultAuthority],
  * });
  * ```
  * ### Privateca Certificate Custom Ski
@@ -495,6 +497,8 @@ import * as utilities from "../utilities";
  *             }).then(invoke => invoke.result),
  *         },
  *     },
+ * }, {
+ *     dependsOn: [defaultAuthority],
  * });
  * ```
  *

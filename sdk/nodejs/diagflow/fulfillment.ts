@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *             name: "wrench",
  *         },
  *     },
+ * }, {
+ *     dependsOn: [basicAgent],
  * });
  * ```
  *

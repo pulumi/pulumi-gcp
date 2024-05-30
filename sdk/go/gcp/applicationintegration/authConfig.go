@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := applicationintegration.NewClient(ctx, "client", &applicationintegration.ClientArgs{
+//			client, err := applicationintegration.NewClient(ctx, "client", &applicationintegration.ClientArgs{
 //				Location: pulumi.String("us-west1"),
 //			})
 //			if err != nil {
@@ -54,7 +54,9 @@ import (
 //						Password: pulumi.String("test-password"),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				client,
+//			}))
 //			if err != nil {
 //				return err
 //			}

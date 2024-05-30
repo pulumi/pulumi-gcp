@@ -67,6 +67,12 @@ namespace Pulumi.Gcp.Netapp
     ///         Location = defaultVolume.Location,
     ///         VolumeName = defaultVolume.Name,
     ///         Name = "testvolumesnap",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultVolume,
+    ///         },
     ///     });
     /// 
     /// });

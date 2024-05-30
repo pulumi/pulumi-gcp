@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.DataCatalog
     ///         DisplayName = "dob",
     ///         Description = "The users date of birth",
     ///         ParentPolicyTag = parentPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             childPolicy,
+    ///         },
     ///     });
     /// 
     /// });

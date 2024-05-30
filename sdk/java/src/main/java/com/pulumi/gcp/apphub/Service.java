@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
  * import com.pulumi.gcp.apphub.Service;
  * import com.pulumi.gcp.apphub.ServiceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,18 +96,24 @@ import javax.annotation.Nullable;
  * 
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(computeServiceProject)
+ *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // VPC network
  *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // backend subnet
  *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
@@ -126,7 +133,9 @@ import javax.annotation.Nullable;
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
  *                 .port("80")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // backend service
  *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
@@ -157,7 +166,9 @@ import javax.annotation.Nullable;
  * 
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(forwardingRule)
+ *                 .build());
  * 
  *         var example = new Service("example", ServiceArgs.builder()
  *             .location("us-central1")
@@ -210,6 +221,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesArgs;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesEnvironmentArgs;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesCriticalityArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -246,18 +258,24 @@ import javax.annotation.Nullable;
  * 
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(computeServiceProject)
+ *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
  *             .serviceProjectAttachmentId(serviceProject.projectId())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // VPC network
  *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()
  *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // backend subnet
  *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()
@@ -277,7 +295,9 @@ import javax.annotation.Nullable;
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
  *                 .port("80")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
  * 
  *         // backend service
  *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()
@@ -308,7 +328,9 @@ import javax.annotation.Nullable;
  * 
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(forwardingRule)
+ *                 .build());
  * 
  *         var example = new Service("example", ServiceArgs.builder()
  *             .location("us-central1")

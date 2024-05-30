@@ -76,10 +76,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				acceptanceProject,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			acceptance, err := projects.NewService(ctx, "acceptance", &projects.ServiceArgs{
 //				Project: acceptanceProject.ProjectId,
 //				Service: pulumi.String("vmwareengine.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -89,12 +99,6 @@ import (
 //				Location:    pulumi.String("us-west1"),
 //				Type:        pulumi.String("LEGACY"),
 //				Description: pulumi.String("VMwareEngine legacy network sample"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
 //			})
 //			if err != nil {
 //				return err

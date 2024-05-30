@@ -61,6 +61,15 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var source = new Gcp.BigQuery.Dataset("source", new()
+    ///     {
+    ///         DatasetId = "dataplex_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
     ///     var fullProfile = new Gcp.DataPlex.Datascan("full_profile", new()
     ///     {
     ///         Location = "us-central1",
@@ -112,15 +121,12 @@ namespace Pulumi.Gcp.DataPlex
     ///             },
     ///         },
     ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var source = new Gcp.BigQuery.Dataset("source", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         DatasetId = "dataplex_dataset",
-    ///         FriendlyName = "test",
-    ///         Description = "This is a test description",
-    ///         Location = "US",
-    ///         DeleteContentsOnDestroy = true,
+    ///         DependsOn =
+    ///         {
+    ///             source,
+    ///         },
     ///     });
     /// 
     /// });

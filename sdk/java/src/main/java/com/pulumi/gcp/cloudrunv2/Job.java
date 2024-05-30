@@ -155,6 +155,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamMember;
  * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -232,7 +233,9 @@ import javax.annotation.Nullable;
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secret)
+ *                 .build());
  * 
  *     }
  * }
@@ -388,16 +391,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
  * import com.pulumi.gcp.cloudrunv2.Job;
  * import com.pulumi.gcp.cloudrunv2.JobArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import com.pulumi.gcp.secretmanager.SecretIamMember;
- * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -417,6 +421,21 @@ import javax.annotation.Nullable;
  *                 .auto()
  *                 .build())
  *             .build());
+ * 
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()
+ *             .secret(secret.name())
+ *             .secretData("secret-data")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
+ *             .secretId(secret.id())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secret)
+ *                 .build());
  * 
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
@@ -444,20 +463,11 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()
- *             .secret(secret.name())
- *             .secretData("secret-data")
- *             .build());
- * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
- *             .secretId(secret.id())
- *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     secret_version_data,
+ *                     secret_access)
+ *                 .build());
  * 
  *     }
  * }

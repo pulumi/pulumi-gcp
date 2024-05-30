@@ -91,6 +91,12 @@ namespace Pulumi.Gcp.EdgeContainer
     ///             { "my_key", "my_val" },
     ///             { "other_key", "other_val" },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             nodePool,
+    ///         },
     ///     });
     /// 
     /// });

@@ -579,7 +579,8 @@ class AuthConfig(pulumi.CustomResource):
                     username="test-username",
                     password="test-password",
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[client]))
         ```
 
         ## Import
@@ -650,7 +651,8 @@ class AuthConfig(pulumi.CustomResource):
                     username="test-username",
                     password="test-password",
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[client]))
         ```
 
         ## Import

@@ -314,6 +314,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gcs_pubsub_publishing,
+    ///         },
     ///     });
     /// 
     ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
@@ -321,6 +327,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             invoking,
+    ///         },
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -328,6 +340,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             event_receiving,
+    ///         },
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -379,6 +397,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                     Value = trigger_bucket.Name,
     ///                 },
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             event_receiving,
+    ///             artifactregistry_reader,
     ///         },
     ///     });
     /// 
@@ -441,6 +466,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             invoking,
+    ///         },
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -448,6 +479,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             event_receiving,
+    ///         },
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -512,6 +549,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             event_receiving,
+    ///             artifactregistry_reader,
+    ///         },
     ///     });
     /// 
     /// });
@@ -574,6 +618,14 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     var wait60s = new Time.Index.Sleep("wait_60s", new()
     ///     {
     ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             logWriter,
+    ///             artifactRegistryWriter,
+    ///             storageObjectAdmin,
+    ///         },
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -600,6 +652,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             MaxInstanceCount = 1,
     ///             AvailableMemory = "256M",
     ///             TimeoutSeconds = 60,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60s,
     ///         },
     ///     });
     /// 
@@ -653,6 +711,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
+    ///     var secretSecretVersion = new Gcp.SecretManager.SecretVersion("secret", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret",
+    ///         Enabled = true,
+    ///     });
+    /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
     ///     {
     ///         Name = "function-secret",
@@ -687,13 +752,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var secretSecretVersion = new Gcp.SecretManager.SecretVersion("secret", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret",
-    ///         Enabled = true,
+    ///         DependsOn =
+    ///         {
+    ///             secretSecretVersion,
+    ///         },
     ///     });
     /// 
     /// });
@@ -742,6 +806,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
+    ///     var secretSecretVersion = new Gcp.SecretManager.SecretVersion("secret", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret",
+    ///         Enabled = true,
+    ///     });
+    /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
     ///     {
     ///         Name = "function-secret",
@@ -775,13 +846,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var secretSecretVersion = new Gcp.SecretManager.SecretVersion("secret", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret",
-    ///         Enabled = true,
+    ///         DependsOn =
+    ///         {
+    ///             secretSecretVersion,
+    ///         },
     ///     });
     /// 
     /// });
@@ -894,25 +964,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Format = "DOCKER",
     ///     });
     /// 
-    ///     var encoded_ar_repo = new Gcp.ArtifactRegistry.Repository("encoded-ar-repo", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "cmek-repo",
-    ///         Format = "DOCKER",
-    ///         KmsKeyName = "cmek-key",
-    ///     });
-    /// 
-    ///     var binding = new Gcp.ArtifactRegistry.RepositoryIamBinding("binding", new()
-    ///     {
-    ///         Location = encoded_ar_repo.Location,
-    ///         Repository = encoded_ar_repo.Name,
-    ///         Role = "roles/artifactregistry.admin",
-    ///         Members = new[]
-    ///         {
-    ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcf-admin-robot.iam.gserviceaccount.com",
-    ///         },
-    ///     });
-    /// 
     ///     var gcfCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("gcf_cmek_keyuser", new()
     ///     {
     ///         CryptoKeyId = "cmek-key",
@@ -924,6 +975,37 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gs-project-accounts.iam.gserviceaccount.com",
     ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@serverless-robot-prod.iam.gserviceaccount.com",
     ///             eaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             eaSa,
+    ///         },
+    ///     });
+    /// 
+    ///     var encoded_ar_repo = new Gcp.ArtifactRegistry.Repository("encoded-ar-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "cmek-repo",
+    ///         Format = "DOCKER",
+    ///         KmsKeyName = "cmek-key",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gcfCmekKeyuser,
+    ///         },
+    ///     });
+    /// 
+    ///     var binding = new Gcp.ArtifactRegistry.RepositoryIamBinding("binding", new()
+    ///     {
+    ///         Location = encoded_ar_repo.Location,
+    ///         Repository = encoded_ar_repo.Name,
+    ///         Role = "roles/artifactregistry.admin",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcf-admin-robot.iam.gserviceaccount.com",
     ///         },
     ///     });
     /// 
@@ -952,6 +1034,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             MaxInstanceCount = 1,
     ///             AvailableMemory = "256M",
     ///             TimeoutSeconds = 60,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gcfCmekKeyuser,
     ///         },
     ///     });
     /// 

@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     labels: {
  *         key: "value",
  *     },
+ * }, {
+ *     dependsOn: [scope],
  * });
  * ```
  *

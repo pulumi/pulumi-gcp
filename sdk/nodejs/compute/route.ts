@@ -165,6 +165,11 @@ import * as utilities from "../utilities";
  *         "tag1",
  *         "tag2",
  *     ],
+ * }, {
+ *     dependsOn: [
+ *         peering1,
+ *         peering2,
+ *     ],
  * });
  * ```
  *

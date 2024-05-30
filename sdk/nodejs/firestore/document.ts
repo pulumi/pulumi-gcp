@@ -37,16 +37,22 @@ import * as utilities from "../utilities";
  *     name: "project-id",
  *     orgId: "123456789",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
  * const firestore = new gcp.projects.Service("firestore", {
  *     project: project.projectId,
  *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * const database = new gcp.firestore.Database("database", {
  *     project: project.projectId,
  *     name: "(default)",
  *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
+ * }, {
+ *     dependsOn: [firestore],
  * });
  * const mydoc = new gcp.firestore.Document("mydoc", {
  *     project: project.projectId,
@@ -68,16 +74,22 @@ import * as utilities from "../utilities";
  *     name: "project-id",
  *     orgId: "123456789",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
  * const firestore = new gcp.projects.Service("firestore", {
  *     project: project.projectId,
  *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * const database = new gcp.firestore.Database("database", {
  *     project: project.projectId,
  *     name: "(default)",
  *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
+ * }, {
+ *     dependsOn: [firestore],
  * });
  * const mydoc = new gcp.firestore.Document("mydoc", {
  *     project: project.projectId,

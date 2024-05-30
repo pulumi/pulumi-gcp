@@ -103,6 +103,12 @@ namespace Pulumi.Gcp.Storage
         ///         {
         ///             DefaultKmsKeyName = "your-crypto-key-id",
         ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             binding,
+        ///         },
         ///     });
         /// 
         /// });
@@ -202,6 +208,12 @@ namespace Pulumi.Gcp.Storage
         ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
         ///         {
         ///             DefaultKmsKeyName = "your-crypto-key-id",
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             binding,
         ///         },
         ///     });
         /// 

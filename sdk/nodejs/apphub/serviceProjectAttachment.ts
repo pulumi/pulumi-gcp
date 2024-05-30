@@ -21,8 +21,12 @@ import * as utilities from "../utilities";
  *     name: "Service Project",
  *     orgId: "123456789",
  * });
- * const example = new gcp.apphub.ServiceProjectAttachment("example", {serviceProjectAttachmentId: serviceProject.projectId});
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
+ * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ *     dependsOn: [serviceProject],
+ * });
+ * const example = new gcp.apphub.ServiceProjectAttachment("example", {serviceProjectAttachmentId: serviceProject.projectId}, {
+ *     dependsOn: [wait120s],
+ * });
  * ```
  * ### Service Project Attachment Full
  *
@@ -36,11 +40,15 @@ import * as utilities from "../utilities";
  *     name: "Service Project Full",
  *     orgId: "123456789",
  * });
+ * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ *     dependsOn: [serviceProjectFull],
+ * });
  * const example2 = new gcp.apphub.ServiceProjectAttachment("example2", {
  *     serviceProjectAttachmentId: serviceProjectFull.projectId,
  *     serviceProject: serviceProjectFull.projectId,
+ * }, {
+ *     dependsOn: [wait120s],
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
  * ```
  *
  * ## Import

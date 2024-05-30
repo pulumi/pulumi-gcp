@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.ScopeArgs;
  * import com.pulumi.gcp.gkehub.MembershipBinding;
  * import com.pulumi.gcp.gkehub.MembershipBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +77,9 @@ import javax.annotation.Nullable;
  *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primary)
+ *                 .build());
  * 
  *         var scope = new Scope("scope", ScopeArgs.builder()
  *             .scopeId("tf-test-scope_39249")
@@ -92,7 +95,11 @@ import javax.annotation.Nullable;
  *                 Map.entry("keya", "valuea"),
  *                 Map.entry("keyc", "valuec")
  *             ))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     membership,
+ *                     scope)
+ *                 .build());
  * 
  *     }
  * }

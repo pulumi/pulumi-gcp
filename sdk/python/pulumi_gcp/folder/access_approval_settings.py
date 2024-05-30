@@ -330,7 +330,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
             active_key_version=crypto_key_version.name,
             enrolled_services=[gcp.folder.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -435,7 +436,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
             active_key_version=crypto_key_version.name,
             enrolled_services=[gcp.folder.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

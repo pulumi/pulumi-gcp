@@ -255,22 +255,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Using with Instance Group Manager
- * 
- * Instance Templates cannot be updated after creation with the Google
- * Cloud Platform API. In order to update an Instance Template, this provider will
- * create a replacement. In order to effectively
- * use an Instance Template resource with an [Instance Group Manager resource](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html).
- * Either omit the Instance Template `name` attribute, or specify a partial name
- * with `name_prefix`. Example:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * With this setup, this provider generates a unique name for your Instance
- * Template and can then update the Instance Group manager without conflict before
- * destroying the previous Instance Template.
- * 
  * ## Deploying the Latest Image
  * 
  * A common way to use instance templates and managed instance groups is to deploy the

@@ -354,6 +354,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -406,19 +407,25 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .role("roles/run.invoker")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gcs_pubsub_publishing)
+ *                 .build());
  * 
  *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(invoking)
+ *                 .build());
  * 
  *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(event_receiving)
+ *                 .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
@@ -454,7 +461,11 @@ import javax.annotation.Nullable;
  *                     .value(trigger_bucket.name())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     event_receiving,
+ *                     artifactregistry_reader)
+ *                 .build());
  * 
  *     }
  * }
@@ -486,6 +497,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -541,13 +553,17 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(invoking)
+ *                 .build());
  * 
  *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
  *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(event_receiving)
+ *                 .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("gcf-function")
@@ -594,7 +610,11 @@ import javax.annotation.Nullable;
  *                         .operator("match-path-pattern")
  *                         .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     event_receiving,
+ *                     artifactregistry_reader)
+ *                 .build());
  * 
  *     }
  * }
@@ -627,6 +647,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -681,7 +702,12 @@ import javax.annotation.Nullable;
  *         // builder permissions need to stablize before it can pull the source zip
  *         var wait60s = new Sleep("wait60s", SleepArgs.builder()
  *             .createDuration("60s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     logWriter,
+ *                     artifactRegistryWriter,
+ *                     storageObjectAdmin)
+ *                 .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-v2")
@@ -703,7 +729,9 @@ import javax.annotation.Nullable;
  *                 .availableMemory("256M")
  *                 .timeoutSeconds(60)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60s)
+ *                 .build());
  * 
  *         ctx.export("functionUri", function.serviceConfig().applyValue(serviceConfig -> serviceConfig.uri()));
  *     }
@@ -729,14 +757,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -774,6 +803,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
+ *             .secret(secret.name())
+ *             .secretData("secret")
+ *             .enabled(true)
  *             .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
@@ -801,13 +836,9 @@ import javax.annotation.Nullable;
  *                     .version("latest")
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
- *             .secret(secret.name())
- *             .secretData("secret")
- *             .enabled(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secretSecretVersion)
+ *                 .build());
  * 
  *     }
  * }
@@ -832,14 +863,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -879,6 +911,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
+ *             .secret(secret.name())
+ *             .secretData("secret")
+ *             .enabled(true)
+ *             .build());
+ * 
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-secret")
  *             .location("us-central1")
@@ -903,13 +941,9 @@ import javax.annotation.Nullable;
  *                     .secret(secret.secretId())
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *         var secretSecretVersion = new SecretVersion("secretSecretVersion", SecretVersionArgs.builder()
- *             .secret(secret.name())
- *             .secretData("secret")
- *             .enabled(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secretSecretVersion)
+ *                 .build());
  * 
  *     }
  * }
@@ -1024,16 +1058,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.artifactregistry.Repository;
  * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
- * import com.pulumi.gcp.artifactregistry.RepositoryIamBinding;
- * import com.pulumi.gcp.artifactregistry.RepositoryIamBindingArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
  * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.artifactregistry.RepositoryIamBinding;
+ * import com.pulumi.gcp.artifactregistry.RepositoryIamBindingArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -1075,20 +1110,6 @@ import javax.annotation.Nullable;
  *             .format("DOCKER")
  *             .build());
  * 
- *         var encoded_ar_repo = new Repository("encoded-ar-repo", RepositoryArgs.builder()
- *             .location("us-central1")
- *             .repositoryId("cmek-repo")
- *             .format("DOCKER")
- *             .kmsKeyName("cmek-key")
- *             .build());
- * 
- *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
- *             .location(encoded_ar_repo.location())
- *             .repository(encoded_ar_repo.name())
- *             .role("roles/artifactregistry.admin")
- *             .members(String.format("serviceAccount:service-%s{@literal @}gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
  *         var gcfCmekKeyuser = new CryptoKeyIAMBinding("gcfCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId("cmek-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
@@ -1098,6 +1119,24 @@ import javax.annotation.Nullable;
  *                 String.format("serviceAccount:service-%s{@literal @}gs-project-accounts.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
  *                 String.format("serviceAccount:service-%s{@literal @}serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
  *                 eaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(eaSa)
+ *                 .build());
+ * 
+ *         var encoded_ar_repo = new Repository("encoded-ar-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("cmek-repo")
+ *             .format("DOCKER")
+ *             .kmsKeyName("cmek-key")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gcfCmekKeyuser)
+ *                 .build());
+ * 
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
+ *             .location(encoded_ar_repo.location())
+ *             .repository(encoded_ar_repo.name())
+ *             .role("roles/artifactregistry.admin")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
@@ -1121,7 +1160,9 @@ import javax.annotation.Nullable;
  *                 .availableMemory("256M")
  *                 .timeoutSeconds(60)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gcfCmekKeyuser)
+ *                 .build());
  * 
  *     }
  * }

@@ -468,15 +468,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
-        project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
         vertex_range = gcp.compute.GlobalAddress("vertex_range",
             name="address-name",
             purpose="VPC_PEERING",
@@ -487,6 +478,16 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=vertex_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
+        project = gcp.organizations.get_project()
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Psc
 
@@ -596,15 +597,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
-        project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
         vertex_range = gcp.compute.GlobalAddress("vertex_range",
             name="address-name",
             purpose="VPC_PEERING",
@@ -615,6 +607,16 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=vertex_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
+        project = gcp.organizations.get_project()
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Psc
 

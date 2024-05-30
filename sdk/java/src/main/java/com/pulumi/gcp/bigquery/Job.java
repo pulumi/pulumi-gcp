@@ -261,6 +261,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigquery.JobArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobLoadArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -323,7 +324,9 @@ import javax.annotation.Nullable;
  *                 .sourceFormat("NEWLINE_DELIMITED_JSON")
  *                 .jsonExtension("GEOJSON")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(object)
+ *                 .build());
  * 
  *     }
  * }
@@ -442,17 +445,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
  * import com.pulumi.gcp.bigquery.Job;
  * import com.pulumi.gcp.bigquery.JobArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationTableArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationEncryptionConfigurationArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -523,6 +527,16 @@ import javax.annotation.Nullable;
  *             .keyRing(keyRing.id())
  *             .build());
  * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId("my-project-name")
+ *             .build());
+ * 
+ *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:bq-%s{@literal @}bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var dest = new Table("dest", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(destDataset.datasetId())
@@ -549,17 +563,9 @@ import javax.annotation.Nullable;
  *             .encryptionConfiguration(TableEncryptionConfigurationArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .projectId("my-project-name")
- *             .build());
- * 
- *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:bq-%s{@literal @}bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(encryptRole)
+ *                 .build());
  * 
  *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_copy")
@@ -584,7 +590,9 @@ import javax.annotation.Nullable;
  *                     .kmsKeyName(cryptoKey.id())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(encryptRole)
+ *                 .build());
  * 
  *     }
  * }

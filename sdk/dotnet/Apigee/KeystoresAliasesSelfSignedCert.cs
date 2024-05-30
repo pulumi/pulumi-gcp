@@ -48,18 +48,36 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Project = project.ProjectId,
     ///         ServiceName = "servicenetworking.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigee,
+    ///         },
     ///     });
     /// 
     ///     var compute = new Gcp.Projects.Service("compute", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         ServiceName = "compute.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
+    ///         },
     ///     });
     /// 
     ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
     ///         Name = "apigee-network",
     ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
     ///     });
     /// 
     ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
@@ -80,6 +98,12 @@ namespace Pulumi.Gcp.Apigee
     ///         {
     ///             apigeeRange.Name,
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             servicenetworking,
+    ///         },
     ///     });
     /// 
     ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
@@ -87,6 +111,13 @@ namespace Pulumi.Gcp.Apigee
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = project.ProjectId,
     ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigee,
+    ///         },
     ///     });
     /// 
     ///     var apigeeEnvironmentKeystoreSsAlias = new Gcp.Apigee.Environment("apigee_environment_keystore_ss_alias", new()

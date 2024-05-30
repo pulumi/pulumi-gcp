@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.applicationintegration.AuthConfigArgs;
  * import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialArgs;
  * import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialUsernameAndPasswordArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,7 +74,9 @@ import javax.annotation.Nullable;
  *                     .password("test-password")
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(client)
+ *                 .build());
  * 
  *     }
  * }

@@ -105,7 +105,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
+//			binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
 //				CryptoKeyId: pulumi.String("your-crypto-key-id"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
@@ -121,7 +121,9 @@ import (
 //				Encryption: &storage.BucketEncryptionArgs{
 //					DefaultKmsKeyName: pulumi.String("your-crypto-key-id"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				binding,
+//			}))
 //			if err != nil {
 //				return err
 //			}

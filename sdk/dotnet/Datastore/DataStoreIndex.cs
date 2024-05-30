@@ -62,6 +62,12 @@ namespace Pulumi.Gcp.Datastore
     ///                 Direction = "ASCENDING",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             database,
+    ///         },
     ///     });
     /// 
     /// });

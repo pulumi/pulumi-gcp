@@ -69,6 +69,10 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "cloudrun-sql",
  *     region: "us-central1",
@@ -119,16 +123,16 @@ import * as utilities from "../utilities";
  *         type: "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
  *         percent: 100,
  *     }],
+ * }, {
+ *     dependsOn: [secret_version_data],
  * });
  * const project = gcp.organizations.getProject({});
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
  * });
  * ```
  * ### Cloudrunv2 Service Vpcaccess
@@ -241,6 +245,10 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
@@ -265,16 +273,16 @@ import * as utilities from "../utilities";
  *             }],
  *         }],
  *     },
+ * }, {
+ *     dependsOn: [secret_version_data],
  * });
  * const project = gcp.organizations.getProject({});
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
  * });
  * ```
  * ### Cloudrunv2 Service Multicontainer

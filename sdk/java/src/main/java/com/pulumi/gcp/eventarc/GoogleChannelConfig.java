@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfig;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -75,7 +76,9 @@ import javax.annotation.Nullable;
  *             .name("channel")
  *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .cryptoKeyName(key1.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(key1Member)
+ *                 .build());
  * 
  *     }
  * }

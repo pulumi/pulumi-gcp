@@ -227,18 +227,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuild.NewTrigger(ctx, "service-account-trigger", &cloudbuild.TriggerArgs{
-//				TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
-//					BranchName: pulumi.String("main"),
-//					RepoName:   pulumi.String("my-repo"),
-//				},
-//				ServiceAccount: cloudbuildServiceAccount.ID(),
-//				Filename:       pulumi.String("cloudbuild.yaml"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "act_as", &projects.IAMMemberArgs{
+//			actAs, err := projects.NewIAMMember(ctx, "act_as", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -248,13 +237,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "logs_writer", &projects.IAMMemberArgs{
+//			logsWriter, err := projects.NewIAMMember(ctx, "logs_writer", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "service-account-trigger", &cloudbuild.TriggerArgs{
+//				TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+//					BranchName: pulumi.String("main"),
+//					RepoName:   pulumi.String("my-repo"),
+//				},
+//				ServiceAccount: cloudbuildServiceAccount.ID(),
+//				Filename:       pulumi.String("cloudbuild.yaml"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				actAs,
+//				logsWriter,
+//			}))
 //			if err != nil {
 //				return err
 //			}

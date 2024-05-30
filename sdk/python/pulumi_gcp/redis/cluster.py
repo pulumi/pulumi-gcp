@@ -561,20 +561,6 @@ class Cluster(pulumi.CustomResource):
         producer_net = gcp.compute.Network("producer_net",
             name="mynetwork",
             auto_create_subnetworks=False)
-        cluster_ha = gcp.redis.Cluster("cluster-ha",
-            name="ha-cluster",
-            shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
-            region="us-central1",
-            replica_count=1,
-            node_type="REDIS_SHARED_CORE_NANO",
-            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            redis_configs={
-                "maxmemory-policy": "volatile-ttl",
-            })
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="mysubnet",
             ip_cidr_range="10.0.0.248/29",
@@ -589,6 +575,21 @@ class Cluster(pulumi.CustomResource):
             psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
                 subnetworks=[producer_subnet.id],
             ))
+        cluster_ha = gcp.redis.Cluster("cluster-ha",
+            name="ha-cluster",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -670,20 +671,6 @@ class Cluster(pulumi.CustomResource):
         producer_net = gcp.compute.Network("producer_net",
             name="mynetwork",
             auto_create_subnetworks=False)
-        cluster_ha = gcp.redis.Cluster("cluster-ha",
-            name="ha-cluster",
-            shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
-            region="us-central1",
-            replica_count=1,
-            node_type="REDIS_SHARED_CORE_NANO",
-            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            redis_configs={
-                "maxmemory-policy": "volatile-ttl",
-            })
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="mysubnet",
             ip_cidr_range="10.0.0.248/29",
@@ -698,6 +685,21 @@ class Cluster(pulumi.CustomResource):
             psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
                 subnetworks=[producer_subnet.id],
             ))
+        cluster_ha = gcp.redis.Cluster("cluster-ha",
+            name="ha-cluster",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

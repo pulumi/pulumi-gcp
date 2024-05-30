@@ -177,6 +177,12 @@ namespace Pulumi.Gcp.Redis
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_4_0",
     ///         DisplayName = "Test Instance",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privateServiceConnection,
+    ///         },
     ///     });
     /// 
     /// });

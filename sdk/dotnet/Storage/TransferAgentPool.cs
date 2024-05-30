@@ -50,6 +50,12 @@ namespace Pulumi.Gcp.Storage
     ///         {
     ///             LimitMbps = "120",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             pubsubEditorRole,
+    ///         },
     ///     });
     /// 
     /// });

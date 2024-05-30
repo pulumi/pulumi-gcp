@@ -276,7 +276,9 @@ import (
 //					SourceFormat:     pulumi.String("NEWLINE_DELIMITED_JSON"),
 //					JsonExtension:    pulumi.String("GEOJSON"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				object,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -466,6 +468,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			encryptRole, err := projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			dest, err := bigquery.NewTable(ctx, "dest", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          destDataset.DatasetId,
@@ -493,21 +509,9 @@ import (
 //				EncryptionConfiguration: &bigquery.TableEncryptionConfigurationArgs{
 //					KmsKeyName: cryptoKey.ID(),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-//				ProjectId: pulumi.StringRef("my-project-name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				encryptRole,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -535,7 +539,9 @@ import (
 //						KmsKeyName: cryptoKey.ID(),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				encryptRole,
+//			}))
 //			if err != nil {
 //				return err
 //			}

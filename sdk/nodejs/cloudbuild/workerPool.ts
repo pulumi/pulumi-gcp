@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  * const network = new gcp.compute.Network("network", {
  *     name: "my-network",
  *     autoCreateSubnetworks: false,
+ * }, {
+ *     dependsOn: [servicenetworking],
  * });
  * const workerRange = new gcp.compute.GlobalAddress("worker_range", {
  *     name: "worker-pool-range",
@@ -51,6 +53,8 @@ import * as utilities from "../utilities";
  *     network: network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [workerRange.name],
+ * }, {
+ *     dependsOn: [servicenetworking],
  * });
  * const pool = new gcp.cloudbuild.WorkerPool("pool", {
  *     name: "my-pool",
@@ -64,6 +68,8 @@ import * as utilities from "../utilities";
  *         peeredNetwork: network.id,
  *         peeredNetworkIpRange: "/29",
  *     },
+ * }, {
+ *     dependsOn: [workerPoolConn],
  * });
  * ```
  *

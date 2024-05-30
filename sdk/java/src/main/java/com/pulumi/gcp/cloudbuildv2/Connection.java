@@ -98,6 +98,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.Connection;
  * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
  * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -165,7 +166,11 @@ import javax.annotation.Nullable;
  *                 .appSlug("gcb-app")
  *                 .appInstallationId(300)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     policy_pk,
+ *                     policy_whs)
+ *                 .build());
  * 
  *     }
  * }

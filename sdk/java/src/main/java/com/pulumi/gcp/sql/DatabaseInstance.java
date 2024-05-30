@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -148,7 +149,9 @@ import javax.annotation.Nullable;
  *                     .enablePrivatePathForGoogleCloudServices(true)
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(privateVpcConnection)
+ *                 .build());
  * 
  *     }
  * }

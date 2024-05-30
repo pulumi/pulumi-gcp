@@ -138,6 +138,8 @@ import * as utilities from "../utilities";
  *     region: "southamerica-west1",
  *     description: "basic security policy for target instance",
  *     type: "CLOUD_ARMOR_NETWORK",
+ * }, {
+ *     dependsOn: [edgeSecService],
  * });
  * const defaultTargetInstance = new gcp.compute.TargetInstance("default", {
  *     name: "target-instance",

@@ -77,7 +77,9 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     disableOnDestroy: false,
  * });
- * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"}, {
+ *     dependsOn: [servicenetworking],
+ * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "private-ip-alloc",
  *     purpose: "VPC_PEERING",
@@ -89,6 +91,8 @@ import * as utilities from "../utilities";
  *     network: vpcNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
+ * }, {
+ *     dependsOn: [servicenetworking],
  * });
  * const bbs_config_with_peered_network = new gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network", {
  *     configId: "bbs-config",
@@ -111,6 +115,8 @@ import * as utilities from "../utilities";
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  * `,
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  *

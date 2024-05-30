@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     bucket: s3_backup_bucket.name,
  *     role: "roles/storage.admin",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
+ * }, {
+ *     dependsOn: [s3_backup_bucket],
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: pubsubTopicName});
  * const notificationConfig = new gcp.pubsub.TopicIAMMember("notification_config", {
@@ -94,6 +96,11 @@ import * as utilities from "../utilities";
  *         ],
  *         payloadFormat: "JSON",
  *     },
+ * }, {
+ *     dependsOn: [
+ *         s3_backup_bucketBucketIAMMember,
+ *         notificationConfig,
+ *     ],
  * });
  * ```
  *

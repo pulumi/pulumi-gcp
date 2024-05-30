@@ -54,6 +54,12 @@ namespace Pulumi.Gcp.Eventarc
     ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         CryptoKeyName = key1.Id,
     ///         ThirdPartyProvider = $"projects/{testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-west1/providers/datadog",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             key1Member,
+    ///         },
     ///     });
     /// 
     /// });

@@ -45,6 +45,12 @@ namespace Pulumi.Gcp.Firebase
     ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     ///     var defaultAppCheckDebugToken = new Gcp.Firebase.AppCheckDebugToken("default", new()
@@ -53,6 +59,12 @@ namespace Pulumi.Gcp.Firebase
     ///         AppId = @default.AppId,
     ///         DisplayName = "Debug Token",
     ///         Token = "00000000-AAAA-BBBB-CCCC-000000000000",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait30s,
+    ///         },
     ///     });
     /// 
     /// });

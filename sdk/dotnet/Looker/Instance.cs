@@ -134,6 +134,16 @@ namespace Pulumi.Gcp.Looker
     ///         Network = lookerNetwork.Id,
     ///     });
     /// 
+    ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("looker_vpc_connection", new()
+    ///     {
+    ///         Network = lookerNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             lookerRange.Name,
+    ///         },
+    ///     });
+    /// 
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
     ///         Name = "my-instance",
@@ -192,15 +202,11 @@ namespace Pulumi.Gcp.Looker
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
     ///         },
-    ///     });
-    /// 
-    ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("looker_vpc_connection", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Network = lookerNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
+    ///         DependsOn =
     ///         {
-    ///             lookerRange.Name,
+    ///             lookerVpcConnection,
     ///         },
     ///     });
     /// 

@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *         my_key: "my_val",
  *         other_key: "other_val",
  *     },
+ * }, {
+ *     dependsOn: [nodePool],
  * });
  * ```
  *

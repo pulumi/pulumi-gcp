@@ -59,7 +59,9 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primary,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -79,7 +81,10 @@ import (
 //					"keya": pulumi.String("valuea"),
 //					"keyc": pulumi.String("valuec"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				membership,
+//				scope,
+//			}))
 //			if err != nil {
 //				return err
 //			}

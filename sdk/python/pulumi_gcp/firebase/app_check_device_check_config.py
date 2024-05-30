@@ -288,13 +288,15 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
             team_id="9987654321")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        opts=pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_device_check_config = gcp.firebase.AppCheckDeviceCheckConfig("default",
             project="my-project-name",
             app_id=default.app_id,
             token_ttl="7200s",
             key_id="Key ID",
-            private_key=std.file(input="path/to/private-key.p8").result)
+            private_key=std.file(input="path/to/private-key.p8").result,
+            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import
@@ -370,13 +372,15 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
             team_id="9987654321")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        opts=pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_device_check_config = gcp.firebase.AppCheckDeviceCheckConfig("default",
             project="my-project-name",
             app_id=default.app_id,
             token_ttl="7200s",
             key_id="Key ID",
-            private_key=std.file(input="path/to/private-key.p8").result)
+            private_key=std.file(input="path/to/private-key.p8").result,
+            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import

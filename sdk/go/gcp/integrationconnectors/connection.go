@@ -115,7 +115,9 @@ import (
 //				SecretId: secret_basic.ID(),
 //				Role:     pulumi.String("roles/secretmanager.admin"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secret_version_basic,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -225,11 +225,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -249,15 +250,6 @@ import javax.annotation.Nullable;
  *             .accountId("cloud-sa")
  *             .build());
  * 
- *         var service_account_trigger = new Trigger("service-account-trigger", TriggerArgs.builder()
- *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
- *                 .branchName("main")
- *                 .repoName("my-repo")
- *                 .build())
- *             .serviceAccount(cloudbuildServiceAccount.id())
- *             .filename("cloudbuild.yaml")
- *             .build());
- * 
  *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/iam.serviceAccountUser")
@@ -269,6 +261,19 @@ import javax.annotation.Nullable;
  *             .role("roles/logging.logWriter")
  *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
+ * 
+ *         var service_account_trigger = new Trigger("service-account-trigger", TriggerArgs.builder()
+ *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
+ *                 .branchName("main")
+ *                 .repoName("my-repo")
+ *                 .build())
+ *             .serviceAccount(cloudbuildServiceAccount.id())
+ *             .filename("cloudbuild.yaml")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     actAs,
+ *                     logsWriter)
+ *                 .build());
  * 
  *     }
  * }

@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
  * });
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "my-instance-name",
@@ -70,6 +72,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
  * });
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "my-instance-name",
@@ -102,6 +106,8 @@ import * as utilities from "../utilities";
  *     analyticsRegion: "us-central1",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
  * });
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "my-instance-name",
@@ -154,6 +160,11 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
  * });
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "my-instance-name",

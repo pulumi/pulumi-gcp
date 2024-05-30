@@ -115,6 +115,12 @@ namespace Pulumi.Gcp.Organizations
     ///                 CloudProduct = "all",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             iam,
+    ///         },
     ///     });
     /// 
     /// });

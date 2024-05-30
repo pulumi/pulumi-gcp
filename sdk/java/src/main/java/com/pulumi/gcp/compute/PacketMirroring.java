@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringCollectorIlbArgs;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesArgs;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringFilterArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -125,7 +126,9 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .networkTier("PREMIUM")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultSubnetwork)
+ *                 .build());
  * 
  *         var foobar = new PacketMirroring("foobar", PacketMirroringArgs.builder()
  *             .name("my-mirroring")

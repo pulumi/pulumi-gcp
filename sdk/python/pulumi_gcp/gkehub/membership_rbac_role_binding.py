@@ -356,7 +356,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
             membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_8493",
@@ -365,7 +366,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
                 predefined_role="ANTHOS_SUPPORT",
             ),
-            location="global")
+            location="global",
+            opts=pulumi.ResourceOptions(depends_on=[membership]))
         ```
 
         ## Import
@@ -432,7 +434,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
             membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_8493",
@@ -441,7 +444,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
                 predefined_role="ANTHOS_SUPPORT",
             ),
-            location="global")
+            location="global",
+            opts=pulumi.ResourceOptions(depends_on=[membership]))
         ```
 
         ## Import

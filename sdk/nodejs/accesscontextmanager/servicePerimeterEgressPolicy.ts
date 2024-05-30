@@ -25,41 +25,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Access Context Manager Service Perimeter Egress Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "Storage Policy",
- * });
- * const storage_perimeter = new gcp.accesscontextmanager.ServicePerimeter("storage-perimeter", {
- *     parent: pulumi.interpolate`accesspolicies/${access_policy.name}`,
- *     name: pulumi.interpolate`accesspolicies/${access_policy.name}/serviceperimeters/storage-perimeter`,
- *     title: "Storage Perimeter",
- *     status: {
- *         restrictedServices: ["storage.googleapis.com"],
- *     },
- * });
- * const egressPolicy = new gcp.accesscontextmanager.ServicePerimeterEgressPolicy("egress_policy", {
- *     perimeter: storage_perimeter.name,
- *     egressFrom: {
- *         identityType: "ANY_IDENTITY",
- *     },
- *     egressTo: {
- *         resources: ["*"],
- *         operations: [{
- *             serviceName: "bigquery.googleapis.com",
- *             methodSelectors: [{
- *                 method: "*",
- *             }],
- *         }],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ServicePerimeterEgressPolicy can be imported using any of these accepted formats:

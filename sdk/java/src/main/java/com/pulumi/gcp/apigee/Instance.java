@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
  * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -84,7 +85,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
  *             .name("my-instance-name")
@@ -118,6 +121,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
  * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -155,7 +159,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
  *             .name("my-instance-name")
@@ -190,6 +196,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
  * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -227,7 +234,9 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
  * 
  *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
  *             .name("my-instance-name")
@@ -270,6 +279,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
  * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -331,7 +341,11 @@ import javax.annotation.Nullable;
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigeeSaKeyuser)
+ *                 .build());
  * 
  *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
  *             .name("my-instance-name")

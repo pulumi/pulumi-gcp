@@ -87,7 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
+//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
@@ -99,7 +99,9 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				InstanceId: pulumi.String("my-instance"),
 //				KmsKey:     cryptoKey.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyBinding,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -139,7 +141,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
+//			rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
 //				Pool:                   caPool.Name,
 //				CertificateAuthorityId: pulumi.String("root-ca"),
 //				Location:               pulumi.String("us-central1"),
@@ -179,13 +181,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
+//			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
 //				CaPool: caPool.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
 //					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			// ca pool IAM permissions can take time to propagate
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caPoolBinding,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -196,14 +207,10 @@ import (
 //					IsPrivate: pulumi.Bool(true),
 //					CaPool:    caPool.ID(),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// ca pool IAM permissions can take time to propagate
-//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootCa,
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}

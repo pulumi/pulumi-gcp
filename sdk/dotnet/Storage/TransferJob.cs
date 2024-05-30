@@ -49,6 +49,12 @@ namespace Pulumi.Gcp.Storage
     ///         Bucket = s3_backup_bucket.Name,
     ///         Role = "roles/storage.admin",
     ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             s3_backup_bucket,
+    ///         },
     ///     });
     /// 
     ///     var topic = new Gcp.PubSub.Topic("topic", new()
@@ -128,6 +134,13 @@ namespace Pulumi.Gcp.Storage
     ///                 "TRANSFER_OPERATION_FAILED",
     ///             },
     ///             PayloadFormat = "JSON",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             s3_backup_bucketBucketIAMMember,
+    ///             notificationConfig,
     ///         },
     ///     });
     /// 

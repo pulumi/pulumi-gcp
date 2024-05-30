@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *             password: "test-password",
  *         },
  *     },
+ * }, {
+ *     dependsOn: [client],
  * });
  * ```
  *

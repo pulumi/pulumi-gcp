@@ -437,7 +437,8 @@ class ProjectBucketConfig(pulumi.CustomResource):
             bucket_id="custom-bucket",
             cmek_settings=gcp.logging.ProjectBucketConfigCmekSettingsArgs(
                 kms_key_name=key.id,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         Create logging bucket with index configs
@@ -563,7 +564,8 @@ class ProjectBucketConfig(pulumi.CustomResource):
             bucket_id="custom-bucket",
             cmek_settings=gcp.logging.ProjectBucketConfigCmekSettingsArgs(
                 kms_key_name=key.id,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         Create logging bucket with index configs

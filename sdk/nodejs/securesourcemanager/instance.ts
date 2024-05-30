@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     instanceId: "my-instance",
  *     kmsKey: cryptoKey.id,
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  * ### Secure Source Manager Instance Private
@@ -112,6 +114,10 @@ import * as utilities from "../utilities";
  *     role: "roles/privateca.certificateRequester",
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
+ * // ca pool IAM permissions can take time to propagate
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [caPoolBinding],
+ * });
  * const _default = new gcp.securesourcemanager.Instance("default", {
  *     instanceId: "my-instance",
  *     location: "us-central1",
@@ -119,9 +125,12 @@ import * as utilities from "../utilities";
  *         isPrivate: true,
  *         caPool: caPool.id,
  *     },
+ * }, {
+ *     dependsOn: [
+ *         rootCa,
+ *         wait60Seconds,
+ *     ],
  * });
- * // ca pool IAM permissions can take time to propagate
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
  *
  * ## Import

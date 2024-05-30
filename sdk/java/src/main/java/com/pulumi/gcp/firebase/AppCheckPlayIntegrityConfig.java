@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -75,12 +76,16 @@ import javax.annotation.Nullable;
  *         // If your app already exists, you don't have to wait 30 seconds.
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait30s)
+ *                 .build());
  * 
  *     }
  * }
@@ -105,6 +110,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -137,13 +143,17 @@ import javax.annotation.Nullable;
  *         // If your app already exists, you don't have to wait 30 seconds.
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()
  *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .tokenTtl("7200s")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait30s)
+ *                 .build());
  * 
  *     }
  * }

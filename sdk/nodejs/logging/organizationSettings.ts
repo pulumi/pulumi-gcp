@@ -21,12 +21,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.logging.OrganizationSettings("example", {
- *     disableDefaultSink: true,
- *     kmsKeyName: "kms-key",
- *     organization: "123456789",
- *     storageLocation: "us-central1",
- * });
  * const settings = gcp.logging.getOrganizationSettings({
  *     organization: "123456789",
  * });
@@ -34,6 +28,14 @@ import * as utilities from "../utilities";
  *     cryptoKeyId: "kms-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: settings.then(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
+ * });
+ * const example = new gcp.logging.OrganizationSettings("example", {
+ *     disableDefaultSink: true,
+ *     kmsKeyName: "kms-key",
+ *     organization: "123456789",
+ *     storageLocation: "us-central1",
+ * }, {
+ *     dependsOn: [iam],
  * });
  * ```
  *

@@ -347,13 +347,16 @@ class TargetServer(pulumi.CustomResource):
             service="apigee.googleapis.com")
         servicenetworking = gcp.projects.Service("servicenetworking",
             project=project.project_id,
-            service="servicenetworking.googleapis.com")
+            service="servicenetworking.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[apigee]))
         compute = gcp.projects.Service("compute",
             project=project.project_id,
-            service="compute.googleapis.com")
+            service="compute.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
-            project=project.project_id)
+            project=project.project_id,
+            opts=pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -364,11 +367,16 @@ class TargetServer(pulumi.CustomResource):
         apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
             network=apigee_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
+            reserved_peering_ranges=[apigee_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=project.project_id,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
         apigee_environment = gcp.apigee.Environment("apigee_environment",
             org_id=apigee_org.id,
             name="my-environment-name",
@@ -451,13 +459,16 @@ class TargetServer(pulumi.CustomResource):
             service="apigee.googleapis.com")
         servicenetworking = gcp.projects.Service("servicenetworking",
             project=project.project_id,
-            service="servicenetworking.googleapis.com")
+            service="servicenetworking.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[apigee]))
         compute = gcp.projects.Service("compute",
             project=project.project_id,
-            service="compute.googleapis.com")
+            service="compute.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
-            project=project.project_id)
+            project=project.project_id,
+            opts=pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -468,11 +479,16 @@ class TargetServer(pulumi.CustomResource):
         apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
             network=apigee_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
+            reserved_peering_ranges=[apigee_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=project.project_id,
-            authorized_network=apigee_network.id)
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
         apigee_environment = gcp.apigee.Environment("apigee_environment",
             org_id=apigee_org.id,
             name="my-environment-name",

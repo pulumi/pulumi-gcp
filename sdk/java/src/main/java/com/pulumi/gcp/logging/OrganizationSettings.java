@@ -35,12 +35,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.logging.OrganizationSettings;
- * import com.pulumi.gcp.logging.OrganizationSettingsArgs;
  * import com.pulumi.gcp.logging.LoggingFunctions;
  * import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.logging.OrganizationSettings;
+ * import com.pulumi.gcp.logging.OrganizationSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,13 +55,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()
- *             .disableDefaultSink(true)
- *             .kmsKeyName("kms-key")
- *             .organization("123456789")
- *             .storageLocation("us-central1")
- *             .build());
- * 
  *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
  *             .organization("123456789")
  *             .build());
@@ -70,6 +64,15 @@ import javax.annotation.Nullable;
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:%s", settings.applyValue(getOrganizationSettingsResult -> getOrganizationSettingsResult.kmsServiceAccountId())))
  *             .build());
+ * 
+ *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()
+ *             .disableDefaultSink(true)
+ *             .kmsKeyName("kms-key")
+ *             .organization("123456789")
+ *             .storageLocation("us-central1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(iam)
+ *                 .build());
  * 
  *     }
  * }

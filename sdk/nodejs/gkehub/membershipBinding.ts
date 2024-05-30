@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [primary],
  * });
  * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_39249"});
  * const membershipBinding = new gcp.gkehub.MembershipBinding("membership_binding", {
@@ -50,6 +52,11 @@ import * as utilities from "../utilities";
  *         keya: "valuea",
  *         keyc: "valuec",
  *     },
+ * }, {
+ *     dependsOn: [
+ *         membership,
+ *         scope,
+ *     ],
  * });
  * ```
  *

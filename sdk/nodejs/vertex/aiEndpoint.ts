@@ -24,6 +24,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vertexNetwork = new gcp.compute.Network("vertex_network", {name: "network-name"});
+ * const vertexRange = new gcp.compute.GlobalAddress("vertex_range", {
+ *     name: "address-name",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 24,
+ *     network: vertexNetwork.id,
+ * });
+ * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertex_vpc_connection", {
+ *     network: vertexNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [vertexRange.name],
+ * });
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
  *     name: "endpoint-name",
@@ -38,18 +50,8 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
- * });
- * const vertexRange = new gcp.compute.GlobalAddress("vertex_range", {
- *     name: "address-name",
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 24,
- *     network: vertexNetwork.id,
- * });
- * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertex_vpc_connection", {
- *     network: vertexNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [vertexRange.name],
+ * }, {
+ *     dependsOn: [vertexVpcConnection],
  * });
  * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: "kms-name",

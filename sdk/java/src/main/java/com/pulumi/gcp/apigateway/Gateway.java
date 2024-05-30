@@ -27,65 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Apigateway Gateway Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.apigateway.Api;
- * import com.pulumi.gcp.apigateway.ApiArgs;
- * import com.pulumi.gcp.apigateway.ApiConfig;
- * import com.pulumi.gcp.apigateway.ApiConfigArgs;
- * import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentArgs;
- * import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentDocumentArgs;
- * import com.pulumi.gcp.apigateway.Gateway;
- * import com.pulumi.gcp.apigateway.GatewayArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var apiGw = new Api("apiGw", ApiArgs.builder()
- *             .apiId("my-api")
- *             .build());
- * 
- *         var apiGwApiConfig = new ApiConfig("apiGwApiConfig", ApiConfigArgs.builder()
- *             .api(apiGw.apiId())
- *             .apiConfigId("my-config")
- *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
- *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
- *                     .path("spec.yaml")
- *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input("test-fixtures/openapi.yaml")
- *                         .build()).result())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var apiGwGateway = new Gateway("apiGwGateway", GatewayArgs.builder()
- *             .apiConfig(apiGwApiConfig.id())
- *             .gatewayId("my-gateway")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Gateway can be imported using any of these accepted formats:

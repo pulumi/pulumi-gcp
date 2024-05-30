@@ -22,16 +22,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vertexNetwork = new gcp.compute.Network("vertex_network", {name: "network-name"});
- * const project = gcp.organizations.getProject({});
- * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("index_endpoint", {
- *     displayName: "sample-endpoint",
- *     description: "A sample vertex endpoint",
- *     region: "us-central1",
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     network: pulumi.all([project, vertexNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
- * });
  * const vertexRange = new gcp.compute.GlobalAddress("vertex_range", {
  *     name: "address-name",
  *     purpose: "VPC_PEERING",
@@ -43,6 +33,18 @@ import * as utilities from "../utilities";
  *     network: vertexNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [vertexRange.name],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("index_endpoint", {
+ *     displayName: "sample-endpoint",
+ *     description: "A sample vertex endpoint",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     network: pulumi.all([project, vertexNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
+ * }, {
+ *     dependsOn: [vertexVpcConnection],
  * });
  * ```
  * ### Vertex Ai Index Endpoint With Psc

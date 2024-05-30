@@ -36,28 +36,6 @@ namespace Pulumi.Gcp.Redis
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
-    ///     {
-    ///         Name = "ha-cluster",
-    ///         ShardCount = 3,
-    ///         PscConfigs = new[]
-    ///         {
-    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
-    ///             {
-    ///                 Network = producerNet.Id,
-    ///             },
-    ///         },
-    ///         Region = "us-central1",
-    ///         ReplicaCount = 1,
-    ///         NodeType = "REDIS_SHARED_CORE_NANO",
-    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
-    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
-    ///         RedisConfigs = 
-    ///         {
-    ///             { "maxmemory-policy", "volatile-ttl" },
-    ///         },
-    ///     });
-    /// 
     ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
     ///     {
     ///         Name = "mysubnet",
@@ -79,6 +57,34 @@ namespace Pulumi.Gcp.Redis
     ///             {
     ///                 producerSubnet.Id,
     ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
+    ///     {
+    ///         Name = "ha-cluster",
+    ///         ShardCount = 3,
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         ReplicaCount = 1,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
     ///         },
     ///     });
     /// 

@@ -72,7 +72,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectBucketConfig(ctx, "logging_linked_dataset", &logging.ProjectBucketConfigArgs{
+//			loggingLinkedDataset, err := logging.NewProjectBucketConfig(ctx, "logging_linked_dataset", &logging.ProjectBucketConfigArgs{
 //				Location:        pulumi.String("global"),
 //				Project:         pulumi.String("my-project-name"),
 //				EnableAnalytics: pulumi.Bool(true),
@@ -87,7 +87,9 @@ import (
 //				Parent:      pulumi.String("projects/my-project-name"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("Linked dataset test"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				loggingLinkedDataset,
+//			}))
 //			if err != nil {
 //				return err
 //			}

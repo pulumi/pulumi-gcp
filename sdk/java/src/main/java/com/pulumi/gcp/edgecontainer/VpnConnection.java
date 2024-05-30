@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.edgecontainer.VpnConnection;
  * import com.pulumi.gcp.edgecontainer.VpnConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -108,7 +109,9 @@ import javax.annotation.Nullable;
  *                 Map.entry("my_key", "my_val"),
  *                 Map.entry("other_key", "other_val")
  *             ))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(nodePool)
+ *                 .build());
  * 
  *     }
  * }

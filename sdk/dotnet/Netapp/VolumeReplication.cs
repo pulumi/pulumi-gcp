@@ -75,6 +75,12 @@ namespace Pulumi.Gcp.Netapp
     ///         },
     ///         DeleteDestinationVolume = true,
     ///         WaitForMirror = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sourceVolume,
+    ///         },
     ///     });
     /// 
     /// });

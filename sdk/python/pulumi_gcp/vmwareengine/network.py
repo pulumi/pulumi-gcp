@@ -305,16 +305,18 @@ class Network(pulumi.CustomResource):
             project_id="vmw-proj",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",
             project=acceptance_project.project_id,
-            service="vmwareengine.googleapis.com")
+            service="vmwareengine.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
             project=acceptance.project,
             name="us-west1-default",
             location="us-west1",
             type="LEGACY",
             description="VMwareEngine legacy network sample")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import
@@ -395,16 +397,18 @@ class Network(pulumi.CustomResource):
             project_id="vmw-proj",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",
             project=acceptance_project.project_id,
-            service="vmwareengine.googleapis.com")
+            service="vmwareengine.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
             project=acceptance.project,
             name="us-west1-default",
             location="us-west1",
             type="LEGACY",
             description="VMwareEngine legacy network sample")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import

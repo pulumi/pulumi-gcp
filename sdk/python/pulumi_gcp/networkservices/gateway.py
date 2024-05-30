@@ -798,7 +798,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
@@ -854,7 +855,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         gateway2 = gcp.networkservices.Gateway("gateway2",
             name="my-gateway2",
             location="us-south1",
@@ -866,7 +868,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
 
         ## Import
@@ -1035,7 +1038,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
@@ -1091,7 +1095,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         gateway2 = gcp.networkservices.Gateway("gateway2",
             name="my-gateway2",
             location="us-south1",
@@ -1103,7 +1108,8 @@ class Gateway(pulumi.CustomResource):
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True)
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
 
         ## Import

@@ -32,14 +32,26 @@ namespace Pulumi.Gcp.Apphub
     ///         OrgId = "123456789",
     ///     });
     /// 
-    ///     var example = new Gcp.Apphub.ServiceProjectAttachment("example", new()
-    ///     {
-    ///         ServiceProjectAttachmentId = serviceProject.ProjectId,
-    ///     });
-    /// 
     ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             serviceProject,
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Apphub.ServiceProjectAttachment("example", new()
+    ///     {
+    ///         ServiceProjectAttachmentId = serviceProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     /// });
@@ -62,15 +74,27 @@ namespace Pulumi.Gcp.Apphub
     ///         OrgId = "123456789",
     ///     });
     /// 
+    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             serviceProjectFull,
+    ///         },
+    ///     });
+    /// 
     ///     var example2 = new Gcp.Apphub.ServiceProjectAttachment("example2", new()
     ///     {
     ///         ServiceProjectAttachmentId = serviceProjectFull.ProjectId,
     ///         ServiceProject = serviceProjectFull.ProjectId,
-    ///     });
-    /// 
-    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CreateDuration = "120s",
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
     ///     });
     /// 
     /// });

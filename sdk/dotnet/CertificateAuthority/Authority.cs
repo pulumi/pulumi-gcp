@@ -333,6 +333,13 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privatecaSaKeyuserSignerverifier,
+    ///             privatecaSaKeyuserViewer,
+    ///         },
     ///     });
     /// 
     /// });

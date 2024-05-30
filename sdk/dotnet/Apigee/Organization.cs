@@ -61,6 +61,12 @@ namespace Pulumi.Gcp.Apigee
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
     ///     });
     /// 
     /// });
@@ -156,6 +162,13 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigeeSaKeyuser,
+    ///         },
     ///     });
     /// 
     /// });
@@ -205,6 +218,12 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         DisableVpcPeering = true,
     ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeSaKeyuser,
+    ///         },
     ///     });
     /// 
     /// });

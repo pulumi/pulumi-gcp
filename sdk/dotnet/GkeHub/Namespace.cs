@@ -52,6 +52,12 @@ namespace Pulumi.Gcp.GkeHub
     ///             { "keya", "valuea" },
     ///             { "keyc", "valuec" },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             scope,
+    ///         },
     ///     });
     /// 
     /// });

@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Intent;
  * import com.pulumi.gcp.diagflow.IntentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,7 +66,9 @@ import javax.annotation.Nullable;
  * 
  *         var basicIntent = new Intent("basicIntent", IntentArgs.builder()
  *             .displayName("basic-intent")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(basicAgent)
+ *                 .build());
  * 
  *     }
  * }
@@ -94,6 +97,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Intent;
  * import com.pulumi.gcp.diagflow.IntentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -150,7 +154,9 @@ import javax.annotation.Nullable;
  *             .defaultResponsePlatforms(            
  *                 "FACEBOOK",
  *                 "SLACK")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(basicAgent)
+ *                 .build());
  * 
  *     }
  * }

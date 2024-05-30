@@ -51,6 +51,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                 { "name", "wrench" },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             basicAgent,
+    ///         },
     ///     });
     /// 
     /// });

@@ -180,6 +180,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("example_dataset"),
 //			})
@@ -216,27 +236,10 @@ import (
 //						return fmt.Sprintf("%v.%v.%v", project, datasetId, tableId), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				viewer,
+//				editor,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -266,6 +269,26 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 //				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
 //			})
 //			if err != nil {
 //				return err
@@ -307,27 +330,10 @@ import (
 //					}).(pulumi.StringOutput),
 //					UseTableSchema: pulumi.Bool(true),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				viewer,
+//				editor,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -368,6 +374,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: example.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
 //				Topic: exampleTopic.ID(),
@@ -378,19 +396,10 @@ import (
 //					MaxBytes:       pulumi.Int(1000),
 //					MaxDuration:    pulumi.String("300s"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
-//				Bucket: example.Name,
-//				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//				admin,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -431,6 +440,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: example.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
 //				Topic: exampleTopic.ID(),
@@ -444,19 +465,10 @@ import (
 //						WriteMetadata: pulumi.Bool(true),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
-//				Bucket: example.Name,
-//				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//				admin,
+//			}))
 //			if err != nil {
 //				return err
 //			}

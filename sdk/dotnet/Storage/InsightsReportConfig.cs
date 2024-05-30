@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.Storage
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
+    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     {
+    ///         Bucket = reportBucket.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-storageinsights.iam.gserviceaccount.com",
+    ///     });
+    /// 
     ///     var config = new Gcp.Storage.InsightsReportConfig("config", new()
     ///     {
     ///         DisplayName = "Test Report Config",
@@ -85,13 +92,12 @@ namespace Pulumi.Gcp.Storage
     ///                 DestinationPath = "test-insights-reports",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         Bucket = reportBucket.Name,
-    ///         Role = "roles/storage.admin",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-storageinsights.iam.gserviceaccount.com",
+    ///         DependsOn =
+    ///         {
+    ///             admin,
+    ///         },
     ///     });
     /// 
     /// });

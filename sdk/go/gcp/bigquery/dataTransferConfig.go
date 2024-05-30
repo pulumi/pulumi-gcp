@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
+//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
@@ -58,7 +58,9 @@ import (
 //				FriendlyName: pulumi.String("foo"),
 //				Description:  pulumi.String("bar"),
 //				Location:     pulumi.String("asia-northeast1"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -73,7 +75,9 @@ import (
 //					"write_disposition":               pulumi.String("WRITE_APPEND"),
 //					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
 //			if err != nil {
 //				return err
 //			}

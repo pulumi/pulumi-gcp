@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
@@ -61,7 +61,9 @@ import (
 //				AnalyticsRegion: pulumi.String("us-central1"),
 //				ProjectId:       project.ProjectId,
 //				RuntimeType:     pulumi.String("HYBRID"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigee,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -89,7 +91,9 @@ import (
 //						return fmt.Sprintf("serviceAccount:%v", email), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				synchronizer_iam,
+//			}))
 //			if err != nil {
 //				return err
 //			}

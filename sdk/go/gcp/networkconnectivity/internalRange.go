@@ -165,6 +165,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("overlapping-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:        pulumi.String("overlap-range"),
 //				Description: pulumi.String("Test internal range"),
@@ -175,16 +184,9 @@ import (
 //				Overlaps: pulumi.StringArray{
 //					pulumi.String("OVERLAP_EXISTING_SUBNET_RANGE"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("overlapping-subnet"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultSubnetwork,
+//			}))
 //			if err != nil {
 //				return err
 //			}

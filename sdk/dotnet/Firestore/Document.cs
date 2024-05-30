@@ -51,12 +51,24 @@ namespace Pulumi.Gcp.Firestore
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
     ///     });
     /// 
     ///     var firestore = new Gcp.Projects.Service("firestore", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         ServiceName = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     ///     var database = new Gcp.Firestore.Database("database", new()
@@ -65,6 +77,12 @@ namespace Pulumi.Gcp.Firestore
     ///         Name = "(default)",
     ///         LocationId = "nam5",
     ///         Type = "FIRESTORE_NATIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             firestore,
+    ///         },
     ///     });
     /// 
     ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
@@ -99,12 +117,24 @@ namespace Pulumi.Gcp.Firestore
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
     ///     });
     /// 
     ///     var firestore = new Gcp.Projects.Service("firestore", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         ServiceName = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     ///     var database = new Gcp.Firestore.Database("database", new()
@@ -113,6 +143,12 @@ namespace Pulumi.Gcp.Firestore
     ///         Name = "(default)",
     ///         LocationId = "nam5",
     ///         Type = "FIRESTORE_NATIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             firestore,
+    ///         },
     ///     });
     /// 
     ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()

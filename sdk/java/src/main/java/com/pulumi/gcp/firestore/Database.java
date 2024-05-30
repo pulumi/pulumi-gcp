@@ -127,11 +127,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
  * import com.pulumi.gcp.firestore.Database;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -158,6 +159,12 @@ import javax.annotation.Nullable;
  *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("cmek-database-id")
@@ -171,13 +178,9 @@ import javax.annotation.Nullable;
  *             .cmekConfig(DatabaseCmekConfigArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
- *             .build());
- * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(cryptoKey.id())
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestoreCmekKeyuser)
+ *                 .build());
  * 
  *     }
  * }
@@ -279,11 +282,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
  * import com.pulumi.gcp.firestore.Database;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -310,6 +314,12 @@ import javax.annotation.Nullable;
  *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
  *         var database = new Database("database", DatabaseArgs.builder()
  *             .project("my-project-name")
  *             .name("cmek-database-id")
@@ -323,13 +333,9 @@ import javax.annotation.Nullable;
  *             .cmekConfig(DatabaseCmekConfigArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
- *             .build());
- * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(cryptoKey.id())
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestoreCmekKeyuser)
+ *                 .build());
  * 
  *     }
  * }

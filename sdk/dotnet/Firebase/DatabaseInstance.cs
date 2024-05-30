@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Firebase
     ///         Region = "us-central1",
     ///         InstanceId = "rtdb-project-default-rtdb",
     ///         Type = "DEFAULT_DATABASE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             firebaseDatabase,
+    ///         },
     ///     });
     /// 
     /// });

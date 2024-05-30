@@ -434,7 +434,8 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             ),
             labels={
                 "key": "value",
-            })
+            },
+            opts=pulumi.ResourceOptions(depends_on=[scope]))
         ```
 
         ## Import
@@ -508,7 +509,8 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             ),
             labels={
                 "key": "value",
-            })
+            },
+            opts=pulumi.ResourceOptions(depends_on=[scope]))
         ```
 
         ## Import

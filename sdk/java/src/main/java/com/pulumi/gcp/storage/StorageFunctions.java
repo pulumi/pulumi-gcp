@@ -1811,6 +1811,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1838,7 +1839,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }
@@ -1944,6 +1947,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1971,7 +1975,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }
@@ -2077,6 +2083,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2104,7 +2111,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }
@@ -2210,6 +2219,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2237,7 +2247,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }
@@ -2343,6 +2355,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2370,7 +2383,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }
@@ -2476,6 +2491,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2503,7 +2519,9 @@ public final class StorageFunctions {
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
-     *             .build());
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
      * 
      *     }
      * }

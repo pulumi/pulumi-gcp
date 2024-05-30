@@ -72,6 +72,12 @@ namespace Pulumi.Gcp.Logging
     ///         Parent = "projects/my-project-name",
     ///         Location = "global",
     ///         Description = "Linked dataset test",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             loggingLinkedDataset,
+    ///         },
     ///     });
     /// 
     /// });

@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCert;
  * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCertArgs;
  * import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -87,17 +88,23 @@ import javax.annotation.Nullable;
  *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("servicenetworking.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigee)
+ *                 .build());
  * 
  *         var compute = new Service("compute", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("compute.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .project(project.projectId())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
  * 
  *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
  *             .name("apigee-range")
@@ -112,13 +119,19 @@ import javax.annotation.Nullable;
  *             .network(apigeeNetwork.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
  * 
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigee)
+ *                 .build());
  * 
  *         var apigeeEnvironmentKeystoreSsAlias = new Environment("apigeeEnvironmentKeystoreSsAlias", EnvironmentArgs.builder()
  *             .orgId(apigeeOrg.id())

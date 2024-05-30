@@ -352,7 +352,8 @@ class LinkedDataset(pulumi.CustomResource):
             bucket="my-bucket",
             parent="projects/my-project-name",
             location="global",
-            description="Linked dataset test")
+            description="Linked dataset test",
+            opts=pulumi.ResourceOptions(depends_on=[logging_linked_dataset]))
         ```
 
         ## Import
@@ -431,7 +432,8 @@ class LinkedDataset(pulumi.CustomResource):
             bucket="my-bucket",
             parent="projects/my-project-name",
             location="global",
-            description="Linked dataset test")
+            description="Linked dataset test",
+            opts=pulumi.ResourceOptions(depends_on=[logging_linked_dataset]))
         ```
 
         ## Import

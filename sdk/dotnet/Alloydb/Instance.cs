@@ -38,19 +38,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///     });
     /// 
-    ///     var @default = new Gcp.Alloydb.Instance("default", new()
-    ///     {
-    ///         Cluster = defaultCluster.Name,
-    ///         InstanceId = "alloydb-instance",
-    ///         InstanceType = "PRIMARY",
-    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
-    ///         {
-    ///             CpuCount = 2,
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
     ///         Name = "alloydb-cluster",
@@ -69,6 +56,25 @@ namespace Pulumi.Gcp.Alloydb
     ///             privateIpAlloc.Name,
     ///         },
     ///     });
+    /// 
+    ///     var @default = new Gcp.Alloydb.Instance("default", new()
+    ///     {
+    ///         Cluster = defaultCluster.Name,
+    ///         InstanceId = "alloydb-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```
@@ -94,47 +100,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         Network = @default.Id,
     ///     });
     /// 
-    ///     var primaryInstance = new Gcp.Alloydb.Instance("primary", new()
-    ///     {
-    ///         Cluster = primary.Name,
-    ///         InstanceId = "alloydb-primary-instance",
-    ///         InstanceType = "PRIMARY",
-    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
-    ///         {
-    ///             CpuCount = 2,
-    ///         },
-    ///     });
-    /// 
-    ///     var secondary = new Gcp.Alloydb.Cluster("secondary", new()
-    ///     {
-    ///         ClusterId = "alloydb-secondary-cluster",
-    ///         Location = "us-east1",
-    ///         Network = @default.Id,
-    ///         ClusterType = "SECONDARY",
-    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
-    ///         {
-    ///             Enabled = false,
-    ///         },
-    ///         SecondaryConfig = new Gcp.Alloydb.Inputs.ClusterSecondaryConfigArgs
-    ///         {
-    ///             PrimaryClusterName = primary.Name,
-    ///         },
-    ///         DeletionPolicy = "FORCE",
-    ///     });
-    /// 
-    ///     var secondaryInstance = new Gcp.Alloydb.Instance("secondary", new()
-    ///     {
-    ///         Cluster = secondary.Name,
-    ///         InstanceId = "alloydb-secondary-instance",
-    ///         InstanceType = secondary.ClusterType,
-    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
-    ///         {
-    ///             CpuCount = 2,
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
     ///         Name = "alloydb-secondary-instance",
@@ -153,6 +118,65 @@ namespace Pulumi.Gcp.Alloydb
     ///             privateIpAlloc.Name,
     ///         },
     ///     });
+    /// 
+    ///     var primaryInstance = new Gcp.Alloydb.Instance("primary", new()
+    ///     {
+    ///         Cluster = primary.Name,
+    ///         InstanceId = "alloydb-primary-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondary = new Gcp.Alloydb.Cluster("secondary", new()
+    ///     {
+    ///         ClusterId = "alloydb-secondary-cluster",
+    ///         Location = "us-east1",
+    ///         Network = @default.Id,
+    ///         ClusterType = "SECONDARY",
+    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
+    ///         {
+    ///             Enabled = false,
+    ///         },
+    ///         SecondaryConfig = new Gcp.Alloydb.Inputs.ClusterSecondaryConfigArgs
+    ///         {
+    ///             PrimaryClusterName = primary.Name,
+    ///         },
+    ///         DeletionPolicy = "FORCE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primaryInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondaryInstance = new Gcp.Alloydb.Instance("secondary", new()
+    ///     {
+    ///         Cluster = secondary.Name,
+    ///         InstanceId = "alloydb-secondary-instance",
+    ///         InstanceType = secondary.ClusterType,
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

@@ -96,6 +96,16 @@ namespace Pulumi.Gcp.Firestore
     ///         Purpose = "ENCRYPT_DECRYPT",
     ///     });
     /// 
+    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
     ///         Project = "my-project-name",
@@ -111,15 +121,11 @@ namespace Pulumi.Gcp.Firestore
     ///         {
     ///             KmsKeyName = cryptoKey.Id,
     ///         },
-    ///     });
-    /// 
-    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
+    ///         DependsOn =
     ///         {
-    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///             firestoreCmekKeyuser,
     ///         },
     ///     });
     /// 
@@ -195,6 +201,16 @@ namespace Pulumi.Gcp.Firestore
     ///         Purpose = "ENCRYPT_DECRYPT",
     ///     });
     /// 
+    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
     ///         Project = "my-project-name",
@@ -210,15 +226,11 @@ namespace Pulumi.Gcp.Firestore
     ///         {
     ///             KmsKeyName = cryptoKey.Id,
     ///         },
-    ///     });
-    /// 
-    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     }, new CustomResourceOptions
     ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
+    ///         DependsOn =
     ///         {
-    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///             firestoreCmekKeyuser,
     ///         },
     ///     });
     /// 

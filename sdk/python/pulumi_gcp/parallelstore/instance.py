@@ -607,15 +607,6 @@ class Instance(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=True,
             mtu=8896)
-        instance = gcp.parallelstore.Instance("instance",
-            instance_id="instance",
-            location="us-central1-a",
-            description="test instance",
-            capacity_gib="12000",
-            network=network.name,
-            labels={
-                "test": "value",
-            })
         # Create an IP address
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="address",
@@ -628,6 +619,16 @@ class Instance(pulumi.CustomResource):
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        instance = gcp.parallelstore.Instance("instance",
+            instance_id="instance",
+            location="us-central1-a",
+            description="test instance",
+            capacity_gib="12000",
+            network=network.name,
+            labels={
+                "test": "value",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -717,15 +718,6 @@ class Instance(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=True,
             mtu=8896)
-        instance = gcp.parallelstore.Instance("instance",
-            instance_id="instance",
-            location="us-central1-a",
-            description="test instance",
-            capacity_gib="12000",
-            network=network.name,
-            labels={
-                "test": "value",
-            })
         # Create an IP address
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="address",
@@ -738,6 +730,16 @@ class Instance(pulumi.CustomResource):
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        instance = gcp.parallelstore.Instance("instance",
+            instance_id="instance",
+            location="us-central1-a",
+            description="test instance",
+            capacity_gib="12000",
+            network=network.name,
+            labels={
+                "test": "value",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
