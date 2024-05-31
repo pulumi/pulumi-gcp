@@ -2536,6 +2536,23 @@
                                 "avro_options": {
                                     "maxItemsOne": true
                                 },
+                                "bigtable_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "column_family": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "column": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "csv_options": {
                                     "maxItemsOne": true
                                 },
@@ -3387,6 +3404,9 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "empty_dir": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "nfs": {
                                                             "maxItemsOne": true
                                                         },
                                                         "secret": {
@@ -5613,6 +5633,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -5725,6 +5748,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -5837,6 +5863,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -6075,6 +6104,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -6947,6 +6979,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -8039,6 +8074,25 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "rate_limit_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ban_threshold": {
+                                    "maxItemsOne": true
+                                },
+                                "enforce_on_key_configs": {
+                                    "maxItemsOne": false
+                                },
+                                "exceed_redirect_options": {
+                                    "maxItemsOne": true
+                                },
+                                "rate_limit_threshold": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -9440,6 +9494,33 @@
                                 "confidential_nodes": {
                                     "maxItemsOne": true
                                 },
+                                "containerd_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "private_registry_access_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "certificate_authority_domain_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "fqdns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "gcp_secret_manager_certificate_config": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "effective_taints": {
                                     "maxItemsOne": false
                                 },
@@ -9581,6 +9662,33 @@
                                             },
                                             "confidential_nodes": {
                                                 "maxItemsOne": true
+                                            },
+                                            "containerd_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "private_registry_access_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "certificate_authority_domain_config": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "fqdns": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "gcp_secret_manager_certificate_config": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "effective_taints": {
                                                 "maxItemsOne": false
@@ -9730,6 +9838,33 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "containerd_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "private_registry_access_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "certificate_authority_domain_config": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "fqdns": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "gcp_secret_manager_certificate_config": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "gcfs_config": {
                                                 "maxItemsOne": true
                                             }
@@ -9863,6 +9998,33 @@
                                 },
                                 "confidential_nodes": {
                                     "maxItemsOne": true
+                                },
+                                "containerd_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "private_registry_access_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "certificate_authority_domain_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "fqdns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "gcp_secret_manager_certificate_config": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "effective_taints": {
                                     "maxItemsOne": false
@@ -12427,6 +12589,35 @@
                     }
                 }
             },
+            "google_dataplex_aspect_type": {
+                "current": "gcp:dataplex/aspectType:AspectType",
+                "majorVersion": 7
+            },
+            "google_dataplex_aspect_type_iam_binding": {
+                "current": "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_aspect_type_iam_member": {
+                "current": "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_aspect_type_iam_policy": {
+                "current": "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_dataplex_asset": {
                 "current": "gcp:dataplex/asset:Asset",
                 "majorVersion": 7,
@@ -12643,6 +12834,35 @@
             },
             "google_dataplex_datascan_iam_policy": {
                 "current": "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy",
+                "majorVersion": 7
+            },
+            "google_dataplex_entry_group": {
+                "current": "gcp:dataplex/entryGroup:EntryGroup",
+                "majorVersion": 7
+            },
+            "google_dataplex_entry_group_iam_binding": {
+                "current": "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_entry_group_iam_member": {
+                "current": "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_entry_group_iam_policy": {
+                "current": "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy",
                 "majorVersion": 7
             },
             "google_dataplex_lake": {
@@ -18798,6 +19018,10 @@
                     }
                 }
             },
+            "google_kms_autokey_config": {
+                "current": "gcp:kms/autokeyConfig:AutokeyConfig",
+                "majorVersion": 7
+            },
             "google_kms_crypto_key": {
                 "current": "gcp:kms/cryptoKey:CryptoKey",
                 "majorVersion": 7,
@@ -18892,6 +19116,10 @@
                         }
                     }
                 }
+            },
+            "google_kms_key_handle": {
+                "current": "gcp:kms/keyHandle:KeyHandle",
+                "majorVersion": 7
             },
             "google_kms_key_ring": {
                 "current": "gcp:kms/keyRing:KeyRing",
@@ -20551,6 +20779,35 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_network_services_lb_route_extension": {
+                "current": "gcp:networkservices/lbRouteExtension:LbRouteExtension",
+                "majorVersion": 7,
+                "fields": {
+                    "extension_chains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "extensions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "forward_headers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "match_condition": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "forwarding_rules": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -25834,6 +26091,9 @@
                                                         "empty_dir": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "nfs": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "secret": {
                                                             "maxItemsOne": false,
                                                             "elem": {
@@ -27029,6 +27289,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -27233,6 +27496,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -27469,6 +27735,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_instance_stop_action": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -27805,6 +28074,15 @@
                 "current": "gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy",
                 "majorVersion": 7
             },
+            "google_compute_subnetworks": {
+                "current": "gcp:compute/getSubnetworks:getSubnetworks",
+                "majorVersion": 7,
+                "fields": {
+                    "subnetworks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_compute_vpn_gateway": {
                 "current": "gcp:compute/getVPNGateway:getVPNGateway",
                 "majorVersion": 7
@@ -28107,6 +28385,33 @@
                                 "confidential_nodes": {
                                     "maxItemsOne": false
                                 },
+                                "containerd_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "private_registry_access_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "certificate_authority_domain_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "fqdns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "gcp_secret_manager_certificate_config": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "effective_taints": {
                                     "maxItemsOne": false
                                 },
@@ -28248,6 +28553,33 @@
                                             },
                                             "confidential_nodes": {
                                                 "maxItemsOne": false
+                                            },
+                                            "containerd_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "private_registry_access_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "certificate_authority_domain_config": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "fqdns": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "gcp_secret_manager_certificate_config": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "effective_taints": {
                                                 "maxItemsOne": false
@@ -28397,6 +28729,33 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "containerd_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "private_registry_access_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "certificate_authority_domain_config": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "fqdns": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "gcp_secret_manager_certificate_config": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "gcfs_config": {
                                                 "maxItemsOne": false
                                             }
@@ -28530,12 +28889,20 @@
                 "current": "gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy",
                 "majorVersion": 7
             },
+            "google_dataplex_aspect_type_iam_policy": {
+                "current": "gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_dataplex_asset_iam_policy": {
                 "current": "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy",
                 "majorVersion": 7
             },
             "google_dataplex_datascan_iam_policy": {
                 "current": "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy",
+                "majorVersion": 7
+            },
+            "google_dataplex_entry_group_iam_policy": {
+                "current": "gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy",
                 "majorVersion": 7
             },
             "google_dataplex_lake_iam_policy": {
@@ -30676,11 +31043,19 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_aspect_type": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_asset": [
                 "effective_labels",
                 "terraform_labels"
             ],
             "google_dataplex_datascan": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_dataplex_entry_group": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -30961,6 +31336,10 @@
                 "terraform_labels"
             ],
             "google_network_services_http_route": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_services_lb_route_extension": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -31689,6 +32068,10 @@
             "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate": 0,
             "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger": 0,
             "gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType": 0,
+            "gcp:dataplex/aspectType:AspectType": 0,
+            "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding": 0,
+            "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember": 0,
+            "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy": 0,
             "gcp:dataplex/asset:Asset": 0,
             "gcp:dataplex/assetIamBinding:AssetIamBinding": 0,
             "gcp:dataplex/assetIamMember:AssetIamMember": 0,
@@ -31697,6 +32080,10 @@
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": 0,
             "gcp:dataplex/datascanIamMember:DatascanIamMember": 0,
             "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy": 0,
+            "gcp:dataplex/entryGroup:EntryGroup": 0,
+            "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding": 0,
+            "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember": 0,
+            "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy": 0,
             "gcp:dataplex/lake:Lake": 0,
             "gcp:dataplex/lakeIamBinding:LakeIamBinding": 0,
             "gcp:dataplex/lakeIamMember:LakeIamMember": 0,
@@ -31917,12 +32304,14 @@
             "gcp:integrationconnectors/connection:Connection": 0,
             "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": 0,
             "gcp:integrationconnectors/managedZone:ManagedZone": 0,
+            "gcp:kms/autokeyConfig:AutokeyConfig": 0,
             "gcp:kms/cryptoKey:CryptoKey": 0,
             "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": 0,
             "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": 0,
             "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": 0,
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 0,
             "gcp:kms/ekmConnection:EkmConnection": 0,
+            "gcp:kms/keyHandle:KeyHandle": 0,
             "gcp:kms/keyRing:KeyRing": 0,
             "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": 0,
             "gcp:kms/keyRingIAMMember:KeyRingIAMMember": 0,
@@ -31998,6 +32387,7 @@
             "gcp:networkservices/gateway:Gateway": 0,
             "gcp:networkservices/grpcRoute:GrpcRoute": 0,
             "gcp:networkservices/httpRoute:HttpRoute": 0,
+            "gcp:networkservices/lbRouteExtension:LbRouteExtension": 0,
             "gcp:networkservices/lbTrafficExtension:LbTrafficExtension": 0,
             "gcp:networkservices/mesh:Mesh": 0,
             "gcp:networkservices/serviceBinding:ServiceBinding": 0,
@@ -32314,6 +32704,7 @@
             "gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy": 0,
             "gcp:compute/getSubnetwork:getSubnetwork": 0,
             "gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy": 0,
+            "gcp:compute/getSubnetworks:getSubnetworks": 0,
             "gcp:compute/getVPNGateway:getVPNGateway": 0,
             "gcp:compute/getZones:getZones": 0,
             "gcp:compute/routerStatus:RouterStatus": 0,
@@ -32332,8 +32723,10 @@
             "gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy": 0,
             "gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy": 0,
+            "gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy": 0,
             "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy": 0,
             "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy": 0,
+            "gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy": 0,
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": 0,
             "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": 0,
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": 0,
