@@ -390,6 +390,11 @@ export const getSubnetworkIamPolicy: typeof import("./getSubnetworkIamPolicy").g
 export const getSubnetworkIamPolicyOutput: typeof import("./getSubnetworkIamPolicy").getSubnetworkIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSubnetworkIamPolicy","getSubnetworkIamPolicyOutput"], () => require("./getSubnetworkIamPolicy"));
 
+export { GetSubnetworksArgs, GetSubnetworksResult, GetSubnetworksOutputArgs } from "./getSubnetworks";
+export const getSubnetworks: typeof import("./getSubnetworks").getSubnetworks = null as any;
+export const getSubnetworksOutput: typeof import("./getSubnetworks").getSubnetworksOutput = null as any;
+utilities.lazyLoad(exports, ["getSubnetworks","getSubnetworksOutput"], () => require("./getSubnetworks"));
+
 export { GetVPNGatewayArgs, GetVPNGatewayResult, GetVPNGatewayOutputArgs } from "./getVPNGateway";
 export const getVPNGateway: typeof import("./getVPNGateway").getVPNGateway = null as any;
 export const getVPNGatewayOutput: typeof import("./getVPNGateway").getVPNGatewayOutput = null as any;

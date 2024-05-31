@@ -83,6 +83,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? OnHostMaintenance { get; set; }
 
         /// <summary>
+        /// Defines the behaviour for instances with the instance_termination_action.
+        /// </summary>
+        [Input("onInstanceStopAction")]
+        public Input<Inputs.RegionInstanceTemplateSchedulingOnInstanceStopActionArgs>? OnInstanceStopAction { get; set; }
+
+        /// <summary>
         /// Allows instance to be preempted. This defaults to
         /// false. Read more on this
         /// [here](https://cloud.google.com/compute/docs/instances/preemptible).

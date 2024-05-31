@@ -20,6 +20,12 @@ public final class FlexibleAppVersionNetwork {
      */
     private @Nullable List<String> forwardedPorts;
     /**
+     * @return Prevent instances from receiving an ephemeral external IP address.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    private @Nullable String instanceIpMode;
+    /**
      * @return Tag to apply to the instance during creation.
      * 
      */
@@ -51,6 +57,14 @@ public final class FlexibleAppVersionNetwork {
      */
     public List<String> forwardedPorts() {
         return this.forwardedPorts == null ? List.of() : this.forwardedPorts;
+    }
+    /**
+     * @return Prevent instances from receiving an ephemeral external IP address.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public Optional<String> instanceIpMode() {
+        return Optional.ofNullable(this.instanceIpMode);
     }
     /**
      * @return Tag to apply to the instance during creation.
@@ -95,6 +109,7 @@ public final class FlexibleAppVersionNetwork {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> forwardedPorts;
+        private @Nullable String instanceIpMode;
         private @Nullable String instanceTag;
         private String name;
         private @Nullable Boolean sessionAffinity;
@@ -103,6 +118,7 @@ public final class FlexibleAppVersionNetwork {
         public Builder(FlexibleAppVersionNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardedPorts = defaults.forwardedPorts;
+    	      this.instanceIpMode = defaults.instanceIpMode;
     	      this.instanceTag = defaults.instanceTag;
     	      this.name = defaults.name;
     	      this.sessionAffinity = defaults.sessionAffinity;
@@ -117,6 +133,12 @@ public final class FlexibleAppVersionNetwork {
         }
         public Builder forwardedPorts(String... forwardedPorts) {
             return forwardedPorts(List.of(forwardedPorts));
+        }
+        @CustomType.Setter
+        public Builder instanceIpMode(@Nullable String instanceIpMode) {
+
+            this.instanceIpMode = instanceIpMode;
+            return this;
         }
         @CustomType.Setter
         public Builder instanceTag(@Nullable String instanceTag) {
@@ -147,6 +169,7 @@ public final class FlexibleAppVersionNetwork {
         public FlexibleAppVersionNetwork build() {
             final var _resultValue = new FlexibleAppVersionNetwork();
             _resultValue.forwardedPorts = forwardedPorts;
+            _resultValue.instanceIpMode = instanceIpMode;
             _resultValue.instanceTag = instanceTag;
             _resultValue.name = name;
             _resultValue.sessionAffinity = sessionAffinity;

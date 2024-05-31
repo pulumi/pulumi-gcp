@@ -33,6 +33,15 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// A filesystem backed by a Network File System share. This filesystem requires the
+        /// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+        /// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nfs")]
+        public Input<Inputs.ServiceTemplateSpecVolumeNfsGetArgs>? Nfs { get; set; }
+
+        /// <summary>
         /// The secret's value will be presented as the content of a file whose
         /// name is defined in the item path. If no items are defined, the name of
         /// the file is the secret_name.

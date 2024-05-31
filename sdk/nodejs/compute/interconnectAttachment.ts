@@ -305,6 +305,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+     * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+     * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+     * remote location fall into this category. In these cases, the default value is 30, and
+     * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+     * gives Google Cloud Support more debugging visibility.
+     */
+    public readonly subnetLength!: pulumi.Output<number | undefined>;
+    /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
      * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -354,6 +363,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["stackType"] = state ? state.stackType : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subnetLength"] = state ? state.subnetLength : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
@@ -375,6 +385,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
+            resourceInputs["subnetLength"] = args ? args.subnetLength : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
@@ -572,6 +583,15 @@ export interface InterconnectAttachmentState {
      */
     state?: pulumi.Input<string>;
     /**
+     * Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+     * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+     * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+     * remote location fall into this category. In these cases, the default value is 30, and
+     * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+     * gives Google Cloud Support more debugging visibility.
+     */
+    subnetLength?: pulumi.Input<number>;
+    /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
      * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -706,6 +726,15 @@ export interface InterconnectAttachmentArgs {
      * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
      */
     stackType?: pulumi.Input<string>;
+    /**
+     * Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+     * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+     * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+     * remote location fall into this category. In these cases, the default value is 30, and
+     * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+     * gives Google Cloud Support more debugging visibility.
+     */
+    subnetLength?: pulumi.Input<number>;
     /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.

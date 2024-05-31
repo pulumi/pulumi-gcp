@@ -15,14 +15,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Number of HTTP(S) requests for calculating the threshold.
         /// </summary>
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
+        [Input("count")]
+        public Input<int>? Count { get; set; }
 
         /// <summary>
         /// Interval over which the threshold is computed.
         /// </summary>
-        [Input("intervalSec", required: true)]
-        public Input<int> IntervalSec { get; set; } = null!;
+        [Input("intervalSec")]
+        public Input<int>? IntervalSec { get; set; }
 
         public SecurityPolicyRuleRateLimitOptionsBanThresholdArgs()
         {

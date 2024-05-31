@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingNodeAffinity;
+import com.pulumi.gcp.compute.outputs.InstanceSchedulingOnInstanceStopAction;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -43,8 +44,7 @@ public final class InstanceScheduling {
      */
     private @Nullable String maintenanceInterval;
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
      * 
      */
     private @Nullable InstanceSchedulingMaxRunDuration maxRunDuration;
@@ -69,6 +69,11 @@ public final class InstanceScheduling {
      * 
      */
     private @Nullable String onHostMaintenance;
+    /**
+     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceSchedulingOnInstanceStopAction onInstanceStopAction;
     /**
      * @return Specifies if the instance is preemptible.
      * If this field is set to true, then `automatic_restart` must be
@@ -120,8 +125,7 @@ public final class InstanceScheduling {
         return Optional.ofNullable(this.maintenanceInterval);
     }
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
      * 
      */
     public Optional<InstanceSchedulingMaxRunDuration> maxRunDuration() {
@@ -153,6 +157,13 @@ public final class InstanceScheduling {
      */
     public Optional<String> onHostMaintenance() {
         return Optional.ofNullable(this.onHostMaintenance);
+    }
+    /**
+     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * 
+     */
+    public Optional<InstanceSchedulingOnInstanceStopAction> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
     }
     /**
      * @return Specifies if the instance is preemptible.
@@ -191,6 +202,7 @@ public final class InstanceScheduling {
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
+        private @Nullable InstanceSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
         public Builder() {}
@@ -204,6 +216,7 @@ public final class InstanceScheduling {
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
+    	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
         }
@@ -260,6 +273,12 @@ public final class InstanceScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder onInstanceStopAction(@Nullable InstanceSchedulingOnInstanceStopAction onInstanceStopAction) {
+
+            this.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
 
             this.preemptible = preemptible;
@@ -281,6 +300,7 @@ public final class InstanceScheduling {
             _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
             return _resultValue;

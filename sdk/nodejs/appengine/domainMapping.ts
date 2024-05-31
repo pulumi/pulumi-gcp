@@ -116,7 +116,7 @@ export class DomainMapping extends pulumi.CustomResource {
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      * Structure is documented below.
      */
-    public readonly sslSettings!: pulumi.Output<outputs.appengine.DomainMappingSslSettings | undefined>;
+    public readonly sslSettings!: pulumi.Output<outputs.appengine.DomainMappingSslSettings>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.

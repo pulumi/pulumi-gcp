@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingNodeAffinityArgs;
+import com.pulumi.gcp.compute.inputs.InstanceSchedulingOnInstanceStopActionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -92,16 +93,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
      * 
      */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration;
 
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingMaxRunDurationArgs>> maxRunDuration() {
@@ -166,6 +165,21 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * 
+     */
+    @Import(name="onInstanceStopAction")
+    private @Nullable Output<InstanceSchedulingOnInstanceStopActionArgs> onInstanceStopAction;
+
+    /**
+     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceSchedulingOnInstanceStopActionArgs>> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+
+    /**
      * Specifies if the instance is preemptible.
      * If this field is set to true, then `automatic_restart` must be
      * set to false.  Defaults to false.
@@ -216,6 +230,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
+        this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
     }
@@ -333,8 +348,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -345,8 +359,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -442,6 +455,27 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
          */
         public Builder onHostMaintenance(String onHostMaintenance) {
             return onHostMaintenance(Output.of(onHostMaintenance));
+        }
+
+        /**
+         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(@Nullable Output<InstanceSchedulingOnInstanceStopActionArgs> onInstanceStopAction) {
+            $.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+
+        /**
+         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(InstanceSchedulingOnInstanceStopActionArgs onInstanceStopAction) {
+            return onInstanceStopAction(Output.of(onInstanceStopAction));
         }
 
         /**

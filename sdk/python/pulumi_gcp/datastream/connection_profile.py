@@ -20,6 +20,7 @@ class ConnectionProfileArgs:
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class ConnectionProfileArgs:
                
                - - -
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input[bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
@@ -63,6 +65,8 @@ class ConnectionProfileArgs:
         pulumi.set(__self__, "location", location)
         if bigquery_profile is not None:
             pulumi.set(__self__, "bigquery_profile", bigquery_profile)
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if forward_ssh_connectivity is not None:
             pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
@@ -132,6 +136,18 @@ class ConnectionProfileArgs:
     @bigquery_profile.setter
     def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]):
         pulumi.set(self, "bigquery_profile", value)
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create the connection profile without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
 
     @property
     @pulumi.getter(name="forwardSshConnectivity")
@@ -257,6 +273,7 @@ class _ConnectionProfileState:
     def __init__(__self__, *,
                  bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
@@ -275,6 +292,7 @@ class _ConnectionProfileState:
         Input properties used for looking up and filtering ConnectionProfile resources.
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
+        :param pulumi.Input[bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -308,6 +326,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if connection_profile_id is not None:
             pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -360,6 +380,18 @@ class _ConnectionProfileState:
     @connection_profile_id.setter
     def connection_profile_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_profile_id", value)
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create the connection profile without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -551,6 +583,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
                  gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
@@ -820,6 +853,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
+        :param pulumi.Input[bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
@@ -1121,6 +1155,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
                  gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
@@ -1145,6 +1180,7 @@ class ConnectionProfile(pulumi.CustomResource):
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
+            __props__.__dict__["create_without_validation"] = create_without_validation
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1177,6 +1213,7 @@ class ConnectionProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
             connection_profile_id: Optional[pulumi.Input[str]] = None,
+            create_without_validation: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
@@ -1200,6 +1237,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
+        :param pulumi.Input[bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -1235,6 +1273,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__.__dict__["bigquery_profile"] = bigquery_profile
         __props__.__dict__["connection_profile_id"] = connection_profile_id
+        __props__.__dict__["create_without_validation"] = create_without_validation
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
@@ -1266,6 +1305,14 @@ class ConnectionProfile(pulumi.CustomResource):
         The connection profile identifier.
         """
         return pulumi.get(self, "connection_profile_id")
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Create the connection profile without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
 
     @property
     @pulumi.getter(name="displayName")

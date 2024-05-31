@@ -9,6 +9,7 @@ import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -48,6 +49,21 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<StreamBackfillNoneArgs>> backfillNone() {
         return Optional.ofNullable(this.backfillNone);
+    }
+
+    /**
+     * Create the stream without validating it.
+     * 
+     */
+    @Import(name="createWithoutValidation")
+    private @Nullable Output<Boolean> createWithoutValidation;
+
+    /**
+     * @return Create the stream without validating it.
+     * 
+     */
+    public Optional<Output<Boolean>> createWithoutValidation() {
+        return Optional.ofNullable(this.createWithoutValidation);
     }
 
     /**
@@ -252,6 +268,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     private StreamState(StreamState $) {
         this.backfillAll = $.backfillAll;
         this.backfillNone = $.backfillNone;
+        this.createWithoutValidation = $.createWithoutValidation;
         this.customerManagedEncryptionKey = $.customerManagedEncryptionKey;
         this.desiredState = $.desiredState;
         this.destinationConfig = $.destinationConfig;
@@ -325,6 +342,27 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backfillNone(StreamBackfillNoneArgs backfillNone) {
             return backfillNone(Output.of(backfillNone));
+        }
+
+        /**
+         * @param createWithoutValidation Create the stream without validating it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(@Nullable Output<Boolean> createWithoutValidation) {
+            $.createWithoutValidation = createWithoutValidation;
+            return this;
+        }
+
+        /**
+         * @param createWithoutValidation Create the stream without validating it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(Boolean createWithoutValidation) {
+            return createWithoutValidation(Output.of(createWithoutValidation));
         }
 
         /**

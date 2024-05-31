@@ -13,6 +13,888 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy struct {
+	// The full or partial URL to the BackendService resource being mirrored to.
+	BackendService string `pulumi:"backendService"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs and URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs struct {
+	// The full or partial URL to the BackendService resource being mirrored to.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs, URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtr and URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrType URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// The full or partial URL to the BackendService resource being mirrored to.
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput)
+}
+
+// The full or partial URL to the BackendService resource being mirrored to.
+func (o URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) BackendService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackendService
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicy struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries *int `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions []string `pulumi:"retryConditions"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionRetryPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs and URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRetryPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs, URLMapPathMatcherPathRuleRouteActionRetryPolicyPtr and URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionRetryPolicyPtrType URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionRetryPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionRetryPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRetryPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRetryPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionRetryPolicy) *URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicy) *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+		return v.PerTryTimeout
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicy) URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionRetryPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicy) *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.PerTryTimeout
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryConditions
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs and URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs{...}
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput).ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs, URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtr and URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrType URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs
+
+func URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtr(v *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionTimeoutInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionTimeoutArgs and URLMapPathMatcherPathRuleRouteActionTimeoutOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionTimeoutInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionTimeoutArgs{...}
+type URLMapPathMatcherPathRuleRouteActionTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionTimeoutOutput() URLMapPathMatcherPathRuleRouteActionTimeoutOutput
+	ToURLMapPathMatcherPathRuleRouteActionTimeoutOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionTimeoutOutput() URLMapPathMatcherPathRuleRouteActionTimeoutOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionTimeoutOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionTimeoutArgs) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionTimeoutOutput).ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionTimeoutArgs, URLMapPathMatcherPathRuleRouteActionTimeoutPtr and URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionTimeoutPtrType URLMapPathMatcherPathRuleRouteActionTimeoutArgs
+
+func URLMapPathMatcherPathRuleRouteActionTimeoutPtr(v *URLMapPathMatcherPathRuleRouteActionTimeoutArgs) URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionTimeoutPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionTimeoutPtrType) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionTimeoutPtrType) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutOutput() URLMapPathMatcherPathRuleRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionTimeout) *URLMapPathMatcherPathRuleRouteActionTimeout {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionTimeout) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) ToURLMapPathMatcherPathRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionTimeoutOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionTimeout) URLMapPathMatcherPathRuleRouteActionTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionTimeout
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionUrlRewrite struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionUrlRewriteInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs and URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionUrlRewriteInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs{...}
+type URLMapPathMatcherPathRuleRouteActionUrlRewriteInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutput() URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput
+	ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutput() URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput).ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs, URLMapPathMatcherPathRuleRouteActionUrlRewritePtr and URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionUrlRewritePtrType URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs
+
+func URLMapPathMatcherPathRuleRouteActionUrlRewritePtr(v *URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionUrlRewritePtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionUrlRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionUrlRewritePtrType) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionUrlRewritePtrType) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutput() URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionUrlRewrite) *URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionUrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) ToURLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionUrlRewrite) URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionUrlRewrite
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathPrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherPathRuleRouteActionWeightedBackendService struct {
 	// The full or partial URL to the default BackendService resource. Before forwarding the
 	// request to backendService, the loadbalancer applies any relevant headerActions
@@ -16924,6 +17806,8 @@ type GetInstanceScheduling struct {
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
 	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions []GetInstanceSchedulingOnInstanceStopAction `pulumi:"onInstanceStopActions"`
 	// Whether the instance is preemptible.
 	Preemptible bool `pulumi:"preemptible"`
 	// Describe the type of preemptible VM.
@@ -16963,6 +17847,8 @@ type GetInstanceSchedulingArgs struct {
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
 	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
 	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions GetInstanceSchedulingOnInstanceStopActionArrayInput `pulumi:"onInstanceStopActions"`
 	// Whether the instance is preemptible.
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
 	// Describe the type of preemptible VM.
@@ -17066,6 +17952,13 @@ func (o GetInstanceSchedulingOutput) NodeAffinities() GetInstanceSchedulingNodeA
 // [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
 func (o GetInstanceSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action.
+func (o GetInstanceSchedulingOutput) OnInstanceStopActions() GetInstanceSchedulingOnInstanceStopActionArrayOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingOnInstanceStopAction {
+		return v.OnInstanceStopActions
+	}).(GetInstanceSchedulingOnInstanceStopActionArrayOutput)
 }
 
 // Whether the instance is preemptible.
@@ -17438,6 +18331,103 @@ func (o GetInstanceSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingNodeAffinity {
 		return vs[0].([]GetInstanceSchedulingNodeAffinity)[vs[1].(int)]
 	}).(GetInstanceSchedulingNodeAffinityOutput)
+}
+
+type GetInstanceSchedulingOnInstanceStopAction struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd bool `pulumi:"discardLocalSsd"`
+}
+
+// GetInstanceSchedulingOnInstanceStopActionInput is an input type that accepts GetInstanceSchedulingOnInstanceStopActionArgs and GetInstanceSchedulingOnInstanceStopActionOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingOnInstanceStopActionInput` via:
+//
+//	GetInstanceSchedulingOnInstanceStopActionArgs{...}
+type GetInstanceSchedulingOnInstanceStopActionInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingOnInstanceStopActionOutput() GetInstanceSchedulingOnInstanceStopActionOutput
+	ToGetInstanceSchedulingOnInstanceStopActionOutputWithContext(context.Context) GetInstanceSchedulingOnInstanceStopActionOutput
+}
+
+type GetInstanceSchedulingOnInstanceStopActionArgs struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd pulumi.BoolInput `pulumi:"discardLocalSsd"`
+}
+
+func (GetInstanceSchedulingOnInstanceStopActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingOnInstanceStopActionArgs) ToGetInstanceSchedulingOnInstanceStopActionOutput() GetInstanceSchedulingOnInstanceStopActionOutput {
+	return i.ToGetInstanceSchedulingOnInstanceStopActionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingOnInstanceStopActionArgs) ToGetInstanceSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetInstanceSchedulingOnInstanceStopActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingOnInstanceStopActionOutput)
+}
+
+// GetInstanceSchedulingOnInstanceStopActionArrayInput is an input type that accepts GetInstanceSchedulingOnInstanceStopActionArray and GetInstanceSchedulingOnInstanceStopActionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingOnInstanceStopActionArrayInput` via:
+//
+//	GetInstanceSchedulingOnInstanceStopActionArray{ GetInstanceSchedulingOnInstanceStopActionArgs{...} }
+type GetInstanceSchedulingOnInstanceStopActionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingOnInstanceStopActionArrayOutput() GetInstanceSchedulingOnInstanceStopActionArrayOutput
+	ToGetInstanceSchedulingOnInstanceStopActionArrayOutputWithContext(context.Context) GetInstanceSchedulingOnInstanceStopActionArrayOutput
+}
+
+type GetInstanceSchedulingOnInstanceStopActionArray []GetInstanceSchedulingOnInstanceStopActionInput
+
+func (GetInstanceSchedulingOnInstanceStopActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingOnInstanceStopActionArray) ToGetInstanceSchedulingOnInstanceStopActionArrayOutput() GetInstanceSchedulingOnInstanceStopActionArrayOutput {
+	return i.ToGetInstanceSchedulingOnInstanceStopActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingOnInstanceStopActionArray) ToGetInstanceSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingOnInstanceStopActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingOnInstanceStopActionArrayOutput)
+}
+
+type GetInstanceSchedulingOnInstanceStopActionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingOnInstanceStopActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingOnInstanceStopActionOutput) ToGetInstanceSchedulingOnInstanceStopActionOutput() GetInstanceSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingOnInstanceStopActionOutput) ToGetInstanceSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetInstanceSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded.
+func (o GetInstanceSchedulingOnInstanceStopActionOutput) DiscardLocalSsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingOnInstanceStopAction) bool { return v.DiscardLocalSsd }).(pulumi.BoolOutput)
+}
+
+type GetInstanceSchedulingOnInstanceStopActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingOnInstanceStopActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingOnInstanceStopActionArrayOutput) ToGetInstanceSchedulingOnInstanceStopActionArrayOutput() GetInstanceSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingOnInstanceStopActionArrayOutput) ToGetInstanceSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingOnInstanceStopActionArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingOnInstanceStopActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingOnInstanceStopAction {
+		return vs[0].([]GetInstanceSchedulingOnInstanceStopAction)[vs[1].(int)]
+	}).(GetInstanceSchedulingOnInstanceStopActionOutput)
 }
 
 type GetInstanceScratchDisk struct {
@@ -19794,6 +20784,8 @@ type GetInstanceTemplateScheduling struct {
 	// Defines the maintenance behavior for this
 	// instance.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions []GetInstanceTemplateSchedulingOnInstanceStopAction `pulumi:"onInstanceStopActions"`
 	// Allows instance to be preempted. This defaults to
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -19840,6 +20832,8 @@ type GetInstanceTemplateSchedulingArgs struct {
 	// Defines the maintenance behavior for this
 	// instance.
 	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions GetInstanceTemplateSchedulingOnInstanceStopActionArrayInput `pulumi:"onInstanceStopActions"`
 	// Allows instance to be preempted. This defaults to
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -19954,6 +20948,13 @@ func (o GetInstanceTemplateSchedulingOutput) NodeAffinities() GetInstanceTemplat
 // instance.
 func (o GetInstanceTemplateSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action.
+func (o GetInstanceTemplateSchedulingOutput) OnInstanceStopActions() GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) []GetInstanceTemplateSchedulingOnInstanceStopAction {
+		return v.OnInstanceStopActions
+	}).(GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
 }
 
 // Allows instance to be preempted. This defaults to
@@ -20337,6 +21338,103 @@ func (o GetInstanceTemplateSchedulingNodeAffinityArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateSchedulingNodeAffinity {
 		return vs[0].([]GetInstanceTemplateSchedulingNodeAffinity)[vs[1].(int)]
 	}).(GetInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+type GetInstanceTemplateSchedulingOnInstanceStopAction struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd bool `pulumi:"discardLocalSsd"`
+}
+
+// GetInstanceTemplateSchedulingOnInstanceStopActionInput is an input type that accepts GetInstanceTemplateSchedulingOnInstanceStopActionArgs and GetInstanceTemplateSchedulingOnInstanceStopActionOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingOnInstanceStopActionInput` via:
+//
+//	GetInstanceTemplateSchedulingOnInstanceStopActionArgs{...}
+type GetInstanceTemplateSchedulingOnInstanceStopActionInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingOnInstanceStopActionOutput() GetInstanceTemplateSchedulingOnInstanceStopActionOutput
+	ToGetInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionOutput
+}
+
+type GetInstanceTemplateSchedulingOnInstanceStopActionArgs struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd pulumi.BoolInput `pulumi:"discardLocalSsd"`
+}
+
+func (GetInstanceTemplateSchedulingOnInstanceStopActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetInstanceTemplateSchedulingOnInstanceStopActionOutput() GetInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return i.ToGetInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingOnInstanceStopActionOutput)
+}
+
+// GetInstanceTemplateSchedulingOnInstanceStopActionArrayInput is an input type that accepts GetInstanceTemplateSchedulingOnInstanceStopActionArray and GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingOnInstanceStopActionArrayInput` via:
+//
+//	GetInstanceTemplateSchedulingOnInstanceStopActionArray{ GetInstanceTemplateSchedulingOnInstanceStopActionArgs{...} }
+type GetInstanceTemplateSchedulingOnInstanceStopActionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+	ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+}
+
+type GetInstanceTemplateSchedulingOnInstanceStopActionArray []GetInstanceTemplateSchedulingOnInstanceStopActionInput
+
+func (GetInstanceTemplateSchedulingOnInstanceStopActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return i.ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingOnInstanceStopActionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingOnInstanceStopActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetInstanceTemplateSchedulingOnInstanceStopActionOutput() GetInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded.
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionOutput) DiscardLocalSsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingOnInstanceStopAction) bool { return v.DiscardLocalSsd }).(pulumi.BoolOutput)
+}
+
+type GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateSchedulingOnInstanceStopAction {
+		return vs[0].([]GetInstanceTemplateSchedulingOnInstanceStopAction)[vs[1].(int)]
+	}).(GetInstanceTemplateSchedulingOnInstanceStopActionOutput)
 }
 
 type GetInstanceTemplateServiceAccount struct {
@@ -23723,6 +24821,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	// Defines the maintenance behavior for this
 	// instance.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions []GetRegionInstanceTemplateSchedulingOnInstanceStopAction `pulumi:"onInstanceStopActions"`
 	// Allows instance to be preempted. This defaults to
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -23769,6 +24869,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	// Defines the maintenance behavior for this
 	// instance.
 	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput `pulumi:"onInstanceStopActions"`
 	// Allows instance to be preempted. This defaults to
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -23883,6 +24985,13 @@ func (o GetRegionInstanceTemplateSchedulingOutput) NodeAffinities() GetRegionIns
 // instance.
 func (o GetRegionInstanceTemplateSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action.
+func (o GetRegionInstanceTemplateSchedulingOutput) OnInstanceStopActions() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
+		return v.OnInstanceStopActions
+	}).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
 }
 
 // Allows instance to be preempted. This defaults to
@@ -24266,6 +25375,103 @@ func (o GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingNodeAffinity {
 		return vs[0].([]GetRegionInstanceTemplateSchedulingNodeAffinity)[vs[1].(int)]
 	}).(GetRegionInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopAction struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd bool `pulumi:"discardLocalSsd"`
+}
+
+// GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput is an input type that accepts GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs and GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{...}
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd pulumi.BoolInput `pulumi:"discardLocalSsd"`
+}
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray and GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray{ GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{...} }
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray []GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded.
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) DiscardLocalSsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingOnInstanceStopAction) bool { return v.DiscardLocalSsd }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput)
 }
 
 type GetRegionInstanceTemplateServiceAccount struct {
@@ -29158,7 +30364,165 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 	}).(GetSubnetworkSecondaryIpRangeOutput)
 }
 
+type GetSubnetworksSubnetwork struct {
+	// Description of the subnetwork.
+	Description string `pulumi:"description"`
+	// The IP address range represented as a CIDR block.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The name of the subnetwork.
+	Name string `pulumi:"name"`
+	// The self link of the parent network.
+	Network         string `pulumi:"network"`
+	NetworkSelfLink string `pulumi:"networkSelfLink"`
+	// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
+	PrivateIpGoogleAccess bool `pulumi:"privateIpGoogleAccess"`
+	// The self link of the subnetwork.
+	SelfLink string `pulumi:"selfLink"`
+}
+
+// GetSubnetworksSubnetworkInput is an input type that accepts GetSubnetworksSubnetworkArgs and GetSubnetworksSubnetworkOutput values.
+// You can construct a concrete instance of `GetSubnetworksSubnetworkInput` via:
+//
+//	GetSubnetworksSubnetworkArgs{...}
+type GetSubnetworksSubnetworkInput interface {
+	pulumi.Input
+
+	ToGetSubnetworksSubnetworkOutput() GetSubnetworksSubnetworkOutput
+	ToGetSubnetworksSubnetworkOutputWithContext(context.Context) GetSubnetworksSubnetworkOutput
+}
+
+type GetSubnetworksSubnetworkArgs struct {
+	// Description of the subnetwork.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The IP address range represented as a CIDR block.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The name of the subnetwork.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The self link of the parent network.
+	Network         pulumi.StringInput `pulumi:"network"`
+	NetworkSelfLink pulumi.StringInput `pulumi:"networkSelfLink"`
+	// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
+	PrivateIpGoogleAccess pulumi.BoolInput `pulumi:"privateIpGoogleAccess"`
+	// The self link of the subnetwork.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+}
+
+func (GetSubnetworksSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetworksSubnetwork)(nil)).Elem()
+}
+
+func (i GetSubnetworksSubnetworkArgs) ToGetSubnetworksSubnetworkOutput() GetSubnetworksSubnetworkOutput {
+	return i.ToGetSubnetworksSubnetworkOutputWithContext(context.Background())
+}
+
+func (i GetSubnetworksSubnetworkArgs) ToGetSubnetworksSubnetworkOutputWithContext(ctx context.Context) GetSubnetworksSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetworksSubnetworkOutput)
+}
+
+// GetSubnetworksSubnetworkArrayInput is an input type that accepts GetSubnetworksSubnetworkArray and GetSubnetworksSubnetworkArrayOutput values.
+// You can construct a concrete instance of `GetSubnetworksSubnetworkArrayInput` via:
+//
+//	GetSubnetworksSubnetworkArray{ GetSubnetworksSubnetworkArgs{...} }
+type GetSubnetworksSubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetSubnetworksSubnetworkArrayOutput() GetSubnetworksSubnetworkArrayOutput
+	ToGetSubnetworksSubnetworkArrayOutputWithContext(context.Context) GetSubnetworksSubnetworkArrayOutput
+}
+
+type GetSubnetworksSubnetworkArray []GetSubnetworksSubnetworkInput
+
+func (GetSubnetworksSubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetworksSubnetwork)(nil)).Elem()
+}
+
+func (i GetSubnetworksSubnetworkArray) ToGetSubnetworksSubnetworkArrayOutput() GetSubnetworksSubnetworkArrayOutput {
+	return i.ToGetSubnetworksSubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubnetworksSubnetworkArray) ToGetSubnetworksSubnetworkArrayOutputWithContext(ctx context.Context) GetSubnetworksSubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetworksSubnetworkArrayOutput)
+}
+
+type GetSubnetworksSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetworksSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetworksSubnetwork)(nil)).Elem()
+}
+
+func (o GetSubnetworksSubnetworkOutput) ToGetSubnetworksSubnetworkOutput() GetSubnetworksSubnetworkOutput {
+	return o
+}
+
+func (o GetSubnetworksSubnetworkOutput) ToGetSubnetworksSubnetworkOutputWithContext(ctx context.Context) GetSubnetworksSubnetworkOutput {
+	return o
+}
+
+// Description of the subnetwork.
+func (o GetSubnetworksSubnetworkOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IP address range represented as a CIDR block.
+func (o GetSubnetworksSubnetworkOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The name of the subnetwork.
+func (o GetSubnetworksSubnetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The self link of the parent network.
+func (o GetSubnetworksSubnetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetworksSubnetworkOutput) NetworkSelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.NetworkSelfLink }).(pulumi.StringOutput)
+}
+
+// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
+func (o GetSubnetworksSubnetworkOutput) PrivateIpGoogleAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) bool { return v.PrivateIpGoogleAccess }).(pulumi.BoolOutput)
+}
+
+// The self link of the subnetwork.
+func (o GetSubnetworksSubnetworkOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type GetSubnetworksSubnetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetworksSubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetworksSubnetwork)(nil)).Elem()
+}
+
+func (o GetSubnetworksSubnetworkArrayOutput) ToGetSubnetworksSubnetworkArrayOutput() GetSubnetworksSubnetworkArrayOutput {
+	return o
+}
+
+func (o GetSubnetworksSubnetworkArrayOutput) ToGetSubnetworksSubnetworkArrayOutputWithContext(ctx context.Context) GetSubnetworksSubnetworkArrayOutput {
+	return o
+}
+
+func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetworksSubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetworksSubnetwork {
+		return vs[0].([]GetSubnetworksSubnetwork)[vs[1].(int)]
+	}).(GetSubnetworksSubnetworkOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionTimeoutInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionUrlRewriteInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
@@ -29379,6 +30743,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingMaxRunDurationArrayInput)(nil)).Elem(), GetInstanceSchedulingMaxRunDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetInstanceSchedulingOnInstanceStopActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingOnInstanceStopActionArrayInput)(nil)).Elem(), GetInstanceSchedulingOnInstanceStopActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceScratchDiskInput)(nil)).Elem(), GetInstanceScratchDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceScratchDiskArrayInput)(nil)).Elem(), GetInstanceScratchDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServiceAccountInput)(nil)).Elem(), GetInstanceServiceAccountArgs{})
@@ -29421,6 +30787,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingMaxRunDurationArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingMaxRunDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingNodeAffinityInput)(nil)).Elem(), GetInstanceTemplateSchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetInstanceTemplateSchedulingOnInstanceStopActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingOnInstanceStopActionArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingOnInstanceStopActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateServiceAccountInput)(nil)).Elem(), GetInstanceTemplateServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArgs{})
@@ -29481,6 +30849,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingMaxRunDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinityInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArgs{})
@@ -29553,6 +30923,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionUrlRewriteOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
@@ -29773,6 +31155,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceSchedulingMaxRunDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingOnInstanceStopActionOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingOnInstanceStopActionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceScratchDiskOutput{})
 	pulumi.RegisterOutputType(GetInstanceScratchDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceServiceAccountOutput{})
@@ -29815,6 +31199,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingMaxRunDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingOnInstanceStopActionOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingOnInstanceStopActionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigOutput{})
@@ -29875,6 +31261,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigOutput{})
@@ -29947,4 +31335,6 @@ func init() {
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetSubnetworksSubnetworkOutput{})
+	pulumi.RegisterOutputType(GetSubnetworksSubnetworkArrayOutput{})
 }

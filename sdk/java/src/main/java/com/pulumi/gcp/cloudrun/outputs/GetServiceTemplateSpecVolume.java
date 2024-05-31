@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeCsi;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeEmptyDir;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeNf;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeSecret;
 import java.lang.String;
 import java.util.List;
@@ -29,6 +30,13 @@ public final class GetServiceTemplateSpecVolume {
      * 
      */
     private String name;
+    /**
+     * @return A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * 
+     */
+    private List<GetServiceTemplateSpecVolumeNf> nfs;
     /**
      * @return The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
@@ -60,6 +68,15 @@ public final class GetServiceTemplateSpecVolume {
         return this.name;
     }
     /**
+     * @return A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * 
+     */
+    public List<GetServiceTemplateSpecVolumeNf> nfs() {
+        return this.nfs;
+    }
+    /**
      * @return The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
      * the file is the secret_name.
@@ -81,6 +98,7 @@ public final class GetServiceTemplateSpecVolume {
         private List<GetServiceTemplateSpecVolumeCsi> csis;
         private List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs;
         private String name;
+        private List<GetServiceTemplateSpecVolumeNf> nfs;
         private List<GetServiceTemplateSpecVolumeSecret> secrets;
         public Builder() {}
         public Builder(GetServiceTemplateSpecVolume defaults) {
@@ -88,6 +106,7 @@ public final class GetServiceTemplateSpecVolume {
     	      this.csis = defaults.csis;
     	      this.emptyDirs = defaults.emptyDirs;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secrets = defaults.secrets;
         }
 
@@ -122,6 +141,17 @@ public final class GetServiceTemplateSpecVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder nfs(List<GetServiceTemplateSpecVolumeNf> nfs) {
+            if (nfs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "nfs");
+            }
+            this.nfs = nfs;
+            return this;
+        }
+        public Builder nfs(GetServiceTemplateSpecVolumeNf... nfs) {
+            return nfs(List.of(nfs));
+        }
+        @CustomType.Setter
         public Builder secrets(List<GetServiceTemplateSpecVolumeSecret> secrets) {
             if (secrets == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "secrets");
@@ -137,6 +167,7 @@ public final class GetServiceTemplateSpecVolume {
             _resultValue.csis = csis;
             _resultValue.emptyDirs = emptyDirs;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secrets = secrets;
             return _resultValue;
         }

@@ -4,9 +4,10 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
@@ -14,27 +15,27 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
      * @return Number of HTTP(S) requests for calculating the threshold.
      * 
      */
-    private Integer count;
+    private @Nullable Integer count;
     /**
      * @return Interval over which the threshold is computed.
      * 
      */
-    private Integer intervalSec;
+    private @Nullable Integer intervalSec;
 
     private SecurityPolicyRuleRateLimitOptionsBanThreshold() {}
     /**
      * @return Number of HTTP(S) requests for calculating the threshold.
      * 
      */
-    public Integer count() {
-        return this.count;
+    public Optional<Integer> count() {
+        return Optional.ofNullable(this.count);
     }
     /**
      * @return Interval over which the threshold is computed.
      * 
      */
-    public Integer intervalSec() {
-        return this.intervalSec;
+    public Optional<Integer> intervalSec() {
+        return Optional.ofNullable(this.intervalSec);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer count;
-        private Integer intervalSec;
+        private @Nullable Integer count;
+        private @Nullable Integer intervalSec;
         public Builder() {}
         public Builder(SecurityPolicyRuleRateLimitOptionsBanThreshold defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
         }
 
         @CustomType.Setter
-        public Builder count(Integer count) {
-            if (count == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThreshold", "count");
-            }
+        public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
-        public Builder intervalSec(Integer intervalSec) {
-            if (intervalSec == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThreshold", "intervalSec");
-            }
+        public Builder intervalSec(@Nullable Integer intervalSec) {
+
             this.intervalSec = intervalSec;
             return this;
         }

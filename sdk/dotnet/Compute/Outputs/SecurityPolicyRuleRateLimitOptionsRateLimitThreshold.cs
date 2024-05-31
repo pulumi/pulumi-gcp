@@ -16,17 +16,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Number of HTTP(S) requests for calculating the threshold.
         /// </summary>
-        public readonly int Count;
+        public readonly int? Count;
         /// <summary>
         /// Interval over which the threshold is computed.
         /// </summary>
-        public readonly int IntervalSec;
+        public readonly int? IntervalSec;
 
         [OutputConstructor]
         private SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(
-            int count,
+            int? count,
 
-            int intervalSec)
+            int? intervalSec)
         {
             Count = count;
             IntervalSec = intervalSec;

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingNodeAffinityArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingOnInstanceStopActionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -140,6 +141,21 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
     }
 
     /**
+     * Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    @Import(name="onInstanceStopAction")
+    private @Nullable Output<InstanceFromTemplateSchedulingOnInstanceStopActionArgs> onInstanceStopAction;
+
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public Optional<Output<InstanceFromTemplateSchedulingOnInstanceStopActionArgs>> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+
+    /**
      * Whether the instance is preemptible.
      * 
      */
@@ -180,6 +196,7 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
+        this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
     }
@@ -372,6 +389,27 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
          */
         public Builder onHostMaintenance(String onHostMaintenance) {
             return onHostMaintenance(Output.of(onHostMaintenance));
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(@Nullable Output<InstanceFromTemplateSchedulingOnInstanceStopActionArgs> onInstanceStopAction) {
+            $.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(InstanceFromTemplateSchedulingOnInstanceStopActionArgs onInstanceStopAction) {
+            return onInstanceStopAction(Output.of(onInstanceStopAction));
         }
 
         /**

@@ -14,6 +14,7 @@ import com.pulumi.gcp.datastream.outputs.StreamBackfillAll;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillNone;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -1036,6 +1037,20 @@ public class Stream extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<StreamBackfillNone>> backfillNone() {
         return Codegen.optional(this.backfillNone);
+    }
+    /**
+     * Create the stream without validating it.
+     * 
+     */
+    @Export(name="createWithoutValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createWithoutValidation;
+
+    /**
+     * @return Create the stream without validating it.
+     * 
+     */
+    public Output<Optional<Boolean>> createWithoutValidation() {
+        return Codegen.optional(this.createWithoutValidation);
     }
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be

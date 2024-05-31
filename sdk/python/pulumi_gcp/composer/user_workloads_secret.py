@@ -237,7 +237,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
 
         * `{{project}}/{{region}}/{{environment}}/{{name}}`
 
-        * `{{name}}`
+        * `{{environment}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
@@ -250,7 +250,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         ```
 
         ```sh
-        $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+        $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,7 +304,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
 
         * `{{project}}/{{region}}/{{environment}}/{{name}}`
 
-        * `{{name}}`
+        * `{{environment}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
@@ -317,7 +317,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         ```
 
         ```sh
-        $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+        $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

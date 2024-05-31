@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +16,14 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
     public static final SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs Empty = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs();
 
     /**
-     * Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+     * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     public Optional<Output<String>> target() {
@@ -35,15 +34,15 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
      * Type of the redirect action.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return Type of the redirect action.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs() {}
@@ -72,7 +71,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -83,7 +82,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -98,7 +97,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -114,9 +113,6 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         public SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs build() {
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs", "type");
-            }
             return $;
         }
     }

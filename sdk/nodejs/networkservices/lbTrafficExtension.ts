@@ -98,8 +98,10 @@ export class LbTrafficExtension extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-     * "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load
+     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+     * ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -202,8 +204,10 @@ export interface LbTrafficExtensionState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-     * "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load
+     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+     * ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -251,8 +255,10 @@ export interface LbTrafficExtensionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-     * "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load
+     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+     * ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**

@@ -28,14 +28,16 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
-     * Whether or not to allow table deletion when there are still resource tags attached.
+     * This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      * 
      */
     @Import(name="allowResourceTagsOnDeletion")
     private @Nullable Output<Boolean> allowResourceTagsOnDeletion;
 
     /**
-     * @return Whether or not to allow table deletion when there are still resource tags attached.
+     * @return This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      * 
      */
     public Optional<Output<Boolean>> allowResourceTagsOnDeletion() {
@@ -464,18 +466,22 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+     * This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example &#34;Production&#34;.
      * 
      */
     @Import(name="resourceTags")
     private @Nullable Output<Map<String,String>> resourceTags;
 
     /**
-     * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+     * @return This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example &#34;Production&#34;.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceTags() {
@@ -547,14 +553,20 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * Replication info of a table created
+     * using &#34;AS REPLICA&#34; DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * Structure is documented below.
      * 
      */
     @Import(name="tableReplicationInfo")
     private @Nullable Output<TableTableReplicationInfoArgs> tableReplicationInfo;
 
     /**
-     * @return Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * @return Replication info of a table created
+     * using &#34;AS REPLICA&#34; DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TableTableReplicationInfoArgs>> tableReplicationInfo() {
@@ -667,7 +679,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowResourceTagsOnDeletion Whether or not to allow table deletion when there are still resource tags attached.
+         * @param allowResourceTagsOnDeletion This field is in beta. If set to true, it allows table deletion when there
+         * are still resource tags attached. The default value is false.
          * 
          * @return builder
          * 
@@ -678,7 +691,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowResourceTagsOnDeletion Whether or not to allow table deletion when there are still resource tags attached.
+         * @param allowResourceTagsOnDeletion This field is in beta. If set to true, it allows table deletion when there
+         * are still resource tags attached. The default value is false.
          * 
          * @return builder
          * 
@@ -1259,9 +1273,11 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-         * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+         * @param resourceTags This field is in beta. The tags attached to this table. Tag keys are
+         * globally unique. Tag key is expected to be in the namespaced format, for
+         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+         * parent organization or project resource for this tag key. Tag value is
+         * expected to be the short name, for example &#34;Production&#34;.
          * 
          * @return builder
          * 
@@ -1272,9 +1288,11 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-         * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+         * @param resourceTags This field is in beta. The tags attached to this table. Tag keys are
+         * globally unique. Tag key is expected to be in the namespaced format, for
+         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+         * parent organization or project resource for this tag key. Tag value is
+         * expected to be the short name, for example &#34;Production&#34;.
          * 
          * @return builder
          * 
@@ -1372,7 +1390,10 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableReplicationInfo Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+         * @param tableReplicationInfo Replication info of a table created
+         * using &#34;AS REPLICA&#34; DDL like:
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1383,7 +1404,10 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableReplicationInfo Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+         * @param tableReplicationInfo Replication info of a table created
+         * using &#34;AS REPLICA&#34; DDL like:
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

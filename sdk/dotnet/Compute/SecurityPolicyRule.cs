@@ -265,6 +265,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rateLimitOptions")]
+        public Output<Outputs.SecurityPolicyRuleRateLimitOptions?> RateLimitOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the security policy this rule belongs to.
         /// 
         /// 
@@ -374,6 +381,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
+
+        /// <summary>
         /// The name of the security policy this rule belongs to.
         /// 
         /// 
@@ -443,6 +457,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsGetArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
         /// The name of the security policy this rule belongs to.

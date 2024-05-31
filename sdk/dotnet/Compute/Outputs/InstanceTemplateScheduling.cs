@@ -35,8 +35,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>
-        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        /// &lt;a name="nested_max_run_duration"&gt;&lt;/a&gt;The `max_run_duration` block supports:
+        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceTemplateSchedulingMaxRunDuration? MaxRunDuration;
         /// <summary>
@@ -56,6 +55,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// instance.
         /// </summary>
         public readonly string? OnHostMaintenance;
+        /// <summary>
+        /// Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceTemplateSchedulingOnInstanceStopAction? OnInstanceStopAction;
         /// <summary>
         /// Allows instance to be preempted. This defaults to
         /// false. Read more on this
@@ -88,6 +91,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? onHostMaintenance,
 
+            Outputs.InstanceTemplateSchedulingOnInstanceStopAction? onInstanceStopAction,
+
             bool? preemptible,
 
             string? provisioningModel)
@@ -100,6 +105,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
+            OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
         }

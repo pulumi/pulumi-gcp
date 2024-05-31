@@ -96,7 +96,7 @@ class V2VmAcceleratorConfigArgs:
         """
         :param pulumi.Input[str] topology: Topology of TPU in chips.
         :param pulumi.Input[str] type: Type of TPU.
-               Possible values are: `V2`, `V3`, `V4`.
+               Possible values are: `V2`, `V3`, `V4`, `V5P`.
         """
         pulumi.set(__self__, "topology", topology)
         pulumi.set(__self__, "type", type)
@@ -118,7 +118,7 @@ class V2VmAcceleratorConfigArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of TPU.
-        Possible values are: `V2`, `V3`, `V4`.
+        Possible values are: `V2`, `V3`, `V4`, `V5P`.
         """
         return pulumi.get(self, "type")
 

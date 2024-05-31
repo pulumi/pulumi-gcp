@@ -67,6 +67,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? OnHostMaintenance { get; set; }
 
         /// <summary>
+        /// Defines the behaviour for instances with the instance_termination_action.
+        /// </summary>
+        [Input("onInstanceStopAction")]
+        public Input<Inputs.InstanceFromTemplateSchedulingOnInstanceStopActionArgs>? OnInstanceStopAction { get; set; }
+
+        /// <summary>
         /// Whether the instance is preemptible.
         /// </summary>
         [Input("preemptible")]

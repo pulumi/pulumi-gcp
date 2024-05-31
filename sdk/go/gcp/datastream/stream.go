@@ -969,6 +969,8 @@ type Stream struct {
 	BackfillAll StreamBackfillAllPtrOutput `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrOutput `pulumi:"backfillNone"`
+	// Create the stream without validating it.
+	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrOutput `pulumi:"customerManagedEncryptionKey"`
@@ -1055,6 +1057,8 @@ type streamState struct {
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
+	// Create the stream without validating it.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
@@ -1092,6 +1096,8 @@ type StreamState struct {
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
+	// Create the stream without validating it.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
@@ -1133,6 +1139,8 @@ type streamArgs struct {
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
+	// Create the stream without validating it.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
@@ -1162,6 +1170,8 @@ type StreamArgs struct {
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
+	// Create the stream without validating it.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
@@ -1280,6 +1290,11 @@ func (o StreamOutput) BackfillAll() StreamBackfillAllPtrOutput {
 // Backfill strategy to disable automatic backfill for the Stream's objects.
 func (o StreamOutput) BackfillNone() StreamBackfillNonePtrOutput {
 	return o.ApplyT(func(v *Stream) StreamBackfillNonePtrOutput { return v.BackfillNone }).(StreamBackfillNonePtrOutput)
+}
+
+// Create the stream without validating it.
+func (o StreamOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
 }
 
 // A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be

@@ -51,6 +51,21 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    @Import(name="filenameDatetimeFormat")
+    private @Nullable Output<String> filenameDatetimeFormat;
+
+    /**
+     * @return User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    public Optional<Output<String>> filenameDatetimeFormat() {
+        return Optional.ofNullable(this.filenameDatetimeFormat);
+    }
+
+    /**
      * User-provided prefix for Cloud Storage filename.
      * 
      */
@@ -138,6 +153,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     private SubscriptionCloudStorageConfigArgs(SubscriptionCloudStorageConfigArgs $) {
         this.avroConfig = $.avroConfig;
         this.bucket = $.bucket;
+        this.filenameDatetimeFormat = $.filenameDatetimeFormat;
         this.filenamePrefix = $.filenamePrefix;
         this.filenameSuffix = $.filenameSuffix;
         this.maxBytes = $.maxBytes;
@@ -205,6 +221,27 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param filenameDatetimeFormat User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filenameDatetimeFormat(@Nullable Output<String> filenameDatetimeFormat) {
+            $.filenameDatetimeFormat = filenameDatetimeFormat;
+            return this;
+        }
+
+        /**
+         * @param filenameDatetimeFormat User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filenameDatetimeFormat(String filenameDatetimeFormat) {
+            return filenameDatetimeFormat(Output.of(filenameDatetimeFormat));
         }
 
         /**

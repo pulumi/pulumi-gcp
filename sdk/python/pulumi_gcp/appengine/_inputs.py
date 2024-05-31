@@ -1752,12 +1752,15 @@ class FlexibleAppVersionNetworkArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_ip_mode: Optional[pulumi.Input[str]] = None,
                  instance_tag: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[bool]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param pulumi.Input[str] instance_ip_mode: Prevent instances from receiving an ephemeral external IP address.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] instance_tag: Tag to apply to the instance during creation.
         :param pulumi.Input[bool] session_affinity: Enable session affinity.
         :param pulumi.Input[str] subnetwork: Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
@@ -1769,6 +1772,8 @@ class FlexibleAppVersionNetworkArgs:
         pulumi.set(__self__, "name", name)
         if forwarded_ports is not None:
             pulumi.set(__self__, "forwarded_ports", forwarded_ports)
+        if instance_ip_mode is not None:
+            pulumi.set(__self__, "instance_ip_mode", instance_ip_mode)
         if instance_tag is not None:
             pulumi.set(__self__, "instance_tag", instance_tag)
         if session_affinity is not None:
@@ -1799,6 +1804,19 @@ class FlexibleAppVersionNetworkArgs:
     @forwarded_ports.setter
     def forwarded_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "forwarded_ports", value)
+
+    @property
+    @pulumi.getter(name="instanceIpMode")
+    def instance_ip_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prevent instances from receiving an ephemeral external IP address.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
+        """
+        return pulumi.get(self, "instance_ip_mode")
+
+    @instance_ip_mode.setter
+    def instance_ip_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_ip_mode", value)
 
     @property
     @pulumi.getter(name="instanceTag")

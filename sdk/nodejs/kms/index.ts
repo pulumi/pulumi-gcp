@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AutokeyConfigArgs, AutokeyConfigState } from "./autokeyConfig";
+export type AutokeyConfig = import("./autokeyConfig").AutokeyConfig;
+export const AutokeyConfig: typeof import("./autokeyConfig").AutokeyConfig = null as any;
+utilities.lazyLoad(exports, ["AutokeyConfig"], () => require("./autokeyConfig"));
+
 export { CryptoKeyArgs, CryptoKeyState } from "./cryptoKey";
 export type CryptoKey = import("./cryptoKey").CryptoKey;
 export const CryptoKey: typeof import("./cryptoKey").CryptoKey = null as any;
@@ -75,6 +80,11 @@ export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyR
 export const getKeyRingIamPolicyOutput: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyRingIamPolicy","getKeyRingIamPolicyOutput"], () => require("./getKeyRingIamPolicy"));
 
+export { KeyHandleArgs, KeyHandleState } from "./keyHandle";
+export type KeyHandle = import("./keyHandle").KeyHandle;
+export const KeyHandle: typeof import("./keyHandle").KeyHandle = null as any;
+utilities.lazyLoad(exports, ["KeyHandle"], () => require("./keyHandle"));
+
 export { KeyRingArgs, KeyRingState } from "./keyRing";
 export type KeyRing = import("./keyRing").KeyRing;
 export const KeyRing: typeof import("./keyRing").KeyRing = null as any;
@@ -110,6 +120,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:kms/autokeyConfig:AutokeyConfig":
+                return new AutokeyConfig(name, <any>undefined, { urn })
             case "gcp:kms/cryptoKey:CryptoKey":
                 return new CryptoKey(name, <any>undefined, { urn })
             case "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding":
@@ -122,6 +134,8 @@ const _module = {
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
             case "gcp:kms/ekmConnection:EkmConnection":
                 return new EkmConnection(name, <any>undefined, { urn })
+            case "gcp:kms/keyHandle:KeyHandle":
+                return new KeyHandle(name, <any>undefined, { urn })
             case "gcp:kms/keyRing:KeyRing":
                 return new KeyRing(name, <any>undefined, { urn })
             case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
@@ -139,12 +153,14 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "kms/autokeyConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnection", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/keyHandle", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRing", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)

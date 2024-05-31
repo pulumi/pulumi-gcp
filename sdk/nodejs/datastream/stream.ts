@@ -723,6 +723,10 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly backfillNone!: pulumi.Output<outputs.datastream.StreamBackfillNone | undefined>;
     /**
+     * Create the stream without validating it.
+     */
+    public readonly createWithoutValidation!: pulumi.Output<boolean | undefined>;
+    /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
      * encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
@@ -792,6 +796,7 @@ export class Stream extends pulumi.CustomResource {
             const state = argsOrState as StreamState | undefined;
             resourceInputs["backfillAll"] = state ? state.backfillAll : undefined;
             resourceInputs["backfillNone"] = state ? state.backfillNone : undefined;
+            resourceInputs["createWithoutValidation"] = state ? state.createWithoutValidation : undefined;
             resourceInputs["customerManagedEncryptionKey"] = state ? state.customerManagedEncryptionKey : undefined;
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
@@ -824,6 +829,7 @@ export class Stream extends pulumi.CustomResource {
             }
             resourceInputs["backfillAll"] = args ? args.backfillAll : undefined;
             resourceInputs["backfillNone"] = args ? args.backfillNone : undefined;
+            resourceInputs["createWithoutValidation"] = args ? args.createWithoutValidation : undefined;
             resourceInputs["customerManagedEncryptionKey"] = args ? args.customerManagedEncryptionKey : undefined;
             resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
@@ -857,6 +863,10 @@ export interface StreamState {
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
     backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    /**
+     * Create the stream without validating it.
+     */
+    createWithoutValidation?: pulumi.Input<boolean>;
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
      * encrypted using an internal Stream-specific encryption key provisioned through KMS.
@@ -925,6 +935,10 @@ export interface StreamArgs {
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
     backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    /**
+     * Create the stream without validating it.
+     */
+    createWithoutValidation?: pulumi.Input<boolean>;
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
      * encrypted using an internal Stream-specific encryption key provisioned through KMS.

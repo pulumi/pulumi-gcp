@@ -102,7 +102,7 @@ class V2VmAcceleratorConfig(dict):
         """
         :param str topology: Topology of TPU in chips.
         :param str type: Type of TPU.
-               Possible values are: `V2`, `V3`, `V4`.
+               Possible values are: `V2`, `V3`, `V4`, `V5P`.
         """
         pulumi.set(__self__, "topology", topology)
         pulumi.set(__self__, "type", type)
@@ -120,7 +120,7 @@ class V2VmAcceleratorConfig(dict):
     def type(self) -> str:
         """
         Type of TPU.
-        Possible values are: `V2`, `V3`, `V4`.
+        Possible values are: `V2`, `V3`, `V4`, `V5P`.
         """
         return pulumi.get(self, "type")
 

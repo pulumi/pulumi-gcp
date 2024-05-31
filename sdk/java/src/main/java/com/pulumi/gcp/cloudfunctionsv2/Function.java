@@ -97,7 +97,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export("functionUri", function.serviceConfig().applyValue(serviceConfig -> serviceConfig.uri()));
  *     }
  * }
  * }
@@ -733,7 +732,6 @@ import javax.annotation.Nullable;
  *                 .dependsOn(wait60s)
  *                 .build());
  * 
- *         ctx.export("functionUri", function.serviceConfig().applyValue(serviceConfig -> serviceConfig.uri()));
  *     }
  * }
  * }

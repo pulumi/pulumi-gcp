@@ -108,6 +108,8 @@ import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+import com.pulumi.gcp.compute.inputs.GetSubnetworksPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetZonesArgs;
@@ -165,6 +167,7 @@ import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
+import com.pulumi.gcp.compute.outputs.GetSubnetworksResult;
 import com.pulumi.gcp.compute.outputs.GetVPNGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetZonesResult;
 import com.pulumi.gcp.compute.outputs.RouterStatusResult;
@@ -8781,6 +8784,282 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyPlain(GetSubnetworkIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", TypeShape.of(GetSubnetworkIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSubnetworksResult> getSubnetworks() {
+        return getSubnetworks(GetSubnetworksArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSubnetworksResult> getSubnetworksPlain() {
+        return getSubnetworksPlain(GetSubnetworksPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSubnetworksResult> getSubnetworks(GetSubnetworksArgs args) {
+        return getSubnetworks(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSubnetworksResult> getSubnetworksPlain(GetSubnetworksPlainArgs args) {
+        return getSubnetworksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSubnetworksResult> getSubnetworks(GetSubnetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getSubnetworks:getSubnetworks", TypeShape.of(GetSubnetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get subnetworks within GCE.
+     * See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-subnetworks = ComputeFunctions.getSubnetworks(GetSubnetworksArgs.builder()
+     *             .filter("ipCidrRange eq 192.168.178.0/24")
+     *             .project("my-project")
+     *             .region("us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSubnetworksResult> getSubnetworksPlain(GetSubnetworksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getSubnetworks:getSubnetworks", TypeShape.of(GetSubnetworksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a VPN gateway within GCE from its name.

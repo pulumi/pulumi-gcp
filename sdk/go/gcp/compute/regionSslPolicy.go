@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -82,6 +81,8 @@ type RegionSslPolicy struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -97,8 +98,6 @@ type RegionSslPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region where the regional SSL policy resides.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -108,12 +107,9 @@ type RegionSslPolicy struct {
 func NewRegionSslPolicy(ctx *pulumi.Context,
 	name string, args *RegionSslPolicyArgs, opts ...pulumi.ResourceOption) (*RegionSslPolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RegionSslPolicyArgs{}
 	}
 
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionSslPolicy
 	err := ctx.RegisterResource("gcp:compute/regionSslPolicy:RegionSslPolicy", name, args, &resource, opts...)
@@ -166,6 +162,8 @@ type regionSslPolicyState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -181,8 +179,6 @@ type regionSslPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the regional SSL policy resides.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -218,6 +214,8 @@ type RegionSslPolicyState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -233,8 +231,6 @@ type RegionSslPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the regional SSL policy resides.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -267,6 +263,8 @@ type regionSslPolicyArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -282,9 +280,7 @@ type regionSslPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the regional SSL policy resides.
-	//
-	// ***
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a RegionSslPolicy resource.
@@ -311,6 +307,8 @@ type RegionSslPolicyArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -326,9 +324,7 @@ type RegionSslPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the regional SSL policy resides.
-	//
-	// ***
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 }
 
 func (RegionSslPolicyArgs) ElementType() reflect.Type {
@@ -465,6 +461,8 @@ func (o RegionSslPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// ***
 func (o RegionSslPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -489,8 +487,6 @@ func (o RegionSslPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The region where the regional SSL policy resides.
-//
-// ***
 func (o RegionSslPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

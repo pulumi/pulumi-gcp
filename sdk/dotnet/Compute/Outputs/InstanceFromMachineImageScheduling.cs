@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? OnHostMaintenance;
         /// <summary>
+        /// Defines the behaviour for instances with the instance_termination_action.
+        /// </summary>
+        public readonly Outputs.InstanceFromMachineImageSchedulingOnInstanceStopAction? OnInstanceStopAction;
+        /// <summary>
         /// Whether the instance is preemptible.
         /// </summary>
         public readonly bool? Preemptible;
@@ -72,6 +76,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? onHostMaintenance,
 
+            Outputs.InstanceFromMachineImageSchedulingOnInstanceStopAction? onInstanceStopAction,
+
             bool? preemptible,
 
             string? provisioningModel)
@@ -84,6 +90,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
+            OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
         }

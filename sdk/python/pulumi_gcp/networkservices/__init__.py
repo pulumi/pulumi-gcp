@@ -12,6 +12,7 @@ from .endpoint_policy import *
 from .gateway import *
 from .grpc_route import *
 from .http_route import *
+from .lb_route_extension import *
 from .lb_traffic_extension import *
 from .mesh import *
 from .service_binding import *

@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Structure is documented below.
         /// </summary>
         [Output("sslSettings")]
-        public Output<Outputs.DomainMappingSslSettings?> SslSettings { get; private set; } = null!;
+        public Output<Outputs.DomainMappingSslSettings> SslSettings { get; private set; } = null!;
 
 
         /// <summary>

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigAdvancedMachineFeature;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigConfidentialNode;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfig;
@@ -50,6 +51,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    private List<GetClusterNodeConfigContainerdConfig> containerdConfigs;
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
      * 
@@ -252,6 +258,13 @@ public final class GetClusterNodeConfig {
      */
     public List<GetClusterNodeConfigConfidentialNode> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public List<GetClusterNodeConfigContainerdConfig> containerdConfigs() {
+        return this.containerdConfigs;
     }
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -518,6 +531,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
         private String bootDiskKmsKey;
         private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
+        private List<GetClusterNodeConfigContainerdConfig> containerdConfigs;
         private Integer diskSizeGb;
         private String diskType;
         private List<GetClusterNodeConfigEffectiveTaint> effectiveTaints;
@@ -560,6 +574,7 @@ public final class GetClusterNodeConfig {
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.containerdConfigs = defaults.containerdConfigs;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
@@ -627,6 +642,17 @@ public final class GetClusterNodeConfig {
         }
         public Builder confidentialNodes(GetClusterNodeConfigConfidentialNode... confidentialNodes) {
             return confidentialNodes(List.of(confidentialNodes));
+        }
+        @CustomType.Setter
+        public Builder containerdConfigs(List<GetClusterNodeConfigContainerdConfig> containerdConfigs) {
+            if (containerdConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "containerdConfigs");
+            }
+            this.containerdConfigs = containerdConfigs;
+            return this;
+        }
+        public Builder containerdConfigs(GetClusterNodeConfigContainerdConfig... containerdConfigs) {
+            return containerdConfigs(List.of(containerdConfigs));
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
@@ -981,6 +1007,7 @@ public final class GetClusterNodeConfig {
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
+            _resultValue.containerdConfigs = containerdConfigs;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.effectiveTaints = effectiveTaints;

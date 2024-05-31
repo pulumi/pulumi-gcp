@@ -23,7 +23,8 @@ class SecurityPolicyRuleInitArgs:
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatchArgs']] = None,
                  preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         The set of arguments for constructing a SecurityPolicyRule resource.
         :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions:
@@ -49,6 +50,8 @@ class SecurityPolicyRuleInitArgs:
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "priority", priority)
@@ -63,6 +66,8 @@ class SecurityPolicyRuleInitArgs:
             pulumi.set(__self__, "preview", preview)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
 
     @property
     @pulumi.getter
@@ -175,6 +180,19 @@ class SecurityPolicyRuleInitArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
+
 
 @pulumi.input_type
 class _SecurityPolicyRuleState:
@@ -186,6 +204,7 @@ class _SecurityPolicyRuleState:
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicyRule resources.
@@ -208,6 +227,8 @@ class _SecurityPolicyRuleState:
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
                
@@ -227,6 +248,8 @@ class _SecurityPolicyRuleState:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
 
@@ -327,6 +350,19 @@ class _SecurityPolicyRuleState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
+
+    @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -354,6 +390,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -513,6 +550,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
                
@@ -682,6 +721,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -703,6 +743,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
+            __props__.__dict__["rate_limit_options"] = rate_limit_options
             if security_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'security_policy'")
             __props__.__dict__["security_policy"] = security_policy
@@ -723,6 +764,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
             security_policy: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicyRule':
         """
         Get an existing SecurityPolicyRule resource's state with the given name, id, and optional extra
@@ -750,6 +792,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
                
@@ -766,6 +810,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["preview"] = preview
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
+        __props__.__dict__["rate_limit_options"] = rate_limit_options
         __props__.__dict__["security_policy"] = security_policy
         return SecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
@@ -836,6 +881,15 @@ class SecurityPolicyRule(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> pulumi.Output[Optional['outputs.SecurityPolicyRuleRateLimitOptions']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
 
     @property
     @pulumi.getter(name="securityPolicy")

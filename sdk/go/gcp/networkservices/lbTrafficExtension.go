@@ -66,8 +66,10 @@ type LbTrafficExtension struct {
 	// present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-	// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load
+	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -141,8 +143,10 @@ type lbTrafficExtensionState struct {
 	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-	// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load
+	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location *string `pulumi:"location"`
@@ -173,8 +177,10 @@ type LbTrafficExtensionState struct {
 	// present on the resource.
 	Labels pulumi.StringMapInput
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-	// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load
+	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the traffic extension
 	Location pulumi.StringPtrInput
@@ -207,8 +213,10 @@ type lbTrafficExtensionArgs struct {
 	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-	// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load
+	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location string `pulumi:"location"`
@@ -235,8 +243,10 @@ type LbTrafficExtensionArgs struct {
 	// present on the resource.
 	Labels pulumi.StringMapInput
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-	// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load
+	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the traffic extension
 	Location pulumi.StringInput
@@ -365,8 +375,10 @@ func (o LbTrafficExtensionOutput) Labels() pulumi.StringMapOutput {
 }
 
 // All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-// more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-// "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+// [Supported application load
+// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 func (o LbTrafficExtensionOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }

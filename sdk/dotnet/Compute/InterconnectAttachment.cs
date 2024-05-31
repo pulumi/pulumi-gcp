@@ -362,6 +362,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        /// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        /// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        /// remote location fall into this category. In these cases, the default value is 30, and
+        /// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        /// gives Google Cloud Support more debugging visibility.
+        /// </summary>
+        [Output("subnetLength")]
+        public Output<int?> SubnetLength { get; private set; } = null!;
+
+        /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
         /// DEDICATED.
         /// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -579,6 +590,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
+
+        /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        /// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        /// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        /// remote location fall into this category. In these cases, the default value is 30, and
+        /// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        /// gives Google Cloud Support more debugging visibility.
+        /// </summary>
+        [Input("subnetLength")]
+        public Input<int>? SubnetLength { get; set; }
 
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
@@ -843,6 +865,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        /// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        /// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        /// remote location fall into this category. In these cases, the default value is 30, and
+        /// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        /// gives Google Cloud Support more debugging visibility.
+        /// </summary>
+        [Input("subnetLength")]
+        public Input<int>? SubnetLength { get; set; }
 
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to

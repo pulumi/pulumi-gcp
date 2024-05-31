@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigConfidentialNodeResult> ConfidentialNodes;
         /// <summary>
+        /// Parameters for containerd configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigContainerdConfigResult> ContainerdConfigs;
+        /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         /// </summary>
         public readonly int DiskSizeGb;
@@ -178,6 +182,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodeConfigConfidentialNodeResult> confidentialNodes,
 
+            ImmutableArray<Outputs.GetClusterNodeConfigContainerdConfigResult> containerdConfigs,
+
             int diskSizeGb,
 
             string diskType,
@@ -253,6 +259,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             ConfidentialNodes = confidentialNodes;
+            ContainerdConfigs = containerdConfigs;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EffectiveTaints = effectiveTaints;

@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleState;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleMatch;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfig;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -374,6 +375,22 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="rateLimitOptions", refs={SecurityPolicyRuleRateLimitOptions.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityPolicyRuleRateLimitOptions> rateLimitOptions;
+
+    /**
+     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityPolicyRuleRateLimitOptions>> rateLimitOptions() {
+        return Codegen.optional(this.rateLimitOptions);
     }
     /**
      * The name of the security policy this rule belongs to.

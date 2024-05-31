@@ -146,14 +146,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * Whether or not to allow table deletion when there are still resource tags attached.
+     * This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      * 
      */
     @Export(name="allowResourceTagsOnDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowResourceTagsOnDeletion;
 
     /**
-     * @return Whether or not to allow table deletion when there are still resource tags attached.
+     * @return This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      * 
      */
     public Output<Optional<Boolean>> allowResourceTagsOnDeletion() {
@@ -558,18 +560,22 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requirePartitionFilter);
     }
     /**
-     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+     * This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example &#34;Production&#34;.
      * 
      */
     @Export(name="resourceTags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> resourceTags;
 
     /**
-     * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+     * @return This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example &#34;Production&#34;.
      * 
      */
     public Output<Optional<Map<String,String>>> resourceTags() {
@@ -636,14 +642,20 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.tableId;
     }
     /**
-     * Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * Replication info of a table created
+     * using &#34;AS REPLICA&#34; DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * Structure is documented below.
      * 
      */
     @Export(name="tableReplicationInfo", refs={TableTableReplicationInfo.class}, tree="[0]")
     private Output</* @Nullable */ TableTableReplicationInfo> tableReplicationInfo;
 
     /**
-     * @return Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * @return Replication info of a table created
+     * using &#34;AS REPLICA&#34; DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<TableTableReplicationInfo>> tableReplicationInfo() {

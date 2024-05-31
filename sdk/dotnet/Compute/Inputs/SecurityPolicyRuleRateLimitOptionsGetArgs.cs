@@ -13,37 +13,40 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyRuleRateLimitOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can only be specified if the `action` for the rule is `rate_based_ban`.
+        /// Can only be specified if the action for the rule is "rate_based_ban".
         /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         /// </summary>
         [Input("banDurationSec")]
         public Input<int>? BanDurationSec { get; set; }
 
         /// <summary>
-        /// Can only be specified if the `action` for the rule is `rate_based_ban`.
-        /// If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
-        /// exceed this `ban_threshold`. Structure is documented below.
+        /// Can only be specified if the action for the rule is "rate_based_ban".
+        /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        /// Structure is documented below.
         /// </summary>
         [Input("banThreshold")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsBanThresholdGetArgs>? BanThreshold { get; set; }
 
         /// <summary>
-        /// Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
+        /// Action to take for requests that are under the configured rate limit threshold.
+        /// Valid option is "allow" only.
         /// </summary>
-        [Input("conformAction", required: true)]
-        public Input<string> ConformAction { get; set; } = null!;
+        [Input("conformAction")]
+        public Input<string>? ConformAction { get; set; }
 
         /// <summary>
-        /// Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
-        /// 
-        /// * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-        /// * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        /// * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-        /// * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-        /// * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-        /// * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        /// * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-        /// * `REGION_CODE`: The country/region from which the request originates.
+        /// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        /// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        /// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        /// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        /// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        /// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        /// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        /// * REGION_CODE: The country/region from which the request originates.
+        /// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        /// Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
         /// </summary>
         [Input("enforceOnKey")]
         public Input<string>? EnforceOnKey { get; set; }
@@ -52,9 +55,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigGetArgs>? _enforceOnKeyConfigs;
 
         /// <summary>
-        /// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
-        /// 
-        /// **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
+        /// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        /// You can specify up to 3 enforceOnKeyConfigs.
+        /// If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigGetArgs> EnforceOnKeyConfigs
         {
@@ -64,31 +68,32 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Rate limit key name applicable only for the following key types:
-        /// 
-        /// * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-        /// * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
+        /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>
         [Input("enforceOnKeyName")]
         public Input<string>? EnforceOnKeyName { get; set; }
 
         /// <summary>
-        /// When a request is denied, returns the HTTP response code specified.
-        /// Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
+        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.
+        /// Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
         /// </summary>
-        [Input("exceedAction", required: true)]
-        public Input<string> ExceedAction { get; set; } = null!;
+        [Input("exceedAction")]
+        public Input<string>? ExceedAction { get; set; }
 
         /// <summary>
-        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
         /// </summary>
         [Input("exceedRedirectOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsGetArgs>? ExceedRedirectOptions { get; set; }
 
         /// <summary>
-        /// Threshold at which to begin ratelimiting. Structure is documented below.
+        /// Threshold at which to begin ratelimiting.
+        /// Structure is documented below.
         /// </summary>
-        [Input("rateLimitThreshold", required: true)]
-        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdGetArgs> RateLimitThreshold { get; set; } = null!;
+        [Input("rateLimitThreshold")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdGetArgs>? RateLimitThreshold { get; set; }
 
         public SecurityPolicyRuleRateLimitOptionsGetArgs()
         {

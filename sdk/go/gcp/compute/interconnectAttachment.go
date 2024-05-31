@@ -279,6 +279,13 @@ type InterconnectAttachment struct {
 	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// [Output Only] The current state of this attachment's functionality.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+	// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+	// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+	// remote location fall into this category. In these cases, the default value is 30, and
+	// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+	// gives Google Cloud Support more debugging visibility.
+	SubnetLength pulumi.IntPtrOutput `pulumi:"subnetLength"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -443,6 +450,13 @@ type interconnectAttachmentState struct {
 	StackType *string `pulumi:"stackType"`
 	// [Output Only] The current state of this attachment's functionality.
 	State *string `pulumi:"state"`
+	// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+	// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+	// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+	// remote location fall into this category. In these cases, the default value is 30, and
+	// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+	// gives Google Cloud Support more debugging visibility.
+	SubnetLength *int `pulumi:"subnetLength"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -575,6 +589,13 @@ type InterconnectAttachmentState struct {
 	StackType pulumi.StringPtrInput
 	// [Output Only] The current state of this attachment's functionality.
 	State pulumi.StringPtrInput
+	// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+	// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+	// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+	// remote location fall into this category. In these cases, the default value is 30, and
+	// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+	// gives Google Cloud Support more debugging visibility.
+	SubnetLength pulumi.IntPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -678,6 +699,13 @@ type interconnectAttachmentArgs struct {
 	// interconnect attachment operations.
 	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
 	StackType *string `pulumi:"stackType"`
+	// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+	// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+	// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+	// remote location fall into this category. In these cases, the default value is 30, and
+	// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+	// gives Google Cloud Support more debugging visibility.
+	SubnetLength *int `pulumi:"subnetLength"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -778,6 +806,13 @@ type InterconnectAttachmentArgs struct {
 	// interconnect attachment operations.
 	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
 	StackType pulumi.StringPtrInput
+	// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+	// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+	// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+	// remote location fall into this category. In these cases, the default value is 30, and
+	// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+	// gives Google Cloud Support more debugging visibility.
+	SubnetLength pulumi.IntPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -1071,6 +1106,16 @@ func (o InterconnectAttachmentOutput) StackType() pulumi.StringOutput {
 // [Output Only] The current state of this attachment's functionality.
 func (o InterconnectAttachmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+// remote location fall into this category. In these cases, the default value is 30, and
+// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+// gives Google Cloud Support more debugging visibility.
+func (o InterconnectAttachmentOutput) SubnetLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.IntPtrOutput { return v.SubnetLength }).(pulumi.IntPtrOutput)
 }
 
 // The type of InterconnectAttachment you wish to create. Defaults to

@@ -90,6 +90,8 @@ import (
 type PrivateConnection struct {
 	pulumi.CustomResourceState
 
+	// If set to true, will skip validations.
+	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -165,6 +167,8 @@ func GetPrivateConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateConnection resources.
 type privateConnectionState struct {
+	// If set to true, will skip validations.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -194,6 +198,8 @@ type privateConnectionState struct {
 }
 
 type PrivateConnectionState struct {
+	// If set to true, will skip validations.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -227,6 +233,8 @@ func (PrivateConnectionState) ElementType() reflect.Type {
 }
 
 type privateConnectionArgs struct {
+	// If set to true, will skip validations.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
@@ -245,6 +253,8 @@ type privateConnectionArgs struct {
 
 // The set of arguments for constructing a PrivateConnection resource.
 type PrivateConnectionArgs struct {
+	// If set to true, will skip validations.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
@@ -346,6 +356,11 @@ func (o PrivateConnectionOutput) ToPrivateConnectionOutput() PrivateConnectionOu
 
 func (o PrivateConnectionOutput) ToPrivateConnectionOutputWithContext(ctx context.Context) PrivateConnectionOutput {
 	return o
+}
+
+// If set to true, will skip validations.
+func (o PrivateConnectionOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
 }
 
 // Display name.

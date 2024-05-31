@@ -32,8 +32,6 @@ public final class ServiceTemplateSpecVolumeCsi {
      * * gcsfuse.run.googleapis.com
      * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
      * 
-     * ***
-     * 
      */
     private @Nullable Map<String,String> volumeAttributes;
 
@@ -59,8 +57,6 @@ public final class ServiceTemplateSpecVolumeCsi {
      * @return Driver-specific attributes. The following options are supported for available drivers:
      * * gcsfuse.run.googleapis.com
      * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-     * 
-     * ***
      * 
      */
     public Map<String,String> volumeAttributes() {

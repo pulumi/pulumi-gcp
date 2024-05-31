@@ -186,15 +186,15 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sslSettings", refs={DomainMappingSslSettings.class}, tree="[0]")
-    private Output</* @Nullable */ DomainMappingSslSettings> sslSettings;
+    private Output<DomainMappingSslSettings> sslSettings;
 
     /**
      * @return SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<DomainMappingSslSettings>> sslSettings() {
-        return Codegen.optional(this.sslSettings);
+    public Output<DomainMappingSslSettings> sslSettings() {
+        return this.sslSettings;
     }
 
     /**

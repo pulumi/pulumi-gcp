@@ -30,6 +30,7 @@ class InterconnectAttachmentArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
@@ -110,6 +111,12 @@ class InterconnectAttachmentArgs:
                This field can be both set at interconnect attachments creation and update
                interconnect attachment operations.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+               except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+               constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+               remote location fall into this category. In these cases, the default value is 30, and
+               requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+               gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -143,6 +150,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "region", region)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+        if subnet_length is not None:
+            pulumi.set(__self__, "subnet_length", subnet_length)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vlan_tag8021q is not None:
@@ -379,6 +388,23 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "stack_type", value)
 
     @property
+    @pulumi.getter(name="subnetLength")
+    def subnet_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        remote location fall into this category. In these cases, the default value is 30, and
+        requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        gives Google Cloud Support more debugging visibility.
+        """
+        return pulumi.get(self, "subnet_length")
+
+    @subnet_length.setter
+    def subnet_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "subnet_length", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -434,6 +460,7 @@ class _InterconnectAttachmentState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
@@ -536,6 +563,12 @@ class _InterconnectAttachmentState:
                interconnect attachment operations.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+               except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+               constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+               remote location fall into this category. In these cases, the default value is 30, and
+               requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+               gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -592,6 +625,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "stack_type", stack_type)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if subnet_length is not None:
+            pulumi.set(__self__, "subnet_length", subnet_length)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vlan_tag8021q is not None:
@@ -971,6 +1006,23 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="subnetLength")
+    def subnet_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        remote location fall into this category. In these cases, the default value is 30, and
+        requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        gives Google Cloud Support more debugging visibility.
+        """
+        return pulumi.get(self, "subnet_length")
+
+    @subnet_length.setter
+    def subnet_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "subnet_length", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1017,6 +1069,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1188,6 +1241,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                This field can be both set at interconnect attachments creation and update
                interconnect attachment operations.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+               except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+               constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+               remote location fall into this category. In these cases, the default value is 30, and
+               requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+               gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -1319,6 +1378,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1346,6 +1406,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
             __props__.__dict__["stack_type"] = stack_type
+            __props__.__dict__["subnet_length"] = subnet_length
             __props__.__dict__["type"] = type
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
@@ -1394,6 +1455,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             stack_type: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            subnet_length: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vlan_tag8021q: Optional[pulumi.Input[int]] = None) -> 'InterconnectAttachment':
         """
@@ -1501,6 +1563,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                interconnect attachment operations.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+               except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+               constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+               remote location fall into this category. In these cases, the default value is 30, and
+               requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+               gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -1536,6 +1604,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stack_type"] = stack_type
         __props__.__dict__["state"] = state
+        __props__.__dict__["subnet_length"] = subnet_length
         __props__.__dict__["type"] = type
         __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
         return InterconnectAttachment(resource_name, opts=opts, __props__=__props__)
@@ -1812,6 +1881,19 @@ class InterconnectAttachment(pulumi.CustomResource):
         [Output Only] The current state of this attachment's functionality.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subnetLength")
+    def subnet_length(self) -> pulumi.Output[Optional[int]]:
+        """
+        Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+        except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+        constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+        remote location fall into this category. In these cases, the default value is 30, and
+        requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+        gives Google Cloud Support more debugging visibility.
+        """
+        return pulumi.get(self, "subnet_length")
 
     @property
     @pulumi.getter

@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
     /**
-     * @return Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     private @Nullable String target;
@@ -21,11 +20,11 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
      * @return Type of the redirect action.
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions() {}
     /**
-     * @return Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     public Optional<String> target() {
@@ -35,8 +34,8 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
      * @return Type of the redirect action.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -49,7 +48,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String target;
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -64,10 +63,8 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

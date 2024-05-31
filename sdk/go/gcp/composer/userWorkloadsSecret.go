@@ -79,7 +79,7 @@ import (
 //
 // * `{{project}}/{{region}}/{{environment}}/{{name}}`
 //
-// * `{{name}}`
+// * `{{environment}}/{{name}}`
 //
 // When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 //
@@ -92,7 +92,7 @@ import (
 // ```
 //
 // ```sh
-// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
 // ```
 type UserWorkloadsSecret struct {
 	pulumi.CustomResourceState

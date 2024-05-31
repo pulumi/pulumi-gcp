@@ -19224,6 +19224,8 @@ type ClusterNodeConfig struct {
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
+	// Parameters to customize containerd runtime. Structure is documented below.
+	ContainerdConfig *ClusterNodeConfigContainerdConfig `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
@@ -19365,6 +19367,8 @@ type ClusterNodeConfigArgs struct {
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
+	// Parameters to customize containerd runtime. Structure is documented below.
+	ContainerdConfig ClusterNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
@@ -19578,6 +19582,11 @@ func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 // Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 func (o ClusterNodeConfigOutput) ConfidentialNodes() ClusterNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(ClusterNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters to customize containerd runtime. Structure is documented below.
+func (o ClusterNodeConfigOutput) ContainerdConfig() ClusterNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigContainerdConfig { return v.ContainerdConfig }).(ClusterNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -19863,6 +19872,16 @@ func (o ClusterNodeConfigPtrOutput) ConfidentialNodes() ClusterNodeConfigConfide
 		}
 		return v.ConfidentialNodes
 	}).(ClusterNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters to customize containerd runtime. Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) ContainerdConfig() ClusterNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigContainerdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerdConfig
+	}).(ClusterNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -20568,6 +20587,467 @@ func (o ClusterNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOut
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfig struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
+}
+
+// ClusterNodeConfigContainerdConfigInput is an input type that accepts ClusterNodeConfigContainerdConfigArgs and ClusterNodeConfigContainerdConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigInput` via:
+//
+//	ClusterNodeConfigContainerdConfigArgs{...}
+type ClusterNodeConfigContainerdConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigOutput() ClusterNodeConfigContainerdConfigOutput
+	ToClusterNodeConfigContainerdConfigOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigOutput
+}
+
+type ClusterNodeConfigContainerdConfigArgs struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
+}
+
+func (ClusterNodeConfigContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigContainerdConfigArgs) ToClusterNodeConfigContainerdConfigOutput() ClusterNodeConfigContainerdConfigOutput {
+	return i.ToClusterNodeConfigContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigArgs) ToClusterNodeConfigContainerdConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigOutput)
+}
+
+func (i ClusterNodeConfigContainerdConfigArgs) ToClusterNodeConfigContainerdConfigPtrOutput() ClusterNodeConfigContainerdConfigPtrOutput {
+	return i.ToClusterNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigArgs) ToClusterNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigOutput).ToClusterNodeConfigContainerdConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigContainerdConfigPtrInput is an input type that accepts ClusterNodeConfigContainerdConfigArgs, ClusterNodeConfigContainerdConfigPtr and ClusterNodeConfigContainerdConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPtrInput` via:
+//
+//	        ClusterNodeConfigContainerdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigContainerdConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPtrOutput() ClusterNodeConfigContainerdConfigPtrOutput
+	ToClusterNodeConfigContainerdConfigPtrOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPtrOutput
+}
+
+type clusterNodeConfigContainerdConfigPtrType ClusterNodeConfigContainerdConfigArgs
+
+func ClusterNodeConfigContainerdConfigPtr(v *ClusterNodeConfigContainerdConfigArgs) ClusterNodeConfigContainerdConfigPtrInput {
+	return (*clusterNodeConfigContainerdConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigContainerdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigContainerdConfigPtrType) ToClusterNodeConfigContainerdConfigPtrOutput() ClusterNodeConfigContainerdConfigPtrOutput {
+	return i.ToClusterNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigContainerdConfigPtrType) ToClusterNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigOutput) ToClusterNodeConfigContainerdConfigOutput() ClusterNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigOutput) ToClusterNodeConfigContainerdConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigOutput) ToClusterNodeConfigContainerdConfigPtrOutput() ClusterNodeConfigContainerdConfigPtrOutput {
+	return o.ToClusterNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigContainerdConfigOutput) ToClusterNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigContainerdConfig) *ClusterNodeConfigContainerdConfig {
+		return &v
+	}).(ClusterNodeConfigContainerdConfigPtrOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfig() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfig) *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPtrOutput) ToClusterNodeConfigContainerdConfigPtrOutput() ClusterNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPtrOutput) ToClusterNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPtrOutput) Elem() ClusterNodeConfigContainerdConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfig) ClusterNodeConfigContainerdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigContainerdConfig
+		return ret
+	}).(ClusterNodeConfigContainerdConfigOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodeConfigContainerdConfigPtrOutput) PrivateRegistryAccessConfig() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfig) *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs and ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput).ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput is an input type that accepts ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs, ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr and ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput` via:
+//
+//	        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+}
+
+type clusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs
+
+func ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr(v *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput {
+	return (*clusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return &v
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Elem() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig
+		return ret
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+// ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfig
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
 }
 
 type ClusterNodeConfigEffectiveTaint struct {
@@ -24624,6 +25104,8 @@ func (o ClusterNodePoolDefaultsPtrOutput) NodeConfigDefaults() ClusterNodePoolDe
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaults struct {
+	// Parameters for containerd configuration.
+	ContainerdConfig *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig `pulumi:"gcfsConfig"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -24642,6 +25124,8 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsInput interface {
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsArgs struct {
+	// Parameters for containerd configuration.
+	ContainerdConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -24725,6 +25209,13 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaul
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
 }
 
+// Parameters for containerd configuration.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ContainerdConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
+		return v.ContainerdConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput)
+}
+
 // The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
@@ -24761,6 +25252,16 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) Elem() ClusterNodePo
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput)
 }
 
+// Parameters for containerd configuration.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) ContainerdConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerdConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput)
+}
+
 // The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
@@ -24779,6 +25280,469 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) LoggingVariant() pul
 		}
 		return v.LoggingVariant
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput)
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput).ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs, ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtr and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput` via:
+//
+//	        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput
+}
+
+type clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrType ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs
+
+func ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtr(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput {
+	return (*clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrType)(v)
+}
+
+func (*clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
+		return &v
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) PrivateRegistryAccessConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) Elem() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig
+		return ret
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) PrivateRegistryAccessConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput).ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs, ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtr and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput` via:
+//
+//	        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput
+}
+
+type clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrType ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs
+
+func ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtr(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput {
+	return (*clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrType)(v)
+}
+
+func (*clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
+		return &v
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) bool {
+		return v.Enabled
+	}).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) Elem() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig
+		return ret
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig struct {
@@ -25883,6 +26847,8 @@ type ClusterNodePoolNodeConfig struct {
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterNodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
+	// Parameters to customize containerd runtime. Structure is documented below.
+	ContainerdConfig *ClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
@@ -26024,6 +26990,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterNodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
+	// Parameters to customize containerd runtime. Structure is documented below.
+	ContainerdConfig ClusterNodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
@@ -26241,6 +27209,13 @@ func (o ClusterNodePoolNodeConfigOutput) ConfidentialNodes() ClusterNodePoolNode
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigConfidentialNodes {
 		return v.ConfidentialNodes
 	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters to customize containerd runtime. Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) ContainerdConfig() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigContainerdConfig {
+		return v.ContainerdConfig
+	}).(ClusterNodePoolNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -26544,6 +27519,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ConfidentialNodes() ClusterNodePoolN
 		}
 		return v.ConfidentialNodes
 	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters to customize containerd runtime. Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) ContainerdConfig() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigContainerdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerdConfig
+	}).(ClusterNodePoolNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -27249,6 +28234,467 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.Bo
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfig struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigArgs and ClusterNodePoolNodeConfigContainerdConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigContainerdConfigArgs{...}
+type ClusterNodePoolNodeConfigContainerdConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigOutput() ClusterNodePoolNodeConfigContainerdConfigOutput
+	ToClusterNodePoolNodeConfigContainerdConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigOutput
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigArgs struct {
+	// Configuration for private container registries. There are two fields in this config:
+	PrivateRegistryAccessConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
+}
+
+func (ClusterNodePoolNodeConfigContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigOutput() ClusterNodePoolNodeConfigContainerdConfigOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigOutput).ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigArgs, ClusterNodePoolNodeConfigContainerdConfigPtr and ClusterNodePoolNodeConfigContainerdConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigContainerdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigContainerdConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPtrOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigContainerdConfigPtrType ClusterNodePoolNodeConfigContainerdConfigArgs
+
+func ClusterNodePoolNodeConfigContainerdConfigPtr(v *ClusterNodePoolNodeConfigContainerdConfigArgs) ClusterNodePoolNodeConfigContainerdConfigPtrInput {
+	return (*clusterNodePoolNodeConfigContainerdConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigContainerdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigContainerdConfigPtrType) ToClusterNodePoolNodeConfigContainerdConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigContainerdConfigPtrType) ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigOutput() ClusterNodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigContainerdConfig) *ClusterNodePoolNodeConfigContainerdConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigContainerdConfigPtrOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodePoolNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfig() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfig) *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) ToClusterNodePoolNodeConfigContainerdConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) ToClusterNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) Elem() ClusterNodePoolNodeConfigContainerdConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfig) ClusterNodePoolNodeConfigContainerdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigContainerdConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigContainerdConfigOutput)
+}
+
+// Configuration for private container registries. There are two fields in this config:
+func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) PrivateRegistryAccessConfig() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfig) *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateRegistryAccessConfig
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs and ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	CertificateAuthorityDomainConfigs ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Enables private registry config. If set to false, all other fields in this object must not be set.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput).ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs, ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr and ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs
+
+func ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr(v *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput {
+	return (*clusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Elem() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityDomainConfigs
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Enables private registry config. If set to false, all other fields in this object must not be set.
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfig
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolNodeConfigEffectiveTaint struct {
@@ -35153,6 +36599,8 @@ type NodePoolNodeConfig struct {
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes *NodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfig *NodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -35245,6 +36693,8 @@ type NodePoolNodeConfigArgs struct {
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes NodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfig NodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -35411,6 +36861,11 @@ func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 // Configuration for Confidential Nodes feature. Structure is documented below.
 func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters for containerd configuration.
+func (o NodePoolNodeConfigOutput) ContainerdConfig() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigContainerdConfig { return v.ContainerdConfig }).(NodePoolNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -35649,6 +37104,16 @@ func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfi
 		}
 		return v.ConfidentialNodes
 	}).(NodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Parameters for containerd configuration.
+func (o NodePoolNodeConfigPtrOutput) ContainerdConfig() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigContainerdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerdConfig
+	}).(NodePoolNodeConfigContainerdConfigPtrOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -36306,6 +37771,467 @@ func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOu
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfig struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfig *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
+}
+
+// NodePoolNodeConfigContainerdConfigInput is an input type that accepts NodePoolNodeConfigContainerdConfigArgs and NodePoolNodeConfigContainerdConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigInput` via:
+//
+//	NodePoolNodeConfigContainerdConfigArgs{...}
+type NodePoolNodeConfigContainerdConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigOutput() NodePoolNodeConfigContainerdConfigOutput
+	ToNodePoolNodeConfigContainerdConfigOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigOutput
+}
+
+type NodePoolNodeConfigContainerdConfigArgs struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfig NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
+}
+
+func (NodePoolNodeConfigContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigContainerdConfigArgs) ToNodePoolNodeConfigContainerdConfigOutput() NodePoolNodeConfigContainerdConfigOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigArgs) ToNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigOutput)
+}
+
+func (i NodePoolNodeConfigContainerdConfigArgs) ToNodePoolNodeConfigContainerdConfigPtrOutput() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigArgs) ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigOutput).ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigContainerdConfigPtrInput is an input type that accepts NodePoolNodeConfigContainerdConfigArgs, NodePoolNodeConfigContainerdConfigPtr and NodePoolNodeConfigContainerdConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigContainerdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigContainerdConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPtrOutput() NodePoolNodeConfigContainerdConfigPtrOutput
+	ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPtrOutput
+}
+
+type nodePoolNodeConfigContainerdConfigPtrType NodePoolNodeConfigContainerdConfigArgs
+
+func NodePoolNodeConfigContainerdConfigPtr(v *NodePoolNodeConfigContainerdConfigArgs) NodePoolNodeConfigContainerdConfigPtrInput {
+	return (*nodePoolNodeConfigContainerdConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigContainerdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigContainerdConfigPtrType) ToNodePoolNodeConfigContainerdConfigPtrOutput() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigContainerdConfigPtrType) ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigOutput) ToNodePoolNodeConfigContainerdConfigOutput() NodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigOutput) ToNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigOutput) ToNodePoolNodeConfigContainerdConfigPtrOutput() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigContainerdConfigOutput) ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigContainerdConfig) *NodePoolNodeConfigContainerdConfig {
+		return &v
+	}).(NodePoolNodeConfigContainerdConfigPtrOutput)
+}
+
+// Parameters for private container registries configuration.
+func (o NodePoolNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfig() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfig) *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfig
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPtrOutput) ToNodePoolNodeConfigContainerdConfigPtrOutput() NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPtrOutput) ToNodePoolNodeConfigContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPtrOutput) Elem() NodePoolNodeConfigContainerdConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigContainerdConfig) NodePoolNodeConfigContainerdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigContainerdConfig
+		return ret
+	}).(NodePoolNodeConfigContainerdConfigOutput)
+}
+
+// Parameters for private container registries configuration.
+func (o NodePoolNodeConfigContainerdConfigPtrOutput) PrivateRegistryAccessConfig() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigContainerdConfig) *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateRegistryAccessConfig
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs []NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs and NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput).ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput is an input type that accepts NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs, NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr and NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput
+}
+
+type nodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs
+
+func NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtr(v *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput {
+	return (*nodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrType) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return &v
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Elem() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig
+		return ret
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityDomainConfigs
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+// NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfig NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
+}
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfig
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
 }
 
 type NodePoolNodeConfigEffectiveTaint struct {
@@ -45937,6 +47863,8 @@ type GetClusterNodeConfig struct {
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes []GetClusterNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs []GetClusterNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -46029,6 +47957,8 @@ type GetClusterNodeConfigArgs struct {
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes GetClusterNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs GetClusterNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -46169,6 +48099,11 @@ func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 // Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 func (o GetClusterNodeConfigOutput) ConfidentialNodes() GetClusterNodeConfigConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigConfidentialNode { return v.ConfidentialNodes }).(GetClusterNodeConfigConfidentialNodeArrayOutput)
+}
+
+// Parameters for containerd configuration.
+func (o GetClusterNodeConfigOutput) ContainerdConfigs() GetClusterNodeConfigContainerdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigContainerdConfig { return v.ContainerdConfigs }).(GetClusterNodeConfigContainerdConfigArrayOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -46584,6 +48519,422 @@ func (o GetClusterNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigConfidentialNode {
 		return vs[0].([]GetClusterNodeConfigConfidentialNode)[vs[1].(int)]
 	}).(GetClusterNodeConfigConfidentialNodeOutput)
+}
+
+type GetClusterNodeConfigContainerdConfig struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfigs"`
+}
+
+// GetClusterNodeConfigContainerdConfigInput is an input type that accepts GetClusterNodeConfigContainerdConfigArgs and GetClusterNodeConfigContainerdConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigArgs{...}
+type GetClusterNodeConfigContainerdConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigOutput() GetClusterNodeConfigContainerdConfigOutput
+	ToGetClusterNodeConfigContainerdConfigOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigOutput
+}
+
+type GetClusterNodeConfigContainerdConfigArgs struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput `pulumi:"privateRegistryAccessConfigs"`
+}
+
+func (GetClusterNodeConfigContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigArgs) ToGetClusterNodeConfigContainerdConfigOutput() GetClusterNodeConfigContainerdConfigOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigArgs) ToGetClusterNodeConfigContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigOutput)
+}
+
+// GetClusterNodeConfigContainerdConfigArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigArray and GetClusterNodeConfigContainerdConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigArrayInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigArray{ GetClusterNodeConfigContainerdConfigArgs{...} }
+type GetClusterNodeConfigContainerdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigArrayOutput() GetClusterNodeConfigContainerdConfigArrayOutput
+	ToGetClusterNodeConfigContainerdConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigArrayOutput
+}
+
+type GetClusterNodeConfigContainerdConfigArray []GetClusterNodeConfigContainerdConfigInput
+
+func (GetClusterNodeConfigContainerdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigArray) ToGetClusterNodeConfigContainerdConfigArrayOutput() GetClusterNodeConfigContainerdConfigArrayOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigArray) ToGetClusterNodeConfigContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigOutput) ToGetClusterNodeConfigContainerdConfigOutput() GetClusterNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigOutput) ToGetClusterNodeConfigContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigOutput {
+	return o
+}
+
+// Parameters for private container registries configuration.
+func (o GetClusterNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfigs() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfig) []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfigs
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigArrayOutput() GetClusterNodeConfigContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfig {
+		return vs[0].([]GetClusterNodeConfigContainerdConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigContainerdConfigOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray{ GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...} }
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return vs[0].([]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfigs() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfigs
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+// GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray and GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput` via:
+//
+//	GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{ GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...} }
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+	ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray []GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return i.ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return vs[0].([]GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
 }
 
 type GetClusterNodeConfigEffectiveTaint struct {
@@ -49467,6 +51818,8 @@ func (o GetClusterNodePoolDefaultArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterNodePoolDefaultNodeConfigDefault struct {
+	// Parameters for containerd configuration.
+	ContainerdConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig `pulumi:"containerdConfigs"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig `pulumi:"gcfsConfigs"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -49485,6 +51838,8 @@ type GetClusterNodePoolDefaultNodeConfigDefaultInput interface {
 }
 
 type GetClusterNodePoolDefaultNodeConfigDefaultArgs struct {
+	// Parameters for containerd configuration.
+	ContainerdConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput `pulumi:"containerdConfigs"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -49542,6 +51897,13 @@ func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ToGetClusterNodePoolDe
 	return o
 }
 
+// Parameters for containerd configuration.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ContainerdConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
+		return v.ContainerdConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput)
+}
+
 // GCFS configuration for this node.
 func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) GcfsConfigs() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
@@ -49572,6 +51934,424 @@ func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefault {
 		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefault)[vs[1].(int)]
 	}).(GetClusterNodePoolDefaultNodeConfigDefaultOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfigs"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput `pulumi:"privateRegistryAccessConfigs"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return o
+}
+
+// Parameters for private container registries configuration.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) PrivateRegistryAccessConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig) bool {
+		return v.Enabled
+	}).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
 }
 
 type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig struct {
@@ -50366,6 +53146,8 @@ type GetClusterNodePoolNodeConfig struct {
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes []GetClusterNodePoolNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs []GetClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -50458,6 +53240,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes GetClusterNodePoolNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs GetClusterNodePoolNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -50600,6 +53384,13 @@ func (o GetClusterNodePoolNodeConfigOutput) ConfidentialNodes() GetClusterNodePo
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigConfidentialNode {
 		return v.ConfidentialNodes
 	}).(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput)
+}
+
+// Parameters for containerd configuration.
+func (o GetClusterNodePoolNodeConfigOutput) ContainerdConfigs() GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigContainerdConfig {
+		return v.ContainerdConfigs
+	}).(GetClusterNodePoolNodeConfigContainerdConfigArrayOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -51031,6 +53822,422 @@ func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigConfidentialNode {
 		return vs[0].([]GetClusterNodePoolNodeConfigConfidentialNode)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfig struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfigs"`
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigArgs and GetClusterNodePoolNodeConfigContainerdConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigArgs{...}
+type GetClusterNodePoolNodeConfigContainerdConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigArgs struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput `pulumi:"privateRegistryAccessConfigs"`
+}
+
+func (GetClusterNodePoolNodeConfigContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigArray and GetClusterNodePoolNodeConfigContainerdConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigArray{ GetClusterNodePoolNodeConfigContainerdConfigArgs{...} }
+type GetClusterNodePoolNodeConfigContainerdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigArray []GetClusterNodePoolNodeConfigContainerdConfigInput
+
+func (GetClusterNodePoolNodeConfigContainerdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigOutput {
+	return o
+}
+
+// Parameters for private container registries configuration.
+func (o GetClusterNodePoolNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfigs() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfig) []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfigs
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigContainerdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigContainerdConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigContainerdConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigContainerdConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray{ GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{...} }
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfigs() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfigs
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray and GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{ GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...} }
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigEffectiveTaint struct {
@@ -55869,6 +59076,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPtrInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), ClusterNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), ClusterNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
@@ -55923,6 +59137,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
@@ -55943,6 +59164,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), ClusterNodePoolNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
@@ -56049,6 +59277,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), NodePoolNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), NodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
@@ -56213,6 +59448,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
@@ -56267,6 +59510,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementInput)(nil)).Elem(), GetClusterNodePoolManagementArgs{})
@@ -56287,6 +59538,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
@@ -56619,6 +59878,13 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
@@ -56673,6 +59939,13 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementOutput{})
@@ -56693,6 +59966,13 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
@@ -56799,6 +60079,13 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
@@ -56963,6 +60250,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
@@ -57017,6 +60312,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
@@ -57037,6 +60340,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})

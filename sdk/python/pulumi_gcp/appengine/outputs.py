@@ -1806,6 +1806,8 @@ class FlexibleAppVersionNetwork(dict):
         suggest = None
         if key == "forwardedPorts":
             suggest = "forwarded_ports"
+        elif key == "instanceIpMode":
+            suggest = "instance_ip_mode"
         elif key == "instanceTag":
             suggest = "instance_tag"
         elif key == "sessionAffinity":
@@ -1825,12 +1827,15 @@ class FlexibleAppVersionNetwork(dict):
     def __init__(__self__, *,
                  name: str,
                  forwarded_ports: Optional[Sequence[str]] = None,
+                 instance_ip_mode: Optional[str] = None,
                  instance_tag: Optional[str] = None,
                  session_affinity: Optional[bool] = None,
                  subnetwork: Optional[str] = None):
         """
         :param str name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         :param Sequence[str] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param str instance_ip_mode: Prevent instances from receiving an ephemeral external IP address.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param str instance_tag: Tag to apply to the instance during creation.
         :param bool session_affinity: Enable session affinity.
         :param str subnetwork: Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
@@ -1842,6 +1847,8 @@ class FlexibleAppVersionNetwork(dict):
         pulumi.set(__self__, "name", name)
         if forwarded_ports is not None:
             pulumi.set(__self__, "forwarded_ports", forwarded_ports)
+        if instance_ip_mode is not None:
+            pulumi.set(__self__, "instance_ip_mode", instance_ip_mode)
         if instance_tag is not None:
             pulumi.set(__self__, "instance_tag", instance_tag)
         if session_affinity is not None:
@@ -1864,6 +1871,15 @@ class FlexibleAppVersionNetwork(dict):
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         """
         return pulumi.get(self, "forwarded_ports")
+
+    @property
+    @pulumi.getter(name="instanceIpMode")
+    def instance_ip_mode(self) -> Optional[str]:
+        """
+        Prevent instances from receiving an ephemeral external IP address.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
+        """
+        return pulumi.get(self, "instance_ip_mode")
 
     @property
     @pulumi.getter(name="instanceTag")

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeCsi;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeEmptyDir;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeNfs;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeSecret;
 import java.lang.String;
 import java.util.Objects;
@@ -32,6 +33,14 @@ public final class ServiceTemplateSpecVolume {
      * 
      */
     private String name;
+    /**
+     * @return A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSpecVolumeNfs nfs;
     /**
      * @return The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
@@ -66,6 +75,16 @@ public final class ServiceTemplateSpecVolume {
         return this.name;
     }
     /**
+     * @return A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSpecVolumeNfs> nfs() {
+        return Optional.ofNullable(this.nfs);
+    }
+    /**
      * @return The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
      * the file is the secret_name.
@@ -88,6 +107,7 @@ public final class ServiceTemplateSpecVolume {
         private @Nullable ServiceTemplateSpecVolumeCsi csi;
         private @Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir;
         private String name;
+        private @Nullable ServiceTemplateSpecVolumeNfs nfs;
         private @Nullable ServiceTemplateSpecVolumeSecret secret;
         public Builder() {}
         public Builder(ServiceTemplateSpecVolume defaults) {
@@ -95,6 +115,7 @@ public final class ServiceTemplateSpecVolume {
     	      this.csi = defaults.csi;
     	      this.emptyDir = defaults.emptyDir;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secret = defaults.secret;
         }
 
@@ -119,6 +140,12 @@ public final class ServiceTemplateSpecVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder nfs(@Nullable ServiceTemplateSpecVolumeNfs nfs) {
+
+            this.nfs = nfs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secret(@Nullable ServiceTemplateSpecVolumeSecret secret) {
 
             this.secret = secret;
@@ -129,6 +156,7 @@ public final class ServiceTemplateSpecVolume {
             _resultValue.csi = csi;
             _resultValue.emptyDir = emptyDir;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secret = secret;
             return _resultValue;
         }

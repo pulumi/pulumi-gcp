@@ -82,6 +82,12 @@ namespace Pulumi.Gcp.Datastream
     public partial class PrivateConnection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Output("createWithoutValidation")]
+        public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Output("displayName")]
@@ -201,6 +207,12 @@ namespace Pulumi.Gcp.Datastream
     public sealed class PrivateConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -250,6 +262,12 @@ namespace Pulumi.Gcp.Datastream
 
     public sealed class PrivateConnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
         /// <summary>
         /// Display name.
         /// </summary>

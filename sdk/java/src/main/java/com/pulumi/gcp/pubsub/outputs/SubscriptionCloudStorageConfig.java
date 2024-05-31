@@ -26,6 +26,11 @@ public final class SubscriptionCloudStorageConfig {
      */
     private String bucket;
     /**
+     * @return User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    private @Nullable String filenameDatetimeFormat;
+    /**
      * @return User-provided prefix for Cloud Storage filename.
      * 
      */
@@ -70,6 +75,13 @@ public final class SubscriptionCloudStorageConfig {
      */
     public String bucket() {
         return this.bucket;
+    }
+    /**
+     * @return User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    public Optional<String> filenameDatetimeFormat() {
+        return Optional.ofNullable(this.filenameDatetimeFormat);
     }
     /**
      * @return User-provided prefix for Cloud Storage filename.
@@ -122,6 +134,7 @@ public final class SubscriptionCloudStorageConfig {
     public static final class Builder {
         private @Nullable SubscriptionCloudStorageConfigAvroConfig avroConfig;
         private String bucket;
+        private @Nullable String filenameDatetimeFormat;
         private @Nullable String filenamePrefix;
         private @Nullable String filenameSuffix;
         private @Nullable Integer maxBytes;
@@ -132,6 +145,7 @@ public final class SubscriptionCloudStorageConfig {
     	      Objects.requireNonNull(defaults);
     	      this.avroConfig = defaults.avroConfig;
     	      this.bucket = defaults.bucket;
+    	      this.filenameDatetimeFormat = defaults.filenameDatetimeFormat;
     	      this.filenamePrefix = defaults.filenamePrefix;
     	      this.filenameSuffix = defaults.filenameSuffix;
     	      this.maxBytes = defaults.maxBytes;
@@ -151,6 +165,12 @@ public final class SubscriptionCloudStorageConfig {
               throw new MissingRequiredPropertyException("SubscriptionCloudStorageConfig", "bucket");
             }
             this.bucket = bucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filenameDatetimeFormat(@Nullable String filenameDatetimeFormat) {
+
+            this.filenameDatetimeFormat = filenameDatetimeFormat;
             return this;
         }
         @CustomType.Setter
@@ -187,6 +207,7 @@ public final class SubscriptionCloudStorageConfig {
             final var _resultValue = new SubscriptionCloudStorageConfig();
             _resultValue.avroConfig = avroConfig;
             _resultValue.bucket = bucket;
+            _resultValue.filenameDatetimeFormat = filenameDatetimeFormat;
             _resultValue.filenamePrefix = filenamePrefix;
             _resultValue.filenameSuffix = filenameSuffix;
             _resultValue.maxBytes = maxBytes;

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingNodeAffinityArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingOnInstanceStopActionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -140,6 +141,21 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     }
 
     /**
+     * Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    @Import(name="onInstanceStopAction")
+    private @Nullable Output<InstanceFromMachineImageSchedulingOnInstanceStopActionArgs> onInstanceStopAction;
+
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageSchedulingOnInstanceStopActionArgs>> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+
+    /**
      * Whether the instance is preemptible.
      * 
      */
@@ -180,6 +196,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
+        this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
     }
@@ -372,6 +389,27 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
          */
         public Builder onHostMaintenance(String onHostMaintenance) {
             return onHostMaintenance(Output.of(onHostMaintenance));
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(@Nullable Output<InstanceFromMachineImageSchedulingOnInstanceStopActionArgs> onInstanceStopAction) {
+            $.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(InstanceFromMachineImageSchedulingOnInstanceStopActionArgs onInstanceStopAction) {
+            return onInstanceStopAction(Output.of(onInstanceStopAction));
         }
 
         /**

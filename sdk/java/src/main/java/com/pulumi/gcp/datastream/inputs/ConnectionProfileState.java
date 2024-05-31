@@ -13,6 +13,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -52,6 +53,21 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> connectionProfileId() {
         return Optional.ofNullable(this.connectionProfileId);
+    }
+
+    /**
+     * Create the connection profile without validating it.
+     * 
+     */
+    @Import(name="createWithoutValidation")
+    private @Nullable Output<Boolean> createWithoutValidation;
+
+    /**
+     * @return Create the connection profile without validating it.
+     * 
+     */
+    public Optional<Output<Boolean>> createWithoutValidation() {
+        return Optional.ofNullable(this.createWithoutValidation);
     }
 
     /**
@@ -295,6 +311,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     private ConnectionProfileState(ConnectionProfileState $) {
         this.bigqueryProfile = $.bigqueryProfile;
         this.connectionProfileId = $.connectionProfileId;
+        this.createWithoutValidation = $.createWithoutValidation;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
         this.forwardSshConnectivity = $.forwardSshConnectivity;
@@ -369,6 +386,27 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
          */
         public Builder connectionProfileId(String connectionProfileId) {
             return connectionProfileId(Output.of(connectionProfileId));
+        }
+
+        /**
+         * @param createWithoutValidation Create the connection profile without validating it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(@Nullable Output<Boolean> createWithoutValidation) {
+            $.createWithoutValidation = createWithoutValidation;
+            return this;
+        }
+
+        /**
+         * @param createWithoutValidation Create the connection profile without validating it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(Boolean createWithoutValidation) {
+            return createWithoutValidation(Output.of(createWithoutValidation));
         }
 
         /**

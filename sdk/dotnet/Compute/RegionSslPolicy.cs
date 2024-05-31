@@ -106,6 +106,9 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,9 +136,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RegionSslPolicy(string name, RegionSslPolicyArgs args, CustomResourceOptions? options = null)
+        public RegionSslPolicy(string name, RegionSslPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/regionSslPolicy:RegionSslPolicy", name, args ?? new RegionSslPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -233,6 +233,9 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -260,12 +263,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public RegionSslPolicyArgs()
         {
@@ -341,6 +341,9 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -368,9 +371,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

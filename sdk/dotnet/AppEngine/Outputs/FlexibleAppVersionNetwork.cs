@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ForwardedPorts;
         /// <summary>
+        /// Prevent instances from receiving an ephemeral external IP address.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        public readonly string? InstanceIpMode;
+        /// <summary>
         /// Tag to apply to the instance during creation.
         /// </summary>
         public readonly string? InstanceTag;
@@ -42,6 +47,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         private FlexibleAppVersionNetwork(
             ImmutableArray<string> forwardedPorts,
 
+            string? instanceIpMode,
+
             string? instanceTag,
 
             string name,
@@ -51,6 +58,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
             string? subnetwork)
         {
             ForwardedPorts = forwardedPorts;
+            InstanceIpMode = instanceIpMode;
             InstanceTag = instanceTag;
             Name = name;
             SessionAffinity = sessionAffinity;

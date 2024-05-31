@@ -100,6 +100,7 @@ __all__ = [
     'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceFromMachineImageSchedulingMaxRunDurationArgs',
     'InstanceFromMachineImageSchedulingNodeAffinityArgs',
+    'InstanceFromMachineImageSchedulingOnInstanceStopActionArgs',
     'InstanceFromMachineImageScratchDiskArgs',
     'InstanceFromMachineImageServiceAccountArgs',
     'InstanceFromMachineImageShieldedInstanceConfigArgs',
@@ -121,6 +122,7 @@ __all__ = [
     'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceFromTemplateSchedulingMaxRunDurationArgs',
     'InstanceFromTemplateSchedulingNodeAffinityArgs',
+    'InstanceFromTemplateSchedulingOnInstanceStopActionArgs',
     'InstanceFromTemplateScratchDiskArgs',
     'InstanceFromTemplateServiceAccountArgs',
     'InstanceFromTemplateShieldedInstanceConfigArgs',
@@ -156,6 +158,7 @@ __all__ = [
     'InstanceSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceSchedulingMaxRunDurationArgs',
     'InstanceSchedulingNodeAffinityArgs',
+    'InstanceSchedulingOnInstanceStopActionArgs',
     'InstanceScratchDiskArgs',
     'InstanceServiceAccountArgs',
     'InstanceSettingsMetadataArgs',
@@ -178,6 +181,7 @@ __all__ = [
     'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceTemplateSchedulingMaxRunDurationArgs',
     'InstanceTemplateSchedulingNodeAffinityArgs',
+    'InstanceTemplateSchedulingOnInstanceStopActionArgs',
     'InstanceTemplateServiceAccountArgs',
     'InstanceTemplateShieldedInstanceConfigArgs',
     'InterconnectAttachmentPrivateInterconnectInfoArgs',
@@ -294,6 +298,7 @@ __all__ = [
     'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'RegionInstanceTemplateSchedulingMaxRunDurationArgs',
     'RegionInstanceTemplateSchedulingNodeAffinityArgs',
+    'RegionInstanceTemplateSchedulingOnInstanceStopActionArgs',
     'RegionInstanceTemplateServiceAccountArgs',
     'RegionInstanceTemplateShieldedInstanceConfigArgs',
     'RegionNetworkEndpointGroupAppEngineArgs',
@@ -7442,6 +7447,7 @@ class InstanceFromMachineImageSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
@@ -7455,6 +7461,7 @@ class InstanceFromMachineImageSchedulingArgs:
         :param pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs'] max_run_duration: The timeout for new network connections to hosts.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
         :param pulumi.Input[str] on_host_maintenance: Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        :param pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
         """
@@ -7474,6 +7481,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -7574,6 +7583,18 @@ class InstanceFromMachineImageSchedulingArgs:
     @on_host_maintenance.setter
     def on_host_maintenance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_host_maintenance", value)
+
+    @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs']]:
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
 
     @property
     @pulumi.getter
@@ -7728,6 +7749,29 @@ class InstanceFromMachineImageSchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class InstanceFromMachineImageSchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] discard_local_ssd: If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
 
 
 @pulumi.input_type
@@ -8993,6 +9037,7 @@ class InstanceFromTemplateSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
@@ -9006,6 +9051,7 @@ class InstanceFromTemplateSchedulingArgs:
         :param pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The timeout for new network connections to hosts.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
         :param pulumi.Input[str] on_host_maintenance: Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        :param pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
         """
@@ -9025,6 +9071,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -9125,6 +9173,18 @@ class InstanceFromTemplateSchedulingArgs:
     @on_host_maintenance.setter
     def on_host_maintenance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_host_maintenance", value)
+
+    @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs']]:
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
 
     @property
     @pulumi.getter
@@ -9279,6 +9339,29 @@ class InstanceFromTemplateSchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateSchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] discard_local_ssd: If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
 
 
 @pulumi.input_type
@@ -11041,6 +11124,7 @@ class InstanceSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
@@ -11053,8 +11137,7 @@ class InstanceSchedulingArgs:
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -11064,6 +11147,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[str] on_host_maintenance: Describes maintenance behavior for the
                instance. Can be MIGRATE or TERMINATE, for more info, read
                [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
+        :param pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
         :param pulumi.Input[bool] preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
@@ -11088,6 +11172,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -11150,8 +11236,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']]:
         """
-        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         """
         return pulumi.get(self, "max_run_duration")
 
@@ -11200,6 +11285,18 @@ class InstanceSchedulingArgs:
     @on_host_maintenance.setter
     def on_host_maintenance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_host_maintenance", value)
+
+    @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs']]:
+        """
+        Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        """
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
 
     @property
     @pulumi.getter
@@ -11283,12 +11380,13 @@ class InstanceSchedulingMaxRunDurationArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
-               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented
-               with a 0 seconds field and a positive nanos field. Must
-               be from 0 to 999,999,999 inclusive.
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -11298,8 +11396,9 @@ class InstanceSchedulingMaxRunDurationArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         """
         return pulumi.get(self, "seconds")
 
@@ -11312,9 +11411,9 @@ class InstanceSchedulingMaxRunDurationArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -11375,6 +11474,29 @@ class InstanceSchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class InstanceSchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] discard_local_ssd: Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
 
 
 @pulumi.input_type
@@ -12785,6 +12907,7 @@ class InstanceTemplateSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
@@ -12797,8 +12920,7 @@ class InstanceTemplateSchedulingArgs:
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -12807,6 +12929,7 @@ class InstanceTemplateSchedulingArgs:
                Structure documented below.
         :param pulumi.Input[str] on_host_maintenance: Defines the maintenance behavior for this
                instance.
+        :param pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
         :param pulumi.Input[bool] preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -12831,6 +12954,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -12893,8 +13018,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']]:
         """
-        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         """
         return pulumi.get(self, "max_run_duration")
 
@@ -12942,6 +13066,18 @@ class InstanceTemplateSchedulingArgs:
     @on_host_maintenance.setter
     def on_host_maintenance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_host_maintenance", value)
+
+    @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs']]:
+        """
+        Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        """
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
 
     @property
     @pulumi.getter
@@ -13025,12 +13161,13 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
-               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented
-               with a 0 seconds field and a positive nanos field. Must
-               be from 0 to 999,999,999 inclusive.
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -13040,8 +13177,9 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         """
         return pulumi.get(self, "seconds")
 
@@ -13054,9 +13192,9 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -13113,6 +13251,29 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class InstanceTemplateSchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] discard_local_ssd: Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
 
 
 @pulumi.input_type
@@ -21091,6 +21252,7 @@ class RegionInstanceTemplateSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
@@ -21112,6 +21274,7 @@ class RegionInstanceTemplateSchedulingArgs:
                Structure documented below.
         :param pulumi.Input[str] on_host_maintenance: Defines the maintenance behavior for this
                instance.
+        :param pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[bool] preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -21136,6 +21299,8 @@ class RegionInstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -21246,6 +21411,18 @@ class RegionInstanceTemplateSchedulingArgs:
     @on_host_maintenance.setter
     def on_host_maintenance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_host_maintenance", value)
+
+    @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs']]:
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
 
     @property
     @pulumi.getter
@@ -21419,6 +21596,29 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class RegionInstanceTemplateSchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] discard_local_ssd: If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
 
 
 @pulumi.input_type
@@ -30204,6 +30404,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
                * `DISABLED` - Don't parse JSON payloads in POST bodies.
                * `STANDARD` - Parse JSON payloads in POST bodies.
+               * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
         :param pulumi.Input[str] log_level: Log level to use. Defaults to `NORMAL`.
                * `NORMAL` - Normal log level.
                * `VERBOSE` - Verbose log level.
@@ -30238,6 +30439,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
         * `DISABLED` - Don't parse JSON payloads in POST bodies.
         * `STANDARD` - Parse JSON payloads in POST bodies.
+        * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
         """
         return pulumi.get(self, "json_parsing")
 
@@ -30998,102 +31200,73 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsArgs:
     def __init__(__self__, *,
-                 conform_action: pulumi.Input[str],
-                 exceed_action: pulumi.Input[str],
-                 rate_limit_threshold: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'],
                  ban_duration_sec: Optional[pulumi.Input[int]] = None,
                  ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']] = None,
+                 conform_action: Optional[pulumi.Input[str]] = None,
                  enforce_on_key: Optional[pulumi.Input[str]] = None,
                  enforce_on_key_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]] = None,
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
-                 exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None):
+                 exceed_action: Optional[pulumi.Input[str]] = None,
+                 exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None,
+                 rate_limit_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']] = None):
         """
-        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
-        :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified.
-               Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
-        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the `action` for the rule is `rate_based_ban`.
+        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban".
                If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is `rate_based_ban`.
-               If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
-               exceed this `ban_threshold`. Structure is documented below.
-        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
-               
-               * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-               * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-               * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-               * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-               * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-               * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-               * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-               * `REGION_CODE`: The country/region from which the request originates.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
-               
-               **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban".
+               If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+               Structure is documented below.
+        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold.
+               Valid option is "allow" only.
+        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+               You can specify up to 3 enforceOnKeyConfigs.
+               If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+               Structure is documented below.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
-               
-               * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-               * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.
+               Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "conform_action", conform_action)
-        pulumi.set(__self__, "exceed_action", exceed_action)
-        pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
         if ban_duration_sec is not None:
             pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
         if ban_threshold is not None:
             pulumi.set(__self__, "ban_threshold", ban_threshold)
+        if conform_action is not None:
+            pulumi.set(__self__, "conform_action", conform_action)
         if enforce_on_key is not None:
             pulumi.set(__self__, "enforce_on_key", enforce_on_key)
         if enforce_on_key_configs is not None:
             pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        if exceed_action is not None:
+            pulumi.set(__self__, "exceed_action", exceed_action)
         if exceed_redirect_options is not None:
             pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
-
-    @property
-    @pulumi.getter(name="conformAction")
-    def conform_action(self) -> pulumi.Input[str]:
-        """
-        Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
-        """
-        return pulumi.get(self, "conform_action")
-
-    @conform_action.setter
-    def conform_action(self, value: pulumi.Input[str]):
-        pulumi.set(self, "conform_action", value)
-
-    @property
-    @pulumi.getter(name="exceedAction")
-    def exceed_action(self) -> pulumi.Input[str]:
-        """
-        When a request is denied, returns the HTTP response code specified.
-        Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
-        """
-        return pulumi.get(self, "exceed_action")
-
-    @exceed_action.setter
-    def exceed_action(self, value: pulumi.Input[str]):
-        pulumi.set(self, "exceed_action", value)
-
-    @property
-    @pulumi.getter(name="rateLimitThreshold")
-    def rate_limit_threshold(self) -> pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']:
-        """
-        Threshold at which to begin ratelimiting. Structure is documented below.
-        """
-        return pulumi.get(self, "rate_limit_threshold")
-
-    @rate_limit_threshold.setter
-    def rate_limit_threshold(self, value: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']):
-        pulumi.set(self, "rate_limit_threshold", value)
+        if rate_limit_threshold is not None:
+            pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
 
     @property
     @pulumi.getter(name="banDurationSec")
     def ban_duration_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Can only be specified if the `action` for the rule is `rate_based_ban`.
+        Can only be specified if the action for the rule is "rate_based_ban".
         If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         """
         return pulumi.get(self, "ban_duration_sec")
@@ -31106,9 +31279,9 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="banThreshold")
     def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]:
         """
-        Can only be specified if the `action` for the rule is `rate_based_ban`.
-        If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
-        exceed this `ban_threshold`. Structure is documented below.
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        Structure is documented below.
         """
         return pulumi.get(self, "ban_threshold")
 
@@ -31117,19 +31290,34 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         pulumi.set(self, "ban_threshold", value)
 
     @property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to take for requests that are under the configured rate limit threshold.
+        Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @conform_action.setter
+    def conform_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "conform_action", value)
+
+    @property
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
-
-        * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-        * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-        * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-        * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-        * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-        * `REGION_CODE`: The country/region from which the request originates.
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -31141,9 +31329,10 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKeyConfigs")
     def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
         """
-        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
-
-        **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
+        If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        You can specify up to 3 enforceOnKeyConfigs.
+        If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        Structure is documented below.
         """
         return pulumi.get(self, "enforce_on_key_configs")
 
@@ -31156,9 +31345,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
         """
         Rate limit key name applicable only for the following key types:
-
-        * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-        * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -31167,10 +31355,24 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         pulumi.set(self, "enforce_on_key_name", value)
 
     @property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.
+        Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @exceed_action.setter
+    def exceed_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exceed_action", value)
+
+    @property
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]:
         """
-        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
         """
         return pulumi.get(self, "exceed_redirect_options")
 
@@ -31178,41 +31380,56 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def exceed_redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]):
         pulumi.set(self, "exceed_redirect_options", value)
 
+    @property
+    @pulumi.getter(name="rateLimitThreshold")
+    def rate_limit_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']]:
+        """
+        Threshold at which to begin ratelimiting.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_threshold")
+
+    @rate_limit_threshold.setter
+    def rate_limit_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']]):
+        pulumi.set(self, "rate_limit_threshold", value)
+
 
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[int],
-                 interval_sec: pulumi.Input[int]):
+                 count: Optional[pulumi.Input[int]] = None,
+                 interval_sec: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] count: Number of HTTP(S) requests for calculating the threshold.
         :param pulumi.Input[int] interval_sec: Interval over which the threshold is computed.
         """
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "interval_sec", interval_sec)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if interval_sec is not None:
+            pulumi.set(__self__, "interval_sec", interval_sec)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[int]:
+    def count(self) -> Optional[pulumi.Input[int]]:
         """
         Number of HTTP(S) requests for calculating the threshold.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[int]):
+    def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter(name="intervalSec")
-    def interval_sec(self) -> pulumi.Input[int]:
+    def interval_sec(self) -> Optional[pulumi.Input[int]]:
         """
         Interval over which the threshold is computed.
         """
         return pulumi.get(self, "interval_sec")
 
     @interval_sec.setter
-    def interval_sec(self, value: pulumi.Input[int]):
+    def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
 
@@ -31223,19 +31440,20 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
                  enforce_on_key_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
-               
-               * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-               * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input[str] enforce_on_key_type: Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
-               
-               * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-               * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-               * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-               * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-               * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-               * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-               * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-               * `REGION_CODE`: The country/region from which the request originates.
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param pulumi.Input[str] enforce_on_key_type: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -31247,9 +31465,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
         """
         Rate limit key name applicable only for the following key types:
-
-        * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-        * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -31261,16 +31478,18 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     @pulumi.getter(name="enforceOnKeyType")
     def enforce_on_key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
-
-        * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-        * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-        * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-        * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforce_on_key_name`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-        * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-        * `REGION_CODE`: The country/region from which the request originates.
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -31282,33 +31501,22 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str],
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
         :param pulumi.Input[str] type: Type of the redirect action.
-        :param pulumi.Input[str] target: Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
         """
-        pulumi.set(__self__, "type", type)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Type of the redirect action.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
         """
         return pulumi.get(self, "target")
 
@@ -31316,41 +31524,55 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the redirect action.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[int],
-                 interval_sec: pulumi.Input[int]):
+                 count: Optional[pulumi.Input[int]] = None,
+                 interval_sec: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] count: Number of HTTP(S) requests for calculating the threshold.
         :param pulumi.Input[int] interval_sec: Interval over which the threshold is computed.
         """
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "interval_sec", interval_sec)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if interval_sec is not None:
+            pulumi.set(__self__, "interval_sec", interval_sec)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[int]:
+    def count(self) -> Optional[pulumi.Input[int]]:
         """
         Number of HTTP(S) requests for calculating the threshold.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[int]):
+    def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter(name="intervalSec")
-    def interval_sec(self) -> pulumi.Input[int]:
+    def interval_sec(self) -> Optional[pulumi.Input[int]]:
         """
         Interval over which the threshold is computed.
         """
         return pulumi.get(self, "interval_sec")
 
     @interval_sec.setter
-    def interval_sec(self, value: pulumi.Input[int]):
+    def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
 

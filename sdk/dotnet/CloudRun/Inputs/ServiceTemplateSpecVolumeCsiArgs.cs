@@ -34,8 +34,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// Driver-specific attributes. The following options are supported for available drivers:
         /// * gcsfuse.run.googleapis.com
         /// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> VolumeAttributes
         {

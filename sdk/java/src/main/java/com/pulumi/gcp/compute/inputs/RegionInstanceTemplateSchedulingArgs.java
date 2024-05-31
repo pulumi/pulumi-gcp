@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingNodeAffinityArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingOnInstanceStopActionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -162,6 +163,21 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
+     * Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    @Import(name="onInstanceStopAction")
+    private @Nullable Output<RegionInstanceTemplateSchedulingOnInstanceStopActionArgs> onInstanceStopAction;
+
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public Optional<Output<RegionInstanceTemplateSchedulingOnInstanceStopActionArgs>> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+
+    /**
      * Allows instance to be preempted. This defaults to
      * false. Read more on this
      * [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -212,6 +228,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
+        this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
     }
@@ -447,6 +464,27 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
          */
         public Builder onHostMaintenance(String onHostMaintenance) {
             return onHostMaintenance(Output.of(onHostMaintenance));
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(@Nullable Output<RegionInstanceTemplateSchedulingOnInstanceStopActionArgs> onInstanceStopAction) {
+            $.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+
+        /**
+         * @param onInstanceStopAction Defines the behaviour for instances with the instance_termination_action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onInstanceStopAction(RegionInstanceTemplateSchedulingOnInstanceStopActionArgs onInstanceStopAction) {
+            return onInstanceStopAction(Output.of(onInstanceStopAction));
         }
 
         /**

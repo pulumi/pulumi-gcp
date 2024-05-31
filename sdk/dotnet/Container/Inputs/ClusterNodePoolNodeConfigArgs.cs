@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolNodeConfigConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
+        /// Parameters to customize containerd runtime. Structure is documented below.
+        /// </summary>
+        [Input("containerdConfig")]
+        public Input<Inputs.ClusterNodePoolNodeConfigContainerdConfigArgs>? ContainerdConfig { get; set; }
+
+        /// <summary>
         /// Size of the disk attached to each node, specified
         /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         /// </summary>

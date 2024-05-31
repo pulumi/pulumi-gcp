@@ -252,6 +252,9 @@ type SecurityPolicyRule struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrOutput `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -323,6 +326,9 @@ type securityPolicyRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -356,6 +362,9 @@ type SecurityPolicyRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -393,6 +402,9 @@ type securityPolicyRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -427,6 +439,9 @@ type SecurityPolicyRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	// Structure is documented below.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -567,6 +582,12 @@ func (o SecurityPolicyRuleOutput) Priority() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o SecurityPolicyRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicyRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+// Structure is documented below.
+func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRule) SecurityPolicyRuleRateLimitOptionsPtrOutput { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
 // The name of the security policy this rule belongs to.

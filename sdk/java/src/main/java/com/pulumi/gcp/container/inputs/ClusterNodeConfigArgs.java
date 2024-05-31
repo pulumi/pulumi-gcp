@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEffectiveTaintArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs;
@@ -85,6 +86,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ClusterNodeConfigConfidentialNodesArgs>> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+
+    /**
+     * Parameters to customize containerd runtime. Structure is documented below.
+     * 
+     */
+    @Import(name="containerdConfig")
+    private @Nullable Output<ClusterNodeConfigContainerdConfigArgs> containerdConfig;
+
+    /**
+     * @return Parameters to customize containerd runtime. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigContainerdConfigArgs>> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
     }
 
     /**
@@ -729,6 +745,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.confidentialNodes = $.confidentialNodes;
+        this.containerdConfig = $.containerdConfig;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.effectiveTaints = $.effectiveTaints;
@@ -848,6 +865,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder confidentialNodes(ClusterNodeConfigConfidentialNodesArgs confidentialNodes) {
             return confidentialNodes(Output.of(confidentialNodes));
+        }
+
+        /**
+         * @param containerdConfig Parameters to customize containerd runtime. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(@Nullable Output<ClusterNodeConfigContainerdConfigArgs> containerdConfig) {
+            $.containerdConfig = containerdConfig;
+            return this;
+        }
+
+        /**
+         * @param containerdConfig Parameters to customize containerd runtime. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(ClusterNodeConfigContainerdConfigArgs containerdConfig) {
+            return containerdConfig(Output.of(containerdConfig));
         }
 
         /**

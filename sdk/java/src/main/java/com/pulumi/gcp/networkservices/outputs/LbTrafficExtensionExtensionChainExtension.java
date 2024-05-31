@@ -18,7 +18,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * @return The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    private String authority;
+    private @Nullable String authority;
     /**
      * @return Determines how the proxy behaves if the call to the extension fails or times out.
      * When set to TRUE, request or response processing continues without error.
@@ -63,15 +63,15 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private String timeout;
+    private @Nullable String timeout;
 
     private LbTrafficExtensionExtensionChainExtension() {}
     /**
      * @return The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    public String authority() {
-        return this.authority;
+    public Optional<String> authority() {
+        return Optional.ofNullable(this.authority);
     }
     /**
      * @return Determines how the proxy behaves if the call to the extension fails or times out.
@@ -127,8 +127,8 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    public String timeout() {
-        return this.timeout;
+    public Optional<String> timeout() {
+        return Optional.ofNullable(this.timeout);
     }
 
     public static Builder builder() {
@@ -140,13 +140,13 @@ public final class LbTrafficExtensionExtensionChainExtension {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String authority;
+        private @Nullable String authority;
         private @Nullable Boolean failOpen;
         private @Nullable List<String> forwardHeaders;
         private String name;
         private String service;
         private @Nullable List<String> supportedEvents;
-        private String timeout;
+        private @Nullable String timeout;
         public Builder() {}
         public Builder(LbTrafficExtensionExtensionChainExtension defaults) {
     	      Objects.requireNonNull(defaults);
@@ -160,10 +160,8 @@ public final class LbTrafficExtensionExtensionChainExtension {
         }
 
         @CustomType.Setter
-        public Builder authority(String authority) {
-            if (authority == null) {
-              throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtension", "authority");
-            }
+        public Builder authority(@Nullable String authority) {
+
             this.authority = authority;
             return this;
         }
@@ -208,10 +206,8 @@ public final class LbTrafficExtensionExtensionChainExtension {
             return supportedEvents(List.of(supportedEvents));
         }
         @CustomType.Setter
-        public Builder timeout(String timeout) {
-            if (timeout == null) {
-              throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtension", "timeout");
-            }
+        public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }

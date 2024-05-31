@@ -3606,6 +3606,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/aspectType",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/aspectType:AspectType": "AspectType"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/aspectTypeIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding": "AspectTypeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/aspectTypeIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember": "AspectTypeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/aspectTypeIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy": "AspectTypeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/asset",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -3666,6 +3698,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy": "DatascanIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryGroup",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryGroup:EntryGroup": "EntryGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryGroupIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding": "EntryGroupIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryGroupIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember": "EntryGroupIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryGroupIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy": "EntryGroupIamPolicy"
   }
  },
  {
@@ -5430,6 +5494,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/autokeyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/autokeyConfig:AutokeyConfig": "AutokeyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/cryptoKey",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -5474,6 +5546,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/ekmConnection:EkmConnection": "EkmConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/keyHandle",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/keyHandle:KeyHandle": "KeyHandle"
   }
  },
  {
@@ -6074,6 +6154,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/httpRoute:HttpRoute": "HttpRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/lbRouteExtension",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/lbRouteExtension:LbRouteExtension": "LbRouteExtension"
   }
  },
  {

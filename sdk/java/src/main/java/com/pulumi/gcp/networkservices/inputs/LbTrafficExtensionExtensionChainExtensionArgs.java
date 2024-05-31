@@ -22,15 +22,15 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    @Import(name="authority", required=true)
-    private Output<String> authority;
+    @Import(name="authority")
+    private @Nullable Output<String> authority;
 
     /**
      * @return The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    public Output<String> authority() {
-        return this.authority;
+    public Optional<Output<String>> authority() {
+        return Optional.ofNullable(this.authority);
     }
 
     /**
@@ -141,16 +141,16 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Import(name="timeout", required=true)
-    private Output<String> timeout;
+    @Import(name="timeout")
+    private @Nullable Output<String> timeout;
 
     /**
      * @return Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    public Output<String> timeout() {
-        return this.timeout;
+    public Optional<Output<String>> timeout() {
+        return Optional.ofNullable(this.timeout);
     }
 
     private LbTrafficExtensionExtensionChainExtensionArgs() {}
@@ -189,7 +189,7 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder authority(Output<String> authority) {
+        public Builder authority(@Nullable Output<String> authority) {
             $.authority = authority;
             return this;
         }
@@ -370,7 +370,7 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder timeout(Output<String> timeout) {
+        public Builder timeout(@Nullable Output<String> timeout) {
             $.timeout = timeout;
             return this;
         }
@@ -387,17 +387,11 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
         }
 
         public LbTrafficExtensionExtensionChainExtensionArgs build() {
-            if ($.authority == null) {
-                throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtensionArgs", "authority");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtensionArgs", "name");
             }
             if ($.service == null) {
                 throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtensionArgs", "service");
-            }
-            if ($.timeout == null) {
-                throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtensionArgs", "timeout");
             }
             return $;
         }

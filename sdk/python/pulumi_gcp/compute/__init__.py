@@ -82,6 +82,7 @@ from .get_snapshot_iam_policy import *
 from .get_ssl_policy import *
 from .get_subnetwork import *
 from .get_subnetwork_iam_policy import *
+from .get_subnetworks import *
 from .get_vpn_gateway import *
 from .get_zones import *
 from .global_address import *

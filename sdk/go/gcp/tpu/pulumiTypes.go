@@ -266,7 +266,7 @@ type V2VmAcceleratorConfig struct {
 	// Topology of TPU in chips.
 	Topology string `pulumi:"topology"`
 	// Type of TPU.
-	// Possible values are: `V2`, `V3`, `V4`.
+	// Possible values are: `V2`, `V3`, `V4`, `V5P`.
 	Type string `pulumi:"type"`
 }
 
@@ -285,7 +285,7 @@ type V2VmAcceleratorConfigArgs struct {
 	// Topology of TPU in chips.
 	Topology pulumi.StringInput `pulumi:"topology"`
 	// Type of TPU.
-	// Possible values are: `V2`, `V3`, `V4`.
+	// Possible values are: `V2`, `V3`, `V4`, `V5P`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -372,7 +372,7 @@ func (o V2VmAcceleratorConfigOutput) Topology() pulumi.StringOutput {
 }
 
 // Type of TPU.
-// Possible values are: `V2`, `V3`, `V4`.
+// Possible values are: `V2`, `V3`, `V4`, `V5P`.
 func (o V2VmAcceleratorConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v V2VmAcceleratorConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -412,7 +412,7 @@ func (o V2VmAcceleratorConfigPtrOutput) Topology() pulumi.StringPtrOutput {
 }
 
 // Type of TPU.
-// Possible values are: `V2`, `V3`, `V4`.
+// Possible values are: `V2`, `V3`, `V4`, `V5P`.
 func (o V2VmAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2VmAcceleratorConfig) *string {
 		if v == nil {

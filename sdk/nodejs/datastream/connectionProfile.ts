@@ -313,6 +313,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
     /**
+     * Create the connection profile without validating it.
+     */
+    public readonly createWithoutValidation!: pulumi.Output<boolean | undefined>;
+    /**
      * Display name.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -398,6 +402,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             const state = argsOrState as ConnectionProfileState | undefined;
             resourceInputs["bigqueryProfile"] = state ? state.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = state ? state.connectionProfileId : undefined;
+            resourceInputs["createWithoutValidation"] = state ? state.createWithoutValidation : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forwardSshConnectivity"] = state ? state.forwardSshConnectivity : undefined;
@@ -425,6 +430,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             }
             resourceInputs["bigqueryProfile"] = args ? args.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
+            resourceInputs["createWithoutValidation"] = args ? args.createWithoutValidation : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["forwardSshConnectivity"] = args ? args.forwardSshConnectivity : undefined;
             resourceInputs["gcsProfile"] = args ? args.gcsProfile : undefined;
@@ -459,6 +465,10 @@ export interface ConnectionProfileState {
      * The connection profile identifier.
      */
     connectionProfileId?: pulumi.Input<string>;
+    /**
+     * Create the connection profile without validating it.
+     */
+    createWithoutValidation?: pulumi.Input<boolean>;
     /**
      * Display name.
      */
@@ -543,6 +553,10 @@ export interface ConnectionProfileArgs {
      * The connection profile identifier.
      */
     connectionProfileId: pulumi.Input<string>;
+    /**
+     * Create the connection profile without validating it.
+     */
+    createWithoutValidation?: pulumi.Input<boolean>;
     /**
      * Display name.
      */

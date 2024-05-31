@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationAvroOptionsArgs;
+import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationBigtableOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationCsvOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationHivePartitioningOptionsArgs;
@@ -57,6 +58,23 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      */
     public Optional<Output<TableExternalDataConfigurationAvroOptionsArgs>> avroOptions() {
         return Optional.ofNullable(this.avroOptions);
+    }
+
+    /**
+     * Additional properties to set if
+     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * 
+     */
+    @Import(name="bigtableOptions")
+    private @Nullable Output<TableExternalDataConfigurationBigtableOptionsArgs> bigtableOptions;
+
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableExternalDataConfigurationBigtableOptionsArgs>> bigtableOptions() {
+        return Optional.ofNullable(this.bigtableOptions);
     }
 
     /**
@@ -403,6 +421,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     private TableExternalDataConfigurationArgs(TableExternalDataConfigurationArgs $) {
         this.autodetect = $.autodetect;
         this.avroOptions = $.avroOptions;
+        this.bigtableOptions = $.bigtableOptions;
         this.compression = $.compression;
         this.connectionId = $.connectionId;
         this.csvOptions = $.csvOptions;
@@ -484,6 +503,29 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder avroOptions(TableExternalDataConfigurationAvroOptionsArgs avroOptions) {
             return avroOptions(Output.of(avroOptions));
+        }
+
+        /**
+         * @param bigtableOptions Additional properties to set if
+         * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigtableOptions(@Nullable Output<TableExternalDataConfigurationBigtableOptionsArgs> bigtableOptions) {
+            $.bigtableOptions = bigtableOptions;
+            return this;
+        }
+
+        /**
+         * @param bigtableOptions Additional properties to set if
+         * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigtableOptions(TableExternalDataConfigurationBigtableOptionsArgs bigtableOptions) {
+            return bigtableOptions(Output.of(bigtableOptions));
         }
 
         /**

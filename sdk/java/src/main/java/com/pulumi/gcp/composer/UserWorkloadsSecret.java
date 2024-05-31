@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * * `{{project}}/{{region}}/{{environment}}/{{name}}`
  * 
- * * `{{name}}`
+ * * `{{environment}}/{{name}}`
  * 
  * When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
  * 
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+ * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
  * ```
  * 
  */

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigConfidentialNodes;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
@@ -51,6 +52,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigContainerdConfig containerdConfig;
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
      * 
@@ -253,6 +259,13 @@ public final class NodePoolNodeConfig {
      */
     public Optional<NodePoolNodeConfigConfidentialNodes> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public Optional<NodePoolNodeConfigContainerdConfig> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
     }
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -519,6 +532,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
         private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
+        private @Nullable NodePoolNodeConfigContainerdConfig containerdConfig;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints;
@@ -561,6 +575,7 @@ public final class NodePoolNodeConfig {
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.containerdConfig = defaults.containerdConfig;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
@@ -615,6 +630,12 @@ public final class NodePoolNodeConfig {
         public Builder confidentialNodes(@Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes) {
 
             this.confidentialNodes = confidentialNodes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerdConfig(@Nullable NodePoolNodeConfigContainerdConfig containerdConfig) {
+
+            this.containerdConfig = containerdConfig;
             return this;
         }
         @CustomType.Setter
@@ -856,6 +877,7 @@ public final class NodePoolNodeConfig {
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
+            _resultValue.containerdConfig = containerdConfig;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.effectiveTaints = effectiveTaints;

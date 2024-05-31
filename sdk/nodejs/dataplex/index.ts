@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AspectTypeArgs, AspectTypeState } from "./aspectType";
+export type AspectType = import("./aspectType").AspectType;
+export const AspectType: typeof import("./aspectType").AspectType = null as any;
+utilities.lazyLoad(exports, ["AspectType"], () => require("./aspectType"));
+
+export { AspectTypeIamBindingArgs, AspectTypeIamBindingState } from "./aspectTypeIamBinding";
+export type AspectTypeIamBinding = import("./aspectTypeIamBinding").AspectTypeIamBinding;
+export const AspectTypeIamBinding: typeof import("./aspectTypeIamBinding").AspectTypeIamBinding = null as any;
+utilities.lazyLoad(exports, ["AspectTypeIamBinding"], () => require("./aspectTypeIamBinding"));
+
+export { AspectTypeIamMemberArgs, AspectTypeIamMemberState } from "./aspectTypeIamMember";
+export type AspectTypeIamMember = import("./aspectTypeIamMember").AspectTypeIamMember;
+export const AspectTypeIamMember: typeof import("./aspectTypeIamMember").AspectTypeIamMember = null as any;
+utilities.lazyLoad(exports, ["AspectTypeIamMember"], () => require("./aspectTypeIamMember"));
+
+export { AspectTypeIamPolicyArgs, AspectTypeIamPolicyState } from "./aspectTypeIamPolicy";
+export type AspectTypeIamPolicy = import("./aspectTypeIamPolicy").AspectTypeIamPolicy;
+export const AspectTypeIamPolicy: typeof import("./aspectTypeIamPolicy").AspectTypeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AspectTypeIamPolicy"], () => require("./aspectTypeIamPolicy"));
+
 export { AssetArgs, AssetState } from "./asset";
 export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
@@ -45,6 +65,31 @@ export type DatascanIamPolicy = import("./datascanIamPolicy").DatascanIamPolicy;
 export const DatascanIamPolicy: typeof import("./datascanIamPolicy").DatascanIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DatascanIamPolicy"], () => require("./datascanIamPolicy"));
 
+export { EntryGroupArgs, EntryGroupState } from "./entryGroup";
+export type EntryGroup = import("./entryGroup").EntryGroup;
+export const EntryGroup: typeof import("./entryGroup").EntryGroup = null as any;
+utilities.lazyLoad(exports, ["EntryGroup"], () => require("./entryGroup"));
+
+export { EntryGroupIamBindingArgs, EntryGroupIamBindingState } from "./entryGroupIamBinding";
+export type EntryGroupIamBinding = import("./entryGroupIamBinding").EntryGroupIamBinding;
+export const EntryGroupIamBinding: typeof import("./entryGroupIamBinding").EntryGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamBinding"], () => require("./entryGroupIamBinding"));
+
+export { EntryGroupIamMemberArgs, EntryGroupIamMemberState } from "./entryGroupIamMember";
+export type EntryGroupIamMember = import("./entryGroupIamMember").EntryGroupIamMember;
+export const EntryGroupIamMember: typeof import("./entryGroupIamMember").EntryGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamMember"], () => require("./entryGroupIamMember"));
+
+export { EntryGroupIamPolicyArgs, EntryGroupIamPolicyState } from "./entryGroupIamPolicy";
+export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamPolicy;
+export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
+
+export { GetAspectTypeIamPolicyArgs, GetAspectTypeIamPolicyResult, GetAspectTypeIamPolicyOutputArgs } from "./getAspectTypeIamPolicy";
+export const getAspectTypeIamPolicy: typeof import("./getAspectTypeIamPolicy").getAspectTypeIamPolicy = null as any;
+export const getAspectTypeIamPolicyOutput: typeof import("./getAspectTypeIamPolicy").getAspectTypeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAspectTypeIamPolicy","getAspectTypeIamPolicyOutput"], () => require("./getAspectTypeIamPolicy"));
+
 export { GetAssetIamPolicyArgs, GetAssetIamPolicyResult, GetAssetIamPolicyOutputArgs } from "./getAssetIamPolicy";
 export const getAssetIamPolicy: typeof import("./getAssetIamPolicy").getAssetIamPolicy = null as any;
 export const getAssetIamPolicyOutput: typeof import("./getAssetIamPolicy").getAssetIamPolicyOutput = null as any;
@@ -54,6 +99,11 @@ export { GetDatascanIamPolicyArgs, GetDatascanIamPolicyResult, GetDatascanIamPol
 export const getDatascanIamPolicy: typeof import("./getDatascanIamPolicy").getDatascanIamPolicy = null as any;
 export const getDatascanIamPolicyOutput: typeof import("./getDatascanIamPolicy").getDatascanIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getDatascanIamPolicy","getDatascanIamPolicyOutput"], () => require("./getDatascanIamPolicy"));
+
+export { GetEntryGroupIamPolicyArgs, GetEntryGroupIamPolicyResult, GetEntryGroupIamPolicyOutputArgs } from "./getEntryGroupIamPolicy";
+export const getEntryGroupIamPolicy: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicy = null as any;
+export const getEntryGroupIamPolicyOutput: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
 
 export { GetLakeIamPolicyArgs, GetLakeIamPolicyResult, GetLakeIamPolicyOutputArgs } from "./getLakeIamPolicy";
 export const getLakeIamPolicy: typeof import("./getLakeIamPolicy").getLakeIamPolicy = null as any;
@@ -135,6 +185,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dataplex/aspectType:AspectType":
+                return new AspectType(name, <any>undefined, { urn })
+            case "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding":
+                return new AspectTypeIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember":
+                return new AspectTypeIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy":
+                return new AspectTypeIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/asset:Asset":
                 return new Asset(name, <any>undefined, { urn })
             case "gcp:dataplex/assetIamBinding:AssetIamBinding":
@@ -151,6 +209,14 @@ const _module = {
                 return new DatascanIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy":
                 return new DatascanIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryGroup:EntryGroup":
+                return new EntryGroup(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding":
+                return new EntryGroupIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember":
+                return new EntryGroupIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy":
+                return new EntryGroupIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -180,6 +246,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dataplex/aspectType", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/aspectTypeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/aspectTypeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/aspectTypeIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/asset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamMember", _module)
@@ -188,6 +258,10 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)

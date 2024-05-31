@@ -114,6 +114,9 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -135,9 +138,6 @@ export class RegionSslPolicy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegionSslPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RegionSslPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionSslPolicyArgs | RegionSslPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -171,9 +171,6 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RegionSslPolicyArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             resourceInputs["customFeatures"] = args ? args.customFeatures : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
@@ -237,6 +234,9 @@ export interface RegionSslPolicyState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -258,9 +258,6 @@ export interface RegionSslPolicyState {
     project?: pulumi.Input<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -302,6 +299,9 @@ export interface RegionSslPolicyArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -323,9 +323,6 @@ export interface RegionSslPolicyArgs {
     project?: pulumi.Input<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

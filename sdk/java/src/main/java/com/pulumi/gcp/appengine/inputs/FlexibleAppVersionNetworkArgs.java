@@ -34,6 +34,23 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Prevent instances from receiving an ephemeral external IP address.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    @Import(name="instanceIpMode")
+    private @Nullable Output<String> instanceIpMode;
+
+    /**
+     * @return Prevent instances from receiving an ephemeral external IP address.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public Optional<Output<String>> instanceIpMode() {
+        return Optional.ofNullable(this.instanceIpMode);
+    }
+
+    /**
      * Tag to apply to the instance during creation.
      * 
      */
@@ -105,6 +122,7 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
 
     private FlexibleAppVersionNetworkArgs(FlexibleAppVersionNetworkArgs $) {
         this.forwardedPorts = $.forwardedPorts;
+        this.instanceIpMode = $.instanceIpMode;
         this.instanceTag = $.instanceTag;
         this.name = $.name;
         this.sessionAffinity = $.sessionAffinity;
@@ -158,6 +176,29 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
          */
         public Builder forwardedPorts(String... forwardedPorts) {
             return forwardedPorts(List.of(forwardedPorts));
+        }
+
+        /**
+         * @param instanceIpMode Prevent instances from receiving an ephemeral external IP address.
+         * Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceIpMode(@Nullable Output<String> instanceIpMode) {
+            $.instanceIpMode = instanceIpMode;
+            return this;
+        }
+
+        /**
+         * @param instanceIpMode Prevent instances from receiving an ephemeral external IP address.
+         * Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceIpMode(String instanceIpMode) {
+            return instanceIpMode(Output.of(instanceIpMode));
         }
 
         /**

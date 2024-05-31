@@ -27,6 +27,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<Inputs.TableExternalDataConfigurationAvroOptionsGetArgs>? AvroOptions { get; set; }
 
         /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "BIGTABLE". Structure is documented below.
+        /// </summary>
+        [Input("bigtableOptions")]
+        public Input<Inputs.TableExternalDataConfigurationBigtableOptionsGetArgs>? BigtableOptions { get; set; }
+
+        /// <summary>
         /// The compression type of the data source.
         /// Valid values are "NONE" or "GZIP".
         /// </summary>

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigConfidentialNodes;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig;
@@ -52,6 +53,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable ClusterNodeConfigConfidentialNodes confidentialNodes;
+    /**
+     * @return Parameters to customize containerd runtime. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigContainerdConfig containerdConfig;
     /**
      * @return Size of the disk attached to each node, specified
      * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -303,6 +309,13 @@ public final class ClusterNodeConfig {
      */
     public Optional<ClusterNodeConfigConfidentialNodes> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+    /**
+     * @return Parameters to customize containerd runtime. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigContainerdConfig> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
     }
     /**
      * @return Size of the disk attached to each node, specified
@@ -617,6 +630,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
         private @Nullable ClusterNodeConfigConfidentialNodes confidentialNodes;
+        private @Nullable ClusterNodeConfigContainerdConfig containerdConfig;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable List<ClusterNodeConfigEffectiveTaint> effectiveTaints;
@@ -659,6 +673,7 @@ public final class ClusterNodeConfig {
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.containerdConfig = defaults.containerdConfig;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
@@ -713,6 +728,12 @@ public final class ClusterNodeConfig {
         public Builder confidentialNodes(@Nullable ClusterNodeConfigConfidentialNodes confidentialNodes) {
 
             this.confidentialNodes = confidentialNodes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerdConfig(@Nullable ClusterNodeConfigContainerdConfig containerdConfig) {
+
+            this.containerdConfig = containerdConfig;
             return this;
         }
         @CustomType.Setter
@@ -954,6 +975,7 @@ public final class ClusterNodeConfig {
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
+            _resultValue.containerdConfig = containerdConfig;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.effectiveTaints = effectiveTaints;

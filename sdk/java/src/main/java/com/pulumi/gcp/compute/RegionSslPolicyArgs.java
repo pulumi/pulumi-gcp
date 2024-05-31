@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,6 +88,8 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -101,6 +102,8 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -158,20 +161,16 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The region where the regional SSL policy resides.
      * 
-     * ***
-     * 
      */
-    @Import(name="region", required=true)
-    private Output<String> region;
+    @Import(name="region")
+    private @Nullable Output<String> region;
 
     /**
      * @return The region where the regional SSL policy resides.
      * 
-     * ***
-     * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     private RegionSslPolicyArgs() {}
@@ -310,6 +309,8 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -326,6 +327,8 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -397,20 +400,16 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param region The region where the regional SSL policy resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
-        public Builder region(Output<String> region) {
+        public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
         /**
          * @param region The region where the regional SSL policy resides.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -420,9 +419,6 @@ public final class RegionSslPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RegionSslPolicyArgs build() {
-            if ($.region == null) {
-                throw new MissingRequiredPropertyException("RegionSslPolicyArgs", "region");
-            }
             return $;
         }
     }

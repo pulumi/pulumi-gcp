@@ -18,6 +18,7 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePrivateConnectivity;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileSqlServerProfile;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -490,6 +491,20 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectionProfileId() {
         return this.connectionProfileId;
+    }
+    /**
+     * Create the connection profile without validating it.
+     * 
+     */
+    @Export(name="createWithoutValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createWithoutValidation;
+
+    /**
+     * @return Create the connection profile without validating it.
+     * 
+     */
+    public Output<Optional<Boolean>> createWithoutValidation() {
+        return Codegen.optional(this.createWithoutValidation);
     }
     /**
      * Display name.

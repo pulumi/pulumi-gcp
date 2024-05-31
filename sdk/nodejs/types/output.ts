@@ -3332,6 +3332,11 @@ export namespace appengine {
          */
         forwardedPorts?: string[];
         /**
+         * Prevent instances from receiving an ephemeral external IP address.
+         * Possible values are: `EXTERNAL`, `INTERNAL`.
+         */
+        instanceIpMode?: string;
+        /**
          * Tag to apply to the instance during creation.
          */
         instanceTag?: string;
@@ -6615,6 +6620,11 @@ export namespace bigquery {
          */
         avroOptions?: outputs.bigquery.TableExternalDataConfigurationAvroOptions;
         /**
+         * Additional properties to set if
+         * `sourceFormat` is set to "BIGTABLE". Structure is documented below.
+         */
+        bigtableOptions?: outputs.bigquery.TableExternalDataConfigurationBigtableOptions;
+        /**
          * The compression type of the data source.
          * Valid values are "NONE" or "GZIP".
          */
@@ -6733,6 +6743,75 @@ export namespace bigquery {
          * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
          */
         useAvroLogicalTypes: boolean;
+    }
+
+    export interface TableExternalDataConfigurationBigtableOptions {
+        /**
+         * A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+         */
+        columnFamilies?: outputs.bigquery.TableExternalDataConfigurationBigtableOptionsColumnFamily[];
+        /**
+         * If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+         */
+        ignoreUnspecifiedColumnFamilies?: boolean;
+        /**
+         * If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+         */
+        outputColumnFamiliesAsJson?: boolean;
+        /**
+         * If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+         */
+        readRowkeyAsString?: boolean;
+    }
+
+    export interface TableExternalDataConfigurationBigtableOptionsColumnFamily {
+        /**
+         * A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+         */
+        columns?: outputs.bigquery.TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn[];
+        /**
+         * The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+         */
+        encoding?: string;
+        /**
+         * Identifier of the column family.
+         */
+        familyId?: string;
+        /**
+         * If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+         */
+        onlyReadLatest?: boolean;
+        /**
+         * The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+         */
+        type?: string;
+    }
+
+    export interface TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn {
+        /**
+         * The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+         */
+        encoding?: string;
+        /**
+         * If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+         */
+        fieldName?: string;
+        /**
+         * If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+         */
+        onlyReadLatest?: boolean;
+        /**
+         * Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+         */
+        qualifierEncoded?: string;
+        /**
+         * Qualifier string.
+         */
+        qualifierString?: string;
+        /**
+         * The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+         */
+        type?: string;
     }
 
     export interface TableExternalDataConfigurationCsvOptions {
@@ -6962,7 +7041,8 @@ export namespace bigquery {
 
     export interface TableTableReplicationInfo {
         /**
-         * The interval at which the source materialized view is polled for updates. The default is 300000.
+         * The interval at which the source
+         * materialized view is polled for updates. The default is 300000.
          */
         replicationIntervalMs?: number;
         /**
@@ -15263,6 +15343,12 @@ export namespace cloudrun {
          */
         name: string;
         /**
+         * A filesystem backed by a Network File System share. This filesystem requires the
+         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
+         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         */
+        nfs: outputs.cloudrun.GetServiceTemplateSpecVolumeNf[];
+        /**
          * The secret's value will be presented as the content of a file whose
          * name is defined in the item path. If no items are defined, the name of
          * the file is the secret_name.
@@ -15299,6 +15385,21 @@ export namespace cloudrun {
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
          */
         sizeLimit: string;
+    }
+
+    export interface GetServiceTemplateSpecVolumeNf {
+        /**
+         * Path exported by the NFS server
+         */
+        path: string;
+        /**
+         * If true, mount the NFS volume as read only in all mounts. Defaults to false.
+         */
+        readOnly: boolean;
+        /**
+         * IP address or hostname of the NFS server
+         */
+        server: string;
     }
 
     export interface GetServiceTemplateSpecVolumeSecret {
@@ -16099,6 +16200,13 @@ export namespace cloudrun {
          */
         name: string;
         /**
+         * A filesystem backed by a Network File System share. This filesystem requires the
+         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
+         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         * Structure is documented below.
+         */
+        nfs?: outputs.cloudrun.ServiceTemplateSpecVolumeNfs;
+        /**
          * The secret's value will be presented as the content of a file whose
          * name is defined in the item path. If no items are defined, the name of
          * the file is the secret_name.
@@ -16123,8 +16231,6 @@ export namespace cloudrun {
          * Driver-specific attributes. The following options are supported for available drivers:
          * * gcsfuse.run.googleapis.com
          * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-         *
-         * - - -
          */
         volumeAttributes?: {[key: string]: string};
     }
@@ -16138,6 +16244,23 @@ export namespace cloudrun {
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
          */
         sizeLimit?: string;
+    }
+
+    export interface ServiceTemplateSpecVolumeNfs {
+        /**
+         * Path exported by the NFS server
+         */
+        path: string;
+        /**
+         * If true, mount the NFS volume as read only in all mounts. Defaults to false.
+         *
+         * - - -
+         */
+        readOnly?: boolean;
+        /**
+         * IP address or hostname of the NFS server
+         */
+        server: string;
     }
 
     export interface ServiceTemplateSpecVolumeSecret {
@@ -22890,6 +23013,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopActions: outputs.compute.GetInstanceSchedulingOnInstanceStopAction[];
+        /**
          * Whether the instance is preemptible.
          */
         preemptible: boolean;
@@ -22933,6 +23060,13 @@ export namespace compute {
         key: string;
         operator: string;
         values: string[];
+    }
+
+    export interface GetInstanceSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd: boolean;
     }
 
     export interface GetInstanceScratchDisk {
@@ -23371,6 +23505,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopActions: outputs.compute.GetInstanceTemplateSchedulingOnInstanceStopAction[];
+        /**
          * Allows instance to be preempted. This defaults to
          * false. Read more on this
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -23423,6 +23561,13 @@ export namespace compute {
          */
         operator: string;
         values: string[];
+    }
+
+    export interface GetInstanceTemplateSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd: boolean;
     }
 
     export interface GetInstanceTemplateServiceAccount {
@@ -23990,6 +24135,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopActions: outputs.compute.GetRegionInstanceTemplateSchedulingOnInstanceStopAction[];
+        /**
          * Allows instance to be preempted. This defaults to
          * false. Read more on this
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -24042,6 +24191,13 @@ export namespace compute {
          */
         operator: string;
         values: string[];
+    }
+
+    export interface GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd: boolean;
     }
 
     export interface GetRegionInstanceTemplateServiceAccount {
@@ -24830,6 +24986,34 @@ export namespace compute {
          * when adding an alias IP range to a VM instance.
          */
         rangeName: string;
+    }
+
+    export interface GetSubnetworksSubnetwork {
+        /**
+         * Description of the subnetwork.
+         */
+        description: string;
+        /**
+         * The IP address range represented as a CIDR block.
+         */
+        ipCidrRange: string;
+        /**
+         * The name of the subnetwork.
+         */
+        name: string;
+        /**
+         * The self link of the parent network.
+         */
+        network: string;
+        networkSelfLink: string;
+        /**
+         * Whether the VMs in the subnet can access Google services without assigned external IP addresses.
+         */
+        privateIpGoogleAccess: boolean;
+        /**
+         * The self link of the subnetwork.
+         */
+        selfLink: string;
     }
 
     export interface GlobalForwardingRuleMetadataFilter {
@@ -25779,6 +25963,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopAction: outputs.compute.InstanceFromMachineImageSchedulingOnInstanceStopAction;
+        /**
          * Whether the instance is preemptible.
          */
         preemptible: boolean;
@@ -25822,6 +26010,13 @@ export namespace compute {
         key: string;
         operator: string;
         values: string[];
+    }
+
+    export interface InstanceFromMachineImageSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd: boolean;
     }
 
     export interface InstanceFromMachineImageScratchDisk {
@@ -26197,6 +26392,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopAction: outputs.compute.InstanceFromTemplateSchedulingOnInstanceStopAction;
+        /**
          * Whether the instance is preemptible.
          */
         preemptible: boolean;
@@ -26240,6 +26439,13 @@ export namespace compute {
         key: string;
         operator: string;
         values: string[];
+    }
+
+    export interface InstanceFromTemplateSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd: boolean;
     }
 
     export interface InstanceFromTemplateScratchDisk {
@@ -26772,8 +26978,7 @@ export namespace compute {
          */
         maintenanceInterval?: string;
         /**
-         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
-         * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
          */
         maxRunDuration?: outputs.compute.InstanceSchedulingMaxRunDuration;
         /**
@@ -26794,6 +26999,10 @@ export namespace compute {
          * [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
          */
         onHostMaintenance: string;
+        /**
+         * Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
+         */
+        onInstanceStopAction?: outputs.compute.InstanceSchedulingOnInstanceStopAction;
         /**
          * Specifies if the instance is preemptible.
          * If this field is set to true, then `automaticRestart` must be
@@ -26827,14 +27036,15 @@ export namespace compute {
     export interface InstanceSchedulingMaxRunDuration {
         /**
          * Span of time that's a fraction of a second at nanosecond
-         * resolution. Durations less than one second are represented
-         * with a 0 seconds field and a positive nanos field. Must
-         * be from 0 to 999,999,999 inclusive.
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second.
-         * Must be from 0 to 315,576,000,000 inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
         seconds: number;
     }
@@ -26853,6 +27063,13 @@ export namespace compute {
          * The values for the node affinity label.
          */
         values: string[];
+    }
+
+    export interface InstanceSchedulingOnInstanceStopAction {
+        /**
+         * Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
+         */
+        discardLocalSsd?: boolean;
     }
 
     export interface InstanceScratchDisk {
@@ -27294,8 +27511,7 @@ export namespace compute {
          */
         maintenanceInterval?: string;
         /**
-         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
-         * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
          */
         maxRunDuration?: outputs.compute.InstanceTemplateSchedulingMaxRunDuration;
         /**
@@ -27315,6 +27531,10 @@ export namespace compute {
          * instance.
          */
         onHostMaintenance: string;
+        /**
+         * Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
+         */
+        onInstanceStopAction?: outputs.compute.InstanceTemplateSchedulingOnInstanceStopAction;
         /**
          * Allows instance to be preempted. This defaults to
          * false. Read more on this
@@ -27348,14 +27568,15 @@ export namespace compute {
     export interface InstanceTemplateSchedulingMaxRunDuration {
         /**
          * Span of time that's a fraction of a second at nanosecond
-         * resolution. Durations less than one second are represented
-         * with a 0 seconds field and a positive nanos field. Must
-         * be from 0 to 999,999,999 inclusive.
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second.
-         * Must be from 0 to 315,576,000,000 inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
         seconds: number;
     }
@@ -27371,6 +27592,13 @@ export namespace compute {
          */
         operator: string;
         values: string[];
+    }
+
+    export interface InstanceTemplateSchedulingOnInstanceStopAction {
+        /**
+         * Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
+         */
+        discardLocalSsd?: boolean;
     }
 
     export interface InstanceTemplateServiceAccount {
@@ -29875,6 +30103,10 @@ export namespace compute {
          */
         onHostMaintenance: string;
         /**
+         * Defines the behaviour for instances with the instance_termination_action.
+         */
+        onInstanceStopAction?: outputs.compute.RegionInstanceTemplateSchedulingOnInstanceStopAction;
+        /**
          * Allows instance to be preempted. This defaults to
          * false. Read more on this
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -29931,6 +30163,13 @@ export namespace compute {
          */
         operator: string;
         values: string[];
+    }
+
+    export interface RegionInstanceTemplateSchedulingOnInstanceStopAction {
+        /**
+         * If true, the contents of any attached Local SSD disks will be discarded.
+         */
+        discardLocalSsd?: boolean;
     }
 
     export interface RegionInstanceTemplateServiceAccount {
@@ -32885,6 +33124,7 @@ export namespace compute {
          * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
          * * `DISABLED` - Don't parse JSON payloads in POST bodies.
          * * `STANDARD` - Parse JSON payloads in POST bodies.
+         * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
          */
         jsonParsing: string;
         /**
@@ -33126,115 +33366,121 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRateLimitOptions {
         /**
-         * Can only be specified if the `action` for the rule is `rateBasedBan`.
+         * Can only be specified if the action for the rule is "rateBasedBan".
          * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
          */
         banDurationSec?: number;
         /**
-         * Can only be specified if the `action` for the rule is `rateBasedBan`.
-         * If specified, the key will be banned for the configured `banDurationSec` when the number of requests that exceed the `rateLimitThreshold` also
-         * exceed this `banThreshold`. Structure is documented below.
+         * Can only be specified if the action for the rule is "rateBasedBan".
+         * If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+         * Structure is documented below.
          */
         banThreshold?: outputs.compute.SecurityPolicyRuleRateLimitOptionsBanThreshold;
         /**
-         * Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
+         * Action to take for requests that are under the configured rate limit threshold.
+         * Valid option is "allow" only.
          */
-        conformAction: string;
+        conformAction?: string;
         /**
-         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to `ALL`.
-         *
-         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under `X-Forwarded-For` HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-         * * `REGION_CODE`: The country/region from which the request originates.
+         * Determines the key to enforce the rateLimitThreshold on. Possible values are:
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
+         * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+         * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+         * Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
          */
         enforceOnKey?: string;
         /**
-         * If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, `enforceOnKey` must be set to an empty string. Structure is documented below.
-         *
-         * **Note:** To avoid the conflict between `enforceOnKey` and `enforceOnKeyConfigs`, the field `enforceOnKey` needs to be set to an empty string.
+         * If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+         * You can specify up to 3 enforceOnKeyConfigs.
+         * If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+         * Structure is documented below.
          */
         enforceOnKeyConfigs?: outputs.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
         /**
          * Rate limit key name applicable only for the following key types:
-         *
-         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
+         * HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+         * HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: string;
         /**
-         * When a request is denied, returns the HTTP response code specified.
-         * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
+         * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.
+         * Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
          */
-        exceedAction: string;
+        exceedAction?: string;
         /**
-         * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+         * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * Structure is documented below.
          */
         exceedRedirectOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
         /**
-         * Threshold at which to begin ratelimiting. Structure is documented below.
+         * Threshold at which to begin ratelimiting.
+         * Structure is documented below.
          */
-        rateLimitThreshold: outputs.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThreshold;
+        rateLimitThreshold?: outputs.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThreshold;
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsBanThreshold {
         /**
          * Number of HTTP(S) requests for calculating the threshold.
          */
-        count: number;
+        count?: number;
         /**
          * Interval over which the threshold is computed.
          */
-        intervalSec: number;
+        intervalSec?: number;
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
         /**
          * Rate limit key name applicable only for the following key types:
-         *
-         * * `HTTP_HEADER` -- Name of the HTTP header whose value is taken as the key value.
-         * * `HTTP_COOKIE` -- Name of the HTTP cookie whose value is taken as the key value.
+         * HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+         * HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: string;
         /**
-         * Determines the key to enforce the `rateLimitThreshold` on. If not specified, defaults to `ALL`.
-         *
-         * * `ALL`: A single rate limit threshold is applied to all the requests matching this rule.
-         * * `IP`: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * `HTTP_HEADER`: The value of the HTTP header whose name is configured on `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to `ALL`.
-         * * `XFF_IP`: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to `ALL`.
-         * * `HTTP_COOKIE`: The value of the HTTP cookie whose name is configured under `enforceOnKeyName`. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to `ALL`.
-         * * `HTTP_PATH`: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * `SNI`: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to `ALL` on a HTTP session.
-         * * `REGION_CODE`: The country/region from which the request originates.
+         * Determines the key to enforce the rateLimitThreshold on. Possible values are:
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
+         * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+         * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+         * Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
          */
         enforceOnKeyType?: string;
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
         /**
-         * Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
+         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          */
         target?: string;
         /**
          * Type of the redirect action.
          */
-        type: string;
+        type?: string;
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
         /**
          * Number of HTTP(S) requests for calculating the threshold.
          */
-        count: number;
+        count?: number;
         /**
          * Interval over which the threshold is computed.
          */
-        intervalSec: number;
+        intervalSec?: number;
     }
 
     export interface SecurityPolicyRuleRedirectOptions {
@@ -37097,6 +37343,10 @@ export namespace container {
          */
         confidentialNodes: outputs.container.ClusterNodeConfigConfidentialNodes;
         /**
+         * Parameters to customize containerd runtime. Structure is documented below.
+         */
+        containerdConfig?: outputs.container.ClusterNodeConfigContainerdConfig;
+        /**
          * Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
          */
@@ -37316,6 +37566,42 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface ClusterNodeConfigContainerdConfig {
+        /**
+         * Configuration for private container registries. There are two fields in this config:
+         */
+        privateRegistryAccessConfig?: outputs.container.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+    }
+
+    export interface ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         */
+        certificateAuthorityDomainConfigs?: outputs.container.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Enables private registry config. If set to false, all other fields in this object must not be set.
+         */
+        enabled: boolean;
+    }
+
+    export interface ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfig: outputs.container.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig;
+    }
+
+    export interface ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface ClusterNodeConfigEffectiveTaint {
@@ -37722,6 +38008,10 @@ export namespace container {
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaults {
         /**
+         * Parameters for containerd configuration.
+         */
+        containerdConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig;
+        /**
          * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
@@ -37729,6 +38019,42 @@ export namespace container {
          * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
         loggingVariant: string;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
+        /**
+         * Configuration for private container registries. There are two fields in this config:
+         */
+        privateRegistryAccessConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         */
+        certificateAuthorityDomainConfigs?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Enables private registry config. If set to false, all other fields in this object must not be set.
+         */
+        enabled: boolean;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfig: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
@@ -37846,6 +38172,10 @@ export namespace container {
          * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
          */
         confidentialNodes: outputs.container.ClusterNodePoolNodeConfigConfidentialNodes;
+        /**
+         * Parameters to customize containerd runtime. Structure is documented below.
+         */
+        containerdConfig?: outputs.container.ClusterNodePoolNodeConfigContainerdConfig;
         /**
          * Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -38066,6 +38396,42 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface ClusterNodePoolNodeConfigContainerdConfig {
+        /**
+         * Configuration for private container registries. There are two fields in this config:
+         */
+        privateRegistryAccessConfig?: outputs.container.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+    }
+
+    export interface ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         */
+        certificateAuthorityDomainConfigs?: outputs.container.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Enables private registry config. If set to false, all other fields in this object must not be set.
+         */
+        enabled: boolean;
+    }
+
+    export interface ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfig: outputs.container.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig;
+    }
+
+    export interface ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface ClusterNodePoolNodeConfigEffectiveTaint {
@@ -39222,6 +39588,10 @@ export namespace container {
          */
         confidentialNodes: outputs.container.GetClusterNodeConfigConfidentialNode[];
         /**
+         * Parameters for containerd configuration.
+         */
+        containerdConfigs: outputs.container.GetClusterNodeConfigContainerdConfig[];
+        /**
          * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
          */
         diskSizeGb: number;
@@ -39383,6 +39753,42 @@ export namespace container {
          * Whether Confidential Nodes feature is enabled for all nodes in this pool.
          */
         enabled: boolean;
+    }
+
+    export interface GetClusterNodeConfigContainerdConfig {
+        /**
+         * Parameters for private container registries configuration.
+         */
+        privateRegistryAccessConfigs: outputs.container.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig[];
+    }
+
+    export interface GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * Parameters for configuring CA certificate and domains.
+         */
+        certificateAuthorityDomainConfigs: outputs.container.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Whether or not private registries are configured.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfigs: outputs.container.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig[];
+    }
+
+    export interface GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface GetClusterNodeConfigEffectiveTaint {
@@ -39722,6 +40128,10 @@ export namespace container {
 
     export interface GetClusterNodePoolDefaultNodeConfigDefault {
         /**
+         * Parameters for containerd configuration.
+         */
+        containerdConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig[];
+        /**
          * GCFS configuration for this node.
          */
         gcfsConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig[];
@@ -39729,6 +40139,42 @@ export namespace container {
          * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
          */
         loggingVariant: string;
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
+        /**
+         * Parameters for private container registries configuration.
+         */
+        privateRegistryAccessConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig[];
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * Parameters for configuring CA certificate and domains.
+         */
+        certificateAuthorityDomainConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Whether or not private registries are configured.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig[];
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
@@ -39834,6 +40280,10 @@ export namespace container {
          * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
          */
         confidentialNodes: outputs.container.GetClusterNodePoolNodeConfigConfidentialNode[];
+        /**
+         * Parameters for containerd configuration.
+         */
+        containerdConfigs: outputs.container.GetClusterNodePoolNodeConfigContainerdConfig[];
         /**
          * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
          */
@@ -39996,6 +40446,42 @@ export namespace container {
          * Whether Confidential Nodes feature is enabled for all nodes in this pool.
          */
         enabled: boolean;
+    }
+
+    export interface GetClusterNodePoolNodeConfigContainerdConfig {
+        /**
+         * Parameters for private container registries configuration.
+         */
+        privateRegistryAccessConfigs: outputs.container.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig[];
+    }
+
+    export interface GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * Parameters for configuring CA certificate and domains.
+         */
+        certificateAuthorityDomainConfigs: outputs.container.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Whether or not private registries are configured.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfigs: outputs.container.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig[];
+    }
+
+    export interface GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface GetClusterNodePoolNodeConfigEffectiveTaint {
@@ -40603,6 +41089,10 @@ export namespace container {
          */
         confidentialNodes: outputs.container.NodePoolNodeConfigConfidentialNodes;
         /**
+         * Parameters for containerd configuration.
+         */
+        containerdConfig?: outputs.container.NodePoolNodeConfigContainerdConfig;
+        /**
          * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
          */
         diskSizeGb: number;
@@ -40765,6 +41255,42 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface NodePoolNodeConfigContainerdConfig {
+        /**
+         * Parameters for private container registries configuration.
+         */
+        privateRegistryAccessConfig?: outputs.container.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+    }
+
+    export interface NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
+        /**
+         * Parameters for configuring CA certificate and domains.
+         */
+        certificateAuthorityDomainConfigs?: outputs.container.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig[];
+        /**
+         * Whether or not private registries are configured.
+         */
+        enabled: boolean;
+    }
+
+    export interface NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+        /**
+         * List of fully-qualified-domain-names. IPv4s and port specification are supported.
+         */
+        fqdns: string[];
+        /**
+         * Parameters for configuring a certificate hosted in GCP SecretManager.
+         */
+        gcpSecretManagerCertificateConfig: outputs.container.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig;
+    }
+
+    export interface NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+        /**
+         * URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+         */
+        secretUri: string;
     }
 
     export interface NodePoolNodeConfigEffectiveTaint {
@@ -47809,6 +48335,18 @@ export namespace dataloss {
 }
 
 export namespace dataplex {
+    export interface AspectTypeIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AspectTypeIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface AssetDiscoverySpec {
         /**
          * Optional. Configuration for CSV data.
@@ -48295,6 +48833,18 @@ export namespace dataplex {
     }
 
     export interface DatascanIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface EntryGroupIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface EntryGroupIamMemberCondition {
         description?: string;
         expression: string;
         title: string;
@@ -68072,6 +68622,74 @@ export namespace networkservices {
         regexMatch?: string;
     }
 
+    export interface LbRouteExtensionExtensionChain {
+        /**
+         * A set of extensions to execute for the matching request.
+         * At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+         * LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+         * Structure is documented below.
+         */
+        extensions: outputs.networkservices.LbRouteExtensionExtensionChainExtension[];
+        /**
+         * Conditions under which this chain is invoked for a request.
+         * Structure is documented below.
+         */
+        matchCondition: outputs.networkservices.LbRouteExtensionExtensionChainMatchCondition;
+        /**
+         * The name for this extension chain. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last character must be a letter or a number.
+         */
+        name: string;
+    }
+
+    export interface LbRouteExtensionExtensionChainExtension {
+        /**
+         * The :authority header in the gRPC request sent from Envoy to the extension service.
+         */
+        authority?: string;
+        /**
+         * Determines how the proxy behaves if the call to the extension fails or times out.
+         * When set to TRUE, request or response processing continues without error.
+         * Any subsequent extensions in the extension chain are also executed.
+         * When set to FALSE: * If response headers have not been delivered to the downstream client,
+         * a generic 500 error is returned to the client. The error response can be tailored by
+         * configuring a custom error response in the load balancer.
+         */
+        failOpen?: boolean;
+        /**
+         * List of the HTTP headers to forward to the extension (from the client or backend).
+         * If omitted, all headers are sent. Each element is a string indicating the header name.
+         *
+         * - - -
+         */
+        forwardHeaders?: string[];
+        /**
+         * The name for this extension. The name is logged as part of the HTTP request logs.
+         * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+         * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+         * and the last a letter or a number.
+         */
+        name: string;
+        /**
+         * The reference to the service that runs the extension. Must be a reference to a backend service
+         */
+        service: string;
+        /**
+         * Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        timeout?: string;
+    }
+
+    export interface LbRouteExtensionExtensionChainMatchCondition {
+        /**
+         * A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+         */
+        celExpression: string;
+    }
+
     export interface LbTrafficExtensionExtensionChain {
         /**
          * A set of extensions to execute for the matching request.
@@ -68098,7 +68716,7 @@ export namespace networkservices {
         /**
          * The :authority header in the gRPC request sent from Envoy to the extension service.
          */
-        authority: string;
+        authority?: string;
         /**
          * Determines how the proxy behaves if the call to the extension fails or times out.
          * When set to TRUE, request or response processing continues without error.
@@ -68137,7 +68755,7 @@ export namespace networkservices {
          * Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
          * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
          */
-        timeout: string;
+        timeout?: string;
     }
 
     export interface LbTrafficExtensionExtensionChainMatchCondition {
@@ -71530,6 +72148,10 @@ export namespace pubsub {
          */
         bucket: string;
         /**
+         * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         */
+        filenameDatetimeFormat: string;
+        /**
          * User-provided prefix for Cloud Storage filename.
          */
         filenamePrefix: string;
@@ -71853,6 +72475,10 @@ export namespace pubsub {
          * User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
          */
         bucket: string;
+        /**
+         * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         */
+        filenameDatetimeFormat?: string;
         /**
          * User-provided prefix for Cloud Storage filename.
          */
@@ -76697,7 +77323,7 @@ export namespace tpu {
         topology: string;
         /**
          * Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`.
+         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
          */
         type: string;
     }

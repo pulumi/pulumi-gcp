@@ -4576,6 +4576,9 @@ func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 type FlexibleAppVersionNetwork struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	// Prevent instances from receiving an ephemeral external IP address.
+	// Possible values are: `EXTERNAL`, `INTERNAL`.
+	InstanceIpMode *string `pulumi:"instanceIpMode"`
 	// Tag to apply to the instance during creation.
 	InstanceTag *string `pulumi:"instanceTag"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
@@ -4604,6 +4607,9 @@ type FlexibleAppVersionNetworkInput interface {
 type FlexibleAppVersionNetworkArgs struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
+	// Prevent instances from receiving an ephemeral external IP address.
+	// Possible values are: `EXTERNAL`, `INTERNAL`.
+	InstanceIpMode pulumi.StringPtrInput `pulumi:"instanceIpMode"`
 	// Tag to apply to the instance during creation.
 	InstanceTag pulumi.StringPtrInput `pulumi:"instanceTag"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
@@ -4700,6 +4706,12 @@ func (o FlexibleAppVersionNetworkOutput) ForwardedPorts() pulumi.StringArrayOutp
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
 }
 
+// Prevent instances from receiving an ephemeral external IP address.
+// Possible values are: `EXTERNAL`, `INTERNAL`.
+func (o FlexibleAppVersionNetworkOutput) InstanceIpMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceIpMode }).(pulumi.StringPtrOutput)
+}
+
 // Tag to apply to the instance during creation.
 func (o FlexibleAppVersionNetworkOutput) InstanceTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
@@ -4756,6 +4768,17 @@ func (o FlexibleAppVersionNetworkPtrOutput) ForwardedPorts() pulumi.StringArrayO
 		}
 		return v.ForwardedPorts
 	}).(pulumi.StringArrayOutput)
+}
+
+// Prevent instances from receiving an ephemeral external IP address.
+// Possible values are: `EXTERNAL`, `INTERNAL`.
+func (o FlexibleAppVersionNetworkPtrOutput) InstanceIpMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceIpMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Tag to apply to the instance during creation.

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolDefaultsNodeConfigDefaults
     {
         /// <summary>
+        /// Parameters for containerd configuration.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig? ContainerdConfig;
+        /// <summary>
         /// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig? GcfsConfig;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolDefaultsNodeConfigDefaults(
+            Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig? containerdConfig,
+
             Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig? gcfsConfig,
 
             string? loggingVariant)
         {
+            ContainerdConfig = containerdConfig;
             GcfsConfig = gcfsConfig;
             LoggingVariant = loggingVariant;
         }

@@ -14,19 +14,15 @@ __all__ = ['RegionSslPolicyArgs', 'RegionSslPolicy']
 @pulumi.input_type
 class RegionSslPolicyArgs:
     def __init__(__self__, *,
-                 region: pulumi.Input[str],
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionSslPolicy resource.
-        :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
                method returns the set of features that can be specified in this
                list. This field must be empty if the profile is not CUSTOM.
@@ -46,6 +42,9 @@ class RegionSslPolicyArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -57,8 +56,8 @@ class RegionSslPolicyArgs:
                Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region where the regional SSL policy resides.
         """
-        pulumi.set(__self__, "region", region)
         if custom_features is not None:
             pulumi.set(__self__, "custom_features", custom_features)
         if description is not None:
@@ -71,21 +70,8 @@ class RegionSslPolicyArgs:
             pulumi.set(__self__, "profile", profile)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
-        """
-        The region where the regional SSL policy resides.
-
-
-        - - -
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "region", value)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="customFeatures")
@@ -143,6 +129,9 @@ class RegionSslPolicyArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -182,6 +171,18 @@ class RegionSslPolicyArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the regional SSL policy resides.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
@@ -223,6 +224,9 @@ class _RegionSslPolicyState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -235,9 +239,6 @@ class _RegionSslPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if creation_timestamp is not None:
@@ -356,6 +357,9 @@ class _RegionSslPolicyState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -401,9 +405,6 @@ class _RegionSslPolicyState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where the regional SSL policy resides.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -498,6 +499,9 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -510,15 +514,12 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionSslPolicyArgs,
+                 args: Optional[RegionSslPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Regional SSL policy. SSL policies give you the ability to control the
@@ -597,8 +598,6 @@ class RegionSslPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["profile"] = profile
             __props__.__dict__["project"] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["enabled_features"] = None
@@ -655,6 +654,9 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -667,9 +669,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -758,6 +757,9 @@ class RegionSslPolicy(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -791,9 +793,6 @@ class RegionSslPolicy(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region where the regional SSL policy resides.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

@@ -539,6 +539,31 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+     * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+     * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+     * remote location fall into this category. In these cases, the default value is 30, and
+     * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+     * gives Google Cloud Support more debugging visibility.
+     * 
+     */
+    @Import(name="subnetLength")
+    private @Nullable Output<Integer> subnetLength;
+
+    /**
+     * @return Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+     * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+     * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+     * remote location fall into this category. In these cases, the default value is 30, and
+     * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+     * gives Google Cloud Support more debugging visibility.
+     * 
+     */
+    public Optional<Output<Integer>> subnetLength() {
+        return Optional.ofNullable(this.subnetLength);
+    }
+
+    /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
      * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -602,6 +627,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         this.selfLink = $.selfLink;
         this.stackType = $.stackType;
         this.state = $.state;
+        this.subnetLength = $.subnetLength;
         this.type = $.type;
         this.vlanTag8021q = $.vlanTag8021q;
     }
@@ -1343,6 +1369,37 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param subnetLength Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+         * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+         * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+         * remote location fall into this category. In these cases, the default value is 30, and
+         * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+         * gives Google Cloud Support more debugging visibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetLength(@Nullable Output<Integer> subnetLength) {
+            $.subnetLength = subnetLength;
+            return this;
+        }
+
+        /**
+         * @param subnetLength Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
+         * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
+         * constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
+         * remote location fall into this category. In these cases, the default value is 30, and
+         * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
+         * gives Google Cloud Support more debugging visibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetLength(Integer subnetLength) {
+            return subnetLength(Output.of(subnetLength));
         }
 
         /**

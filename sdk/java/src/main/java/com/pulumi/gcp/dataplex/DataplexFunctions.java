@@ -8,24 +8,206 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
+import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyPlainArgs;
+import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
+import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyPlainArgs;
+import com.pulumi.gcp.dataplex.outputs.GetAspectTypeIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetAssetIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetDatascanIamPolicyResult;
+import com.pulumi.gcp.dataplex.outputs.GetEntryGroupIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetLakeIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetTaskIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetZoneIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DataplexFunctions {
+    /**
+     * Retrieves the current IAM policy data for aspecttype
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
+     *             .project(testAspectTypeBasic.project())
+     *             .location(testAspectTypeBasic.location())
+     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs args) {
+        return getAspectTypeIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for aspecttype
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
+     *             .project(testAspectTypeBasic.project())
+     *             .location(testAspectTypeBasic.location())
+     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyPlain(GetAspectTypeIamPolicyPlainArgs args) {
+        return getAspectTypeIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for aspecttype
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
+     *             .project(testAspectTypeBasic.project())
+     *             .location(testAspectTypeBasic.location())
+     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", TypeShape.of(GetAspectTypeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for aspecttype
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
+     *             .project(testAspectTypeBasic.project())
+     *             .location(testAspectTypeBasic.location())
+     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyPlain(GetAspectTypeIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", TypeShape.of(GetAspectTypeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for asset
      * 
@@ -385,6 +567,182 @@ public final class DataplexFunctions {
      */
     public static CompletableFuture<GetDatascanIamPolicyResult> getDatascanIamPolicyPlain(GetDatascanIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", TypeShape.of(GetDatascanIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for entrygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
+     *             .project(testEntryGroupBasic.project())
+     *             .location(testEntryGroupBasic.location())
+     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args) {
+        return getEntryGroupIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for entrygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
+     *             .project(testEntryGroupBasic.project())
+     *             .location(testEntryGroupBasic.location())
+     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyPlain(GetEntryGroupIamPolicyPlainArgs args) {
+        return getEntryGroupIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for entrygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
+     *             .project(testEntryGroupBasic.project())
+     *             .location(testEntryGroupBasic.location())
+     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for entrygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
+     *             .project(testEntryGroupBasic.project())
+     *             .location(testEntryGroupBasic.location())
+     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyPlain(GetEntryGroupIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for lake

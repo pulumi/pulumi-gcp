@@ -56,6 +56,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string OnHostMaintenance;
         /// <summary>
+        /// Defines the behaviour for instances with the instance_termination_action.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateSchedulingOnInstanceStopActionResult> OnInstanceStopActions;
+        /// <summary>
         /// Allows instance to be preempted. This defaults to
         /// false. Read more on this
         /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -84,6 +88,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string onHostMaintenance,
 
+            ImmutableArray<Outputs.GetInstanceTemplateSchedulingOnInstanceStopActionResult> onInstanceStopActions,
+
             bool preemptible,
 
             string provisioningModel)
@@ -96,6 +102,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
+            OnInstanceStopActions = onInstanceStopActions;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
         }
