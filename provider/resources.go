@@ -3342,6 +3342,30 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "privileged_access_manager_entitlement.html.markdown",
 				},
 			},
+			"google_dataplex_aspect_type_iam_binding": {
+				Tok: gcpResource(gcpDataPlex, "AspectTypeIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_aspect_type_iam.html.markdown"},
+			},
+			"google_dataplex_aspect_type_iam_member": {
+				Tok: gcpResource(gcpDataPlex, "AspectTypeIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_aspect_type_iam.html.markdown"},
+			},
+			"google_dataplex_aspect_type_iam_policy": {
+				Tok: gcpResource(gcpDataPlex, "AspectTypeIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_aspect_type_iam.html.markdown"},
+			},
+			"google_dataplex_entry_group_iam_binding": {
+				Tok: gcpResource(gcpDataPlex, "EntryGroupIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_group_iam.html.markdown"},
+			},
+			"google_dataplex_entry_group_iam_member": {
+				Tok: gcpResource(gcpDataPlex, "EntryGroupIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_group_iam.html.markdown"},
+			},
+			"google_dataplex_entry_group_iam_policy": {
+				Tok: gcpResource(gcpDataPlex, "EntryGroupIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_group_iam.html.markdown"},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Access Approval
