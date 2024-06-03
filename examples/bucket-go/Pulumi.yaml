@@ -1,3 +1,0 @@
-name: bucket-go
-description: Basic example of a creating a google cloud storage bucket in Go.
-runtime: go
