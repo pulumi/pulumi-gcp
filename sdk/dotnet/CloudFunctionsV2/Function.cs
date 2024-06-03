@@ -70,10 +70,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["functionUri"] = function.ServiceConfig.Apply(serviceConfig =&gt; serviceConfig?.Uri),
-    ///     };
     /// });
     /// ```
     /// ### Cloudfunctions2 Full
@@ -661,10 +657,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["functionUri"] = function.ServiceConfig.Apply(serviceConfig =&gt; serviceConfig?.Uri),
-    ///     };
     /// });
     /// ```
     /// ### Cloudfunctions2 Secret Env

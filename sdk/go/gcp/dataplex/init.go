@@ -21,6 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:dataplex/aspectType:AspectType":
+		r = &AspectType{}
+	case "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding":
+		r = &AspectTypeIamBinding{}
+	case "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember":
+		r = &AspectTypeIamMember{}
+	case "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy":
+		r = &AspectTypeIamPolicy{}
 	case "gcp:dataplex/asset:Asset":
 		r = &Asset{}
 	case "gcp:dataplex/assetIamBinding:AssetIamBinding":
@@ -37,6 +45,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatascanIamMember{}
 	case "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy":
 		r = &DatascanIamPolicy{}
+	case "gcp:dataplex/entryGroup:EntryGroup":
+		r = &EntryGroup{}
+	case "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding":
+		r = &EntryGroupIamBinding{}
+	case "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember":
+		r = &EntryGroupIamMember{}
+	case "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy":
+		r = &EntryGroupIamPolicy{}
 	case "gcp:dataplex/lake:Lake":
 		r = &Lake{}
 	case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -76,6 +92,26 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataplex/aspectType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/aspectTypeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/aspectTypeIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/aspectTypeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataplex/asset",
 		&module{version},
 	)
@@ -112,6 +148,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataplex/datascanIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/entryGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/entryGroupIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/entryGroupIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/entryGroupIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

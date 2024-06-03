@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig;
 import java.lang.String;
 import java.util.List;
@@ -12,6 +13,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolDefaultNodeConfigDefault {
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig> containerdConfigs;
     /**
      * @return GCFS configuration for this node.
      * 
@@ -24,6 +30,13 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
     private String loggingVariant;
 
     private GetClusterNodePoolDefaultNodeConfigDefault() {}
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig> containerdConfigs() {
+        return this.containerdConfigs;
+    }
     /**
      * @return GCFS configuration for this node.
      * 
@@ -48,15 +61,28 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig> containerdConfigs;
         private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
         private String loggingVariant;
         public Builder() {}
         public Builder(GetClusterNodePoolDefaultNodeConfigDefault defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.containerdConfigs = defaults.containerdConfigs;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.loggingVariant = defaults.loggingVariant;
         }
 
+        @CustomType.Setter
+        public Builder containerdConfigs(List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig> containerdConfigs) {
+            if (containerdConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefault", "containerdConfigs");
+            }
+            this.containerdConfigs = containerdConfigs;
+            return this;
+        }
+        public Builder containerdConfigs(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig... containerdConfigs) {
+            return containerdConfigs(List.of(containerdConfigs));
+        }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs) {
             if (gcfsConfigs == null) {
@@ -78,6 +104,7 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
         }
         public GetClusterNodePoolDefaultNodeConfigDefault build() {
             final var _resultValue = new GetClusterNodePoolDefaultNodeConfigDefault();
+            _resultValue.containerdConfigs = containerdConfigs;
             _resultValue.gcfsConfigs = gcfsConfigs;
             _resultValue.loggingVariant = loggingVariant;
             return _resultValue;

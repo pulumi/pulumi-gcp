@@ -17,7 +17,7 @@ public final class V2VmAcceleratorConfig {
     private String topology;
     /**
      * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`.
+     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class V2VmAcceleratorConfig {
     }
     /**
      * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`.
+     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
      * 
      */
     public String type() {

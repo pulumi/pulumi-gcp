@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationAvroOptions? AvroOptions;
         /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "BIGTABLE". Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TableExternalDataConfigurationBigtableOptions? BigtableOptions;
+        /// <summary>
         /// The compression type of the data source.
         /// Valid values are "NONE" or "GZIP".
         /// </summary>
@@ -140,6 +145,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             Outputs.TableExternalDataConfigurationAvroOptions? avroOptions,
 
+            Outputs.TableExternalDataConfigurationBigtableOptions? bigtableOptions,
+
             string? compression,
 
             string? connectionId,
@@ -176,6 +183,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         {
             Autodetect = autodetect;
             AvroOptions = avroOptions;
+            BigtableOptions = bigtableOptions;
             Compression = compression;
             ConnectionId = connectionId;
             CsvOptions = csvOptions;

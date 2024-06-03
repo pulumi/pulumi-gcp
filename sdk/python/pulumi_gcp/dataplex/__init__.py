@@ -5,6 +5,10 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .aspect_type import *
+from .aspect_type_iam_binding import *
+from .aspect_type_iam_member import *
+from .aspect_type_iam_policy import *
 from .asset import *
 from .asset_iam_binding import *
 from .asset_iam_member import *
@@ -13,8 +17,14 @@ from .datascan import *
 from .datascan_iam_binding import *
 from .datascan_iam_member import *
 from .datascan_iam_policy import *
+from .entry_group import *
+from .entry_group_iam_binding import *
+from .entry_group_iam_member import *
+from .entry_group_iam_policy import *
+from .get_aspect_type_iam_policy import *
 from .get_asset_iam_policy import *
 from .get_datascan_iam_policy import *
+from .get_entry_group_iam_policy import *
 from .get_lake_iam_policy import *
 from .get_task_iam_policy import *
 from .get_zone_iam_policy import *

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:kms/autokeyConfig:AutokeyConfig":
+		r = &AutokeyConfig{}
 	case "gcp:kms/cryptoKey:CryptoKey":
 		r = &CryptoKey{}
 	case "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding":
@@ -33,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CryptoKeyVersion{}
 	case "gcp:kms/ekmConnection:EkmConnection":
 		r = &EkmConnection{}
+	case "gcp:kms/keyHandle:KeyHandle":
+		r = &KeyHandle{}
 	case "gcp:kms/keyRing:KeyRing":
 		r = &KeyRing{}
 	case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
@@ -58,6 +62,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/autokeyConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/cryptoKey",
@@ -86,6 +95,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/ekmConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/keyHandle",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingNodeAffinity;
+import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingOnInstanceStopAction;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -58,6 +59,11 @@ public final class GetInstanceScheduling {
      * 
      */
     private String onHostMaintenance;
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    private List<GetInstanceSchedulingOnInstanceStopAction> onInstanceStopActions;
     /**
      * @return Whether the instance is preemptible.
      * 
@@ -129,6 +135,13 @@ public final class GetInstanceScheduling {
         return this.onHostMaintenance;
     }
     /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public List<GetInstanceSchedulingOnInstanceStopAction> onInstanceStopActions() {
+        return this.onInstanceStopActions;
+    }
+    /**
      * @return Whether the instance is preemptible.
      * 
      */
@@ -160,6 +173,7 @@ public final class GetInstanceScheduling {
         private Integer minNodeCpus;
         private List<GetInstanceSchedulingNodeAffinity> nodeAffinities;
         private String onHostMaintenance;
+        private List<GetInstanceSchedulingOnInstanceStopAction> onInstanceStopActions;
         private Boolean preemptible;
         private String provisioningModel;
         public Builder() {}
@@ -173,6 +187,7 @@ public final class GetInstanceScheduling {
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
+    	      this.onInstanceStopActions = defaults.onInstanceStopActions;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
         }
@@ -251,6 +266,17 @@ public final class GetInstanceScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder onInstanceStopActions(List<GetInstanceSchedulingOnInstanceStopAction> onInstanceStopActions) {
+            if (onInstanceStopActions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "onInstanceStopActions");
+            }
+            this.onInstanceStopActions = onInstanceStopActions;
+            return this;
+        }
+        public Builder onInstanceStopActions(GetInstanceSchedulingOnInstanceStopAction... onInstanceStopActions) {
+            return onInstanceStopActions(List.of(onInstanceStopActions));
+        }
+        @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
             if (preemptible == null) {
               throw new MissingRequiredPropertyException("GetInstanceScheduling", "preemptible");
@@ -276,6 +302,7 @@ public final class GetInstanceScheduling {
             _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.onInstanceStopActions = onInstanceStopActions;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
             return _resultValue;

@@ -126,7 +126,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// Whether or not to allow table deletion when there are still resource tags attached.
+	// This field is in beta. If set to true, it allows table deletion when there
+	// are still resource tags attached. The default value is false.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrOutput `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -212,9 +213,11 @@ type Table struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrOutput `pulumi:"requirePartitionFilter"`
-	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-	// tag key. Tag value is expected to be the short name, for example "Production".
+	// This field is in beta. The tags attached to this table. Tag keys are
+	// globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the
+	// parent organization or project resource for this tag key. Tag value is
+	// expected to be the short name, for example "Production".
 	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema pulumi.StringOutput `pulumi:"schema"`
@@ -226,7 +229,10 @@ type Table struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+	// Replication info of a table created
+	// using "AS REPLICA" DDL like:
+	// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+	// Structure is documented below.
 	TableReplicationInfo TableTableReplicationInfoPtrOutput `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -279,7 +285,8 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// Whether or not to allow table deletion when there are still resource tags attached.
+	// This field is in beta. If set to true, it allows table deletion when there
+	// are still resource tags attached. The default value is false.
 	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -365,9 +372,11 @@ type tableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-	// tag key. Tag value is expected to be the short name, for example "Production".
+	// This field is in beta. The tags attached to this table. Tag keys are
+	// globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the
+	// parent organization or project resource for this tag key. Tag value is
+	// expected to be the short name, for example "Production".
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
@@ -379,7 +388,10 @@ type tableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId *string `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+	// Replication info of a table created
+	// using "AS REPLICA" DDL like:
+	// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+	// Structure is documented below.
 	TableReplicationInfo *TableTableReplicationInfo `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -392,7 +404,8 @@ type tableState struct {
 }
 
 type TableState struct {
-	// Whether or not to allow table deletion when there are still resource tags attached.
+	// This field is in beta. If set to true, it allows table deletion when there
+	// are still resource tags attached. The default value is false.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -478,9 +491,11 @@ type TableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-	// tag key. Tag value is expected to be the short name, for example "Production".
+	// This field is in beta. The tags attached to this table. Tag keys are
+	// globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the
+	// parent organization or project resource for this tag key. Tag value is
+	// expected to be the short name, for example "Production".
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
@@ -492,7 +507,10 @@ type TableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringPtrInput
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+	// Replication info of a table created
+	// using "AS REPLICA" DDL like:
+	// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+	// Structure is documented below.
 	TableReplicationInfo TableTableReplicationInfoPtrInput
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -509,7 +527,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// Whether or not to allow table deletion when there are still resource tags attached.
+	// This field is in beta. If set to true, it allows table deletion when there
+	// are still resource tags attached. The default value is false.
 	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -562,9 +581,11 @@ type tableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-	// tag key. Tag value is expected to be the short name, for example "Production".
+	// This field is in beta. The tags attached to this table. Tag keys are
+	// globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the
+	// parent organization or project resource for this tag key. Tag value is
+	// expected to be the short name, for example "Production".
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
@@ -574,7 +595,10 @@ type tableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId string `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+	// Replication info of a table created
+	// using "AS REPLICA" DDL like:
+	// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+	// Structure is documented below.
 	TableReplicationInfo *TableTableReplicationInfo `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -586,7 +610,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// Whether or not to allow table deletion when there are still resource tags attached.
+	// This field is in beta. If set to true, it allows table deletion when there
+	// are still resource tags attached. The default value is false.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -639,9 +664,11 @@ type TableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-	// tag key. Tag value is expected to be the short name, for example "Production".
+	// This field is in beta. The tags attached to this table. Tag keys are
+	// globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the
+	// parent organization or project resource for this tag key. Tag value is
+	// expected to be the short name, for example "Production".
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
@@ -651,7 +678,10 @@ type TableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringInput
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+	// Replication info of a table created
+	// using "AS REPLICA" DDL like:
+	// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+	// Structure is documented below.
 	TableReplicationInfo TableTableReplicationInfoPtrInput
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -748,7 +778,8 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// Whether or not to allow table deletion when there are still resource tags attached.
+// This field is in beta. If set to true, it allows table deletion when there
+// are still resource tags attached. The default value is false.
 func (o TableOutput) AllowResourceTagsOnDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.AllowResourceTagsOnDeletion }).(pulumi.BoolPtrOutput)
 }
@@ -906,9 +937,11 @@ func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-// tag key. Tag value is expected to be the short name, for example "Production".
+// This field is in beta. The tags attached to this table. Tag keys are
+// globally unique. Tag key is expected to be in the namespaced format, for
+// example "123456789012/environment" where 123456789012 is the ID of the
+// parent organization or project resource for this tag key. Tag value is
+// expected to be the short name, for example "Production".
 func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
@@ -935,7 +968,10 @@ func (o TableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
 }
 
-// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+// Replication info of a table created
+// using "AS REPLICA" DDL like:
+// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+// Structure is documented below.
 func (o TableOutput) TableReplicationInfo() TableTableReplicationInfoPtrOutput {
 	return o.ApplyT(func(v *Table) TableTableReplicationInfoPtrOutput { return v.TableReplicationInfo }).(TableTableReplicationInfoPtrOutput)
 }

@@ -23,6 +23,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
      * * `STANDARD` - Parse JSON payloads in POST bodies.
+     * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
      * 
      */
     private @Nullable String jsonParsing;
@@ -52,6 +53,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
      * * `STANDARD` - Parse JSON payloads in POST bodies.
+     * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
      * 
      */
     public Optional<String> jsonParsing() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -149,6 +150,23 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rateLimitOptions")
+    private @Nullable Output<SecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions;
+
+    /**
+     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRuleRateLimitOptionsArgs>> rateLimitOptions() {
+        return Optional.ofNullable(this.rateLimitOptions);
+    }
+
+    /**
      * The name of the security policy this rule belongs to.
      * 
      * ***
@@ -177,6 +195,7 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
         this.preview = $.preview;
         this.priority = $.priority;
         this.project = $.project;
+        this.rateLimitOptions = $.rateLimitOptions;
         this.securityPolicy = $.securityPolicy;
     }
 
@@ -367,6 +386,29 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitOptions(@Nullable Output<SecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions) {
+            $.rateLimitOptions = rateLimitOptions;
+            return this;
+        }
+
+        /**
+         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitOptions(SecurityPolicyRuleRateLimitOptionsArgs rateLimitOptions) {
+            return rateLimitOptions(Output.of(rateLimitOptions));
         }
 
         /**

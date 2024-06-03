@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// <summary>
         /// The :authority header in the gRPC request sent from Envoy to the extension service.
         /// </summary>
-        [Input("authority", required: true)]
-        public Input<string> Authority { get; set; } = null!;
+        [Input("authority")]
+        public Input<string>? Authority { get; set; }
 
         /// <summary>
         /// Determines how the proxy behaves if the call to the extension fails or times out.
@@ -78,8 +78,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
-        [Input("timeout", required: true)]
-        public Input<string> Timeout { get; set; } = null!;
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
 
         public LbTrafficExtensionExtensionChainExtensionArgs()
         {

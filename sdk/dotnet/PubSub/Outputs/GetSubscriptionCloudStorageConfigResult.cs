@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
+        /// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+        /// </summary>
+        public readonly string FilenameDatetimeFormat;
+        /// <summary>
         /// User-provided prefix for Cloud Storage filename.
         /// </summary>
         public readonly string FilenamePrefix;
@@ -51,6 +55,8 @@ namespace Pulumi.Gcp.PubSub.Outputs
 
             string bucket,
 
+            string filenameDatetimeFormat,
+
             string filenamePrefix,
 
             string filenameSuffix,
@@ -63,6 +69,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         {
             AvroConfigs = avroConfigs;
             Bucket = bucket;
+            FilenameDatetimeFormat = filenameDatetimeFormat;
             FilenamePrefix = filenamePrefix;
             FilenameSuffix = filenameSuffix;
             MaxBytes = maxBytes;

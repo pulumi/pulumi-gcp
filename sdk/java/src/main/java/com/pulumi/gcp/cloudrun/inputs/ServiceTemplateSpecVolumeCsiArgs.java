@@ -59,8 +59,6 @@ public final class ServiceTemplateSpecVolumeCsiArgs extends com.pulumi.resources
      * * gcsfuse.run.googleapis.com
      * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
      * 
-     * ***
-     * 
      */
     @Import(name="volumeAttributes")
     private @Nullable Output<Map<String,String>> volumeAttributes;
@@ -69,8 +67,6 @@ public final class ServiceTemplateSpecVolumeCsiArgs extends com.pulumi.resources
      * @return Driver-specific attributes. The following options are supported for available drivers:
      * * gcsfuse.run.googleapis.com
      * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> volumeAttributes() {
@@ -156,8 +152,6 @@ public final class ServiceTemplateSpecVolumeCsiArgs extends com.pulumi.resources
          * * gcsfuse.run.googleapis.com
          * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -170,8 +164,6 @@ public final class ServiceTemplateSpecVolumeCsiArgs extends com.pulumi.resources
          * @param volumeAttributes Driver-specific attributes. The following options are supported for available drivers:
          * * gcsfuse.run.googleapis.com
          * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-         * 
-         * ***
          * 
          * @return builder
          * 

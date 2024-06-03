@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeCsiArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeEmptyDirArgs;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeNfsArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -69,6 +70,27 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nfs")
+    private @Nullable Output<ServiceTemplateSpecVolumeNfsArgs> nfs;
+
+    /**
+     * @return A filesystem backed by a Network File System share. This filesystem requires the
+     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateSpecVolumeNfsArgs>> nfs() {
+        return Optional.ofNullable(this.nfs);
+    }
+
+    /**
      * The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
      * the file is the secret_name.
@@ -95,6 +117,7 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
         this.csi = $.csi;
         this.emptyDir = $.emptyDir;
         this.name = $.name;
+        this.nfs = $.nfs;
         this.secret = $.secret;
     }
 
@@ -181,6 +204,33 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nfs A filesystem backed by a Network File System share. This filesystem requires the
+         * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+         * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(@Nullable Output<ServiceTemplateSpecVolumeNfsArgs> nfs) {
+            $.nfs = nfs;
+            return this;
+        }
+
+        /**
+         * @param nfs A filesystem backed by a Network File System share. This filesystem requires the
+         * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
+         * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(ServiceTemplateSpecVolumeNfsArgs nfs) {
+            return nfs(Output.of(nfs));
         }
 
         /**

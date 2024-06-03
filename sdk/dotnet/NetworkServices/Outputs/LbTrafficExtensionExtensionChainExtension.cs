@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// <summary>
         /// The :authority header in the gRPC request sent from Envoy to the extension service.
         /// </summary>
-        public readonly string Authority;
+        public readonly string? Authority;
         /// <summary>
         /// Determines how the proxy behaves if the call to the extension fails or times out.
         /// When set to TRUE, request or response processing continues without error.
@@ -55,11 +55,11 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
-        public readonly string Timeout;
+        public readonly string? Timeout;
 
         [OutputConstructor]
         private LbTrafficExtensionExtensionChainExtension(
-            string authority,
+            string? authority,
 
             bool? failOpen,
 
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             ImmutableArray<string> supportedEvents,
 
-            string timeout)
+            string? timeout)
         {
             Authority = authority;
             FailOpen = failOpen;

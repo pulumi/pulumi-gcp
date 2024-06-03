@@ -407,7 +407,7 @@ class User(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
                 database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
+                    name="cloudsql_iam_authentication",
                     value="on",
                 )],
             ))
@@ -436,7 +436,7 @@ class User(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
                 database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
+                    name="cloudsql_iam_authentication",
                     value="on",
                 )],
             ))
@@ -543,7 +543,7 @@ class User(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
                 database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
+                    name="cloudsql_iam_authentication",
                     value="on",
                 )],
             ))
@@ -572,7 +572,7 @@ class User(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
                 database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
+                    name="cloudsql_iam_authentication",
                     value="on",
                 )],
             ))

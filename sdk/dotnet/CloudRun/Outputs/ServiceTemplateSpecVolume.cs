@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A filesystem backed by a Network File System share. This filesystem requires the
+        /// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+        /// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateSpecVolumeNfs? Nfs;
+        /// <summary>
         /// The secret's value will be presented as the content of a file whose
         /// name is defined in the item path. If no items are defined, the name of
         /// the file is the secret_name.
@@ -43,11 +50,14 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string name,
 
+            Outputs.ServiceTemplateSpecVolumeNfs? nfs,
+
             Outputs.ServiceTemplateSpecVolumeSecret? secret)
         {
             Csi = csi;
             EmptyDir = emptyDir;
             Name = name;
+            Nfs = nfs;
             Secret = secret;
         }
     }

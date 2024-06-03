@@ -392,6 +392,12 @@ namespace Pulumi.Gcp.Datastream
         public Output<string> ConnectionProfileId { get; private set; } = null!;
 
         /// <summary>
+        /// Create the connection profile without validating it.
+        /// </summary>
+        [Output("createWithoutValidation")]
+        public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Output("displayName")]
@@ -553,6 +559,12 @@ namespace Pulumi.Gcp.Datastream
         public Input<string> ConnectionProfileId { get; set; } = null!;
 
         /// <summary>
+        /// Create the connection profile without validating it.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -656,6 +668,12 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("connectionProfileId")]
         public Input<string>? ConnectionProfileId { get; set; }
+
+        /// <summary>
+        /// Create the connection profile without validating it.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
         /// Display name.

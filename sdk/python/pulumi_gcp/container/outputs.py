@@ -134,6 +134,10 @@ __all__ = [
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
     'ClusterNodeConfigConfidentialNodes',
+    'ClusterNodeConfigContainerdConfig',
+    'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig',
+    'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
+    'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
     'ClusterNodeConfigEffectiveTaint',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
@@ -161,6 +165,10 @@ __all__ = [
     'ClusterNodePoolAutoscaling',
     'ClusterNodePoolDefaults',
     'ClusterNodePoolDefaultsNodeConfigDefaults',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
@@ -171,6 +179,10 @@ __all__ = [
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
     'ClusterNodePoolNodeConfigConfidentialNodes',
+    'ClusterNodePoolNodeConfigContainerdConfig',
+    'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
+    'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
+    'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
     'ClusterNodePoolNodeConfigEffectiveTaint',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
@@ -224,6 +236,10 @@ __all__ = [
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
     'NodePoolNodeConfigConfidentialNodes',
+    'NodePoolNodeConfigContainerdConfig',
+    'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
+    'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
+    'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
     'NodePoolNodeConfigEffectiveTaint',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
@@ -306,6 +322,10 @@ __all__ = [
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodeConfigConfidentialNodeResult',
+    'GetClusterNodeConfigContainerdConfigResult',
+    'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
+    'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
+    'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
     'GetClusterNodeConfigEffectiveTaintResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
@@ -333,6 +353,10 @@ __all__ = [
     'GetClusterNodePoolAutoscalingResult',
     'GetClusterNodePoolDefaultResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
@@ -343,6 +367,10 @@ __all__ = [
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodePoolNodeConfigConfidentialNodeResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
     'GetClusterNodePoolNodeConfigEffectiveTaintResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
@@ -6413,6 +6441,8 @@ class ClusterNodeConfig(dict):
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
             suggest = "confidential_nodes"
+        elif key == "containerdConfig":
+            suggest = "containerd_config"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -6487,6 +6517,7 @@ class ClusterNodeConfig(dict):
                  advanced_machine_features: Optional['outputs.ClusterNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  confidential_nodes: Optional['outputs.ClusterNodeConfigConfidentialNodes'] = None,
+                 containerd_config: Optional['outputs.ClusterNodeConfigContainerdConfig'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  effective_taints: Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']] = None,
@@ -6528,6 +6559,7 @@ class ClusterNodeConfig(dict):
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
@@ -6628,6 +6660,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -6725,6 +6759,14 @@ class ClusterNodeConfig(dict):
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> Optional['outputs.ClusterNodeConfigContainerdConfig']:
+        """
+        Parameters to customize containerd runtime. Structure is documented below.
+        """
+        return pulumi.get(self, "containerd_config")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -7139,6 +7181,170 @@ class ClusterNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateRegistryAccessConfig":
+            suggest = "private_registry_access_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_registry_access_config: Optional['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+        """
+        :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        """
+        if private_registry_access_config is not None:
+            pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfig")
+    def private_registry_access_config(self) -> Optional['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig']:
+        """
+        Configuration for private container registries. There are two fields in this config:
+        """
+        return pulumi.get(self, "private_registry_access_config")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityDomainConfigs":
+            suggest = "certificate_authority_domain_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
+        """
+        :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
+        :param Sequence['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if certificate_authority_domain_configs is not None:
+            pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables private registry config. If set to false, all other fields in this object must not be set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
+        """
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerCertificateConfig":
+            suggest = "gcp_secret_manager_certificate_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_config: 'outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfig")
+    def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_config")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUri":
+            suggest = "secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -8566,7 +8772,9 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "gcfsConfig":
+        if key == "containerdConfig":
+            suggest = "containerd_config"
+        elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "loggingVariant":
             suggest = "logging_variant"
@@ -8583,16 +8791,28 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 containerd_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig'] = None,
                  gcfs_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig'] = None,
                  logging_variant: Optional[str] = None):
         """
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs' gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param str logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if logging_variant is not None:
             pulumi.set(__self__, "logging_variant", logging_variant)
+
+    @property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig']:
+        """
+        Parameters for containerd configuration.
+        """
+        return pulumi.get(self, "containerd_config")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -8609,6 +8829,170 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
         The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         return pulumi.get(self, "logging_variant")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateRegistryAccessConfig":
+            suggest = "private_registry_access_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_registry_access_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig'] = None):
+        """
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        """
+        if private_registry_access_config is not None:
+            pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfig")
+    def private_registry_access_config(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig']:
+        """
+        Configuration for private container registries. There are two fields in this config:
+        """
+        return pulumi.get(self, "private_registry_access_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityDomainConfigs":
+            suggest = "certificate_authority_domain_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
+        """
+        :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if certificate_authority_domain_configs is not None:
+            pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables private registry config. If set to false, all other fields in this object must not be set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
+        """
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerCertificateConfig":
+            suggest = "gcp_secret_manager_certificate_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_config: 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfig")
+    def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUri":
+            suggest = "secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -8986,6 +9370,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
             suggest = "confidential_nodes"
+        elif key == "containerdConfig":
+            suggest = "containerd_config"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -9060,6 +9446,7 @@ class ClusterNodePoolNodeConfig(dict):
                  advanced_machine_features: Optional['outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  confidential_nodes: Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes'] = None,
+                 containerd_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfig'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  effective_taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']] = None,
@@ -9101,6 +9488,7 @@ class ClusterNodePoolNodeConfig(dict):
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
@@ -9201,6 +9589,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -9298,6 +9688,14 @@ class ClusterNodePoolNodeConfig(dict):
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigContainerdConfig']:
+        """
+        Parameters to customize containerd runtime. Structure is documented below.
+        """
+        return pulumi.get(self, "containerd_config")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -9712,6 +10110,170 @@ class ClusterNodePoolNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateRegistryAccessConfig":
+            suggest = "private_registry_access_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_registry_access_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+        """
+        :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        """
+        if private_registry_access_config is not None:
+            pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfig")
+    def private_registry_access_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig']:
+        """
+        Configuration for private container registries. There are two fields in this config:
+        """
+        return pulumi.get(self, "private_registry_access_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityDomainConfigs":
+            suggest = "certificate_authority_domain_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
+        """
+        :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if certificate_authority_domain_configs is not None:
+            pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables private registry config. If set to false, all other fields in this object must not be set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
+        """
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerCertificateConfig":
+            suggest = "gcp_secret_manager_certificate_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_config: 'outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfig")
+    def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUri":
+            suggest = "secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -12124,6 +12686,8 @@ class NodePoolNodeConfig(dict):
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
             suggest = "confidential_nodes"
+        elif key == "containerdConfig":
+            suggest = "containerd_config"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -12198,6 +12762,7 @@ class NodePoolNodeConfig(dict):
                  advanced_machine_features: Optional['outputs.NodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  confidential_nodes: Optional['outputs.NodePoolNodeConfigConfidentialNodes'] = None,
+                 containerd_config: Optional['outputs.NodePoolNodeConfigContainerdConfig'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  effective_taints: Optional[Sequence['outputs.NodePoolNodeConfigEffectiveTaint']] = None,
@@ -12238,6 +12803,7 @@ class NodePoolNodeConfig(dict):
         :param 'NodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling advanced machine features.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
+        :param 'NodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
         :param Sequence['NodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
@@ -12281,6 +12847,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -12377,6 +12945,14 @@ class NodePoolNodeConfig(dict):
         Configuration for Confidential Nodes feature. Structure is documented below.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> Optional['outputs.NodePoolNodeConfigContainerdConfig']:
+        """
+        Parameters for containerd configuration.
+        """
+        return pulumi.get(self, "containerd_config")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -12734,6 +13310,170 @@ class NodePoolNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateRegistryAccessConfig":
+            suggest = "private_registry_access_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_registry_access_config: Optional['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+        """
+        :param 'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Parameters for private container registries configuration.
+        """
+        if private_registry_access_config is not None:
+            pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfig")
+    def private_registry_access_config(self) -> Optional['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig']:
+        """
+        Parameters for private container registries configuration.
+        """
+        return pulumi.get(self, "private_registry_access_config")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityDomainConfigs":
+            suggest = "certificate_authority_domain_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 certificate_authority_domain_configs: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
+        """
+        :param bool enabled: Whether or not private registries are configured.
+        :param Sequence['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: Parameters for configuring CA certificate and domains.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if certificate_authority_domain_configs is not None:
+            pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not private registries are configured.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
+        """
+        Parameters for configuring CA certificate and domains.
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerCertificateConfig":
+            suggest = "gcp_secret_manager_certificate_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_config: 'outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param 'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfig")
+    def gcp_secret_manager_certificate_config(self) -> 'outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_config")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUri":
+            suggest = "secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -15516,6 +16256,7 @@ class GetClusterNodeConfigResult(dict):
                  advanced_machine_features: Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
                  confidential_nodes: Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult'],
+                 containerd_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigResult'],
                  disk_size_gb: int,
                  disk_type: str,
                  effective_taints: Sequence['outputs.GetClusterNodeConfigEffectiveTaintResult'],
@@ -15556,6 +16297,7 @@ class GetClusterNodeConfigResult(dict):
         :param Sequence['GetClusterNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         :param Sequence['GetClusterNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        :param Sequence['GetClusterNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
         :param Sequence['GetClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
@@ -15596,6 +16338,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        pulumi.set(__self__, "containerd_configs", containerd_configs)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "effective_taints", effective_taints)
@@ -15656,6 +16399,14 @@ class GetClusterNodeConfigResult(dict):
         Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="containerdConfigs")
+    def containerd_configs(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigResult']:
+        """
+        Parameters for containerd configuration.
+        """
+        return pulumi.get(self, "containerd_configs")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -15991,6 +16742,100 @@ class GetClusterNodeConfigConfidentialNodeResult(dict):
         Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigResult(dict):
+    def __init__(__self__, *,
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']):
+        """
+        :param Sequence['GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        """
+        pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfigs")
+    def private_registry_access_configs(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']:
+        """
+        Parameters for private container registries configuration.
+        """
+        return pulumi.get(self, "private_registry_access_configs")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult(dict):
+    def __init__(__self__, *,
+                 certificate_authority_domain_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult'],
+                 enabled: bool):
+        """
+        :param Sequence['GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: Parameters for configuring CA certificate and domains.
+        :param bool enabled: Whether or not private registries are configured.
+        """
+        pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult']:
+        """
+        Parameters for configuring CA certificate and domains.
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not private registries are configured.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult(dict):
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param Sequence['GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs'] gcp_secret_manager_certificate_configs: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_configs", gcp_secret_manager_certificate_configs)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfigs")
+    def gcp_secret_manager_certificate_configs(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']:
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_configs")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult(dict):
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -16889,14 +17734,25 @@ class GetClusterNodePoolDefaultResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
     def __init__(__self__, *,
+                 containerd_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult'],
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult'],
                  logging_variant: str):
         """
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs'] gcfs_configs: GCFS configuration for this node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         """
+        pulumi.set(__self__, "containerd_configs", containerd_configs)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "logging_variant", logging_variant)
+
+    @property
+    @pulumi.getter(name="containerdConfigs")
+    def containerd_configs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult']:
+        """
+        Parameters for containerd configuration.
+        """
+        return pulumi.get(self, "containerd_configs")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -16913,6 +17769,100 @@ class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
         Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         """
         return pulumi.get(self, "logging_variant")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(dict):
+    def __init__(__self__, *,
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult']):
+        """
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        """
+        pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfigs")
+    def private_registry_access_configs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult']:
+        """
+        Parameters for private container registries configuration.
+        """
+        return pulumi.get(self, "private_registry_access_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult(dict):
+    def __init__(__self__, *,
+                 certificate_authority_domain_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult'],
+                 enabled: bool):
+        """
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: Parameters for configuring CA certificate and domains.
+        :param bool enabled: Whether or not private registries are configured.
+        """
+        pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult']:
+        """
+        Parameters for configuring CA certificate and domains.
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not private registries are configured.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult(dict):
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs'] gcp_secret_manager_certificate_configs: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_configs", gcp_secret_manager_certificate_configs)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfigs")
+    def gcp_secret_manager_certificate_configs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']:
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult(dict):
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type
@@ -17162,6 +18112,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  advanced_machine_features: Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
                  confidential_nodes: Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult'],
+                 containerd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigResult'],
                  disk_size_gb: int,
                  disk_type: str,
                  effective_taints: Sequence['outputs.GetClusterNodePoolNodeConfigEffectiveTaintResult'],
@@ -17202,6 +18153,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Sequence['GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         :param Sequence['GetClusterNodePoolNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
         :param Sequence['GetClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
@@ -17242,6 +18194,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        pulumi.set(__self__, "containerd_configs", containerd_configs)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "effective_taints", effective_taints)
@@ -17302,6 +18255,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="containerdConfigs")
+    def containerd_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigResult']:
+        """
+        Parameters for containerd configuration.
+        """
+        return pulumi.get(self, "containerd_configs")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -17637,6 +18598,100 @@ class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
         Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigResult(dict):
+    def __init__(__self__, *,
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']):
+        """
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        """
+        pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+
+    @property
+    @pulumi.getter(name="privateRegistryAccessConfigs")
+    def private_registry_access_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']:
+        """
+        Parameters for private container registries configuration.
+        """
+        return pulumi.get(self, "private_registry_access_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult(dict):
+    def __init__(__self__, *,
+                 certificate_authority_domain_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult'],
+                 enabled: bool):
+        """
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: Parameters for configuring CA certificate and domains.
+        :param bool enabled: Whether or not private registries are configured.
+        """
+        pulumi.set(__self__, "certificate_authority_domain_configs", certificate_authority_domain_configs)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityDomainConfigs")
+    def certificate_authority_domain_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult']:
+        """
+        Parameters for configuring CA certificate and domains.
+        """
+        return pulumi.get(self, "certificate_authority_domain_configs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not private registries are configured.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult(dict):
+    def __init__(__self__, *,
+                 fqdns: Sequence[str],
+                 gcp_secret_manager_certificate_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']):
+        """
+        :param Sequence[str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs'] gcp_secret_manager_certificate_configs: Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        pulumi.set(__self__, "fqdns", fqdns)
+        pulumi.set(__self__, "gcp_secret_manager_certificate_configs", gcp_secret_manager_certificate_configs)
+
+    @property
+    @pulumi.getter
+    def fqdns(self) -> Sequence[str]:
+        """
+        List of fully-qualified-domain-names. IPv4s and port specification are supported.
+        """
+        return pulumi.get(self, "fqdns")
+
+    @property
+    @pulumi.getter(name="gcpSecretManagerCertificateConfigs")
+    def gcp_secret_manager_certificate_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult']:
+        """
+        Parameters for configuring a certificate hosted in GCP SecretManager.
+        """
+        return pulumi.get(self, "gcp_secret_manager_certificate_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult(dict):
+    def __init__(__self__, *,
+                 secret_uri: str):
+        """
+        :param str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        pulumi.set(__self__, "secret_uri", secret_uri)
+
+    @property
+    @pulumi.getter(name="secretUri")
+    def secret_uri(self) -> str:
+        """
+        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        """
+        return pulumi.get(self, "secret_uri")
 
 
 @pulumi.output_type

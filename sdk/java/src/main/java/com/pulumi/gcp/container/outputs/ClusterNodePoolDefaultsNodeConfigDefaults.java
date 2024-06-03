@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolDefaultsNodeConfigDefaults {
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig containerdConfig;
     /**
      * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
@@ -24,6 +30,13 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     private @Nullable String loggingVariant;
 
     private ClusterNodePoolDefaultsNodeConfigDefaults() {}
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
+    }
     /**
      * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
@@ -48,15 +61,23 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig containerdConfig;
         private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
         private @Nullable String loggingVariant;
         public Builder() {}
         public Builder(ClusterNodePoolDefaultsNodeConfigDefaults defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.containerdConfig = defaults.containerdConfig;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.loggingVariant = defaults.loggingVariant;
         }
 
+        @CustomType.Setter
+        public Builder containerdConfig(@Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig containerdConfig) {
+
+            this.containerdConfig = containerdConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder gcfsConfig(@Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig) {
 
@@ -71,6 +92,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
         }
         public ClusterNodePoolDefaultsNodeConfigDefaults build() {
             final var _resultValue = new ClusterNodePoolDefaultsNodeConfigDefaults();
+            _resultValue.containerdConfig = containerdConfig;
             _resultValue.gcfsConfig = gcfsConfig;
             _resultValue.loggingVariant = loggingVariant;
             return _resultValue;

@@ -24,6 +24,11 @@ public final class GetSubscriptionCloudStorageConfig {
      */
     private String bucket;
     /**
+     * @return User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    private String filenameDatetimeFormat;
+    /**
      * @return User-provided prefix for Cloud Storage filename.
      * 
      */
@@ -66,6 +71,13 @@ public final class GetSubscriptionCloudStorageConfig {
      */
     public String bucket() {
         return this.bucket;
+    }
+    /**
+     * @return User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+     * 
+     */
+    public String filenameDatetimeFormat() {
+        return this.filenameDatetimeFormat;
     }
     /**
      * @return User-provided prefix for Cloud Storage filename.
@@ -117,6 +129,7 @@ public final class GetSubscriptionCloudStorageConfig {
     public static final class Builder {
         private List<GetSubscriptionCloudStorageConfigAvroConfig> avroConfigs;
         private String bucket;
+        private String filenameDatetimeFormat;
         private String filenamePrefix;
         private String filenameSuffix;
         private Integer maxBytes;
@@ -127,6 +140,7 @@ public final class GetSubscriptionCloudStorageConfig {
     	      Objects.requireNonNull(defaults);
     	      this.avroConfigs = defaults.avroConfigs;
     	      this.bucket = defaults.bucket;
+    	      this.filenameDatetimeFormat = defaults.filenameDatetimeFormat;
     	      this.filenamePrefix = defaults.filenamePrefix;
     	      this.filenameSuffix = defaults.filenameSuffix;
     	      this.maxBytes = defaults.maxBytes;
@@ -151,6 +165,14 @@ public final class GetSubscriptionCloudStorageConfig {
               throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "bucket");
             }
             this.bucket = bucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filenameDatetimeFormat(String filenameDatetimeFormat) {
+            if (filenameDatetimeFormat == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "filenameDatetimeFormat");
+            }
+            this.filenameDatetimeFormat = filenameDatetimeFormat;
             return this;
         }
         @CustomType.Setter
@@ -197,6 +219,7 @@ public final class GetSubscriptionCloudStorageConfig {
             final var _resultValue = new GetSubscriptionCloudStorageConfig();
             _resultValue.avroConfigs = avroConfigs;
             _resultValue.bucket = bucket;
+            _resultValue.filenameDatetimeFormat = filenameDatetimeFormat;
             _resultValue.filenamePrefix = filenamePrefix;
             _resultValue.filenameSuffix = filenameSuffix;
             _resultValue.maxBytes = maxBytes;

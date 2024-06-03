@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEffectiveTaintArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
@@ -83,6 +84,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<NodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+
+    /**
+     * Parameters for containerd configuration.
+     * 
+     */
+    @Import(name="containerdConfig")
+    private @Nullable Output<NodePoolNodeConfigContainerdConfigArgs> containerdConfig;
+
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigContainerdConfigArgs>> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
     }
 
     /**
@@ -631,6 +647,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.confidentialNodes = $.confidentialNodes;
+        this.containerdConfig = $.containerdConfig;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.effectiveTaints = $.effectiveTaints;
@@ -748,6 +765,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder confidentialNodes(NodePoolNodeConfigConfidentialNodesArgs confidentialNodes) {
             return confidentialNodes(Output.of(confidentialNodes));
+        }
+
+        /**
+         * @param containerdConfig Parameters for containerd configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(@Nullable Output<NodePoolNodeConfigContainerdConfigArgs> containerdConfig) {
+            $.containerdConfig = containerdConfig;
+            return this;
+        }
+
+        /**
+         * @param containerdConfig Parameters for containerd configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(NodePoolNodeConfigContainerdConfigArgs containerdConfig) {
+            return containerdConfig(Output.of(containerdConfig));
         }
 
         /**

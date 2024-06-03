@@ -6671,6 +6671,11 @@ type ServiceTemplateSpecVolume struct {
 	EmptyDir *ServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
+	// A filesystem backed by a Network File System share. This filesystem requires the
+	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// Structure is documented below.
+	Nfs *ServiceTemplateSpecVolumeNfs `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
@@ -6698,6 +6703,11 @@ type ServiceTemplateSpecVolumeArgs struct {
 	EmptyDir ServiceTemplateSpecVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A filesystem backed by a Network File System share. This filesystem requires the
+	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// Structure is documented below.
+	Nfs ServiceTemplateSpecVolumeNfsPtrInput `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
@@ -6773,6 +6783,14 @@ func (o ServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A filesystem backed by a Network File System share. This filesystem requires the
+// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+// Structure is documented below.
+func (o ServiceTemplateSpecVolumeOutput) Nfs() ServiceTemplateSpecVolumeNfsPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolume) *ServiceTemplateSpecVolumeNfs { return v.Nfs }).(ServiceTemplateSpecVolumeNfsPtrOutput)
+}
+
 // The secret's value will be presented as the content of a file whose
 // name is defined in the item path. If no items are defined, the name of
 // the file is the secret_name.
@@ -6812,8 +6830,6 @@ type ServiceTemplateSpecVolumeCsi struct {
 	// Driver-specific attributes. The following options are supported for available drivers:
 	// * gcsfuse.run.googleapis.com
 	// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-	//
-	// ***
 	VolumeAttributes map[string]string `pulumi:"volumeAttributes"`
 }
 
@@ -6839,8 +6855,6 @@ type ServiceTemplateSpecVolumeCsiArgs struct {
 	// Driver-specific attributes. The following options are supported for available drivers:
 	// * gcsfuse.run.googleapis.com
 	// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-	//
-	// ***
 	VolumeAttributes pulumi.StringMapInput `pulumi:"volumeAttributes"`
 }
 
@@ -6937,8 +6951,6 @@ func (o ServiceTemplateSpecVolumeCsiOutput) ReadOnly() pulumi.BoolPtrOutput {
 // Driver-specific attributes. The following options are supported for available drivers:
 // * gcsfuse.run.googleapis.com
 // * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-//
-// ***
 func (o ServiceTemplateSpecVolumeCsiOutput) VolumeAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeCsi) map[string]string { return v.VolumeAttributes }).(pulumi.StringMapOutput)
 }
@@ -6993,8 +7005,6 @@ func (o ServiceTemplateSpecVolumeCsiPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 // Driver-specific attributes. The following options are supported for available drivers:
 // * gcsfuse.run.googleapis.com
 // * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-//
-// ***
 func (o ServiceTemplateSpecVolumeCsiPtrOutput) VolumeAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) map[string]string {
 		if v == nil {
@@ -7157,6 +7167,189 @@ func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtr
 			return nil
 		}
 		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecVolumeNfs struct {
+	// Path exported by the NFS server
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+	//
+	// ***
+	ReadOnly *bool `pulumi:"readOnly"`
+	// IP address or hostname of the NFS server
+	Server string `pulumi:"server"`
+}
+
+// ServiceTemplateSpecVolumeNfsInput is an input type that accepts ServiceTemplateSpecVolumeNfsArgs and ServiceTemplateSpecVolumeNfsOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeNfsInput` via:
+//
+//	ServiceTemplateSpecVolumeNfsArgs{...}
+type ServiceTemplateSpecVolumeNfsInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeNfsOutput() ServiceTemplateSpecVolumeNfsOutput
+	ToServiceTemplateSpecVolumeNfsOutputWithContext(context.Context) ServiceTemplateSpecVolumeNfsOutput
+}
+
+type ServiceTemplateSpecVolumeNfsArgs struct {
+	// Path exported by the NFS server
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+	//
+	// ***
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// IP address or hostname of the NFS server
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (ServiceTemplateSpecVolumeNfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeNfs)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecVolumeNfsArgs) ToServiceTemplateSpecVolumeNfsOutput() ServiceTemplateSpecVolumeNfsOutput {
+	return i.ToServiceTemplateSpecVolumeNfsOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeNfsArgs) ToServiceTemplateSpecVolumeNfsOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeNfsOutput)
+}
+
+func (i ServiceTemplateSpecVolumeNfsArgs) ToServiceTemplateSpecVolumeNfsPtrOutput() ServiceTemplateSpecVolumeNfsPtrOutput {
+	return i.ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeNfsArgs) ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeNfsOutput).ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecVolumeNfsPtrInput is an input type that accepts ServiceTemplateSpecVolumeNfsArgs, ServiceTemplateSpecVolumeNfsPtr and ServiceTemplateSpecVolumeNfsPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeNfsPtrInput` via:
+//
+//	        ServiceTemplateSpecVolumeNfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecVolumeNfsPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeNfsPtrOutput() ServiceTemplateSpecVolumeNfsPtrOutput
+	ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(context.Context) ServiceTemplateSpecVolumeNfsPtrOutput
+}
+
+type serviceTemplateSpecVolumeNfsPtrType ServiceTemplateSpecVolumeNfsArgs
+
+func ServiceTemplateSpecVolumeNfsPtr(v *ServiceTemplateSpecVolumeNfsArgs) ServiceTemplateSpecVolumeNfsPtrInput {
+	return (*serviceTemplateSpecVolumeNfsPtrType)(v)
+}
+
+func (*serviceTemplateSpecVolumeNfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeNfs)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecVolumeNfsPtrType) ToServiceTemplateSpecVolumeNfsPtrOutput() ServiceTemplateSpecVolumeNfsPtrOutput {
+	return i.ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecVolumeNfsPtrType) ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeNfsPtrOutput)
+}
+
+type ServiceTemplateSpecVolumeNfsOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeNfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeNfs)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeNfsOutput) ToServiceTemplateSpecVolumeNfsOutput() ServiceTemplateSpecVolumeNfsOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeNfsOutput) ToServiceTemplateSpecVolumeNfsOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeNfsOutput) ToServiceTemplateSpecVolumeNfsPtrOutput() ServiceTemplateSpecVolumeNfsPtrOutput {
+	return o.ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecVolumeNfsOutput) ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecVolumeNfs) *ServiceTemplateSpecVolumeNfs {
+		return &v
+	}).(ServiceTemplateSpecVolumeNfsPtrOutput)
+}
+
+// Path exported by the NFS server
+func (o ServiceTemplateSpecVolumeNfsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeNfs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+//
+// ***
+func (o ServiceTemplateSpecVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// IP address or hostname of the NFS server
+func (o ServiceTemplateSpecVolumeNfsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeNfs) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type ServiceTemplateSpecVolumeNfsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeNfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeNfs)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) ToServiceTemplateSpecVolumeNfsPtrOutput() ServiceTemplateSpecVolumeNfsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) ToServiceTemplateSpecVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeNfsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) Elem() ServiceTemplateSpecVolumeNfsOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeNfs) ServiceTemplateSpecVolumeNfs {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecVolumeNfs
+		return ret
+	}).(ServiceTemplateSpecVolumeNfsOutput)
+}
+
+// Path exported by the NFS server
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+//
+// ***
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeNfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IP address or hostname of the NFS server
+func (o ServiceTemplateSpecVolumeNfsPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11384,6 +11577,10 @@ type GetServiceTemplateSpecVolume struct {
 	EmptyDirs []GetServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
 	Name string `pulumi:"name"`
+	// A filesystem backed by a Network File System share. This filesystem requires the
+	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Nfs []GetServiceTemplateSpecVolumeNf `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
@@ -11408,6 +11605,10 @@ type GetServiceTemplateSpecVolumeArgs struct {
 	EmptyDirs GetServiceTemplateSpecVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A filesystem backed by a Network File System share. This filesystem requires the
+	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Nfs GetServiceTemplateSpecVolumeNfArrayInput `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
@@ -11478,6 +11679,13 @@ func (o GetServiceTemplateSpecVolumeOutput) EmptyDirs() GetServiceTemplateSpecVo
 // The name of the Cloud Run Service.
 func (o GetServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A filesystem backed by a Network File System share. This filesystem requires the
+// run.googleapis.com/execution-environment annotation to be set to "gen2" and
+// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+func (o GetServiceTemplateSpecVolumeOutput) Nfs() GetServiceTemplateSpecVolumeNfArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeNf { return v.Nfs }).(GetServiceTemplateSpecVolumeNfArrayOutput)
 }
 
 // The secret's value will be presented as the content of a file whose
@@ -11741,6 +11949,121 @@ func (o GetServiceTemplateSpecVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolumeEmptyDir {
 		return vs[0].([]GetServiceTemplateSpecVolumeEmptyDir)[vs[1].(int)]
 	}).(GetServiceTemplateSpecVolumeEmptyDirOutput)
+}
+
+type GetServiceTemplateSpecVolumeNf struct {
+	// Path exported by the NFS server
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+	ReadOnly bool `pulumi:"readOnly"`
+	// IP address or hostname of the NFS server
+	Server string `pulumi:"server"`
+}
+
+// GetServiceTemplateSpecVolumeNfInput is an input type that accepts GetServiceTemplateSpecVolumeNfArgs and GetServiceTemplateSpecVolumeNfOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeNfInput` via:
+//
+//	GetServiceTemplateSpecVolumeNfArgs{...}
+type GetServiceTemplateSpecVolumeNfInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeNfOutput() GetServiceTemplateSpecVolumeNfOutput
+	ToGetServiceTemplateSpecVolumeNfOutputWithContext(context.Context) GetServiceTemplateSpecVolumeNfOutput
+}
+
+type GetServiceTemplateSpecVolumeNfArgs struct {
+	// Path exported by the NFS server
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// IP address or hostname of the NFS server
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (GetServiceTemplateSpecVolumeNfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeNf)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeNfArgs) ToGetServiceTemplateSpecVolumeNfOutput() GetServiceTemplateSpecVolumeNfOutput {
+	return i.ToGetServiceTemplateSpecVolumeNfOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeNfArgs) ToGetServiceTemplateSpecVolumeNfOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeNfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeNfOutput)
+}
+
+// GetServiceTemplateSpecVolumeNfArrayInput is an input type that accepts GetServiceTemplateSpecVolumeNfArray and GetServiceTemplateSpecVolumeNfArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeNfArrayInput` via:
+//
+//	GetServiceTemplateSpecVolumeNfArray{ GetServiceTemplateSpecVolumeNfArgs{...} }
+type GetServiceTemplateSpecVolumeNfArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeNfArrayOutput() GetServiceTemplateSpecVolumeNfArrayOutput
+	ToGetServiceTemplateSpecVolumeNfArrayOutputWithContext(context.Context) GetServiceTemplateSpecVolumeNfArrayOutput
+}
+
+type GetServiceTemplateSpecVolumeNfArray []GetServiceTemplateSpecVolumeNfInput
+
+func (GetServiceTemplateSpecVolumeNfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeNf)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeNfArray) ToGetServiceTemplateSpecVolumeNfArrayOutput() GetServiceTemplateSpecVolumeNfArrayOutput {
+	return i.ToGetServiceTemplateSpecVolumeNfArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeNfArray) ToGetServiceTemplateSpecVolumeNfArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeNfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeNfArrayOutput)
+}
+
+type GetServiceTemplateSpecVolumeNfOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeNfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeNf)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeNfOutput) ToGetServiceTemplateSpecVolumeNfOutput() GetServiceTemplateSpecVolumeNfOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeNfOutput) ToGetServiceTemplateSpecVolumeNfOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeNfOutput {
+	return o
+}
+
+// Path exported by the NFS server
+func (o GetServiceTemplateSpecVolumeNfOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeNf) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount the NFS volume as read only in all mounts. Defaults to false.
+func (o GetServiceTemplateSpecVolumeNfOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeNf) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// IP address or hostname of the NFS server
+func (o GetServiceTemplateSpecVolumeNfOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeNf) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSpecVolumeNfArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeNfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeNf)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeNfArrayOutput) ToGetServiceTemplateSpecVolumeNfArrayOutput() GetServiceTemplateSpecVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeNfArrayOutput) ToGetServiceTemplateSpecVolumeNfArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeNfArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecVolumeNfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolumeNf {
+		return vs[0].([]GetServiceTemplateSpecVolumeNf)[vs[1].(int)]
+	}).(GetServiceTemplateSpecVolumeNfOutput)
 }
 
 type GetServiceTemplateSpecVolumeSecret struct {
@@ -12264,6 +12587,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeCsiPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeCsiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeNfsInput)(nil)).Elem(), ServiceTemplateSpecVolumeNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeNfsPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeNfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretItemInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretItemArgs{})
@@ -12332,6 +12657,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeCsiArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeCsiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeNfInput)(nil)).Elem(), GetServiceTemplateSpecVolumeNfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeNfArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeNfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretItemInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretItemArgs{})
@@ -12414,6 +12741,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeCsiPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeNfsOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeNfsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretItemOutput{})
@@ -12482,6 +12811,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeCsiArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeNfOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeNfArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretItemOutput{})

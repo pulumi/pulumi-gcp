@@ -52,7 +52,6 @@ import * as utilities from "../utilities";
  *         timeoutSeconds: 60,
  *     },
  * });
- * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
  * ```
  * ### Cloudfunctions2 Full
  *
@@ -464,7 +463,6 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [wait60s],
  * });
- * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
  * ```
  * ### Cloudfunctions2 Secret Env
  *

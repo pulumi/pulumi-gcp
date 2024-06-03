@@ -38,6 +38,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
      * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
      * * `STANDARD` - Parse JSON payloads in POST bodies.
+     * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
      * 
      */
     @Import(name="jsonParsing")
@@ -47,6 +48,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
      * * `STANDARD` - Parse JSON payloads in POST bodies.
+     * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
      * 
      */
     public Optional<Output<String>> jsonParsing() {
@@ -141,6 +143,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
          * @param jsonParsing Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
          * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
          * * `STANDARD` - Parse JSON payloads in POST bodies.
+         * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
          * 
          * @return builder
          * 
@@ -154,6 +157,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
          * @param jsonParsing Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
          * * `DISABLED` - Don&#39;t parse JSON payloads in POST bodies.
          * * `STANDARD` - Parse JSON payloads in POST bodies.
+         * * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
          * 
          * @return builder
          * 

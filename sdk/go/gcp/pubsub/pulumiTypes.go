@@ -1348,6 +1348,8 @@ type SubscriptionCloudStorageConfig struct {
 	AvroConfig *SubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfig"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 	Bucket string `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	FilenameDatetimeFormat *string `pulumi:"filenameDatetimeFormat"`
 	// User-provided prefix for Cloud Storage filename.
 	FilenamePrefix *string `pulumi:"filenamePrefix"`
 	// User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -1381,6 +1383,8 @@ type SubscriptionCloudStorageConfigArgs struct {
 	AvroConfig SubscriptionCloudStorageConfigAvroConfigPtrInput `pulumi:"avroConfig"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	FilenameDatetimeFormat pulumi.StringPtrInput `pulumi:"filenameDatetimeFormat"`
 	// User-provided prefix for Cloud Storage filename.
 	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
 	// User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -1485,6 +1489,11 @@ func (o SubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+func (o SubscriptionCloudStorageConfigOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.FilenameDatetimeFormat }).(pulumi.StringPtrOutput)
+}
+
 // User-provided prefix for Cloud Storage filename.
 func (o SubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.FilenamePrefix }).(pulumi.StringPtrOutput)
@@ -1556,6 +1565,16 @@ func (o SubscriptionCloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+func (o SubscriptionCloudStorageConfigPtrOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameDatetimeFormat
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4405,6 +4424,8 @@ type GetSubscriptionCloudStorageConfig struct {
 	AvroConfigs []GetSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfigs"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 	Bucket string `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	FilenameDatetimeFormat string `pulumi:"filenameDatetimeFormat"`
 	// User-provided prefix for Cloud Storage filename.
 	FilenamePrefix string `pulumi:"filenamePrefix"`
 	// User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -4436,6 +4457,8 @@ type GetSubscriptionCloudStorageConfigArgs struct {
 	AvroConfigs GetSubscriptionCloudStorageConfigAvroConfigArrayInput `pulumi:"avroConfigs"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	FilenameDatetimeFormat pulumi.StringInput `pulumi:"filenameDatetimeFormat"`
 	// User-provided prefix for Cloud Storage filename.
 	FilenamePrefix pulumi.StringInput `pulumi:"filenamePrefix"`
 	// User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -4512,6 +4535,11 @@ func (o GetSubscriptionCloudStorageConfigOutput) AvroConfigs() GetSubscriptionCl
 // User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 func (o GetSubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+func (o GetSubscriptionCloudStorageConfigOutput) FilenameDatetimeFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.FilenameDatetimeFormat }).(pulumi.StringOutput)
 }
 
 // User-provided prefix for Cloud Storage filename.

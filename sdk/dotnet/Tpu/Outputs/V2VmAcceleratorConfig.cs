@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Tpu.Outputs
         public readonly string Topology;
         /// <summary>
         /// Type of TPU.
-        /// Possible values are: `V2`, `V3`, `V4`.
+        /// Possible values are: `V2`, `V3`, `V4`, `V5P`.
         /// </summary>
         public readonly string Type;
 

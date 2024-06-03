@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *
  * * `{{project}}/{{region}}/{{environment}}/{{name}}`
  *
- * * `{{name}}`
+ * * `{{environment}}/{{name}}`
  *
  * When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
  *
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ```sh
- * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+ * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
  * ```
  */
 export class UserWorkloadsSecret extends pulumi.CustomResource {

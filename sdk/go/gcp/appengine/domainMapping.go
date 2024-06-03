@@ -97,7 +97,7 @@ type DomainMapping struct {
 	ResourceRecords DomainMappingResourceRecordArrayOutput `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	// Structure is documented below.
-	SslSettings DomainMappingSslSettingsPtrOutput `pulumi:"sslSettings"`
+	SslSettings DomainMappingSslSettingsOutput `pulumi:"sslSettings"`
 }
 
 // NewDomainMapping registers a new resource with the given unique name, arguments, and options.
@@ -343,8 +343,8 @@ func (o DomainMappingOutput) ResourceRecords() DomainMappingResourceRecordArrayO
 
 // SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 // Structure is documented below.
-func (o DomainMappingOutput) SslSettings() DomainMappingSslSettingsPtrOutput {
-	return o.ApplyT(func(v *DomainMapping) DomainMappingSslSettingsPtrOutput { return v.SslSettings }).(DomainMappingSslSettingsPtrOutput)
+func (o DomainMappingOutput) SslSettings() DomainMappingSslSettingsOutput {
+	return o.ApplyT(func(v *DomainMapping) DomainMappingSslSettingsOutput { return v.SslSettings }).(DomainMappingSslSettingsOutput)
 }
 
 type DomainMappingArrayOutput struct{ *pulumi.OutputState }

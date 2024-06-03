@@ -1033,6 +1033,12 @@ namespace Pulumi.Gcp.Datastream
         public Output<Outputs.StreamBackfillNone?> BackfillNone { get; private set; } = null!;
 
         /// <summary>
+        /// Create the stream without validating it.
+        /// </summary>
+        [Output("createWithoutValidation")]
+        public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
         /// encrypted using an internal Stream-specific encryption key provisioned through KMS.
         /// </summary>
@@ -1176,6 +1182,12 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.StreamBackfillNoneArgs>? BackfillNone { get; set; }
 
         /// <summary>
+        /// Create the stream without validating it.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
         /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
         /// encrypted using an internal Stream-specific encryption key provisioned through KMS.
         /// </summary>
@@ -1255,6 +1267,12 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("backfillNone")]
         public Input<Inputs.StreamBackfillNoneGetArgs>? BackfillNone { get; set; }
+
+        /// <summary>
+        /// Create the stream without validating it.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
         /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be

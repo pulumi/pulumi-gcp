@@ -20,6 +20,7 @@ class PrivateConnectionArgs:
                  location: pulumi.Input[str],
                  private_connection_id: pulumi.Input[str],
                  vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'],
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,6 +31,7 @@ class PrivateConnectionArgs:
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
+        :param pulumi.Input[bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
         """
@@ -37,6 +39,8 @@ class PrivateConnectionArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "private_connection_id", private_connection_id)
         pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -93,6 +97,18 @@ class PrivateConnectionArgs:
         pulumi.set(self, "vpc_peering_config", value)
 
     @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, will skip validations.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -118,6 +134,7 @@ class PrivateConnectionArgs:
 @pulumi.input_type
 class _PrivateConnectionState:
     def __init__(__self__, *,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
@@ -131,6 +148,7 @@ class _PrivateConnectionState:
                  vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         Input properties used for looking up and filtering PrivateConnection resources.
+        :param pulumi.Input[bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
@@ -147,6 +165,8 @@ class _PrivateConnectionState:
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -169,6 +189,18 @@ class _PrivateConnectionState:
             pulumi.set(__self__, "state", state)
         if vpc_peering_config is not None:
             pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, will skip validations.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -310,6 +342,7 @@ class PrivateConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -374,6 +407,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -459,6 +493,7 @@ class PrivateConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -474,6 +509,7 @@ class PrivateConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PrivateConnectionArgs.__new__(PrivateConnectionArgs)
 
+            __props__.__dict__["create_without_validation"] = create_without_validation
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -505,6 +541,7 @@ class PrivateConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_without_validation: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]]] = None,
@@ -523,6 +560,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
@@ -543,6 +581,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         __props__ = _PrivateConnectionState.__new__(_PrivateConnectionState)
 
+        __props__.__dict__["create_without_validation"] = create_without_validation
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
@@ -555,6 +594,14 @@ class PrivateConnection(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["vpc_peering_config"] = vpc_peering_config
         return PrivateConnection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, will skip validations.
+        """
+        return pulumi.get(self, "create_without_validation")
 
     @property
     @pulumi.getter(name="displayName")

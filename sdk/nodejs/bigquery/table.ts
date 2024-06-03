@@ -123,7 +123,8 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
-     * Whether or not to allow table deletion when there are still resource tags attached.
+     * This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      */
     public readonly allowResourceTagsOnDeletion!: pulumi.Output<boolean | undefined>;
     /**
@@ -257,9 +258,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean | undefined>;
     /**
-     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example "Production".
+     * This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example "Production".
      */
     public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -281,7 +284,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly tableId!: pulumi.Output<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+     * Replication info of a table created
+     * using "AS REPLICA" DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+     * Structure is documented below.
      */
     public readonly tableReplicationInfo!: pulumi.Output<outputs.bigquery.TableTableReplicationInfo | undefined>;
     /**
@@ -399,7 +405,8 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableState {
     /**
-     * Whether or not to allow table deletion when there are still resource tags attached.
+     * This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      */
     allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
@@ -533,9 +540,11 @@ export interface TableState {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example "Production".
+     * This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example "Production".
      */
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -557,7 +566,10 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+     * Replication info of a table created
+     * using "AS REPLICA" DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+     * Structure is documented below.
      */
     tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
     /**
@@ -581,7 +593,8 @@ export interface TableState {
  */
 export interface TableArgs {
     /**
-     * Whether or not to allow table deletion when there are still resource tags attached.
+     * This field is in beta. If set to true, it allows table deletion when there
+     * are still resource tags attached. The default value is false.
      */
     allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
@@ -664,9 +677,11 @@ export interface TableArgs {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-     * tag key. Tag value is expected to be the short name, for example "Production".
+     * This field is in beta. The tags attached to this table. Tag keys are
+     * globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the
+     * parent organization or project resource for this tag key. Tag value is
+     * expected to be the short name, for example "Production".
      */
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -684,7 +699,10 @@ export interface TableArgs {
      */
     tableId: pulumi.Input<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
+     * Replication info of a table created
+     * using "AS REPLICA" DDL like:
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
+     * Structure is documented below.
      */
     tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
     /**

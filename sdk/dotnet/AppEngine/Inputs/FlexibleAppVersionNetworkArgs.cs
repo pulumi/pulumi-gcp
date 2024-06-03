@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         }
 
         /// <summary>
+        /// Prevent instances from receiving an ephemeral external IP address.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        [Input("instanceIpMode")]
+        public Input<string>? InstanceIpMode { get; set; }
+
+        /// <summary>
         /// Tag to apply to the instance during creation.
         /// </summary>
         [Input("instanceTag")]

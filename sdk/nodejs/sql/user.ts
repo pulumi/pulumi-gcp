@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         databaseFlags: [{
- *             name: "cloudsql.iam_authentication",
+ *             name: "cloudsql_iam_authentication",
  *             value: "on",
  *         }],
  *     },
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         databaseFlags: [{
- *             name: "cloudsql.iam_authentication",
+ *             name: "cloudsql_iam_authentication",
  *             value: "on",
  *         }],
  *     },

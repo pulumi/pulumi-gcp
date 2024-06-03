@@ -171,6 +171,8 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -183,6 +185,8 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -237,16 +241,12 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The region where the regional SSL policy resides.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region where the regional SSL policy resides.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -279,7 +279,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionSslPolicy(String name, RegionSslPolicyArgs args) {
+    public RegionSslPolicy(String name, @Nullable RegionSslPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -288,7 +288,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionSslPolicy(String name, RegionSslPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public RegionSslPolicy(String name, @Nullable RegionSslPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionSslPolicy:RegionSslPolicy", name, args == null ? RegionSslPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Composer
     /// 
     /// * `{{project}}/{{region}}/{{environment}}/{{name}}`
     /// 
-    /// * `{{name}}`
+    /// * `{{environment}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
     /// 
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Composer
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{name}}
+    /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret")]

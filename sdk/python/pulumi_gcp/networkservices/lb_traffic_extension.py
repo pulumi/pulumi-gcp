@@ -39,8 +39,10 @@ class LbTrafficExtensionArgs:
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-               more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-               "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+               more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+               [Supported application load
+               balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+               ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         :param pulumi.Input[str] name: Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
         """
         pulumi.set(__self__, "extension_chains", extension_chains)
@@ -129,8 +131,10 @@ class LbTrafficExtensionArgs:
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
         All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-        more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-        "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+        more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+        [Supported application load
+        balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+        ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -188,8 +192,10 @@ class _LbTrafficExtensionState:
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-               more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-               "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+               more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+               [Supported application load
+               balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+               ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         :param pulumi.Input[str] location: The location of the traffic extension
         :param pulumi.Input[str] name: Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -288,8 +294,10 @@ class _LbTrafficExtensionState:
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
         All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-        more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-        "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+        more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+        [Supported application load
+        balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+        ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -407,8 +415,10 @@ class LbTrafficExtension(pulumi.CustomResource):
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-               more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-               "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+               more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+               [Supported application load
+               balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+               ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         :param pulumi.Input[str] location: The location of the traffic extension
         :param pulumi.Input[str] name: Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
         """
@@ -543,8 +553,10 @@ class LbTrafficExtension(pulumi.CustomResource):
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-               more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-               "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+               more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+               [Supported application load
+               balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+               ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         :param pulumi.Input[str] location: The location of the traffic extension
         :param pulumi.Input[str] name: Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -618,8 +630,10 @@ class LbTrafficExtension(pulumi.CustomResource):
     def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
         All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-        more information, refer to Choosing a load balancer. Possible values: ["LOAD_BALANCING_SCHEME_UNSPECIFIED",
-        "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+        more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+        [Supported application load
+        balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+        ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
         """
         return pulumi.get(self, "load_balancing_scheme")
 

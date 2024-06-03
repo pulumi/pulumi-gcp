@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolDefaultNodeConfigDefaultResult
     {
         /// <summary>
+        /// Parameters for containerd configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult> ContainerdConfigs;
+        /// <summary>
         /// GCFS configuration for this node.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> GcfsConfigs;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodePoolDefaultNodeConfigDefaultResult(
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult> containerdConfigs,
+
             ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> gcfsConfigs,
 
             string loggingVariant)
         {
+            ContainerdConfigs = containerdConfigs;
             GcfsConfigs = gcfsConfigs;
             LoggingVariant = loggingVariant;
         }

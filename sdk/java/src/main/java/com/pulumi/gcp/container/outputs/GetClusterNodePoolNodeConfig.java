@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeature;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigConfidentialNode;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
@@ -50,6 +51,11 @@ public final class GetClusterNodePoolNodeConfig {
      * 
      */
     private List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes;
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigContainerdConfig> containerdConfigs;
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
      * 
@@ -252,6 +258,13 @@ public final class GetClusterNodePoolNodeConfig {
      */
     public List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigContainerdConfig> containerdConfigs() {
+        return this.containerdConfigs;
     }
     /**
      * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -518,6 +531,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
         private String bootDiskKmsKey;
         private List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes;
+        private List<GetClusterNodePoolNodeConfigContainerdConfig> containerdConfigs;
         private Integer diskSizeGb;
         private String diskType;
         private List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
@@ -560,6 +574,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.containerdConfigs = defaults.containerdConfigs;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
@@ -627,6 +642,17 @@ public final class GetClusterNodePoolNodeConfig {
         }
         public Builder confidentialNodes(GetClusterNodePoolNodeConfigConfidentialNode... confidentialNodes) {
             return confidentialNodes(List.of(confidentialNodes));
+        }
+        @CustomType.Setter
+        public Builder containerdConfigs(List<GetClusterNodePoolNodeConfigContainerdConfig> containerdConfigs) {
+            if (containerdConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "containerdConfigs");
+            }
+            this.containerdConfigs = containerdConfigs;
+            return this;
+        }
+        public Builder containerdConfigs(GetClusterNodePoolNodeConfigContainerdConfig... containerdConfigs) {
+            return containerdConfigs(List.of(containerdConfigs));
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
@@ -981,6 +1007,7 @@ public final class GetClusterNodePoolNodeConfig {
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
+            _resultValue.containerdConfigs = containerdConfigs;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.effectiveTaints = effectiveTaints;

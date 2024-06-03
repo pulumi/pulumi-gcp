@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * > **NOTE** This resource has been added to avoid a situation, where after
  * Instance is recreated, it's removed from Instance Group and it's needed to
  * perform `apply` twice. To avoid situations like this, please use this resource
- * with the lifecycle `updateTriggeredBy` method, with the passed Instance's ID.
+ * with the lifecycle `replaceTriggeredBy` method, with the passed Instance's ID.
  *
  * To get more information about InstanceGroupMembership, see:
  *

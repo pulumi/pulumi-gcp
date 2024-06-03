@@ -5,9 +5,10 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
      * Number of HTTP(S) requests for calculating the threshold.
      * 
      */
-    @Import(name="count", required=true)
-    private Output<Integer> count;
+    @Import(name="count")
+    private @Nullable Output<Integer> count;
 
     /**
      * @return Number of HTTP(S) requests for calculating the threshold.
      * 
      */
-    public Output<Integer> count() {
-        return this.count;
+    public Optional<Output<Integer>> count() {
+        return Optional.ofNullable(this.count);
     }
 
     /**
      * Interval over which the threshold is computed.
      * 
      */
-    @Import(name="intervalSec", required=true)
-    private Output<Integer> intervalSec;
+    @Import(name="intervalSec")
+    private @Nullable Output<Integer> intervalSec;
 
     /**
      * @return Interval over which the threshold is computed.
      * 
      */
-    public Output<Integer> intervalSec() {
-        return this.intervalSec;
+    public Optional<Output<Integer>> intervalSec() {
+        return Optional.ofNullable(this.intervalSec);
     }
 
     private SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs() {}
@@ -75,7 +76,7 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
          * @return builder
          * 
          */
-        public Builder count(Output<Integer> count) {
+        public Builder count(@Nullable Output<Integer> count) {
             $.count = count;
             return this;
         }
@@ -96,7 +97,7 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
          * @return builder
          * 
          */
-        public Builder intervalSec(Output<Integer> intervalSec) {
+        public Builder intervalSec(@Nullable Output<Integer> intervalSec) {
             $.intervalSec = intervalSec;
             return this;
         }
@@ -112,12 +113,6 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
         }
 
         public SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs build() {
-            if ($.count == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs", "count");
-            }
-            if ($.intervalSec == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs", "intervalSec");
-            }
             return $;
         }
     }

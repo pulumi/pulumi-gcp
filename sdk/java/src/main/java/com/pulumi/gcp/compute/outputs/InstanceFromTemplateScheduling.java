@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingNodeAffinity;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingOnInstanceStopAction;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -56,6 +57,11 @@ public final class InstanceFromTemplateScheduling {
      * 
      */
     private @Nullable String onHostMaintenance;
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    private @Nullable InstanceFromTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
     /**
      * @return Whether the instance is preemptible.
      * 
@@ -124,6 +130,13 @@ public final class InstanceFromTemplateScheduling {
         return Optional.ofNullable(this.onHostMaintenance);
     }
     /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public Optional<InstanceFromTemplateSchedulingOnInstanceStopAction> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+    /**
      * @return Whether the instance is preemptible.
      * 
      */
@@ -155,6 +168,7 @@ public final class InstanceFromTemplateScheduling {
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
+        private @Nullable InstanceFromTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
         public Builder() {}
@@ -168,6 +182,7 @@ public final class InstanceFromTemplateScheduling {
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
+    	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
         }
@@ -224,6 +239,12 @@ public final class InstanceFromTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder onInstanceStopAction(@Nullable InstanceFromTemplateSchedulingOnInstanceStopAction onInstanceStopAction) {
+
+            this.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
 
             this.preemptible = preemptible;
@@ -245,6 +266,7 @@ public final class InstanceFromTemplateScheduling {
             _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
             return _resultValue;

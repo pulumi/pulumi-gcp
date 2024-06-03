@@ -48,6 +48,7 @@ __all__ = [
     'ServiceTemplateSpecVolumeArgs',
     'ServiceTemplateSpecVolumeCsiArgs',
     'ServiceTemplateSpecVolumeEmptyDirArgs',
+    'ServiceTemplateSpecVolumeNfsArgs',
     'ServiceTemplateSpecVolumeSecretArgs',
     'ServiceTemplateSpecVolumeSecretItemArgs',
     'ServiceTrafficArgs',
@@ -2884,12 +2885,17 @@ class ServiceTemplateSpecVolumeArgs:
                  name: pulumi.Input[str],
                  csi: Optional[pulumi.Input['ServiceTemplateSpecVolumeCsiArgs']] = None,
                  empty_dir: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']] = None,
+                 nfs: Optional[pulumi.Input['ServiceTemplateSpecVolumeNfsArgs']] = None,
                  secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateSpecVolumeCsiArgs'] csi: A filesystem specified by the Container Storage Interface (CSI).
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs'] empty_dir: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+               Structure is documented below.
+        :param pulumi.Input['ServiceTemplateSpecVolumeNfsArgs'] nfs: A filesystem backed by a Network File System share. This filesystem requires the
+               run.googleapis.com/execution-environment annotation to be set to "gen2" and
+               run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecVolumeSecretArgs'] secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
@@ -2901,6 +2907,8 @@ class ServiceTemplateSpecVolumeArgs:
             pulumi.set(__self__, "csi", csi)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -2944,6 +2952,21 @@ class ServiceTemplateSpecVolumeArgs:
 
     @property
     @pulumi.getter
+    def nfs(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeNfsArgs']]:
+        """
+        A filesystem backed by a Network File System share. This filesystem requires the
+        run.googleapis.com/execution-environment annotation to be set to "gen2" and
+        run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs")
+
+    @nfs.setter
+    def nfs(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeNfsArgs']]):
+        pulumi.set(self, "nfs", value)
+
+    @property
+    @pulumi.getter
     def secret(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']]:
         """
         The secret's value will be presented as the content of a file whose
@@ -2973,8 +2996,6 @@ class ServiceTemplateSpecVolumeCsiArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_attributes: Driver-specific attributes. The following options are supported for available drivers:
                * gcsfuse.run.googleapis.com
                * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-               
-               - - -
         """
         pulumi.set(__self__, "driver", driver)
         if read_only is not None:
@@ -3016,8 +3037,6 @@ class ServiceTemplateSpecVolumeCsiArgs:
         Driver-specific attributes. The following options are supported for available drivers:
         * gcsfuse.run.googleapis.com
         * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
-
-        - - -
         """
         return pulumi.get(self, "volume_attributes")
 
@@ -3063,6 +3082,63 @@ class ServiceTemplateSpecVolumeEmptyDirArgs:
     @size_limit.setter
     def size_limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size_limit", value)
+
+
+@pulumi.input_type
+class ServiceTemplateSpecVolumeNfsArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 server: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] path: Path exported by the NFS server
+        :param pulumi.Input[str] server: IP address or hostname of the NFS server
+        :param pulumi.Input[bool] read_only: If true, mount the NFS volume as read only in all mounts. Defaults to false.
+               
+               - - -
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path exported by the NFS server
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        IP address or hostname of the NFS server
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, mount the NFS volume as read only in all mounts. Defaults to false.
+
+        - - -
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
 
 @pulumi.input_type

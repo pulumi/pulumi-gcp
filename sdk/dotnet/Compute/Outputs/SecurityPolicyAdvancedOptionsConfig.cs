@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
         /// * `DISABLED` - Don't parse JSON payloads in POST bodies.
         /// * `STANDARD` - Parse JSON payloads in POST bodies.
+        /// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
         /// </summary>
         public readonly string? JsonParsing;
         /// <summary>

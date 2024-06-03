@@ -528,7 +528,6 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ))
-        pulumi.export("functionUri", function.service_config.uri)
         ```
         ### Cloudfunctions2 Full
 
@@ -896,7 +895,6 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ),
             opts=pulumi.ResourceOptions(depends_on=[wait60s]))
-        pulumi.export("functionUri", function.service_config.uri)
         ```
         ### Cloudfunctions2 Secret Env
 
@@ -1219,7 +1217,6 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ))
-        pulumi.export("functionUri", function.service_config.uri)
         ```
         ### Cloudfunctions2 Full
 
@@ -1587,7 +1584,6 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ),
             opts=pulumi.ResourceOptions(depends_on=[wait60s]))
-        pulumi.export("functionUri", function.service_config.uri)
         ```
         ### Cloudfunctions2 Secret Env
 

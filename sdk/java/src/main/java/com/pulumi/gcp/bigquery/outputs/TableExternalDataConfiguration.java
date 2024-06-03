@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationAvroOptions;
+import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationBigtableOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationCsvOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationGoogleSheetsOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationHivePartitioningOptions;
@@ -33,6 +34,12 @@ public final class TableExternalDataConfiguration {
      * 
      */
     private @Nullable TableExternalDataConfigurationAvroOptions avroOptions;
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * 
+     */
+    private @Nullable TableExternalDataConfigurationBigtableOptions bigtableOptions;
     /**
      * @return The compression type of the data source.
      * Valid values are &#34;NONE&#34; or &#34;GZIP&#34;.
@@ -177,6 +184,14 @@ public final class TableExternalDataConfiguration {
      */
     public Optional<TableExternalDataConfigurationAvroOptions> avroOptions() {
         return Optional.ofNullable(this.avroOptions);
+    }
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<TableExternalDataConfigurationBigtableOptions> bigtableOptions() {
+        return Optional.ofNullable(this.bigtableOptions);
     }
     /**
      * @return The compression type of the data source.
@@ -351,6 +366,7 @@ public final class TableExternalDataConfiguration {
     public static final class Builder {
         private Boolean autodetect;
         private @Nullable TableExternalDataConfigurationAvroOptions avroOptions;
+        private @Nullable TableExternalDataConfigurationBigtableOptions bigtableOptions;
         private @Nullable String compression;
         private @Nullable String connectionId;
         private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
@@ -373,6 +389,7 @@ public final class TableExternalDataConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.autodetect = defaults.autodetect;
     	      this.avroOptions = defaults.avroOptions;
+    	      this.bigtableOptions = defaults.bigtableOptions;
     	      this.compression = defaults.compression;
     	      this.connectionId = defaults.connectionId;
     	      this.csvOptions = defaults.csvOptions;
@@ -404,6 +421,12 @@ public final class TableExternalDataConfiguration {
         public Builder avroOptions(@Nullable TableExternalDataConfigurationAvroOptions avroOptions) {
 
             this.avroOptions = avroOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bigtableOptions(@Nullable TableExternalDataConfigurationBigtableOptions bigtableOptions) {
+
+            this.bigtableOptions = bigtableOptions;
             return this;
         }
         @CustomType.Setter
@@ -517,6 +540,7 @@ public final class TableExternalDataConfiguration {
             final var _resultValue = new TableExternalDataConfiguration();
             _resultValue.autodetect = autodetect;
             _resultValue.avroOptions = avroOptions;
+            _resultValue.bigtableOptions = bigtableOptions;
             _resultValue.compression = compression;
             _resultValue.connectionId = connectionId;
             _resultValue.csvOptions = csvOptions;

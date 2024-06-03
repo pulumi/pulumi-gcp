@@ -31,7 +31,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`.
+     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
      * 
      */
     @Import(name="type", required=true)
@@ -39,7 +39,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`.
+     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
      * 
      */
     public Output<String> type() {
@@ -94,7 +94,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param type Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`.
+         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param type Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`.
+         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
          * 
          * @return builder
          * 

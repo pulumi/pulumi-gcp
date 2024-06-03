@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .autokey_config import *
 from .crypto_key import *
 from .crypto_key_iam_binding import *
 from .crypto_key_iam_member import *
@@ -19,6 +20,7 @@ from .get_kms_key_ring import *
 from .get_kms_secret import *
 from .get_kms_secret_asymmetric import *
 from .get_kms_secret_ciphertext import *
+from .key_handle import *
 from .key_ring import *
 from .key_ring_iam_binding import *
 from .key_ring_iam_member import *

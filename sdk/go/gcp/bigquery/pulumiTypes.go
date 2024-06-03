@@ -10970,6 +10970,9 @@ type TableExternalDataConfiguration struct {
 	// Additional options if `sourceFormat` is set to
 	// "AVRO".  Structure is documented below.
 	AvroOptions *TableExternalDataConfigurationAvroOptions `pulumi:"avroOptions"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "BIGTABLE". Structure is documented below.
+	BigtableOptions *TableExternalDataConfigurationBigtableOptions `pulumi:"bigtableOptions"`
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression *string `pulumi:"compression"`
@@ -11066,6 +11069,9 @@ type TableExternalDataConfigurationArgs struct {
 	// Additional options if `sourceFormat` is set to
 	// "AVRO".  Structure is documented below.
 	AvroOptions TableExternalDataConfigurationAvroOptionsPtrInput `pulumi:"avroOptions"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "BIGTABLE". Structure is documented below.
+	BigtableOptions TableExternalDataConfigurationBigtableOptionsPtrInput `pulumi:"bigtableOptions"`
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
@@ -11233,6 +11239,14 @@ func (o TableExternalDataConfigurationOutput) AvroOptions() TableExternalDataCon
 	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationAvroOptions {
 		return v.AvroOptions
 	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
+}
+
+// Additional properties to set if
+// `sourceFormat` is set to "BIGTABLE". Structure is documented below.
+func (o TableExternalDataConfigurationOutput) BigtableOptions() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationBigtableOptions {
+		return v.BigtableOptions
+	}).(TableExternalDataConfigurationBigtableOptionsPtrOutput)
 }
 
 // The compression type of the data source.
@@ -11414,6 +11428,17 @@ func (o TableExternalDataConfigurationPtrOutput) AvroOptions() TableExternalData
 		}
 		return v.AvroOptions
 	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
+}
+
+// Additional properties to set if
+// `sourceFormat` is set to "BIGTABLE". Structure is documented below.
+func (o TableExternalDataConfigurationPtrOutput) BigtableOptions() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationBigtableOptions {
+		if v == nil {
+			return nil
+		}
+		return v.BigtableOptions
+	}).(TableExternalDataConfigurationBigtableOptionsPtrOutput)
 }
 
 // The compression type of the data source.
@@ -11771,6 +11796,483 @@ func (o TableExternalDataConfigurationAvroOptionsPtrOutput) UseAvroLogicalTypes(
 		}
 		return &v.UseAvroLogicalTypes
 	}).(pulumi.BoolPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptions struct {
+	// A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+	ColumnFamilies []TableExternalDataConfigurationBigtableOptionsColumnFamily `pulumi:"columnFamilies"`
+	// If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+	IgnoreUnspecifiedColumnFamilies *bool `pulumi:"ignoreUnspecifiedColumnFamilies"`
+	// If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+	OutputColumnFamiliesAsJson *bool `pulumi:"outputColumnFamiliesAsJson"`
+	// If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+	ReadRowkeyAsString *bool `pulumi:"readRowkeyAsString"`
+}
+
+// TableExternalDataConfigurationBigtableOptionsInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsArgs and TableExternalDataConfigurationBigtableOptionsOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsInput` via:
+//
+//	TableExternalDataConfigurationBigtableOptionsArgs{...}
+type TableExternalDataConfigurationBigtableOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsOutput() TableExternalDataConfigurationBigtableOptionsOutput
+	ToTableExternalDataConfigurationBigtableOptionsOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsOutput
+}
+
+type TableExternalDataConfigurationBigtableOptionsArgs struct {
+	// A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+	ColumnFamilies TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayInput `pulumi:"columnFamilies"`
+	// If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+	IgnoreUnspecifiedColumnFamilies pulumi.BoolPtrInput `pulumi:"ignoreUnspecifiedColumnFamilies"`
+	// If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+	OutputColumnFamiliesAsJson pulumi.BoolPtrInput `pulumi:"outputColumnFamiliesAsJson"`
+	// If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+	ReadRowkeyAsString pulumi.BoolPtrInput `pulumi:"readRowkeyAsString"`
+}
+
+func (TableExternalDataConfigurationBigtableOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptions)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsArgs) ToTableExternalDataConfigurationBigtableOptionsOutput() TableExternalDataConfigurationBigtableOptionsOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsArgs) ToTableExternalDataConfigurationBigtableOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsOutput)
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsArgs) ToTableExternalDataConfigurationBigtableOptionsPtrOutput() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsArgs) ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsOutput).ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalDataConfigurationBigtableOptionsPtrInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsArgs, TableExternalDataConfigurationBigtableOptionsPtr and TableExternalDataConfigurationBigtableOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsPtrInput` via:
+//
+//	        TableExternalDataConfigurationBigtableOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalDataConfigurationBigtableOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsPtrOutput() TableExternalDataConfigurationBigtableOptionsPtrOutput
+	ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsPtrOutput
+}
+
+type tableExternalDataConfigurationBigtableOptionsPtrType TableExternalDataConfigurationBigtableOptionsArgs
+
+func TableExternalDataConfigurationBigtableOptionsPtr(v *TableExternalDataConfigurationBigtableOptionsArgs) TableExternalDataConfigurationBigtableOptionsPtrInput {
+	return (*tableExternalDataConfigurationBigtableOptionsPtrType)(v)
+}
+
+func (*tableExternalDataConfigurationBigtableOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationBigtableOptions)(nil)).Elem()
+}
+
+func (i *tableExternalDataConfigurationBigtableOptionsPtrType) ToTableExternalDataConfigurationBigtableOptionsPtrOutput() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalDataConfigurationBigtableOptionsPtrType) ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ToTableExternalDataConfigurationBigtableOptionsOutput() TableExternalDataConfigurationBigtableOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ToTableExternalDataConfigurationBigtableOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ToTableExternalDataConfigurationBigtableOptionsPtrOutput() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o.ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationBigtableOptions) *TableExternalDataConfigurationBigtableOptions {
+		return &v
+	}).(TableExternalDataConfigurationBigtableOptionsPtrOutput)
+}
+
+// A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ColumnFamilies() TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptions) []TableExternalDataConfigurationBigtableOptionsColumnFamily {
+		return v.ColumnFamilies
+	}).(TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput)
+}
+
+// If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsOutput) IgnoreUnspecifiedColumnFamilies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptions) *bool { return v.IgnoreUnspecifiedColumnFamilies }).(pulumi.BoolPtrOutput)
+}
+
+// If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsOutput) OutputColumnFamiliesAsJson() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptions) *bool { return v.OutputColumnFamiliesAsJson }).(pulumi.BoolPtrOutput)
+}
+
+// If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsOutput) ReadRowkeyAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptions) *bool { return v.ReadRowkeyAsString }).(pulumi.BoolPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationBigtableOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) ToTableExternalDataConfigurationBigtableOptionsPtrOutput() TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) ToTableExternalDataConfigurationBigtableOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) Elem() TableExternalDataConfigurationBigtableOptionsOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationBigtableOptions) TableExternalDataConfigurationBigtableOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationBigtableOptions
+		return ret
+	}).(TableExternalDataConfigurationBigtableOptionsOutput)
+}
+
+// A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) ColumnFamilies() TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationBigtableOptions) []TableExternalDataConfigurationBigtableOptionsColumnFamily {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnFamilies
+	}).(TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput)
+}
+
+// If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) IgnoreUnspecifiedColumnFamilies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationBigtableOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreUnspecifiedColumnFamilies
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) OutputColumnFamiliesAsJson() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationBigtableOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OutputColumnFamiliesAsJson
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+func (o TableExternalDataConfigurationBigtableOptionsPtrOutput) ReadRowkeyAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationBigtableOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadRowkeyAsString
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamily struct {
+	// A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+	Columns []TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn `pulumi:"columns"`
+	// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+	Encoding *string `pulumi:"encoding"`
+	// Identifier of the column family.
+	FamilyId *string `pulumi:"familyId"`
+	// If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+	OnlyReadLatest *bool `pulumi:"onlyReadLatest"`
+	// The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+	Type *string `pulumi:"type"`
+}
+
+// TableExternalDataConfigurationBigtableOptionsColumnFamilyInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs and TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsColumnFamilyInput` via:
+//
+//	TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs{...}
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs struct {
+	// A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+	Columns TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayInput `pulumi:"columns"`
+	// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Identifier of the column family.
+	FamilyId pulumi.StringPtrInput `pulumi:"familyId"`
+	// If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+	OnlyReadLatest pulumi.BoolPtrInput `pulumi:"onlyReadLatest"`
+	// The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamily)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput)
+}
+
+// TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsColumnFamilyArray and TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayInput` via:
+//
+//	TableExternalDataConfigurationBigtableOptionsColumnFamilyArray{ TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs{...} }
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyArray []TableExternalDataConfigurationBigtableOptionsColumnFamilyInput
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableExternalDataConfigurationBigtableOptionsColumnFamily)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyArray) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyArray) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamily)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput {
+	return o
+}
+
+// A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) Columns() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamily) []TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn {
+		return v.Columns
+	}).(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput)
+}
+
+// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamily) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the column family.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) FamilyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamily) *string { return v.FamilyId }).(pulumi.StringPtrOutput)
+}
+
+// If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) OnlyReadLatest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamily) *bool { return v.OnlyReadLatest }).(pulumi.BoolPtrOutput)
+}
+
+// The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamily) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableExternalDataConfigurationBigtableOptionsColumnFamily)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput) Index(i pulumi.IntInput) TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableExternalDataConfigurationBigtableOptionsColumnFamily {
+		return vs[0].([]TableExternalDataConfigurationBigtableOptionsColumnFamily)[vs[1].(int)]
+	}).(TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn struct {
+	// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+	Encoding *string `pulumi:"encoding"`
+	// If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+	FieldName *string `pulumi:"fieldName"`
+	// If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+	OnlyReadLatest *bool `pulumi:"onlyReadLatest"`
+	// Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+	QualifierEncoded *string `pulumi:"qualifierEncoded"`
+	// Qualifier string.
+	QualifierString *string `pulumi:"qualifierString"`
+	// The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+	Type *string `pulumi:"type"`
+}
+
+// TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs and TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnInput` via:
+//
+//	TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs{...}
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs struct {
+	// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
+	// If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+	OnlyReadLatest pulumi.BoolPtrInput `pulumi:"onlyReadLatest"`
+	// Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+	QualifierEncoded pulumi.StringPtrInput `pulumi:"qualifierEncoded"`
+	// Qualifier string.
+	QualifierString pulumi.StringPtrInput `pulumi:"qualifierString"`
+	// The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput)
+}
+
+// TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayInput is an input type that accepts TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray and TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayInput` via:
+//
+//	TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray{ TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs{...} }
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput
+	ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutputWithContext(context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray []TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnInput
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput {
+	return i.ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput {
+	return o
+}
+
+// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *string { return v.FieldName }).(pulumi.StringPtrOutput)
+}
+
+// If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) OnlyReadLatest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *bool { return v.OnlyReadLatest }).(pulumi.BoolPtrOutput)
+}
+
+// Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) QualifierEncoded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *string {
+		return v.QualifierEncoded
+	}).(pulumi.StringPtrOutput)
+}
+
+// Qualifier string.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) QualifierString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *string {
+		return v.QualifierString
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput() TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput) ToTableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutputWithContext(ctx context.Context) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput) Index(i pulumi.IntInput) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn {
+		return vs[0].([]TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn)[vs[1].(int)]
+	}).(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput)
 }
 
 type TableExternalDataConfigurationCsvOptions struct {
@@ -13890,7 +14392,8 @@ func (o TableTableConstraintsPrimaryKeyPtrOutput) Columns() pulumi.StringArrayOu
 }
 
 type TableTableReplicationInfo struct {
-	// The interval at which the source materialized view is polled for updates. The default is 300000.
+	// The interval at which the source
+	// materialized view is polled for updates. The default is 300000.
 	ReplicationIntervalMs *int `pulumi:"replicationIntervalMs"`
 	// The ID of the source dataset.
 	SourceDatasetId string `pulumi:"sourceDatasetId"`
@@ -13912,7 +14415,8 @@ type TableTableReplicationInfoInput interface {
 }
 
 type TableTableReplicationInfoArgs struct {
-	// The interval at which the source materialized view is polled for updates. The default is 300000.
+	// The interval at which the source
+	// materialized view is polled for updates. The default is 300000.
 	ReplicationIntervalMs pulumi.IntPtrInput `pulumi:"replicationIntervalMs"`
 	// The ID of the source dataset.
 	SourceDatasetId pulumi.StringInput `pulumi:"sourceDatasetId"`
@@ -13999,7 +14503,8 @@ func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoPtrOutputWit
 	}).(TableTableReplicationInfoPtrOutput)
 }
 
-// The interval at which the source materialized view is polled for updates. The default is 300000.
+// The interval at which the source
+// materialized view is polled for updates. The default is 300000.
 func (o TableTableReplicationInfoOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableTableReplicationInfo) *int { return v.ReplicationIntervalMs }).(pulumi.IntPtrOutput)
 }
@@ -14043,7 +14548,8 @@ func (o TableTableReplicationInfoPtrOutput) Elem() TableTableReplicationInfoOutp
 	}).(TableTableReplicationInfoOutput)
 }
 
-// The interval at which the source materialized view is polled for updates. The default is 300000.
+// The interval at which the source
+// materialized view is polled for updates. The default is 300000.
 func (o TableTableReplicationInfoPtrOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TableTableReplicationInfo) *int {
 		if v == nil {
@@ -15499,6 +16005,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationPtrInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationAvroOptionsInput)(nil)).Elem(), TableExternalDataConfigurationAvroOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationAvroOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationAvroOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsColumnFamilyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayInput)(nil)).Elem(), TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationCsvOptionsInput)(nil)).Elem(), TableExternalDataConfigurationCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationCsvOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationGoogleSheetsOptionsInput)(nil)).Elem(), TableExternalDataConfigurationGoogleSheetsOptionsArgs{})
@@ -15661,6 +16173,12 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationAvroOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationAvroOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsColumnFamilyOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsColumnFamilyArrayOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArrayOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsOutput{})

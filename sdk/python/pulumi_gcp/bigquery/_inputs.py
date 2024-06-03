@@ -69,6 +69,9 @@ __all__ = [
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
     'TableExternalDataConfigurationAvroOptionsArgs',
+    'TableExternalDataConfigurationBigtableOptionsArgs',
+    'TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs',
+    'TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs',
     'TableExternalDataConfigurationCsvOptionsArgs',
     'TableExternalDataConfigurationGoogleSheetsOptionsArgs',
     'TableExternalDataConfigurationHivePartitioningOptionsArgs',
@@ -4114,6 +4117,7 @@ class TableExternalDataConfigurationArgs:
                  autodetect: pulumi.Input[bool],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
                  avro_options: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']] = None,
+                 bigtable_options: Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']] = None,
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
@@ -4137,6 +4141,8 @@ class TableExternalDataConfigurationArgs:
                your data in Google Cloud.
         :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs'] avro_options: Additional options if `source_format` is set to
                "AVRO".  Structure is documented below.
+        :param pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs'] bigtable_options: Additional properties to set if
+               `source_format` is set to "BIGTABLE". Structure is documented below.
         :param pulumi.Input[str] compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
         :param pulumi.Input[str] connection_id: The connection specifying the credentials to be used to read
@@ -4199,6 +4205,8 @@ class TableExternalDataConfigurationArgs:
         pulumi.set(__self__, "source_uris", source_uris)
         if avro_options is not None:
             pulumi.set(__self__, "avro_options", avro_options)
+        if bigtable_options is not None:
+            pulumi.set(__self__, "bigtable_options", bigtable_options)
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
         if connection_id is not None:
@@ -4270,6 +4278,19 @@ class TableExternalDataConfigurationArgs:
     @avro_options.setter
     def avro_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]):
         pulumi.set(self, "avro_options", value)
+
+    @property
+    @pulumi.getter(name="bigtableOptions")
+    def bigtable_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']]:
+        """
+        Additional properties to set if
+        `source_format` is set to "BIGTABLE". Structure is documented below.
+        """
+        return pulumi.get(self, "bigtable_options")
+
+    @bigtable_options.setter
+    def bigtable_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']]):
+        pulumi.set(self, "bigtable_options", value)
 
     @property
     @pulumi.getter
@@ -4529,6 +4550,267 @@ class TableExternalDataConfigurationAvroOptionsArgs:
     @use_avro_logical_types.setter
     def use_avro_logical_types(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_avro_logical_types", value)
+
+
+@pulumi.input_type
+class TableExternalDataConfigurationBigtableOptionsArgs:
+    def __init__(__self__, *,
+                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]] = None,
+                 ignore_unspecified_column_families: Optional[pulumi.Input[bool]] = None,
+                 output_column_families_as_json: Optional[pulumi.Input[bool]] = None,
+                 read_rowkey_as_string: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]] column_families: A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+        :param pulumi.Input[bool] ignore_unspecified_column_families: If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        :param pulumi.Input[bool] output_column_families_as_json: If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        :param pulumi.Input[bool] read_rowkey_as_string: If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        """
+        if column_families is not None:
+            pulumi.set(__self__, "column_families", column_families)
+        if ignore_unspecified_column_families is not None:
+            pulumi.set(__self__, "ignore_unspecified_column_families", ignore_unspecified_column_families)
+        if output_column_families_as_json is not None:
+            pulumi.set(__self__, "output_column_families_as_json", output_column_families_as_json)
+        if read_rowkey_as_string is not None:
+            pulumi.set(__self__, "read_rowkey_as_string", read_rowkey_as_string)
+
+    @property
+    @pulumi.getter(name="columnFamilies")
+    def column_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]:
+        """
+        A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+        """
+        return pulumi.get(self, "column_families")
+
+    @column_families.setter
+    def column_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]):
+        pulumi.set(self, "column_families", value)
+
+    @property
+    @pulumi.getter(name="ignoreUnspecifiedColumnFamilies")
+    def ignore_unspecified_column_families(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        """
+        return pulumi.get(self, "ignore_unspecified_column_families")
+
+    @ignore_unspecified_column_families.setter
+    def ignore_unspecified_column_families(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_unspecified_column_families", value)
+
+    @property
+    @pulumi.getter(name="outputColumnFamiliesAsJson")
+    def output_column_families_as_json(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        """
+        return pulumi.get(self, "output_column_families_as_json")
+
+    @output_column_families_as_json.setter
+    def output_column_families_as_json(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "output_column_families_as_json", value)
+
+    @property
+    @pulumi.getter(name="readRowkeyAsString")
+    def read_rowkey_as_string(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        """
+        return pulumi.get(self, "read_rowkey_as_string")
+
+    @read_rowkey_as_string.setter
+    def read_rowkey_as_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_rowkey_as_string", value)
+
+
+@pulumi.input_type
+class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs:
+    def __init__(__self__, *,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 family_id: Optional[pulumi.Input[str]] = None,
+                 only_read_latest: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]] columns: A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+        :param pulumi.Input[str] encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        :param pulumi.Input[str] family_id: Identifier of the column family.
+        :param pulumi.Input[bool] only_read_latest: If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        :param pulumi.Input[str] type: The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if family_id is not None:
+            pulumi.set(__self__, "family_id", family_id)
+        if only_read_latest is not None:
+            pulumi.set(__self__, "only_read_latest", only_read_latest)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]:
+        """
+        A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="familyId")
+    def family_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the column family.
+        """
+        return pulumi.get(self, "family_id")
+
+    @family_id.setter
+    def family_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family_id", value)
+
+    @property
+    @pulumi.getter(name="onlyReadLatest")
+    def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        """
+        return pulumi.get(self, "only_read_latest")
+
+    @only_read_latest.setter
+    def only_read_latest(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_read_latest", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs:
+    def __init__(__self__, *,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 field_name: Optional[pulumi.Input[str]] = None,
+                 only_read_latest: Optional[pulumi.Input[bool]] = None,
+                 qualifier_encoded: Optional[pulumi.Input[str]] = None,
+                 qualifier_string: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        :param pulumi.Input[str] field_name: If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        :param pulumi.Input[bool] only_read_latest: If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        :param pulumi.Input[str] qualifier_encoded: Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+        :param pulumi.Input[str] qualifier_string: Qualifier string.
+        :param pulumi.Input[str] type: The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        """
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if field_name is not None:
+            pulumi.set(__self__, "field_name", field_name)
+        if only_read_latest is not None:
+            pulumi.set(__self__, "only_read_latest", only_read_latest)
+        if qualifier_encoded is not None:
+            pulumi.set(__self__, "qualifier_encoded", qualifier_encoded)
+        if qualifier_string is not None:
+            pulumi.set(__self__, "qualifier_string", qualifier_string)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        """
+        return pulumi.get(self, "field_name")
+
+    @field_name.setter
+    def field_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_name", value)
+
+    @property
+    @pulumi.getter(name="onlyReadLatest")
+    def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        """
+        return pulumi.get(self, "only_read_latest")
+
+    @only_read_latest.setter
+    def only_read_latest(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_read_latest", value)
+
+    @property
+    @pulumi.getter(name="qualifierEncoded")
+    def qualifier_encoded(self) -> Optional[pulumi.Input[str]]:
+        """
+        Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+        """
+        return pulumi.get(self, "qualifier_encoded")
+
+    @qualifier_encoded.setter
+    def qualifier_encoded(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualifier_encoded", value)
+
+    @property
+    @pulumi.getter(name="qualifierString")
+    def qualifier_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        Qualifier string.
+        """
+        return pulumi.get(self, "qualifier_string")
+
+    @qualifier_string.setter
+    def qualifier_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualifier_string", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -5262,7 +5544,8 @@ class TableTableReplicationInfoArgs:
         :param pulumi.Input[str] source_dataset_id: The ID of the source dataset.
         :param pulumi.Input[str] source_project_id: The ID of the source project.
         :param pulumi.Input[str] source_table_id: The ID of the source materialized view.
-        :param pulumi.Input[int] replication_interval_ms: The interval at which the source materialized view is polled for updates. The default is 300000.
+        :param pulumi.Input[int] replication_interval_ms: The interval at which the source
+               materialized view is polled for updates. The default is 300000.
         """
         pulumi.set(__self__, "source_dataset_id", source_dataset_id)
         pulumi.set(__self__, "source_project_id", source_project_id)
@@ -5310,7 +5593,8 @@ class TableTableReplicationInfoArgs:
     @pulumi.getter(name="replicationIntervalMs")
     def replication_interval_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval at which the source materialized view is polled for updates. The default is 300000.
+        The interval at which the source
+        materialized view is polled for updates. The default is 300000.
         """
         return pulumi.get(self, "replication_interval_ms")
 

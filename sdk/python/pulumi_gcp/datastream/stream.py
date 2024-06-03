@@ -23,6 +23,7 @@ class StreamArgs:
                  stream_id: pulumi.Input[str],
                  backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
                  backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class StreamArgs:
         :param pulumi.Input[str] stream_id: The stream identifier.
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
@@ -53,6 +55,8 @@ class StreamArgs:
             pulumi.set(__self__, "backfill_all", backfill_all)
         if backfill_none is not None:
             pulumi.set(__self__, "backfill_none", backfill_none)
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if customer_managed_encryption_key is not None:
             pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
@@ -149,6 +153,18 @@ class StreamArgs:
         pulumi.set(self, "backfill_none", value)
 
     @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create the stream without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
+
+    @property
     @pulumi.getter(name="customerManagedEncryptionKey")
     def customer_managed_encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -201,6 +217,7 @@ class _StreamState:
     def __init__(__self__, *,
                  backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
                  backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
@@ -218,6 +235,7 @@ class _StreamState:
         Input properties used for looking up and filtering Stream resources.
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
@@ -240,6 +258,8 @@ class _StreamState:
             pulumi.set(__self__, "backfill_all", backfill_all)
         if backfill_none is not None:
             pulumi.set(__self__, "backfill_none", backfill_none)
+        if create_without_validation is not None:
+            pulumi.set(__self__, "create_without_validation", create_without_validation)
         if customer_managed_encryption_key is not None:
             pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
@@ -290,6 +310,18 @@ class _StreamState:
     @backfill_none.setter
     def backfill_none(self, value: Optional[pulumi.Input['StreamBackfillNoneArgs']]):
         pulumi.set(self, "backfill_none", value)
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create the stream without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
+
+    @create_without_validation.setter
+    def create_without_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_without_validation", value)
 
     @property
     @pulumi.getter(name="customerManagedEncryptionKey")
@@ -457,6 +489,7 @@ class Stream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
                  backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
@@ -1108,6 +1141,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
@@ -1781,6 +1815,7 @@ class Stream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
                  backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
@@ -1801,6 +1836,7 @@ class Stream(pulumi.CustomResource):
 
             __props__.__dict__["backfill_all"] = backfill_all
             __props__.__dict__["backfill_none"] = backfill_none
+            __props__.__dict__["create_without_validation"] = create_without_validation
             __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
             __props__.__dict__["desired_state"] = desired_state
             if destination_config is None and not opts.urn:
@@ -1838,6 +1874,7 @@ class Stream(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
             backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+            create_without_validation: Optional[pulumi.Input[bool]] = None,
             customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
             desired_state: Optional[pulumi.Input[str]] = None,
             destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
@@ -1860,6 +1897,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
@@ -1884,6 +1922,7 @@ class Stream(pulumi.CustomResource):
 
         __props__.__dict__["backfill_all"] = backfill_all
         __props__.__dict__["backfill_none"] = backfill_none
+        __props__.__dict__["create_without_validation"] = create_without_validation
         __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["destination_config"] = destination_config
@@ -1914,6 +1953,14 @@ class Stream(pulumi.CustomResource):
         Backfill strategy to disable automatic backfill for the Stream's objects.
         """
         return pulumi.get(self, "backfill_none")
+
+    @property
+    @pulumi.getter(name="createWithoutValidation")
+    def create_without_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Create the stream without validating it.
+        """
+        return pulumi.get(self, "create_without_validation")
 
     @property
     @pulumi.getter(name="customerManagedEncryptionKey")

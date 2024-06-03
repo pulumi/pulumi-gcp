@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Tpu.Inputs
 
         /// <summary>
         /// Type of TPU.
-        /// Possible values are: `V2`, `V3`, `V4`.
+        /// Possible values are: `V2`, `V3`, `V4`, `V5P`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

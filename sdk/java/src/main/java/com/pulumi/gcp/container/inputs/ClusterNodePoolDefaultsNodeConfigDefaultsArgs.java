@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolDefaultsNodeConfigDefaultsArgs Empty = new ClusterNodePoolDefaultsNodeConfigDefaultsArgs();
+
+    /**
+     * Parameters for containerd configuration.
+     * 
+     */
+    @Import(name="containerdConfig")
+    private @Nullable Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs> containerdConfig;
+
+    /**
+     * @return Parameters for containerd configuration.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs>> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
+    }
 
     /**
      * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
@@ -49,6 +65,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
     private ClusterNodePoolDefaultsNodeConfigDefaultsArgs() {}
 
     private ClusterNodePoolDefaultsNodeConfigDefaultsArgs(ClusterNodePoolDefaultsNodeConfigDefaultsArgs $) {
+        this.containerdConfig = $.containerdConfig;
         this.gcfsConfig = $.gcfsConfig;
         this.loggingVariant = $.loggingVariant;
     }
@@ -69,6 +86,27 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
 
         public Builder(ClusterNodePoolDefaultsNodeConfigDefaultsArgs defaults) {
             $ = new ClusterNodePoolDefaultsNodeConfigDefaultsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param containerdConfig Parameters for containerd configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(@Nullable Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs> containerdConfig) {
+            $.containerdConfig = containerdConfig;
+            return this;
+        }
+
+        /**
+         * @param containerdConfig Parameters for containerd configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs containerdConfig) {
+            return containerdConfig(Output.of(containerdConfig));
         }
 
         /**

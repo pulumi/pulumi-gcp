@@ -407,6 +407,8 @@ type ConnectionProfile struct {
 	BigqueryProfile ConnectionProfileBigqueryProfilePtrOutput `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
+	// Create the connection profile without validating it.
+	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -498,6 +500,8 @@ type connectionProfileState struct {
 	BigqueryProfile *ConnectionProfileBigqueryProfile `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
+	// Create the connection profile without validating it.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -546,6 +550,8 @@ type ConnectionProfileState struct {
 	BigqueryProfile ConnectionProfileBigqueryProfilePtrInput
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringPtrInput
+	// Create the connection profile without validating it.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -598,6 +604,8 @@ type connectionProfileArgs struct {
 	BigqueryProfile *ConnectionProfileBigqueryProfile `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// Create the connection profile without validating it.
+	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Forward SSH tunnel connectivity.
@@ -640,6 +648,8 @@ type ConnectionProfileArgs struct {
 	BigqueryProfile ConnectionProfileBigqueryProfilePtrInput
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringInput
+	// Create the connection profile without validating it.
+	CreateWithoutValidation pulumi.BoolPtrInput
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Forward SSH tunnel connectivity.
@@ -771,6 +781,11 @@ func (o ConnectionProfileOutput) BigqueryProfile() ConnectionProfileBigqueryProf
 // The connection profile identifier.
 func (o ConnectionProfileOutput) ConnectionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// Create the connection profile without validating it.
+func (o ConnectionProfileOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
 }
 
 // Display name.

@@ -490,7 +490,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslSettings")
-    def ssl_settings(self) -> pulumi.Output[Optional['outputs.DomainMappingSslSettings']]:
+    def ssl_settings(self) -> pulumi.Output['outputs.DomainMappingSslSettings']:
         """
         SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         Structure is documented below.

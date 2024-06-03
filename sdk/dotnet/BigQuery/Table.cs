@@ -120,7 +120,8 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// This field is in beta. If set to true, it allows table deletion when there
+        /// are still resource tags attached. The default value is false.
         /// </summary>
         [Output("allowResourceTagsOnDeletion")]
         public Output<bool?> AllowResourceTagsOnDeletion { get; private set; } = null!;
@@ -302,9 +303,11 @@ namespace Pulumi.Gcp.BigQuery
         public Output<bool?> RequirePartitionFilter { get; private set; } = null!;
 
         /// <summary>
-        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the
+        /// parent organization or project resource for this tag key. Tag value is
+        /// expected to be the short name, for example "Production".
         /// </summary>
         [Output("resourceTags")]
         public Output<ImmutableDictionary<string, string>?> ResourceTags { get; private set; } = null!;
@@ -336,7 +339,10 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> TableId { get; private set; } = null!;
 
         /// <summary>
-        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// Replication info of a table created
+        /// using "AS REPLICA" DDL like:
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// Structure is documented below.
         /// </summary>
         [Output("tableReplicationInfo")]
         public Output<Outputs.TableTableReplicationInfo?> TableReplicationInfo { get; private set; } = null!;
@@ -413,7 +419,8 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// This field is in beta. If set to true, it allows table deletion when there
+        /// are still resource tags attached. The default value is false.
         /// </summary>
         [Input("allowResourceTagsOnDeletion")]
         public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
@@ -541,9 +548,11 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _resourceTags;
 
         /// <summary>
-        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the
+        /// parent organization or project resource for this tag key. Tag value is
+        /// expected to be the short name, for example "Production".
         /// </summary>
         public InputMap<string> ResourceTags
         {
@@ -572,7 +581,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> TableId { get; set; } = null!;
 
         /// <summary>
-        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// Replication info of a table created
+        /// using "AS REPLICA" DDL like:
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// Structure is documented below.
         /// </summary>
         [Input("tableReplicationInfo")]
         public Input<Inputs.TableTableReplicationInfoArgs>? TableReplicationInfo { get; set; }
@@ -600,7 +612,8 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not to allow table deletion when there are still resource tags attached.
+        /// This field is in beta. If set to true, it allows table deletion when there
+        /// are still resource tags attached. The default value is false.
         /// </summary>
         [Input("allowResourceTagsOnDeletion")]
         public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
@@ -817,9 +830,11 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _resourceTags;
 
         /// <summary>
-        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
-        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
-        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the
+        /// parent organization or project resource for this tag key. Tag value is
+        /// expected to be the short name, for example "Production".
         /// </summary>
         public InputMap<string> ResourceTags
         {
@@ -854,7 +869,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? TableId { get; set; }
 
         /// <summary>
-        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// Replication info of a table created
+        /// using "AS REPLICA" DDL like:
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// Structure is documented below.
         /// </summary>
         [Input("tableReplicationInfo")]
         public Input<Inputs.TableTableReplicationInfoGetArgs>? TableReplicationInfo { get; set; }

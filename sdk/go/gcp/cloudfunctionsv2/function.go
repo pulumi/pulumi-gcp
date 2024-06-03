@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
 //				Name:        pulumi.String("function-v2"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
@@ -77,9 +77,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("functionUri", function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (*string, error) {
-//				return &serviceConfig.Uri, nil
-//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -693,7 +690,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
 //				Name:        pulumi.String("function-v2"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
@@ -719,9 +716,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("functionUri", function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (*string, error) {
-//				return &serviceConfig.Uri, nil
-//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

@@ -73,6 +73,9 @@ __all__ = [
     'HttpRouteRuleMatchHeader',
     'HttpRouteRuleMatchHeaderRangeMatch',
     'HttpRouteRuleMatchQueryParameter',
+    'LbRouteExtensionExtensionChain',
+    'LbRouteExtensionExtensionChainExtension',
+    'LbRouteExtensionExtensionChainMatchCondition',
     'LbTrafficExtensionExtensionChain',
     'LbTrafficExtensionExtensionChainExtension',
     'LbTrafficExtensionExtensionChainMatchCondition',
@@ -4501,6 +4504,232 @@ class HttpRouteRuleMatchQueryParameter(dict):
 
 
 @pulumi.output_type
+class LbRouteExtensionExtensionChain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchCondition":
+            suggest = "match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbRouteExtensionExtensionChain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbRouteExtensionExtensionChain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbRouteExtensionExtensionChain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 extensions: Sequence['outputs.LbRouteExtensionExtensionChainExtension'],
+                 match_condition: 'outputs.LbRouteExtensionExtensionChainMatchCondition',
+                 name: str):
+        """
+        :param Sequence['LbRouteExtensionExtensionChainExtensionArgs'] extensions: A set of extensions to execute for the matching request.
+               At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+               LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Structure is documented below.
+        :param 'LbRouteExtensionExtensionChainMatchConditionArgs' match_condition: Conditions under which this chain is invoked for a request.
+               Structure is documented below.
+        :param str name: The name for this extension chain. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last character must be a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Sequence['outputs.LbRouteExtensionExtensionChainExtension']:
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extensions")
+
+    @property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> 'outputs.LbRouteExtensionExtensionChainMatchCondition':
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last character must be a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class LbRouteExtensionExtensionChainExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "forwardHeaders":
+            suggest = "forward_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbRouteExtensionExtensionChainExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbRouteExtensionExtensionChainExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbRouteExtensionExtensionChainExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 service: str,
+                 authority: Optional[str] = None,
+                 fail_open: Optional[bool] = None,
+                 forward_headers: Optional[Sequence[str]] = None,
+                 timeout: Optional[str] = None):
+        """
+        :param str name: The name for this extension. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        :param str service: The reference to the service that runs the extension. Must be a reference to a backend service
+        :param str authority: The :authority header in the gRPC request sent from Envoy to the extension service.
+        :param bool fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
+               When set to TRUE, request or response processing continues without error.
+               Any subsequent extensions in the extension chain are also executed.
+               When set to FALSE: * If response headers have not been delivered to the downstream client,
+               a generic 500 error is returned to the client. The error response can be tailored by
+               configuring a custom error response in the load balancer.
+        :param Sequence[str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
+               If omitted, all headers are sent. Each element is a string indicating the header name.
+               
+               - - -
+        :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if forward_headers is not None:
+            pulumi.set(__self__, "forward_headers", forward_headers)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The reference to the service that runs the extension. Must be a reference to a backend service
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[str]:
+        """
+        The :authority header in the gRPC request sent from Envoy to the extension service.
+        """
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[bool]:
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        When set to FALSE: * If response headers have not been delivered to the downstream client,
+        a generic 500 error is returned to the client. The error response can be tailored by
+        configuring a custom error response in the load balancer.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Optional[Sequence[str]]:
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+
+        - - -
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[str]:
+        """
+        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class LbRouteExtensionExtensionChainMatchCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "celExpression":
+            suggest = "cel_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbRouteExtensionExtensionChainMatchCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbRouteExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbRouteExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cel_expression: str):
+        """
+        :param str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> str:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
 class LbTrafficExtensionExtensionChain(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4595,22 +4824,20 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 authority: str,
                  name: str,
                  service: str,
-                 timeout: str,
+                 authority: Optional[str] = None,
                  fail_open: Optional[bool] = None,
                  forward_headers: Optional[Sequence[str]] = None,
-                 supported_events: Optional[Sequence[str]] = None):
+                 supported_events: Optional[Sequence[str]] = None,
+                 timeout: Optional[str] = None):
         """
-        :param str authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param str name: The name for this extension. The name is logged as part of the HTTP request logs.
                The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
                and can have a maximum length of 63 characters. Additionally, the first character must be a letter
                and the last a letter or a number.
         :param str service: The reference to the service that runs the extension. Must be a reference to a backend service
-        :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param str authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param bool fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
                When set to TRUE, request or response processing continues without error.
                Any subsequent extensions in the extension chain are also executed.
@@ -4625,25 +4852,21 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
                
                - - -
+        :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "authority", authority)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "timeout", timeout)
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if supported_events is not None:
             pulumi.set(__self__, "supported_events", supported_events)
-
-    @property
-    @pulumi.getter
-    def authority(self) -> str:
-        """
-        The :authority header in the gRPC request sent from Envoy to the extension service.
-        """
-        return pulumi.get(self, "authority")
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -4666,12 +4889,11 @@ class LbTrafficExtensionExtensionChainExtension(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> str:
+    def authority(self) -> Optional[str]:
         """
-        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        The :authority header in the gRPC request sent from Envoy to the extension service.
         """
-        return pulumi.get(self, "timeout")
+        return pulumi.get(self, "authority")
 
     @property
     @pulumi.getter(name="failOpen")
@@ -4707,6 +4929,15 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         - - -
         """
         return pulumi.get(self, "supported_events")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[str]:
+        """
+        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "timeout")
 
 
 @pulumi.output_type

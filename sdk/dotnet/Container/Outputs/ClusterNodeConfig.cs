@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigConfidentialNodes? ConfidentialNodes;
         /// <summary>
+        /// Parameters to customize containerd runtime. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigContainerdConfig? ContainerdConfig;
+        /// <summary>
         /// Size of the disk attached to each node, specified
         /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         /// </summary>
@@ -236,6 +240,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodeConfigConfidentialNodes? confidentialNodes,
 
+            Outputs.ClusterNodeConfigContainerdConfig? containerdConfig,
+
             int? diskSizeGb,
 
             string? diskType,
@@ -311,6 +317,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             ConfidentialNodes = confidentialNodes;
+            ContainerdConfig = containerdConfig;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EffectiveTaints = effectiveTaints;

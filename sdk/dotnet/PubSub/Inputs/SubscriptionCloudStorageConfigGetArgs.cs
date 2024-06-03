@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+        /// </summary>
+        [Input("filenameDatetimeFormat")]
+        public Input<string>? FilenameDatetimeFormat { get; set; }
+
+        /// <summary>
         /// User-provided prefix for Cloud Storage filename.
         /// </summary>
         [Input("filenamePrefix")]

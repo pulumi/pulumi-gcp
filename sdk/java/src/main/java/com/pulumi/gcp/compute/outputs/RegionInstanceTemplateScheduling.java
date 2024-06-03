@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingNodeAffinity;
+import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateSchedulingOnInstanceStopAction;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -67,6 +68,11 @@ public final class RegionInstanceTemplateScheduling {
      * 
      */
     private @Nullable String onHostMaintenance;
+    /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    private @Nullable RegionInstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
     /**
      * @return Allows instance to be preempted. This defaults to
      * false. Read more on this
@@ -151,6 +157,13 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.onHostMaintenance);
     }
     /**
+     * @return Defines the behaviour for instances with the instance_termination_action.
+     * 
+     */
+    public Optional<RegionInstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopAction() {
+        return Optional.ofNullable(this.onInstanceStopAction);
+    }
+    /**
      * @return Allows instance to be preempted. This defaults to
      * false. Read more on this
      * [here](https://cloud.google.com/compute/docs/instances/preemptible).
@@ -187,6 +200,7 @@ public final class RegionInstanceTemplateScheduling {
         private @Nullable Integer minNodeCpus;
         private @Nullable List<RegionInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
+        private @Nullable RegionInstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
         public Builder() {}
@@ -200,6 +214,7 @@ public final class RegionInstanceTemplateScheduling {
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
+    	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
         }
@@ -259,6 +274,12 @@ public final class RegionInstanceTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder onInstanceStopAction(@Nullable RegionInstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction) {
+
+            this.onInstanceStopAction = onInstanceStopAction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
 
             this.preemptible = preemptible;
@@ -280,6 +301,7 @@ public final class RegionInstanceTemplateScheduling {
             _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
             return _resultValue;

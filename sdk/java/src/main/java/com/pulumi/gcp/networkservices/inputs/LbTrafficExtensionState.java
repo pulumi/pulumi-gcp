@@ -109,8 +109,10 @@ public final class LbTrafficExtensionState extends com.pulumi.resources.Resource
 
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to Choosing a load balancer. Possible values: [&#34;LOAD_BALANCING_SCHEME_UNSPECIFIED&#34;,
-     * &#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load
+     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+     * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -118,8 +120,10 @@ public final class LbTrafficExtensionState extends com.pulumi.resources.Resource
 
     /**
      * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to Choosing a load balancer. Possible values: [&#34;LOAD_BALANCING_SCHEME_UNSPECIFIED&#34;,
-     * &#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load
+     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+     * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -359,8 +363,10 @@ public final class LbTrafficExtensionState extends com.pulumi.resources.Resource
 
         /**
          * @param loadBalancingScheme All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-         * more information, refer to Choosing a load balancer. Possible values: [&#34;LOAD_BALANCING_SCHEME_UNSPECIFIED&#34;,
-         * &#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+         * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+         * [Supported application load
+         * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+         * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
          * 
          * @return builder
          * 
@@ -372,8 +378,10 @@ public final class LbTrafficExtensionState extends com.pulumi.resources.Resource
 
         /**
          * @param loadBalancingScheme All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-         * more information, refer to Choosing a load balancer. Possible values: [&#34;LOAD_BALANCING_SCHEME_UNSPECIFIED&#34;,
-         * &#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+         * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+         * [Supported application load
+         * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
+         * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
          * 
          * @return builder
          * 

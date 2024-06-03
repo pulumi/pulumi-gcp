@@ -18,14 +18,16 @@ public final class TableTableReplicationInfoArgs extends com.pulumi.resources.Re
     public static final TableTableReplicationInfoArgs Empty = new TableTableReplicationInfoArgs();
 
     /**
-     * The interval at which the source materialized view is polled for updates. The default is 300000.
+     * The interval at which the source
+     * materialized view is polled for updates. The default is 300000.
      * 
      */
     @Import(name="replicationIntervalMs")
     private @Nullable Output<Integer> replicationIntervalMs;
 
     /**
-     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * @return The interval at which the source
+     * materialized view is polled for updates. The default is 300000.
      * 
      */
     public Optional<Output<Integer>> replicationIntervalMs() {
@@ -105,7 +107,8 @@ public final class TableTableReplicationInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param replicationIntervalMs The interval at which the source materialized view is polled for updates. The default is 300000.
+         * @param replicationIntervalMs The interval at which the source
+         * materialized view is polled for updates. The default is 300000.
          * 
          * @return builder
          * 
@@ -116,7 +119,8 @@ public final class TableTableReplicationInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param replicationIntervalMs The interval at which the source materialized view is polled for updates. The default is 300000.
+         * @param replicationIntervalMs The interval at which the source
+         * materialized view is polled for updates. The default is 300000.
          * 
          * @return builder
          * 

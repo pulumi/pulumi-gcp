@@ -219,6 +219,11 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    public readonly rateLimitOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
+    /**
      * The name of the security policy this rule belongs to.
      *
      *
@@ -246,6 +251,7 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["preview"] = state ? state.preview : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rateLimitOptions"] = state ? state.rateLimitOptions : undefined;
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
         } else {
             const args = argsOrState as SecurityPolicyRuleArgs | undefined;
@@ -265,6 +271,7 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["preview"] = args ? args.preview : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rateLimitOptions"] = args ? args.rateLimitOptions : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -316,6 +323,11 @@ export interface SecurityPolicyRuleState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
     /**
      * The name of the security policy this rule belongs to.
      *
@@ -369,6 +381,11 @@ export interface SecurityPolicyRuleArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+     * Structure is documented below.
+     */
+    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
     /**
      * The name of the security policy this rule belongs to.
      *

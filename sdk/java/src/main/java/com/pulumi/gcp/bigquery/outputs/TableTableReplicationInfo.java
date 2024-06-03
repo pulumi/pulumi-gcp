@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableTableReplicationInfo {
     /**
-     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * @return The interval at which the source
+     * materialized view is polled for updates. The default is 300000.
      * 
      */
     private @Nullable Integer replicationIntervalMs;
@@ -36,7 +37,8 @@ public final class TableTableReplicationInfo {
 
     private TableTableReplicationInfo() {}
     /**
-     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * @return The interval at which the source
+     * materialized view is polled for updates. The default is 300000.
      * 
      */
     public Optional<Integer> replicationIntervalMs() {

@@ -387,6 +387,7 @@ class SubscriptionCloudStorageConfigArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  avro_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 filename_datetime_format: Optional[pulumi.Input[str]] = None,
                  filename_prefix: Optional[pulumi.Input[str]] = None,
                  filename_suffix: Optional[pulumi.Input[str]] = None,
                  max_bytes: Optional[pulumi.Input[int]] = None,
@@ -396,6 +397,7 @@ class SubscriptionCloudStorageConfigArgs:
         :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
         :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
                Structure is documented below.
+        :param pulumi.Input[str] filename_datetime_format: User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
         :param pulumi.Input[str] filename_prefix: User-provided prefix for Cloud Storage filename.
         :param pulumi.Input[str] filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
         :param pulumi.Input[int] max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
@@ -409,6 +411,8 @@ class SubscriptionCloudStorageConfigArgs:
         pulumi.set(__self__, "bucket", bucket)
         if avro_config is not None:
             pulumi.set(__self__, "avro_config", avro_config)
+        if filename_datetime_format is not None:
+            pulumi.set(__self__, "filename_datetime_format", filename_datetime_format)
         if filename_prefix is not None:
             pulumi.set(__self__, "filename_prefix", filename_prefix)
         if filename_suffix is not None:
@@ -444,6 +448,18 @@ class SubscriptionCloudStorageConfigArgs:
     @avro_config.setter
     def avro_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]):
         pulumi.set(self, "avro_config", value)
+
+    @property
+    @pulumi.getter(name="filenameDatetimeFormat")
+    def filename_datetime_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+        """
+        return pulumi.get(self, "filename_datetime_format")
+
+    @filename_datetime_format.setter
+    def filename_datetime_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_datetime_format", value)
 
     @property
     @pulumi.getter(name="filenamePrefix")
