@@ -17,14 +17,18 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
     public static final GetInstanceIamPolicyArgs Empty = new GetInstanceIamPolicyArgs();
 
     /**
-     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
@@ -90,7 +94,9 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param location Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * @param location Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -101,7 +107,9 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param location Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * @param location Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

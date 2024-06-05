@@ -31,7 +31,9 @@ import * as utilities from "../utilities";
  * const _default = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
  * });
  * const project = gcp.organizations.getProject({});
  * ```
@@ -45,7 +47,9 @@ import * as utilities from "../utilities";
  * const full = new gcp.alloydb.Cluster("full", {
  *     clusterId: "alloydb-cluster-full",
  *     location: "us-central1",
- *     network: _default.id,
+ *     networkConfig: {
+ *         network: _default.id,
+ *     },
  *     databaseVersion: "POSTGRES_15",
  *     initialUser: {
  *         user: "alloydb-cluster-full",
@@ -130,7 +134,9 @@ import * as utilities from "../utilities";
  * const restoredFromBackup = new gcp.alloydb.Cluster("restored_from_backup", {
  *     clusterId: "alloydb-backup-restored",
  *     location: "us-central1",
- *     network: _default.then(_default => _default.id),
+ *     networkConfig: {
+ *         network: _default.then(_default => _default.id),
+ *     },
  *     restoreBackupSource: {
  *         backupName: sourceBackup.name,
  *     },
@@ -381,6 +387,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     */
+    public readonly pscConfig!: pulumi.Output<outputs.alloydb.ClusterPscConfig | undefined>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -452,6 +463,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
@@ -484,6 +496,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
             resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
             resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
@@ -636,6 +649,11 @@ export interface ClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     */
+    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -770,6 +788,11 @@ export interface ClusterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     */
+    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
      * Structure is documented below.

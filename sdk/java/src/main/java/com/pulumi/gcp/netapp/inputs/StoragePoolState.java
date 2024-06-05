@@ -151,14 +151,14 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * @return Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      * 
      */
     public Optional<Output<String>> location() {
@@ -500,7 +500,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+         * @param location Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+         * @param location Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
          * 
          * @return builder
          * 

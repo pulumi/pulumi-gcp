@@ -45,6 +45,11 @@ export const getFolderSettings: typeof import("./getFolderSettings").getFolderSe
 export const getFolderSettingsOutput: typeof import("./getFolderSettings").getFolderSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderSettings","getFolderSettingsOutput"], () => require("./getFolderSettings"));
 
+export { GetLogViewIamPolicyArgs, GetLogViewIamPolicyResult, GetLogViewIamPolicyOutputArgs } from "./getLogViewIamPolicy";
+export const getLogViewIamPolicy: typeof import("./getLogViewIamPolicy").getLogViewIamPolicy = null as any;
+export const getLogViewIamPolicyOutput: typeof import("./getLogViewIamPolicy").getLogViewIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLogViewIamPolicy","getLogViewIamPolicyOutput"], () => require("./getLogViewIamPolicy"));
+
 export { GetOrganizationSettingsArgs, GetOrganizationSettingsResult, GetOrganizationSettingsOutputArgs } from "./getOrganizationSettings";
 export const getOrganizationSettings: typeof import("./getOrganizationSettings").getOrganizationSettings = null as any;
 export const getOrganizationSettingsOutput: typeof import("./getOrganizationSettings").getOrganizationSettingsOutput = null as any;
@@ -74,6 +79,21 @@ export { LogViewArgs, LogViewState } from "./logView";
 export type LogView = import("./logView").LogView;
 export const LogView: typeof import("./logView").LogView = null as any;
 utilities.lazyLoad(exports, ["LogView"], () => require("./logView"));
+
+export { LogViewIamBindingArgs, LogViewIamBindingState } from "./logViewIamBinding";
+export type LogViewIamBinding = import("./logViewIamBinding").LogViewIamBinding;
+export const LogViewIamBinding: typeof import("./logViewIamBinding").LogViewIamBinding = null as any;
+utilities.lazyLoad(exports, ["LogViewIamBinding"], () => require("./logViewIamBinding"));
+
+export { LogViewIamMemberArgs, LogViewIamMemberState } from "./logViewIamMember";
+export type LogViewIamMember = import("./logViewIamMember").LogViewIamMember;
+export const LogViewIamMember: typeof import("./logViewIamMember").LogViewIamMember = null as any;
+utilities.lazyLoad(exports, ["LogViewIamMember"], () => require("./logViewIamMember"));
+
+export { LogViewIamPolicyArgs, LogViewIamPolicyState } from "./logViewIamPolicy";
+export type LogViewIamPolicy = import("./logViewIamPolicy").LogViewIamPolicy;
+export const LogViewIamPolicy: typeof import("./logViewIamPolicy").LogViewIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LogViewIamPolicy"], () => require("./logViewIamPolicy"));
 
 export { MetricArgs, MetricState } from "./metric";
 export type Metric = import("./metric").Metric;
@@ -138,6 +158,12 @@ const _module = {
                 return new LinkedDataset(name, <any>undefined, { urn })
             case "gcp:logging/logView:LogView":
                 return new LogView(name, <any>undefined, { urn })
+            case "gcp:logging/logViewIamBinding:LogViewIamBinding":
+                return new LogViewIamBinding(name, <any>undefined, { urn })
+            case "gcp:logging/logViewIamMember:LogViewIamMember":
+                return new LogViewIamMember(name, <any>undefined, { urn })
+            case "gcp:logging/logViewIamPolicy:LogViewIamPolicy":
+                return new LogViewIamPolicy(name, <any>undefined, { urn })
             case "gcp:logging/metric:Metric":
                 return new Metric(name, <any>undefined, { urn })
             case "gcp:logging/organizationBucketConfig:OrganizationBucketConfig":
@@ -168,6 +194,9 @@ pulumi.runtime.registerResourceModule("gcp", "logging/folderSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSink", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/linkedDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logView", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/logViewIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/logViewIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/logViewIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/metric", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationExclusion", _module)

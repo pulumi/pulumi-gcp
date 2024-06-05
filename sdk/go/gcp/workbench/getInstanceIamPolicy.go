@@ -52,7 +52,9 @@ func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyA
 
 // A collection of arguments for invoking getInstanceIamPolicy.
 type LookupInstanceIamPolicyArgs struct {
-	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name string `pulumi:"name"`
@@ -90,7 +92,9 @@ func LookupInstanceIamPolicyOutput(ctx *pulumi.Context, args LookupInstanceIamPo
 
 // A collection of arguments for invoking getInstanceIamPolicy.
 type LookupInstanceIamPolicyOutputArgs struct {
-	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringInput `pulumi:"name"`

@@ -56,7 +56,9 @@ type WorkstationConfigIamMember struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where the workstation cluster config should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -127,7 +129,9 @@ type workstationConfigIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location where the workstation cluster config should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -157,7 +161,9 @@ type WorkstationConfigIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The location where the workstation cluster config should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -189,7 +195,9 @@ func (WorkstationConfigIamMemberState) ElementType() reflect.Type {
 type workstationConfigIamMemberArgs struct {
 	Condition *WorkstationConfigIamMemberCondition `pulumi:"condition"`
 	// The location where the workstation cluster config should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -218,7 +226,9 @@ type workstationConfigIamMemberArgs struct {
 type WorkstationConfigIamMemberArgs struct {
 	Condition WorkstationConfigIamMemberConditionPtrInput
 	// The location where the workstation cluster config should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -340,7 +350,9 @@ func (o WorkstationConfigIamMemberOutput) Etag() pulumi.StringOutput {
 }
 
 // The location where the workstation cluster config should reside.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o WorkstationConfigIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

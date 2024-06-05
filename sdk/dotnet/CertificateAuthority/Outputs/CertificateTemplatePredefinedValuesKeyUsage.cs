@@ -15,14 +15,17 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     {
         /// <summary>
         /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage? BaseKeyUsage;
         /// <summary>
         /// Detailed scenarios in which a key may be used.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage? ExtendedKeyUsage;
         /// <summary>
         /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> UnknownExtendedKeyUsages;
 

@@ -281,7 +281,9 @@ type AutoscalingPolicyIamBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -353,7 +355,9 @@ type autoscalingPolicyIamBindingState struct {
 	Etag *string `pulumi:"etag"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -387,7 +391,9 @@ type AutoscalingPolicyIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -423,7 +429,9 @@ type autoscalingPolicyIamBindingArgs struct {
 	Condition *AutoscalingPolicyIamBindingCondition `pulumi:"condition"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -456,7 +464,9 @@ type AutoscalingPolicyIamBindingArgs struct {
 	Condition AutoscalingPolicyIamBindingConditionPtrInput
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -582,7 +592,9 @@ func (o AutoscalingPolicyIamBindingOutput) Etag() pulumi.StringOutput {
 
 // The  location where the autoscaling policy should reside.
 // The default value is `global`.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o AutoscalingPolicyIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

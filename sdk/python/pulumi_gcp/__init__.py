@@ -3734,6 +3734,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/entryType",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryType:EntryType": "EntryType"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryTypeIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding": "EntryTypeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryTypeIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember": "EntryTypeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/entryTypeIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy": "EntryTypeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/lake",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -5674,6 +5706,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.logging",
   "classes": {
    "gcp:logging/logView:LogView": "LogView"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/logViewIamBinding",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/logViewIamBinding:LogViewIamBinding": "LogViewIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/logViewIamMember",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/logViewIamMember:LogViewIamMember": "LogViewIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/logViewIamPolicy",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/logViewIamPolicy:LogViewIamPolicy": "LogViewIamPolicy"
   }
  },
  {

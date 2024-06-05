@@ -3077,6 +3077,143 @@ func (o ClusterNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterPscConfig struct {
+	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled *bool `pulumi:"pscEnabled"`
+}
+
+// ClusterPscConfigInput is an input type that accepts ClusterPscConfigArgs and ClusterPscConfigOutput values.
+// You can construct a concrete instance of `ClusterPscConfigInput` via:
+//
+//	ClusterPscConfigArgs{...}
+type ClusterPscConfigInput interface {
+	pulumi.Input
+
+	ToClusterPscConfigOutput() ClusterPscConfigOutput
+	ToClusterPscConfigOutputWithContext(context.Context) ClusterPscConfigOutput
+}
+
+type ClusterPscConfigArgs struct {
+	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+}
+
+func (ClusterPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConfig)(nil)).Elem()
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigOutput() ClusterPscConfigOutput {
+	return i.ToClusterPscConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigOutputWithContext(ctx context.Context) ClusterPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConfigOutput)
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigPtrOutput() ClusterPscConfigPtrOutput {
+	return i.ToClusterPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigPtrOutputWithContext(ctx context.Context) ClusterPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConfigOutput).ToClusterPscConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPscConfigPtrInput is an input type that accepts ClusterPscConfigArgs, ClusterPscConfigPtr and ClusterPscConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPscConfigPtrInput` via:
+//
+//	        ClusterPscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPscConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPscConfigPtrOutput() ClusterPscConfigPtrOutput
+	ToClusterPscConfigPtrOutputWithContext(context.Context) ClusterPscConfigPtrOutput
+}
+
+type clusterPscConfigPtrType ClusterPscConfigArgs
+
+func ClusterPscConfigPtr(v *ClusterPscConfigArgs) ClusterPscConfigPtrInput {
+	return (*clusterPscConfigPtrType)(v)
+}
+
+func (*clusterPscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPscConfig)(nil)).Elem()
+}
+
+func (i *clusterPscConfigPtrType) ToClusterPscConfigPtrOutput() ClusterPscConfigPtrOutput {
+	return i.ToClusterPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPscConfigPtrType) ToClusterPscConfigPtrOutputWithContext(ctx context.Context) ClusterPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConfigPtrOutput)
+}
+
+type ClusterPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConfig)(nil)).Elem()
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigOutput() ClusterPscConfigOutput {
+	return o
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigOutputWithContext(ctx context.Context) ClusterPscConfigOutput {
+	return o
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigPtrOutput() ClusterPscConfigPtrOutput {
+	return o.ToClusterPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigPtrOutputWithContext(ctx context.Context) ClusterPscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPscConfig) *ClusterPscConfig {
+		return &v
+	}).(ClusterPscConfigPtrOutput)
+}
+
+// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o ClusterPscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterPscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterPscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPscConfig)(nil)).Elem()
+}
+
+func (o ClusterPscConfigPtrOutput) ToClusterPscConfigPtrOutput() ClusterPscConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPscConfigPtrOutput) ToClusterPscConfigPtrOutputWithContext(ctx context.Context) ClusterPscConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPscConfigPtrOutput) Elem() ClusterPscConfigOutput {
+	return o.ApplyT(func(v *ClusterPscConfig) ClusterPscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPscConfig
+		return ret
+	}).(ClusterPscConfigOutput)
+}
+
+// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o ClusterPscConfigPtrOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterPscConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PscEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterRestoreBackupSource struct {
 	// The name of the backup that this cluster is restored from.
 	BackupName string `pulumi:"backupName"`
@@ -4224,6 +4361,205 @@ func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pulum
 	}).(InstanceNetworkConfigAuthorizedExternalNetworkOutput)
 }
 
+type InstancePscInstanceConfig struct {
+	// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	// These should be specified as project numbers only.
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// (Output)
+	// The DNS name of the instance for PSC connectivity.
+	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+	PscDnsName *string `pulumi:"pscDnsName"`
+	// (Output)
+	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+	// The name of the resource will be in the format of
+	// `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+	ServiceAttachmentLink *string `pulumi:"serviceAttachmentLink"`
+}
+
+// InstancePscInstanceConfigInput is an input type that accepts InstancePscInstanceConfigArgs and InstancePscInstanceConfigOutput values.
+// You can construct a concrete instance of `InstancePscInstanceConfigInput` via:
+//
+//	InstancePscInstanceConfigArgs{...}
+type InstancePscInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstancePscInstanceConfigOutput() InstancePscInstanceConfigOutput
+	ToInstancePscInstanceConfigOutputWithContext(context.Context) InstancePscInstanceConfigOutput
+}
+
+type InstancePscInstanceConfigArgs struct {
+	// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	// These should be specified as project numbers only.
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// (Output)
+	// The DNS name of the instance for PSC connectivity.
+	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+	PscDnsName pulumi.StringPtrInput `pulumi:"pscDnsName"`
+	// (Output)
+	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+	// The name of the resource will be in the format of
+	// `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+	ServiceAttachmentLink pulumi.StringPtrInput `pulumi:"serviceAttachmentLink"`
+}
+
+func (InstancePscInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (i InstancePscInstanceConfigArgs) ToInstancePscInstanceConfigOutput() InstancePscInstanceConfigOutput {
+	return i.ToInstancePscInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePscInstanceConfigArgs) ToInstancePscInstanceConfigOutputWithContext(ctx context.Context) InstancePscInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscInstanceConfigOutput)
+}
+
+func (i InstancePscInstanceConfigArgs) ToInstancePscInstanceConfigPtrOutput() InstancePscInstanceConfigPtrOutput {
+	return i.ToInstancePscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePscInstanceConfigArgs) ToInstancePscInstanceConfigPtrOutputWithContext(ctx context.Context) InstancePscInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscInstanceConfigOutput).ToInstancePscInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePscInstanceConfigPtrInput is an input type that accepts InstancePscInstanceConfigArgs, InstancePscInstanceConfigPtr and InstancePscInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePscInstanceConfigPtrInput` via:
+//
+//	        InstancePscInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePscInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePscInstanceConfigPtrOutput() InstancePscInstanceConfigPtrOutput
+	ToInstancePscInstanceConfigPtrOutputWithContext(context.Context) InstancePscInstanceConfigPtrOutput
+}
+
+type instancePscInstanceConfigPtrType InstancePscInstanceConfigArgs
+
+func InstancePscInstanceConfigPtr(v *InstancePscInstanceConfigArgs) InstancePscInstanceConfigPtrInput {
+	return (*instancePscInstanceConfigPtrType)(v)
+}
+
+func (*instancePscInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (i *instancePscInstanceConfigPtrType) ToInstancePscInstanceConfigPtrOutput() InstancePscInstanceConfigPtrOutput {
+	return i.ToInstancePscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePscInstanceConfigPtrType) ToInstancePscInstanceConfigPtrOutputWithContext(ctx context.Context) InstancePscInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscInstanceConfigPtrOutput)
+}
+
+type InstancePscInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePscInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (o InstancePscInstanceConfigOutput) ToInstancePscInstanceConfigOutput() InstancePscInstanceConfigOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigOutput) ToInstancePscInstanceConfigOutputWithContext(ctx context.Context) InstancePscInstanceConfigOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigOutput) ToInstancePscInstanceConfigPtrOutput() InstancePscInstanceConfigPtrOutput {
+	return o.ToInstancePscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePscInstanceConfigOutput) ToInstancePscInstanceConfigPtrOutputWithContext(ctx context.Context) InstancePscInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePscInstanceConfig) *InstancePscInstanceConfig {
+		return &v
+	}).(InstancePscInstanceConfigPtrOutput)
+}
+
+// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+// These should be specified as project numbers only.
+func (o InstancePscInstanceConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstancePscInstanceConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The DNS name of the instance for PSC connectivity.
+// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+func (o InstancePscInstanceConfigOutput) PscDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscInstanceConfig) *string { return v.PscDnsName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+// The name of the resource will be in the format of
+// `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+func (o InstancePscInstanceConfigOutput) ServiceAttachmentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscInstanceConfig) *string { return v.ServiceAttachmentLink }).(pulumi.StringPtrOutput)
+}
+
+type InstancePscInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePscInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (o InstancePscInstanceConfigPtrOutput) ToInstancePscInstanceConfigPtrOutput() InstancePscInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigPtrOutput) ToInstancePscInstanceConfigPtrOutputWithContext(ctx context.Context) InstancePscInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigPtrOutput) Elem() InstancePscInstanceConfigOutput {
+	return o.ApplyT(func(v *InstancePscInstanceConfig) InstancePscInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePscInstanceConfig
+		return ret
+	}).(InstancePscInstanceConfigOutput)
+}
+
+// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+// These should be specified as project numbers only.
+func (o InstancePscInstanceConfigPtrOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstancePscInstanceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedConsumerProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The DNS name of the instance for PSC connectivity.
+// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+func (o InstancePscInstanceConfigPtrOutput) PscDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePscInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscDnsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+// The name of the resource will be in the format of
+// `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+func (o InstancePscInstanceConfigPtrOutput) ServiceAttachmentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePscInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachmentLink
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceQueryInsightsConfig struct {
 	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
 	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
@@ -5011,6 +5347,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceArrayInput)(nil)).Elem(), ClusterMigrationSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkConfigInput)(nil)).Elem(), ClusterNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkConfigPtrInput)(nil)).Elem(), ClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigInput)(nil)).Elem(), ClusterPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigPtrInput)(nil)).Elem(), ClusterPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourceInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourceInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
@@ -5027,6 +5365,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkArrayInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigPtrInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
@@ -5080,6 +5420,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMigrationSourceArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPscConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPscConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreBackupSourceOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourceOutput{})
@@ -5096,6 +5438,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput{})
+	pulumi.RegisterOutputType(InstancePscInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstancePscInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})

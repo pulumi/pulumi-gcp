@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int? DiskSizeGb;
         /// <summary>
         /// The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
-        /// `"pd-balanced"` or `"pd-standard"`.
+        /// `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>

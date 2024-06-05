@@ -115,7 +115,9 @@ def get_service_iam_policy(location: Optional[str] = None,
     ```
 
 
-    :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+    :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str service: Used to find the parent resource to bind the IAM policy to
@@ -156,7 +158,9 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     ```
 
 
-    :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+    :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str service: Used to find the parent resource to bind the IAM policy to

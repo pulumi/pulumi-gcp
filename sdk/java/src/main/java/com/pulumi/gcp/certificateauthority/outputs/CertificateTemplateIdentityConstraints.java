@@ -25,6 +25,7 @@ public final class CertificateTemplateIdentityConstraints {
     private Boolean allowSubjectPassthrough;
     /**
      * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * Structure is documented below.
      * 
      */
     private @Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression;
@@ -46,6 +47,7 @@ public final class CertificateTemplateIdentityConstraints {
     }
     /**
      * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * Structure is documented below.
      * 
      */
     public Optional<CertificateTemplateIdentityConstraintsCelExpression> celExpression() {

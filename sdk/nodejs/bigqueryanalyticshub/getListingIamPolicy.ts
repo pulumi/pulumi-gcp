@@ -46,7 +46,9 @@ export interface GetListingIamPolicyArgs {
     listingId: string;
     /**
      * The name of the location this data exchange listing.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -113,7 +115,9 @@ export interface GetListingIamPolicyOutputArgs {
     listingId: pulumi.Input<string>;
     /**
      * The name of the location this data exchange listing.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

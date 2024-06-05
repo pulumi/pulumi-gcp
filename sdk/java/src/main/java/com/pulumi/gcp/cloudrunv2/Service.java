@@ -898,6 +898,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customAudiences);
     }
     /**
+     * Disables public resolution of the default URI of this service.
+     * 
+     */
+    @Export(name="defaultUriDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> defaultUriDisabled;
+
+    /**
+     * @return Disables public resolution of the default URI of this service.
+     * 
+     */
+    public Output<Optional<Boolean>> defaultUriDisabled() {
+        return Codegen.optional(this.defaultUriDisabled);
+    }
+    /**
      * The deletion time.
      * 
      */

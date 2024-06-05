@@ -769,6 +769,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
 
         /// <summary>
+        /// Disables public resolution of the default URI of this service.
+        /// </summary>
+        [Output("defaultUriDisabled")]
+        public Output<bool?> DefaultUriDisabled { get; private set; } = null!;
+
+        /// <summary>
         /// The deletion time.
         /// </summary>
         [Output("deleteTime")]
@@ -1049,6 +1055,12 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
+        /// Disables public resolution of the default URI of this service.
+        /// </summary>
+        [Input("defaultUriDisabled")]
+        public Input<bool>? DefaultUriDisabled { get; set; }
+
+        /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         [Input("description")]
@@ -1215,6 +1227,12 @@ namespace Pulumi.Gcp.CloudRunV2
             get => _customAudiences ?? (_customAudiences = new InputList<string>());
             set => _customAudiences = value;
         }
+
+        /// <summary>
+        /// Disables public resolution of the default URI of this service.
+        /// </summary>
+        [Input("defaultUriDisabled")]
+        public Input<bool>? DefaultUriDisabled { get; set; }
 
         /// <summary>
         /// The deletion time.

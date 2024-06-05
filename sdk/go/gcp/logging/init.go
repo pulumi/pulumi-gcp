@@ -39,6 +39,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LinkedDataset{}
 	case "gcp:logging/logView:LogView":
 		r = &LogView{}
+	case "gcp:logging/logViewIamBinding:LogViewIamBinding":
+		r = &LogViewIamBinding{}
+	case "gcp:logging/logViewIamMember:LogViewIamMember":
+		r = &LogViewIamMember{}
+	case "gcp:logging/logViewIamPolicy:LogViewIamPolicy":
+		r = &LogViewIamPolicy{}
 	case "gcp:logging/metric:Metric":
 		r = &Metric{}
 	case "gcp:logging/organizationBucketConfig:OrganizationBucketConfig":
@@ -111,6 +117,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"logging/logView",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/logViewIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/logViewIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/logViewIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -279,7 +279,9 @@ type RuntimeIamBinding struct {
 	Condition RuntimeIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -346,7 +348,9 @@ type runtimeIamBindingState struct {
 	Condition *RuntimeIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -375,7 +379,9 @@ type RuntimeIamBindingState struct {
 	Condition RuntimeIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -406,7 +412,9 @@ func (RuntimeIamBindingState) ElementType() reflect.Type {
 
 type runtimeIamBindingArgs struct {
 	Condition *RuntimeIamBindingCondition `pulumi:"condition"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -434,7 +442,9 @@ type runtimeIamBindingArgs struct {
 // The set of arguments for constructing a RuntimeIamBinding resource.
 type RuntimeIamBindingArgs struct {
 	Condition RuntimeIamBindingConditionPtrInput
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -555,7 +565,9 @@ func (o RuntimeIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuntimeIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o RuntimeIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuntimeIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

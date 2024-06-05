@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly bool? Critical;
         /// <summary>
         /// Required. The OID for this X.509 extension.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId ObjectId;
         /// <summary>

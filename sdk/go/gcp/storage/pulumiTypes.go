@@ -1192,6 +1192,12 @@ type BucketLifecycleRuleCondition struct {
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions *int `pulumi:"numNewerVersions"`
+	// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
+	SendDaysSinceCustomTimeIfZero *bool `pulumi:"sendDaysSinceCustomTimeIfZero"`
+	// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
+	SendDaysSinceNoncurrentTimeIfZero *bool `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
+	// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
+	SendNumNewerVersionsIfZero *bool `pulumi:"sendNumNewerVersionsIfZero"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 	WithState *string `pulumi:"withState"`
 }
@@ -1231,6 +1237,12 @@ type BucketLifecycleRuleConditionArgs struct {
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
+	// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
+	SendDaysSinceCustomTimeIfZero pulumi.BoolPtrInput `pulumi:"sendDaysSinceCustomTimeIfZero"`
+	// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
+	SendDaysSinceNoncurrentTimeIfZero pulumi.BoolPtrInput `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
+	// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
+	SendNumNewerVersionsIfZero pulumi.BoolPtrInput `pulumi:"sendNumNewerVersionsIfZero"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 	WithState pulumi.StringPtrInput `pulumi:"withState"`
 }
@@ -1316,6 +1328,21 @@ func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.String
 // Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
+}
+
+// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
+func (o BucketLifecycleRuleConditionOutput) SendDaysSinceCustomTimeIfZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.SendDaysSinceCustomTimeIfZero }).(pulumi.BoolPtrOutput)
+}
+
+// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
+func (o BucketLifecycleRuleConditionOutput) SendDaysSinceNoncurrentTimeIfZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.SendDaysSinceNoncurrentTimeIfZero }).(pulumi.BoolPtrOutput)
+}
+
+// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
+func (o BucketLifecycleRuleConditionOutput) SendNumNewerVersionsIfZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.SendNumNewerVersionsIfZero }).(pulumi.BoolPtrOutput)
 }
 
 // Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -7929,6 +7956,12 @@ type GetBucketLifecycleRuleCondition struct {
 	NoncurrentTimeBefore string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions int `pulumi:"numNewerVersions"`
+	// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
+	SendDaysSinceCustomTimeIfZero bool `pulumi:"sendDaysSinceCustomTimeIfZero"`
+	// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
+	SendDaysSinceNoncurrentTimeIfZero bool `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
+	// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
+	SendNumNewerVersionsIfZero bool `pulumi:"sendNumNewerVersionsIfZero"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
 	WithState string `pulumi:"withState"`
 }
@@ -7968,6 +8001,12 @@ type GetBucketLifecycleRuleConditionArgs struct {
 	NoncurrentTimeBefore pulumi.StringInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntInput `pulumi:"numNewerVersions"`
+	// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
+	SendDaysSinceCustomTimeIfZero pulumi.BoolInput `pulumi:"sendDaysSinceCustomTimeIfZero"`
+	// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
+	SendDaysSinceNoncurrentTimeIfZero pulumi.BoolInput `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
+	// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
+	SendNumNewerVersionsIfZero pulumi.BoolInput `pulumi:"sendNumNewerVersionsIfZero"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
 	WithState pulumi.StringInput `pulumi:"withState"`
 }
@@ -8078,6 +8117,21 @@ func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.Str
 // Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.NumNewerVersions }).(pulumi.IntOutput)
+}
+
+// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
+func (o GetBucketLifecycleRuleConditionOutput) SendDaysSinceCustomTimeIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.SendDaysSinceCustomTimeIfZero }).(pulumi.BoolOutput)
+}
+
+// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
+func (o GetBucketLifecycleRuleConditionOutput) SendDaysSinceNoncurrentTimeIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.SendDaysSinceNoncurrentTimeIfZero }).(pulumi.BoolOutput)
+}
+
+// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
+func (o GetBucketLifecycleRuleConditionOutput) SendNumNewerVersionsIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.SendNumNewerVersionsIfZero }).(pulumi.BoolOutput)
 }
 
 // Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".

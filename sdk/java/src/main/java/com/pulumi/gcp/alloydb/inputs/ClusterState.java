@@ -15,6 +15,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMaintenanceUpdatePolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
@@ -450,6 +451,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscConfig")
+    private @Nullable Output<ClusterPscConfigArgs> pscConfig;
+
+    /**
+     * @return Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterPscConfigArgs>> pscConfig() {
+        return Optional.ofNullable(this.pscConfig);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 
@@ -593,6 +611,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.networkConfig = $.networkConfig;
         this.project = $.project;
+        this.pscConfig = $.pscConfig;
         this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
         this.restoreBackupSource = $.restoreBackupSource;
@@ -1221,6 +1240,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscConfig Configuration for Private Service Connect (PSC) for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(@Nullable Output<ClusterPscConfigArgs> pscConfig) {
+            $.pscConfig = pscConfig;
+            return this;
+        }
+
+        /**
+         * @param pscConfig Configuration for Private Service Connect (PSC) for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(ClusterPscConfigArgs pscConfig) {
+            return pscConfig(Output.of(pscConfig));
         }
 
         /**

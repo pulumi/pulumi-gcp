@@ -42,7 +42,9 @@ class TaskIamMemberArgs:
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] location: The location in which the task will be created in.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -129,7 +131,9 @@ class TaskIamMemberArgs:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location in which the task will be created in.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -168,7 +172,9 @@ class _TaskIamMemberState:
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The location in which the task will be created in.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -242,7 +248,9 @@ class _TaskIamMemberState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location in which the task will be created in.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -476,7 +484,9 @@ class TaskIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The location in which the task will be created in.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -725,7 +735,9 @@ class TaskIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The location in which the task will be created in.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -784,7 +796,9 @@ class TaskIamMember(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location in which the task will be created in.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

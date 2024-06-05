@@ -54,7 +54,9 @@ func LookupAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupAutoscali
 type LookupAutoscalingPolicyIamPolicyArgs struct {
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -97,7 +99,9 @@ func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAuto
 type LookupAutoscalingPolicyIamPolicyOutputArgs struct {
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between

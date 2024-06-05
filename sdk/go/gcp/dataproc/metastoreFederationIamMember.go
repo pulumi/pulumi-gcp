@@ -281,7 +281,9 @@ type MetastoreFederationIamMember struct {
 	Etag         pulumi.StringOutput `pulumi:"etag"`
 	FederationId pulumi.StringOutput `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -348,7 +350,9 @@ type metastoreFederationIamMemberState struct {
 	Etag         *string `pulumi:"etag"`
 	FederationId *string `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -377,7 +381,9 @@ type MetastoreFederationIamMemberState struct {
 	Etag         pulumi.StringPtrInput
 	FederationId pulumi.StringPtrInput
 	// The location where the metastore federation should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -408,7 +414,9 @@ type metastoreFederationIamMemberArgs struct {
 	Condition    *MetastoreFederationIamMemberCondition `pulumi:"condition"`
 	FederationId string                                 `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +444,9 @@ type MetastoreFederationIamMemberArgs struct {
 	Condition    MetastoreFederationIamMemberConditionPtrInput
 	FederationId pulumi.StringInput
 	// The location where the metastore federation should reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -562,7 +572,9 @@ func (o MetastoreFederationIamMemberOutput) FederationId() pulumi.StringOutput {
 }
 
 // The location where the metastore federation should reside.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o MetastoreFederationIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederationIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

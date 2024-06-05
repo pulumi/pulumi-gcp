@@ -63,7 +63,7 @@ public final class InstanceTemplateDisk {
     private @Nullable Integer diskSizeGb;
     /**
      * @return The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
      * 
      */
     private @Nullable String diskType;
@@ -215,7 +215,7 @@ public final class InstanceTemplateDisk {
     }
     /**
      * @return The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
      * 
      */
     public Optional<String> diskType() {

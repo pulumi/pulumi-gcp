@@ -164,6 +164,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disables public resolution of the default URI of this service.
+     * 
+     */
+    @Import(name="defaultUriDisabled")
+    private @Nullable Output<Boolean> defaultUriDisabled;
+
+    /**
+     * @return Disables public resolution of the default URI of this service.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultUriDisabled() {
+        return Optional.ofNullable(this.defaultUriDisabled);
+    }
+
+    /**
      * The deletion time.
      * 
      */
@@ -609,6 +624,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.creator = $.creator;
         this.customAudiences = $.customAudiences;
+        this.defaultUriDisabled = $.defaultUriDisabled;
         this.deleteTime = $.deleteTime;
         this.description = $.description;
         this.effectiveAnnotations = $.effectiveAnnotations;
@@ -863,6 +879,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customAudiences(String... customAudiences) {
             return customAudiences(List.of(customAudiences));
+        }
+
+        /**
+         * @param defaultUriDisabled Disables public resolution of the default URI of this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultUriDisabled(@Nullable Output<Boolean> defaultUriDisabled) {
+            $.defaultUriDisabled = defaultUriDisabled;
+            return this;
+        }
+
+        /**
+         * @param defaultUriDisabled Disables public resolution of the default URI of this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultUriDisabled(Boolean defaultUriDisabled) {
+            return defaultUriDisabled(Output.of(defaultUriDisabled));
         }
 
         /**

@@ -350,7 +350,9 @@ public class DataPolicyIamBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the location of the data policy.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
@@ -358,7 +360,9 @@ public class DataPolicyIamBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the location of the data policy.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Output<String> location() {

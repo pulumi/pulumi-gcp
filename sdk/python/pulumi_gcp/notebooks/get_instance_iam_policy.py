@@ -116,7 +116,9 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
 
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to
-    :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+    :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
@@ -157,7 +159,9 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
 
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to
-    :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+    :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

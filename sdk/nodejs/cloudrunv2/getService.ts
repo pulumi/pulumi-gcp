@@ -66,6 +66,7 @@ export interface GetServiceResult {
     readonly createTime: string;
     readonly creator: string;
     readonly customAudiences: string[];
+    readonly defaultUriDisabled: boolean;
     readonly deleteTime: string;
     readonly description: string;
     readonly effectiveAnnotations: {[key: string]: string};

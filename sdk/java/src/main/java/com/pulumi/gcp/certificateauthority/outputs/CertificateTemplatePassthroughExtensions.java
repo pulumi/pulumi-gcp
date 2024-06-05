@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class CertificateTemplatePassthroughExtensions {
     /**
      * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions;
@@ -26,6 +27,7 @@ public final class CertificateTemplatePassthroughExtensions {
     private CertificateTemplatePassthroughExtensions() {}
     /**
      * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * Structure is documented below.
      * 
      */
     public List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions() {

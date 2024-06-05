@@ -22,7 +22,9 @@ export function getWorkstationIamPolicy(args: GetWorkstationIamPolicyArgs, opts?
 export interface GetWorkstationIamPolicyArgs {
     /**
      * The location where the workstation parent resources reside.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -68,7 +70,9 @@ export function getWorkstationIamPolicyOutput(args: GetWorkstationIamPolicyOutpu
 export interface GetWorkstationIamPolicyOutputArgs {
     /**
      * The location where the workstation parent resources reside.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

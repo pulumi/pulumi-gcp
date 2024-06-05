@@ -373,8 +373,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_2605",
-            name="tf-test_34535",
+            project_id="tf-test_34535",
+            name="tf-test_22375",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         test_project = gcp.organizations.get_project()
@@ -394,8 +394,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts=pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_22375",
-            dns_name="private_29439.example.com.",
+            name="tf-test-dns_29439",
+            dns_name="private_87786.example.com.",
             visibility="private",
             private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
                 networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
@@ -483,8 +483,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_2605",
-            name="tf-test_34535",
+            project_id="tf-test_34535",
+            name="tf-test_22375",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         test_project = gcp.organizations.get_project()
@@ -504,8 +504,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts=pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_22375",
-            dns_name="private_29439.example.com.",
+            name="tf-test-dns_29439",
+            dns_name="private_87786.example.com.",
             visibility="private",
             private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
                 networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(

@@ -737,6 +737,8 @@ type Service struct {
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
+	// Disables public resolution of the default URI of this service.
+	DefaultUriDisabled pulumi.BoolPtrOutput `pulumi:"defaultUriDisabled"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
@@ -880,6 +882,8 @@ type serviceState struct {
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
+	// Disables public resolution of the default URI of this service.
+	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
@@ -983,6 +987,8 @@ type ServiceState struct {
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
+	// Disables public resolution of the default URI of this service.
+	DefaultUriDisabled pulumi.BoolPtrInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
@@ -1083,6 +1089,8 @@ type serviceArgs struct {
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
+	// Disables public resolution of the default URI of this service.
+	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
@@ -1140,6 +1148,8 @@ type ServiceArgs struct {
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
+	// Disables public resolution of the default URI of this service.
+	DefaultUriDisabled pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
@@ -1311,6 +1321,11 @@ func (o ServiceOutput) Creator() pulumi.StringOutput {
 // https://cloud.google.com/run/docs/configuring/custom-audiences.
 func (o ServiceOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
+}
+
+// Disables public resolution of the default URI of this service.
+func (o ServiceOutput) DefaultUriDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DefaultUriDisabled }).(pulumi.BoolPtrOutput)
 }
 
 // The deletion time.

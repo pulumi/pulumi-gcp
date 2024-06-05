@@ -28,6 +28,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
+                 psc_instance_config: Optional[pulumi.Input['InstancePscInstanceConfigArgs']] = None,
                  query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None):
         """
@@ -60,6 +61,8 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Instance level network configuration.
                Structure is documented below.
+        :param pulumi.Input['InstancePscInstanceConfigArgs'] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceQueryInsightsConfigArgs'] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -86,6 +89,8 @@ class InstanceArgs:
             pulumi.set(__self__, "machine_config", machine_config)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if psc_instance_config is not None:
+            pulumi.set(__self__, "psc_instance_config", psc_instance_config)
         if query_insights_config is not None:
             pulumi.set(__self__, "query_insights_config", query_insights_config)
         if read_pool_config is not None:
@@ -250,6 +255,19 @@ class InstanceArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> Optional[pulumi.Input['InstancePscInstanceConfigArgs']]:
+        """
+        Configuration for Private Service Connect (PSC) for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_instance_config")
+
+    @psc_instance_config.setter
+    def psc_instance_config(self, value: Optional[pulumi.Input['InstancePscInstanceConfigArgs']]):
+        pulumi.set(self, "psc_instance_config", value)
+
+    @property
     @pulumi.getter(name="queryInsightsConfig")
     def query_insights_config(self) -> Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]:
         """
@@ -296,6 +314,7 @@ class _InstanceState:
                  machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
+                 psc_instance_config: Optional[pulumi.Input['InstancePscInstanceConfigArgs']] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
@@ -337,6 +356,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Instance level network configuration.
+               Structure is documented below.
+        :param pulumi.Input['InstancePscInstanceConfigArgs'] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
         :param pulumi.Input[str] public_ip_address: The public IP addresses for the Instance. This is available ONLY when
                networkConfig.enablePublicIp is set to true. This is the connection
@@ -386,6 +407,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if psc_instance_config is not None:
+            pulumi.set(__self__, "psc_instance_config", psc_instance_config)
         if public_ip_address is not None:
             pulumi.set(__self__, "public_ip_address", public_ip_address)
         if pulumi_labels is not None:
@@ -619,6 +642,19 @@ class _InstanceState:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> Optional[pulumi.Input['InstancePscInstanceConfigArgs']]:
+        """
+        Configuration for Private Service Connect (PSC) for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_instance_config")
+
+    @psc_instance_config.setter
+    def psc_instance_config(self, value: Optional[pulumi.Input['InstancePscInstanceConfigArgs']]):
+        pulumi.set(self, "psc_instance_config", value)
+
+    @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -737,6 +773,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 psc_instance_config: Optional[pulumi.Input[pulumi.InputType['InstancePscInstanceConfigArgs']]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
                  __props__=None):
@@ -753,7 +790,9 @@ class Instance(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default_network.id,
+            ),
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="alloydb-cluster",
             ))
@@ -884,6 +923,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Instance level network configuration.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstancePscInstanceConfigArgs']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -908,7 +949,9 @@ class Instance(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default_network.id,
+            ),
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="alloydb-cluster",
             ))
@@ -1036,6 +1079,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 psc_instance_config: Optional[pulumi.Input[pulumi.InputType['InstancePscInstanceConfigArgs']]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
                  __props__=None):
@@ -1065,6 +1109,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["machine_config"] = machine_config
             __props__.__dict__["network_config"] = network_config
+            __props__.__dict__["psc_instance_config"] = psc_instance_config
             __props__.__dict__["query_insights_config"] = query_insights_config
             __props__.__dict__["read_pool_config"] = read_pool_config
             __props__.__dict__["create_time"] = None
@@ -1107,6 +1152,7 @@ class Instance(pulumi.CustomResource):
             machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+            psc_instance_config: Optional[pulumi.Input[pulumi.InputType['InstancePscInstanceConfigArgs']]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
@@ -1154,6 +1200,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the instance resource.
         :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Instance level network configuration.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstancePscInstanceConfigArgs']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
+               Structure is documented below.
         :param pulumi.Input[str] public_ip_address: The public IP addresses for the Instance. This is available ONLY when
                networkConfig.enablePublicIp is set to true. This is the connection
                endpoint for an end-user application.
@@ -1189,6 +1237,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["machine_config"] = machine_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
+        __props__.__dict__["psc_instance_config"] = psc_instance_config
         __props__.__dict__["public_ip_address"] = public_ip_address
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["query_insights_config"] = query_insights_config
@@ -1345,6 +1394,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> pulumi.Output[Optional['outputs.InstancePscInstanceConfig']]:
+        """
+        Configuration for Private Service Connect (PSC) for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_instance_config")
 
     @property
     @pulumi.getter(name="publicIpAddress")

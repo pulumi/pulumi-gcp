@@ -14,16 +14,12 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
-     * ***
-     * 
      */
     private List<Integer> objectIdPaths;
 
     private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId() {}
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
-     * 
-     * ***
      * 
      */
     public List<Integer> objectIdPaths() {

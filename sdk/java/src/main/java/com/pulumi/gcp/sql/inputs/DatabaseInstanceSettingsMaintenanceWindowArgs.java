@@ -47,16 +47,14 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
     }
 
     /**
-     * Receive updates earlier (`canary`) or later
-     * (`stable`)
+     * Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
      * 
      */
     @Import(name="updateTrack")
     private @Nullable Output<String> updateTrack;
 
     /**
-     * @return Receive updates earlier (`canary`) or later
-     * (`stable`)
+     * @return Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
      * 
      */
     public Optional<Output<String>> updateTrack() {
@@ -132,8 +130,7 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
         }
 
         /**
-         * @param updateTrack Receive updates earlier (`canary`) or later
-         * (`stable`)
+         * @param updateTrack Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
          * 
          * @return builder
          * 
@@ -144,8 +141,7 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
         }
 
         /**
-         * @param updateTrack Receive updates earlier (`canary`) or later
-         * (`stable`)
+         * @param updateTrack Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
          * 
          * @return builder
          * 

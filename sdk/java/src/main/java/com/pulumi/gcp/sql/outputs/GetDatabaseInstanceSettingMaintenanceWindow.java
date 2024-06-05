@@ -22,7 +22,7 @@ public final class GetDatabaseInstanceSettingMaintenanceWindow {
      */
     private Integer hour;
     /**
-     * @return Receive updates earlier (canary) or later (stable)
+     * @return Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
      * 
      */
     private String updateTrack;
@@ -43,7 +43,7 @@ public final class GetDatabaseInstanceSettingMaintenanceWindow {
         return this.hour;
     }
     /**
-     * @return Receive updates earlier (canary) or later (stable)
+     * @return Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
      * 
      */
     public String updateTrack() {

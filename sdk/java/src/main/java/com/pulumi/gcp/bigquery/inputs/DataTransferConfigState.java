@@ -230,7 +230,8 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
      * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-     * NOTE: the granularity should be at least 8 hours, or less frequent.
+     * NOTE: The minimum interval time between recurring transfers depends
+     * on the data source; refer to the documentation for your data source.
      * 
      */
     @Import(name="schedule")
@@ -244,7 +245,8 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
      * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-     * NOTE: the granularity should be at least 8 hours, or less frequent.
+     * NOTE: The minimum interval time between recurring transfers depends
+     * on the data source; refer to the documentation for your data source.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -627,7 +629,8 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
          * jun 13:15, and first sunday of quarter 00:00. See more explanation
          * about the format here:
          * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-         * NOTE: the granularity should be at least 8 hours, or less frequent.
+         * NOTE: The minimum interval time between recurring transfers depends
+         * on the data source; refer to the documentation for your data source.
          * 
          * @return builder
          * 
@@ -645,7 +648,8 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
          * jun 13:15, and first sunday of quarter 00:00. See more explanation
          * about the format here:
          * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-         * NOTE: the granularity should be at least 8 hours, or less frequent.
+         * NOTE: The minimum interval time between recurring transfers depends
+         * on the data source; refer to the documentation for your data source.
          * 
          * @return builder
          * 

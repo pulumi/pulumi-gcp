@@ -43,7 +43,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -69,7 +72,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster-full",
     ///         Location = "us-central1",
-    ///         Network = @default.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Id,
+    ///         },
     ///         DatabaseVersion = "POSTGRES_15",
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
@@ -201,7 +207,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-backup-restored",
     ///         Location = "us-central1",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         },
     ///         RestoreBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreBackupSourceArgs
     ///         {
     ///             BackupName = sourceBackup.Name,
@@ -514,6 +523,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscConfig")]
+        public Output<Outputs.ClusterPscConfig?> PscConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
@@ -750,6 +766,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscConfig")]
+        public Input<Inputs.ClusterPscConfigArgs>? PscConfig { get; set; }
 
         /// <summary>
         /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -1001,6 +1024,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscConfig")]
+        public Input<Inputs.ClusterPscConfigGetArgs>? PscConfig { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

@@ -446,6 +446,9 @@ class BucketLifecycleRuleConditionArgs:
                  no_age: Optional[pulumi.Input[bool]] = None,
                  noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
+                 send_days_since_custom_time_if_zero: Optional[pulumi.Input[bool]] = None,
+                 send_days_since_noncurrent_time_if_zero: Optional[pulumi.Input[bool]] = None,
+                 send_num_newer_versions_if_zero: Optional[pulumi.Input[bool]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
@@ -460,6 +463,9 @@ class BucketLifecycleRuleConditionArgs:
         :param pulumi.Input[bool] no_age: While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         :param pulumi.Input[str] noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param pulumi.Input[bool] send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+        :param pulumi.Input[bool] send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+        :param pulumi.Input[bool] send_num_newer_versions_if_zero: While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
         :param pulumi.Input[str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
         if age is not None:
@@ -484,6 +490,12 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
             pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        if send_days_since_custom_time_if_zero is not None:
+            pulumi.set(__self__, "send_days_since_custom_time_if_zero", send_days_since_custom_time_if_zero)
+        if send_days_since_noncurrent_time_if_zero is not None:
+            pulumi.set(__self__, "send_days_since_noncurrent_time_if_zero", send_days_since_noncurrent_time_if_zero)
+        if send_num_newer_versions_if_zero is not None:
+            pulumi.set(__self__, "send_num_newer_versions_if_zero", send_num_newer_versions_if_zero)
         if with_state is not None:
             pulumi.set(__self__, "with_state", with_state)
 
@@ -619,6 +631,42 @@ class BucketLifecycleRuleConditionArgs:
     @num_newer_versions.setter
     def num_newer_versions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_newer_versions", value)
+
+    @property
+    @pulumi.getter(name="sendDaysSinceCustomTimeIfZero")
+    def send_days_since_custom_time_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+        """
+        return pulumi.get(self, "send_days_since_custom_time_if_zero")
+
+    @send_days_since_custom_time_if_zero.setter
+    def send_days_since_custom_time_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_days_since_custom_time_if_zero", value)
+
+    @property
+    @pulumi.getter(name="sendDaysSinceNoncurrentTimeIfZero")
+    def send_days_since_noncurrent_time_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+        """
+        return pulumi.get(self, "send_days_since_noncurrent_time_if_zero")
+
+    @send_days_since_noncurrent_time_if_zero.setter
+    def send_days_since_noncurrent_time_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_days_since_noncurrent_time_if_zero", value)
+
+    @property
+    @pulumi.getter(name="sendNumNewerVersionsIfZero")
+    def send_num_newer_versions_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        """
+        return pulumi.get(self, "send_num_newer_versions_if_zero")
+
+    @send_num_newer_versions_if_zero.setter
+    def send_num_newer_versions_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_num_newer_versions_if_zero", value)
 
     @property
     @pulumi.getter(name="withState")

@@ -186,6 +186,51 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * 
+     */
+    @Import(name="sendDaysSinceCustomTimeIfZero")
+    private @Nullable Output<Boolean> sendDaysSinceCustomTimeIfZero;
+
+    /**
+     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * 
+     */
+    public Optional<Output<Boolean>> sendDaysSinceCustomTimeIfZero() {
+        return Optional.ofNullable(this.sendDaysSinceCustomTimeIfZero);
+    }
+
+    /**
+     * While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * 
+     */
+    @Import(name="sendDaysSinceNoncurrentTimeIfZero")
+    private @Nullable Output<Boolean> sendDaysSinceNoncurrentTimeIfZero;
+
+    /**
+     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * 
+     */
+    public Optional<Output<Boolean>> sendDaysSinceNoncurrentTimeIfZero() {
+        return Optional.ofNullable(this.sendDaysSinceNoncurrentTimeIfZero);
+    }
+
+    /**
+     * While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * 
+     */
+    @Import(name="sendNumNewerVersionsIfZero")
+    private @Nullable Output<Boolean> sendNumNewerVersionsIfZero;
+
+    /**
+     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * 
+     */
+    public Optional<Output<Boolean>> sendNumNewerVersionsIfZero() {
+        return Optional.ofNullable(this.sendNumNewerVersionsIfZero);
+    }
+
+    /**
      * Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -214,6 +259,9 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         this.noAge = $.noAge;
         this.noncurrentTimeBefore = $.noncurrentTimeBefore;
         this.numNewerVersions = $.numNewerVersions;
+        this.sendDaysSinceCustomTimeIfZero = $.sendDaysSinceCustomTimeIfZero;
+        this.sendDaysSinceNoncurrentTimeIfZero = $.sendDaysSinceNoncurrentTimeIfZero;
+        this.sendNumNewerVersionsIfZero = $.sendNumNewerVersionsIfZero;
         this.withState = $.withState;
     }
 
@@ -496,6 +544,69 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
          */
         public Builder numNewerVersions(Integer numNewerVersions) {
             return numNewerVersions(Output.of(numNewerVersions));
+        }
+
+        /**
+         * @param sendDaysSinceCustomTimeIfZero While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDaysSinceCustomTimeIfZero(@Nullable Output<Boolean> sendDaysSinceCustomTimeIfZero) {
+            $.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendDaysSinceCustomTimeIfZero While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDaysSinceCustomTimeIfZero(Boolean sendDaysSinceCustomTimeIfZero) {
+            return sendDaysSinceCustomTimeIfZero(Output.of(sendDaysSinceCustomTimeIfZero));
+        }
+
+        /**
+         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDaysSinceNoncurrentTimeIfZero(@Nullable Output<Boolean> sendDaysSinceNoncurrentTimeIfZero) {
+            $.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDaysSinceNoncurrentTimeIfZero(Boolean sendDaysSinceNoncurrentTimeIfZero) {
+            return sendDaysSinceNoncurrentTimeIfZero(Output.of(sendDaysSinceNoncurrentTimeIfZero));
+        }
+
+        /**
+         * @param sendNumNewerVersionsIfZero While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendNumNewerVersionsIfZero(@Nullable Output<Boolean> sendNumNewerVersionsIfZero) {
+            $.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendNumNewerVersionsIfZero While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendNumNewerVersionsIfZero(Boolean sendNumNewerVersionsIfZero) {
+            return sendNumNewerVersionsIfZero(Output.of(sendNumNewerVersionsIfZero));
         }
 
         /**

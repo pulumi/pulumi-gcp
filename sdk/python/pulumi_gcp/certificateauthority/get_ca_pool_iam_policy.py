@@ -116,7 +116,9 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to
     :param str location: Location of the CaPool. A full list of valid locations can be found by
            running `gcloud privateca locations list`.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
@@ -157,7 +159,9 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to
     :param str location: Location of the CaPool. A full list of valid locations can be found by
            running `gcloud privateca locations list`.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

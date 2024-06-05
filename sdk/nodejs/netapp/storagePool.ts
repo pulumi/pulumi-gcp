@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+ *     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
  *
  * ## Example Usage
  *
@@ -159,7 +159,7 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public readonly ldapEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -307,7 +307,7 @@ export interface StoragePoolState {
      */
     ldapEnabled?: pulumi.Input<boolean>;
     /**
-     * Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      */
     location?: pulumi.Input<string>;
     /**
@@ -381,7 +381,7 @@ export interface StoragePoolArgs {
      */
     ldapEnabled?: pulumi.Input<boolean>;
     /**
-     * Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      */
     location: pulumi.Input<string>;
     /**

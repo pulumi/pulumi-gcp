@@ -279,7 +279,9 @@ type QueueIamMember struct {
 	Condition QueueIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -343,7 +345,9 @@ type queueIamMemberState struct {
 	Condition *QueueIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -372,7 +376,9 @@ type QueueIamMemberState struct {
 	Condition QueueIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -403,7 +409,9 @@ func (QueueIamMemberState) ElementType() reflect.Type {
 
 type queueIamMemberArgs struct {
 	Condition *QueueIamMemberCondition `pulumi:"condition"`
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -431,7 +439,9 @@ type queueIamMemberArgs struct {
 // The set of arguments for constructing a QueueIamMember resource.
 type QueueIamMemberArgs struct {
 	Condition QueueIamMemberConditionPtrInput
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -552,7 +562,9 @@ func (o QueueIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location of the queue Used to find the parent resource to bind the IAM policy to
+// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o QueueIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

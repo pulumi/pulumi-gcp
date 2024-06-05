@@ -62,7 +62,9 @@ public final class ConnectionIamMemberState extends com.pulumi.resources.Resourc
      * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
      * Spanner Connections same as spanner region
      * AWS allowed regions are aws-us-east-1
-     * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+     * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
@@ -75,7 +77,9 @@ public final class ConnectionIamMemberState extends com.pulumi.resources.Resourc
      * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
      * Spanner Connections same as spanner region
      * AWS allowed regions are aws-us-east-1
-     * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+     * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
@@ -243,7 +247,9 @@ public final class ConnectionIamMemberState extends com.pulumi.resources.Resourc
          * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
          * Spanner Connections same as spanner region
          * AWS allowed regions are aws-us-east-1
-         * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+         * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -260,7 +266,9 @@ public final class ConnectionIamMemberState extends com.pulumi.resources.Resourc
          * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
          * Spanner Connections same as spanner region
          * AWS allowed regions are aws-us-east-1
-         * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+         * Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

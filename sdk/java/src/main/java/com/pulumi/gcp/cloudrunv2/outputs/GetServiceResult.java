@@ -30,6 +30,7 @@ public final class GetServiceResult {
     private String createTime;
     private String creator;
     private List<String> customAudiences;
+    private Boolean defaultUriDisabled;
     private String deleteTime;
     private String description;
     private Map<String,String> effectiveAnnotations;
@@ -87,6 +88,9 @@ public final class GetServiceResult {
     }
     public List<String> customAudiences() {
         return this.customAudiences;
+    }
+    public Boolean defaultUriDisabled() {
+        return this.defaultUriDisabled;
     }
     public String deleteTime() {
         return this.deleteTime;
@@ -194,6 +198,7 @@ public final class GetServiceResult {
         private String createTime;
         private String creator;
         private List<String> customAudiences;
+        private Boolean defaultUriDisabled;
         private String deleteTime;
         private String description;
         private Map<String,String> effectiveAnnotations;
@@ -233,6 +238,7 @@ public final class GetServiceResult {
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.customAudiences = defaults.customAudiences;
+    	      this.defaultUriDisabled = defaults.defaultUriDisabled;
     	      this.deleteTime = defaults.deleteTime;
     	      this.description = defaults.description;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
@@ -335,6 +341,14 @@ public final class GetServiceResult {
         }
         public Builder customAudiences(String... customAudiences) {
             return customAudiences(List.of(customAudiences));
+        }
+        @CustomType.Setter
+        public Builder defaultUriDisabled(Boolean defaultUriDisabled) {
+            if (defaultUriDisabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "defaultUriDisabled");
+            }
+            this.defaultUriDisabled = defaultUriDisabled;
+            return this;
         }
         @CustomType.Setter
         public Builder deleteTime(String deleteTime) {
@@ -581,6 +595,7 @@ public final class GetServiceResult {
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.customAudiences = customAudiences;
+            _resultValue.defaultUriDisabled = defaultUriDisabled;
             _resultValue.deleteTime = deleteTime;
             _resultValue.description = description;
             _resultValue.effectiveAnnotations = effectiveAnnotations;

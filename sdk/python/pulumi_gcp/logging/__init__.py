@@ -13,12 +13,16 @@ from .folder_exclusion import *
 from .folder_settings import *
 from .folder_sink import *
 from .get_folder_settings import *
+from .get_log_view_iam_policy import *
 from .get_organization_settings import *
 from .get_project_cmek_settings import *
 from .get_project_settings import *
 from .get_sink import *
 from .linked_dataset import *
 from .log_view import *
+from .log_view_iam_binding import *
+from .log_view_iam_member import *
+from .log_view_iam_policy import *
 from .metric import *
 from .organization_bucket_config import *
 from .organization_exclusion import *

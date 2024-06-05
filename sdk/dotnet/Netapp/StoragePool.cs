@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
     /// * How-to Guides
-    ///     * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+    ///     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
     /// 
     /// ## Example Usage
     /// 
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> LdapEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LdapEnabled { get; set; }
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LdapEnabled { get; set; }
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

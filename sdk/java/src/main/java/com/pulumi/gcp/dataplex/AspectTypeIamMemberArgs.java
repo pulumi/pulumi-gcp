@@ -33,7 +33,9 @@ public final class AspectTypeIamMemberArgs extends com.pulumi.resources.Resource
 
     /**
      * The location where aspect type will be created in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
@@ -41,7 +43,9 @@ public final class AspectTypeIamMemberArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The location where aspect type will be created in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
@@ -168,7 +172,9 @@ public final class AspectTypeIamMemberArgs extends com.pulumi.resources.Resource
 
         /**
          * @param location The location where aspect type will be created in.
-         * Used to find the parent resource to bind the IAM policy to
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -180,7 +186,9 @@ public final class AspectTypeIamMemberArgs extends com.pulumi.resources.Resource
 
         /**
          * @param location The location where aspect type will be created in.
-         * Used to find the parent resource to bind the IAM policy to
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

@@ -13552,6 +13552,7 @@ type CertificateTemplateIdentityConstraints struct {
 	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
 	AllowSubjectPassthrough bool `pulumi:"allowSubjectPassthrough"`
 	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	// Structure is documented below.
 	CelExpression *CertificateTemplateIdentityConstraintsCelExpression `pulumi:"celExpression"`
 }
 
@@ -13572,6 +13573,7 @@ type CertificateTemplateIdentityConstraintsArgs struct {
 	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
 	AllowSubjectPassthrough pulumi.BoolInput `pulumi:"allowSubjectPassthrough"`
 	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	// Structure is documented below.
 	CelExpression CertificateTemplateIdentityConstraintsCelExpressionPtrInput `pulumi:"celExpression"`
 }
 
@@ -13663,6 +13665,7 @@ func (o CertificateTemplateIdentityConstraintsOutput) AllowSubjectPassthrough() 
 }
 
 // Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+// Structure is documented below.
 func (o CertificateTemplateIdentityConstraintsOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
 		return v.CelExpression
@@ -13714,6 +13717,7 @@ func (o CertificateTemplateIdentityConstraintsPtrOutput) AllowSubjectPassthrough
 }
 
 // Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+// Structure is documented below.
 func (o CertificateTemplateIdentityConstraintsPtrOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
 		if v == nil {
@@ -13919,6 +13923,7 @@ func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Title() pu
 
 type CertificateTemplatePassthroughExtensions struct {
 	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
+	// Structure is documented below.
 	AdditionalExtensions []CertificateTemplatePassthroughExtensionsAdditionalExtension `pulumi:"additionalExtensions"`
 	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
 	KnownExtensions []string `pulumi:"knownExtensions"`
@@ -13937,6 +13942,7 @@ type CertificateTemplatePassthroughExtensionsInput interface {
 
 type CertificateTemplatePassthroughExtensionsArgs struct {
 	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
+	// Structure is documented below.
 	AdditionalExtensions CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
 	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
 	KnownExtensions pulumi.StringArrayInput `pulumi:"knownExtensions"`
@@ -14020,6 +14026,7 @@ func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePas
 }
 
 // Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
+// Structure is documented below.
 func (o CertificateTemplatePassthroughExtensionsOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
 		return v.AdditionalExtensions
@@ -14056,6 +14063,7 @@ func (o CertificateTemplatePassthroughExtensionsPtrOutput) Elem() CertificateTem
 }
 
 // Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
+// Structure is documented below.
 func (o CertificateTemplatePassthroughExtensionsPtrOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
 		if v == nil {
@@ -14174,14 +14182,18 @@ func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput) 
 
 type CertificateTemplatePredefinedValues struct {
 	// Optional. Describes custom X.509 extensions.
+	// Structure is documented below.
 	AdditionalExtensions []CertificateTemplatePredefinedValuesAdditionalExtension `pulumi:"additionalExtensions"`
 	// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
 	AiaOcspServers []string `pulumi:"aiaOcspServers"`
 	// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+	// Structure is documented below.
 	CaOptions *CertificateTemplatePredefinedValuesCaOptions `pulumi:"caOptions"`
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
+	// Structure is documented below.
 	KeyUsage *CertificateTemplatePredefinedValuesKeyUsage `pulumi:"keyUsage"`
 	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Structure is documented below.
 	PolicyIds []CertificateTemplatePredefinedValuesPolicyId `pulumi:"policyIds"`
 }
 
@@ -14198,14 +14210,18 @@ type CertificateTemplatePredefinedValuesInput interface {
 
 type CertificateTemplatePredefinedValuesArgs struct {
 	// Optional. Describes custom X.509 extensions.
+	// Structure is documented below.
 	AdditionalExtensions CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
 	// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
 	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
 	// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+	// Structure is documented below.
 	CaOptions CertificateTemplatePredefinedValuesCaOptionsPtrInput `pulumi:"caOptions"`
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
+	// Structure is documented below.
 	KeyUsage CertificateTemplatePredefinedValuesKeyUsagePtrInput `pulumi:"keyUsage"`
 	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Structure is documented below.
 	PolicyIds CertificateTemplatePredefinedValuesPolicyIdArrayInput `pulumi:"policyIds"`
 }
 
@@ -14287,6 +14303,7 @@ func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefin
 }
 
 // Optional. Describes custom X.509 extensions.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesOutput) AdditionalExtensions() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesAdditionalExtension {
 		return v.AdditionalExtensions
@@ -14299,6 +14316,7 @@ func (o CertificateTemplatePredefinedValuesOutput) AiaOcspServers() pulumi.Strin
 }
 
 // Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesOutput) CaOptions() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesCaOptions {
 		return v.CaOptions
@@ -14306,6 +14324,7 @@ func (o CertificateTemplatePredefinedValuesOutput) CaOptions() CertificateTempla
 }
 
 // Optional. Indicates the intended use for keys that correspond to a certificate.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesOutput) KeyUsage() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesKeyUsage {
 		return v.KeyUsage
@@ -14313,6 +14332,7 @@ func (o CertificateTemplatePredefinedValuesOutput) KeyUsage() CertificateTemplat
 }
 
 // Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {
 		return v.PolicyIds
@@ -14344,6 +14364,7 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) Elem() CertificateTemplate
 }
 
 // Optional. Describes custom X.509 extensions.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesPtrOutput) AdditionalExtensions() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesAdditionalExtension {
 		if v == nil {
@@ -14364,6 +14385,7 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) AiaOcspServers() pulumi.St
 }
 
 // Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesPtrOutput) CaOptions() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesCaOptions {
 		if v == nil {
@@ -14374,6 +14396,7 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) CaOptions() CertificateTem
 }
 
 // Optional. Indicates the intended use for keys that correspond to a certificate.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesPtrOutput) KeyUsage() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesKeyUsage {
 		if v == nil {
@@ -14384,6 +14407,7 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) KeyUsage() CertificateTemp
 }
 
 // Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesPtrOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {
 		if v == nil {
@@ -14397,6 +14421,7 @@ type CertificateTemplatePredefinedValuesAdditionalExtension struct {
 	// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 	Critical *bool `pulumi:"critical"`
 	// Required. The OID for this X.509 extension.
+	// Structure is documented below.
 	ObjectId CertificateTemplatePredefinedValuesAdditionalExtensionObjectId `pulumi:"objectId"`
 	// Required. The value of this X.509 extension.
 	Value string `pulumi:"value"`
@@ -14417,6 +14442,7 @@ type CertificateTemplatePredefinedValuesAdditionalExtensionArgs struct {
 	// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
 	// Required. The OID for this X.509 extension.
+	// Structure is documented below.
 	ObjectId CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput `pulumi:"objectId"`
 	// Required. The value of this X.509 extension.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -14479,6 +14505,7 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) Critical()
 }
 
 // Required. The OID for this X.509 extension.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) ObjectId() CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtension) CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
 		return v.ObjectId
@@ -14512,8 +14539,6 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) Index
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectId struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
-	//
-	// ***
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -14530,8 +14555,6 @@ type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput interfa
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
-	//
-	// ***
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -14562,8 +14585,6 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) To
 }
 
 // Required. The parts of an OID path. The most significant parts of the path come first.
-//
-// ***
 func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }
@@ -14726,10 +14747,13 @@ func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) MaxIssuerPathLeng
 
 type CertificateTemplatePredefinedValuesKeyUsage struct {
 	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
 	BaseKeyUsage *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage `pulumi:"baseKeyUsage"`
 	// Detailed scenarios in which a key may be used.
+	// Structure is documented below.
 	ExtendedKeyUsage *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage `pulumi:"extendedKeyUsage"`
 	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+	// Structure is documented below.
 	UnknownExtendedKeyUsages []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
 }
 
@@ -14746,10 +14770,13 @@ type CertificateTemplatePredefinedValuesKeyUsageInput interface {
 
 type CertificateTemplatePredefinedValuesKeyUsageArgs struct {
 	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
 	BaseKeyUsage CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput `pulumi:"baseKeyUsage"`
 	// Detailed scenarios in which a key may be used.
+	// Structure is documented below.
 	ExtendedKeyUsage CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput `pulumi:"extendedKeyUsage"`
 	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+	// Structure is documented below.
 	UnknownExtendedKeyUsages CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
 }
 
@@ -14831,6 +14858,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplate
 }
 
 // Describes high-level ways in which a key may be used.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsageOutput) BaseKeyUsage() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
 		return v.BaseKeyUsage
@@ -14838,6 +14866,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageOutput) BaseKeyUsage() Certif
 }
 
 // Detailed scenarios in which a key may be used.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ExtendedKeyUsage() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
 		return v.ExtendedKeyUsage
@@ -14845,6 +14874,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ExtendedKeyUsage() Ce
 }
 
 // Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsageOutput) UnknownExtendedKeyUsages() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
 		return v.UnknownExtendedKeyUsages
@@ -14876,6 +14906,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) Elem() Certificate
 }
 
 // Describes high-level ways in which a key may be used.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) BaseKeyUsage() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
 		if v == nil {
@@ -14886,6 +14917,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) BaseKeyUsage() Cer
 }
 
 // Detailed scenarios in which a key may be used.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ExtendedKeyUsage() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
 		if v == nil {
@@ -14896,6 +14928,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ExtendedKeyUsage()
 }
 
 // Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+// Structure is documented below.
 func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) UnknownExtendedKeyUsages() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
 		if v == nil {

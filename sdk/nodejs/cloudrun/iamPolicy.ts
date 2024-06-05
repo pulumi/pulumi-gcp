@@ -190,7 +190,9 @@ export class IamPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -254,7 +256,9 @@ export interface IamPolicyState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
@@ -278,7 +282,9 @@ export interface IamPolicyState {
  */
 export interface IamPolicyArgs {
     /**
-     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

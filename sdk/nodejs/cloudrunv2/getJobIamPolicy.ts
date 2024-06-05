@@ -35,7 +35,9 @@ export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeO
  */
 export interface GetJobIamPolicyArgs {
     /**
-     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -95,7 +97,9 @@ export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pu
  */
 export interface GetJobIamPolicyOutputArgs {
     /**
-     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

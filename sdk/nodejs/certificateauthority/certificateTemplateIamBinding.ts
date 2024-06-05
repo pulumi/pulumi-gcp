@@ -302,6 +302,11 @@ export class CertificateTemplateIamBinding extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     public readonly location!: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -390,6 +395,11 @@ export interface CertificateTemplateIamBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -431,6 +441,11 @@ export interface CertificateTemplateIamBindingArgs {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIamBindingCondition>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.

@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
@@ -242,6 +244,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.alloydb.InstanceNetworkConfig | undefined>;
     /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     */
+    public readonly pscInstanceConfig!: pulumi.Output<outputs.alloydb.InstancePscInstanceConfig | undefined>;
+    /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection
      * endpoint for an end-user application.
@@ -309,6 +316,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["machineConfig"] = state ? state.machineConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["pscInstanceConfig"] = state ? state.pscInstanceConfig : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["queryInsightsConfig"] = state ? state.queryInsightsConfig : undefined;
@@ -340,6 +348,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["pscInstanceConfig"] = args ? args.pscInstanceConfig : undefined;
             resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -445,6 +454,11 @@ export interface InstanceState {
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
     /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     */
+    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig>;
+    /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection
      * endpoint for an end-user application.
@@ -549,6 +563,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     */
+    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig>;
     /**
      * Configuration for query insights.
      * Structure is documented below.

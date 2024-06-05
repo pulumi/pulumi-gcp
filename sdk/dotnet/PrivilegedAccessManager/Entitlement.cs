@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public Input<string> MaxRequestDuration { get; set; } = null!;
 
         /// <summary>
-        /// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

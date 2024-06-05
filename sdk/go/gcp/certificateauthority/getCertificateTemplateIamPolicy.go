@@ -51,8 +51,11 @@ func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertifi
 // A collection of arguments for invoking getCertificateTemplateIamPolicy.
 type LookupCertificateTemplateIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CertificateTemplate string  `pulumi:"certificateTemplate"`
-	Location            *string `pulumi:"location"`
+	CertificateTemplate string `pulumi:"certificateTemplate"`
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -88,8 +91,11 @@ func LookupCertificateTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupCe
 // A collection of arguments for invoking getCertificateTemplateIamPolicy.
 type LookupCertificateTemplateIamPolicyOutputArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CertificateTemplate pulumi.StringInput    `pulumi:"certificateTemplate"`
-	Location            pulumi.StringPtrInput `pulumi:"location"`
+	CertificateTemplate pulumi.StringInput `pulumi:"certificateTemplate"`
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`

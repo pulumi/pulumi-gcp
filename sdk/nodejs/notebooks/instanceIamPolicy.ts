@@ -194,7 +194,9 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -258,7 +260,9 @@ export interface InstanceIamPolicyState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
@@ -282,7 +286,9 @@ export interface InstanceIamPolicyArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

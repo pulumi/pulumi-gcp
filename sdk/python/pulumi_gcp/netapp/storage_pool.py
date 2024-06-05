@@ -28,7 +28,7 @@ class StoragePoolArgs:
         """
         The set of arguments for constructing a StoragePool resource.
         :param pulumi.Input[str] capacity_gib: Capacity of the storage pool (in GiB).
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -85,7 +85,7 @@ class StoragePoolArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         """
         return pulumi.get(self, "location")
 
@@ -248,7 +248,7 @@ class _StoragePoolState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
                
                
@@ -402,7 +402,7 @@ class _StoragePoolState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         """
         return pulumi.get(self, "location")
 
@@ -535,7 +535,7 @@ class StoragePool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
 
         ## Example Usage
 
@@ -616,7 +616,7 @@ class StoragePool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
                
                
@@ -650,7 +650,7 @@ class StoragePool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
 
         ## Example Usage
 
@@ -825,7 +825,7 @@ class StoragePool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
                
                
@@ -936,7 +936,7 @@ class StoragePool(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
         """
         return pulumi.get(self, "location")
 

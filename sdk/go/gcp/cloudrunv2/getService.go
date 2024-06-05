@@ -74,6 +74,7 @@ type LookupServiceResult struct {
 	CreateTime           string                          `pulumi:"createTime"`
 	Creator              string                          `pulumi:"creator"`
 	CustomAudiences      []string                        `pulumi:"customAudiences"`
+	DefaultUriDisabled   bool                            `pulumi:"defaultUriDisabled"`
 	DeleteTime           string                          `pulumi:"deleteTime"`
 	Description          string                          `pulumi:"description"`
 	EffectiveAnnotations map[string]string               `pulumi:"effectiveAnnotations"`
@@ -180,6 +181,10 @@ func (o LookupServiceResultOutput) Creator() pulumi.StringOutput {
 
 func (o LookupServiceResultOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []string { return v.CustomAudiences }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupServiceResultOutput) DefaultUriDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.DefaultUriDisabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) DeleteTime() pulumi.StringOutput {

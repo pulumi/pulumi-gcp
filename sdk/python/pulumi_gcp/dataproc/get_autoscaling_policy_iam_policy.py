@@ -117,7 +117,9 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
 
     :param str location: The  location where the autoscaling policy should reside.
            The default value is `global`.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
            and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
            3 and 50 characters.
@@ -163,7 +165,9 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
 
     :param str location: The  location where the autoscaling policy should reside.
            The default value is `global`.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
            and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
            3 and 50 characters.

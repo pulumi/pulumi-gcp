@@ -49,6 +49,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
 
     /**
      * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * Structure is documented below.
      * 
      */
     @Import(name="celExpression")
@@ -56,6 +57,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
 
     /**
      * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplateIdentityConstraintsCelExpressionArgs>> celExpression() {
@@ -132,6 +134,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
 
         /**
          * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -143,6 +146,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
 
         /**
          * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * Structure is documented below.
          * 
          * @return builder
          * 

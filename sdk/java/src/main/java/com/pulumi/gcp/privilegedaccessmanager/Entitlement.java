@@ -259,14 +259,14 @@ public class Entitlement extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * @return Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      * 
      */
     public Output<String> parent() {

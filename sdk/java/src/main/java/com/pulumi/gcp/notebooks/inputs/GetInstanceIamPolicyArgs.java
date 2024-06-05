@@ -32,14 +32,18 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * @return A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
@@ -111,7 +115,9 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param location A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+         * @param location A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -122,7 +128,9 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param location A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+         * @param location A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

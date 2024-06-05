@@ -31,14 +31,18 @@ public final class GetAiEndpointIamPolicyPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
     private @Nullable String location;
 
     /**
-     * @return The location for the resource Used to find the parent resource to bind the IAM policy to
+     * @return The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<String> location() {
@@ -100,7 +104,9 @@ public final class GetAiEndpointIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param location The location for the resource Used to find the parent resource to bind the IAM policy to
+         * @param location The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

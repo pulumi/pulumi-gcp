@@ -40,7 +40,9 @@ import (
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   defaultNetwork.ID(),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: defaultNetwork.ID(),
+//				},
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
@@ -269,6 +271,9 @@ type Instance struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
+	// Configuration for Private Service Connect (PSC) for the instance.
+	// Structure is documented below.
+	PscInstanceConfig InstancePscInstanceConfigPtrOutput `pulumi:"pscInstanceConfig"`
 	// The public IP addresses for the Instance. This is available ONLY when
 	// networkConfig.enablePublicIp is set to true. This is the connection
 	// endpoint for an end-user application.
@@ -384,6 +389,9 @@ type instanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// Configuration for Private Service Connect (PSC) for the instance.
+	// Structure is documented below.
+	PscInstanceConfig *InstancePscInstanceConfig `pulumi:"pscInstanceConfig"`
 	// The public IP addresses for the Instance. This is available ONLY when
 	// networkConfig.enablePublicIp is set to true. This is the connection
 	// endpoint for an end-user application.
@@ -456,6 +464,9 @@ type InstanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// Configuration for Private Service Connect (PSC) for the instance.
+	// Structure is documented below.
+	PscInstanceConfig InstancePscInstanceConfigPtrInput
 	// The public IP addresses for the Instance. This is available ONLY when
 	// networkConfig.enablePublicIp is set to true. This is the connection
 	// endpoint for an end-user application.
@@ -523,6 +534,9 @@ type instanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// Configuration for Private Service Connect (PSC) for the instance.
+	// Structure is documented below.
+	PscInstanceConfig *InstancePscInstanceConfig `pulumi:"pscInstanceConfig"`
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig *InstanceQueryInsightsConfig `pulumi:"queryInsightsConfig"`
@@ -572,6 +586,9 @@ type InstanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// Configuration for Private Service Connect (PSC) for the instance.
+	// Structure is documented below.
+	PscInstanceConfig InstancePscInstanceConfigPtrInput
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig InstanceQueryInsightsConfigPtrInput
@@ -764,6 +781,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkConfigPtrOutput { return v.NetworkConfig }).(InstanceNetworkConfigPtrOutput)
+}
+
+// Configuration for Private Service Connect (PSC) for the instance.
+// Structure is documented below.
+func (o InstanceOutput) PscInstanceConfig() InstancePscInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstancePscInstanceConfigPtrOutput { return v.PscInstanceConfig }).(InstancePscInstanceConfigPtrOutput)
 }
 
 // The public IP addresses for the Instance. This is available ONLY when

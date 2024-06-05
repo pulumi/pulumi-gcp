@@ -36,7 +36,7 @@ class EntitlementArgs:
         :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
                A requester can choose to ask for access for less than this duration but never more.
                Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
-        :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         :param pulumi.Input['EntitlementPrivilegedAccessArgs'] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
         :param pulumi.Input['EntitlementRequesterJustificationConfigArgs'] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
@@ -114,7 +114,7 @@ class EntitlementArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[str]:
         """
-        Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         """
         return pulumi.get(self, "parent")
 
@@ -210,7 +210,7 @@ class _EntitlementState:
                Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
         :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
                Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
-        :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         :param pulumi.Input['EntitlementPrivilegedAccessArgs'] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
         :param pulumi.Input['EntitlementRequesterJustificationConfigArgs'] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
@@ -368,7 +368,7 @@ class _EntitlementState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         """
         return pulumi.get(self, "parent")
 
@@ -517,7 +517,7 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
                A requester can choose to ask for access for less than this duration but never more.
                Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
-        :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
@@ -698,7 +698,7 @@ class Entitlement(pulumi.CustomResource):
                Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
         :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
                Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
-        :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
@@ -811,7 +811,7 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+        Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         """
         return pulumi.get(self, "parent")
 

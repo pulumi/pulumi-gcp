@@ -3761,8 +3761,7 @@ type DatabaseInstanceSettingsMaintenanceWindow struct {
 	Day *int `pulumi:"day"`
 	// Hour of day (`0-23`), ignored if `day` not set
 	Hour *int `pulumi:"hour"`
-	// Receive updates earlier (`canary`) or later
-	// (`stable`)
+	// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
 	UpdateTrack *string `pulumi:"updateTrack"`
 }
 
@@ -3782,8 +3781,7 @@ type DatabaseInstanceSettingsMaintenanceWindowArgs struct {
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Hour of day (`0-23`), ignored if `day` not set
 	Hour pulumi.IntPtrInput `pulumi:"hour"`
-	// Receive updates earlier (`canary`) or later
-	// (`stable`)
+	// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
 	UpdateTrack pulumi.StringPtrInput `pulumi:"updateTrack"`
 }
 
@@ -3874,8 +3872,7 @@ func (o DatabaseInstanceSettingsMaintenanceWindowOutput) Hour() pulumi.IntPtrOut
 	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
 }
 
-// Receive updates earlier (`canary`) or later
-// (`stable`)
+// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) UpdateTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
 }
@@ -3924,8 +3921,7 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Hour() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Receive updates earlier (`canary`) or later
-// (`stable`)
+// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) *string {
 		if v == nil {
@@ -7323,7 +7319,7 @@ type GetDatabaseInstanceSettingMaintenanceWindow struct {
 	Day int `pulumi:"day"`
 	// Hour of day (0-23), ignored if day not set
 	Hour int `pulumi:"hour"`
-	// Receive updates earlier (canary) or later (stable)
+	// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 	UpdateTrack string `pulumi:"updateTrack"`
 }
 
@@ -7343,7 +7339,7 @@ type GetDatabaseInstanceSettingMaintenanceWindowArgs struct {
 	Day pulumi.IntInput `pulumi:"day"`
 	// Hour of day (0-23), ignored if day not set
 	Hour pulumi.IntInput `pulumi:"hour"`
-	// Receive updates earlier (canary) or later (stable)
+	// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
 }
 
@@ -7408,7 +7404,7 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) Hour() pulumi.IntOutp
 	return o.ApplyT(func(v GetDatabaseInstanceSettingMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
 }
 
-// Receive updates earlier (canary) or later (stable)
+// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) UpdateTrack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingMaintenanceWindow) string { return v.UpdateTrack }).(pulumi.StringOutput)
 }
@@ -10416,7 +10412,7 @@ type GetDatabaseInstancesInstanceSettingMaintenanceWindow struct {
 	Day int `pulumi:"day"`
 	// Hour of day (0-23), ignored if day not set
 	Hour int `pulumi:"hour"`
-	// Receive updates earlier (canary) or later (stable)
+	// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 	UpdateTrack string `pulumi:"updateTrack"`
 }
 
@@ -10436,7 +10432,7 @@ type GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs struct {
 	Day pulumi.IntInput `pulumi:"day"`
 	// Hour of day (0-23), ignored if day not set
 	Hour pulumi.IntInput `pulumi:"hour"`
-	// Receive updates earlier (canary) or later (stable)
+	// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
 }
 
@@ -10501,7 +10497,7 @@ func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) Hour() pulum
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
 }
 
-// Receive updates earlier (canary) or later (stable)
+// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
 func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) UpdateTrack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingMaintenanceWindow) string { return v.UpdateTrack }).(pulumi.StringOutput)
 }

@@ -281,7 +281,9 @@ type InstanceIamMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -348,7 +350,9 @@ type instanceIamMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName *string `pulumi:"instanceName"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -377,7 +381,9 @@ type InstanceIamMemberState struct {
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringPtrInput
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -408,7 +414,9 @@ type instanceIamMemberArgs struct {
 	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName string `pulumi:"instanceName"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +444,9 @@ type InstanceIamMemberArgs struct {
 	Condition InstanceIamMemberConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringInput
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -560,7 +570,9 @@ func (o InstanceIamMemberOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o InstanceIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -59,6 +59,18 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly int? NumNewerVersions;
         /// <summary>
+        /// While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+        /// </summary>
+        public readonly bool? SendDaysSinceCustomTimeIfZero;
+        /// <summary>
+        /// While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+        /// </summary>
+        public readonly bool? SendDaysSinceNoncurrentTimeIfZero;
+        /// <summary>
+        /// While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        /// </summary>
+        public readonly bool? SendNumNewerVersionsIfZero;
+        /// <summary>
         /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         /// </summary>
         public readonly string? WithState;
@@ -87,6 +99,12 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             int? numNewerVersions,
 
+            bool? sendDaysSinceCustomTimeIfZero,
+
+            bool? sendDaysSinceNoncurrentTimeIfZero,
+
+            bool? sendNumNewerVersionsIfZero,
+
             string? withState)
         {
             Age = age;
@@ -100,6 +118,9 @@ namespace Pulumi.Gcp.Storage.Outputs
             NoAge = noAge;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
+            SendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            SendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            SendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
             WithState = withState;
         }
     }

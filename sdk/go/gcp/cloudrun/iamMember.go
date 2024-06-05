@@ -279,7 +279,9 @@ type IamMember struct {
 	Condition IamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -346,7 +348,9 @@ type iamMemberState struct {
 	Condition *IamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -375,7 +379,9 @@ type IamMemberState struct {
 	Condition IamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -406,7 +412,9 @@ func (IamMemberState) ElementType() reflect.Type {
 
 type iamMemberArgs struct {
 	Condition *IamMemberCondition `pulumi:"condition"`
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -434,7 +442,9 @@ type iamMemberArgs struct {
 // The set of arguments for constructing a IamMember resource.
 type IamMemberArgs struct {
 	Condition IamMemberConditionPtrInput
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -555,7 +565,9 @@ func (o IamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o IamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

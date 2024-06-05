@@ -25,8 +25,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? Hour { get; set; }
 
         /// <summary>
-        /// Receive updates earlier (`canary`) or later
-        /// (`stable`)
+        /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         /// </summary>
         [Input("updateTrack")]
         public Input<string>? UpdateTrack { get; set; }

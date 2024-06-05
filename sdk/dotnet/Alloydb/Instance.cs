@@ -31,7 +31,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "alloydb-cluster",
@@ -322,6 +325,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.InstanceNetworkConfig?> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscInstanceConfig")]
+        public Output<Outputs.InstancePscInstanceConfig?> PscInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The public IP addresses for the Instance. This is available ONLY when
         /// networkConfig.enablePublicIp is set to true. This is the connection
         /// endpoint for an end-user application.
@@ -530,6 +540,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscInstanceConfig")]
+        public Input<Inputs.InstancePscInstanceConfigArgs>? PscInstanceConfig { get; set; }
+
+        /// <summary>
         /// Configuration for query insights.
         /// Structure is documented below.
         /// </summary>
@@ -696,6 +713,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.InstanceNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for Private Service Connect (PSC) for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscInstanceConfig")]
+        public Input<Inputs.InstancePscInstanceConfigGetArgs>? PscInstanceConfig { get; set; }
 
         /// <summary>
         /// The public IP addresses for the Instance. This is available ONLY when
