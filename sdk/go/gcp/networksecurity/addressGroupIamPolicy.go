@@ -69,7 +69,9 @@ type AddressGroupIamPolicy struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location of the gateway security policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -117,7 +119,9 @@ type addressGroupIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location of the gateway security policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -133,7 +137,9 @@ type AddressGroupIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The location of the gateway security policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -151,7 +157,9 @@ func (AddressGroupIamPolicyState) ElementType() reflect.Type {
 
 type addressGroupIamPolicyArgs struct {
 	// The location of the gateway security policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -166,7 +174,9 @@ type addressGroupIamPolicyArgs struct {
 // The set of arguments for constructing a AddressGroupIamPolicy resource.
 type AddressGroupIamPolicyArgs struct {
 	// The location of the gateway security policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -271,7 +281,9 @@ func (o AddressGroupIamPolicyOutput) Etag() pulumi.StringOutput {
 }
 
 // The location of the gateway security policy.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o AddressGroupIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressGroupIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

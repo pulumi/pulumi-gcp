@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsPlainArgs;
+import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyPlainArgs;
 import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsPlainArgs;
 import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
@@ -19,6 +21,7 @@ import com.pulumi.gcp.logging.inputs.GetProjectSettingsPlainArgs;
 import com.pulumi.gcp.logging.inputs.GetSinkArgs;
 import com.pulumi.gcp.logging.inputs.GetSinkPlainArgs;
 import com.pulumi.gcp.logging.outputs.GetFolderSettingsResult;
+import com.pulumi.gcp.logging.outputs.GetLogViewIamPolicyResult;
 import com.pulumi.gcp.logging.outputs.GetOrganizationSettingsResult;
 import com.pulumi.gcp.logging.outputs.GetProjectCmekSettingsResult;
 import com.pulumi.gcp.logging.outputs.GetProjectSettingsResult;
@@ -221,6 +224,18 @@ public final class LoggingFunctions {
      */
     public static CompletableFuture<GetFolderSettingsResult> getFolderSettingsPlain(GetFolderSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getFolderSettings:getFolderSettings", TypeShape.of(GetFolderSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetLogViewIamPolicyResult> getLogViewIamPolicy(GetLogViewIamPolicyArgs args) {
+        return getLogViewIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetLogViewIamPolicyResult> getLogViewIamPolicyPlain(GetLogViewIamPolicyPlainArgs args) {
+        return getLogViewIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetLogViewIamPolicyResult> getLogViewIamPolicy(GetLogViewIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetLogViewIamPolicyResult> getLogViewIamPolicyPlain(GetLogViewIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Describes the settings associated with a organization.

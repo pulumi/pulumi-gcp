@@ -39,7 +39,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -108,7 +111,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()

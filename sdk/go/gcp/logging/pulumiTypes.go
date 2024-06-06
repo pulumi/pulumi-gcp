@@ -1376,6 +1376,348 @@ func (o LinkedDatasetBigqueryDatasetArrayOutput) Index(i pulumi.IntInput) Linked
 	}).(LinkedDatasetBigqueryDatasetOutput)
 }
 
+type LogViewIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// LogViewIamBindingConditionInput is an input type that accepts LogViewIamBindingConditionArgs and LogViewIamBindingConditionOutput values.
+// You can construct a concrete instance of `LogViewIamBindingConditionInput` via:
+//
+//	LogViewIamBindingConditionArgs{...}
+type LogViewIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToLogViewIamBindingConditionOutput() LogViewIamBindingConditionOutput
+	ToLogViewIamBindingConditionOutputWithContext(context.Context) LogViewIamBindingConditionOutput
+}
+
+type LogViewIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (LogViewIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogViewIamBindingCondition)(nil)).Elem()
+}
+
+func (i LogViewIamBindingConditionArgs) ToLogViewIamBindingConditionOutput() LogViewIamBindingConditionOutput {
+	return i.ToLogViewIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i LogViewIamBindingConditionArgs) ToLogViewIamBindingConditionOutputWithContext(ctx context.Context) LogViewIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamBindingConditionOutput)
+}
+
+func (i LogViewIamBindingConditionArgs) ToLogViewIamBindingConditionPtrOutput() LogViewIamBindingConditionPtrOutput {
+	return i.ToLogViewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LogViewIamBindingConditionArgs) ToLogViewIamBindingConditionPtrOutputWithContext(ctx context.Context) LogViewIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamBindingConditionOutput).ToLogViewIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// LogViewIamBindingConditionPtrInput is an input type that accepts LogViewIamBindingConditionArgs, LogViewIamBindingConditionPtr and LogViewIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `LogViewIamBindingConditionPtrInput` via:
+//
+//	        LogViewIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogViewIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToLogViewIamBindingConditionPtrOutput() LogViewIamBindingConditionPtrOutput
+	ToLogViewIamBindingConditionPtrOutputWithContext(context.Context) LogViewIamBindingConditionPtrOutput
+}
+
+type logViewIamBindingConditionPtrType LogViewIamBindingConditionArgs
+
+func LogViewIamBindingConditionPtr(v *LogViewIamBindingConditionArgs) LogViewIamBindingConditionPtrInput {
+	return (*logViewIamBindingConditionPtrType)(v)
+}
+
+func (*logViewIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogViewIamBindingCondition)(nil)).Elem()
+}
+
+func (i *logViewIamBindingConditionPtrType) ToLogViewIamBindingConditionPtrOutput() LogViewIamBindingConditionPtrOutput {
+	return i.ToLogViewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *logViewIamBindingConditionPtrType) ToLogViewIamBindingConditionPtrOutputWithContext(ctx context.Context) LogViewIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamBindingConditionPtrOutput)
+}
+
+type LogViewIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (LogViewIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogViewIamBindingCondition)(nil)).Elem()
+}
+
+func (o LogViewIamBindingConditionOutput) ToLogViewIamBindingConditionOutput() LogViewIamBindingConditionOutput {
+	return o
+}
+
+func (o LogViewIamBindingConditionOutput) ToLogViewIamBindingConditionOutputWithContext(ctx context.Context) LogViewIamBindingConditionOutput {
+	return o
+}
+
+func (o LogViewIamBindingConditionOutput) ToLogViewIamBindingConditionPtrOutput() LogViewIamBindingConditionPtrOutput {
+	return o.ToLogViewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LogViewIamBindingConditionOutput) ToLogViewIamBindingConditionPtrOutputWithContext(ctx context.Context) LogViewIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogViewIamBindingCondition) *LogViewIamBindingCondition {
+		return &v
+	}).(LogViewIamBindingConditionPtrOutput)
+}
+
+func (o LogViewIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogViewIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LogViewIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LogViewIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LogViewIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LogViewIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LogViewIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LogViewIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogViewIamBindingCondition)(nil)).Elem()
+}
+
+func (o LogViewIamBindingConditionPtrOutput) ToLogViewIamBindingConditionPtrOutput() LogViewIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LogViewIamBindingConditionPtrOutput) ToLogViewIamBindingConditionPtrOutputWithContext(ctx context.Context) LogViewIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LogViewIamBindingConditionPtrOutput) Elem() LogViewIamBindingConditionOutput {
+	return o.ApplyT(func(v *LogViewIamBindingCondition) LogViewIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LogViewIamBindingCondition
+		return ret
+	}).(LogViewIamBindingConditionOutput)
+}
+
+func (o LogViewIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LogViewIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LogViewIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogViewIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// LogViewIamMemberConditionInput is an input type that accepts LogViewIamMemberConditionArgs and LogViewIamMemberConditionOutput values.
+// You can construct a concrete instance of `LogViewIamMemberConditionInput` via:
+//
+//	LogViewIamMemberConditionArgs{...}
+type LogViewIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToLogViewIamMemberConditionOutput() LogViewIamMemberConditionOutput
+	ToLogViewIamMemberConditionOutputWithContext(context.Context) LogViewIamMemberConditionOutput
+}
+
+type LogViewIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (LogViewIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogViewIamMemberCondition)(nil)).Elem()
+}
+
+func (i LogViewIamMemberConditionArgs) ToLogViewIamMemberConditionOutput() LogViewIamMemberConditionOutput {
+	return i.ToLogViewIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i LogViewIamMemberConditionArgs) ToLogViewIamMemberConditionOutputWithContext(ctx context.Context) LogViewIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamMemberConditionOutput)
+}
+
+func (i LogViewIamMemberConditionArgs) ToLogViewIamMemberConditionPtrOutput() LogViewIamMemberConditionPtrOutput {
+	return i.ToLogViewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LogViewIamMemberConditionArgs) ToLogViewIamMemberConditionPtrOutputWithContext(ctx context.Context) LogViewIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamMemberConditionOutput).ToLogViewIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// LogViewIamMemberConditionPtrInput is an input type that accepts LogViewIamMemberConditionArgs, LogViewIamMemberConditionPtr and LogViewIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `LogViewIamMemberConditionPtrInput` via:
+//
+//	        LogViewIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogViewIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToLogViewIamMemberConditionPtrOutput() LogViewIamMemberConditionPtrOutput
+	ToLogViewIamMemberConditionPtrOutputWithContext(context.Context) LogViewIamMemberConditionPtrOutput
+}
+
+type logViewIamMemberConditionPtrType LogViewIamMemberConditionArgs
+
+func LogViewIamMemberConditionPtr(v *LogViewIamMemberConditionArgs) LogViewIamMemberConditionPtrInput {
+	return (*logViewIamMemberConditionPtrType)(v)
+}
+
+func (*logViewIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogViewIamMemberCondition)(nil)).Elem()
+}
+
+func (i *logViewIamMemberConditionPtrType) ToLogViewIamMemberConditionPtrOutput() LogViewIamMemberConditionPtrOutput {
+	return i.ToLogViewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *logViewIamMemberConditionPtrType) ToLogViewIamMemberConditionPtrOutputWithContext(ctx context.Context) LogViewIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogViewIamMemberConditionPtrOutput)
+}
+
+type LogViewIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (LogViewIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogViewIamMemberCondition)(nil)).Elem()
+}
+
+func (o LogViewIamMemberConditionOutput) ToLogViewIamMemberConditionOutput() LogViewIamMemberConditionOutput {
+	return o
+}
+
+func (o LogViewIamMemberConditionOutput) ToLogViewIamMemberConditionOutputWithContext(ctx context.Context) LogViewIamMemberConditionOutput {
+	return o
+}
+
+func (o LogViewIamMemberConditionOutput) ToLogViewIamMemberConditionPtrOutput() LogViewIamMemberConditionPtrOutput {
+	return o.ToLogViewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LogViewIamMemberConditionOutput) ToLogViewIamMemberConditionPtrOutputWithContext(ctx context.Context) LogViewIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogViewIamMemberCondition) *LogViewIamMemberCondition {
+		return &v
+	}).(LogViewIamMemberConditionPtrOutput)
+}
+
+func (o LogViewIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogViewIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LogViewIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LogViewIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LogViewIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LogViewIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LogViewIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LogViewIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogViewIamMemberCondition)(nil)).Elem()
+}
+
+func (o LogViewIamMemberConditionPtrOutput) ToLogViewIamMemberConditionPtrOutput() LogViewIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LogViewIamMemberConditionPtrOutput) ToLogViewIamMemberConditionPtrOutputWithContext(ctx context.Context) LogViewIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LogViewIamMemberConditionPtrOutput) Elem() LogViewIamMemberConditionOutput {
+	return o.ApplyT(func(v *LogViewIamMemberCondition) LogViewIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LogViewIamMemberCondition
+		return ret
+	}).(LogViewIamMemberConditionOutput)
+}
+
+func (o LogViewIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LogViewIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LogViewIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogViewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetricBucketOptions struct {
 	// Specifies a set of buckets with arbitrary widths.
 	// Structure is documented below.
@@ -3942,6 +4284,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkExclusionArrayInput)(nil)).Elem(), FolderSinkExclusionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedDatasetBigqueryDatasetInput)(nil)).Elem(), LinkedDatasetBigqueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedDatasetBigqueryDatasetArrayInput)(nil)).Elem(), LinkedDatasetBigqueryDatasetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogViewIamBindingConditionInput)(nil)).Elem(), LogViewIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogViewIamBindingConditionPtrInput)(nil)).Elem(), LogViewIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogViewIamMemberConditionInput)(nil)).Elem(), LogViewIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogViewIamMemberConditionPtrInput)(nil)).Elem(), LogViewIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsInput)(nil)).Elem(), MetricBucketOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsPtrInput)(nil)).Elem(), MetricBucketOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsExplicitBucketsInput)(nil)).Elem(), MetricBucketOptionsExplicitBucketsArgs{})
@@ -3992,6 +4338,10 @@ func init() {
 	pulumi.RegisterOutputType(FolderSinkExclusionArrayOutput{})
 	pulumi.RegisterOutputType(LinkedDatasetBigqueryDatasetOutput{})
 	pulumi.RegisterOutputType(LinkedDatasetBigqueryDatasetArrayOutput{})
+	pulumi.RegisterOutputType(LogViewIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(LogViewIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(LogViewIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(LogViewIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsExplicitBucketsOutput{})

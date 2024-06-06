@@ -278,7 +278,9 @@ type JobIamPolicy struct {
 
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -325,7 +327,9 @@ func GetJobIamPolicy(ctx *pulumi.Context,
 type jobIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -340,7 +344,9 @@ type jobIamPolicyState struct {
 type JobIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -357,7 +363,9 @@ func (JobIamPolicyState) ElementType() reflect.Type {
 }
 
 type jobIamPolicyArgs struct {
-	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -371,7 +379,9 @@ type jobIamPolicyArgs struct {
 
 // The set of arguments for constructing a JobIamPolicy resource.
 type JobIamPolicyArgs struct {
-	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -475,7 +485,9 @@ func (o JobIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o JobIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

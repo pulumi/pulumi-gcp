@@ -16,16 +16,19 @@ import javax.annotation.Nullable;
 public final class CertificateTemplatePredefinedValuesKeyUsage {
     /**
      * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
      * 
      */
     private @Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage;
     /**
      * @return Detailed scenarios in which a key may be used.
+     * Structure is documented below.
      * 
      */
     private @Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
     /**
      * @return Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
@@ -33,6 +36,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
     private CertificateTemplatePredefinedValuesKeyUsage() {}
     /**
      * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
      * 
      */
     public Optional<CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage> baseKeyUsage() {
@@ -40,6 +44,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
     }
     /**
      * @return Detailed scenarios in which a key may be used.
+     * Structure is documented below.
      * 
      */
     public Optional<CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage> extendedKeyUsage() {
@@ -47,6 +52,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
     }
     /**
      * @return Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+     * Structure is documented below.
      * 
      */
     public List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages() {

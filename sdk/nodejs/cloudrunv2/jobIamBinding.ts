@@ -193,7 +193,9 @@ export class JobIamBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -277,7 +279,9 @@ export interface JobIamBindingState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
@@ -317,7 +321,9 @@ export interface JobIamBindingState {
 export interface JobIamBindingArgs {
     condition?: pulumi.Input<inputs.cloudrunv2.JobIamBindingCondition>;
     /**
-     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to
+     * The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

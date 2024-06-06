@@ -64,7 +64,8 @@ class DataTransferConfigArgs:
                jun 13:15, and first sunday of quarter 00:00. See more explanation
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-               NOTE: the granularity should be at least 8 hours, or less frequent.
+               NOTE: The minimum interval time between recurring transfers depends
+               on the data source; refer to the documentation for your data source.
         :param pulumi.Input['DataTransferConfigScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
         :param pulumi.Input['DataTransferConfigSensitiveParamsArgs'] sensitive_params: Different parameters are configured primarily using the the `params` field on this
@@ -250,7 +251,8 @@ class DataTransferConfigArgs:
         jun 13:15, and first sunday of quarter 00:00. See more explanation
         about the format here:
         https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-        NOTE: the granularity should be at least 8 hours, or less frequent.
+        NOTE: The minimum interval time between recurring transfers depends
+        on the data source; refer to the documentation for your data source.
         """
         return pulumi.get(self, "schedule")
 
@@ -361,7 +363,8 @@ class _DataTransferConfigState:
                jun 13:15, and first sunday of quarter 00:00. See more explanation
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-               NOTE: the granularity should be at least 8 hours, or less frequent.
+               NOTE: The minimum interval time between recurring transfers depends
+               on the data source; refer to the documentation for your data source.
         :param pulumi.Input['DataTransferConfigScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
         :param pulumi.Input['DataTransferConfigSensitiveParamsArgs'] sensitive_params: Different parameters are configured primarily using the the `params` field on this
@@ -568,7 +571,8 @@ class _DataTransferConfigState:
         jun 13:15, and first sunday of quarter 00:00. See more explanation
         about the format here:
         https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-        NOTE: the granularity should be at least 8 hours, or less frequent.
+        NOTE: The minimum interval time between recurring transfers depends
+        on the data source; refer to the documentation for your data source.
         """
         return pulumi.get(self, "schedule")
 
@@ -731,7 +735,8 @@ class DataTransferConfig(pulumi.CustomResource):
                jun 13:15, and first sunday of quarter 00:00. See more explanation
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-               NOTE: the granularity should be at least 8 hours, or less frequent.
+               NOTE: The minimum interval time between recurring transfers depends
+               on the data source; refer to the documentation for your data source.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
@@ -934,7 +939,8 @@ class DataTransferConfig(pulumi.CustomResource):
                jun 13:15, and first sunday of quarter 00:00. See more explanation
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-               NOTE: the granularity should be at least 8 hours, or less frequent.
+               NOTE: The minimum interval time between recurring transfers depends
+               on the data source; refer to the documentation for your data source.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
@@ -1087,7 +1093,8 @@ class DataTransferConfig(pulumi.CustomResource):
         jun 13:15, and first sunday of quarter 00:00. See more explanation
         about the format here:
         https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-        NOTE: the granularity should be at least 8 hours, or less frequent.
+        NOTE: The minimum interval time between recurring transfers depends
+        on the data source; refer to the documentation for your data source.
         """
         return pulumi.get(self, "schedule")
 

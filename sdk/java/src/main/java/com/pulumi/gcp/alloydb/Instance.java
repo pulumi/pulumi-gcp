@@ -13,6 +13,7 @@ import com.pulumi.gcp.alloydb.inputs.InstanceState;
 import com.pulumi.gcp.alloydb.outputs.InstanceClientConnectionConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceNetworkConfig;
+import com.pulumi.gcp.alloydb.outputs.InstancePscInstanceConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceQueryInsightsConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceReadPoolConfig;
 import java.lang.Boolean;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
@@ -70,7 +72,9 @@ import javax.annotation.Nullable;
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
- *             .network(defaultNetwork.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultNetwork.id())
+ *                 .build())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-cluster")
  *                 .build())
@@ -497,6 +501,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceNetworkConfig>> networkConfig() {
         return Codegen.optional(this.networkConfig);
+    }
+    /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscInstanceConfig", refs={InstancePscInstanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePscInstanceConfig> pscInstanceConfig;
+
+    /**
+     * @return Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstancePscInstanceConfig>> pscInstanceConfig() {
+        return Codegen.optional(this.pscInstanceConfig);
     }
     /**
      * The public IP addresses for the Instance. This is available ONLY when

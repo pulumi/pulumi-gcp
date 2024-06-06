@@ -195,7 +195,9 @@ export class MetastoreFederationIamBinding extends pulumi.CustomResource {
     public readonly federationId!: pulumi.Output<string>;
     /**
      * The location where the metastore federation should reside.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -280,7 +282,9 @@ export interface MetastoreFederationIamBindingState {
     federationId?: pulumi.Input<string>;
     /**
      * The location where the metastore federation should reside.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
@@ -318,7 +322,9 @@ export interface MetastoreFederationIamBindingArgs {
     federationId: pulumi.Input<string>;
     /**
      * The location where the metastore federation should reside.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

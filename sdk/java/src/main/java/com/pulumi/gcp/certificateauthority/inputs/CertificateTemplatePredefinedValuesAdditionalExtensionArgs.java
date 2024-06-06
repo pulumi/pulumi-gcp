@@ -35,6 +35,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionArgs ex
 
     /**
      * Required. The OID for this X.509 extension.
+     * Structure is documented below.
      * 
      */
     @Import(name="objectId", required=true)
@@ -42,6 +43,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionArgs ex
 
     /**
      * @return Required. The OID for this X.509 extension.
+     * Structure is documented below.
      * 
      */
     public Output<CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs> objectId() {
@@ -112,6 +114,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionArgs ex
 
         /**
          * @param objectId Required. The OID for this X.509 extension.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -123,6 +126,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionArgs ex
 
         /**
          * @param objectId Required. The OID for this X.509 extension.
+         * Structure is documented below.
          * 
          * @return builder
          * 

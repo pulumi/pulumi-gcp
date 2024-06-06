@@ -1977,7 +1977,16 @@ func Provider() tfbridge.ProviderInfo {
 			"google_logging_organization_bucket_config":    {Tok: gcpResource(gcpLogging, "OrganizationBucketConfig")},
 			"google_logging_project_bucket_config":         {Tok: gcpResource(gcpLogging, "ProjectBucketConfig")},
 			"google_logging_log_view":                      {Tok: gcpResource(gcpLogging, "LogView")},
-			"google_logging_linked_dataset":                {Tok: gcpResource(gcpLogging, "LinkedDataset")},
+			"google_logging_log_view_iam_binding": {
+				Docs: &tfbridge.DocInfo{Source: "logging_log_view_iam.html.markdown"},
+			},
+			"google_logging_log_view_iam_member": {
+				Docs: &tfbridge.DocInfo{Source: "logging_log_view_iam.html.markdown"},
+			},
+			"google_logging_log_view_iam_policy": {
+				Docs: &tfbridge.DocInfo{Source: "logging_log_view_iam.html.markdown"},
+			},
+			"google_logging_linked_dataset": {Tok: gcpResource(gcpLogging, "LinkedDataset")},
 
 			// Database migration service resources
 			"google_database_migration_service_connection_profile": {
@@ -2949,6 +2958,15 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dataplex_zone_iam_member": {
 				Tok:  gcpResource(gcpDataPlex, "ZoneIamMember"),
 				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
+			},
+			"google_dataplex_entry_type_iam_binding": {
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_type_iam.html.markdown"},
+			},
+			"google_dataplex_entry_type_iam_member": {
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_type_iam.html.markdown"},
+			},
+			"google_dataplex_entry_type_iam_policy": {
+				Docs: &tfbridge.DocInfo{Source: "dataplex_entry_type_iam.html.markdown"},
 			},
 
 			// IAM

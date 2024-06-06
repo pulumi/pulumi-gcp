@@ -165,7 +165,8 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
      * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-     * NOTE: the granularity should be at least 8 hours, or less frequent.
+     * NOTE: The minimum interval time between recurring transfers depends
+     * on the data source; refer to the documentation for your data source.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
@@ -325,7 +326,8 @@ export interface DataTransferConfigState {
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
      * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-     * NOTE: the granularity should be at least 8 hours, or less frequent.
+     * NOTE: The minimum interval time between recurring transfers depends
+     * on the data source; refer to the documentation for your data source.
      */
     schedule?: pulumi.Input<string>;
     /**
@@ -418,7 +420,8 @@ export interface DataTransferConfigArgs {
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
      * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-     * NOTE: the granularity should be at least 8 hours, or less frequent.
+     * NOTE: The minimum interval time between recurring transfers depends
+     * on the data source; refer to the documentation for your data source.
      */
     schedule?: pulumi.Input<string>;
     /**

@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+ *     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
  * 
  * ## Example Usage
  * 
@@ -272,14 +272,14 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ldapEnabled);
     }
     /**
-     * Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+     * @return Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
      * 
      */
     public Output<String> location() {

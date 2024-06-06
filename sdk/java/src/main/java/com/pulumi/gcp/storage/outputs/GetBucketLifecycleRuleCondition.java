@@ -70,6 +70,21 @@ public final class GetBucketLifecycleRuleCondition {
      */
     private Integer numNewerVersions;
     /**
+     * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+     * 
+     */
+    private Boolean sendDaysSinceCustomTimeIfZero;
+    /**
+     * @return While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+     * 
+     */
+    private Boolean sendDaysSinceNoncurrentTimeIfZero;
+    /**
+     * @return While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+     * 
+     */
+    private Boolean sendNumNewerVersionsIfZero;
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
      * 
      */
@@ -155,6 +170,27 @@ public final class GetBucketLifecycleRuleCondition {
         return this.numNewerVersions;
     }
     /**
+     * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+     * 
+     */
+    public Boolean sendDaysSinceCustomTimeIfZero() {
+        return this.sendDaysSinceCustomTimeIfZero;
+    }
+    /**
+     * @return While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+     * 
+     */
+    public Boolean sendDaysSinceNoncurrentTimeIfZero() {
+        return this.sendDaysSinceNoncurrentTimeIfZero;
+    }
+    /**
+     * @return While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+     * 
+     */
+    public Boolean sendNumNewerVersionsIfZero() {
+        return this.sendNumNewerVersionsIfZero;
+    }
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
      * 
      */
@@ -182,6 +218,9 @@ public final class GetBucketLifecycleRuleCondition {
         private Boolean noAge;
         private String noncurrentTimeBefore;
         private Integer numNewerVersions;
+        private Boolean sendDaysSinceCustomTimeIfZero;
+        private Boolean sendDaysSinceNoncurrentTimeIfZero;
+        private Boolean sendNumNewerVersionsIfZero;
         private String withState;
         public Builder() {}
         public Builder(GetBucketLifecycleRuleCondition defaults) {
@@ -197,6 +236,9 @@ public final class GetBucketLifecycleRuleCondition {
     	      this.noAge = defaults.noAge;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
+    	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
+    	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
+    	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
     	      this.withState = defaults.withState;
         }
 
@@ -298,6 +340,30 @@ public final class GetBucketLifecycleRuleCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder sendDaysSinceCustomTimeIfZero(Boolean sendDaysSinceCustomTimeIfZero) {
+            if (sendDaysSinceCustomTimeIfZero == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sendDaysSinceCustomTimeIfZero");
+            }
+            this.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendDaysSinceNoncurrentTimeIfZero(Boolean sendDaysSinceNoncurrentTimeIfZero) {
+            if (sendDaysSinceNoncurrentTimeIfZero == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sendDaysSinceNoncurrentTimeIfZero");
+            }
+            this.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendNumNewerVersionsIfZero(Boolean sendNumNewerVersionsIfZero) {
+            if (sendNumNewerVersionsIfZero == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sendNumNewerVersionsIfZero");
+            }
+            this.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            return this;
+        }
+        @CustomType.Setter
         public Builder withState(String withState) {
             if (withState == null) {
               throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "withState");
@@ -318,6 +384,9 @@ public final class GetBucketLifecycleRuleCondition {
             _resultValue.noAge = noAge;
             _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
             _resultValue.numNewerVersions = numNewerVersions;
+            _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
             _resultValue.withState = withState;
             return _resultValue;
         }

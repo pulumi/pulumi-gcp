@@ -279,7 +279,9 @@ type FeatureIamMember struct {
 	Condition FeatureIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -343,7 +345,9 @@ type featureIamMemberState struct {
 	Condition *FeatureIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -372,7 +376,9 @@ type FeatureIamMemberState struct {
 	Condition FeatureIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -403,7 +409,9 @@ func (FeatureIamMemberState) ElementType() reflect.Type {
 
 type featureIamMemberArgs struct {
 	Condition *FeatureIamMemberCondition `pulumi:"condition"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -431,7 +439,9 @@ type featureIamMemberArgs struct {
 // The set of arguments for constructing a FeatureIamMember resource.
 type FeatureIamMemberArgs struct {
 	Condition FeatureIamMemberConditionPtrInput
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -552,7 +562,9 @@ func (o FeatureIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location for the resource Used to find the parent resource to bind the IAM policy to
+// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o FeatureIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -14,12 +14,14 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     {
         /// <summary>
         /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("baseKeyUsage")]
         public Input<Inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs>? BaseKeyUsage { get; set; }
 
         /// <summary>
         /// Detailed scenarios in which a key may be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("extendedKeyUsage")]
         public Input<Inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs>? ExtendedKeyUsage { get; set; }
@@ -29,6 +31,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs> UnknownExtendedKeyUsages
         {

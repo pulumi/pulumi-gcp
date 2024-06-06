@@ -25,7 +25,9 @@ func LookupAiEndpointIamPolicy(ctx *pulumi.Context, args *LookupAiEndpointIamPol
 type LookupAiEndpointIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Endpoint string `pulumi:"endpoint"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -63,7 +65,9 @@ func LookupAiEndpointIamPolicyOutput(ctx *pulumi.Context, args LookupAiEndpointI
 type LookupAiEndpointIamPolicyOutputArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

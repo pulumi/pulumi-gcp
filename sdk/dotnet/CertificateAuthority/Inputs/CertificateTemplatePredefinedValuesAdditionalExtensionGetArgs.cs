@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Required. The OID for this X.509 extension.
+        /// Structure is documented below.
         /// </summary>
         [Input("objectId", required: true)]
         public Input<Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdGetArgs> ObjectId { get; set; } = null!;

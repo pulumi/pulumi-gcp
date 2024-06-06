@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -55,27 +54,27 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="effectiveLabels")
-    private @Nullable Output<Map<String,Object>> effectiveLabels;
+    private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Structure is documented below.
      * 
      */
     @Import(name="identityConstraints")
     private @Nullable Output<CertificateTemplateIdentityConstraintsArgs> identityConstraints;
 
     /**
-     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplateIdentityConstraintsArgs>> identityConstraints() {
@@ -83,18 +82,18 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-     * resource.
+     * Optional. Labels with user-defined metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-     * resource.
+     * @return Optional. Labels with user-defined metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -104,6 +103,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -111,26 +112,22 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
     /**
-     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-     * lifetime will be explicitly truncated to match it.
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
      * 
      */
     @Import(name="maximumLifetime")
     private @Nullable Output<String> maximumLifetime;
 
     /**
-     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-     * lifetime will be explicitly truncated to match it.
+     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
      * 
      */
     public Optional<Output<String>> maximumLifetime() {
@@ -153,22 +150,16 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Structure is documented below.
      * 
      */
     @Import(name="passthroughExtensions")
     private @Nullable Output<CertificateTemplatePassthroughExtensionsArgs> passthroughExtensions;
 
     /**
-     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePassthroughExtensionsArgs>> passthroughExtensions() {
@@ -176,20 +167,16 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-     * certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * Structure is documented below.
      * 
      */
     @Import(name="predefinedValues")
     private @Nullable Output<CertificateTemplatePredefinedValuesArgs> predefinedValues;
 
     /**
-     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-     * certificate issuance request will fail.
+     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePredefinedValuesArgs>> predefinedValues() {
@@ -197,14 +184,16 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -212,17 +201,19 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
-    private @Nullable Output<Map<String,Object>> pulumiLabels;
+    private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
         return Optional.ofNullable(this.pulumiLabels);
     }
 
@@ -325,7 +316,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
@@ -336,13 +327,13 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
-         * @param identityConstraints Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-         * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+         * @param identityConstraints Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -353,8 +344,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param identityConstraints Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-         * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+         * @param identityConstraints Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -364,9 +355,9 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param labels Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-         * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-         * resource.
+         * @param labels Optional. Labels with user-defined metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -377,9 +368,9 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param labels Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-         * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-         * resource.
+         * @param labels Optional. Labels with user-defined metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -390,6 +381,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -402,6 +395,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -410,10 +405,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-         * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-         * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-         * lifetime will be explicitly truncated to match it.
+         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
          * 
          * @return builder
          * 
@@ -424,10 +416,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-         * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-         * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-         * lifetime will be explicitly truncated to match it.
+         * @param maximumLifetime Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
          * 
          * @return builder
          * 
@@ -458,11 +447,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param passthroughExtensions Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-         * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-         * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-         * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-         * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+         * @param passthroughExtensions Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -473,11 +459,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param passthroughExtensions Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-         * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-         * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-         * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-         * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+         * @param passthroughExtensions Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -487,10 +470,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param predefinedValues Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-         * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-         * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-         * certificate issuance request will fail.
+         * @param predefinedValues Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -501,10 +482,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param predefinedValues Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-         * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-         * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-         * certificate issuance request will fail.
+         * @param predefinedValues Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -514,7 +493,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -525,7 +505,8 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -535,23 +516,25 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
             $.pulumiLabels = pulumiLabels;
             return this;
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
         }
 

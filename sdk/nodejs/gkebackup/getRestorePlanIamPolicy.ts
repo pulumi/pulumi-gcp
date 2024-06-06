@@ -36,7 +36,9 @@ export function getRestorePlanIamPolicy(args: GetRestorePlanIamPolicyArgs, opts?
 export interface GetRestorePlanIamPolicyArgs {
     /**
      * The region of the Restore Plan.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -97,7 +99,9 @@ export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutpu
 export interface GetRestorePlanIamPolicyOutputArgs {
     /**
      * The region of the Restore Plan.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

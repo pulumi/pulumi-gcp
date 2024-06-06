@@ -281,7 +281,9 @@ type FunctionIamBinding struct {
 	Condition     FunctionIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -348,7 +350,9 @@ type functionIamBindingState struct {
 	Condition     *FunctionIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -377,7 +381,9 @@ type FunctionIamBindingState struct {
 	Condition     FunctionIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -408,7 +414,9 @@ type functionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction string                       `pulumi:"cloudFunction"`
 	Condition     *FunctionIamBindingCondition `pulumi:"condition"`
-	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +444,9 @@ type FunctionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction pulumi.StringInput
 	Condition     FunctionIamBindingConditionPtrInput
-	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+	// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -560,7 +570,9 @@ func (o FunctionIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+// The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o FunctionIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

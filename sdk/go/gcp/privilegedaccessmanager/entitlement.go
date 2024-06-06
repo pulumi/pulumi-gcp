@@ -131,7 +131,7 @@ type Entitlement struct {
 	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
 	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+	// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
 	// Structure is documented below.
@@ -223,7 +223,7 @@ type entitlementState struct {
 	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
 	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name *string `pulumi:"name"`
-	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+	// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 	Parent *string `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
 	// Structure is documented below.
@@ -265,7 +265,7 @@ type EntitlementState struct {
 	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
 	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name pulumi.StringPtrInput
-	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+	// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 	Parent pulumi.StringPtrInput
 	// Privileged access that this service can be used to gate.
 	// Structure is documented below.
@@ -303,7 +303,7 @@ type entitlementArgs struct {
 	// A requester can choose to ask for access for less than this duration but never more.
 	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
 	MaxRequestDuration string `pulumi:"maxRequestDuration"`
-	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+	// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 	Parent string `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
 	// Structure is documented below.
@@ -333,7 +333,7 @@ type EntitlementArgs struct {
 	// A requester can choose to ask for access for less than this duration but never more.
 	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
 	MaxRequestDuration pulumi.StringInput
-	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+	// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 	Parent pulumi.StringInput
 	// Privileged access that this service can be used to gate.
 	// Structure is documented below.
@@ -485,7 +485,7 @@ func (o EntitlementOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
 func (o EntitlementOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

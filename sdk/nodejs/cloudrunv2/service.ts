@@ -512,6 +512,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly customAudiences!: pulumi.Output<string[] | undefined>;
     /**
+     * Disables public resolution of the default URI of this service.
+     */
+    public readonly defaultUriDisabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The deletion time.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
@@ -658,6 +662,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["customAudiences"] = state ? state.customAudiences : undefined;
+            resourceInputs["defaultUriDisabled"] = state ? state.defaultUriDisabled : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
@@ -698,6 +703,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
             resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
+            resourceInputs["defaultUriDisabled"] = args ? args.defaultUriDisabled : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -781,6 +787,10 @@ export interface ServiceState {
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Disables public resolution of the default URI of this service.
+     */
+    defaultUriDisabled?: pulumi.Input<boolean>;
     /**
      * The deletion time.
      */
@@ -940,6 +950,10 @@ export interface ServiceArgs {
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Disables public resolution of the default URI of this service.
+     */
+    defaultUriDisabled?: pulumi.Input<boolean>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */

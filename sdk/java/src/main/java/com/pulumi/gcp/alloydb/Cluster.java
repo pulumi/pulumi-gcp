@@ -20,6 +20,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
 import com.pulumi.gcp.alloydb.outputs.ClusterMaintenanceUpdatePolicy;
 import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterNetworkConfig;
+import com.pulumi.gcp.alloydb.outputs.ClusterPscConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterSecondaryConfig;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
@@ -81,7 +83,9 @@ import javax.annotation.Nullable;
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
- *             .network(defaultNetwork.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultNetwork.id())
+ *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
@@ -105,6 +109,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
@@ -132,7 +137,9 @@ import javax.annotation.Nullable;
  *         var full = new Cluster("full", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster-full")
  *             .location("us-central1")
- *             .network(default_.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
  *             .databaseVersion("POSTGRES_15")
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .user("alloydb-cluster-full")
@@ -194,6 +201,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
  * import com.pulumi.gcp.alloydb.Backup;
  * import com.pulumi.gcp.alloydb.BackupArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
@@ -261,7 +269,9 @@ import javax.annotation.Nullable;
  *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()
  *             .clusterId("alloydb-backup-restored")
  *             .location("us-central1")
- *             .network(default_.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
  *             .restoreBackupSource(ClusterRestoreBackupSourceArgs.builder()
  *                 .backupName(sourceBackup.name())
  *                 .build())
@@ -803,6 +813,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscConfig", refs={ClusterPscConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterPscConfig> pscConfig;
+
+    /**
+     * @return Configuration for Private Service Connect (PSC) for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterPscConfig>> pscConfig() {
+        return Codegen.optional(this.pscConfig);
     }
     /**
      * The combination of labels configured directly on the resource

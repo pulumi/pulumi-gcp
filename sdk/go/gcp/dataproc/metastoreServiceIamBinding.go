@@ -281,7 +281,9 @@ type MetastoreServiceIamBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -349,7 +351,9 @@ type metastoreServiceIamBindingState struct {
 	Etag *string `pulumi:"etag"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -379,7 +383,9 @@ type MetastoreServiceIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The location where the metastore service should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -411,7 +417,9 @@ type metastoreServiceIamBindingArgs struct {
 	Condition *MetastoreServiceIamBindingCondition `pulumi:"condition"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -440,7 +448,9 @@ type MetastoreServiceIamBindingArgs struct {
 	Condition MetastoreServiceIamBindingConditionPtrInput
 	// The location where the metastore service should reside.
 	// The default value is `global`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -562,7 +572,9 @@ func (o MetastoreServiceIamBindingOutput) Etag() pulumi.StringOutput {
 
 // The location where the metastore service should reside.
 // The default value is `global`.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o MetastoreServiceIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

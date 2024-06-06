@@ -85,6 +85,26 @@ export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamP
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
 
+export { EntryTypeArgs, EntryTypeState } from "./entryType";
+export type EntryType = import("./entryType").EntryType;
+export const EntryType: typeof import("./entryType").EntryType = null as any;
+utilities.lazyLoad(exports, ["EntryType"], () => require("./entryType"));
+
+export { EntryTypeIamBindingArgs, EntryTypeIamBindingState } from "./entryTypeIamBinding";
+export type EntryTypeIamBinding = import("./entryTypeIamBinding").EntryTypeIamBinding;
+export const EntryTypeIamBinding: typeof import("./entryTypeIamBinding").EntryTypeIamBinding = null as any;
+utilities.lazyLoad(exports, ["EntryTypeIamBinding"], () => require("./entryTypeIamBinding"));
+
+export { EntryTypeIamMemberArgs, EntryTypeIamMemberState } from "./entryTypeIamMember";
+export type EntryTypeIamMember = import("./entryTypeIamMember").EntryTypeIamMember;
+export const EntryTypeIamMember: typeof import("./entryTypeIamMember").EntryTypeIamMember = null as any;
+utilities.lazyLoad(exports, ["EntryTypeIamMember"], () => require("./entryTypeIamMember"));
+
+export { EntryTypeIamPolicyArgs, EntryTypeIamPolicyState } from "./entryTypeIamPolicy";
+export type EntryTypeIamPolicy = import("./entryTypeIamPolicy").EntryTypeIamPolicy;
+export const EntryTypeIamPolicy: typeof import("./entryTypeIamPolicy").EntryTypeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EntryTypeIamPolicy"], () => require("./entryTypeIamPolicy"));
+
 export { GetAspectTypeIamPolicyArgs, GetAspectTypeIamPolicyResult, GetAspectTypeIamPolicyOutputArgs } from "./getAspectTypeIamPolicy";
 export const getAspectTypeIamPolicy: typeof import("./getAspectTypeIamPolicy").getAspectTypeIamPolicy = null as any;
 export const getAspectTypeIamPolicyOutput: typeof import("./getAspectTypeIamPolicy").getAspectTypeIamPolicyOutput = null as any;
@@ -104,6 +124,11 @@ export { GetEntryGroupIamPolicyArgs, GetEntryGroupIamPolicyResult, GetEntryGroup
 export const getEntryGroupIamPolicy: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicy = null as any;
 export const getEntryGroupIamPolicyOutput: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
+
+export { GetEntryTypeIamPolicyArgs, GetEntryTypeIamPolicyResult, GetEntryTypeIamPolicyOutputArgs } from "./getEntryTypeIamPolicy";
+export const getEntryTypeIamPolicy: typeof import("./getEntryTypeIamPolicy").getEntryTypeIamPolicy = null as any;
+export const getEntryTypeIamPolicyOutput: typeof import("./getEntryTypeIamPolicy").getEntryTypeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryTypeIamPolicy","getEntryTypeIamPolicyOutput"], () => require("./getEntryTypeIamPolicy"));
 
 export { GetLakeIamPolicyArgs, GetLakeIamPolicyResult, GetLakeIamPolicyOutputArgs } from "./getLakeIamPolicy";
 export const getLakeIamPolicy: typeof import("./getLakeIamPolicy").getLakeIamPolicy = null as any;
@@ -217,6 +242,14 @@ const _module = {
                 return new EntryGroupIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryType:EntryType":
+                return new EntryType(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding":
+                return new EntryTypeIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember":
+                return new EntryTypeIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy":
+                return new EntryTypeIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -262,6 +295,10 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryType", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)

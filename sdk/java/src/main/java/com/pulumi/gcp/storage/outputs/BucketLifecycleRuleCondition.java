@@ -71,6 +71,21 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable Integer numNewerVersions;
     /**
+     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * 
+     */
+    private @Nullable Boolean sendDaysSinceCustomTimeIfZero;
+    /**
+     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * 
+     */
+    private @Nullable Boolean sendDaysSinceNoncurrentTimeIfZero;
+    /**
+     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * 
+     */
+    private @Nullable Boolean sendNumNewerVersionsIfZero;
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -156,6 +171,27 @@ public final class BucketLifecycleRuleCondition {
         return Optional.ofNullable(this.numNewerVersions);
     }
     /**
+     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * 
+     */
+    public Optional<Boolean> sendDaysSinceCustomTimeIfZero() {
+        return Optional.ofNullable(this.sendDaysSinceCustomTimeIfZero);
+    }
+    /**
+     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * 
+     */
+    public Optional<Boolean> sendDaysSinceNoncurrentTimeIfZero() {
+        return Optional.ofNullable(this.sendDaysSinceNoncurrentTimeIfZero);
+    }
+    /**
+     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * 
+     */
+    public Optional<Boolean> sendNumNewerVersionsIfZero() {
+        return Optional.ofNullable(this.sendNumNewerVersionsIfZero);
+    }
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -183,6 +219,9 @@ public final class BucketLifecycleRuleCondition {
         private @Nullable Boolean noAge;
         private @Nullable String noncurrentTimeBefore;
         private @Nullable Integer numNewerVersions;
+        private @Nullable Boolean sendDaysSinceCustomTimeIfZero;
+        private @Nullable Boolean sendDaysSinceNoncurrentTimeIfZero;
+        private @Nullable Boolean sendNumNewerVersionsIfZero;
         private @Nullable String withState;
         public Builder() {}
         public Builder(BucketLifecycleRuleCondition defaults) {
@@ -198,6 +237,9 @@ public final class BucketLifecycleRuleCondition {
     	      this.noAge = defaults.noAge;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
+    	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
+    	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
+    	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
     	      this.withState = defaults.withState;
         }
 
@@ -277,6 +319,24 @@ public final class BucketLifecycleRuleCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder sendDaysSinceCustomTimeIfZero(@Nullable Boolean sendDaysSinceCustomTimeIfZero) {
+
+            this.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendDaysSinceNoncurrentTimeIfZero(@Nullable Boolean sendDaysSinceNoncurrentTimeIfZero) {
+
+            this.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendNumNewerVersionsIfZero(@Nullable Boolean sendNumNewerVersionsIfZero) {
+
+            this.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            return this;
+        }
+        @CustomType.Setter
         public Builder withState(@Nullable String withState) {
 
             this.withState = withState;
@@ -295,6 +355,9 @@ public final class BucketLifecycleRuleCondition {
             _resultValue.noAge = noAge;
             _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
             _resultValue.numNewerVersions = numNewerVersions;
+            _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
+            _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
+            _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
             _resultValue.withState = withState;
             return _resultValue;
         }

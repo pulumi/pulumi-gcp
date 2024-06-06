@@ -35,7 +35,9 @@ export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulu
  */
 export interface GetInstanceIamPolicyArgs {
     /**
-     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -95,7 +97,9 @@ export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs,
  */
 export interface GetInstanceIamPolicyOutputArgs {
     /**
-     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

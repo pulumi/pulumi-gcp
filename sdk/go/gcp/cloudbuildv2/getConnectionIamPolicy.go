@@ -52,7 +52,9 @@ func GetConnectionIamPolicy(ctx *pulumi.Context, args *GetConnectionIamPolicyArg
 
 // A collection of arguments for invoking getConnectionIamPolicy.
 type GetConnectionIamPolicyArgs struct {
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name string `pulumi:"name"`
@@ -90,7 +92,9 @@ func GetConnectionIamPolicyOutput(ctx *pulumi.Context, args GetConnectionIamPoli
 
 // A collection of arguments for invoking getConnectionIamPolicy.
 type GetConnectionIamPolicyOutputArgs struct {
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringInput `pulumi:"name"`

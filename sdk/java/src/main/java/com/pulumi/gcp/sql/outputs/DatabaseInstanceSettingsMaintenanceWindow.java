@@ -23,8 +23,7 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
      */
     private @Nullable Integer hour;
     /**
-     * @return Receive updates earlier (`canary`) or later
-     * (`stable`)
+     * @return Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
      * 
      */
     private @Nullable String updateTrack;
@@ -45,8 +44,7 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
         return Optional.ofNullable(this.hour);
     }
     /**
-     * @return Receive updates earlier (`canary`) or later
-     * (`stable`)
+     * @return Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
      * 
      */
     public Optional<String> updateTrack() {

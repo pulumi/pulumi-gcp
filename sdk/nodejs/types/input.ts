@@ -2099,6 +2099,13 @@ export namespace alloydb {
         network?: pulumi.Input<string>;
     }
 
+    export interface ClusterPscConfig {
+        /**
+         * Create an instance that allows connections from Private Service Connect endpoints to the instance.
+         */
+        pscEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface ClusterRestoreBackupSource {
         /**
          * The name of the backup that this cluster is restored from.
@@ -2173,6 +2180,27 @@ export namespace alloydb {
          * CIDR range for one authorized network of the instance.
          */
         cidrRange?: pulumi.Input<string>;
+    }
+
+    export interface InstancePscInstanceConfig {
+        /**
+         * List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+         * These should be specified as project numbers only.
+         */
+        allowedConsumerProjects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The DNS name of the instance for PSC connectivity.
+         * Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+         */
+        pscDnsName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+         * The name of the resource will be in the format of
+         * `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+         */
+        serviceAttachmentLink?: pulumi.Input<string>;
     }
 
     export interface InstanceQueryInsightsConfig {
@@ -8780,6 +8808,7 @@ export namespace certificateauthority {
         allowSubjectPassthrough: pulumi.Input<boolean>;
         /**
          * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * Structure is documented below.
          */
         celExpression?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIdentityConstraintsCelExpression>;
     }
@@ -8806,6 +8835,7 @@ export namespace certificateauthority {
     export interface CertificateTemplatePassthroughExtensions {
         /**
          * Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
+         * Structure is documented below.
          */
         additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtension>[]>;
         /**
@@ -8824,6 +8854,7 @@ export namespace certificateauthority {
     export interface CertificateTemplatePredefinedValues {
         /**
          * Optional. Describes custom X.509 extensions.
+         * Structure is documented below.
          */
         additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtension>[]>;
         /**
@@ -8832,14 +8863,17 @@ export namespace certificateauthority {
         aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+         * Structure is documented below.
          */
         caOptions?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesCaOptions>;
         /**
          * Optional. Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
          */
         keyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsage>;
         /**
          * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
          */
         policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesPolicyId>[]>;
     }
@@ -8851,6 +8885,7 @@ export namespace certificateauthority {
         critical?: pulumi.Input<boolean>;
         /**
          * Required. The OID for this X.509 extension.
+         * Structure is documented below.
          */
         objectId: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId>;
         /**
@@ -8862,8 +8897,6 @@ export namespace certificateauthority {
     export interface CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
         /**
          * Required. The parts of an OID path. The most significant parts of the path come first.
-         *
-         * - - -
          */
         objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
@@ -8882,14 +8915,17 @@ export namespace certificateauthority {
     export interface CertificateTemplatePredefinedValuesKeyUsage {
         /**
          * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
          */
         baseKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage>;
         /**
          * Detailed scenarios in which a key may be used.
+         * Structure is documented below.
          */
         extendedKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage>;
         /**
          * Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+         * Structure is documented below.
          */
         unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>[]>;
     }
@@ -16605,11 +16641,11 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
-         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute?: pulumi.Input<boolean>;
     }
@@ -17640,7 +17676,7 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number>;
         /**
-         * Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
         /**
@@ -18127,11 +18163,11 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
-         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute?: pulumi.Input<boolean>;
     }
@@ -18177,7 +18213,7 @@ export namespace compute {
         diskSizeGb?: pulumi.Input<number>;
         /**
          * The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
-         * `"pd-balanced"` or `"pd-standard"`.
+         * `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -20646,7 +20682,7 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number>;
         /**
-         * Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
         /**
@@ -20712,11 +20748,11 @@ export namespace compute {
 
     export interface RegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
-         * Defines whether the instance should have confidential compute enabled on AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute?: pulumi.Input<boolean>;
     }
@@ -37650,6 +37686,25 @@ export namespace dataplex {
         title: pulumi.Input<string>;
     }
 
+    export interface EntryTypeIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface EntryTypeIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface EntryTypeRequiredAspect {
+        /**
+         * Required aspect type for the entry type.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface LakeAssetStatus {
         /**
          * Number of active assets.
@@ -52499,6 +52554,30 @@ export namespace logging {
         datasetId?: pulumi.Input<string>;
     }
 
+    export interface LogViewIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface LogViewIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
     export interface MetricBucketOptions {
         /**
          * Specifies a set of buckets with arbitrary widths.
@@ -62462,8 +62541,7 @@ export namespace sql {
          */
         hour?: pulumi.Input<number>;
         /**
-         * Receive updates earlier (`canary`) or later
-         * (`stable`)
+         * Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
          */
         updateTrack?: pulumi.Input<string>;
     }
@@ -62717,6 +62795,18 @@ export namespace storage {
          * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
          */
         numNewerVersions?: pulumi.Input<number>;
+        /**
+         * While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
+         */
+        sendDaysSinceCustomTimeIfZero?: pulumi.Input<boolean>;
+        /**
+         * While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
+         */
+        sendDaysSinceNoncurrentTimeIfZero?: pulumi.Input<boolean>;
+        /**
+         * While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
+         */
+        sendNumNewerVersionsIfZero?: pulumi.Input<boolean>;
         /**
          * Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
          */

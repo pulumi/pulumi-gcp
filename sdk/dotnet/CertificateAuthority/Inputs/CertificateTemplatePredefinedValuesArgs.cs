@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Optional. Describes custom X.509 extensions.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs> AdditionalExtensions
         {
@@ -38,12 +39,14 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        /// Structure is documented below.
         /// </summary>
         [Input("caOptions")]
         public Input<Inputs.CertificateTemplatePredefinedValuesCaOptionsArgs>? CaOptions { get; set; }
 
         /// <summary>
         /// Optional. Indicates the intended use for keys that correspond to a certificate.
+        /// Structure is documented below.
         /// </summary>
         [Input("keyUsage")]
         public Input<Inputs.CertificateTemplatePredefinedValuesKeyUsageArgs>? KeyUsage { get; set; }
@@ -53,6 +56,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateTemplatePredefinedValuesPolicyIdArgs> PolicyIds
         {

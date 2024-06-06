@@ -5698,6 +5698,7 @@ class CertificateTemplateIdentityConstraintsArgs:
         :param pulumi.Input[bool] allow_subject_alt_names_passthrough: Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
         :param pulumi.Input[bool] allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs'] cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+               Structure is documented below.
         """
         pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
         pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
@@ -5733,6 +5734,7 @@ class CertificateTemplateIdentityConstraintsArgs:
     def cel_expression(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgs']]:
         """
         Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        Structure is documented below.
         """
         return pulumi.get(self, "cel_expression")
 
@@ -5819,6 +5821,7 @@ class CertificateTemplatePassthroughExtensionsArgs:
                  known_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
         """
         if additional_extensions is not None:
@@ -5831,6 +5834,7 @@ class CertificateTemplatePassthroughExtensionsArgs:
     def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]]]:
         """
         Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+        Structure is documented below.
         """
         return pulumi.get(self, "additional_extensions")
 
@@ -5883,10 +5887,14 @@ class CertificateTemplatePredefinedValuesArgs:
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]] additional_extensions: Optional. Describes custom X.509 extensions.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
         :param pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs'] ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+               Structure is documented below.
         :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs'] key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+               Structure is documented below.
         """
         if additional_extensions is not None:
             pulumi.set(__self__, "additional_extensions", additional_extensions)
@@ -5904,6 +5912,7 @@ class CertificateTemplatePredefinedValuesArgs:
     def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]]]:
         """
         Optional. Describes custom X.509 extensions.
+        Structure is documented below.
         """
         return pulumi.get(self, "additional_extensions")
 
@@ -5928,6 +5937,7 @@ class CertificateTemplatePredefinedValuesArgs:
     def ca_options(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgs']]:
         """
         Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        Structure is documented below.
         """
         return pulumi.get(self, "ca_options")
 
@@ -5940,6 +5950,7 @@ class CertificateTemplatePredefinedValuesArgs:
     def key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgs']]:
         """
         Optional. Indicates the intended use for keys that correspond to a certificate.
+        Structure is documented below.
         """
         return pulumi.get(self, "key_usage")
 
@@ -5952,6 +5963,7 @@ class CertificateTemplatePredefinedValuesArgs:
     def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]]:
         """
         Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")
 
@@ -5968,6 +5980,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
                  critical: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs'] object_id: Required. The OID for this X.509 extension.
+               Structure is documented below.
         :param pulumi.Input[str] value: Required. The value of this X.509 extension.
         :param pulumi.Input[bool] critical: Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
@@ -5981,6 +5994,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
     def object_id(self) -> pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs']:
         """
         Required. The OID for this X.509 extension.
+        Structure is documented below.
         """
         return pulumi.get(self, "object_id")
 
@@ -6019,8 +6033,6 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
-               
-               - - -
         """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
@@ -6029,8 +6041,6 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
     def object_id_paths(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
         Required. The parts of an OID path. The most significant parts of the path come first.
-
-        - - -
         """
         return pulumi.get(self, "object_id_paths")
 
@@ -6086,8 +6096,11 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
                  unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
         """
         :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+               Structure is documented below.
         :param pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+               Structure is documented below.
         """
         if base_key_usage is not None:
             pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -6101,6 +6114,7 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
     def base_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs']]:
         """
         Describes high-level ways in which a key may be used.
+        Structure is documented below.
         """
         return pulumi.get(self, "base_key_usage")
 
@@ -6113,6 +6127,7 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
     def extended_key_usage(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs']]:
         """
         Detailed scenarios in which a key may be used.
+        Structure is documented below.
         """
         return pulumi.get(self, "extended_key_usage")
 
@@ -6125,6 +6140,7 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
     def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]:
         """
         Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        Structure is documented below.
         """
         return pulumi.get(self, "unknown_extended_key_usages")
 

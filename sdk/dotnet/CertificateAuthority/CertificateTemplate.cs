@@ -10,15 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority
 {
     /// <summary>
-    /// Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization.  A certificate template can essentially become a full-fledged vertical certificate issuance framework.
+    /// Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization. A certificate template can essentially become a full-fledged vertical certificate issuance framework.
     /// 
-    /// For more information, see:
-    /// * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
-    /// * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+    /// To get more information about CertificateTemplate, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+    ///     * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+    ///     * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_certificate_template
-    /// An example of a basic privateca certificate template
+    /// ### Privateca Template Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,11 +32,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.CertificateAuthority.CertificateTemplate("primary", new()
+    ///     var @default = new Gcp.CertificateAuthority.CertificateTemplate("default", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Name = "template",
-    ///         Description = "An updated sample certificate template",
+    ///         Name = "my-template",
+    ///         Location = "us-central1",
+    ///         Description = "A sample certificate template",
     ///         IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsArgs
     ///         {
     ///             AllowSubjectAltNamesPassthrough = true,
@@ -137,10 +142,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 },
     ///             },
     ///         },
-    ///         Project = "my-project-name",
     ///         Labels = 
     ///         {
-    ///             { "label-two", "value-two" },
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 
@@ -190,34 +194,34 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
-        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-        /// omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Structure is documented below.
         /// </summary>
         [Output("identityConstraints")]
         public Output<Outputs.CertificateTemplateIdentityConstraints?> IdentityConstraints { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. Labels with user-defined metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
-        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
-        /// lifetime will be explicitly truncated to match it.
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         /// </summary>
         [Output("maximumLifetime")]
         public Output<string?> MaximumLifetime { get; private set; } = null!;
@@ -229,35 +233,32 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
-        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
-        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Structure is documented below.
         /// </summary>
         [Output("passthroughExtensions")]
         public Output<Outputs.CertificateTemplatePassthroughExtensions?> PassthroughExtensions { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-        /// certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Structure is documented below.
         /// </summary>
         [Output("predefinedValues")]
         public Output<Outputs.CertificateTemplatePredefinedValues?> PredefinedValues { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
-        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The time at which this CertificateTemplate was updated.
@@ -323,8 +324,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-        /// omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Structure is documented below.
         /// </summary>
         [Input("identityConstraints")]
         public Input<Inputs.CertificateTemplateIdentityConstraintsArgs>? IdentityConstraints { get; set; }
@@ -333,9 +334,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. Labels with user-defined metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -345,15 +346,15 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
-        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
-        /// lifetime will be explicitly truncated to match it.
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         /// </summary>
         [Input("maximumLifetime")]
         public Input<string>? MaximumLifetime { get; set; }
@@ -365,26 +366,22 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
-        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
-        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Structure is documented below.
         /// </summary>
         [Input("passthroughExtensions")]
         public Input<Inputs.CertificateTemplatePassthroughExtensionsArgs>? PassthroughExtensions { get; set; }
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-        /// certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Structure is documented below.
         /// </summary>
         [Input("predefinedValues")]
         public Input<Inputs.CertificateTemplatePredefinedValuesArgs>? PredefinedValues { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -410,24 +407,24 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
-        private InputMap<object>? _effectiveLabels;
+        private InputMap<string>? _effectiveLabels;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveLabels
+        public InputMap<string> EffectiveLabels
         {
-            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-        /// omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Structure is documented below.
         /// </summary>
         [Input("identityConstraints")]
         public Input<Inputs.CertificateTemplateIdentityConstraintsGetArgs>? IdentityConstraints { get; set; }
@@ -436,9 +433,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. Labels with user-defined metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -448,15 +445,15 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's
-        /// IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-        /// Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective
-        /// lifetime will be explicitly truncated to match it.
+        /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         /// </summary>
         [Input("maximumLifetime")]
         public Input<string>? MaximumLifetime { get; set; }
@@ -468,42 +465,39 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
-        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
-        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Structure is documented below.
         /// </summary>
         [Input("passthroughExtensions")]
         public Input<Inputs.CertificateTemplatePassthroughExtensionsGetArgs>? PassthroughExtensions { get; set; }
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-        /// certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Structure is documented below.
         /// </summary>
         [Input("predefinedValues")]
         public Input<Inputs.CertificateTemplatePredefinedValuesGetArgs>? PredefinedValues { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         [Input("pulumiLabels")]
-        private InputMap<object>? _pulumiLabels;
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> PulumiLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

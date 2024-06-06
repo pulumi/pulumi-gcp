@@ -278,7 +278,9 @@ type FeatureIamPolicy struct {
 
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -325,7 +327,9 @@ func GetFeatureIamPolicy(ctx *pulumi.Context,
 type featureIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -340,7 +344,9 @@ type featureIamPolicyState struct {
 type FeatureIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -357,7 +363,9 @@ func (FeatureIamPolicyState) ElementType() reflect.Type {
 }
 
 type featureIamPolicyArgs struct {
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -371,7 +379,9 @@ type featureIamPolicyArgs struct {
 
 // The set of arguments for constructing a FeatureIamPolicy resource.
 type FeatureIamPolicyArgs struct {
-	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -475,7 +485,9 @@ func (o FeatureIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The location for the resource Used to find the parent resource to bind the IAM policy to
+// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o FeatureIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

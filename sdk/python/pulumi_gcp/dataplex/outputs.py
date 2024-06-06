@@ -50,6 +50,9 @@ __all__ = [
     'DatascanIamMemberCondition',
     'EntryGroupIamBindingCondition',
     'EntryGroupIamMemberCondition',
+    'EntryTypeIamBindingCondition',
+    'EntryTypeIamMemberCondition',
+    'EntryTypeRequiredAspect',
     'LakeAssetStatus',
     'LakeIamBindingCondition',
     'LakeIamMemberCondition',
@@ -2021,6 +2024,79 @@ class EntryGroupIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class EntryTypeIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class EntryTypeIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class EntryTypeRequiredAspect(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None):
+        """
+        :param str type: Required aspect type for the entry type.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Required aspect type for the entry type.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

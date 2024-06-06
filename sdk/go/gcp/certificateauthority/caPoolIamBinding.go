@@ -497,7 +497,9 @@ type CaPoolIamBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -568,7 +570,9 @@ type caPoolIamBindingState struct {
 	Etag *string `pulumi:"etag"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -601,7 +605,9 @@ type CaPoolIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -636,7 +642,9 @@ type caPoolIamBindingArgs struct {
 	Condition *CaPoolIamBindingCondition `pulumi:"condition"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -668,7 +676,9 @@ type CaPoolIamBindingArgs struct {
 	Condition CaPoolIamBindingConditionPtrInput
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -796,7 +806,9 @@ func (o CaPoolIamBindingOutput) Etag() pulumi.StringOutput {
 
 // Location of the CaPool. A full list of valid locations can be found by
 // running `gcloud privateca locations list`.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o CaPoolIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaPoolIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

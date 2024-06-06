@@ -41,6 +41,9 @@ class CertificateTemplateIamBindingArgs:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input['CertificateTemplateIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
+        :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -118,6 +121,11 @@ class CertificateTemplateIamBindingArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -154,6 +162,9 @@ class _CertificateTemplateIamBindingState:
         :param pulumi.Input['CertificateTemplateIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -226,6 +237,11 @@ class _CertificateTemplateIamBindingState:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -534,6 +550,9 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
+        :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -863,6 +882,9 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -921,6 +943,11 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
+        """
+        The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @property

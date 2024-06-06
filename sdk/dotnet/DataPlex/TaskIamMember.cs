@@ -255,7 +255,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The location in which the task will be created in.
-        /// Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -352,7 +354,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The location in which the task will be created in.
-        /// Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -417,7 +421,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The location in which the task will be created in.
-        /// Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

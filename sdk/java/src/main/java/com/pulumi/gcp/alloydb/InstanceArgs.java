@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.String;
@@ -227,6 +228,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInstanceConfig")
+    private @Nullable Output<InstancePscInstanceConfigArgs> pscInstanceConfig;
+
+    /**
+     * @return Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePscInstanceConfigArgs>> pscInstanceConfig() {
+        return Optional.ofNullable(this.pscInstanceConfig);
+    }
+
+    /**
      * Configuration for query insights.
      * Structure is documented below.
      * 
@@ -275,6 +293,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
         this.networkConfig = $.networkConfig;
+        this.pscInstanceConfig = $.pscInstanceConfig;
         this.queryInsightsConfig = $.queryInsightsConfig;
         this.readPoolConfig = $.readPoolConfig;
     }
@@ -567,6 +586,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkConfig(InstanceNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param pscInstanceConfig Configuration for Private Service Connect (PSC) for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInstanceConfig(@Nullable Output<InstancePscInstanceConfigArgs> pscInstanceConfig) {
+            $.pscInstanceConfig = pscInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param pscInstanceConfig Configuration for Private Service Connect (PSC) for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInstanceConfig(InstancePscInstanceConfigArgs pscInstanceConfig) {
+            return pscInstanceConfig(Output.of(pscInstanceConfig));
         }
 
         /**

@@ -52,7 +52,9 @@ func LookupQueueIamPolicy(ctx *pulumi.Context, args *LookupQueueIamPolicyArgs, o
 
 // A collection of arguments for invoking getQueueIamPolicy.
 type LookupQueueIamPolicyArgs struct {
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name string `pulumi:"name"`
@@ -90,7 +92,9 @@ func LookupQueueIamPolicyOutput(ctx *pulumi.Context, args LookupQueueIamPolicyOu
 
 // A collection of arguments for invoking getQueueIamPolicy.
 type LookupQueueIamPolicyOutputArgs struct {
-	// The location of the queue Used to find the parent resource to bind the IAM policy to
+	// The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringInput `pulumi:"name"`

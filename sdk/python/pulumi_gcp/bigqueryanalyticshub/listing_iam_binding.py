@@ -42,7 +42,9 @@ class ListingIamBindingArgs:
                `bigqueryanalyticshub.ListingIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -131,7 +133,9 @@ class ListingIamBindingArgs:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the location this data exchange listing.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -170,7 +174,9 @@ class _ListingIamBindingState:
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -255,7 +261,9 @@ class _ListingIamBindingState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the location this data exchange listing.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -480,7 +488,9 @@ class ListingIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -729,7 +739,9 @@ class ListingIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -795,7 +807,9 @@ class ListingIamBinding(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The name of the location this data exchange listing.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

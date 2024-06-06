@@ -191,7 +191,9 @@ export class BackupPlanIamPolicy extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The region of the Backup Plan.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -253,7 +255,9 @@ export interface BackupPlanIamPolicyState {
     etag?: pulumi.Input<string>;
     /**
      * The region of the Backup Plan.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
@@ -278,7 +282,9 @@ export interface BackupPlanIamPolicyState {
 export interface BackupPlanIamPolicyArgs {
     /**
      * The region of the Backup Plan.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     {
         /// <summary>
         /// Optional. Describes custom X.509 extensions.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateTemplatePredefinedValuesAdditionalExtension> AdditionalExtensions;
         /// <summary>
@@ -23,14 +24,17 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<string> AiaOcspServers;
         /// <summary>
         /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesCaOptions? CaOptions;
         /// <summary>
         /// Optional. Indicates the intended use for keys that correspond to a certificate.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesKeyUsage? KeyUsage;
         /// <summary>
         /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateTemplatePredefinedValuesPolicyId> PolicyIds;
 

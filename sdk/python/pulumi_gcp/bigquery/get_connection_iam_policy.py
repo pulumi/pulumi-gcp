@@ -123,7 +123,9 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
            Examples: US, EU, asia-northeast1, us-central1, europe-west1.
            Spanner Connections same as spanner region
            AWS allowed regions are aws-us-east-1
-           Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+           Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
@@ -171,7 +173,9 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
            Examples: US, EU, asia-northeast1, us-central1, europe-west1.
            Spanner Connections same as spanner region
            AWS allowed regions are aws-us-east-1
-           Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+           Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

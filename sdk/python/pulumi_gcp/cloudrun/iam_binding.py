@@ -39,7 +39,9 @@ class IamBindingArgs:
                `cloudrun.IamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -114,7 +116,9 @@ class IamBindingArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -149,7 +153,9 @@ class _IamBindingState:
         """
         Input properties used for looking up and filtering IamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -208,7 +214,9 @@ class _IamBindingState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -435,7 +443,9 @@ class IamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -671,7 +681,9 @@ class IamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -720,7 +732,9 @@ class IamBinding(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+        The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

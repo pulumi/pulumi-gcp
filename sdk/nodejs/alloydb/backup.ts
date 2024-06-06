@@ -27,7 +27,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
@@ -66,7 +68,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",

@@ -24,7 +24,9 @@ func LookupWorkstationIamPolicy(ctx *pulumi.Context, args *LookupWorkstationIamP
 // A collection of arguments for invoking getWorkstationIamPolicy.
 type LookupWorkstationIamPolicyArgs struct {
 	// The location where the workstation parent resources reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -66,7 +68,9 @@ func LookupWorkstationIamPolicyOutput(ctx *pulumi.Context, args LookupWorkstatio
 // A collection of arguments for invoking getWorkstationIamPolicy.
 type LookupWorkstationIamPolicyOutputArgs struct {
 	// The location where the workstation parent resources reside.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

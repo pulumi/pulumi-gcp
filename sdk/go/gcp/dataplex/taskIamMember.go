@@ -289,7 +289,9 @@ type TaskIamMember struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake pulumi.StringOutput `pulumi:"lake"`
 	// The location in which the task will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -362,7 +364,9 @@ type taskIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake *string `pulumi:"lake"`
 	// The location in which the task will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -394,7 +398,9 @@ type TaskIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake pulumi.StringPtrInput
 	// The location in which the task will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -428,7 +434,9 @@ type taskIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake string `pulumi:"lake"`
 	// The location in which the task will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -459,7 +467,9 @@ type TaskIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Lake pulumi.StringInput
 	// The location in which the task will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -586,7 +596,9 @@ func (o TaskIamMemberOutput) Lake() pulumi.StringOutput {
 }
 
 // The location in which the task will be created in.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o TaskIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

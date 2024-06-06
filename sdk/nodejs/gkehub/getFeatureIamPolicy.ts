@@ -35,7 +35,9 @@ export function getFeatureIamPolicy(args: GetFeatureIamPolicyArgs, opts?: pulumi
  */
 export interface GetFeatureIamPolicyArgs {
     /**
-     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -95,7 +97,9 @@ export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, o
  */
 export interface GetFeatureIamPolicyOutputArgs {
     /**
-     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

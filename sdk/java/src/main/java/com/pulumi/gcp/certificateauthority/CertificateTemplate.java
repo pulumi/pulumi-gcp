@@ -13,7 +13,6 @@ import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateState;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplateIdentityConstraints;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePassthroughExtensions;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValues;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,15 +20,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization.  A certificate template can essentially become a full-fledged vertical certificate issuance framework.
+ * Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization. A certificate template can essentially become a full-fledged vertical certificate issuance framework.
  * 
- * For more information, see:
- * * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
- * * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+ * To get more information about CertificateTemplate, see:
+ * 
+ * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+ *     * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+ *     * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+ * 
  * ## Example Usage
  * 
- * ### Basic_certificate_template
- * An example of a basic privateca certificate template
+ * ### Privateca Template Basic
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -61,10 +65,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new CertificateTemplate("primary", CertificateTemplateArgs.builder()
- *             .location("us-west1")
- *             .name("template")
- *             .description("An updated sample certificate template")
+ *         var default_ = new CertificateTemplate("default", CertificateTemplateArgs.builder()
+ *             .name("my-template")
+ *             .location("us-central1")
+ *             .description("A sample certificate template")
  *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
  *                 .allowSubjectAltNamesPassthrough(true)
  *                 .allowSubjectPassthrough(true)
@@ -131,8 +135,7 @@ import javax.annotation.Nullable;
  *                         6)
  *                     .build())
  *                 .build())
- *             .project("my-project-name")
- *             .labels(Map.of("label-two", "value-two"))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
@@ -200,45 +203,45 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Structure is documented below.
      * 
      */
     @Export(name="identityConstraints", refs={CertificateTemplateIdentityConstraints.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplateIdentityConstraints> identityConstraints;
 
     /**
-     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
-     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<CertificateTemplateIdentityConstraints>> identityConstraints() {
         return Codegen.optional(this.identityConstraints);
     }
     /**
-     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-     * resource.
+     * Optional. Labels with user-defined metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-     * resource.
+     * @return Optional. Labels with user-defined metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -247,6 +250,8 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -254,25 +259,21 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-     * lifetime will be explicitly truncated to match it.
+     * Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
      * 
      */
     @Export(name="maximumLifetime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maximumLifetime;
 
     /**
-     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s
-     * IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued.
-     * Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective
-     * lifetime will be explicitly truncated to match it.
+     * @return Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool&#39;s IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate&#39;s requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
      * 
      */
     public Output<Optional<String>> maximumLifetime() {
@@ -293,73 +294,67 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Structure is documented below.
      * 
      */
     @Export(name="passthroughExtensions", refs={CertificateTemplatePassthroughExtensions.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplatePassthroughExtensions> passthroughExtensions;
 
     /**
-     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
-     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
-     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
-     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
-     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<CertificateTemplatePassthroughExtensions>> passthroughExtensions() {
         return Codegen.optional(this.passthroughExtensions);
     }
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-     * certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * Structure is documented below.
      * 
      */
     @Export(name="predefinedValues", refs={CertificateTemplatePredefinedValues.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplatePredefinedValues> predefinedValues;
 
     /**
-     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
-     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
-     * certificate issuance request will fail.
+     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<CertificateTemplatePredefinedValues>> predefinedValues() {
         return Codegen.optional(this.predefinedValues);
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**

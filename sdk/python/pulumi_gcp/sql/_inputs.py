@@ -1692,8 +1692,7 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
         """
         :param pulumi.Input[int] day: Day of week (`1-7`), starting on Monday
         :param pulumi.Input[int] hour: Hour of day (`0-23`), ignored if `day` not set
-        :param pulumi.Input[str] update_track: Receive updates earlier (`canary`) or later
-               (`stable`)
+        :param pulumi.Input[str] update_track: Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -1730,8 +1729,7 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> Optional[pulumi.Input[str]]:
         """
-        Receive updates earlier (`canary`) or later
-        (`stable`)
+        Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         """
         return pulumi.get(self, "update_track")
 

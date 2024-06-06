@@ -23,6 +23,7 @@ class ServiceArgs:
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_uri_disabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -49,6 +50,7 @@ class ServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -84,6 +86,8 @@ class ServiceArgs:
             pulumi.set(__self__, "client_version", client_version)
         if custom_audiences is not None:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
+        if default_uri_disabled is not None:
+            pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ingress is not None:
@@ -193,6 +197,18 @@ class ServiceArgs:
     @custom_audiences.setter
     def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "custom_audiences", value)
+
+    @property
+    @pulumi.getter(name="defaultUriDisabled")
+    def default_uri_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables public resolution of the default URI of this service.
+        """
+        return pulumi.get(self, "default_uri_disabled")
+
+    @default_uri_disabled.setter
+    def default_uri_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_uri_disabled", value)
 
     @property
     @pulumi.getter
@@ -314,6 +330,7 @@ class _ServiceState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_uri_disabled: Optional[pulumi.Input[bool]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -360,6 +377,7 @@ class _ServiceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -425,6 +443,8 @@ class _ServiceState:
             pulumi.set(__self__, "creator", creator)
         if custom_audiences is not None:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
+        if default_uri_disabled is not None:
+            pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
@@ -584,6 +604,18 @@ class _ServiceState:
     @custom_audiences.setter
     def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "custom_audiences", value)
+
+    @property
+    @pulumi.getter(name="defaultUriDisabled")
+    def default_uri_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables public resolution of the default URI of this service.
+        """
+        return pulumi.get(self, "default_uri_disabled")
+
+    @default_uri_disabled.setter
+    def default_uri_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_uri_disabled", value)
 
     @property
     @pulumi.getter(name="deleteTime")
@@ -937,6 +969,7 @@ class Service(pulumi.CustomResource):
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_uri_disabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1373,6 +1406,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -1835,6 +1869,7 @@ class Service(pulumi.CustomResource):
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_uri_disabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1859,6 +1894,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["custom_audiences"] = custom_audiences
+            __props__.__dict__["default_uri_disabled"] = default_uri_disabled
             __props__.__dict__["description"] = description
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["labels"] = labels
@@ -1913,6 +1949,7 @@ class Service(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            default_uri_disabled: Optional[pulumi.Input[bool]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1964,6 +2001,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2025,6 +2063,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["custom_audiences"] = custom_audiences
+        __props__.__dict__["default_uri_disabled"] = default_uri_disabled
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -2126,6 +2165,14 @@ class Service(pulumi.CustomResource):
         https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
+
+    @property
+    @pulumi.getter(name="defaultUriDisabled")
+    def default_uri_disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables public resolution of the default URI of this service.
+        """
+        return pulumi.get(self, "default_uri_disabled")
 
     @property
     @pulumi.getter(name="deleteTime")

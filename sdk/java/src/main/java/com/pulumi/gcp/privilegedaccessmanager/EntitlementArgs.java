@@ -125,14 +125,14 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * @return Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      * 
      */
     public Output<String> parent() {
@@ -355,7 +355,7 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+         * @param parent Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+         * @param parent Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
          * 
          * @return builder
          * 

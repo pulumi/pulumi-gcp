@@ -33,6 +33,7 @@ class ClusterArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None):
@@ -80,6 +81,8 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ClusterPscConfigArgs'] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+               Structure is documented below.
         :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
         :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
@@ -122,6 +125,8 @@ class ClusterArgs:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
         if restore_backup_source is not None:
             pulumi.set(__self__, "restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
@@ -362,6 +367,19 @@ class ClusterArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional[pulumi.Input['ClusterPscConfigArgs']]:
+        """
+        Configuration for Private Service Connect (PSC) for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @psc_config.setter
+    def psc_config(self, value: Optional[pulumi.Input['ClusterPscConfigArgs']]):
+        pulumi.set(self, "psc_config", value)
+
+    @property
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
         """
@@ -428,6 +446,7 @@ class _ClusterState:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
@@ -490,6 +509,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ClusterPscConfigArgs'] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
@@ -555,6 +576,8 @@ class _ClusterState:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reconciling is not None:
@@ -889,6 +912,19 @@ class _ClusterState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional[pulumi.Input['ClusterPscConfigArgs']]:
+        """
+        Configuration for Private Service Connect (PSC) for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @psc_config.setter
+    def psc_config(self, value: Optional[pulumi.Input['ClusterPscConfigArgs']]):
+        pulumi.set(self, "psc_config", value)
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -1001,6 +1037,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
                  secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
@@ -1030,7 +1067,9 @@ class Cluster(pulumi.CustomResource):
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id)
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default_network.id,
+            ))
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Full
@@ -1043,7 +1082,9 @@ class Cluster(pulumi.CustomResource):
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
             location="us-central1",
-            network=default.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default.id,
+            ),
             database_version="POSTGRES_15",
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 user="alloydb-cluster-full",
@@ -1118,7 +1159,9 @@ class Cluster(pulumi.CustomResource):
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
-            network=default.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default.id,
+            ),
             restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
                 backup_name=source_backup.name,
             ))
@@ -1250,6 +1293,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
@@ -1288,7 +1333,9 @@ class Cluster(pulumi.CustomResource):
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id)
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default_network.id,
+            ))
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Full
@@ -1301,7 +1348,9 @@ class Cluster(pulumi.CustomResource):
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
             location="us-central1",
-            network=default.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default.id,
+            ),
             database_version="POSTGRES_15",
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 user="alloydb-cluster-full",
@@ -1376,7 +1425,9 @@ class Cluster(pulumi.CustomResource):
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
-            network=default.id,
+            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
+                network=default.id,
+            ),
             restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
                 backup_name=source_backup.name,
             ))
@@ -1496,6 +1547,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
                  secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
@@ -1529,6 +1581,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_config"] = psc_config
             __props__.__dict__["restore_backup_source"] = restore_backup_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["secondary_config"] = secondary_config
@@ -1579,6 +1632,7 @@ class Cluster(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
@@ -1646,6 +1700,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
@@ -1688,6 +1744,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_config"] = psc_config
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["restore_backup_source"] = restore_backup_source
@@ -1918,6 +1975,15 @@ class Cluster(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> pulumi.Output[Optional['outputs.ClusterPscConfig']]:
+        """
+        Configuration for Private Service Connect (PSC) for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
 
     @property
     @pulumi.getter(name="pulumiLabels")

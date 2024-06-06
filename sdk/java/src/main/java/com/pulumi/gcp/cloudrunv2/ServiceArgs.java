@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -111,6 +112,21 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> customAudiences() {
         return Optional.ofNullable(this.customAudiences);
+    }
+
+    /**
+     * Disables public resolution of the default URI of this service.
+     * 
+     */
+    @Import(name="defaultUriDisabled")
+    private @Nullable Output<Boolean> defaultUriDisabled;
+
+    /**
+     * @return Disables public resolution of the default URI of this service.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultUriDisabled() {
+        return Optional.ofNullable(this.defaultUriDisabled);
     }
 
     /**
@@ -295,6 +311,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.client = $.client;
         this.clientVersion = $.clientVersion;
         this.customAudiences = $.customAudiences;
+        this.defaultUriDisabled = $.defaultUriDisabled;
         this.description = $.description;
         this.ingress = $.ingress;
         this.labels = $.labels;
@@ -456,6 +473,27 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customAudiences(String... customAudiences) {
             return customAudiences(List.of(customAudiences));
+        }
+
+        /**
+         * @param defaultUriDisabled Disables public resolution of the default URI of this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultUriDisabled(@Nullable Output<Boolean> defaultUriDisabled) {
+            $.defaultUriDisabled = defaultUriDisabled;
+            return this;
+        }
+
+        /**
+         * @param defaultUriDisabled Disables public resolution of the default URI of this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultUriDisabled(Boolean defaultUriDisabled) {
+            return defaultUriDisabled(Output.of(defaultUriDisabled));
         }
 
         /**

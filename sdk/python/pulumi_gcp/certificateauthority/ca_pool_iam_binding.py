@@ -43,7 +43,9 @@ class CaPoolIamBindingArgs:
                Structure is documented below.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -124,7 +126,9 @@ class CaPoolIamBindingArgs:
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -164,7 +168,9 @@ class _CaPoolIamBindingState:
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -240,7 +246,9 @@ class _CaPoolIamBindingState:
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -552,7 +560,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -884,7 +894,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -946,7 +958,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

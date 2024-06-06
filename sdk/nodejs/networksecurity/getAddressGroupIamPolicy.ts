@@ -23,7 +23,9 @@ export function getAddressGroupIamPolicy(args: GetAddressGroupIamPolicyArgs, opt
 export interface GetAddressGroupIamPolicyArgs {
     /**
      * The location of the gateway security policy.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -71,7 +73,9 @@ export function getAddressGroupIamPolicyOutput(args: GetAddressGroupIamPolicyOut
 export interface GetAddressGroupIamPolicyOutputArgs {
     /**
      * The location of the gateway security policy.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

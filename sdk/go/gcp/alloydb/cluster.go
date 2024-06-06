@@ -51,7 +51,9 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   defaultNetwork.ID(),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: defaultNetwork.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -88,9 +90,11 @@ import (
 //				return err
 //			}
 //			_, err = alloydb.NewCluster(ctx, "full", &alloydb.ClusterArgs{
-//				ClusterId:       pulumi.String("alloydb-cluster-full"),
-//				Location:        pulumi.String("us-central1"),
-//				Network:         _default.ID(),
+//				ClusterId: pulumi.String("alloydb-cluster-full"),
+//				Location:  pulumi.String("us-central1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: _default.ID(),
+//				},
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					User:     pulumi.String("alloydb-cluster-full"),
@@ -220,7 +224,9 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "restored_from_backup", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-backup-restored"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   pulumi.String(_default.Id),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: pulumi.String(_default.Id),
+//				},
 //				RestoreBackupSource: &alloydb.ClusterRestoreBackupSourceArgs{
 //					BackupName: sourceBackup.Name,
 //				},
@@ -450,6 +456,9 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration for Private Service Connect (PSC) for the cluster.
+	// Structure is documented below.
+	PscConfig ClusterPscConfigPtrOutput `pulumi:"pscConfig"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -591,6 +600,9 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for Private Service Connect (PSC) for the cluster.
+	// Structure is documented below.
+	PscConfig *ClusterPscConfig `pulumi:"pscConfig"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -692,6 +704,9 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for Private Service Connect (PSC) for the cluster.
+	// Structure is documented below.
+	PscConfig ClusterPscConfigPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -779,6 +794,9 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for Private Service Connect (PSC) for the cluster.
+	// Structure is documented below.
+	PscConfig *ClusterPscConfig `pulumi:"pscConfig"`
 	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
@@ -852,6 +870,9 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for Private Service Connect (PSC) for the cluster.
+	// Structure is documented below.
+	PscConfig ClusterPscConfigPtrInput
 	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
@@ -1098,6 +1119,12 @@ func (o ClusterOutput) NetworkConfig() ClusterNetworkConfigOutput {
 // If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration for Private Service Connect (PSC) for the cluster.
+// Structure is documented below.
+func (o ClusterOutput) PscConfig() ClusterPscConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPscConfigPtrOutput { return v.PscConfig }).(ClusterPscConfigPtrOutput)
 }
 
 // The combination of labels configured directly on the resource

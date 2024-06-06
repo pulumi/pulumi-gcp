@@ -148,7 +148,8 @@ type DataTransferConfig struct {
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-	// NOTE: the granularity should be at least 8 hours, or less frequent.
+	// NOTE: The minimum interval time between recurring transfers depends
+	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
@@ -253,7 +254,8 @@ type dataTransferConfigState struct {
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-	// NOTE: the granularity should be at least 8 hours, or less frequent.
+	// NOTE: The minimum interval time between recurring transfers depends
+	// on the data source; refer to the documentation for your data source.
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
@@ -320,7 +322,8 @@ type DataTransferConfigState struct {
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-	// NOTE: the granularity should be at least 8 hours, or less frequent.
+	// NOTE: The minimum interval time between recurring transfers depends
+	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
@@ -385,7 +388,8 @@ type dataTransferConfigArgs struct {
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-	// NOTE: the granularity should be at least 8 hours, or less frequent.
+	// NOTE: The minimum interval time between recurring transfers depends
+	// on the data source; refer to the documentation for your data source.
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
@@ -447,7 +451,8 @@ type DataTransferConfigArgs struct {
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-	// NOTE: the granularity should be at least 8 hours, or less frequent.
+	// NOTE: The minimum interval time between recurring transfers depends
+	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
 	// Structure is documented below.
@@ -633,7 +638,8 @@ func (o DataTransferConfigOutput) Project() pulumi.StringOutput {
 // jun 13:15, and first sunday of quarter 00:00. See more explanation
 // about the format here:
 // https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-// NOTE: the granularity should be at least 8 hours, or less frequent.
+// NOTE: The minimum interval time between recurring transfers depends
+// on the data source; refer to the documentation for your data source.
 func (o DataTransferConfigOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
 }

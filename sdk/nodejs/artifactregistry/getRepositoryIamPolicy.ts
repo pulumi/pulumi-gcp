@@ -36,7 +36,9 @@ export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: 
 export interface GetRepositoryIamPolicyArgs {
     /**
      * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -97,7 +99,9 @@ export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputA
 export interface GetRepositoryIamPolicyOutputArgs {
     /**
      * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

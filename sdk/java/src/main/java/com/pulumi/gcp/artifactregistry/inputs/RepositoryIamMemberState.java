@@ -40,7 +40,9 @@ public final class RepositoryIamMemberState extends com.pulumi.resources.Resourc
 
     /**
      * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
@@ -48,7 +50,9 @@ public final class RepositoryIamMemberState extends com.pulumi.resources.Resourc
 
     /**
      * @return The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
@@ -203,7 +207,9 @@ public final class RepositoryIamMemberState extends com.pulumi.resources.Resourc
 
         /**
          * @param location The name of the location this repository is located in.
-         * Used to find the parent resource to bind the IAM policy to
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -215,7 +221,9 @@ public final class RepositoryIamMemberState extends com.pulumi.resources.Resourc
 
         /**
          * @param location The name of the location this repository is located in.
-         * Used to find the parent resource to bind the IAM policy to
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

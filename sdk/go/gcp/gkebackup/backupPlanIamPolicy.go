@@ -279,7 +279,9 @@ type BackupPlanIamPolicy struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -327,7 +329,9 @@ type backupPlanIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -343,7 +347,9 @@ type BackupPlanIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -361,7 +367,9 @@ func (BackupPlanIamPolicyState) ElementType() reflect.Type {
 
 type backupPlanIamPolicyArgs struct {
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
@@ -376,7 +384,9 @@ type backupPlanIamPolicyArgs struct {
 // The set of arguments for constructing a BackupPlanIamPolicy resource.
 type BackupPlanIamPolicyArgs struct {
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
@@ -481,7 +491,9 @@ func (o BackupPlanIamPolicyOutput) Etag() pulumi.StringOutput {
 }
 
 // The region of the Backup Plan.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o BackupPlanIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

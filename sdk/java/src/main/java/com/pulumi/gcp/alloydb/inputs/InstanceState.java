@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.Boolean;
@@ -294,6 +295,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInstanceConfig")
+    private @Nullable Output<InstancePscInstanceConfigArgs> pscInstanceConfig;
+
+    /**
+     * @return Configuration for Private Service Connect (PSC) for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePscInstanceConfigArgs>> pscInstanceConfig() {
+        return Optional.ofNullable(this.pscInstanceConfig);
+    }
+
+    /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection
      * endpoint for an end-user application.
@@ -443,6 +461,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.machineConfig = $.machineConfig;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
+        this.pscInstanceConfig = $.pscInstanceConfig;
         this.publicIpAddress = $.publicIpAddress;
         this.pulumiLabels = $.pulumiLabels;
         this.queryInsightsConfig = $.queryInsightsConfig;
@@ -834,6 +853,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkConfig(InstanceNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param pscInstanceConfig Configuration for Private Service Connect (PSC) for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInstanceConfig(@Nullable Output<InstancePscInstanceConfigArgs> pscInstanceConfig) {
+            $.pscInstanceConfig = pscInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param pscInstanceConfig Configuration for Private Service Connect (PSC) for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInstanceConfig(InstancePscInstanceConfigArgs pscInstanceConfig) {
+            return pscInstanceConfig(Output.of(pscInstanceConfig));
         }
 
         /**

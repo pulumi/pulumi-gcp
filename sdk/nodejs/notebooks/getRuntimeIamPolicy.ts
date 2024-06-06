@@ -35,7 +35,9 @@ export function getRuntimeIamPolicy(args: GetRuntimeIamPolicyArgs, opts?: pulumi
  */
 export interface GetRuntimeIamPolicyArgs {
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: string;
     /**
@@ -95,7 +97,9 @@ export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, o
  */
 export interface GetRuntimeIamPolicyOutputArgs {
     /**
-     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**

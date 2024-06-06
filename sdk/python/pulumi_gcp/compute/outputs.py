@@ -6354,8 +6354,8 @@ class InstanceConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
             pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -6366,7 +6366,7 @@ class InstanceConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -6374,7 +6374,7 @@ class InstanceConfidentialInstanceConfig(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -10210,7 +10210,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
                  most_disruptive_allowed_action: Optional[str] = None,
                  replacement_method: Optional[str] = None):
         """
-        :param str minimal_action: Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         :param int max_surge_fixed: , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
         :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
@@ -10242,7 +10242,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minimalAction")
     def minimal_action(self) -> str:
         """
-        Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         """
         return pulumi.get(self, "minimal_action")
 
@@ -11882,8 +11882,8 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
             pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -11894,7 +11894,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -11902,7 +11902,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -11992,7 +11992,7 @@ class InstanceTemplateDisk(dict):
                specified, it will inherit the size of its base image. For SCRATCH disks,
                the size must be exactly 375GB.
         :param str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
-               `"pd-balanced"` or `"pd-standard"`.
+               `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
         :param str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -12140,7 +12140,7 @@ class InstanceTemplateDisk(dict):
     def disk_type(self) -> Optional[str]:
         """
         The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
-        `"pd-balanced"` or `"pd-standard"`.
+        `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -20001,7 +20001,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
                  most_disruptive_allowed_action: Optional[str] = None,
                  replacement_method: Optional[str] = None):
         """
-        :param str minimal_action: Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         :param str instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
         :param int max_surge_fixed: , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
@@ -20036,7 +20036,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minimalAction")
     def minimal_action(self) -> str:
         """
-        Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         """
         return pulumi.get(self, "minimal_action")
 
@@ -20305,8 +20305,8 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
             pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -20317,7 +20317,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -20325,7 +20325,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -44259,7 +44259,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
         :param int max_unavailable_fixed: The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
         :param int max_unavailable_percent: The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
         :param int min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
-        :param str minimal_action: Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param str minimal_action: Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
         :param str type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -44318,7 +44318,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
     @pulumi.getter(name="minimalAction")
     def minimal_action(self) -> str:
         """
-        Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         """
         return pulumi.get(self, "minimal_action")
 

@@ -281,7 +281,9 @@ type AspectTypeIamMember struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where aspect type will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -348,7 +350,9 @@ type aspectTypeIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location where aspect type will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -377,7 +381,9 @@ type AspectTypeIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The location where aspect type will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -408,7 +414,9 @@ type aspectTypeIamMemberArgs struct {
 	AspectTypeId string                        `pulumi:"aspectTypeId"`
 	Condition    *AspectTypeIamMemberCondition `pulumi:"condition"`
 	// The location where aspect type will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +444,9 @@ type AspectTypeIamMemberArgs struct {
 	AspectTypeId pulumi.StringInput
 	Condition    AspectTypeIamMemberConditionPtrInput
 	// The location where aspect type will be created in.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -560,7 +570,9 @@ func (o AspectTypeIamMemberOutput) Etag() pulumi.StringOutput {
 }
 
 // The location where aspect type will be created in.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o AspectTypeIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AspectTypeIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

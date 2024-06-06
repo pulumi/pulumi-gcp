@@ -22,6 +22,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * Optional. Describes custom X.509 extensions.
+     * Structure is documented below.
      * 
      */
     @Import(name="additionalExtensions")
@@ -29,6 +30,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * @return Optional. Describes custom X.509 extensions.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateTemplatePredefinedValuesAdditionalExtensionArgs>>> additionalExtensions() {
@@ -52,6 +54,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+     * Structure is documented below.
      * 
      */
     @Import(name="caOptions")
@@ -59,6 +62,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * @return Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePredefinedValuesCaOptionsArgs>> caOptions() {
@@ -67,6 +71,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * Optional. Indicates the intended use for keys that correspond to a certificate.
+     * Structure is documented below.
      * 
      */
     @Import(name="keyUsage")
@@ -74,6 +79,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * @return Optional. Indicates the intended use for keys that correspond to a certificate.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePredefinedValuesKeyUsageArgs>> keyUsage() {
@@ -82,6 +88,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Structure is documented below.
      * 
      */
     @Import(name="policyIds")
@@ -89,6 +96,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
     /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateTemplatePredefinedValuesPolicyIdArgs>>> policyIds() {
@@ -125,6 +133,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -136,6 +145,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -146,6 +156,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -187,6 +198,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param caOptions Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -198,6 +210,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param caOptions Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -208,6 +221,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param keyUsage Optional. Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -219,6 +233,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param keyUsage Optional. Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -229,6 +244,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -240,6 +256,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -250,6 +267,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
 
         /**
          * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
          * 
          * @return builder
          * 

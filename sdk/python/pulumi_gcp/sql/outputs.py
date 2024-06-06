@@ -1774,8 +1774,7 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         """
         :param int day: Day of week (`1-7`), starting on Monday
         :param int hour: Hour of day (`0-23`), ignored if `day` not set
-        :param str update_track: Receive updates earlier (`canary`) or later
-               (`stable`)
+        :param str update_track: Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -1804,8 +1803,7 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> Optional[str]:
         """
-        Receive updates earlier (`canary`) or later
-        (`stable`)
+        Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         """
         return pulumi.get(self, "update_track")
 
@@ -3321,7 +3319,7 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
         """
         :param int day: Day of week (1-7), starting on Monday
         :param int hour: Hour of day (0-23), ignored if day not set
-        :param str update_track: Receive updates earlier (canary) or later (stable)
+        :param str update_track: Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
@@ -3347,7 +3345,7 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
         """
-        Receive updates earlier (canary) or later (stable)
+        Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
         """
         return pulumi.get(self, "update_track")
 
@@ -4807,7 +4805,7 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
         """
         :param int day: Day of week (1-7), starting on Monday
         :param int hour: Hour of day (0-23), ignored if day not set
-        :param str update_track: Receive updates earlier (canary) or later (stable)
+        :param str update_track: Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
@@ -4833,7 +4831,7 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
         """
-        Receive updates earlier (canary) or later (stable)
+        Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
         """
         return pulumi.get(self, "update_track")
 

@@ -18,7 +18,9 @@ public final class GetMetastoreServiceIamPolicyPlainArgs extends com.pulumi.reso
     /**
      * The location where the metastore service should reside.
      * The default value is `global`.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
@@ -27,7 +29,9 @@ public final class GetMetastoreServiceIamPolicyPlainArgs extends com.pulumi.reso
     /**
      * @return The location where the metastore service should reside.
      * The default value is `global`.
-     * Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<String> location() {
@@ -87,7 +91,9 @@ public final class GetMetastoreServiceIamPolicyPlainArgs extends com.pulumi.reso
         /**
          * @param location The location where the metastore service should reside.
          * The default value is `global`.
-         * Used to find the parent resource to bind the IAM policy to
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 

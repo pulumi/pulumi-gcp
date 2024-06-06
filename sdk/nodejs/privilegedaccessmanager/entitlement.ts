@@ -140,7 +140,7 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -282,7 +282,7 @@ export interface EntitlementState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
     parent?: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface EntitlementArgs {
      */
     maxRequestDuration: pulumi.Input<string>;
     /**
-     * Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
+     * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
     parent: pulumi.Input<string>;
     /**

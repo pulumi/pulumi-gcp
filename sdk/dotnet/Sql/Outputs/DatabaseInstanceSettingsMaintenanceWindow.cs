@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int? Hour;
         /// <summary>
-        /// Receive updates earlier (`canary`) or later
-        /// (`stable`)
+        /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         /// </summary>
         public readonly string? UpdateTrack;
 

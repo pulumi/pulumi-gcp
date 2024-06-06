@@ -28,7 +28,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
 // * How-to Guides
-//   - [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+//   - [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
 //
 // ## Example Usage
 //
@@ -156,7 +156,7 @@ type StoragePool struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrOutput `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location.
 	//
@@ -248,7 +248,7 @@ type storagePoolState struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 	Location *string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location.
 	//
@@ -294,7 +294,7 @@ type StoragePoolState struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrInput
-	// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 	Location pulumi.StringPtrInput
 	// The resource name of the storage pool. Needs to be unique per location.
 	//
@@ -340,7 +340,7 @@ type storagePoolArgs struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 	Location string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location.
 	//
@@ -376,7 +376,7 @@ type StoragePoolArgs struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrInput
-	// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 	Location pulumi.StringInput
 	// The resource name of the storage pool. Needs to be unique per location.
 	//
@@ -525,7 +525,7 @@ func (o StoragePoolOutput) LdapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.LdapEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
 func (o StoragePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -141,7 +141,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
      * 
      */
     @Import(name="diskType")
@@ -149,7 +149,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+     * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -590,7 +590,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param diskType The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-         * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+         * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param diskType The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
-         * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
+         * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`, `&#34;hyperdisk-balanced&#34;`, `&#34;hyperdisk-throughput&#34;` or `&#34;hyperdisk-extreme&#34;`.
          * 
          * @return builder
          * 

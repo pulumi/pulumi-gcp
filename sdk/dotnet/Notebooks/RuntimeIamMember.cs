@@ -241,7 +241,9 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -333,7 +335,9 @@ namespace Pulumi.Gcp.Notebooks
         public Input<Inputs.RuntimeIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -393,7 +397,9 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

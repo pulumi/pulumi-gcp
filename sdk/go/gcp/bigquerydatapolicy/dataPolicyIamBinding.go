@@ -281,7 +281,9 @@ type DataPolicyIamBinding struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the location of the data policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -348,7 +350,9 @@ type dataPolicyIamBindingState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the location of the data policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -377,7 +381,9 @@ type DataPolicyIamBindingState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name of the location of the data policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -408,7 +414,9 @@ type dataPolicyIamBindingArgs struct {
 	Condition    *DataPolicyIamBindingCondition `pulumi:"condition"`
 	DataPolicyId string                         `pulumi:"dataPolicyId"`
 	// The name of the location of the data policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +444,9 @@ type DataPolicyIamBindingArgs struct {
 	Condition    DataPolicyIamBindingConditionPtrInput
 	DataPolicyId pulumi.StringInput
 	// The name of the location of the data policy.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -560,7 +570,9 @@ func (o DataPolicyIamBindingOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the location of the data policy.
-// Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o DataPolicyIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicyIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

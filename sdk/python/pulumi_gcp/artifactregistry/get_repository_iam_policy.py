@@ -116,7 +116,9 @@ def get_repository_iam_policy(location: Optional[str] = None,
 
 
     :param str location: The name of the location this repository is located in.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str repository: Used to find the parent resource to bind the IAM policy to
@@ -158,7 +160,9 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
 
 
     :param str location: The name of the location this repository is located in.
-           Used to find the parent resource to bind the IAM policy to
+           Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str repository: Used to find the parent resource to bind the IAM policy to

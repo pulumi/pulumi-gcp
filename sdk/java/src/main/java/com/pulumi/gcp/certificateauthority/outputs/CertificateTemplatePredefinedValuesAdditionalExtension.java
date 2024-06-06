@@ -21,6 +21,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
     private @Nullable Boolean critical;
     /**
      * @return Required. The OID for this X.509 extension.
+     * Structure is documented below.
      * 
      */
     private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
@@ -40,6 +41,7 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
     }
     /**
      * @return Required. The OID for this X.509 extension.
+     * Structure is documented below.
      * 
      */
     public CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId() {

@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_75223"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_41819"});
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_41819",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_75092",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {

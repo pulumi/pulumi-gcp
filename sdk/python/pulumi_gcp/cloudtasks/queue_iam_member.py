@@ -38,7 +38,9 @@ class QueueIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudtasks.QueueIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -103,7 +105,9 @@ class QueueIamMemberArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the queue Used to find the parent resource to bind the IAM policy to
+        The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -150,7 +154,9 @@ class _QueueIamMemberState:
         """
         Input properties used for looking up and filtering QueueIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -209,7 +215,9 @@ class _QueueIamMemberState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the queue Used to find the parent resource to bind the IAM policy to
+        The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -436,7 +444,9 @@ class QueueIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -670,7 +680,9 @@ class QueueIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] location: The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -719,7 +731,9 @@ class QueueIamMember(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location of the queue Used to find the parent resource to bind the IAM policy to
+        The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

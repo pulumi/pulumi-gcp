@@ -52,7 +52,9 @@ func GetServiceIamPolicy(ctx *pulumi.Context, args *GetServiceIamPolicyArgs, opt
 
 // A collection of arguments for invoking getServiceIamPolicy.
 type GetServiceIamPolicyArgs struct {
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -90,7 +92,9 @@ func GetServiceIamPolicyOutput(ctx *pulumi.Context, args GetServiceIamPolicyOutp
 
 // A collection of arguments for invoking getServiceIamPolicy.
 type GetServiceIamPolicyOutputArgs struct {
-	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
+	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

@@ -44,7 +44,9 @@ class AutoscalingPolicyIamBindingArgs:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -124,7 +126,9 @@ class AutoscalingPolicyIamBindingArgs:
         """
         The  location where the autoscaling policy should reside.
         The default value is `global`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -161,7 +165,9 @@ class _AutoscalingPolicyIamBindingState:
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -225,7 +231,9 @@ class _AutoscalingPolicyIamBindingState:
         """
         The  location where the autoscaling policy should reside.
         The default value is `global`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -457,7 +465,9 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -698,7 +708,9 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
-               Used to find the parent resource to bind the IAM policy to
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -752,7 +764,9 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         """
         The  location where the autoscaling policy should reside.
         The default value is `global`.
-        Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 

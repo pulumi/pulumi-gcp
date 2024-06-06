@@ -20,6 +20,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * Describes high-level ways in which a key may be used.
+     * Structure is documented below.
      * 
      */
     @Import(name="baseKeyUsage")
@@ -27,6 +28,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs>> baseKeyUsage() {
@@ -35,6 +37,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * Detailed scenarios in which a key may be used.
+     * Structure is documented below.
      * 
      */
     @Import(name="extendedKeyUsage")
@@ -42,6 +45,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * @return Detailed scenarios in which a key may be used.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs>> extendedKeyUsage() {
@@ -50,6 +54,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+     * Structure is documented below.
      * 
      */
     @Import(name="unknownExtendedKeyUsages")
@@ -57,6 +62,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
     /**
      * @return Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs>>> unknownExtendedKeyUsages() {
@@ -91,6 +97,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param baseKeyUsage Describes high-level ways in which a key may be used.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -102,6 +109,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param baseKeyUsage Describes high-level ways in which a key may be used.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -112,6 +120,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param extendedKeyUsage Detailed scenarios in which a key may be used.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -123,6 +132,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param extendedKeyUsage Detailed scenarios in which a key may be used.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -133,6 +143,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param unknownExtendedKeyUsages Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -144,6 +155,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param unknownExtendedKeyUsages Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -154,6 +166,7 @@ public final class CertificateTemplatePredefinedValuesKeyUsageArgs extends com.p
 
         /**
          * @param unknownExtendedKeyUsages Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+         * Structure is documented below.
          * 
          * @return builder
          * 

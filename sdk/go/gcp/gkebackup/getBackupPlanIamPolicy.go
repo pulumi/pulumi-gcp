@@ -53,7 +53,9 @@ func LookupBackupPlanIamPolicy(ctx *pulumi.Context, args *LookupBackupPlanIamPol
 // A collection of arguments for invoking getBackupPlanIamPolicy.
 type LookupBackupPlanIamPolicyArgs struct {
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name string `pulumi:"name"`
@@ -92,7 +94,9 @@ func LookupBackupPlanIamPolicyOutput(ctx *pulumi.Context, args LookupBackupPlanI
 // A collection of arguments for invoking getBackupPlanIamPolicy.
 type LookupBackupPlanIamPolicyOutputArgs struct {
 	// The region of the Backup Plan.
-	// Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringInput `pulumi:"name"`

@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class CertificateTemplatePredefinedValues {
     /**
      * @return Optional. Describes custom X.509 extensions.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions;
@@ -28,16 +29,19 @@ public final class CertificateTemplatePredefinedValues {
     private @Nullable List<String> aiaOcspServers;
     /**
      * @return Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+     * Structure is documented below.
      * 
      */
     private @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions;
     /**
      * @return Optional. Indicates the intended use for keys that correspond to a certificate.
+     * Structure is documented below.
      * 
      */
     private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
     /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds;
@@ -45,6 +49,7 @@ public final class CertificateTemplatePredefinedValues {
     private CertificateTemplatePredefinedValues() {}
     /**
      * @return Optional. Describes custom X.509 extensions.
+     * Structure is documented below.
      * 
      */
     public List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions() {
@@ -59,6 +64,7 @@ public final class CertificateTemplatePredefinedValues {
     }
     /**
      * @return Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+     * Structure is documented below.
      * 
      */
     public Optional<CertificateTemplatePredefinedValuesCaOptions> caOptions() {
@@ -66,6 +72,7 @@ public final class CertificateTemplatePredefinedValues {
     }
     /**
      * @return Optional. Indicates the intended use for keys that correspond to a certificate.
+     * Structure is documented below.
      * 
      */
     public Optional<CertificateTemplatePredefinedValuesKeyUsage> keyUsage() {
@@ -73,6 +80,7 @@ public final class CertificateTemplatePredefinedValues {
     }
     /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Structure is documented below.
      * 
      */
     public List<CertificateTemplatePredefinedValuesPolicyId> policyIds() {

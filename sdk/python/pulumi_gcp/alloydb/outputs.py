@@ -33,6 +33,7 @@ __all__ = [
     'ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime',
     'ClusterMigrationSource',
     'ClusterNetworkConfig',
+    'ClusterPscConfig',
     'ClusterRestoreBackupSource',
     'ClusterRestoreContinuousBackupSource',
     'ClusterSecondaryConfig',
@@ -41,6 +42,7 @@ __all__ = [
     'InstanceMachineConfig',
     'InstanceNetworkConfig',
     'InstanceNetworkConfigAuthorizedExternalNetwork',
+    'InstancePscInstanceConfig',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
     'GetLocationsLocationResult',
@@ -1193,6 +1195,42 @@ class ClusterNetworkConfig(dict):
 
 
 @pulumi.output_type
+class ClusterPscConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pscEnabled":
+            suggest = "psc_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPscConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPscConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPscConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 psc_enabled: Optional[bool] = None):
+        """
+        :param bool psc_enabled: Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[bool]:
+        """
+        Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+
+@pulumi.output_type
 class ClusterRestoreBackupSource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1530,6 +1568,82 @@ class InstanceNetworkConfigAuthorizedExternalNetwork(dict):
         CIDR range for one authorized network of the instance.
         """
         return pulumi.get(self, "cidr_range")
+
+
+@pulumi.output_type
+class InstancePscInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedConsumerProjects":
+            suggest = "allowed_consumer_projects"
+        elif key == "pscDnsName":
+            suggest = "psc_dns_name"
+        elif key == "serviceAttachmentLink":
+            suggest = "service_attachment_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePscInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePscInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePscInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Optional[Sequence[str]] = None,
+                 psc_dns_name: Optional[str] = None,
+                 service_attachment_link: Optional[str] = None):
+        """
+        :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+               These should be specified as project numbers only.
+        :param str psc_dns_name: (Output)
+               The DNS name of the instance for PSC connectivity.
+               Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        :param str service_attachment_link: (Output)
+               The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+               The name of the resource will be in the format of
+               `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+        """
+        if allowed_consumer_projects is not None:
+            pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if psc_dns_name is not None:
+            pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        if service_attachment_link is not None:
+            pulumi.set(__self__, "service_attachment_link", service_attachment_link)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Optional[Sequence[str]]:
+        """
+        List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        These should be specified as project numbers only.
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscDnsName")
+    def psc_dns_name(self) -> Optional[str]:
+        """
+        (Output)
+        The DNS name of the instance for PSC connectivity.
+        Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        """
+        return pulumi.get(self, "psc_dns_name")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentLink")
+    def service_attachment_link(self) -> Optional[str]:
+        """
+        (Output)
+        The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+        The name of the resource will be in the format of
+        `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+        """
+        return pulumi.get(self, "service_attachment_link")
 
 
 @pulumi.output_type

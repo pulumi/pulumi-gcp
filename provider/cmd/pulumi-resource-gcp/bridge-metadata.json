@@ -965,6 +965,9 @@
                     "network_config": {
                         "maxItemsOne": true
                     },
+                    "psc_config": {
+                        "maxItemsOne": true
+                    },
                     "restore_backup_source": {
                         "maxItemsOne": true
                     },
@@ -998,6 +1001,16 @@
                         "elem": {
                             "fields": {
                                 "authorized_external_networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "psc_instance_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_consumer_projects": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -12865,6 +12878,43 @@
                 "current": "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy",
                 "majorVersion": 7
             },
+            "google_dataplex_entry_type": {
+                "current": "gcp:dataplex/entryType:EntryType",
+                "majorVersion": 7,
+                "fields": {
+                    "required_aspects": {
+                        "maxItemsOne": false
+                    },
+                    "type_aliases": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_entry_type_iam_binding": {
+                "current": "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_entry_type_iam_member": {
+                "current": "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_entry_type_iam_policy": {
+                "current": "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_dataplex_lake": {
                 "current": "gcp:dataplex/lake:Lake",
                 "majorVersion": 7,
@@ -19237,6 +19287,31 @@
             },
             "google_logging_log_view": {
                 "current": "gcp:logging/logView:LogView",
+                "majorVersion": 7
+            },
+            "google_logging_log_view_iam_binding": {
+                "current": "gcp:logging/logViewIamBinding:LogViewIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_logging_log_view_iam_member": {
+                "current": "gcp:logging/logViewIamMember:LogViewIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_logging_log_view_iam_policy": {
+                "current": "gcp:logging/logViewIamPolicy:LogViewIamPolicy",
                 "majorVersion": 7
             },
             "google_logging_metric": {
@@ -28905,6 +28980,10 @@
                 "current": "gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy",
                 "majorVersion": 7
             },
+            "google_dataplex_entry_type_iam_policy": {
+                "current": "gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_dataplex_lake_iam_policy": {
                 "current": "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy",
                 "majorVersion": 7
@@ -29426,6 +29505,10 @@
             },
             "google_logging_folder_settings": {
                 "current": "gcp:logging/getFolderSettings:getFolderSettings",
+                "majorVersion": 7
+            },
+            "google_logging_log_view_iam_policy": {
+                "current": "gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy",
                 "majorVersion": 7
             },
             "google_logging_organization_settings": {
@@ -31059,6 +31142,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_entry_type": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_lake": [
                 "effective_labels",
                 "terraform_labels"
@@ -32084,6 +32171,10 @@
             "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding": 0,
             "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember": 0,
             "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy": 0,
+            "gcp:dataplex/entryType:EntryType": 0,
+            "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding": 0,
+            "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember": 0,
+            "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy": 0,
             "gcp:dataplex/lake:Lake": 0,
             "gcp:dataplex/lakeIamBinding:LakeIamBinding": 0,
             "gcp:dataplex/lakeIamMember:LakeIamMember": 0,
@@ -32327,6 +32418,9 @@
             "gcp:logging/folderSink:FolderSink": 0,
             "gcp:logging/linkedDataset:LinkedDataset": 0,
             "gcp:logging/logView:LogView": 0,
+            "gcp:logging/logViewIamBinding:LogViewIamBinding": 0,
+            "gcp:logging/logViewIamMember:LogViewIamMember": 0,
+            "gcp:logging/logViewIamPolicy:LogViewIamPolicy": 0,
             "gcp:logging/metric:Metric": 0,
             "gcp:logging/organizationBucketConfig:OrganizationBucketConfig": 0,
             "gcp:logging/organizationExclusion:OrganizationExclusion": 0,
@@ -32727,6 +32821,7 @@
             "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy": 0,
             "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy": 0,
             "gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy": 0,
+            "gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy": 0,
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": 0,
             "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": 0,
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": 0,
@@ -32788,6 +32883,7 @@
             "gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext": 0,
             "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy": 0,
             "gcp:logging/getFolderSettings:getFolderSettings": 0,
+            "gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy": 0,
             "gcp:logging/getOrganizationSettings:getOrganizationSettings": 0,
             "gcp:logging/getProjectCmekSettings:getProjectCmekSettings": 0,
             "gcp:logging/getProjectSettings:getProjectSettings": 0,

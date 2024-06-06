@@ -288,7 +288,9 @@ type ConnectionIamBinding struct {
 	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 	// Spanner Connections same as spanner region
 	// AWS allowed regions are aws-us-east-1
-	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -362,7 +364,9 @@ type connectionIamBindingState struct {
 	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 	// Spanner Connections same as spanner region
 	// AWS allowed regions are aws-us-east-1
-	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -398,7 +402,9 @@ type ConnectionIamBindingState struct {
 	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 	// Spanner Connections same as spanner region
 	// AWS allowed regions are aws-us-east-1
-	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -436,7 +442,9 @@ type connectionIamBindingArgs struct {
 	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 	// Spanner Connections same as spanner region
 	// AWS allowed regions are aws-us-east-1
-	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -471,7 +479,9 @@ type ConnectionIamBindingArgs struct {
 	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 	// Spanner Connections same as spanner region
 	// AWS allowed regions are aws-us-east-1
-	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+	// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -602,7 +612,9 @@ func (o ConnectionIamBindingOutput) Etag() pulumi.StringOutput {
 // Examples: US, EU, asia-northeast1, us-central1, europe-west1.
 // Spanner Connections same as spanner region
 // AWS allowed regions are aws-us-east-1
-// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to
+// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o ConnectionIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

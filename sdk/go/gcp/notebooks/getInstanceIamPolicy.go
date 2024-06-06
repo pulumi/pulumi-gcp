@@ -54,7 +54,9 @@ func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyA
 type LookupInstanceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName string `pulumi:"instanceName"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -92,7 +94,9 @@ func LookupInstanceIamPolicyOutput(ctx *pulumi.Context, args LookupInstanceIamPo
 type LookupInstanceIamPolicyOutputArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
