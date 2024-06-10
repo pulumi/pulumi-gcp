@@ -57,6 +57,7 @@ func TestAccTopic(t *testing.T) {
 }
 
 func TestAccBucket(t *testing.T) {
+	t.Skip("Skipping due to high failure rates. See pulumi/pulumi-gcp#1277")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket"),
