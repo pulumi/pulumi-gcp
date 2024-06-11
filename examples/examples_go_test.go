@@ -233,6 +233,28 @@ func TestLabelsCombinationsGo(t *testing.T) {
 			},
 		},
 		{
+			"make label empty",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": "s"},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": ""},
+			},
+		},
+		{
+			"make default label empty",
+			labelsState{
+				DefaultLabels: map[string]string{"x": "s"},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+				Labels:        map[string]string{},
+			},
+		},
+		{
 			"convoluted test case found by random-sampling",
 			labelsState{
 				DefaultLabels: map[string]string{"x": "", "y": "s"},
