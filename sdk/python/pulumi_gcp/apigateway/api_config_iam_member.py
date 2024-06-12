@@ -280,7 +280,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiConfigIamMemberConditionArgs', 'ApiConfigIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -306,10 +306,10 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -348,10 +348,10 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -470,10 +470,10 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -512,10 +512,10 @@ class ApiConfigIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -603,7 +603,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiConfigIamMemberConditionArgs', 'ApiConfigIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -643,7 +643,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[str]] = None,
             api_config: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ApiConfigIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ApiConfigIamMemberConditionArgs', 'ApiConfigIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,

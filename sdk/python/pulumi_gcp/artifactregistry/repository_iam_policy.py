@@ -220,10 +220,10 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -265,10 +265,10 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -381,10 +381,10 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -426,10 +426,10 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],

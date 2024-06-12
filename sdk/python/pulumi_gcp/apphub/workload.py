@@ -423,7 +423,7 @@ class Workload(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[pulumi.InputType['WorkloadAttributesArgs']]] = None,
+                 attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  discovered_workload: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -463,7 +463,7 @@ class Workload(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[pulumi.InputType['WorkloadAttributesArgs']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[str] description: User-defined description of a Workload.
         :param pulumi.Input[str] discovered_workload: Immutable. The resource name of the original discovered workload.
@@ -527,7 +527,7 @@ class Workload(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[pulumi.InputType['WorkloadAttributesArgs']]] = None,
+                 attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  discovered_workload: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -577,7 +577,7 @@ class Workload(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            attributes: Optional[pulumi.Input[pulumi.InputType['WorkloadAttributesArgs']]] = None,
+            attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             discovered_workload: Optional[pulumi.Input[str]] = None,
@@ -589,8 +589,8 @@ class Workload(pulumi.CustomResource):
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             workload_id: Optional[pulumi.Input[str]] = None,
-            workload_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadWorkloadPropertyArgs']]]]] = None,
-            workload_references: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadWorkloadReferenceArgs']]]]] = None) -> 'Workload':
+            workload_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]]] = None,
+            workload_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -599,7 +599,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[pulumi.InputType['WorkloadAttributesArgs']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. Create time.
         :param pulumi.Input[str] description: User-defined description of a Workload.
@@ -616,9 +616,9 @@ class Workload(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadWorkloadPropertyArgs']]]] workload_properties: Properties of an underlying compute resource represented by the Workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]] workload_properties: Properties of an underlying compute resource represented by the Workload.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadWorkloadReferenceArgs']]]] workload_references: Reference of an underlying compute resource represented by the Workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]] workload_references: Reference of an underlying compute resource represented by the Workload.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

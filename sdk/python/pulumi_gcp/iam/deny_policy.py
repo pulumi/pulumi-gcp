@@ -183,7 +183,7 @@ class DenyPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DenyPolicyRuleArgs', 'DenyPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Represents a collection of denial policies to apply to a given resource.
@@ -217,29 +217,29 @@ class DenyPolicy(pulumi.CustomResource):
             name="my-deny-policy",
             display_name="A deny rule",
             rules=[
-                gcp.iam.DenyPolicyRuleArgs(
-                    description="First rule",
-                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
-                        denied_principals=["principalSet://goog/public:all"],
-                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
-                            title="Some expr",
-                            expression="!resource.matchTag('12345678/env', 'test')",
-                        ),
-                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
-                    ),
-                ),
-                gcp.iam.DenyPolicyRuleArgs(
-                    description="Second rule",
-                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
-                        denied_principals=["principalSet://goog/public:all"],
-                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
-                            title="Some expr",
-                            expression="!resource.matchTag('12345678/env', 'test')",
-                        ),
-                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
-                        exception_principals=[test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
-                    ),
-                ),
+                {
+                    "description": "First rule",
+                    "denyRule": {
+                        "deniedPrincipals": ["principalSet://goog/public:all"],
+                        "denialCondition": {
+                            "title": "Some expr",
+                            "expression": "!resource.matchTag('12345678/env', 'test')",
+                        },
+                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                    },
+                },
+                {
+                    "description": "Second rule",
+                    "denyRule": {
+                        "deniedPrincipals": ["principalSet://goog/public:all"],
+                        "denialCondition": {
+                            "title": "Some expr",
+                            "expression": "!resource.matchTag('12345678/env', 'test')",
+                        },
+                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "exceptionPrincipals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    },
+                },
             ])
         ```
 
@@ -260,7 +260,7 @@ class DenyPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DenyPolicyRuleArgs', 'DenyPolicyRuleArgsDict']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         ...
@@ -301,29 +301,29 @@ class DenyPolicy(pulumi.CustomResource):
             name="my-deny-policy",
             display_name="A deny rule",
             rules=[
-                gcp.iam.DenyPolicyRuleArgs(
-                    description="First rule",
-                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
-                        denied_principals=["principalSet://goog/public:all"],
-                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
-                            title="Some expr",
-                            expression="!resource.matchTag('12345678/env', 'test')",
-                        ),
-                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
-                    ),
-                ),
-                gcp.iam.DenyPolicyRuleArgs(
-                    description="Second rule",
-                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
-                        denied_principals=["principalSet://goog/public:all"],
-                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
-                            title="Some expr",
-                            expression="!resource.matchTag('12345678/env', 'test')",
-                        ),
-                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
-                        exception_principals=[test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
-                    ),
-                ),
+                {
+                    "description": "First rule",
+                    "denyRule": {
+                        "deniedPrincipals": ["principalSet://goog/public:all"],
+                        "denialCondition": {
+                            "title": "Some expr",
+                            "expression": "!resource.matchTag('12345678/env', 'test')",
+                        },
+                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                    },
+                },
+                {
+                    "description": "Second rule",
+                    "denyRule": {
+                        "deniedPrincipals": ["principalSet://goog/public:all"],
+                        "denialCondition": {
+                            "title": "Some expr",
+                            "expression": "!resource.matchTag('12345678/env', 'test')",
+                        },
+                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "exceptionPrincipals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    },
+                },
             ])
         ```
 
@@ -357,7 +357,7 @@ class DenyPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DenyPolicyRuleArgs', 'DenyPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +390,7 @@ class DenyPolicy(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None) -> 'DenyPolicy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DenyPolicyRuleArgs', 'DenyPolicyRuleArgsDict']]]]] = None) -> 'DenyPolicy':
         """
         Get an existing DenyPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -402,7 +402,7 @@ class DenyPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DenyPolicyRuleArgs', 'DenyPolicyRuleArgsDict']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

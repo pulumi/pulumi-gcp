@@ -193,10 +193,10 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
                  __props__=None):
         """
         An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
@@ -220,11 +220,11 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
         ```
         ### Folder_policy
         A test of an orgpolicy policy for a folder
@@ -238,12 +238,12 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    deny_all="TRUE",
-                )],
-            ))
+            spec={
+                "inheritFromParent": True,
+                "rules": [{
+                    "denyAll": "TRUE",
+                }],
+            })
         ```
         ### Organization_policy
         A test of an orgpolicy policy for an organization
@@ -254,9 +254,9 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name="organizations/123456789/policies/gcp.detailedAuditLoggingMode",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                reset=True,
-            ))
+            spec={
+                "reset": True,
+            })
         ```
         ### Project_policy
         A test of an orgpolicy policy for a project
@@ -271,25 +271,25 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
-                            description="A sample condition for the policy",
-                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
-                            location="sample-location.log",
-                            title="sample-condition",
-                        ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
-                            allowed_values=["projects/allowed-project"],
-                            denied_values=["projects/denied-project"],
-                        ),
-                    ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        allow_all="TRUE",
-                    ),
+            spec={
+                "rules": [
+                    {
+                        "condition": {
+                            "description": "A sample condition for the policy",
+                            "expression": "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            "location": "sample-location.log",
+                            "title": "sample-condition",
+                        },
+                        "values": {
+                            "allowedValues": ["projects/allowed-project"],
+                            "deniedValues": ["projects/denied-project"],
+                        },
+                    },
+                    {
+                        "allowAll": "TRUE",
+                    },
                 ],
-            ))
+            })
         ```
         ### Dry_run_spec
         ```python
@@ -308,18 +308,18 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ),
-            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
-                inherit_from_parent=False,
-                reset=False,
-                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            },
+            dry_run_spec={
+                "inheritFromParent": False,
+                "reset": False,
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
         ```
 
         ## Import
@@ -335,14 +335,14 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PolicySpecArgs']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
         """
         ...
     @overload
@@ -372,11 +372,11 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
         ```
         ### Folder_policy
         A test of an orgpolicy policy for a folder
@@ -390,12 +390,12 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    deny_all="TRUE",
-                )],
-            ))
+            spec={
+                "inheritFromParent": True,
+                "rules": [{
+                    "denyAll": "TRUE",
+                }],
+            })
         ```
         ### Organization_policy
         A test of an orgpolicy policy for an organization
@@ -406,9 +406,9 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name="organizations/123456789/policies/gcp.detailedAuditLoggingMode",
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                reset=True,
-            ))
+            spec={
+                "reset": True,
+            })
         ```
         ### Project_policy
         A test of an orgpolicy policy for a project
@@ -423,25 +423,25 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
-                            description="A sample condition for the policy",
-                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
-                            location="sample-location.log",
-                            title="sample-condition",
-                        ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
-                            allowed_values=["projects/allowed-project"],
-                            denied_values=["projects/denied-project"],
-                        ),
-                    ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        allow_all="TRUE",
-                    ),
+            spec={
+                "rules": [
+                    {
+                        "condition": {
+                            "description": "A sample condition for the policy",
+                            "expression": "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            "location": "sample-location.log",
+                            "title": "sample-condition",
+                        },
+                        "values": {
+                            "allowedValues": ["projects/allowed-project"],
+                            "deniedValues": ["projects/denied-project"],
+                        },
+                    },
+                    {
+                        "allowAll": "TRUE",
+                    },
                 ],
-            ))
+            })
         ```
         ### Dry_run_spec
         ```python
@@ -460,18 +460,18 @@ class Policy(pulumi.CustomResource):
         primary = gcp.orgpolicy.Policy("primary",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ),
-            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
-                inherit_from_parent=False,
-                reset=False,
-                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            },
+            dry_run_spec={
+                "inheritFromParent": False,
+                "reset": False,
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
         ```
 
         ## Import
@@ -500,10 +500,10 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -530,11 +530,11 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
+            dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None) -> 'Policy':
+            spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -542,7 +542,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
@@ -550,7 +550,7 @@ class Policy(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PolicySpecArgs']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

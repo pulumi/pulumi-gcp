@@ -146,10 +146,10 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)
@@ -185,10 +185,10 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)
@@ -276,10 +276,10 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)
@@ -315,10 +315,10 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)

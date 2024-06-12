@@ -117,7 +117,7 @@ class AccessLevels(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
+                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -145,44 +145,44 @@ class AccessLevels(pulumi.CustomResource):
         access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             access_levels=[
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                require_screen_lock=True,
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_CHROME_OS",
-                                )],
-                            ),
-                            regions=[
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    "title": "chromeos_no_lock",
+                    "basic": {
+                        "conditions": [{
+                            "devicePolicy": {
+                                "requireScreenLock": True,
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_CHROME_OS",
+                                }],
+                            },
+                            "regions": [
                                 "CH",
                                 "IT",
                                 "US",
                             ],
-                        )],
-                    ),
-                ),
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                require_screen_lock=True,
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_MAC",
-                                )],
-                            ),
-                            regions=[
+                        }],
+                    },
+                },
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    "title": "mac_no_lock",
+                    "basic": {
+                        "conditions": [{
+                            "devicePolicy": {
+                                "requireScreenLock": True,
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_MAC",
+                                }],
+                            },
+                            "regions": [
                                 "CH",
                                 "IT",
                                 "US",
                             ],
-                        )],
-                    ),
-                ),
+                        }],
+                    },
+                },
             ])
         ```
 
@@ -206,7 +206,7 @@ class AccessLevels(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
@@ -245,44 +245,44 @@ class AccessLevels(pulumi.CustomResource):
         access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             access_levels=[
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                require_screen_lock=True,
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_CHROME_OS",
-                                )],
-                            ),
-                            regions=[
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    "title": "chromeos_no_lock",
+                    "basic": {
+                        "conditions": [{
+                            "devicePolicy": {
+                                "requireScreenLock": True,
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_CHROME_OS",
+                                }],
+                            },
+                            "regions": [
                                 "CH",
                                 "IT",
                                 "US",
                             ],
-                        )],
-                    ),
-                ),
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                require_screen_lock=True,
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_MAC",
-                                )],
-                            ),
-                            regions=[
+                        }],
+                    },
+                },
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    "title": "mac_no_lock",
+                    "basic": {
+                        "conditions": [{
+                            "devicePolicy": {
+                                "requireScreenLock": True,
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_MAC",
+                                }],
+                            },
+                            "regions": [
                                 "CH",
                                 "IT",
                                 "US",
                             ],
-                        )],
-                    ),
-                ),
+                        }],
+                    },
+                },
             ])
         ```
 
@@ -319,7 +319,7 @@ class AccessLevels(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
+                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -344,7 +344,7 @@ class AccessLevels(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
+            access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]]] = None,
             parent: Optional[pulumi.Input[str]] = None) -> 'AccessLevels':
         """
         Get an existing AccessLevels resource's state with the given name, id, and optional extra
@@ -353,7 +353,7 @@ class AccessLevels(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelsAccessLevelArgs', 'AccessLevelsAccessLevelArgsDict']]]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}

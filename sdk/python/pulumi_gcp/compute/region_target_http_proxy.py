@@ -314,9 +314,9 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="http-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -328,18 +328,18 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             name="url-map",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
             name="test-proxy",
@@ -354,10 +354,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         default_region_url_map = gcp.compute.RegionUrlMap("default",
             region="us-central1",
             name="url-map",
-            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
-                https_redirect=True,
-                strip_query=False,
-            ))
+            default_url_redirect={
+                "httpsRedirect": True,
+                "stripQuery": False,
+            })
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
             name="test-https-redirect-proxy",
@@ -441,9 +441,9 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="http-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -455,18 +455,18 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             name="url-map",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
             name="test-proxy",
@@ -481,10 +481,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         default_region_url_map = gcp.compute.RegionUrlMap("default",
             region="us-central1",
             name="url-map",
-            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
-                https_redirect=True,
-                strip_query=False,
-            ))
+            default_url_redirect={
+                "httpsRedirect": True,
+                "stripQuery": False,
+            })
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
             name="test-https-redirect-proxy",

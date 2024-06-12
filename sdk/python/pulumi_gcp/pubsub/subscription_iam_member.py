@@ -239,7 +239,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['SubscriptionIAMMemberConditionArgs', 'SubscriptionIAMMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -262,10 +262,10 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
@@ -301,10 +301,10 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
@@ -400,10 +400,10 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
@@ -439,10 +439,10 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
@@ -513,7 +513,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['SubscriptionIAMMemberConditionArgs', 'SubscriptionIAMMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -549,7 +549,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['SubscriptionIAMMemberConditionArgs', 'SubscriptionIAMMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,

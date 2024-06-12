@@ -480,13 +480,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+                 network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+                 rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -509,12 +509,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -534,12 +534,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
@@ -547,15 +547,15 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                ),
-            ),
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -575,44 +575,44 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            preconfigured_waf_config=gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs(
-                exclusions=[
-                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
-                        request_uris=[gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs(
-                            operator="STARTS_WITH",
-                            value="/admin",
-                        )],
-                        target_rule_set="rce-stable",
-                    ),
-                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
-                        request_query_params=[
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="CONTAINS",
-                                value="password",
-                            ),
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="STARTS_WITH",
-                                value="freeform",
-                            ),
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="EQUALS",
-                                value="description",
-                            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [
+                    {
+                        "requestUris": [{
+                            "operator": "STARTS_WITH",
+                            "value": "/admin",
+                        }],
+                        "targetRuleSet": "rce-stable",
+                    },
+                    {
+                        "requestQueryParams": [
+                            {
+                                "operator": "CONTAINS",
+                                "value": "password",
+                            },
+                            {
+                                "operator": "STARTS_WITH",
+                                "value": "freeform",
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "value": "description",
+                            },
                         ],
-                        target_rule_set="xss-stable",
-                        target_rule_ids=[
+                        "targetRuleSet": "xss-stable",
+                        "targetRuleIds": [
                             "owasp-crs-v030001-id941330-xss",
                             "owasp-crs-v030001-id941340-xss",
                         ],
-                    ),
+                    },
                 ],
-            ),
+            },
             action="allow",
             preview=True)
         ```
@@ -628,9 +628,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="policyddosprotection",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
             name="edgesecservice",
@@ -642,26 +642,26 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="policyfornetworkmatch",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                name="SIG1_AT_0",
-                base="TCP",
-                offset=8,
-                size=2,
-                mask="0x8F00",
-            )],
+            user_defined_fields=[{
+                "name": "SIG1_AT_0",
+                "base": "TCP",
+                "offset": 8,
+                "size": 2,
+                "mask": "0x8F00",
+            }],
             opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
             priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
-                src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    values=["0x8F00"],
-                )],
-            ),
+            network_match={
+                "srcIpRanges": ["10.10.0.0/16"],
+                "userDefinedFields": [{
+                    "name": "SIG1_AT_0",
+                    "values": ["0x8F00"],
+                }],
+            },
             action="allow",
             preview=True)
         ```
@@ -705,10 +705,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -717,7 +717,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -726,7 +726,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
@@ -759,12 +759,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -784,12 +784,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
@@ -797,15 +797,15 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                ),
-            ),
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -825,44 +825,44 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            preconfigured_waf_config=gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs(
-                exclusions=[
-                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
-                        request_uris=[gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs(
-                            operator="STARTS_WITH",
-                            value="/admin",
-                        )],
-                        target_rule_set="rce-stable",
-                    ),
-                    gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(
-                        request_query_params=[
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="CONTAINS",
-                                value="password",
-                            ),
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="STARTS_WITH",
-                                value="freeform",
-                            ),
-                            gcp.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs(
-                                operator="EQUALS",
-                                value="description",
-                            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [
+                    {
+                        "requestUris": [{
+                            "operator": "STARTS_WITH",
+                            "value": "/admin",
+                        }],
+                        "targetRuleSet": "rce-stable",
+                    },
+                    {
+                        "requestQueryParams": [
+                            {
+                                "operator": "CONTAINS",
+                                "value": "password",
+                            },
+                            {
+                                "operator": "STARTS_WITH",
+                                "value": "freeform",
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "value": "description",
+                            },
                         ],
-                        target_rule_set="xss-stable",
-                        target_rule_ids=[
+                        "targetRuleSet": "xss-stable",
+                        "targetRuleIds": [
                             "owasp-crs-v030001-id941330-xss",
                             "owasp-crs-v030001-id941340-xss",
                         ],
-                    ),
+                    },
                 ],
-            ),
+            },
             action="allow",
             preview=True)
         ```
@@ -878,9 +878,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="policyddosprotection",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
             name="edgesecservice",
@@ -892,26 +892,26 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="policyfornetworkmatch",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                name="SIG1_AT_0",
-                base="TCP",
-                offset=8,
-                size=2,
-                mask="0x8F00",
-            )],
+            user_defined_fields=[{
+                "name": "SIG1_AT_0",
+                "base": "TCP",
+                "offset": 8,
+                "size": 2,
+                "mask": "0x8F00",
+            }],
             opts=pulumi.ResourceOptions(depends_on=[edge_sec_service]))
         policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
             priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
-                src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    values=["0x8F00"],
-                )],
-            ),
+            network_match={
+                "srcIpRanges": ["10.10.0.0/16"],
+                "userDefinedFields": [{
+                    "name": "SIG1_AT_0",
+                    "values": ["0x8F00"],
+                }],
+            },
             action="allow",
             preview=True)
         ```
@@ -963,13 +963,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+                 network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+                 rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1012,13 +1012,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-            network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
-            preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+            match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+            network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+            preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            rate_limit_options: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+            rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             security_policy: Optional[pulumi.Input[str]] = None) -> 'RegionSecurityPolicyRule':
         """
@@ -1035,10 +1035,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -1047,7 +1047,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -1056,7 +1056,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.

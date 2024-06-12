@@ -493,7 +493,7 @@ class Network(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
-            vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArgs']]]]] = None) -> 'Network':
+            vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -513,7 +513,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] type: VMware Engine network type.
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArgs']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
         """

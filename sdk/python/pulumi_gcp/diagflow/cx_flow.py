@@ -487,16 +487,16 @@ class CxFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
                  is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
+                 nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowTransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Flows represents the conversation flows when you build your chatbot agent.
@@ -529,51 +529,51 @@ class CxFlow(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
-            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
-                classification_threshold=0.3,
-                model_type="MODEL_TYPE_STANDARD",
-            ),
+            nlu_settings={
+                "classificationThreshold": 0.3,
+                "modelType": "MODEL_TYPE_STANDARD",
+            },
             event_handlers=[
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="custom-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["I didn't get that. Can you say it again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-match-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["Sorry, could you say that again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-input-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["One more time?"],
-                            ),
-                        )],
-                    ),
-                ),
+                {
+                    "event": "custom-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["I didn't get that. Can you say it again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-match-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["Sorry, could you say that again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-input-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["One more time?"],
+                            },
+                        }],
+                    },
+                },
             ])
         ```
         ### Dialogflowcx Flow Full
@@ -597,9 +597,9 @@ class CxFlow(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         bucket = gcp.storage.Bucket("bucket",
             name="dialogflowcx-bucket",
             location="US",
@@ -608,105 +608,105 @@ class CxFlow(pulumi.CustomResource):
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
-            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
-                classification_threshold=0.3,
-                model_type="MODEL_TYPE_STANDARD",
-            ),
+            nlu_settings={
+                "classificationThreshold": 0.3,
+                "modelType": "MODEL_TYPE_STANDARD",
+            },
             event_handlers=[
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="custom-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["I didn't get that. Can you say it again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-match-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["Sorry, could you say that again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-input-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["One more time?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="another-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=True,
-                        messages=[
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                channel="some-channel",
-                                text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                    texts=["Some text"],
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                conversation_success=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
-                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
-                                    text="some output text",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
-                                    ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                live_agent_handoff=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
-                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                play_audio=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
-                                    audio_uri="http://example.com/some-audio-file.mp3",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                telephony_transfer_call=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
-                                    phone_number="1-234-567-8901",
-                                ),
-                            ),
+                {
+                    "event": "custom-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["I didn't get that. Can you say it again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-match-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["Sorry, could you say that again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-input-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["One more time?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "another-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": True,
+                        "messages": [
+                            {
+                                "channel": "some-channel",
+                                "text": {
+                                    "texts": ["Some text"],
+                                },
+                            },
+                            {
+                                "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            },
+                            {
+                                "conversationSuccess": {
+                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                },
+                            },
+                            {
+                                "outputAudioText": {
+                                    "text": "some output text",
+                                },
+                            },
+                            {
+                                "outputAudioText": {
+                                    "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                },
+                            },
+                            {
+                                "liveAgentHandoff": {
+                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                },
+                            },
+                            {
+                                "playAudio": {
+                                    "audioUri": "http://example.com/some-audio-file.mp3",
+                                },
+                            },
+                            {
+                                "telephonyTransferCall": {
+                                    "phoneNumber": "1-234-567-8901",
+                                },
+                            },
                         ],
-                        set_parameter_actions=[
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="some-param",
-                                value="123.45",
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="another-param",
-                                value=json.dumps("abc"),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="other-param",
-                                value=json.dumps(["foo"]),
-                            ),
+                        "setParameterActions": [
+                            {
+                                "parameter": "some-param",
+                                "value": "123.45",
+                            },
+                            {
+                                "parameter": "another-param",
+                                "value": json.dumps("abc"),
+                            },
+                            {
+                                "parameter": "other-param",
+                                "value": json.dumps(["foo"]),
+                            },
                         ],
-                        conditional_cases=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs(
-                            cases=json.dumps([
+                        "conditionalCases": [{
+                            "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
                                     "caseContent": [
@@ -743,71 +743,71 @@ class CxFlow(pulumi.CustomResource):
                                     }],
                                 },
                             ]),
-                        )],
-                    ),
-                ),
+                        }],
+                    },
+                },
             ],
-            transition_routes=[gcp.diagflow.CxFlowTransitionRouteArgs(
-                condition="true",
-                trigger_fulfillment=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentArgs(
-                    return_partial_responses=True,
-                    messages=[
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            channel="some-channel",
-                            text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs(
-                                texts=["Some text"],
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
-                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
-                                text="some output text",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
-                                ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
-                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
-                                audio_uri="http://example.com/some-audio-file.mp3",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
-                                phone_number="1-234-567-8901",
-                            ),
-                        ),
+            transition_routes=[{
+                "condition": "true",
+                "triggerFulfillment": {
+                    "returnPartialResponses": True,
+                    "messages": [
+                        {
+                            "channel": "some-channel",
+                            "text": {
+                                "texts": ["Some text"],
+                            },
+                        },
+                        {
+                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        },
+                        {
+                            "conversationSuccess": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "outputAudioText": {
+                                "text": "some output text",
+                            },
+                        },
+                        {
+                            "outputAudioText": {
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            },
+                        },
+                        {
+                            "liveAgentHandoff": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "playAudio": {
+                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            },
+                        },
+                        {
+                            "telephonyTransferCall": {
+                                "phoneNumber": "1-234-567-8901",
+                            },
+                        },
                     ],
-                    set_parameter_actions=[
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="some-param",
-                            value="123.45",
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="another-param",
-                            value=json.dumps("abc"),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="other-param",
-                            value=json.dumps(["foo"]),
-                        ),
+                    "setParameterActions": [
+                        {
+                            "parameter": "some-param",
+                            "value": "123.45",
+                        },
+                        {
+                            "parameter": "another-param",
+                            "value": json.dumps("abc"),
+                        },
+                        {
+                            "parameter": "other-param",
+                            "value": json.dumps(["foo"]),
+                        },
                     ],
-                    conditional_cases=[gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs(
-                        cases=json.dumps([
+                    "conditionalCases": [{
+                        "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
                                 "caseContent": [
@@ -844,20 +844,20 @@ class CxFlow(pulumi.CustomResource):
                                 }],
                             },
                         ]),
-                    )],
-                ),
-                target_flow=agent.start_flow,
-            )],
-            advanced_settings=gcp.diagflow.CxFlowAdvancedSettingsArgs(
-                audio_export_gcs_destination=gcp.diagflow.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs(
-                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
-                ),
-                dtmf_settings=gcp.diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs(
-                    enabled=True,
-                    max_digits=1,
-                    finish_digit="#",
-                ),
-            ))
+                    }],
+                },
+                "targetFlow": agent.start_flow,
+            }],
+            advanced_settings={
+                "audioExportGcsDestination": {
+                    "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
+                },
+                "dtmfSettings": {
+                    "enabled": True,
+                    "maxDigits": 1,
+                    "finishDigit": "#",
+                },
+            })
         ```
 
         ## Import
@@ -880,7 +880,7 @@ class CxFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -888,7 +888,7 @@ class CxFlow(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
@@ -903,7 +903,7 @@ class CxFlow(pulumi.CustomResource):
                Flow.transition_routes.trigger_fulfillment.messages
                Flow.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']] nlu_settings: NLU related settings of the flow.
+        :param pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']] nlu_settings: NLU related settings of the flow.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a flow for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -911,7 +911,7 @@ class CxFlow(pulumi.CustomResource):
                They are responsible for matching the user's first utterances in the flow.
                They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowTransitionRouteArgs']]]] transition_routes: A flow's transition routes serve two purposes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]] transition_routes: A flow's transition routes serve two purposes:
                They are responsible for matching the user's first utterances in the flow.
                They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
                TransitionRoutes are evalauted in the following order:
@@ -957,51 +957,51 @@ class CxFlow(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
-            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
-                classification_threshold=0.3,
-                model_type="MODEL_TYPE_STANDARD",
-            ),
+            nlu_settings={
+                "classificationThreshold": 0.3,
+                "modelType": "MODEL_TYPE_STANDARD",
+            },
             event_handlers=[
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="custom-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["I didn't get that. Can you say it again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-match-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["Sorry, could you say that again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-input-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["One more time?"],
-                            ),
-                        )],
-                    ),
-                ),
+                {
+                    "event": "custom-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["I didn't get that. Can you say it again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-match-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["Sorry, could you say that again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-input-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["One more time?"],
+                            },
+                        }],
+                    },
+                },
             ])
         ```
         ### Dialogflowcx Flow Full
@@ -1025,9 +1025,9 @@ class CxFlow(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         bucket = gcp.storage.Bucket("bucket",
             name="dialogflowcx-bucket",
             location="US",
@@ -1036,105 +1036,105 @@ class CxFlow(pulumi.CustomResource):
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
-            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
-                classification_threshold=0.3,
-                model_type="MODEL_TYPE_STANDARD",
-            ),
+            nlu_settings={
+                "classificationThreshold": 0.3,
+                "modelType": "MODEL_TYPE_STANDARD",
+            },
             event_handlers=[
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="custom-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["I didn't get that. Can you say it again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-match-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["Sorry, could you say that again?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="sys.no-input-default",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=False,
-                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                texts=["One more time?"],
-                            ),
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxFlowEventHandlerArgs(
-                    event="another-event",
-                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
-                        return_partial_responses=True,
-                        messages=[
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                channel="some-channel",
-                                text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
-                                    texts=["Some text"],
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                conversation_success=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
-                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
-                                    text="some output text",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
-                                    ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                live_agent_handoff=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
-                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                play_audio=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
-                                    audio_uri="http://example.com/some-audio-file.mp3",
-                                ),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
-                                telephony_transfer_call=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
-                                    phone_number="1-234-567-8901",
-                                ),
-                            ),
+                {
+                    "event": "custom-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["I didn't get that. Can you say it again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-match-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["Sorry, could you say that again?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "sys.no-input-default",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": False,
+                        "messages": [{
+                            "text": {
+                                "texts": ["One more time?"],
+                            },
+                        }],
+                    },
+                },
+                {
+                    "event": "another-event",
+                    "triggerFulfillment": {
+                        "returnPartialResponses": True,
+                        "messages": [
+                            {
+                                "channel": "some-channel",
+                                "text": {
+                                    "texts": ["Some text"],
+                                },
+                            },
+                            {
+                                "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            },
+                            {
+                                "conversationSuccess": {
+                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                },
+                            },
+                            {
+                                "outputAudioText": {
+                                    "text": "some output text",
+                                },
+                            },
+                            {
+                                "outputAudioText": {
+                                    "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                },
+                            },
+                            {
+                                "liveAgentHandoff": {
+                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                },
+                            },
+                            {
+                                "playAudio": {
+                                    "audioUri": "http://example.com/some-audio-file.mp3",
+                                },
+                            },
+                            {
+                                "telephonyTransferCall": {
+                                    "phoneNumber": "1-234-567-8901",
+                                },
+                            },
                         ],
-                        set_parameter_actions=[
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="some-param",
-                                value="123.45",
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="another-param",
-                                value=json.dumps("abc"),
-                            ),
-                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
-                                parameter="other-param",
-                                value=json.dumps(["foo"]),
-                            ),
+                        "setParameterActions": [
+                            {
+                                "parameter": "some-param",
+                                "value": "123.45",
+                            },
+                            {
+                                "parameter": "another-param",
+                                "value": json.dumps("abc"),
+                            },
+                            {
+                                "parameter": "other-param",
+                                "value": json.dumps(["foo"]),
+                            },
                         ],
-                        conditional_cases=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs(
-                            cases=json.dumps([
+                        "conditionalCases": [{
+                            "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
                                     "caseContent": [
@@ -1171,71 +1171,71 @@ class CxFlow(pulumi.CustomResource):
                                     }],
                                 },
                             ]),
-                        )],
-                    ),
-                ),
+                        }],
+                    },
+                },
             ],
-            transition_routes=[gcp.diagflow.CxFlowTransitionRouteArgs(
-                condition="true",
-                trigger_fulfillment=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentArgs(
-                    return_partial_responses=True,
-                    messages=[
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            channel="some-channel",
-                            text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs(
-                                texts=["Some text"],
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
-                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
-                                text="some output text",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
-                                ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
-                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
-                                audio_uri="http://example.com/some-audio-file.mp3",
-                            ),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
-                                phone_number="1-234-567-8901",
-                            ),
-                        ),
+            transition_routes=[{
+                "condition": "true",
+                "triggerFulfillment": {
+                    "returnPartialResponses": True,
+                    "messages": [
+                        {
+                            "channel": "some-channel",
+                            "text": {
+                                "texts": ["Some text"],
+                            },
+                        },
+                        {
+                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        },
+                        {
+                            "conversationSuccess": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "outputAudioText": {
+                                "text": "some output text",
+                            },
+                        },
+                        {
+                            "outputAudioText": {
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            },
+                        },
+                        {
+                            "liveAgentHandoff": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "playAudio": {
+                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            },
+                        },
+                        {
+                            "telephonyTransferCall": {
+                                "phoneNumber": "1-234-567-8901",
+                            },
+                        },
                     ],
-                    set_parameter_actions=[
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="some-param",
-                            value="123.45",
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="another-param",
-                            value=json.dumps("abc"),
-                        ),
-                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
-                            parameter="other-param",
-                            value=json.dumps(["foo"]),
-                        ),
+                    "setParameterActions": [
+                        {
+                            "parameter": "some-param",
+                            "value": "123.45",
+                        },
+                        {
+                            "parameter": "another-param",
+                            "value": json.dumps("abc"),
+                        },
+                        {
+                            "parameter": "other-param",
+                            "value": json.dumps(["foo"]),
+                        },
                     ],
-                    conditional_cases=[gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs(
-                        cases=json.dumps([
+                    "conditionalCases": [{
+                        "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
                                 "caseContent": [
@@ -1272,20 +1272,20 @@ class CxFlow(pulumi.CustomResource):
                                 }],
                             },
                         ]),
-                    )],
-                ),
-                target_flow=agent.start_flow,
-            )],
-            advanced_settings=gcp.diagflow.CxFlowAdvancedSettingsArgs(
-                audio_export_gcs_destination=gcp.diagflow.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs(
-                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
-                ),
-                dtmf_settings=gcp.diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs(
-                    enabled=True,
-                    max_digits=1,
-                    finish_digit="#",
-                ),
-            ))
+                    }],
+                },
+                "targetFlow": agent.start_flow,
+            }],
+            advanced_settings={
+                "audioExportGcsDestination": {
+                    "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
+                },
+                "dtmfSettings": {
+                    "enabled": True,
+                    "maxDigits": 1,
+                    "finishDigit": "#",
+                },
+            })
         ```
 
         ## Import
@@ -1321,16 +1321,16 @@ class CxFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
                  is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
+                 nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowTransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1363,17 +1363,17 @@ class CxFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
+            advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+            event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
             is_default_start_flow: Optional[pulumi.Input[bool]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
+            nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowTransitionRouteArgs']]]]] = None) -> 'CxFlow':
+            transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None) -> 'CxFlow':
         """
         Get an existing CxFlow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1381,7 +1381,7 @@ class CxFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -1389,7 +1389,7 @@ class CxFlow(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
@@ -1406,7 +1406,7 @@ class CxFlow(pulumi.CustomResource):
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the flow.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        :param pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']] nlu_settings: NLU related settings of the flow.
+        :param pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']] nlu_settings: NLU related settings of the flow.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a flow for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -1414,7 +1414,7 @@ class CxFlow(pulumi.CustomResource):
                They are responsible for matching the user's first utterances in the flow.
                They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowTransitionRouteArgs']]]] transition_routes: A flow's transition routes serve two purposes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]] transition_routes: A flow's transition routes serve two purposes:
                They are responsible for matching the user's first utterances in the flow.
                They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
                TransitionRoutes are evalauted in the following order:

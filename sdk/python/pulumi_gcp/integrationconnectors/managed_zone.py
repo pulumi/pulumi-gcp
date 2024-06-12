@@ -397,11 +397,11 @@ class ManagedZone(pulumi.CustomResource):
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network.id,
-                )],
-            ),
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network.id,
+                }],
+            },
             opts=pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",
@@ -507,11 +507,11 @@ class ManagedZone(pulumi.CustomResource):
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network.id,
-                )],
-            ),
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network.id,
+                }],
+            },
             opts=pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",

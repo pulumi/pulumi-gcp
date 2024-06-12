@@ -419,11 +419,11 @@ class MembershipBinding(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_39249",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[primary]))
         scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_74391")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
@@ -515,11 +515,11 @@ class MembershipBinding(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_39249",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[primary]))
         scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_74391")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
@@ -637,7 +637,7 @@ class MembershipBinding(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'MembershipBinding':
         """
@@ -667,7 +667,7 @@ class MembershipBinding(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]] states: State of the membership binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]] states: State of the membership binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.

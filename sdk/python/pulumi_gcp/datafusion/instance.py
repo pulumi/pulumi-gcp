@@ -957,18 +957,18 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
-                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
+                 crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
-                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
+                 event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1026,14 +1026,14 @@ class Instance(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -1056,9 +1056,9 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -1084,10 +1084,10 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 
@@ -1134,11 +1134,11 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]] accelerators: List of accelerators enabled for this CDF instance.
                If accelerators are enabled it is possible a permadiff will be created with the Options field.
                Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        :param pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
@@ -1146,7 +1146,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
+        :param pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']] event_publish_config: Option to enable and pass metadata for event publishing.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
@@ -1154,7 +1154,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
@@ -1235,14 +1235,14 @@ class Instance(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -1265,9 +1265,9 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -1293,10 +1293,10 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 
@@ -1356,18 +1356,18 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
-                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
+                 crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
-                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
+                 event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1429,10 +1429,10 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
+            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
             api_endpoint: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
+            crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
             dataproc_service_account: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -1440,11 +1440,11 @@ class Instance(pulumi.CustomResource):
             enable_rbac: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
-            event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
+            event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             p4_service_account: Optional[pulumi.Input[str]] = None,
             private_instance: Optional[pulumi.Input[bool]] = None,
@@ -1467,13 +1467,13 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]] accelerators: List of accelerators enabled for this CDF instance.
                If accelerators are enabled it is possible a permadiff will be created with the Options field.
                Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
                Structure is documented below.
         :param pulumi.Input[str] api_endpoint: Endpoint on which the REST APIs is accessible.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-        :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        :param pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
@@ -1482,7 +1482,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
+        :param pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']] event_publish_config: Option to enable and pass metadata for event publishing.
                Structure is documented below.
         :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket generated by Data Fusion in the customer project.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
@@ -1491,7 +1491,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[str] p4_service_account: P4 service account for the customer project.

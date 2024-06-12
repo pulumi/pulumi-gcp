@@ -396,7 +396,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['RegionPerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  region_instance_group_manager: Optional[pulumi.Input[str]] = None,
@@ -432,33 +432,33 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": my_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
                     "userinfo-email",
                     "compute-ro",
                     "storage-ro",
                 ],
-            ))
+            })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             description="Demo test instance group manager",
             name="my-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
-            update_policy=gcp.compute.RegionInstanceGroupManagerUpdatePolicyArgs(
-                type="OPPORTUNISTIC",
-                instance_redistribution_type="NONE",
-                minimal_action="RESTART",
-            ),
+            versions=[{
+                "name": "prod",
+                "instanceTemplate": igm_basic.self_link,
+            }],
+            update_policy={
+                "type": "OPPORTUNISTIC",
+                "instanceRedistributionType": "NONE",
+                "minimalAction": "RESTART",
+            },
             base_instance_name="rigm",
             region="us-central1",
             target_size=2)
@@ -472,17 +472,17 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             region=igm["region"],
             region_instance_group_manager=rigm.name,
             name="instance-1",
-            preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
-                metadata={
+            preserved_state={
+                "metadata": {
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.RegionPerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
+                "disks": [{
+                    "deviceName": "my-stateful-disk",
+                    "source": default.id,
+                    "mode": "READ_ONLY",
+                }],
+            })
         ```
 
         ## Import
@@ -530,7 +530,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['RegionPerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -580,33 +580,33 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": my_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
                     "userinfo-email",
                     "compute-ro",
                     "storage-ro",
                 ],
-            ))
+            })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             description="Demo test instance group manager",
             name="my-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
-            update_policy=gcp.compute.RegionInstanceGroupManagerUpdatePolicyArgs(
-                type="OPPORTUNISTIC",
-                instance_redistribution_type="NONE",
-                minimal_action="RESTART",
-            ),
+            versions=[{
+                "name": "prod",
+                "instanceTemplate": igm_basic.self_link,
+            }],
+            update_policy={
+                "type": "OPPORTUNISTIC",
+                "instanceRedistributionType": "NONE",
+                "minimalAction": "RESTART",
+            },
             base_instance_name="rigm",
             region="us-central1",
             target_size=2)
@@ -620,17 +620,17 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             region=igm["region"],
             region_instance_group_manager=rigm.name,
             name="instance-1",
-            preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
-                metadata={
+            preserved_state={
+                "metadata": {
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.RegionPerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
+                "disks": [{
+                    "deviceName": "my-stateful-disk",
+                    "source": default.id,
+                    "mode": "READ_ONLY",
+                }],
+            })
         ```
 
         ## Import
@@ -681,7 +681,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['RegionPerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  region_instance_group_manager: Optional[pulumi.Input[str]] = None,
@@ -720,7 +720,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             minimal_action: Optional[pulumi.Input[str]] = None,
             most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preserved_state: Optional[pulumi.Input[pulumi.InputType['RegionPerInstanceConfigPreservedStateArgs']]] = None,
+            preserved_state: Optional[pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             region_instance_group_manager: Optional[pulumi.Input[str]] = None,
@@ -746,7 +746,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['RegionPerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

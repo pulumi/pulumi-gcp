@@ -403,8 +403,8 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
-                 feature_settings: Optional[pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['ApplicationIapArgs']]] = None,
+                 feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
+                 iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
@@ -453,8 +453,8 @@ class Application(pulumi.CustomResource):
                To create a Cloud Firestore database without creating an App Engine application, use the
                `firestore.Database`
                resource instead.
-        :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
-        :param pulumi.Input[pulumi.InputType['ApplicationIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']] feature_settings: A block of optional settings to configure specific App Engine features:
+        :param pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] project: The project ID to create the application under.
@@ -520,8 +520,8 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
-                 feature_settings: Optional[pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['ApplicationIapArgs']]] = None,
+                 feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
+                 iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
@@ -566,14 +566,14 @@ class Application(pulumi.CustomResource):
             database_type: Optional[pulumi.Input[str]] = None,
             default_bucket: Optional[pulumi.Input[str]] = None,
             default_hostname: Optional[pulumi.Input[str]] = None,
-            feature_settings: Optional[pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']]] = None,
+            feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
             gcr_domain: Optional[pulumi.Input[str]] = None,
-            iap: Optional[pulumi.Input[pulumi.InputType['ApplicationIapArgs']]] = None,
+            iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             serving_status: Optional[pulumi.Input[str]] = None,
-            url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]]] = None) -> 'Application':
+            url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,9 +592,9 @@ class Application(pulumi.CustomResource):
                resource instead.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
-        :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
+        :param pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[str] gcr_domain: The GCR domain used for storing managed Docker images for this app.
-        :param pulumi.Input[pulumi.InputType['ApplicationIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] name: Unique name of the app, usually `apps/{PROJECT_ID}`
@@ -602,7 +602,7 @@ class Application(pulumi.CustomResource):
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

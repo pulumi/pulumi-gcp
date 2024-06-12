@@ -437,7 +437,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[str]] = None,
-            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArgs']]]]] = None,
+            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             file: Optional[pulumi.Input[str]] = None,
             filehash: Optional[pulumi.Input[str]] = None,
@@ -453,7 +453,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias: Alias Name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesPkcs12CertsInfoArgs']]]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content

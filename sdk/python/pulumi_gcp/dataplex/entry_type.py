@@ -479,7 +479,7 @@ class EntryType(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryTypeRequiredAspectArgs']]]]] = None,
+                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
                  system: Optional[pulumi.Input[str]] = None,
                  type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -549,9 +549,9 @@ class EntryType(pulumi.CustomResource):
             ],
             platform="GCS",
             system="CloudSQL",
-            required_aspects=[gcp.dataplex.EntryTypeRequiredAspectArgs(
-                type=test_entry_type_full.name,
-            )])
+            required_aspects=[{
+                "type": test_entry_type_full.name,
+            }])
         ```
 
         ## Import
@@ -591,7 +591,7 @@ class EntryType(pulumi.CustomResource):
         :param pulumi.Input[str] platform: The platform that Entries of this type belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryTypeRequiredAspectArgs']]]] required_aspects: AspectInfo for the entry type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[str] system: The system that Entries of this type belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] type_aliases: Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
@@ -668,9 +668,9 @@ class EntryType(pulumi.CustomResource):
             ],
             platform="GCS",
             system="CloudSQL",
-            required_aspects=[gcp.dataplex.EntryTypeRequiredAspectArgs(
-                type=test_entry_type_full.name,
-            )])
+            required_aspects=[{
+                "type": test_entry_type_full.name,
+            }])
         ```
 
         ## Import
@@ -719,7 +719,7 @@ class EntryType(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryTypeRequiredAspectArgs']]]]] = None,
+                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
                  system: Optional[pulumi.Input[str]] = None,
                  type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -770,7 +770,7 @@ class EntryType(pulumi.CustomResource):
             platform: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryTypeRequiredAspectArgs']]]]] = None,
+            required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
             system: Optional[pulumi.Input[str]] = None,
             type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -798,7 +798,7 @@ class EntryType(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryTypeRequiredAspectArgs']]]] required_aspects: AspectInfo for the entry type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[str] system: The system that Entries of this type belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] type_aliases: Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.

@@ -655,7 +655,7 @@ class VolumeReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_destination_volume: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']]] = None,
+                 destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
                  force_stopping: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -702,12 +702,12 @@ class VolumeReplication(pulumi.CustomResource):
             name="test-replication",
             replication_schedule="EVERY_10_MINUTES",
             description="This is a replication resource",
-            destination_volume_parameters=gcp.netapp.VolumeReplicationDestinationVolumeParametersArgs(
-                storage_pool=destination_pool.id,
-                volume_id="destination-volume",
-                share_name="source-volume",
-                description="This is a replicated volume",
-            ),
+            destination_volume_parameters={
+                "storagePool": destination_pool.id,
+                "volumeId": "destination-volume",
+                "shareName": "source-volume",
+                "description": "This is a replicated volume",
+            },
             delete_destination_volume=True,
             wait_for_mirror=True,
             opts=pulumi.ResourceOptions(depends_on=[source_volume]))
@@ -740,7 +740,7 @@ class VolumeReplication(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An description of this resource.
-        :param pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']] destination_volume_parameters: Destination volume parameters.
+        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
         :param pulumi.Input[bool] force_stopping: Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
                currently receives an update and stopping the update might be undesirable. Set this parameter to true
@@ -807,12 +807,12 @@ class VolumeReplication(pulumi.CustomResource):
             name="test-replication",
             replication_schedule="EVERY_10_MINUTES",
             description="This is a replication resource",
-            destination_volume_parameters=gcp.netapp.VolumeReplicationDestinationVolumeParametersArgs(
-                storage_pool=destination_pool.id,
-                volume_id="destination-volume",
-                share_name="source-volume",
-                description="This is a replicated volume",
-            ),
+            destination_volume_parameters={
+                "storagePool": destination_pool.id,
+                "volumeId": "destination-volume",
+                "shareName": "source-volume",
+                "description": "This is a replicated volume",
+            },
             delete_destination_volume=True,
             wait_for_mirror=True,
             opts=pulumi.ResourceOptions(depends_on=[source_volume]))
@@ -859,7 +859,7 @@ class VolumeReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_destination_volume: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']]] = None,
+                 destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
                  force_stopping: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -923,7 +923,7 @@ class VolumeReplication(pulumi.CustomResource):
             delete_destination_volume: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination_volume: Optional[pulumi.Input[str]] = None,
-            destination_volume_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']]] = None,
+            destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_stopping: Optional[pulumi.Input[bool]] = None,
             healthy: Optional[pulumi.Input[bool]] = None,
@@ -939,7 +939,7 @@ class VolumeReplication(pulumi.CustomResource):
             source_volume: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_details: Optional[pulumi.Input[str]] = None,
-            transfer_stats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeReplicationTransferStatArgs']]]]] = None,
+            transfer_stats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]]] = None,
             volume_name: Optional[pulumi.Input[str]] = None,
             wait_for_mirror: Optional[pulumi.Input[bool]] = None) -> 'VolumeReplication':
         """
@@ -952,7 +952,7 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] description: An description of this resource.
         :param pulumi.Input[str] destination_volume: Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
-        :param pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']] destination_volume_parameters: Destination volume parameters.
+        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_stopping: Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
@@ -991,7 +991,7 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[str] source_volume: Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         :param pulumi.Input[str] state: Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
         :param pulumi.Input[str] state_details: State details of the replication resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeReplicationTransferStatArgs']]]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
                Structure is documented below.
         :param pulumi.Input[str] volume_name: The name of the existing source volume.
         """

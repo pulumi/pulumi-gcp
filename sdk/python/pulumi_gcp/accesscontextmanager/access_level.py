@@ -260,8 +260,8 @@ class AccessLevel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+                 basic: Optional[pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -298,21 +298,21 @@ class AccessLevel(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -329,9 +329,9 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -382,21 +382,21 @@ class AccessLevel(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -426,8 +426,8 @@ class AccessLevel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+                 basic: Optional[pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -461,8 +461,8 @@ class AccessLevel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-            custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+            basic: Optional[pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
+            custom: Optional[pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
@@ -474,9 +474,9 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.

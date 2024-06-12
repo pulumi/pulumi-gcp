@@ -362,14 +362,14 @@ class AndroidApp(pulumi.CustomResource):
             name="api-key",
             display_name="Display Name",
             project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="android.package.app",
-                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
-                    )],
-                ),
-            ))
+            restrictions={
+                "androidKeyRestrictions": {
+                    "allowedApplications": [{
+                        "packageName": "android.package.app",
+                        "sha1Fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    }],
+                },
+            })
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Display Name",
@@ -463,14 +463,14 @@ class AndroidApp(pulumi.CustomResource):
             name="api-key",
             display_name="Display Name",
             project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="android.package.app",
-                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
-                    )],
-                ),
-            ))
+            restrictions={
+                "androidKeyRestrictions": {
+                    "allowedApplications": [{
+                        "packageName": "android.package.app",
+                        "sha1Fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    }],
+                },
+            })
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Display Name",

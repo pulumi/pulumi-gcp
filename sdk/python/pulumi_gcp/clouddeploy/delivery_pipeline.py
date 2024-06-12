@@ -455,7 +455,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+                 serial_pipeline: Optional[pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -474,27 +474,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -515,27 +515,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -556,27 +556,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -597,27 +597,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -638,27 +638,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -710,7 +710,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         ...
@@ -735,27 +735,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -776,27 +776,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -817,27 +817,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -858,27 +858,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -899,27 +899,27 @@ class DeliveryPipeline(pulumi.CustomResource):
             name="pipeline",
             description="basic description",
             project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
+            serial_pipeline={
+                "stages": [
+                    {
+                        "deployParameters": [{
+                            "values": {
                                 "deployParameterKey": "deployParameterValue",
                             },
-                            match_target_labels={},
-                        )],
-                        profiles=[
+                            "matchTargetLabels": {},
+                        }],
+                        "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
+                        "targetId": "example-target-one",
+                    },
+                    {
+                        "profiles": [],
+                        "targetId": "example-target-two",
+                    },
                 ],
-            ),
+            },
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
@@ -975,7 +975,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+                 serial_pipeline: Optional[pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1017,7 +1017,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1028,7 +1028,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+            serial_pipeline: Optional[pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'DeliveryPipeline':
@@ -1043,7 +1043,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1059,7 +1059,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.

@@ -117,18 +117,18 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
     my_password = gcp.kms.get_kms_secret_ciphertext(crypto_key=my_crypto_key["id"],
         plaintext="my-secret-password")
     instance = gcp.compute.Instance("instance",
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            network="default",
-        )],
+        network_interfaces=[{
+            "accessConfigs": [{}],
+            "network": "default",
+        }],
         name="test",
         machine_type="e2-medium",
         zone="us-central1-a",
-        boot_disk=gcp.compute.InstanceBootDiskArgs(
-            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                image="debian-cloud/debian-11",
-            ),
-        ),
+        boot_disk={
+            "initializeParams": {
+                "image": "debian-cloud/debian-11",
+            },
+        },
         metadata={
             "password": my_password.ciphertext,
         })
@@ -200,18 +200,18 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
     my_password = gcp.kms.get_kms_secret_ciphertext(crypto_key=my_crypto_key["id"],
         plaintext="my-secret-password")
     instance = gcp.compute.Instance("instance",
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            network="default",
-        )],
+        network_interfaces=[{
+            "accessConfigs": [{}],
+            "network": "default",
+        }],
         name="test",
         machine_type="e2-medium",
         zone="us-central1-a",
-        boot_disk=gcp.compute.InstanceBootDiskArgs(
-            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                image="debian-cloud/debian-11",
-            ),
-        ),
+        boot_disk={
+            "initializeParams": {
+                "image": "debian-cloud/debian-11",
+            },
+        },
         metadata={
             "password": my_password.ciphertext,
         })

@@ -440,12 +440,12 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -461,56 +461,56 @@ class WorkflowTemplate(pulumi.CustomResource):
         template = gcp.dataproc.WorkflowTemplate("template",
             name="template-example",
             location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
-                    cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
-                            zone="us-central1-a",
-                            tags=[
+            placement={
+                "managedCluster": {
+                    "clusterName": "my-cluster",
+                    "config": {
+                        "gceClusterConfig": {
+                            "zone": "us-central1-a",
+                            "tags": [
                                 "foo",
                                 "bar",
                             ],
-                        ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            num_instances=1,
-                            machine_type="n1-standard-1",
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_type="pd-ssd",
-                                boot_disk_size_gb=15,
-                            ),
-                        ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            num_instances=3,
-                            machine_type="n1-standard-2",
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                        ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
-                            num_instances=2,
-                        ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
-                            image_version="2.0.35-debian10",
-                        ),
-                    ),
-                ),
-            ),
+                        },
+                        "masterConfig": {
+                            "numInstances": 1,
+                            "machineType": "n1-standard-1",
+                            "diskConfig": {
+                                "bootDiskType": "pd-ssd",
+                                "bootDiskSizeGb": 15,
+                            },
+                        },
+                        "workerConfig": {
+                            "numInstances": 3,
+                            "machineType": "n1-standard-2",
+                            "diskConfig": {
+                                "bootDiskSizeGb": 10,
+                                "numLocalSsds": 2,
+                            },
+                        },
+                        "secondaryWorkerConfig": {
+                            "numInstances": 2,
+                        },
+                        "softwareConfig": {
+                            "imageVersion": "2.0.35-debian10",
+                        },
+                    },
+                },
+            },
             jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    step_id="someJob",
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    step_id="otherJob",
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                ),
+                {
+                    "stepId": "someJob",
+                    "sparkJob": {
+                        "mainClass": "SomeClass",
+                    },
+                },
+                {
+                    "stepId": "otherJob",
+                    "prerequisiteStepIds": ["someJob"],
+                    "prestoJob": {
+                        "queryFileUri": "someuri",
+                    },
+                },
             ])
         ```
 
@@ -547,7 +547,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
                1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
@@ -556,9 +556,9 @@ class WorkflowTemplate(pulumi.CustomResource):
                configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
                when the template is instantiated.
-        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
@@ -580,56 +580,56 @@ class WorkflowTemplate(pulumi.CustomResource):
         template = gcp.dataproc.WorkflowTemplate("template",
             name="template-example",
             location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
-                    cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
-                            zone="us-central1-a",
-                            tags=[
+            placement={
+                "managedCluster": {
+                    "clusterName": "my-cluster",
+                    "config": {
+                        "gceClusterConfig": {
+                            "zone": "us-central1-a",
+                            "tags": [
                                 "foo",
                                 "bar",
                             ],
-                        ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            num_instances=1,
-                            machine_type="n1-standard-1",
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_type="pd-ssd",
-                                boot_disk_size_gb=15,
-                            ),
-                        ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            num_instances=3,
-                            machine_type="n1-standard-2",
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                        ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
-                            num_instances=2,
-                        ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
-                            image_version="2.0.35-debian10",
-                        ),
-                    ),
-                ),
-            ),
+                        },
+                        "masterConfig": {
+                            "numInstances": 1,
+                            "machineType": "n1-standard-1",
+                            "diskConfig": {
+                                "bootDiskType": "pd-ssd",
+                                "bootDiskSizeGb": 15,
+                            },
+                        },
+                        "workerConfig": {
+                            "numInstances": 3,
+                            "machineType": "n1-standard-2",
+                            "diskConfig": {
+                                "bootDiskSizeGb": 10,
+                                "numLocalSsds": 2,
+                            },
+                        },
+                        "secondaryWorkerConfig": {
+                            "numInstances": 2,
+                        },
+                        "softwareConfig": {
+                            "imageVersion": "2.0.35-debian10",
+                        },
+                    },
+                },
+            },
             jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    step_id="someJob",
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    step_id="otherJob",
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                ),
+                {
+                    "stepId": "someJob",
+                    "sparkJob": {
+                        "mainClass": "SomeClass",
+                    },
+                },
+                {
+                    "stepId": "otherJob",
+                    "prerequisiteStepIds": ["someJob"],
+                    "prestoJob": {
+                        "queryFileUri": "someuri",
+                    },
+                },
             ])
         ```
 
@@ -673,12 +673,12 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -724,12 +724,12 @@ class WorkflowTemplate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             dag_timeout: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+            jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-            placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+            placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -749,7 +749,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
                1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
@@ -758,9 +758,9 @@ class WorkflowTemplate(pulumi.CustomResource):
                configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
                when the template is instantiated.
-        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.

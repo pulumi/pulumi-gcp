@@ -176,9 +176,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
@@ -189,17 +189,17 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=["US"],
-                )],
-            ))
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": ["US"],
+                }],
+            })
         gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
             organization_id="123456789",
             group_key=std.trimprefix_output(input=group.id,
@@ -253,9 +253,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
@@ -266,17 +266,17 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=["US"],
-                )],
-            ))
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": ["US"],
+                }],
+            })
         gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
             organization_id="123456789",
             group_key=std.trimprefix_output(input=group.id,

@@ -349,13 +349,13 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_stream: Optional[pulumi.Input[pulumi.InputType['TransferJobEventStreamArgs']]] = None,
+                 event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None,
+                 transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Transfer Job in Google Cloud Storage Transfer.
@@ -394,53 +394,53 @@ class TransferJob(pulumi.CustomResource):
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
             project=project,
-            transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
-                object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
-                    max_time_elapsed_since_last_modification="600s",
-                    exclude_prefixes=["requests.gz"],
-                ),
-                transfer_options=gcp.storage.TransferJobTransferSpecTransferOptionsArgs(
-                    delete_objects_unique_in_sink=False,
-                ),
-                aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=aws_s3_bucket,
-                    aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=aws_access_key,
-                        secret_access_key=aws_secret_key,
-                    ),
-                ),
-                gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket.name,
-                    path="foo/bar/",
-                ),
-            ),
-            schedule=gcp.storage.TransferJobScheduleArgs(
-                schedule_start_date=gcp.storage.TransferJobScheduleScheduleStartDateArgs(
-                    year=2018,
-                    month=10,
-                    day=1,
-                ),
-                schedule_end_date=gcp.storage.TransferJobScheduleScheduleEndDateArgs(
-                    year=2019,
-                    month=1,
-                    day=15,
-                ),
-                start_time_of_day=gcp.storage.TransferJobScheduleStartTimeOfDayArgs(
-                    hours=23,
-                    minutes=30,
-                    seconds=0,
-                    nanos=0,
-                ),
-                repeat_interval="604800s",
-            ),
-            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                event_types=[
+            transfer_spec={
+                "objectConditions": {
+                    "maxTimeElapsedSinceLastModification": "600s",
+                    "excludePrefixes": ["requests.gz"],
+                },
+                "transferOptions": {
+                    "deleteObjectsUniqueInSink": False,
+                },
+                "awsS3DataSource": {
+                    "bucketName": aws_s3_bucket,
+                    "awsAccessKey": {
+                        "accessKeyId": aws_access_key,
+                        "secretAccessKey": aws_secret_key,
+                    },
+                },
+                "gcsDataSink": {
+                    "bucketName": s3_backup_bucket.name,
+                    "path": "foo/bar/",
+                },
+            },
+            schedule={
+                "scheduleStartDate": {
+                    "year": 2018,
+                    "month": 10,
+                    "day": 1,
+                },
+                "scheduleEndDate": {
+                    "year": 2019,
+                    "month": 1,
+                    "day": 15,
+                },
+                "startTimeOfDay": {
+                    "hours": 23,
+                    "minutes": 30,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+                "repeatInterval": "604800s",
+            },
+            notification_config={
+                "pubsubTopic": topic.id,
+                "eventTypes": [
                     "TRANSFER_OPERATION_SUCCESS",
                     "TRANSFER_OPERATION_FAILED",
                 ],
-                payload_format="JSON",
-            ),
+                "payloadFormat": "JSON",
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
@@ -462,14 +462,14 @@ class TransferJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input[pulumi.InputType['TransferJobEventStreamArgs']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-        :param pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below.
                
                - - -
         """
@@ -516,53 +516,53 @@ class TransferJob(pulumi.CustomResource):
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
             project=project,
-            transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
-                object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
-                    max_time_elapsed_since_last_modification="600s",
-                    exclude_prefixes=["requests.gz"],
-                ),
-                transfer_options=gcp.storage.TransferJobTransferSpecTransferOptionsArgs(
-                    delete_objects_unique_in_sink=False,
-                ),
-                aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=aws_s3_bucket,
-                    aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=aws_access_key,
-                        secret_access_key=aws_secret_key,
-                    ),
-                ),
-                gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket.name,
-                    path="foo/bar/",
-                ),
-            ),
-            schedule=gcp.storage.TransferJobScheduleArgs(
-                schedule_start_date=gcp.storage.TransferJobScheduleScheduleStartDateArgs(
-                    year=2018,
-                    month=10,
-                    day=1,
-                ),
-                schedule_end_date=gcp.storage.TransferJobScheduleScheduleEndDateArgs(
-                    year=2019,
-                    month=1,
-                    day=15,
-                ),
-                start_time_of_day=gcp.storage.TransferJobScheduleStartTimeOfDayArgs(
-                    hours=23,
-                    minutes=30,
-                    seconds=0,
-                    nanos=0,
-                ),
-                repeat_interval="604800s",
-            ),
-            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                event_types=[
+            transfer_spec={
+                "objectConditions": {
+                    "maxTimeElapsedSinceLastModification": "600s",
+                    "excludePrefixes": ["requests.gz"],
+                },
+                "transferOptions": {
+                    "deleteObjectsUniqueInSink": False,
+                },
+                "awsS3DataSource": {
+                    "bucketName": aws_s3_bucket,
+                    "awsAccessKey": {
+                        "accessKeyId": aws_access_key,
+                        "secretAccessKey": aws_secret_key,
+                    },
+                },
+                "gcsDataSink": {
+                    "bucketName": s3_backup_bucket.name,
+                    "path": "foo/bar/",
+                },
+            },
+            schedule={
+                "scheduleStartDate": {
+                    "year": 2018,
+                    "month": 10,
+                    "day": 1,
+                },
+                "scheduleEndDate": {
+                    "year": 2019,
+                    "month": 1,
+                    "day": 15,
+                },
+                "startTimeOfDay": {
+                    "hours": 23,
+                    "minutes": 30,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+                "repeatInterval": "604800s",
+            },
+            notification_config={
+                "pubsubTopic": topic.id,
+                "eventTypes": [
                     "TRANSFER_OPERATION_SUCCESS",
                     "TRANSFER_OPERATION_FAILED",
                 ],
-                payload_format="JSON",
-            ),
+                "payloadFormat": "JSON",
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
@@ -597,13 +597,13 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_stream: Optional[pulumi.Input[pulumi.InputType['TransferJobEventStreamArgs']]] = None,
+                 event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None,
+                 transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,14 +641,14 @@ class TransferJob(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[str]] = None,
             deletion_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            event_stream: Optional[pulumi.Input[pulumi.InputType['TransferJobEventStreamArgs']]] = None,
+            event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
             last_modification_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
+            notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None) -> 'TransferJob':
+            transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
         """
         Get an existing TransferJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -659,15 +659,15 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] creation_time: When the Transfer Job was created.
         :param pulumi.Input[str] deletion_time: When the Transfer Job was deleted.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input[pulumi.InputType['TransferJobEventStreamArgs']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-        :param pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below.
                
                - - -
         """

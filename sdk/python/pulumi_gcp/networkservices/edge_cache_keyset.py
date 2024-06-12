@@ -336,8 +336,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]]] = None,
+                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
                  __props__=None):
         """
         EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
@@ -360,14 +360,14 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             name="my-keyset",
             description="The default keyset",
             public_keys=[
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key",
-                    value="FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
-                ),
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key-2",
-                    value="hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
-                ),
+                {
+                    "id": "my-public-key",
+                    "value": "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
+                },
+                {
+                    "id": "my-public-key-2",
+                    "value": "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
+                },
             ])
         ```
         ### Network Services Edge Cache Keyset Dual Token
@@ -378,22 +378,22 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheKeyset("default",
             name="my-keyset",
             description="The default keyset",
-            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                id="my-public-key",
-                managed=True,
-            )],
-            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
-                secret_version=secret_version_basic.id,
-            )])
+            public_keys=[{
+                "id": "my-public-key",
+                "managed": True,
+            }],
+            validation_shared_keys=[{
+                "secretVersion": secret_version_basic.id,
+            }])
         ```
 
         ## Import
@@ -434,14 +434,14 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                You may specify no more than one Google-managed public key.
                If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
                Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
@@ -474,14 +474,14 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             name="my-keyset",
             description="The default keyset",
             public_keys=[
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key",
-                    value="FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
-                ),
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key-2",
-                    value="hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
-                ),
+                {
+                    "id": "my-public-key",
+                    "value": "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
+                },
+                {
+                    "id": "my-public-key-2",
+                    "value": "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
+                },
             ])
         ```
         ### Network Services Edge Cache Keyset Dual Token
@@ -492,22 +492,22 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheKeyset("default",
             name="my-keyset",
             description="The default keyset",
-            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                id="my-public-key",
-                managed=True,
-            )],
-            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
-                secret_version=secret_version_basic.id,
-            )])
+            public_keys=[{
+                "id": "my-public-key",
+                "managed": True,
+            }],
+            validation_shared_keys=[{
+                "secretVersion": secret_version_basic.id,
+            }])
         ```
 
         ## Import
@@ -553,8 +553,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]]] = None,
+                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,9 +589,9 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]]] = None,
+            public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]]] = None) -> 'EdgeCacheKeyset':
+            validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None) -> 'EdgeCacheKeyset':
         """
         Get an existing EdgeCacheKeyset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -612,7 +612,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                You may specify no more than one Google-managed public key.
                If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
@@ -621,7 +621,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.

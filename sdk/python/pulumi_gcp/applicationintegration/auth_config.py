@@ -540,8 +540,8 @@ class AuthConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[pulumi.InputType['AuthConfigClientCertificateArgs']]] = None,
-                 decrypted_credential: Optional[pulumi.Input[pulumi.InputType['AuthConfigDecryptedCredentialArgs']]] = None,
+                 client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+                 decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -573,13 +573,13 @@ class AuthConfig(pulumi.CustomResource):
             location="us-west1",
             display_name="test-authconfig",
             description="Test auth config created via terraform",
-            decrypted_credential=gcp.applicationintegration.AuthConfigDecryptedCredentialArgs(
-                credential_type="USERNAME_AND_PASSWORD",
-                username_and_password=gcp.applicationintegration.AuthConfigDecryptedCredentialUsernameAndPasswordArgs(
-                    username="test-username",
-                    password="test-password",
-                ),
-            ),
+            decrypted_credential={
+                "credentialType": "USERNAME_AND_PASSWORD",
+                "usernameAndPassword": {
+                    "username": "test-username",
+                    "password": "test-password",
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[client]))
         ```
 
@@ -597,9 +597,9 @@ class AuthConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthConfigClientCertificateArgs']] client_certificate: Raw client certificate
+        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']] client_certificate: Raw client certificate
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AuthConfigDecryptedCredentialArgs']] decrypted_credential: Raw auth credentials.
+        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the auth config.
         :param pulumi.Input[str] display_name: The name of the auth config.
@@ -645,13 +645,13 @@ class AuthConfig(pulumi.CustomResource):
             location="us-west1",
             display_name="test-authconfig",
             description="Test auth config created via terraform",
-            decrypted_credential=gcp.applicationintegration.AuthConfigDecryptedCredentialArgs(
-                credential_type="USERNAME_AND_PASSWORD",
-                username_and_password=gcp.applicationintegration.AuthConfigDecryptedCredentialUsernameAndPasswordArgs(
-                    username="test-username",
-                    password="test-password",
-                ),
-            ),
+            decrypted_credential={
+                "credentialType": "USERNAME_AND_PASSWORD",
+                "usernameAndPassword": {
+                    "username": "test-username",
+                    "password": "test-password",
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[client]))
         ```
 
@@ -682,8 +682,8 @@ class AuthConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[pulumi.InputType['AuthConfigClientCertificateArgs']]] = None,
-                 decrypted_credential: Optional[pulumi.Input[pulumi.InputType['AuthConfigDecryptedCredentialArgs']]] = None,
+                 client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+                 decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -735,11 +735,11 @@ class AuthConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_id: Optional[pulumi.Input[str]] = None,
-            client_certificate: Optional[pulumi.Input[pulumi.InputType['AuthConfigClientCertificateArgs']]] = None,
+            client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creator_email: Optional[pulumi.Input[str]] = None,
             credential_type: Optional[pulumi.Input[str]] = None,
-            decrypted_credential: Optional[pulumi.Input[pulumi.InputType['AuthConfigDecryptedCredentialArgs']]] = None,
+            decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             encrypted_credential: Optional[pulumi.Input[str]] = None,
@@ -762,13 +762,13 @@ class AuthConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: Certificate id for client certificate.
-        :param pulumi.Input[pulumi.InputType['AuthConfigClientCertificateArgs']] client_certificate: Raw client certificate
+        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']] client_certificate: Raw client certificate
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp when the auth config is created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] creator_email: The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] credential_type: Credential type of the encrypted credential.
-        :param pulumi.Input[pulumi.InputType['AuthConfigDecryptedCredentialArgs']] decrypted_credential: Raw auth credentials.
+        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the auth config.
         :param pulumi.Input[str] display_name: The name of the auth config.

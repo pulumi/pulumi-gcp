@@ -146,7 +146,7 @@ class Ruleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['RulesetSourceArgs', 'RulesetSourceArgsDict']]] = None,
                  __props__=None):
         """
         For more information, see:
@@ -160,14 +160,14 @@ class Ruleset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.firebaserules.Ruleset("primary",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                    fingerprint="",
-                )],
-                language="",
-            ),
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                    "fingerprint": "",
+                }],
+                "language": "",
+            },
             project="my-project-name")
         ```
         ### Minimal_ruleset
@@ -177,12 +177,12 @@ class Ruleset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.firebaserules.Ruleset("primary",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ),
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            },
             project="my-project-name")
         ```
 
@@ -213,7 +213,7 @@ class Ruleset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['RulesetSourceArgs']] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[Union['RulesetSourceArgs', 'RulesetSourceArgsDict']] source: `Source` for the `Ruleset`.
         """
         ...
     @overload
@@ -233,14 +233,14 @@ class Ruleset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.firebaserules.Ruleset("primary",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                    fingerprint="",
-                )],
-                language="",
-            ),
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                    "fingerprint": "",
+                }],
+                "language": "",
+            },
             project="my-project-name")
         ```
         ### Minimal_ruleset
@@ -250,12 +250,12 @@ class Ruleset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.firebaserules.Ruleset("primary",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ),
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            },
             project="my-project-name")
         ```
 
@@ -299,7 +299,7 @@ class Ruleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['RulesetSourceArgs', 'RulesetSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,10 +327,10 @@ class Ruleset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesetMetadataArgs', 'RulesetMetadataArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None) -> 'Ruleset':
+            source: Optional[pulumi.Input[Union['RulesetSourceArgs', 'RulesetSourceArgsDict']]] = None) -> 'Ruleset':
         """
         Get an existing Ruleset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -339,10 +339,10 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. Time the `Ruleset` was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArgs']]]] metadatas: Output only. The metadata for this ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetMetadataArgs', 'RulesetMetadataArgsDict']]]] metadatas: Output only. The metadata for this ruleset.
         :param pulumi.Input[str] name: Output only. Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format: `projects/{project_id}/rulesets/{ruleset_id}`
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['RulesetSourceArgs']] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[Union['RulesetSourceArgs', 'RulesetSourceArgsDict']] source: `Source` for the `Ruleset`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

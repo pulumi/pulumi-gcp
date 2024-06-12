@@ -262,7 +262,7 @@ class DataPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -327,18 +327,18 @@ class DataPolicy(pulumi.CustomResource):
             data_governance_type="DATA_MASKING",
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="ssn",
-                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            )])
+            arguments=[{
+                "name": "ssn",
+                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+            }])
         data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
             data_policy_type="DATA_MASKING_POLICY",
-            data_masking_policy=gcp.bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs(
-                routine=custom_masking_routine.id,
-            ))
+            data_masking_policy={
+                "routine": custom_masking_routine.id,
+            })
         ```
 
         ## Import
@@ -367,7 +367,7 @@ class DataPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
@@ -444,18 +444,18 @@ class DataPolicy(pulumi.CustomResource):
             data_governance_type="DATA_MASKING",
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="ssn",
-                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            )])
+            arguments=[{
+                "name": "ssn",
+                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+            }])
         data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
             data_policy_type="DATA_MASKING_POLICY",
-            data_masking_policy=gcp.bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs(
-                routine=custom_masking_routine.id,
-            ))
+            data_masking_policy={
+                "routine": custom_masking_routine.id,
+            })
         ```
 
         ## Import
@@ -497,7 +497,7 @@ class DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -537,7 +537,7 @@ class DataPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']]] = None,
+            data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
             data_policy_id: Optional[pulumi.Input[str]] = None,
             data_policy_type: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -551,7 +551,7 @@ class DataPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DataPolicyDataMaskingPolicyArgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.

@@ -758,21 +758,21 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
+                 admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
-                 custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']]] = None,
+                 custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oauth_config: Optional[pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']]] = None,
+                 oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
-                 user_metadata: Optional[pulumi.Input[pulumi.InputType['InstanceUserMetadataArgs']]] = None,
+                 user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
                  __props__=None):
         """
         A Google Cloud Looker instance.
@@ -796,10 +796,10 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ))
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            })
         ```
         ### Looker Instance Full
 
@@ -812,40 +812,40 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             public_ip_enabled=True,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ))
+            admin_settings={
+                "allowedEmailDomains": ["google.com"],
+            },
+            maintenance_window={
+                "dayOfWeek": "THURSDAY",
+                "startTime": {
+                    "hours": 22,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            deny_maintenance_period={
+                "startDate": {
+                    "year": 2050,
+                    "month": 1,
+                    "day": 1,
+                },
+                "endDate": {
+                    "year": 2050,
+                    "month": 2,
+                    "day": 1,
+                },
+                "time": {
+                    "hours": 10,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            })
         ```
         ### Looker Instance Enterprise Full
 
@@ -872,43 +872,43 @@ class Instance(pulumi.CustomResource):
             public_ip_enabled=False,
             reserved_range=looker_range.name,
             consumer_network=looker_network.id,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            encryption_config=gcp.looker.InstanceEncryptionConfigArgs(
-                kms_key_name="looker-kms-key",
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
+            admin_settings={
+                "allowedEmailDomains": ["google.com"],
+            },
+            encryption_config={
+                "kmsKeyName": "looker-kms-key",
+            },
+            maintenance_window={
+                "dayOfWeek": "THURSDAY",
+                "startTime": {
+                    "hours": 22,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            deny_maintenance_period={
+                "startDate": {
+                    "year": 2050,
+                    "month": 1,
+                    "day": 1,
+                },
+                "endDate": {
+                    "year": 2050,
+                    "month": 2,
+                    "day": 1,
+                },
+                "time": {
+                    "hours": 10,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            },
             opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
@@ -926,13 +926,13 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            custom_domain=gcp.looker.InstanceCustomDomainArgs(
-                domain="my-custom-domain.com",
-            ))
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            },
+            custom_domain={
+                "domain": "my-custom-domain.com",
+            })
         ```
 
         ## Import
@@ -967,20 +967,20 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']] admin_settings: Looker instance Admin settings.
+        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
                Structure is documented below.
         :param pulumi.Input[str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
-        :param pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']] custom_domain: Custom domain settings for a Looker instance.
+        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']] encryption_config: Looker instance encryption settings.
+        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']] maintenance_window: Maintenance window for an instance.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
                disrupt service.
@@ -989,7 +989,7 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
+        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1006,7 +1006,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The name of the Looker region of the instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
                private service access connection. User may or may not specify this in a request.
-        :param pulumi.Input[pulumi.InputType['InstanceUserMetadataArgs']] user_metadata: Metadata about users for a Looker instance.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
                These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
                There are ten Standard and two Developer users included in the cost of the product.
                You can allocate additional Standard, Viewer, and Developer users for this instance.
@@ -1043,10 +1043,10 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ))
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            })
         ```
         ### Looker Instance Full
 
@@ -1059,40 +1059,40 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             public_ip_enabled=True,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ))
+            admin_settings={
+                "allowedEmailDomains": ["google.com"],
+            },
+            maintenance_window={
+                "dayOfWeek": "THURSDAY",
+                "startTime": {
+                    "hours": 22,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            deny_maintenance_period={
+                "startDate": {
+                    "year": 2050,
+                    "month": 1,
+                    "day": 1,
+                },
+                "endDate": {
+                    "year": 2050,
+                    "month": 2,
+                    "day": 1,
+                },
+                "time": {
+                    "hours": 10,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            })
         ```
         ### Looker Instance Enterprise Full
 
@@ -1119,43 +1119,43 @@ class Instance(pulumi.CustomResource):
             public_ip_enabled=False,
             reserved_range=looker_range.name,
             consumer_network=looker_network.id,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            encryption_config=gcp.looker.InstanceEncryptionConfigArgs(
-                kms_key_name="looker-kms-key",
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
+            admin_settings={
+                "allowedEmailDomains": ["google.com"],
+            },
+            encryption_config={
+                "kmsKeyName": "looker-kms-key",
+            },
+            maintenance_window={
+                "dayOfWeek": "THURSDAY",
+                "startTime": {
+                    "hours": 22,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            deny_maintenance_period={
+                "startDate": {
+                    "year": 2050,
+                    "month": 1,
+                    "day": 1,
+                },
+                "endDate": {
+                    "year": 2050,
+                    "month": 2,
+                    "day": 1,
+                },
+                "time": {
+                    "hours": 10,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            },
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            },
             opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
@@ -1173,13 +1173,13 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            custom_domain=gcp.looker.InstanceCustomDomainArgs(
-                domain="my-custom-domain.com",
-            ))
+            oauth_config={
+                "clientId": "my-client-id",
+                "clientSecret": "my-client-secret",
+            },
+            custom_domain={
+                "domain": "my-custom-domain.com",
+            })
         ```
 
         ## Import
@@ -1227,21 +1227,21 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
+                 admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
-                 custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']]] = None,
+                 custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oauth_config: Optional[pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']]] = None,
+                 oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
-                 user_metadata: Optional[pulumi.Input[pulumi.InputType['InstanceUserMetadataArgs']]] = None,
+                 user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1283,20 +1283,20 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
+            admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
             consumer_network: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
-            deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
+            custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+            deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
             egress_public_ip: Optional[pulumi.Input[str]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
+            encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
             ingress_private_ip: Optional[pulumi.Input[str]] = None,
             ingress_public_ip: Optional[pulumi.Input[str]] = None,
             looker_uri: Optional[pulumi.Input[str]] = None,
             looker_version: Optional[pulumi.Input[str]] = None,
-            maintenance_window: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']]] = None,
+            maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oauth_config: Optional[pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']]] = None,
+            oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
             platform_edition: Optional[pulumi.Input[str]] = None,
             private_ip_enabled: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1304,7 +1304,7 @@ class Instance(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             reserved_range: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            user_metadata: Optional[pulumi.Input[pulumi.InputType['InstanceUserMetadataArgs']]] = None) -> 'Instance':
+            user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1312,27 +1312,27 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']] admin_settings: Looker instance Admin settings.
+        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
                Structure is documented below.
         :param pulumi.Input[str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']] custom_domain: Custom domain settings for a Looker instance.
+        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
                Structure is documented below.
         :param pulumi.Input[str] egress_public_ip: Public Egress IP (IPv4).
-        :param pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']] encryption_config: Looker instance encryption settings.
+        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
         :param pulumi.Input[str] ingress_private_ip: Private Ingress IP (IPv4).
         :param pulumi.Input[str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
         :param pulumi.Input[str] looker_version: The Looker version that the instance is using.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']] maintenance_window: Maintenance window for an instance.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
                disrupt service.
@@ -1341,7 +1341,7 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
+        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1360,7 +1360,7 @@ class Instance(pulumi.CustomResource):
                private service access connection. User may or may not specify this in a request.
         :param pulumi.Input[str] update_time: The time the instance was updated in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input[pulumi.InputType['InstanceUserMetadataArgs']] user_metadata: Metadata about users for a Looker instance.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
                These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
                There are ten Standard and two Developer users included in the cost of the product.
                You can allocate additional Standard, Viewer, and Developer users for this instance.

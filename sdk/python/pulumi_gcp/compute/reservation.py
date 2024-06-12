@@ -349,8 +349,8 @@ class Reservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
-                 specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -381,13 +381,13 @@ class Reservation(pulumi.CustomResource):
         gce_reservation = gcp.compute.Reservation("gce_reservation",
             name="gce-reservation",
             zone="us-central1-a",
-            specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
-                count=1,
-                instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
-                    min_cpu_platform="Intel Cascade Lake",
-                    machine_type="n2-standard-2",
-                ),
-            ))
+            specific_reservation={
+                "count": 1,
+                "instanceProperties": {
+                    "minCpuPlatform": "Intel Cascade Lake",
+                    "machineType": "n2-standard-2",
+                },
+            })
         ```
 
         ## Import
@@ -430,8 +430,8 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
-        :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
+        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
+        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
                consumed by VMs with affinity for any reservation. Defaults to false.
@@ -470,13 +470,13 @@ class Reservation(pulumi.CustomResource):
         gce_reservation = gcp.compute.Reservation("gce_reservation",
             name="gce-reservation",
             zone="us-central1-a",
-            specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
-                count=1,
-                instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
-                    min_cpu_platform="Intel Cascade Lake",
-                    machine_type="n2-standard-2",
-                ),
-            ))
+            specific_reservation={
+                "count": 1,
+                "instanceProperties": {
+                    "minCpuPlatform": "Intel Cascade Lake",
+                    "machineType": "n2-standard-2",
+                },
+            })
         ```
 
         ## Import
@@ -527,8 +527,8 @@ class Reservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
-                 specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -571,8 +571,8 @@ class Reservation(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
-            specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
+            share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+            specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
             specific_reservation_required: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Reservation':
@@ -595,8 +595,8 @@ class Reservation(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
-        :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
+        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
+        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
                consumed by VMs with affinity for any reservation. Defaults to false.

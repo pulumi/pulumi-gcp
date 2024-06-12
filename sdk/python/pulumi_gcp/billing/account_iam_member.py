@@ -212,7 +212,7 @@ class AccountIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -233,10 +233,10 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -272,10 +272,10 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -371,10 +371,10 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -410,10 +410,10 @@ class AccountIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -485,7 +485,7 @@ class AccountIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -519,7 +519,7 @@ class AccountIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'AccountIamMember':

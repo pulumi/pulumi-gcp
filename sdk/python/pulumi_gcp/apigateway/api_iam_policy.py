@@ -167,10 +167,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -209,10 +209,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -315,10 +315,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -357,10 +357,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],

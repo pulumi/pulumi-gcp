@@ -353,7 +353,7 @@ class MangedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -395,9 +395,9 @@ class MangedSslCertificate(pulumi.CustomResource):
 
         default = gcp.compute.ManagedSslCertificate("default",
             name="test-cert",
-            managed=gcp.compute.ManagedSslCertificateManagedArgs(
-                domains=["sslcert.tf-test.club."],
-            ))
+            managed={
+                "domains": ["sslcert.tf-test.club."],
+            })
         default_http_health_check = gcp.compute.HttpHealthCheck("default",
             name="http-health-check",
             request_path="/",
@@ -413,18 +413,18 @@ class MangedSslCertificate(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["sslcert.tf-test.club"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["sslcert.tf-test.club"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_https_proxy = gcp.compute.TargetHttpsProxy("default",
             name="test-proxy",
             url_map=default_url_map.id,
@@ -462,7 +462,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -524,9 +524,9 @@ class MangedSslCertificate(pulumi.CustomResource):
 
         default = gcp.compute.ManagedSslCertificate("default",
             name="test-cert",
-            managed=gcp.compute.ManagedSslCertificateManagedArgs(
-                domains=["sslcert.tf-test.club."],
-            ))
+            managed={
+                "domains": ["sslcert.tf-test.club."],
+            })
         default_http_health_check = gcp.compute.HttpHealthCheck("default",
             name="http-health-check",
             request_path="/",
@@ -542,18 +542,18 @@ class MangedSslCertificate(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["sslcert.tf-test.club"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["sslcert.tf-test.club"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_https_proxy = gcp.compute.TargetHttpsProxy("default",
             name="test-proxy",
             url_map=default_url_map.id,
@@ -604,7 +604,7 @@ class MangedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -642,7 +642,7 @@ class MangedSslCertificate(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
-            managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+            managed: Optional[pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -659,7 +659,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is

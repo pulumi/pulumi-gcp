@@ -213,11 +213,11 @@ class UserWorkloadsSecret(pulumi.CustomResource):
             name="example-environment",
             project="example-project",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="example-image-version",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "example-image-version",
+                },
+            })
         example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
             name="example-secret",
             project="example-project",
@@ -280,11 +280,11 @@ class UserWorkloadsSecret(pulumi.CustomResource):
             name="example-environment",
             project="example-project",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="example-image-version",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "example-image-version",
+                },
+            })
         example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
             name="example-secret",
             project="example-project",

@@ -1164,13 +1164,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -1207,18 +1207,18 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1239,20 +1239,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )])
+            network_interfaces=[{
+                "network": "default",
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }])
         igm = gcp.compute.InstanceGroupManager("igm",
             name="igm-internal",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             zone="us-central1-f",
             target_size=1)
@@ -1260,38 +1260,38 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="check-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=igm.instance_group,
-                balancing_mode="RATE",
-                capacity_scaler=0.4,
-                max_rate_per_instance=50,
-            )],
+            backends=[{
+                "group": igm.instance_group,
+                "balancingMode": "RATE",
+                "capacityScaler": 0.4,
+                "maxRatePerInstance": 50,
+            }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1302,13 +1302,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             ip_address="0.0.0.0",
-            metadata_filters=[gcp.compute.GlobalForwardingRuleMetadataFilterArgs(
-                filter_match_criteria="MATCH_ANY",
-                filter_labels=[gcp.compute.GlobalForwardingRuleMetadataFilterFilterLabelArgs(
-                    name="PLANET",
-                    value="MARS",
-                )],
-            )])
+            metadata_filters=[{
+                "filterMatchCriteria": "MATCH_ANY",
+                "filterLabels": [{
+                    "name": "PLANET",
+                    "value": "MARS",
+                }],
+            }])
         ```
         ### Global Forwarding Rule External Managed
 
@@ -1326,18 +1326,18 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1397,20 +1397,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         # Backend service for Zonal NEG
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-default",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=default_network_endpoint_group.id,
-                balancing_mode="RATE",
-                max_rate_per_endpoint=10,
-            )],
+            backends=[{
+                "group": default_network_endpoint_group.id,
+                "balancingMode": "RATE",
+                "maxRatePerEndpoint": 10,
+            }],
             health_checks=default_health_check.id)
         # Backgend service for Hybrid NEG
         hybrid_backend_service = gcp.compute.BackendService("hybrid",
@@ -1418,34 +1418,34 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=hybrid.id,
-                balancing_mode="RATE",
-                max_rate_per_endpoint=10,
-            )],
+            backends=[{
+                "group": hybrid.id,
+                "balancingMode": "RATE",
+                "maxRatePerEndpoint": 10,
+            }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[
-                    gcp.compute.URLMapPathMatcherPathRuleArgs(
-                        paths=["/*"],
-                        service=default_backend_service.id,
-                    ),
-                    gcp.compute.URLMapPathMatcherPathRuleArgs(
-                        paths=["/hybrid"],
-                        service=hybrid_backend_service.id,
-                    ),
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [
+                    {
+                        "paths": ["/*"],
+                        "service": default_backend_service.id,
+                    },
+                    {
+                        "paths": ["/hybrid"],
+                        "service": hybrid_backend_service.id,
+                    },
                 ],
-            )])
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1486,10 +1486,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
             network=network.id,
             ip_address=default.id,
             load_balancing_scheme="",
-            service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
-                namespace="sd-namespace",
-                service_directory_region="europe-west3",
-            ))
+            service_directory_registrations={
+                "namespace": "sd-namespace",
+                "serviceDirectoryRegion": "europe-west3",
+            })
         ```
         ### Private Service Connect Google Apis No Automate Dns
 
@@ -1607,7 +1607,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -1660,7 +1660,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                cannot have overlapping `portRange`s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
@@ -1723,18 +1723,18 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1755,20 +1755,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )])
+            network_interfaces=[{
+                "network": "default",
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }])
         igm = gcp.compute.InstanceGroupManager("igm",
             name="igm-internal",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             zone="us-central1-f",
             target_size=1)
@@ -1776,38 +1776,38 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="check-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=igm.instance_group,
-                balancing_mode="RATE",
-                capacity_scaler=0.4,
-                max_rate_per_instance=50,
-            )],
+            backends=[{
+                "group": igm.instance_group,
+                "balancingMode": "RATE",
+                "capacityScaler": 0.4,
+                "maxRatePerInstance": 50,
+            }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1818,13 +1818,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             ip_address="0.0.0.0",
-            metadata_filters=[gcp.compute.GlobalForwardingRuleMetadataFilterArgs(
-                filter_match_criteria="MATCH_ANY",
-                filter_labels=[gcp.compute.GlobalForwardingRuleMetadataFilterFilterLabelArgs(
-                    name="PLANET",
-                    value="MARS",
-                )],
-            )])
+            metadata_filters=[{
+                "filterMatchCriteria": "MATCH_ANY",
+                "filterLabels": [{
+                    "name": "PLANET",
+                    "value": "MARS",
+                }],
+            }])
         ```
         ### Global Forwarding Rule External Managed
 
@@ -1842,18 +1842,18 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -1913,20 +1913,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         # Backend service for Zonal NEG
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-default",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=default_network_endpoint_group.id,
-                balancing_mode="RATE",
-                max_rate_per_endpoint=10,
-            )],
+            backends=[{
+                "group": default_network_endpoint_group.id,
+                "balancingMode": "RATE",
+                "maxRatePerEndpoint": 10,
+            }],
             health_checks=default_health_check.id)
         # Backgend service for Hybrid NEG
         hybrid_backend_service = gcp.compute.BackendService("hybrid",
@@ -1934,34 +1934,34 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=hybrid.id,
-                balancing_mode="RATE",
-                max_rate_per_endpoint=10,
-            )],
+            backends=[{
+                "group": hybrid.id,
+                "balancingMode": "RATE",
+                "maxRatePerEndpoint": 10,
+            }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[
-                    gcp.compute.URLMapPathMatcherPathRuleArgs(
-                        paths=["/*"],
-                        service=default_backend_service.id,
-                    ),
-                    gcp.compute.URLMapPathMatcherPathRuleArgs(
-                        paths=["/hybrid"],
-                        service=hybrid_backend_service.id,
-                    ),
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [
+                    {
+                        "paths": ["/*"],
+                        "service": default_backend_service.id,
+                    },
+                    {
+                        "paths": ["/hybrid"],
+                        "service": hybrid_backend_service.id,
+                    },
                 ],
-            )])
+            }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
             name="target-proxy",
             description="a description",
@@ -2002,10 +2002,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
             network=network.id,
             ip_address=default.id,
             load_balancing_scheme="",
-            service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
-                namespace="sd-namespace",
-                service_directory_region="europe-west3",
-            ))
+            service_directory_registrations={
+                "namespace": "sd-namespace",
+                "serviceDirectoryRegion": "europe-west3",
+            })
         ```
         ### Private Service Connect Google Apis No Automate Dns
 
@@ -2087,13 +2087,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -2154,7 +2154,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
@@ -2164,7 +2164,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             psc_connection_status: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+            service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None) -> 'GlobalForwardingRule':
@@ -2235,7 +2235,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -2293,7 +2293,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).

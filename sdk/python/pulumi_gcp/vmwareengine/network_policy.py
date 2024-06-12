@@ -415,8 +415,8 @@ class NetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_services_cidr: Optional[pulumi.Input[str]] = None,
-                 external_ip: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyExternalIpArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyInternetAccessArgs']]] = None,
+                 external_ip: Optional[pulumi.Input[Union['NetworkPolicyExternalIpArgs', 'NetworkPolicyExternalIpArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -465,12 +465,12 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id,
             description="Sample Network Policy",
-            internet_access=gcp.vmwareengine.NetworkPolicyInternetAccessArgs(
-                enabled=True,
-            ),
-            external_ip=gcp.vmwareengine.NetworkPolicyExternalIpArgs(
-                enabled=True,
-            ))
+            internet_access={
+                "enabled": True,
+            },
+            external_ip={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -503,10 +503,10 @@ class NetworkPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] edge_services_cidr: IP address range in CIDR notation used to create internet access and external IP access.
                An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
                prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
-        :param pulumi.Input[pulumi.InputType['NetworkPolicyExternalIpArgs']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads.
+        :param pulumi.Input[Union['NetworkPolicyExternalIpArgs', 'NetworkPolicyExternalIpArgsDict']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads.
                This service can only be enabled when internetAccess is also enabled.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['NetworkPolicyInternetAccessArgs']] internet_access: Network service that allows VMware workloads to access the internet.
+        :param pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -570,12 +570,12 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id,
             description="Sample Network Policy",
-            internet_access=gcp.vmwareengine.NetworkPolicyInternetAccessArgs(
-                enabled=True,
-            ),
-            external_ip=gcp.vmwareengine.NetworkPolicyExternalIpArgs(
-                enabled=True,
-            ))
+            internet_access={
+                "enabled": True,
+            },
+            external_ip={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -619,8 +619,8 @@ class NetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_services_cidr: Optional[pulumi.Input[str]] = None,
-                 external_ip: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyExternalIpArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyInternetAccessArgs']]] = None,
+                 external_ip: Optional[pulumi.Input[Union['NetworkPolicyExternalIpArgs', 'NetworkPolicyExternalIpArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -665,8 +665,8 @@ class NetworkPolicy(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             edge_services_cidr: Optional[pulumi.Input[str]] = None,
-            external_ip: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyExternalIpArgs']]] = None,
-            internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyInternetAccessArgs']]] = None,
+            external_ip: Optional[pulumi.Input[Union['NetworkPolicyExternalIpArgs', 'NetworkPolicyExternalIpArgsDict']]] = None,
+            internet_access: Optional[pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -688,10 +688,10 @@ class NetworkPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] edge_services_cidr: IP address range in CIDR notation used to create internet access and external IP access.
                An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
                prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
-        :param pulumi.Input[pulumi.InputType['NetworkPolicyExternalIpArgs']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads.
+        :param pulumi.Input[Union['NetworkPolicyExternalIpArgs', 'NetworkPolicyExternalIpArgsDict']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads.
                This service can only be enabled when internetAccess is also enabled.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['NetworkPolicyInternetAccessArgs']] internet_access: Network service that allows VMware workloads to access the internet.
+        :param pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.

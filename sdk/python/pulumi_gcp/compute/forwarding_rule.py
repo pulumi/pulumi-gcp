@@ -1680,7 +1680,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  recreate_closed_psc: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1710,9 +1710,9 @@ class ForwardingRule(pulumi.CustomResource):
             check_interval_sec=1,
             timeout_sec=1,
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -1735,9 +1735,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-website-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -1782,9 +1782,9 @@ class ForwardingRule(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         service = gcp.compute.RegionBackendService("service",
             region="us-central1",
             name="service",
@@ -1807,9 +1807,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-website-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -1853,15 +1853,15 @@ class ForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-website-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -1869,10 +1869,10 @@ class ForwardingRule(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="website-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         fw1 = gcp.compute.Firewall("fw1",
@@ -1880,25 +1880,25 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             source_ranges=["10.1.2.0/24"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="udp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
+                {
+                    "protocol": "tcp",
+                },
+                {
+                    "protocol": "udp",
+                },
+                {
+                    "protocol": "icmp",
+                },
             ],
             direction="INGRESS")
         fw2 = gcp.compute.Firewall("fw2",
             name="website-fw-2",
             network=default_network.id,
             source_ranges=["0.0.0.0/0"],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=["22"],
-            )],
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["22"],
+            }],
             target_tags=["allow-ssh"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw1]))
@@ -1909,9 +1909,9 @@ class ForwardingRule(pulumi.CustomResource):
                 "130.211.0.0/22",
                 "35.191.0.0/16",
             ],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-            )],
+            allows=[{
+                "protocol": "tcp",
+            }],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw2]))
@@ -1921,35 +1921,35 @@ class ForwardingRule(pulumi.CustomResource):
             source_ranges=["10.129.0.0/26"],
             target_tags=["load-balanced-backend"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["80"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["443"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["8000"],
-                ),
+                {
+                    "protocol": "tcp",
+                    "ports": ["80"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["443"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["8000"],
+                },
             ],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ),
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            },
             opts=pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="website-backend",
             protocol="HTTP",
@@ -2003,15 +2003,15 @@ class ForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-website-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -2019,10 +2019,10 @@ class ForwardingRule(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="website-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         fw1 = gcp.compute.Firewall("fw1",
@@ -2030,25 +2030,25 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             source_ranges=["10.1.2.0/24"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="udp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
+                {
+                    "protocol": "tcp",
+                },
+                {
+                    "protocol": "udp",
+                },
+                {
+                    "protocol": "icmp",
+                },
             ],
             direction="INGRESS")
         fw2 = gcp.compute.Firewall("fw2",
             name="website-fw-2",
             network=default_network.id,
             source_ranges=["0.0.0.0/0"],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=["22"],
-            )],
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["22"],
+            }],
             target_tags=["allow-ssh"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw1]))
@@ -2059,9 +2059,9 @@ class ForwardingRule(pulumi.CustomResource):
                 "130.211.0.0/22",
                 "35.191.0.0/16",
             ],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-            )],
+            allows=[{
+                "protocol": "tcp",
+            }],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw2]))
@@ -2071,35 +2071,35 @@ class ForwardingRule(pulumi.CustomResource):
             source_ranges=["10.129.0.0/26"],
             target_tags=["load-balanced-backend"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["80"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["443"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["8000"],
-                ),
+                {
+                    "protocol": "tcp",
+                    "ports": ["80"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["443"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["8000"],
+                },
             ],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ),
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            },
             opts=pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="website-backend",
             protocol="HTTP",
@@ -2176,9 +2176,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service-backend",
             region="us-central1",
@@ -2246,9 +2246,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service-backend",
             region="us-central1",
@@ -2320,9 +2320,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-ilb-ipv6-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="ilb-ipv6-backend",
             region="us-central1",
@@ -2546,7 +2546,7 @@ class ForwardingRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -2608,9 +2608,9 @@ class ForwardingRule(pulumi.CustomResource):
             check_interval_sec=1,
             timeout_sec=1,
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -2633,9 +2633,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-website-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -2680,9 +2680,9 @@ class ForwardingRule(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         service = gcp.compute.RegionBackendService("service",
             region="us-central1",
             name="service",
@@ -2705,9 +2705,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-website-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="website-backend",
             region="us-central1",
@@ -2751,15 +2751,15 @@ class ForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-website-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -2767,10 +2767,10 @@ class ForwardingRule(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="website-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         fw1 = gcp.compute.Firewall("fw1",
@@ -2778,25 +2778,25 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             source_ranges=["10.1.2.0/24"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="udp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
+                {
+                    "protocol": "tcp",
+                },
+                {
+                    "protocol": "udp",
+                },
+                {
+                    "protocol": "icmp",
+                },
             ],
             direction="INGRESS")
         fw2 = gcp.compute.Firewall("fw2",
             name="website-fw-2",
             network=default_network.id,
             source_ranges=["0.0.0.0/0"],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=["22"],
-            )],
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["22"],
+            }],
             target_tags=["allow-ssh"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw1]))
@@ -2807,9 +2807,9 @@ class ForwardingRule(pulumi.CustomResource):
                 "130.211.0.0/22",
                 "35.191.0.0/16",
             ],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-            )],
+            allows=[{
+                "protocol": "tcp",
+            }],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw2]))
@@ -2819,35 +2819,35 @@ class ForwardingRule(pulumi.CustomResource):
             source_ranges=["10.129.0.0/26"],
             target_tags=["load-balanced-backend"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["80"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["443"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["8000"],
-                ),
+                {
+                    "protocol": "tcp",
+                    "ports": ["80"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["443"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["8000"],
+                },
             ],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ),
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            },
             opts=pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="website-backend",
             protocol="HTTP",
@@ -2901,15 +2901,15 @@ class ForwardingRule(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-website-backend",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -2917,10 +2917,10 @@ class ForwardingRule(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="website-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         fw1 = gcp.compute.Firewall("fw1",
@@ -2928,25 +2928,25 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             source_ranges=["10.1.2.0/24"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="udp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
+                {
+                    "protocol": "tcp",
+                },
+                {
+                    "protocol": "udp",
+                },
+                {
+                    "protocol": "icmp",
+                },
             ],
             direction="INGRESS")
         fw2 = gcp.compute.Firewall("fw2",
             name="website-fw-2",
             network=default_network.id,
             source_ranges=["0.0.0.0/0"],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=["22"],
-            )],
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["22"],
+            }],
             target_tags=["allow-ssh"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw1]))
@@ -2957,9 +2957,9 @@ class ForwardingRule(pulumi.CustomResource):
                 "130.211.0.0/22",
                 "35.191.0.0/16",
             ],
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-            )],
+            allows=[{
+                "protocol": "tcp",
+            }],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw2]))
@@ -2969,35 +2969,35 @@ class ForwardingRule(pulumi.CustomResource):
             source_ranges=["10.129.0.0/26"],
             target_tags=["load-balanced-backend"],
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["80"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["443"],
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=["8000"],
-                ),
+                {
+                    "protocol": "tcp",
+                    "ports": ["80"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["443"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["8000"],
+                },
             ],
             direction="INGRESS",
             opts=pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ),
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            },
             opts=pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="website-backend",
             protocol="HTTP",
@@ -3074,9 +3074,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service-backend",
             region="us-central1",
@@ -3144,9 +3144,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service-backend",
             region="us-central1",
@@ -3218,9 +3218,9 @@ class ForwardingRule(pulumi.CustomResource):
             name="check-ilb-ipv6-backend",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="ilb-ipv6-backend",
             region="us-central1",
@@ -3313,7 +3313,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  recreate_closed_psc: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -3401,7 +3401,7 @@ class ForwardingRule(pulumi.CustomResource):
             recreate_closed_psc: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+            service_directory_registrations: Optional[pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
             service_label: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3588,7 +3588,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.

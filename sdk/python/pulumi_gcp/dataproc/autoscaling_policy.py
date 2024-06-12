@@ -281,12 +281,12 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None,
                  __props__=None):
         """
         Describes an autoscaling policy for Dataproc cluster autoscaler.
@@ -302,24 +302,24 @@ class AutoscalingPolicy(pulumi.CustomResource):
         asp = gcp.dataproc.AutoscalingPolicy("asp",
             policy_id="dataproc-policy",
             location="us-central1",
-            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
-                max_instances=3,
-            ),
-            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
-                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
-                    graceful_decommission_timeout="30s",
-                    scale_up_factor=0.5,
-                    scale_down_factor=0.5,
-                ),
-            ))
+            worker_config={
+                "maxInstances": 3,
+            },
+            basic_algorithm={
+                "yarnConfig": {
+                    "gracefulDecommissionTimeout": "30s",
+                    "scaleUpFactor": 0.5,
+                    "scaleDownFactor": 0.5,
+                },
+            })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
-                    policy_uri=asp.name,
-                ),
-            ))
+            cluster_config={
+                "autoscalingConfig": {
+                    "policyUri": asp.name,
+                },
+            })
         ```
 
         ## Import
@@ -348,7 +348,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']] basic_algorithm: Basic algorithm for autoscaling.
+        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
@@ -360,9 +360,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
         ...
@@ -385,24 +385,24 @@ class AutoscalingPolicy(pulumi.CustomResource):
         asp = gcp.dataproc.AutoscalingPolicy("asp",
             policy_id="dataproc-policy",
             location="us-central1",
-            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
-                max_instances=3,
-            ),
-            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
-                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
-                    graceful_decommission_timeout="30s",
-                    scale_up_factor=0.5,
-                    scale_down_factor=0.5,
-                ),
-            ))
+            worker_config={
+                "maxInstances": 3,
+            },
+            basic_algorithm={
+                "yarnConfig": {
+                    "gracefulDecommissionTimeout": "30s",
+                    "scaleUpFactor": 0.5,
+                    "scaleDownFactor": 0.5,
+                },
+            })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
-                    policy_uri=asp.name,
-                ),
-            ))
+            cluster_config={
+                "autoscalingConfig": {
+                    "policyUri": asp.name,
+                },
+            })
         ```
 
         ## Import
@@ -444,12 +444,12 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -478,13 +478,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_algorithm: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']]] = None,
+            basic_algorithm: Optional[pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']]] = None,
-            worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']]] = None) -> 'AutoscalingPolicy':
+            secondary_worker_config: Optional[pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
+            worker_config: Optional[pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None) -> 'AutoscalingPolicy':
         """
         Get an existing AutoscalingPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -492,7 +492,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']] basic_algorithm: Basic algorithm for autoscaling.
+        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
@@ -505,9 +505,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

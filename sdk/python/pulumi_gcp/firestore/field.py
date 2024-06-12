@@ -281,9 +281,9 @@ class Field(pulumi.CustomResource):
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  field: Optional[pulumi.Input[str]] = None,
-                 index_config: Optional[pulumi.Input[pulumi.InputType['FieldIndexConfigArgs']]] = None,
+                 index_config: Optional[pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ttl_config: Optional[pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']]] = None,
+                 ttl_config: Optional[pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
                  __props__=None):
         """
         Represents a single field in the database.
@@ -321,17 +321,17 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms__75125",
             field="basic",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                        query_scope="COLLECTION_GROUP",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "queryScope": "COLLECTION_GROUP",
+                    },
+                    {
+                        "arrayConfig": "CONTAINS",
+                    },
                 ],
-            ))
+            })
         ```
         ### Firestore Field Timestamp
 
@@ -351,8 +351,8 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms",
             field="timestamp",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs(),
-            index_config=gcp.firestore.FieldIndexConfigArgs())
+            ttl_config={},
+            index_config={})
         ```
         ### Firestore Field Match Override
 
@@ -372,19 +372,19 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms__88722",
             field="field_with_same_configuration_as_ancestor",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="DESCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                    },
+                    {
+                        "order": "DESCENDING",
+                    },
+                    {
+                        "arrayConfig": "CONTAINS",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -407,14 +407,14 @@ class Field(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['FieldIndexConfigArgs']] index_config: The single field index configuration for this field.
+        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
                the field.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         ...
@@ -459,17 +459,17 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms__75125",
             field="basic",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                        query_scope="COLLECTION_GROUP",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "queryScope": "COLLECTION_GROUP",
+                    },
+                    {
+                        "arrayConfig": "CONTAINS",
+                    },
                 ],
-            ))
+            })
         ```
         ### Firestore Field Timestamp
 
@@ -489,8 +489,8 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms",
             field="timestamp",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs(),
-            index_config=gcp.firestore.FieldIndexConfigArgs())
+            ttl_config={},
+            index_config={})
         ```
         ### Firestore Field Match Override
 
@@ -510,19 +510,19 @@ class Field(pulumi.CustomResource):
             database=database.name,
             collection="chatrooms__88722",
             field="field_with_same_configuration_as_ancestor",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="DESCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                    },
+                    {
+                        "order": "DESCENDING",
+                    },
+                    {
+                        "arrayConfig": "CONTAINS",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -555,9 +555,9 @@ class Field(pulumi.CustomResource):
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  field: Optional[pulumi.Input[str]] = None,
-                 index_config: Optional[pulumi.Input[pulumi.InputType['FieldIndexConfigArgs']]] = None,
+                 index_config: Optional[pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ttl_config: Optional[pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']]] = None,
+                 ttl_config: Optional[pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -591,10 +591,10 @@ class Field(pulumi.CustomResource):
             collection: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
             field: Optional[pulumi.Input[str]] = None,
-            index_config: Optional[pulumi.Input[pulumi.InputType['FieldIndexConfigArgs']]] = None,
+            index_config: Optional[pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            ttl_config: Optional[pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']]] = None) -> 'Field':
+            ttl_config: Optional[pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None) -> 'Field':
         """
         Get an existing Field resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -608,7 +608,7 @@ class Field(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['FieldIndexConfigArgs']] index_config: The single field index configuration for this field.
+        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
                the field.
@@ -617,7 +617,7 @@ class Field(pulumi.CustomResource):
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

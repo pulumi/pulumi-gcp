@@ -454,7 +454,7 @@ class CertificateMap(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArgs']]]]] = None,
+            gclb_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -472,7 +472,7 @@ class CertificateMap(pulumi.CustomResource):
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArgs']]]] gclb_targets: A list of target proxies that use this Certificate Map
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict']]]] gclb_targets: A list of target proxies that use this Certificate Map
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
                

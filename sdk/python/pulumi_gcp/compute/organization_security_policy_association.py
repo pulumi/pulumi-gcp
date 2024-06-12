@@ -186,23 +186,23 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
@@ -265,23 +265,23 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",

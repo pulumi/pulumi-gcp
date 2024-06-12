@@ -295,13 +295,13 @@ class HostingRelease(pulumi.CustomResource):
             site_id="site-id")
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ))
+            config={
+                "redirects": [{
+                    "glob": "/google/**",
+                    "statusCode": 302,
+                    "location": "https://www.google.com",
+                }],
+            })
         default_hosting_release = gcp.firebase.HostingRelease("default",
             site_id=default.site_id,
             version_name=default_hosting_version.name,
@@ -318,13 +318,13 @@ class HostingRelease(pulumi.CustomResource):
             site_id="site-with-channel")
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ))
+            config={
+                "redirects": [{
+                    "glob": "/google/**",
+                    "statusCode": 302,
+                    "location": "https://www.google.com",
+                }],
+            })
         default_hosting_channel = gcp.firebase.HostingChannel("default",
             site_id=default.site_id,
             channel_id="channel-id")
@@ -419,13 +419,13 @@ class HostingRelease(pulumi.CustomResource):
             site_id="site-id")
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ))
+            config={
+                "redirects": [{
+                    "glob": "/google/**",
+                    "statusCode": 302,
+                    "location": "https://www.google.com",
+                }],
+            })
         default_hosting_release = gcp.firebase.HostingRelease("default",
             site_id=default.site_id,
             version_name=default_hosting_version.name,
@@ -442,13 +442,13 @@ class HostingRelease(pulumi.CustomResource):
             site_id="site-with-channel")
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ))
+            config={
+                "redirects": [{
+                    "glob": "/google/**",
+                    "statusCode": 302,
+                    "location": "https://www.google.com",
+                }],
+            })
         default_hosting_channel = gcp.firebase.HostingChannel("default",
             site_id=default.site_id,
             channel_id="channel-id")

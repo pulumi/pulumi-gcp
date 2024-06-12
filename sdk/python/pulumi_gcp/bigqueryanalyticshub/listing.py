@@ -525,10 +525,10 @@ class Listing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -537,9 +537,9 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None,
+                 restricted_export_config: Optional[pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub data exchange listing
@@ -574,9 +574,9 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ))
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
         ```
         ### Bigquery Analyticshub Listing Restricted
 
@@ -600,13 +600,13 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ),
-            restricted_export_config=gcp.bigqueryanalyticshub.ListingRestrictedExportConfigArgs(
-                enabled=True,
-                restrict_query_result=True,
-            ))
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            },
+            restricted_export_config={
+                "enabled": True,
+                "restrictQueryResult": True,
+            })
         ```
 
         ## Import
@@ -635,11 +635,11 @@ class Listing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
                except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -648,9 +648,9 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']] publisher: Details of the publisher who owns the listing and who can share the source data.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
-        :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        :param pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
         """
         ...
     @overload
@@ -691,9 +691,9 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ))
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
         ```
         ### Bigquery Analyticshub Listing Restricted
 
@@ -717,13 +717,13 @@ class Listing(pulumi.CustomResource):
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ),
-            restricted_export_config=gcp.bigqueryanalyticshub.ListingRestrictedExportConfigArgs(
-                enabled=True,
-                restrict_query_result=True,
-            ))
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            },
+            restricted_export_config={
+                "enabled": True,
+                "restrictQueryResult": True,
+            })
         ```
 
         ## Import
@@ -765,10 +765,10 @@ class Listing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -777,9 +777,9 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None,
+                 restricted_export_config: Optional[pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -825,10 +825,10 @@ class Listing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']]] = None,
+            bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
             categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             data_exchange_id: Optional[pulumi.Input[str]] = None,
-            data_provider: Optional[pulumi.Input[pulumi.InputType['ListingDataProviderArgs']]] = None,
+            data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             documentation: Optional[pulumi.Input[str]] = None,
@@ -838,9 +838,9 @@ class Listing(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             primary_contact: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
+            publisher: Optional[pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']]] = None,
             request_access: Optional[pulumi.Input[str]] = None,
-            restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None) -> 'Listing':
+            restricted_export_config: Optional[pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']]] = None) -> 'Listing':
         """
         Get an existing Listing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -848,11 +848,11 @@ class Listing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ListingBigqueryDatasetArgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
+        :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
         :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
                except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -862,9 +862,9 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] name: The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']] publisher: Details of the publisher who owns the listing and who can share the source data.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
-        :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        :param pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

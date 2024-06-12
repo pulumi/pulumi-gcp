@@ -265,7 +265,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -308,14 +308,14 @@ class Index(pulumi.CustomResource):
             database=database.name,
             collection="atestcollection",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
+                {
+                    "fieldPath": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "order": "DESCENDING",
+                },
             ])
         ```
         ### Firestore Index Datastore Mode
@@ -338,14 +338,14 @@ class Index(pulumi.CustomResource):
             query_scope="COLLECTION_RECURSIVE",
             api_scope="DATASTORE_MODE_API",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
+                {
+                    "fieldPath": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "order": "DESCENDING",
+                },
             ])
         ```
         ### Firestore Index Vector
@@ -366,21 +366,21 @@ class Index(pulumi.CustomResource):
             database=database.name,
             collection="atestcollection",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="field_name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="__name__",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    vector_config=gcp.firestore.IndexFieldVectorConfigArgs(
-                        dimension=128,
-                        flat=gcp.firestore.IndexFieldVectorConfigFlatArgs(),
-                    ),
-                ),
+                {
+                    "fieldPath": "field_name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "__name__",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "vectorConfig": {
+                        "dimension": 128,
+                        "flat": {},
+                    },
+                },
             ])
         ```
 
@@ -401,7 +401,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
                direction as that of the last field defined. If the final field in a
@@ -456,14 +456,14 @@ class Index(pulumi.CustomResource):
             database=database.name,
             collection="atestcollection",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
+                {
+                    "fieldPath": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "order": "DESCENDING",
+                },
             ])
         ```
         ### Firestore Index Datastore Mode
@@ -486,14 +486,14 @@ class Index(pulumi.CustomResource):
             query_scope="COLLECTION_RECURSIVE",
             api_scope="DATASTORE_MODE_API",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
+                {
+                    "fieldPath": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "order": "DESCENDING",
+                },
             ])
         ```
         ### Firestore Index Vector
@@ -514,21 +514,21 @@ class Index(pulumi.CustomResource):
             database=database.name,
             collection="atestcollection",
             fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="field_name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="__name__",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    vector_config=gcp.firestore.IndexFieldVectorConfigArgs(
-                        dimension=128,
-                        flat=gcp.firestore.IndexFieldVectorConfigFlatArgs(),
-                    ),
-                ),
+                {
+                    "fieldPath": "field_name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "__name__",
+                    "order": "ASCENDING",
+                },
+                {
+                    "fieldPath": "description",
+                    "vectorConfig": {
+                        "dimension": 128,
+                        "flat": {},
+                    },
+                },
             ])
         ```
 
@@ -562,7 +562,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -598,7 +598,7 @@ class Index(pulumi.CustomResource):
             api_scope: Optional[pulumi.Input[str]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             query_scope: Optional[pulumi.Input[str]] = None) -> 'Index':
@@ -612,7 +612,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
                direction as that of the last field defined. If the final field in a

@@ -292,7 +292,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConnectionIAMMemberConditionArgs', 'ConnectionIAMMemberConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -320,10 +320,10 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudbuild.connectionViewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudbuild.connectionViewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
             project=my_connection["project"],
             location=my_connection["location"],
@@ -365,10 +365,10 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudbuild.connectionViewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudbuild.connectionViewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
             project=my_connection["project"],
             location=my_connection["location"],
@@ -492,10 +492,10 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudbuild.connectionViewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudbuild.connectionViewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
             project=my_connection["project"],
             location=my_connection["location"],
@@ -537,10 +537,10 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudbuild.connectionViewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudbuild.connectionViewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
             project=my_connection["project"],
             location=my_connection["location"],
@@ -629,7 +629,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConnectionIAMMemberConditionArgs', 'ConnectionIAMMemberConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -665,7 +665,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ConnectionIAMMemberConditionArgs', 'ConnectionIAMMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

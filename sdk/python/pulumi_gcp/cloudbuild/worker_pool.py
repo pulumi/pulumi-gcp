@@ -373,9 +373,9 @@ class WorkerPool(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
@@ -389,11 +389,11 @@ class WorkerPool(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ))
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-4",
+                "noExternalIp": False,
+            })
         ```
 
         ### Network Config
@@ -423,15 +423,15 @@ class WorkerPool(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
-                peered_network=network.id,
-                peered_network_ip_range="/29",
-            ),
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-4",
+                "noExternalIp": False,
+            },
+            network_config={
+                "peeredNetwork": network.id,
+                "peeredNetworkIpRange": "/29",
+            },
             opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
 
@@ -470,9 +470,9 @@ class WorkerPool(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         ...
     @overload
@@ -492,11 +492,11 @@ class WorkerPool(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ))
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-4",
+                "noExternalIp": False,
+            })
         ```
 
         ### Network Config
@@ -526,15 +526,15 @@ class WorkerPool(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
-                peered_network=network.id,
-                peered_network_ip_range="/29",
-            ),
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-4",
+                "noExternalIp": False,
+            },
+            network_config={
+                "peeredNetwork": network.id,
+                "peeredNetworkIpRange": "/29",
+            },
             opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
 
@@ -581,9 +581,9 @@ class WorkerPool(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -625,12 +625,12 @@ class WorkerPool(pulumi.CustomResource):
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None) -> 'WorkerPool':
+            worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None) -> 'WorkerPool':
         """
         Get an existing WorkerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -649,12 +649,12 @@ class WorkerPool(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] uid: Output only. A unique identifier for the `WorkerPool`.
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
-        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

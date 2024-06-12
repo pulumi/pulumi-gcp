@@ -351,7 +351,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -384,10 +384,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
             name="external-gateway",
             redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
             description="An externally managed VPN gateway",
-            interfaces=[gcp.compute.ExternalVpnGatewayInterfaceArgs(
-                id=0,
-                ip_address="8.8.8.8",
-            )])
+            interfaces=[{
+                "id": 0,
+                "ipAddress": "8.8.8.8",
+            }])
         network_subnet1 = gcp.compute.Subnetwork("network_subnet1",
             name="ha-vpn-subnet-1",
             ip_cidr_range="10.0.1.0/24",
@@ -401,9 +401,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
         router1 = gcp.compute.Router("router1",
             name="ha-vpn-router1",
             network=network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         tunnel1 = gcp.compute.VPNTunnel("tunnel1",
             name="ha-vpn-tunnel1",
             region="us-central1",
@@ -479,7 +479,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -532,10 +532,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
             name="external-gateway",
             redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
             description="An externally managed VPN gateway",
-            interfaces=[gcp.compute.ExternalVpnGatewayInterfaceArgs(
-                id=0,
-                ip_address="8.8.8.8",
-            )])
+            interfaces=[{
+                "id": 0,
+                "ipAddress": "8.8.8.8",
+            }])
         network_subnet1 = gcp.compute.Subnetwork("network_subnet1",
             name="ha-vpn-subnet-1",
             ip_cidr_range="10.0.1.0/24",
@@ -549,9 +549,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
         router1 = gcp.compute.Router("router1",
             name="ha-vpn-router1",
             network=network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         tunnel1 = gcp.compute.VPNTunnel("tunnel1",
             name="ha-vpn-tunnel1",
             region="us-central1",
@@ -640,7 +640,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -678,7 +678,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -695,7 +695,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.

@@ -837,28 +837,28 @@ class Bucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
+                 autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
-                 encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
+                 encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
-                 website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
+                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
@@ -885,22 +885,22 @@ class Bucket(pulumi.CustomResource):
             location="EU",
             force_destroy=True,
             uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ),
-            cors=[gcp.storage.BucketCorArgs(
-                origins=["http://image-store.com"],
-                methods=[
+            website={
+                "mainPageSuffix": "index.html",
+                "notFoundPage": "404.html",
+            },
+            cors=[{
+                "origins": ["http://image-store.com"],
+                "methods": [
                     "GET",
                     "HEAD",
                     "PUT",
                     "POST",
                     "DELETE",
                 ],
-                response_headers=["*"],
-                max_age_seconds=3600,
-            )])
+                "responseHeaders": ["*"],
+                "maxAgeSeconds": 3600,
+            }])
         ```
 
         ### Life Cycle Settings For Storage Bucket Objects
@@ -914,22 +914,22 @@ class Bucket(pulumi.CustomResource):
             location="US",
             force_destroy=True,
             lifecycle_rules=[
-                gcp.storage.BucketLifecycleRuleArgs(
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=3,
-                    ),
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
-                ),
-                gcp.storage.BucketLifecycleRuleArgs(
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=1,
-                    ),
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
-                ),
+                {
+                    "condition": {
+                        "age": 3,
+                    },
+                    "action": {
+                        "type": "Delete",
+                    },
+                },
+                {
+                    "condition": {
+                        "age": 1,
+                    },
+                    "action": {
+                        "type": "AbortIncompleteMultipartUpload",
+                    },
+                },
             ])
         ```
 
@@ -944,15 +944,15 @@ class Bucket(pulumi.CustomResource):
             name="no-age-enabled-bucket",
             location="US",
             force_destroy=True,
-            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
-                action=gcp.storage.BucketLifecycleRuleActionArgs(
-                    type="Delete",
-                ),
-                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                    days_since_noncurrent_time=3,
-                    no_age=True,
-                ),
-            )])
+            lifecycle_rules=[{
+                "action": {
+                    "type": "Delete",
+                },
+                "condition": {
+                    "daysSinceNoncurrentTime": 3,
+                    "noAge": True,
+                },
+            }])
         ```
 
         ### Enabling Public Access Prevention
@@ -1000,34 +1000,34 @@ class Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        :param pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
-        :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
+        :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
+        :param pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
-        :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+        :param pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
-        :param pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
                be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
-        :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: Configuration if the bucket acts as a website. Structure is documented below.
+        :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
+        :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
         ...
     @overload
@@ -1060,22 +1060,22 @@ class Bucket(pulumi.CustomResource):
             location="EU",
             force_destroy=True,
             uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ),
-            cors=[gcp.storage.BucketCorArgs(
-                origins=["http://image-store.com"],
-                methods=[
+            website={
+                "mainPageSuffix": "index.html",
+                "notFoundPage": "404.html",
+            },
+            cors=[{
+                "origins": ["http://image-store.com"],
+                "methods": [
                     "GET",
                     "HEAD",
                     "PUT",
                     "POST",
                     "DELETE",
                 ],
-                response_headers=["*"],
-                max_age_seconds=3600,
-            )])
+                "responseHeaders": ["*"],
+                "maxAgeSeconds": 3600,
+            }])
         ```
 
         ### Life Cycle Settings For Storage Bucket Objects
@@ -1089,22 +1089,22 @@ class Bucket(pulumi.CustomResource):
             location="US",
             force_destroy=True,
             lifecycle_rules=[
-                gcp.storage.BucketLifecycleRuleArgs(
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=3,
-                    ),
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
-                ),
-                gcp.storage.BucketLifecycleRuleArgs(
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=1,
-                    ),
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
-                ),
+                {
+                    "condition": {
+                        "age": 3,
+                    },
+                    "action": {
+                        "type": "Delete",
+                    },
+                },
+                {
+                    "condition": {
+                        "age": 1,
+                    },
+                    "action": {
+                        "type": "AbortIncompleteMultipartUpload",
+                    },
+                },
             ])
         ```
 
@@ -1119,15 +1119,15 @@ class Bucket(pulumi.CustomResource):
             name="no-age-enabled-bucket",
             location="US",
             force_destroy=True,
-            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
-                action=gcp.storage.BucketLifecycleRuleActionArgs(
-                    type="Delete",
-                ),
-                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                    days_since_noncurrent_time=3,
-                    no_age=True,
-                ),
-            )])
+            lifecycle_rules=[{
+                "action": {
+                    "type": "Delete",
+                },
+                "condition": {
+                    "daysSinceNoncurrentTime": 3,
+                    "noAge": True,
+                },
+            }])
         ```
 
         ### Enabling Public Access Prevention
@@ -1188,28 +1188,28 @@ class Bucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
+                 autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
-                 encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
+                 encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
-                 website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
+                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1260,33 +1260,33 @@ class Bucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
-            cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
-            custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
+            autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+            cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+            custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_object_retention: Optional[pulumi.Input[bool]] = None,
-            encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
+            encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
+            logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_number: Optional[pulumi.Input[int]] = None,
             public_access_prevention: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             requester_pays: Optional[pulumi.Input[bool]] = None,
-            retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
+            retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
             rpo: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
+            soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
-            website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None) -> 'Bucket':
+            versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+            website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
         """
         Get an existing Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1294,21 +1294,21 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        :param pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
-        :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
+        :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
+        :param pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -1316,16 +1316,16 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
-        :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+        :param pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
                be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
-        :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: Configuration if the bucket acts as a website. Structure is documented below.
+        :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
+        :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

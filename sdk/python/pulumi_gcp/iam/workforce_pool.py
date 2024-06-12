@@ -387,7 +387,7 @@ class WorkforcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
+                 access_restrictions: Optional[pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -436,12 +436,12 @@ class WorkforcePool(pulumi.CustomResource):
             description="A sample workforce pool.",
             disabled=False,
             session_duration="7200s",
-            access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
-                allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
-                    domain="backstory.chronicle.security",
-                )],
-                disable_programmatic_signin=False,
-            ))
+            access_restrictions={
+                "allowedServices": [{
+                    "domain": "backstory.chronicle.security",
+                }],
+                "disableProgrammaticSignin": False,
+            })
         ```
 
         ## Import
@@ -464,7 +464,7 @@ class WorkforcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        :param pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
@@ -531,12 +531,12 @@ class WorkforcePool(pulumi.CustomResource):
             description="A sample workforce pool.",
             disabled=False,
             session_duration="7200s",
-            access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
-                allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
-                    domain="backstory.chronicle.security",
-                )],
-                disable_programmatic_signin=False,
-            ))
+            access_restrictions={
+                "allowedServices": [{
+                    "domain": "backstory.chronicle.security",
+                }],
+                "disableProgrammaticSignin": False,
+            })
         ```
 
         ## Import
@@ -572,7 +572,7 @@ class WorkforcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
+                 access_restrictions: Optional[pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -615,7 +615,7 @@ class WorkforcePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
+            access_restrictions: Optional[pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -632,7 +632,7 @@ class WorkforcePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        :param pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.

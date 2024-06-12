@@ -209,14 +209,14 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         policy = gcp.compute.ResourcePolicy("policy",
             name="my-resource-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
             name=policy.name,
             disk=ssd.name,
@@ -296,14 +296,14 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         policy = gcp.compute.ResourcePolicy("policy",
             name="my-resource-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
             name=policy.name,
             disk=ssd.name,

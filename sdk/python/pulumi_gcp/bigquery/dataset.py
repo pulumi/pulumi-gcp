@@ -899,15 +899,15 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -936,14 +936,14 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
             ])
         ```
         ### Bigquery Dataset Cmek
@@ -964,9 +964,9 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="US",
             default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ))
+            default_encryption_configuration={
+                "kmsKeyName": crypto_key.id,
+            })
         ```
         ### Bigquery Dataset Authorized Dataset
 
@@ -985,14 +985,14 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
             ])
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="private",
@@ -1004,23 +1004,23 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
-                            project_id=public.project,
-                            dataset_id=public.dataset_id,
-                        ),
-                        target_types=["VIEWS"],
-                    ),
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
+                {
+                    "dataset": {
+                        "dataset": {
+                            "projectId": public.project,
+                            "datasetId": public.dataset_id,
+                        },
+                        "targetTypes": ["VIEWS"],
+                    },
+                },
             ])
         ```
         ### Bigquery Dataset Authorized Routine
@@ -1039,13 +1039,13 @@ class Dataset(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
+            arguments=[{
+                "name": "value",
+                "argumentKind": "FIXED_TYPE",
+                "dataType": json.dumps({
                     "typeKind": "INT64",
                 }),
-            )],
+            }],
             return_table_type=json.dumps({
                 "columns": [{
                     "name": "value",
@@ -1058,17 +1058,17 @@ class Dataset(pulumi.CustomResource):
             dataset_id="private_dataset",
             description="This dataset is private",
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email="my@service-account.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                        project_id=public_routine.project,
-                        dataset_id=public_routine.dataset_id,
-                        routine_id=public_routine.routine_id,
-                    ),
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": "my@service-account.com",
+                },
+                {
+                    "routine": {
+                        "projectId": public_routine.project,
+                        "datasetId": public_routine.dataset_id,
+                        "routineId": public_routine.routine_id,
+                    },
+                },
             ])
         ```
         ### Bigquery Dataset External Reference Aws
@@ -1082,10 +1082,10 @@ class Dataset(pulumi.CustomResource):
             friendly_name="test",
             description="This is a test description",
             location="aws-us-east-1",
-            external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
-                external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
-                connection="projects/project/locations/aws-us-east-1/connections/connection",
-            ))
+            external_dataset_reference={
+                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "connection": "projects/project/locations/aws-us-east-1/connections/connection",
+            })
         ```
 
         ## Import
@@ -1114,7 +1114,7 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -1131,7 +1131,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -1165,7 +1165,7 @@ class Dataset(pulumi.CustomResource):
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
-        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -1220,14 +1220,14 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
             ])
         ```
         ### Bigquery Dataset Cmek
@@ -1248,9 +1248,9 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="US",
             default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ))
+            default_encryption_configuration={
+                "kmsKeyName": crypto_key.id,
+            })
         ```
         ### Bigquery Dataset Authorized Dataset
 
@@ -1269,14 +1269,14 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
             ])
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="private",
@@ -1288,23 +1288,23 @@ class Dataset(pulumi.CustomResource):
                 "env": "default",
             },
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
-                            project_id=public.project,
-                            dataset_id=public.dataset_id,
-                        ),
-                        target_types=["VIEWS"],
-                    ),
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
+                {
+                    "dataset": {
+                        "dataset": {
+                            "projectId": public.project,
+                            "datasetId": public.dataset_id,
+                        },
+                        "targetTypes": ["VIEWS"],
+                    },
+                },
             ])
         ```
         ### Bigquery Dataset Authorized Routine
@@ -1323,13 +1323,13 @@ class Dataset(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
+            arguments=[{
+                "name": "value",
+                "argumentKind": "FIXED_TYPE",
+                "dataType": json.dumps({
                     "typeKind": "INT64",
                 }),
-            )],
+            }],
             return_table_type=json.dumps({
                 "columns": [{
                     "name": "value",
@@ -1342,17 +1342,17 @@ class Dataset(pulumi.CustomResource):
             dataset_id="private_dataset",
             description="This dataset is private",
             accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email="my@service-account.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                        project_id=public_routine.project,
-                        dataset_id=public_routine.dataset_id,
-                        routine_id=public_routine.routine_id,
-                    ),
-                ),
+                {
+                    "role": "OWNER",
+                    "userByEmail": "my@service-account.com",
+                },
+                {
+                    "routine": {
+                        "projectId": public_routine.project,
+                        "datasetId": public_routine.dataset_id,
+                        "routineId": public_routine.routine_id,
+                    },
+                },
             ])
         ```
         ### Bigquery Dataset External Reference Aws
@@ -1366,10 +1366,10 @@ class Dataset(pulumi.CustomResource):
             friendly_name="test",
             description="This is a test description",
             location="aws-us-east-1",
-            external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
-                external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
-                connection="projects/project/locations/aws-us-east-1/connections/connection",
-            ))
+            external_dataset_reference={
+                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "connection": "projects/project/locations/aws-us-east-1/connections/connection",
+            })
         ```
 
         ## Import
@@ -1411,15 +1411,15 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1472,18 +1472,18 @@ class Dataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+            accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             default_collation: Optional[pulumi.Input[str]] = None,
-            default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
+            default_encryption_configuration: Optional[pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
             default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
+            external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1501,7 +1501,7 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the
                epoch.
@@ -1520,7 +1520,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -1556,7 +1556,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.

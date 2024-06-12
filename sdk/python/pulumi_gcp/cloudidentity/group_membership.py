@@ -233,9 +233,9 @@ class GroupMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
                  __props__=None):
         """
         A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
@@ -263,29 +263,29 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         child_group = gcp.cloudidentity.Group("child-group",
             display_name="my-identity-group-child",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group-child@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group-child@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id=child_group.group_key.id,
-            ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
-                name="MEMBER",
-            )])
+            preferred_member_key={
+                "id": child_group.group_key.id,
+            },
+            roles=[{
+                "name": "MEMBER",
+            }])
         ```
         ### Cloud Identity Group Membership User
 
@@ -296,24 +296,24 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id="cloud_identity_user@example.com",
-            ),
+            preferred_member_key={
+                "id": "cloud_identity_user@example.com",
+            },
             roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MEMBER",
-                ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MANAGER",
-                ),
+                {
+                    "name": "MEMBER",
+                },
+                {
+                    "name": "MANAGER",
+                },
             ])
         ```
 
@@ -332,9 +332,9 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         """
@@ -370,29 +370,29 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         child_group = gcp.cloudidentity.Group("child-group",
             display_name="my-identity-group-child",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group-child@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group-child@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id=child_group.group_key.id,
-            ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
-                name="MEMBER",
-            )])
+            preferred_member_key={
+                "id": child_group.group_key.id,
+            },
+            roles=[{
+                "name": "MEMBER",
+            }])
         ```
         ### Cloud Identity Group Membership User
 
@@ -403,24 +403,24 @@ class GroupMembership(pulumi.CustomResource):
         group = gcp.cloudidentity.Group("group",
             display_name="my-identity-group",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id="cloud_identity_user@example.com",
-            ),
+            preferred_member_key={
+                "id": "cloud_identity_user@example.com",
+            },
             roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MEMBER",
-                ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MANAGER",
-                ),
+                {
+                    "name": "MEMBER",
+                },
+                {
+                    "name": "MANAGER",
+                },
             ])
         ```
 
@@ -452,9 +452,9 @@ class GroupMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,10 +488,10 @@ class GroupMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
-            member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
+            member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+            preferred_member_key: Optional[pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GroupMembership':
         """
@@ -503,10 +503,10 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the Membership was created.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
         :param pulumi.Input[str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
-        :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the membership.

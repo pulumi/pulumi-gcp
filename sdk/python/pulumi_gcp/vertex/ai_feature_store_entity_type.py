@@ -358,7 +358,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -385,12 +385,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
             labels={
@@ -398,23 +398,23 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             description="test description",
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval_days=1,
-                    staleness_days=21,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.8,
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=10,
-                ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
-                    state="ENABLED",
-                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
-                ),
-            ))
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringIntervalDays": 1,
+                    "stalenessDays": 21,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.8,
+                },
+                "categoricalThresholdConfig": {
+                    "value": 10,
+                },
+                "importFeaturesAnalysis": {
+                    "state": "ENABLED",
+                    "anomalyDetectionBaseline": "PREVIOUS_IMPORT_FEATURES_STATS",
+                },
+            })
         ```
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
@@ -428,30 +428,30 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ),
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringInterval": "86400s",
+                },
+                "categoricalThresholdConfig": {
+                    "value": 0.3,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.3,
+                },
+            },
             offline_storage_ttl_days=30)
         ```
 
@@ -478,7 +478,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -513,12 +513,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
             labels={
@@ -526,23 +526,23 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             description="test description",
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval_days=1,
-                    staleness_days=21,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.8,
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=10,
-                ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
-                    state="ENABLED",
-                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
-                ),
-            ))
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringIntervalDays": 1,
+                    "stalenessDays": 21,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.8,
+                },
+                "categoricalThresholdConfig": {
+                    "value": 10,
+                },
+                "importFeaturesAnalysis": {
+                    "state": "ENABLED",
+                    "anomalyDetectionBaseline": "PREVIOUS_IMPORT_FEATURES_STATS",
+                },
+            })
         ```
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
@@ -556,30 +556,30 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ),
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringInterval": "86400s",
+                },
+                "categoricalThresholdConfig": {
+                    "value": 0.3,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.3,
+                },
+            },
             offline_storage_ttl_days=30)
         ```
 
@@ -613,7 +613,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -657,7 +657,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
+            monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -682,7 +682,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.

@@ -457,12 +457,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -489,82 +489,82 @@ class OsPolicyAssignment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.osconfig.OsPolicyAssignment("primary",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
-                    labels={
+            instance_filter={
+                "all": False,
+                "exclusionLabels": [{
+                    "labels": {
                         "label-two": "value-two",
                     },
-                )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
-                    labels={
+                }],
+                "inclusionLabels": [{
+                    "labels": {
                         "label-one": "value-one",
                     },
-                )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
-                    os_short_name="centos",
-                    os_version="8.*",
-                )],
-            ),
+                }],
+                "inventories": [{
+                    "osShortName": "centos",
+                    "osVersion": "8.*",
+                }],
+            },
             location="us-central1-a",
             name="policy-assignment",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                    archive_type="DEB",
-                                    components=["doc"],
-                                    distribution="debian",
-                                    uri="https://atl.mirrors.clouvider.net/debian",
-                                    gpg_key=".gnupg/pubring.kbx",
-                                ),
-                            ),
-                        ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="exec1",
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                    interpreter="SHELL",
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                        local_path="$HOME/script.sh",
-                                    ),
-                                    output_file_path="$HOME/out",
-                                ),
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                    interpreter="SHELL",
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                            uri="https://www.example.com/script.sh",
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                        ),
-                                    ),
-                                    output_file_path="$HOME/out",
-                                ),
-                            ),
-                        ),
+            os_policies=[{
+                "id": "policy",
+                "mode": "VALIDATION",
+                "resourceGroups": [{
+                    "resources": [
+                        {
+                            "id": "apt-to-yum",
+                            "repository": {
+                                "apt": {
+                                    "archiveType": "DEB",
+                                    "components": ["doc"],
+                                    "distribution": "debian",
+                                    "uri": "https://atl.mirrors.clouvider.net/debian",
+                                    "gpgKey": ".gnupg/pubring.kbx",
+                                },
+                            },
+                        },
+                        {
+                            "id": "exec1",
+                            "exec": {
+                                "validate": {
+                                    "interpreter": "SHELL",
+                                    "args": ["arg1"],
+                                    "file": {
+                                        "localPath": "$HOME/script.sh",
+                                    },
+                                    "outputFilePath": "$HOME/out",
+                                },
+                                "enforce": {
+                                    "interpreter": "SHELL",
+                                    "args": ["arg1"],
+                                    "file": {
+                                        "allowInsecure": True,
+                                        "remote": {
+                                            "uri": "https://www.example.com/script.sh",
+                                            "sha256Checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                        },
+                                    },
+                                    "outputFilePath": "$HOME/out",
+                                },
+                            },
+                        },
                     ],
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                        os_short_name="centos",
-                        os_version="8.*",
-                    )],
-                )],
-                allow_no_resource_group_match=False,
-                description="A test os policy",
-            )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=100,
-                ),
-                min_wait_duration="3s",
-            ),
+                    "inventoryFilters": [{
+                        "osShortName": "centos",
+                        "osVersion": "8.*",
+                    }],
+                }],
+                "allowNoResourceGroupMatch": False,
+                "description": "A test os policy",
+            }],
+            rollout={
+                "disruptionBudget": {
+                    "percent": 100,
+                },
+                "minWaitDuration": "3s",
+            },
             description="A test os policy assignment")
         ```
 
@@ -595,14 +595,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
@@ -639,82 +639,82 @@ class OsPolicyAssignment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.osconfig.OsPolicyAssignment("primary",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
-                    labels={
+            instance_filter={
+                "all": False,
+                "exclusionLabels": [{
+                    "labels": {
                         "label-two": "value-two",
                     },
-                )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
-                    labels={
+                }],
+                "inclusionLabels": [{
+                    "labels": {
                         "label-one": "value-one",
                     },
-                )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
-                    os_short_name="centos",
-                    os_version="8.*",
-                )],
-            ),
+                }],
+                "inventories": [{
+                    "osShortName": "centos",
+                    "osVersion": "8.*",
+                }],
+            },
             location="us-central1-a",
             name="policy-assignment",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                    archive_type="DEB",
-                                    components=["doc"],
-                                    distribution="debian",
-                                    uri="https://atl.mirrors.clouvider.net/debian",
-                                    gpg_key=".gnupg/pubring.kbx",
-                                ),
-                            ),
-                        ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="exec1",
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                    interpreter="SHELL",
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                        local_path="$HOME/script.sh",
-                                    ),
-                                    output_file_path="$HOME/out",
-                                ),
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                    interpreter="SHELL",
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                            uri="https://www.example.com/script.sh",
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                        ),
-                                    ),
-                                    output_file_path="$HOME/out",
-                                ),
-                            ),
-                        ),
+            os_policies=[{
+                "id": "policy",
+                "mode": "VALIDATION",
+                "resourceGroups": [{
+                    "resources": [
+                        {
+                            "id": "apt-to-yum",
+                            "repository": {
+                                "apt": {
+                                    "archiveType": "DEB",
+                                    "components": ["doc"],
+                                    "distribution": "debian",
+                                    "uri": "https://atl.mirrors.clouvider.net/debian",
+                                    "gpgKey": ".gnupg/pubring.kbx",
+                                },
+                            },
+                        },
+                        {
+                            "id": "exec1",
+                            "exec": {
+                                "validate": {
+                                    "interpreter": "SHELL",
+                                    "args": ["arg1"],
+                                    "file": {
+                                        "localPath": "$HOME/script.sh",
+                                    },
+                                    "outputFilePath": "$HOME/out",
+                                },
+                                "enforce": {
+                                    "interpreter": "SHELL",
+                                    "args": ["arg1"],
+                                    "file": {
+                                        "allowInsecure": True,
+                                        "remote": {
+                                            "uri": "https://www.example.com/script.sh",
+                                            "sha256Checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                        },
+                                    },
+                                    "outputFilePath": "$HOME/out",
+                                },
+                            },
+                        },
                     ],
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                        os_short_name="centos",
-                        os_version="8.*",
-                    )],
-                )],
-                allow_no_resource_group_match=False,
-                description="A test os policy",
-            )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=100,
-                ),
-                min_wait_duration="3s",
-            ),
+                    "inventoryFilters": [{
+                        "osShortName": "centos",
+                        "osVersion": "8.*",
+                    }],
+                }],
+                "allowNoResourceGroupMatch": False,
+                "description": "A test os policy",
+            }],
+            rollout={
+                "disruptionBudget": {
+                    "percent": 100,
+                },
+                "minWaitDuration": "3s",
+            },
             description="A test os policy assignment")
         ```
 
@@ -758,12 +758,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -812,15 +812,15 @@ class OsPolicyAssignment(pulumi.CustomResource):
             deleted: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+            instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+            os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             revision_create_time: Optional[pulumi.Input[str]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
-            rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+            rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
             rollout_state: Optional[pulumi.Input[str]] = None,
             skip_await_rollout: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'OsPolicyAssignment':
@@ -840,11 +840,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress
@@ -853,7 +853,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                created.
         :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is
                committed whenever a rollout is triggered for a OS policy assignment
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment

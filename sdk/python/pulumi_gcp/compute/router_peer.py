@@ -953,9 +953,9 @@ class RouterPeer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -963,7 +963,7 @@ class RouterPeer(pulumi.CustomResource):
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
+                 md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1032,12 +1032,12 @@ class RouterPeer(pulumi.CustomResource):
             peer_asn=65513,
             advertised_route_priority=100,
             interface="interface-1",
-            bfd=gcp.compute.RouterPeerBfdArgs(
-                min_receive_interval=1000,
-                min_transmit_interval=1000,
-                multiplier=5,
-                session_initialization_mode="ACTIVE",
-            ))
+            bfd={
+                "minReceiveInterval": 1000,
+                "minTransmitInterval": 1000,
+                "multiplier": 5,
+                "sessionInitializationMode": "ACTIVE",
+            })
         ```
         ### Router Peer Router Appliance
 
@@ -1073,34 +1073,34 @@ class RouterPeer(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network_ip=addr_peer.address,
-                subnetwork=subnetwork.self_link,
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "networkIp": addr_peer.address,
+                "subnetwork": subnetwork.self_link,
+            }])
         hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
         spoke = gcp.networkconnectivity.Spoke("spoke",
             name="my-router-spoke",
             location=subnetwork.region,
             hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address=addr_peer.address,
-                )],
-                site_to_site_data_transfer=False,
-            ))
+            linked_router_appliance_instances={
+                "instances": [{
+                    "virtualMachine": instance.self_link,
+                    "ipAddress": addr_peer.address,
+                }],
+                "siteToSiteDataTransfer": False,
+            })
         router = gcp.compute.Router("router",
             name="my-router-router",
             region=subnetwork.region,
             network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         interface_redundant = gcp.compute.RouterInterface("interface_redundant",
             name="my-router-intf-red",
             region=router.region,
@@ -1138,10 +1138,10 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=foobar_google_compute_router_interface["name"],
             peer_ip_address="169.254.3.2",
-            md5_authentication_key=gcp.compute.RouterPeerMd5AuthenticationKeyArgs(
-                name="%s-peer-key",
-                key="%s-peer-key-value",
-            ))
+            md5_authentication_key={
+                "name": "%s-peer-key",
+                "key": "%s-peer-key-value",
+            })
         ```
 
         ## Import
@@ -1190,7 +1190,7 @@ class RouterPeer(pulumi.CustomResource):
                and overrides the list defined for the router (in the "bgp" message).
                These groups are advertised in addition to any specified prefixes.
                Leave this field blank to advertise no custom groups.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -1199,7 +1199,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
@@ -1215,7 +1215,7 @@ class RouterPeer(pulumi.CustomResource):
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
-        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -1309,12 +1309,12 @@ class RouterPeer(pulumi.CustomResource):
             peer_asn=65513,
             advertised_route_priority=100,
             interface="interface-1",
-            bfd=gcp.compute.RouterPeerBfdArgs(
-                min_receive_interval=1000,
-                min_transmit_interval=1000,
-                multiplier=5,
-                session_initialization_mode="ACTIVE",
-            ))
+            bfd={
+                "minReceiveInterval": 1000,
+                "minTransmitInterval": 1000,
+                "multiplier": 5,
+                "sessionInitializationMode": "ACTIVE",
+            })
         ```
         ### Router Peer Router Appliance
 
@@ -1350,34 +1350,34 @@ class RouterPeer(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network_ip=addr_peer.address,
-                subnetwork=subnetwork.self_link,
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "networkIp": addr_peer.address,
+                "subnetwork": subnetwork.self_link,
+            }])
         hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
         spoke = gcp.networkconnectivity.Spoke("spoke",
             name="my-router-spoke",
             location=subnetwork.region,
             hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address=addr_peer.address,
-                )],
-                site_to_site_data_transfer=False,
-            ))
+            linked_router_appliance_instances={
+                "instances": [{
+                    "virtualMachine": instance.self_link,
+                    "ipAddress": addr_peer.address,
+                }],
+                "siteToSiteDataTransfer": False,
+            })
         router = gcp.compute.Router("router",
             name="my-router-router",
             region=subnetwork.region,
             network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         interface_redundant = gcp.compute.RouterInterface("interface_redundant",
             name="my-router-intf-red",
             region=router.region,
@@ -1415,10 +1415,10 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=foobar_google_compute_router_interface["name"],
             peer_ip_address="169.254.3.2",
-            md5_authentication_key=gcp.compute.RouterPeerMd5AuthenticationKeyArgs(
-                name="%s-peer-key",
-                key="%s-peer-key-value",
-            ))
+            md5_authentication_key={
+                "name": "%s-peer-key",
+                "key": "%s-peer-key-value",
+            })
         ```
 
         ## Import
@@ -1468,9 +1468,9 @@ class RouterPeer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -1478,7 +1478,7 @@ class RouterPeer(pulumi.CustomResource):
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
+                 md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1538,9 +1538,9 @@ class RouterPeer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advertise_mode: Optional[pulumi.Input[str]] = None,
             advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+            advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
             advertised_route_priority: Optional[pulumi.Input[int]] = None,
-            bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+            bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             enable_ipv4: Optional[pulumi.Input[bool]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -1549,7 +1549,7 @@ class RouterPeer(pulumi.CustomResource):
             ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
             management_type: Optional[pulumi.Input[str]] = None,
-            md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
+            md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peer_asn: Optional[pulumi.Input[int]] = None,
             peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1580,7 +1580,7 @@ class RouterPeer(pulumi.CustomResource):
                and overrides the list defined for the router (in the "bgp" message).
                These groups are advertised in addition to any specified prefixes.
                Leave this field blank to advertise no custom groups.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -1589,7 +1589,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
@@ -1614,7 +1614,7 @@ class RouterPeer(pulumi.CustomResource):
                creates, updates, and deletes this type of BGP peer when the
                PARTNER InterconnectAttachment is created, updated,
                or deleted.
-        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters

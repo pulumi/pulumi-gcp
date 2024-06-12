@@ -479,7 +479,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  security_profile_group: Optional[pulumi.Input[str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -519,24 +519,24 @@ class FirewallPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="EGRESS",
             disabled=False,
-            match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="tcp",
-                        ports=["8080"],
-                    ),
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="udp",
-                        ports=["22"],
-                    ),
+            match={
+                "layer4Configs": [
+                    {
+                        "ipProtocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ipProtocol": "udp",
+                        "ports": ["22"],
+                    },
                 ],
-                dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=[],
-                dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-known-malicious-ips"],
-                src_address_groups=[],
-                dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
+                "destIpRanges": ["11.100.0.1/32"],
+                "destFqdns": [],
+                "destRegionCodes": ["US"],
+                "destThreatIntelligences": ["iplist-known-malicious-ips"],
+                "srcAddressGroups": [],
+                "destAddressGroups": [basic_global_networksecurity_address_group.id],
+            },
             target_service_accounts=["my@service-account.com"])
         ```
 
@@ -569,7 +569,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
                "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfileGroup resource. Example:
                https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
@@ -619,24 +619,24 @@ class FirewallPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="EGRESS",
             disabled=False,
-            match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="tcp",
-                        ports=["8080"],
-                    ),
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="udp",
-                        ports=["22"],
-                    ),
+            match={
+                "layer4Configs": [
+                    {
+                        "ipProtocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ipProtocol": "udp",
+                        "ports": ["22"],
+                    },
                 ],
-                dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=[],
-                dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-known-malicious-ips"],
-                src_address_groups=[],
-                dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
+                "destIpRanges": ["11.100.0.1/32"],
+                "destFqdns": [],
+                "destRegionCodes": ["US"],
+                "destThreatIntelligences": ["iplist-known-malicious-ips"],
+                "srcAddressGroups": [],
+                "destAddressGroups": [basic_global_networksecurity_address_group.id],
+            },
             target_service_accounts=["my@service-account.com"])
         ```
 
@@ -679,7 +679,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  security_profile_group: Optional[pulumi.Input[str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -735,7 +735,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             enable_logging: Optional[pulumi.Input[bool]] = None,
             firewall_policy: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']]] = None,
+            match: Optional[pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             rule_tuple_count: Optional[pulumi.Input[int]] = None,
             security_profile_group: Optional[pulumi.Input[str]] = None,
@@ -759,7 +759,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfileGroup resource. Example:

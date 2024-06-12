@@ -495,18 +495,18 @@ class NetworkAttachment(pulumi.CustomResource):
             name="basic-instance",
             zone="us-central1-a",
             machine_type="e2-micro",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
             network_interfaces=[
-                gcp.compute.InstanceNetworkInterfaceArgs(
-                    network="default",
-                ),
-                gcp.compute.InstanceNetworkInterfaceArgs(
-                    network_attachment=default_network_attachment.self_link,
-                ),
+                {
+                    "network": "default",
+                },
+                {
+                    "networkAttachment": default_network_attachment.self_link,
+                },
             ])
         ```
 
@@ -622,18 +622,18 @@ class NetworkAttachment(pulumi.CustomResource):
             name="basic-instance",
             zone="us-central1-a",
             machine_type="e2-micro",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
             network_interfaces=[
-                gcp.compute.InstanceNetworkInterfaceArgs(
-                    network="default",
-                ),
-                gcp.compute.InstanceNetworkInterfaceArgs(
-                    network_attachment=default_network_attachment.self_link,
-                ),
+                {
+                    "network": "default",
+                },
+                {
+                    "networkAttachment": default_network_attachment.self_link,
+                },
             ])
         ```
 
@@ -728,7 +728,7 @@ class NetworkAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArgs']]]]] = None,
+            connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict']]]]] = None,
             connection_preference: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -750,7 +750,7 @@ class NetworkAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAttachmentConnectionEndpointArgs']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
                Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.

@@ -406,7 +406,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -481,11 +481,11 @@ class BackendBucket(pulumi.CustomResource):
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    query_string_whitelists=["image-version"],
-                ),
-            ))
+            cdn_policy={
+                "cacheKeyPolicy": {
+                    "queryStringWhitelists": ["image-version"],
+                },
+            })
         ```
         ### Backend Bucket Include Http Headers
 
@@ -501,11 +501,11 @@ class BackendBucket(pulumi.CustomResource):
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    include_http_headers=["X-My-Header-Field"],
-                ),
-            ))
+            cdn_policy={
+                "cacheKeyPolicy": {
+                    "includeHttpHeaders": ["X-My-Header-Field"],
+                },
+            })
         ```
 
         ## Import
@@ -535,7 +535,7 @@ class BackendBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
@@ -629,11 +629,11 @@ class BackendBucket(pulumi.CustomResource):
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    query_string_whitelists=["image-version"],
-                ),
-            ))
+            cdn_policy={
+                "cacheKeyPolicy": {
+                    "queryStringWhitelists": ["image-version"],
+                },
+            })
         ```
         ### Backend Bucket Include Http Headers
 
@@ -649,11 +649,11 @@ class BackendBucket(pulumi.CustomResource):
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    include_http_headers=["X-My-Header-Field"],
-                ),
-            ))
+            cdn_policy={
+                "cacheKeyPolicy": {
+                    "includeHttpHeaders": ["X-My-Header-Field"],
+                },
+            })
         ```
 
         ## Import
@@ -696,7 +696,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -737,7 +737,7 @@ class BackendBucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: Optional[pulumi.Input[str]] = None,
-            cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+            cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
             compression_mode: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -755,7 +755,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.

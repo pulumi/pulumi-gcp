@@ -369,7 +369,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -387,12 +387,12 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-            )])
+            rules=[{
+                "sources": [{
+                    "principals": ["namespace/*"],
+                    "ipBlocks": ["1.2.3.0/24"],
+                }],
+            }])
         ```
         ### Network Security Authorization Policy Destinations
 
@@ -407,21 +407,21 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
-                    hosts=["mydomain.*"],
-                    ports=[8080],
-                    methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
-                        header_name=":method",
-                        regex_match="GET",
-                    ),
-                )],
-            )])
+            rules=[{
+                "sources": [{
+                    "principals": ["namespace/*"],
+                    "ipBlocks": ["1.2.3.0/24"],
+                }],
+                "destinations": [{
+                    "hosts": ["mydomain.*"],
+                    "ports": [8080],
+                    "methods": ["GET"],
+                    "httpHeaderMatch": {
+                        "headerName": ":method",
+                        "regexMatch": "GET",
+                    },
+                }],
+            }])
         ```
 
         ## Import
@@ -464,7 +464,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         """
@@ -490,12 +490,12 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-            )])
+            rules=[{
+                "sources": [{
+                    "principals": ["namespace/*"],
+                    "ipBlocks": ["1.2.3.0/24"],
+                }],
+            }])
         ```
         ### Network Security Authorization Policy Destinations
 
@@ -510,21 +510,21 @@ class AuthorizationPolicy(pulumi.CustomResource):
             },
             description="my description",
             action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
-                    hosts=["mydomain.*"],
-                    ports=[8080],
-                    methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
-                        header_name=":method",
-                        regex_match="GET",
-                    ),
-                )],
-            )])
+            rules=[{
+                "sources": [{
+                    "principals": ["namespace/*"],
+                    "ipBlocks": ["1.2.3.0/24"],
+                }],
+                "destinations": [{
+                    "hosts": ["mydomain.*"],
+                    "ports": [8080],
+                    "methods": ["GET"],
+                    "httpHeaderMatch": {
+                        "headerName": ":method",
+                        "regexMatch": "GET",
+                    },
+                }],
+            }])
         ```
 
         ## Import
@@ -572,7 +572,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -616,7 +616,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AuthorizationPolicy':
         """
         Get an existing AuthorizationPolicy resource's state with the given name, id, and optional extra
@@ -643,7 +643,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Time the AuthorizationPolicy was updated in UTC.

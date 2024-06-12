@@ -433,15 +433,15 @@ class Entitlement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_notification_targets: Optional[pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']]] = None,
-                 approval_workflow: Optional[pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']]] = None,
-                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]]] = None,
+                 additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+                 approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
                  entitlement_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_request_duration: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 privileged_access: Optional[pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']]] = None,
-                 requester_justification_config: Optional[pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']]] = None,
+                 privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+                 requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -457,38 +457,38 @@ class Entitlement(pulumi.CustomResource):
             location="global",
             max_request_duration="43200s",
             parent="projects/my-project-name",
-            requester_justification_config=gcp.privilegedaccessmanager.EntitlementRequesterJustificationConfigArgs(
-                unstructured=gcp.privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructuredArgs(),
-            ),
-            eligible_users=[gcp.privilegedaccessmanager.EntitlementEligibleUserArgs(
-                principals=["group:test@google.com"],
-            )],
-            privileged_access=gcp.privilegedaccessmanager.EntitlementPrivilegedAccessArgs(
-                gcp_iam_access=gcp.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessArgs(
-                    role_bindings=[gcp.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs(
-                        role="roles/storage.admin",
-                        condition_expression="request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
-                    )],
-                    resource="//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    resource_type="cloudresourcemanager.googleapis.com/Project",
-                ),
-            ),
-            additional_notification_targets=gcp.privilegedaccessmanager.EntitlementAdditionalNotificationTargetsArgs(
-                admin_email_recipients=["user@example.com"],
-                requester_email_recipients=["user@example.com"],
-            ),
-            approval_workflow=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowArgs(
-                manual_approvals=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsArgs(
-                    require_approver_justification=True,
-                    steps=[gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArgs(
-                        approvals_needed=1,
-                        approver_email_recipients=["user@example.com"],
-                        approvers=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs(
-                            principals=["group:test@google.com"],
-                        ),
-                    )],
-                ),
-            ))
+            requester_justification_config={
+                "unstructured": {},
+            },
+            eligible_users=[{
+                "principals": ["group:test@google.com"],
+            }],
+            privileged_access={
+                "gcpIamAccess": {
+                    "roleBindings": [{
+                        "role": "roles/storage.admin",
+                        "conditionExpression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
+                    }],
+                    "resource": "//cloudresourcemanager.googleapis.com/projects/my-project-name",
+                    "resourceType": "cloudresourcemanager.googleapis.com/Project",
+                },
+            },
+            additional_notification_targets={
+                "adminEmailRecipients": ["user@example.com"],
+                "requesterEmailRecipients": ["user@example.com"],
+            },
+            approval_workflow={
+                "manualApprovals": {
+                    "requireApproverJustification": True,
+                    "steps": [{
+                        "approvalsNeeded": 1,
+                        "approverEmailRecipients": ["user@example.com"],
+                        "approvers": {
+                            "principals": ["group:test@google.com"],
+                        },
+                    }],
+                },
+            })
         ```
 
         ## Import
@@ -505,10 +505,10 @@ class Entitlement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
+        :param pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
+        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
                This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
@@ -518,9 +518,9 @@ class Entitlement(pulumi.CustomResource):
                A requester can choose to ask for access for less than this duration but never more.
                Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
         :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-        :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
+        :param pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
+        :param pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
                Structure is documented below.
         """
         ...
@@ -543,38 +543,38 @@ class Entitlement(pulumi.CustomResource):
             location="global",
             max_request_duration="43200s",
             parent="projects/my-project-name",
-            requester_justification_config=gcp.privilegedaccessmanager.EntitlementRequesterJustificationConfigArgs(
-                unstructured=gcp.privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructuredArgs(),
-            ),
-            eligible_users=[gcp.privilegedaccessmanager.EntitlementEligibleUserArgs(
-                principals=["group:test@google.com"],
-            )],
-            privileged_access=gcp.privilegedaccessmanager.EntitlementPrivilegedAccessArgs(
-                gcp_iam_access=gcp.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessArgs(
-                    role_bindings=[gcp.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs(
-                        role="roles/storage.admin",
-                        condition_expression="request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
-                    )],
-                    resource="//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    resource_type="cloudresourcemanager.googleapis.com/Project",
-                ),
-            ),
-            additional_notification_targets=gcp.privilegedaccessmanager.EntitlementAdditionalNotificationTargetsArgs(
-                admin_email_recipients=["user@example.com"],
-                requester_email_recipients=["user@example.com"],
-            ),
-            approval_workflow=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowArgs(
-                manual_approvals=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsArgs(
-                    require_approver_justification=True,
-                    steps=[gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArgs(
-                        approvals_needed=1,
-                        approver_email_recipients=["user@example.com"],
-                        approvers=gcp.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs(
-                            principals=["group:test@google.com"],
-                        ),
-                    )],
-                ),
-            ))
+            requester_justification_config={
+                "unstructured": {},
+            },
+            eligible_users=[{
+                "principals": ["group:test@google.com"],
+            }],
+            privileged_access={
+                "gcpIamAccess": {
+                    "roleBindings": [{
+                        "role": "roles/storage.admin",
+                        "conditionExpression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
+                    }],
+                    "resource": "//cloudresourcemanager.googleapis.com/projects/my-project-name",
+                    "resourceType": "cloudresourcemanager.googleapis.com/Project",
+                },
+            },
+            additional_notification_targets={
+                "adminEmailRecipients": ["user@example.com"],
+                "requesterEmailRecipients": ["user@example.com"],
+            },
+            approval_workflow={
+                "manualApprovals": {
+                    "requireApproverJustification": True,
+                    "steps": [{
+                        "approvalsNeeded": 1,
+                        "approverEmailRecipients": ["user@example.com"],
+                        "approvers": {
+                            "principals": ["group:test@google.com"],
+                        },
+                    }],
+                },
+            })
         ```
 
         ## Import
@@ -604,15 +604,15 @@ class Entitlement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_notification_targets: Optional[pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']]] = None,
-                 approval_workflow: Optional[pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']]] = None,
-                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]]] = None,
+                 additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+                 approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
                  entitlement_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_request_duration: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 privileged_access: Optional[pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']]] = None,
-                 requester_justification_config: Optional[pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']]] = None,
+                 privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+                 requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -660,18 +660,18 @@ class Entitlement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_notification_targets: Optional[pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']]] = None,
-            approval_workflow: Optional[pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']]] = None,
+            additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+            approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]]] = None,
+            eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
             entitlement_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             max_request_duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            privileged_access: Optional[pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']]] = None,
-            requester_justification_config: Optional[pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']]] = None,
+            privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+            requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Entitlement':
         """
@@ -681,12 +681,12 @@ class Entitlement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
+        :param pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
+        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
         :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
                This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
@@ -699,9 +699,9 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
                Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         :param pulumi.Input[str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-        :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
+        :param pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']] privileged_access: Privileged access that this service can be used to gate.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
+        :param pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current state of the Entitlement.
         :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

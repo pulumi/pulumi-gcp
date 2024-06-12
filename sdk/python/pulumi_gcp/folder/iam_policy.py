@@ -170,10 +170,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -185,15 +185,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -221,11 +221,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.folder.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IAMMember
@@ -250,11 +250,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.folder.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IamAuditConfig
@@ -267,13 +267,13 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             service="allServices",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -291,10 +291,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -306,15 +306,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -342,11 +342,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.folder.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IAMMember
@@ -371,11 +371,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.folder.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IamAuditConfig
@@ -388,13 +388,13 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             service="allServices",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -471,10 +471,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -486,15 +486,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -522,11 +522,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.folder.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IAMMember
@@ -551,11 +551,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.folder.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IamAuditConfig
@@ -568,13 +568,13 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             service="allServices",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -592,10 +592,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -607,15 +607,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         folder = gcp.folder.IAMPolicy("folder",
             folder="folders/1234567",
             policy_data=admin.policy_data)
@@ -643,11 +643,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.folder.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IAMMember
@@ -672,11 +672,11 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.folder.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## folder.IamAuditConfig
@@ -689,13 +689,13 @@ class IAMPolicy(pulumi.CustomResource):
             folder="folders/1234567",
             service="allServices",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 

@@ -956,23 +956,23 @@ class BareMetalCluster(pulumi.CustomResource):
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']]] = None,
-                 cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterClusterOperationsArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterControlPlaneArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterLoadBalancerArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterMaintenanceConfigArgs']]] = None,
+                 maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNetworkConfigArgs']]] = None,
-                 node_access_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeAccessConfigArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeConfigArgs']]] = None,
-                 os_environment_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOsEnvironmentConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+                 node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+                 node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+                 os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterProxyArgs']]] = None,
-                 security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterSecurityConfigArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterStorageArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
+                 security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         """
         A Google Bare Metal User Cluster.
@@ -990,36 +990,36 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                    },
+                },
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "metalLbConfig": {
+                    "addressPools": [{
+                        "pool": "pool1",
+                        "addresses": [
                             "10.200.0.14/32",
                             "10.200.0.15/32",
                             "10.200.0.16/32",
@@ -1030,31 +1030,31 @@ class BareMetalCluster(pulumi.CustomResource):
                             "fd00:1::11/128",
                             "fd00:1::12/128",
                         ],
-                        avoid_buggy_ips=True,
-                        manual_assign=True,
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ))
+                        "avoidBuggyIps": True,
+                        "manualAssign": True,
+                    }],
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            })
         ```
         ### Gkeonprem Bare Metal Cluster Manuallb
 
@@ -1067,62 +1067,62 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                manual_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerManualLbConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            binary_authorization=gcp.gkeonprem.BareMetalClusterBinaryAuthorizationArgs(
-                evaluation_mode="DISABLED",
-            ),
-            upgrade_policy=gcp.gkeonprem.BareMetalClusterUpgradePolicyArgs(
-                policy="SERIAL",
-            ))
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                    },
+                },
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "manualLbConfig": {
+                    "enabled": True,
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            },
+            binary_authorization={
+                "evaluationMode": "DISABLED",
+            },
+            upgrade_policy={
+                "policy": "SERIAL",
+            })
         ```
         ### Gkeonprem Bare Metal Cluster Bgplb
 
@@ -1135,58 +1135,58 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-                advanced_networking=True,
-                multiple_network_interfaces_config=gcp.gkeonprem.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs(
-                    enabled=True,
-                ),
-                sr_iov_config=gcp.gkeonprem.BareMetalClusterNetworkConfigSrIovConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                        taints=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs(
-                            key="test-key",
-                            value="test-value",
-                            effect="NO_EXECUTE",
-                        )],
-                    ),
-                ),
-                api_server_args=[gcp.gkeonprem.BareMetalClusterControlPlaneApiServerArgArgs(
-                    argument="test-argument",
-                    value="test-value",
-                )],
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                bgp_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigArgs(
-                    asn=123456,
-                    bgp_peer_configs=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs(
-                        asn=123457,
-                        ip_address="10.0.0.1",
-                        control_plane_nodes=["test-node"],
-                    )],
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+                "advancedNetworking": True,
+                "multipleNetworkInterfacesConfig": {
+                    "enabled": True,
+                },
+                "srIovConfig": {
+                    "enabled": True,
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                        "taints": [{
+                            "key": "test-key",
+                            "value": "test-value",
+                            "effect": "NO_EXECUTE",
+                        }],
+                    },
+                },
+                "apiServerArgs": [{
+                    "argument": "test-argument",
+                    "value": "test-value",
+                }],
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "bgpLbConfig": {
+                    "asn": 123456,
+                    "bgpPeerConfigs": [{
+                        "asn": 123457,
+                        "ipAddress": "10.0.0.1",
+                        "controlPlaneNodes": ["test-node"],
+                    }],
+                    "addressPools": [{
+                        "pool": "pool1",
+                        "addresses": [
                             "10.200.0.14/32",
                             "10.200.0.15/32",
                             "10.200.0.16/32",
@@ -1197,69 +1197,69 @@ class BareMetalCluster(pulumi.CustomResource):
                             "fd00:1::11/128",
                             "fd00:1::12/128",
                         ],
-                    )],
-                    load_balancer_node_pool_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs(
-                        node_pool_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs(
-                            labels={},
-                            operating_system="LINUX",
-                            node_configs=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.9",
-                            )],
-                            taints=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs(
-                                key="test-key",
-                                value="test-value",
-                                effect="NO_EXECUTE",
-                            )],
-                            kubelet_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs(
-                                registry_pull_qps=10,
-                                registry_burst=12,
-                                serialize_image_pulls_disabled=True,
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            proxy=gcp.gkeonprem.BareMetalClusterProxyArgs(
-                uri="http://test-domain/test",
-                no_proxies=["127.0.0.1"],
-            ),
-            cluster_operations=gcp.gkeonprem.BareMetalClusterClusterOperationsArgs(
-                enable_application_logs=True,
-            ),
-            maintenance_config=gcp.gkeonprem.BareMetalClusterMaintenanceConfigArgs(
-                maintenance_address_cidr_blocks=["192.168.0.1/20"],
-            ),
-            node_config=gcp.gkeonprem.BareMetalClusterNodeConfigArgs(
-                max_pods_per_node=10,
-                container_runtime="CONTAINERD",
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalClusterNodeAccessConfigArgs(
-                login_user="test@example.com",
-            ),
-            os_environment_config=gcp.gkeonprem.BareMetalClusterOsEnvironmentConfigArgs(
-                package_repo_excluded=True,
-            ))
+                    }],
+                    "loadBalancerNodePoolConfig": {
+                        "nodePoolConfig": {
+                            "labels": {},
+                            "operatingSystem": "LINUX",
+                            "nodeConfigs": [{
+                                "labels": {},
+                                "nodeIp": "10.200.0.9",
+                            }],
+                            "taints": [{
+                                "key": "test-key",
+                                "value": "test-value",
+                                "effect": "NO_EXECUTE",
+                            }],
+                            "kubeletConfig": {
+                                "registryPullQps": 10,
+                                "registryBurst": 12,
+                                "serializeImagePullsDisabled": True,
+                            },
+                        },
+                    },
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            },
+            proxy={
+                "uri": "http://test-domain/test",
+                "noProxies": ["127.0.0.1"],
+            },
+            cluster_operations={
+                "enableApplicationLogs": True,
+            },
+            maintenance_config={
+                "maintenanceAddressCidrBlocks": ["192.168.0.1/20"],
+            },
+            node_config={
+                "maxPodsPerNode": 10,
+                "containerRuntime": "CONTAINERD",
+            },
+            node_access_config={
+                "loginUser": "test@example.com",
+            },
+            os_environment_config={
+                "packageRepoExcluded": True,
+            })
         ```
 
         ## Import
@@ -1297,27 +1297,27 @@ class BareMetalCluster(pulumi.CustomResource):
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterClusterOperationsArgs']] cluster_operations: Specifies the User Cluster's observability infrastructure.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterControlPlaneArgs']] control_plane: Specifies the control plane configuration.
+        :param pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization related configurations.
+        :param pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']] cluster_operations: Specifies the User Cluster's observability infrastructure.
+        :param pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']] control_plane: Specifies the control plane configuration.
                Structure is documented below.
         :param pulumi.Input[str] description: (Output)
                The description of the validation check.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterLoadBalancerArgs']] load_balancer: Specifies the load balancer configuration.
+        :param pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterMaintenanceConfigArgs']] maintenance_config: Specifies the workload node configurations.
+        :param pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
         :param pulumi.Input[str] name: The bare metal cluster name.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNetworkConfigArgs']] network_config: Network configuration.
+        :param pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']] network_config: Network configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNodeAccessConfigArgs']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNodeConfigArgs']] node_config: Specifies the workload node configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterOsEnvironmentConfigArgs']] os_environment_config: OS environment related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterProxyArgs']] proxy: Specifies the cluster proxy configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterSecurityConfigArgs']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterStorageArgs']] storage: Specifies the cluster storage configuration.
+        :param pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+        :param pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']] node_config: Specifies the workload node configurations.
+        :param pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']] os_environment_config: OS environment related configurations.
+        :param pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']] proxy: Specifies the cluster proxy configuration.
+        :param pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+        :param pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']] storage: Specifies the cluster storage configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']] upgrade_policy: The cluster upgrade policy.
+        :param pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']] upgrade_policy: The cluster upgrade policy.
         """
         ...
     @overload
@@ -1341,36 +1341,36 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                    },
+                },
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "metalLbConfig": {
+                    "addressPools": [{
+                        "pool": "pool1",
+                        "addresses": [
                             "10.200.0.14/32",
                             "10.200.0.15/32",
                             "10.200.0.16/32",
@@ -1381,31 +1381,31 @@ class BareMetalCluster(pulumi.CustomResource):
                             "fd00:1::11/128",
                             "fd00:1::12/128",
                         ],
-                        avoid_buggy_ips=True,
-                        manual_assign=True,
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ))
+                        "avoidBuggyIps": True,
+                        "manualAssign": True,
+                    }],
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            })
         ```
         ### Gkeonprem Bare Metal Cluster Manuallb
 
@@ -1418,62 +1418,62 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                manual_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerManualLbConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            binary_authorization=gcp.gkeonprem.BareMetalClusterBinaryAuthorizationArgs(
-                evaluation_mode="DISABLED",
-            ),
-            upgrade_policy=gcp.gkeonprem.BareMetalClusterUpgradePolicyArgs(
-                policy="SERIAL",
-            ))
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                    },
+                },
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "manualLbConfig": {
+                    "enabled": True,
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            },
+            binary_authorization={
+                "evaluationMode": "DISABLED",
+            },
+            upgrade_policy={
+                "policy": "SERIAL",
+            })
         ```
         ### Gkeonprem Bare Metal Cluster Bgplb
 
@@ -1486,58 +1486,58 @@ class BareMetalCluster(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-                advanced_networking=True,
-                multiple_network_interfaces_config=gcp.gkeonprem.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs(
-                    enabled=True,
-                ),
-                sr_iov_config=gcp.gkeonprem.BareMetalClusterNetworkConfigSrIovConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                        taints=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs(
-                            key="test-key",
-                            value="test-value",
-                            effect="NO_EXECUTE",
-                        )],
-                    ),
-                ),
-                api_server_args=[gcp.gkeonprem.BareMetalClusterControlPlaneApiServerArgArgs(
-                    argument="test-argument",
-                    value="test-value",
-                )],
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                bgp_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigArgs(
-                    asn=123456,
-                    bgp_peer_configs=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs(
-                        asn=123457,
-                        ip_address="10.0.0.1",
-                        control_plane_nodes=["test-node"],
-                    )],
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
+            network_config={
+                "islandModeCidr": {
+                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
+                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                },
+                "advancedNetworking": True,
+                "multipleNetworkInterfacesConfig": {
+                    "enabled": True,
+                },
+                "srIovConfig": {
+                    "enabled": True,
+                },
+            },
+            control_plane={
+                "controlPlaneNodePoolConfig": {
+                    "nodePoolConfig": {
+                        "labels": {},
+                        "operatingSystem": "LINUX",
+                        "nodeConfigs": [{
+                            "labels": {},
+                            "nodeIp": "10.200.0.9",
+                        }],
+                        "taints": [{
+                            "key": "test-key",
+                            "value": "test-value",
+                            "effect": "NO_EXECUTE",
+                        }],
+                    },
+                },
+                "apiServerArgs": [{
+                    "argument": "test-argument",
+                    "value": "test-value",
+                }],
+            },
+            load_balancer={
+                "portConfig": {
+                    "controlPlaneLoadBalancerPort": 443,
+                },
+                "vipConfig": {
+                    "controlPlaneVip": "10.200.0.13",
+                    "ingressVip": "10.200.0.14",
+                },
+                "bgpLbConfig": {
+                    "asn": 123456,
+                    "bgpPeerConfigs": [{
+                        "asn": 123457,
+                        "ipAddress": "10.0.0.1",
+                        "controlPlaneNodes": ["test-node"],
+                    }],
+                    "addressPools": [{
+                        "pool": "pool1",
+                        "addresses": [
                             "10.200.0.14/32",
                             "10.200.0.15/32",
                             "10.200.0.16/32",
@@ -1548,69 +1548,69 @@ class BareMetalCluster(pulumi.CustomResource):
                             "fd00:1::11/128",
                             "fd00:1::12/128",
                         ],
-                    )],
-                    load_balancer_node_pool_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs(
-                        node_pool_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs(
-                            labels={},
-                            operating_system="LINUX",
-                            node_configs=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.9",
-                            )],
-                            taints=[gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs(
-                                key="test-key",
-                                value="test-value",
-                                effect="NO_EXECUTE",
-                            )],
-                            kubelet_config=gcp.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs(
-                                registry_pull_qps=10,
-                                registry_burst=12,
-                                serialize_image_pulls_disabled=True,
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            proxy=gcp.gkeonprem.BareMetalClusterProxyArgs(
-                uri="http://test-domain/test",
-                no_proxies=["127.0.0.1"],
-            ),
-            cluster_operations=gcp.gkeonprem.BareMetalClusterClusterOperationsArgs(
-                enable_application_logs=True,
-            ),
-            maintenance_config=gcp.gkeonprem.BareMetalClusterMaintenanceConfigArgs(
-                maintenance_address_cidr_blocks=["192.168.0.1/20"],
-            ),
-            node_config=gcp.gkeonprem.BareMetalClusterNodeConfigArgs(
-                max_pods_per_node=10,
-                container_runtime="CONTAINERD",
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalClusterNodeAccessConfigArgs(
-                login_user="test@example.com",
-            ),
-            os_environment_config=gcp.gkeonprem.BareMetalClusterOsEnvironmentConfigArgs(
-                package_repo_excluded=True,
-            ))
+                    }],
+                    "loadBalancerNodePoolConfig": {
+                        "nodePoolConfig": {
+                            "labels": {},
+                            "operatingSystem": "LINUX",
+                            "nodeConfigs": [{
+                                "labels": {},
+                                "nodeIp": "10.200.0.9",
+                            }],
+                            "taints": [{
+                                "key": "test-key",
+                                "value": "test-value",
+                                "effect": "NO_EXECUTE",
+                            }],
+                            "kubeletConfig": {
+                                "registryPullQps": 10,
+                                "registryBurst": 12,
+                                "serializeImagePullsDisabled": True,
+                            },
+                        },
+                    },
+                },
+            },
+            storage={
+                "lvpShareConfig": {
+                    "lvpConfig": {
+                        "path": "/mnt/localpv-share",
+                        "storageClass": "local-shared",
+                    },
+                    "sharedPathPvCount": 5,
+                },
+                "lvpNodeMountsConfig": {
+                    "path": "/mnt/localpv-disk",
+                    "storageClass": "local-disks",
+                },
+            },
+            security_config={
+                "authorization": {
+                    "adminUsers": [{
+                        "username": "admin@hashicorptest.com",
+                    }],
+                },
+            },
+            proxy={
+                "uri": "http://test-domain/test",
+                "noProxies": ["127.0.0.1"],
+            },
+            cluster_operations={
+                "enableApplicationLogs": True,
+            },
+            maintenance_config={
+                "maintenanceAddressCidrBlocks": ["192.168.0.1/20"],
+            },
+            node_config={
+                "maxPodsPerNode": 10,
+                "containerRuntime": "CONTAINERD",
+            },
+            node_access_config={
+                "loginUser": "test@example.com",
+            },
+            os_environment_config={
+                "packageRepoExcluded": True,
+            })
         ```
 
         ## Import
@@ -1655,23 +1655,23 @@ class BareMetalCluster(pulumi.CustomResource):
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']]] = None,
-                 cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterClusterOperationsArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterControlPlaneArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterLoadBalancerArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterMaintenanceConfigArgs']]] = None,
+                 maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNetworkConfigArgs']]] = None,
-                 node_access_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeAccessConfigArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeConfigArgs']]] = None,
-                 os_environment_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOsEnvironmentConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+                 node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+                 node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+                 os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterProxyArgs']]] = None,
-                 security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterSecurityConfigArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterStorageArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
+                 security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1741,36 +1741,36 @@ class BareMetalCluster(pulumi.CustomResource):
             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             bare_metal_version: Optional[pulumi.Input[str]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']]] = None,
-            cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterClusterOperationsArgs']]] = None,
-            control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterControlPlaneArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+            cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+            control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            fleets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterFleetArgs']]]]] = None,
-            load_balancer: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterLoadBalancerArgs']]] = None,
+            fleets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterFleetArgs', 'BareMetalClusterFleetArgsDict']]]]] = None,
+            load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
             local_name: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            maintenance_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterMaintenanceConfigArgs']]] = None,
+            maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNetworkConfigArgs']]] = None,
-            node_access_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeAccessConfigArgs']]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterNodeConfigArgs']]] = None,
-            os_environment_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOsEnvironmentConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+            node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+            node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+            os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterProxyArgs']]] = None,
+            proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
-            security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterSecurityConfigArgs']]] = None,
+            security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterStatusArgs']]]]] = None,
-            storage: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterStorageArgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict']]]]] = None,
+            storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
-            validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterValidationCheckArgs']]]]] = None) -> 'BareMetalCluster':
+            upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
+            validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict']]]]] = None) -> 'BareMetalCluster':
         """
         Get an existing BareMetalCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1787,9 +1787,9 @@ class BareMetalCluster(pulumi.CustomResource):
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterClusterOperationsArgs']] cluster_operations: Specifies the User Cluster's observability infrastructure.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterControlPlaneArgs']] control_plane: Specifies the control plane configuration.
+        :param pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization related configurations.
+        :param pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']] cluster_operations: Specifies the User Cluster's observability infrastructure.
+        :param pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']] control_plane: Specifies the control plane configuration.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -1801,14 +1801,14 @@ class BareMetalCluster(pulumi.CustomResource):
                client has an up-to-date value before proceeding.
                Allows clients to perform consistent read-modify-writes
                through optimistic concurrency control.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterFleetArgs']]]] fleets: Fleet related configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterFleetArgs', 'BareMetalClusterFleetArgsDict']]]] fleets: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                See [Anthos Fleets](https://cloud.google.com/anthos/multicluster-management/fleets) for
                more details on Anthos multi-cluster capabilities using Fleets.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterLoadBalancerArgs']] load_balancer: Specifies the load balancer configuration.
+        :param pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] local_name: The object name of the Bare Metal Cluster custom resource on the
                associated admin cluster. This field is used to support conflicting
@@ -1821,27 +1821,27 @@ class BareMetalCluster(pulumi.CustomResource):
                kubectl and should expect to see the local name when viewing admin
                cluster controller logs.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterMaintenanceConfigArgs']] maintenance_config: Specifies the workload node configurations.
+        :param pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
         :param pulumi.Input[str] name: The bare metal cluster name.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNetworkConfigArgs']] network_config: Network configuration.
+        :param pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']] network_config: Network configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNodeAccessConfigArgs']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterNodeConfigArgs']] node_config: Specifies the workload node configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterOsEnvironmentConfigArgs']] os_environment_config: OS environment related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterProxyArgs']] proxy: Specifies the cluster proxy configuration.
+        :param pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+        :param pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']] node_config: Specifies the workload node configurations.
+        :param pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']] os_environment_config: OS environment related configurations.
+        :param pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']] proxy: Specifies the cluster proxy configuration.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterSecurityConfigArgs']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+        :param pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict']]]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterStorageArgs']] storage: Specifies the cluster storage configuration.
+        :param pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']] storage: Specifies the cluster storage configuration.
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the Bare Metal User Cluster.
         :param pulumi.Input[str] update_time: The time the cluster was last updated, in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']] upgrade_policy: The cluster upgrade policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterValidationCheckArgs']]]] validation_checks: Specifies the security related settings for the Bare Metal User Cluster.
+        :param pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']] upgrade_policy: The cluster upgrade policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict']]]] validation_checks: Specifies the security related settings for the Bare Metal User Cluster.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

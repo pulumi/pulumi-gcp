@@ -589,7 +589,7 @@ class DnsAuthorization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]]] = None,
+            dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -606,7 +606,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
                to DNS configuration for the authorization to be usable by
                certificate.
                Structure is documented below.

@@ -295,7 +295,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RepositoryIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['RepositoryIamBindingConditionArgs', 'RepositoryIamBindingConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -323,10 +323,10 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -368,10 +368,10 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -496,10 +496,10 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -541,10 +541,10 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/artifactregistry.reader",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=my_repo["project"],
             location=my_repo["location"],
@@ -633,7 +633,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['RepositoryIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['RepositoryIamBindingConditionArgs', 'RepositoryIamBindingConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -671,7 +671,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['RepositoryIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['RepositoryIamBindingConditionArgs', 'RepositoryIamBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

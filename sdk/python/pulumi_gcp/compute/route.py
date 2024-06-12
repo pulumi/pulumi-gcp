@@ -724,9 +724,9 @@ class Route(pulumi.CustomResource):
             name="proxy-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="compute-backend",
             region="us-central1",
@@ -780,9 +780,9 @@ class Route(pulumi.CustomResource):
             name="proxy-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="compute-backend",
             region="us-central1",
@@ -963,9 +963,9 @@ class Route(pulumi.CustomResource):
             name="proxy-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="compute-backend",
             region="us-central1",
@@ -1019,9 +1019,9 @@ class Route(pulumi.CustomResource):
             name="proxy-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         backend = gcp.compute.RegionBackendService("backend",
             name="compute-backend",
             region="us-central1",

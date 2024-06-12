@@ -534,7 +534,7 @@ class Cluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -572,15 +572,15 @@ class Cluster(pulumi.CustomResource):
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ))
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
             shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
             region="us-central1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
@@ -631,7 +631,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
@@ -682,15 +682,15 @@ class Cluster(pulumi.CustomResource):
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ))
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
             shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
             region="us-central1",
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
@@ -751,7 +751,7 @@ class Cluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -800,20 +800,20 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArgs']]]]] = None,
+            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
             precise_size_gb: Optional[pulumi.Input[float]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
-            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]]] = None,
+            psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
+            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]]] = None,
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
             size_gb: Optional[pulumi.Input[int]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArgs']]]]] = None,
+            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict']]]]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -829,7 +829,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArgs']]]] discovery_endpoints: Output only. Endpoints created on each given network,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
@@ -838,11 +838,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
         :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
                documentation for the list of supported parameters:
@@ -852,7 +852,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[int] size_gb: Output only. Redis memory size in GB for the entire cluster.
         :param pulumi.Input[str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArgs']]]] state_infos: Output only. Additional information about the current state of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict']]]] state_infos: Output only. Additional information about the current state of the cluster.
                Structure is documented below.
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
                Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",

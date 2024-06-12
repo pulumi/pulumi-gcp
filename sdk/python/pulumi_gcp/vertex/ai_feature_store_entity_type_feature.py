@@ -341,9 +341,9 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
             labels={
@@ -370,27 +370,27 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ))
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringInterval": "86400s",
+                },
+                "categoricalThresholdConfig": {
+                    "value": 0.3,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.3,
+                },
+            })
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
             name="terraform2",
             labels={
@@ -455,9 +455,9 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
             labels={
@@ -484,27 +484,27 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ))
+            online_serving_config={
+                "fixedNodeCount": 2,
+            })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ))
+            monitoring_config={
+                "snapshotAnalysis": {
+                    "disabled": False,
+                    "monitoringInterval": "86400s",
+                },
+                "categoricalThresholdConfig": {
+                    "value": 0.3,
+                },
+                "numericalThresholdConfig": {
+                    "value": 0.3,
+                },
+            })
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
             name="terraform2",
             labels={

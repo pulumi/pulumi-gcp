@@ -743,13 +743,13 @@ class Image(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
-                 image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+                 image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+                 raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -789,9 +789,9 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            })
         ```
         ### Image Guest Os
 
@@ -801,16 +801,16 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            },
             guest_os_features=[
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
+                {
+                    "type": "SECURE_BOOT",
+                },
+                {
+                    "type": "MULTI_IP_SUBNET",
+                },
             ])
         ```
         ### Image Basic Storage Location
@@ -821,9 +821,9 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-sl-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            },
             storage_locations=["us-central1"])
         ```
 
@@ -861,10 +861,10 @@ class Image(pulumi.CustomResource):
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
                After you encrypt an image with a customer-supplied key, you must
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
@@ -885,7 +885,7 @@ class Image(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
@@ -947,9 +947,9 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            })
         ```
         ### Image Guest Os
 
@@ -959,16 +959,16 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            },
             guest_os_features=[
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
+                {
+                    "type": "SECURE_BOOT",
+                },
+                {
+                    "type": "MULTI_IP_SUBNET",
+                },
             ])
         ```
         ### Image Basic Storage Location
@@ -979,9 +979,9 @@ class Image(pulumi.CustomResource):
 
         example = gcp.compute.Image("example",
             name="example-sl-image",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
+            raw_disk={
+                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            },
             storage_locations=["us-central1"])
         ```
 
@@ -1027,13 +1027,13 @@ class Image(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
-                 image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+                 image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+                 raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -1085,15 +1085,15 @@ class Image(pulumi.CustomResource):
             disk_size_gb: Optional[pulumi.Input[int]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             family: Optional[pulumi.Input[str]] = None,
-            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
-            image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+            image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+            raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
@@ -1118,10 +1118,10 @@ class Image(pulumi.CustomResource):
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
                After you encrypt an image with a customer-supplied key, you must
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
@@ -1146,7 +1146,7 @@ class Image(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.

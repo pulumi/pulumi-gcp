@@ -278,12 +278,12 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None,
+                 storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
                  __props__=None):
         """
         ## Import
@@ -312,7 +312,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
@@ -323,7 +323,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']] storage_config: Configuration options for storage used by Composer environment.
         """
         ...
     @overload
@@ -371,12 +371,12 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None,
+                 storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,14 +406,14 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            storage_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']]] = None) -> 'Environment':
+            storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -421,7 +421,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
@@ -433,7 +433,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentStorageConfigArgs']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']] storage_config: Configuration options for storage used by Composer environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

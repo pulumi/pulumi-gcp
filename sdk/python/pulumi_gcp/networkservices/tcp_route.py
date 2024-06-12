@@ -369,7 +369,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -394,19 +394,19 @@ class TcpRoute(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Actions
 
@@ -428,15 +428,15 @@ class TcpRoute(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Mesh Basic
 
@@ -465,19 +465,19 @@ class TcpRoute(pulumi.CustomResource):
             },
             description="my description",
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Gateway Basic
 
@@ -509,19 +509,19 @@ class TcpRoute(pulumi.CustomResource):
             },
             description="my description",
             gateways=[default_gateway.id],
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
 
         ## Import
@@ -561,7 +561,7 @@ class TcpRoute(pulumi.CustomResource):
                by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
                Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TcpRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         """
@@ -594,19 +594,19 @@ class TcpRoute(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Actions
 
@@ -628,15 +628,15 @@ class TcpRoute(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Mesh Basic
 
@@ -665,19 +665,19 @@ class TcpRoute(pulumi.CustomResource):
             },
             description="my description",
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
         ### Network Services Tcp Route Gateway Basic
 
@@ -709,19 +709,19 @@ class TcpRoute(pulumi.CustomResource):
             },
             description="my description",
             gateways=[default_gateway.id],
-            rules=[gcp.networkservices.TcpRouteRuleArgs(
-                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
-                    address="10.0.0.1/32",
-                    port="8081",
-                )],
-                action=gcp.networkservices.TcpRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                    original_destination=False,
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "address": "10.0.0.1/32",
+                    "port": "8081",
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                    "originalDestination": False,
+                },
+            }])
         ```
 
         ## Import
@@ -769,7 +769,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -814,7 +814,7 @@ class TcpRoute(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TcpRoute':
         """
@@ -839,7 +839,7 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the TcpRoute resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.

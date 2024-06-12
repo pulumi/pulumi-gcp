@@ -481,16 +481,16 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -559,16 +559,16 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
-            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
-                start_time="08:00",
-            ),
+            maintenance_window={
+                "startTime": "08:00",
+            },
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
-                mode="ONLY_SCALE_OUT",
-                min_nodes=1,
-                max_nodes=10,
-            ))
+            autoscaling_policy={
+                "mode": "ONLY_SCALE_OUT",
+                "minNodes": 1,
+                "maxNodes": 10,
+            })
         ```
         ### Node Group Share Settings
 
@@ -590,13 +590,13 @@ class NodeGroup(pulumi.CustomResource):
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
-                share_type="SPECIFIC_PROJECTS",
-                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
-                    id=guest_project.project_id,
-                    project_id=guest_project.project_id,
-                )],
-            ))
+            share_settings={
+                "shareType": "SPECIFIC_PROJECTS",
+                "projectMaps": [{
+                    "id": guest_project.project_id,
+                    "projectId": guest_project.project_id,
+                }],
+            })
         ```
 
         ## Import
@@ -631,7 +631,7 @@ class NodeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
@@ -642,7 +642,7 @@ class NodeGroup(pulumi.CustomResource):
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
                Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
-        :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
+        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
@@ -651,7 +651,7 @@ class NodeGroup(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
+        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']] share_settings: Share settings for the node group.
                Structure is documented below.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
@@ -727,16 +727,16 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
-            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
-                start_time="08:00",
-            ),
+            maintenance_window={
+                "startTime": "08:00",
+            },
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
-                mode="ONLY_SCALE_OUT",
-                min_nodes=1,
-                max_nodes=10,
-            ))
+            autoscaling_policy={
+                "mode": "ONLY_SCALE_OUT",
+                "minNodes": 1,
+                "maxNodes": 10,
+            })
         ```
         ### Node Group Share Settings
 
@@ -758,13 +758,13 @@ class NodeGroup(pulumi.CustomResource):
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
-                share_type="SPECIFIC_PROJECTS",
-                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
-                    id=guest_project.project_id,
-                    project_id=guest_project.project_id,
-                )],
-            ))
+            share_settings={
+                "shareType": "SPECIFIC_PROJECTS",
+                "projectMaps": [{
+                    "id": guest_project.project_id,
+                    "projectId": guest_project.project_id,
+                }],
+            })
         ```
 
         ## Import
@@ -812,16 +812,16 @@ class NodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -858,18 +858,18 @@ class NodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+            autoscaling_policy: Optional[pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             initial_size: Optional[pulumi.Input[int]] = None,
             maintenance_interval: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[str]] = None,
-            maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
+            maintenance_window: Optional[pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_template: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
+            share_settings: Optional[pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
             size: Optional[pulumi.Input[int]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NodeGroup':
         """
@@ -879,7 +879,7 @@ class NodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
@@ -891,7 +891,7 @@ class NodeGroup(pulumi.CustomResource):
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
                Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
-        :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
+        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
@@ -901,7 +901,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
+        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']] share_settings: Share settings for the node group.
                Structure is documented below.
         :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located

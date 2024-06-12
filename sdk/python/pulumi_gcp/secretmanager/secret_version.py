@@ -314,9 +314,9 @@ class SecretVersion(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
@@ -329,13 +329,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
             secret=secret_basic.id,
             secret_data="secret-data",
@@ -349,13 +349,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
             secret=secret_basic.id,
             secret_data="secret-data",
@@ -370,13 +370,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
             secret=secret_basic.id,
             is_secret_data_base64=True,
@@ -434,9 +434,9 @@ class SecretVersion(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
@@ -449,13 +449,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
             secret=secret_basic.id,
             secret_data="secret-data",
@@ -469,13 +469,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
             secret=secret_basic.id,
             secret_data="secret-data",
@@ -490,13 +490,13 @@ class SecretVersion(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
             secret=secret_basic.id,
             is_secret_data_base64=True,

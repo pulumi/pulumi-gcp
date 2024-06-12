@@ -395,9 +395,9 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="backend-service",
             protocol="TCP",
@@ -496,9 +496,9 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="backend-service",
             protocol="TCP",

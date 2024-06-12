@@ -153,9 +153,9 @@ def get_project_service_account(project: Optional[str] = None,
     bucket = gcp.storage.Bucket("bucket",
         name="kms-protected-bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
+        encryption={
+            "defaultKmsKeyName": "your-crypto-key-id",
+        },
         opts=pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
@@ -245,9 +245,9 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     bucket = gcp.storage.Bucket("bucket",
         name="kms-protected-bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
+        encryption={
+            "defaultKmsKeyName": "your-crypto-key-id",
+        },
         opts=pulumi.ResourceOptions(depends_on=[binding]))
     ```
 

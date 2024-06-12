@@ -358,7 +358,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -392,11 +392,11 @@ class Instance(pulumi.CustomResource):
 
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                num_nodes=1,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "numNodes": 1,
+                "storageType": "HDD",
+            }],
             labels={
                 "my-label": "prod-label",
             })
@@ -411,22 +411,22 @@ class Instance(pulumi.CustomResource):
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster1",
-                    num_nodes=1,
-                    storage_type="HDD",
-                    zone="us-central1-c",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster2",
-                    storage_type="HDD",
-                    zone="us-central1-b",
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        min_nodes=1,
-                        max_nodes=3,
-                        cpu_target=50,
-                    ),
-                ),
+                {
+                    "clusterId": "tf-instance-cluster1",
+                    "numNodes": 1,
+                    "storageType": "HDD",
+                    "zone": "us-central1-c",
+                },
+                {
+                    "clusterId": "tf-instance-cluster2",
+                    "storageType": "HDD",
+                    "zone": "us-central1-b",
+                    "autoscalingConfig": {
+                        "minNodes": 1,
+                        "maxNodes": 3,
+                        "cpuTarget": 50,
+                    },
+                },
             ],
             labels={
                 "my-label": "prod-label",
@@ -459,7 +459,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -512,11 +512,11 @@ class Instance(pulumi.CustomResource):
 
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                num_nodes=1,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "numNodes": 1,
+                "storageType": "HDD",
+            }],
             labels={
                 "my-label": "prod-label",
             })
@@ -531,22 +531,22 @@ class Instance(pulumi.CustomResource):
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster1",
-                    num_nodes=1,
-                    storage_type="HDD",
-                    zone="us-central1-c",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster2",
-                    storage_type="HDD",
-                    zone="us-central1-b",
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        min_nodes=1,
-                        max_nodes=3,
-                        cpu_target=50,
-                    ),
-                ),
+                {
+                    "clusterId": "tf-instance-cluster1",
+                    "numNodes": 1,
+                    "storageType": "HDD",
+                    "zone": "us-central1-c",
+                },
+                {
+                    "clusterId": "tf-instance-cluster2",
+                    "storageType": "HDD",
+                    "zone": "us-central1-b",
+                    "autoscalingConfig": {
+                        "minNodes": 1,
+                        "maxNodes": 3,
+                        "cpuTarget": 50,
+                    },
+                },
             ],
             labels={
                 "my-label": "prod-label",
@@ -592,7 +592,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -629,7 +629,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -645,7 +645,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                

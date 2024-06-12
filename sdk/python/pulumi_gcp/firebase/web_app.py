@@ -253,11 +253,11 @@ class WebApp(pulumi.CustomResource):
             project="my-project-name",
             name="api-key",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ))
+            restrictions={
+                "browserKeyRestrictions": {
+                    "allowedReferrers": ["*"],
+                },
+            })
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",
@@ -340,11 +340,11 @@ class WebApp(pulumi.CustomResource):
             project="my-project-name",
             name="api-key",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ))
+            restrictions={
+                "browserKeyRestrictions": {
+                    "allowedReferrers": ["*"],
+                },
+            })
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",

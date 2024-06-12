@@ -157,8 +157,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressFromArgs']]] = None,
-                 ingress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressToArgs']]] = None,
+                 ingress_from: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
+                 ingress_to: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -195,10 +195,10 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressFromArgs']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressToArgs']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
@@ -259,8 +259,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressFromArgs']]] = None,
-                 ingress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressToArgs']]] = None,
+                 ingress_from: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
+                 ingress_to: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -286,8 +286,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ingress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressFromArgs']]] = None,
-            ingress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressToArgs']]] = None,
+            ingress_from: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
+            ingress_to: Optional[pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
             perimeter: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterIngressPolicy':
         """
         Get an existing ServicePerimeterIngressPolicy resource's state with the given name, id, and optional extra
@@ -296,10 +296,10 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressFromArgs']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterIngressPolicyIngressToArgs']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.

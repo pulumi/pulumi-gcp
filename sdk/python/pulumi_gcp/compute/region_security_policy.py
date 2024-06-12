@@ -384,13 +384,13 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyDdosProtectionConfigArgs']]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -416,9 +416,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             name="my-sec-policy-ddos-protection",
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         ```
         ### Region Security Policy With User Defined Fields
 
@@ -431,20 +431,20 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="with user defined fields",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    base="UDP",
-                    offset=8,
-                    size=2,
-                    mask="0x8F00",
-                ),
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG2_AT_8",
-                    base="UDP",
-                    offset=16,
-                    size=4,
-                    mask="0xFFFFFFFF",
-                ),
+                {
+                    "name": "SIG1_AT_0",
+                    "base": "UDP",
+                    "offset": 8,
+                    "size": 2,
+                    "mask": "0x8F00",
+                },
+                {
+                    "name": "SIG2_AT_8",
+                    "base": "UDP",
+                    "offset": 16,
+                    "size": 4,
+                    "mask": "0xFFFFFFFF",
+                },
             ])
         ```
 
@@ -480,7 +480,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyDdosProtectionConfigArgs']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
+        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -498,7 +498,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
                Structure is documented below.
@@ -533,9 +533,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             name="my-sec-policy-ddos-protection",
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         ```
         ### Region Security Policy With User Defined Fields
 
@@ -548,20 +548,20 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="with user defined fields",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    base="UDP",
-                    offset=8,
-                    size=2,
-                    mask="0x8F00",
-                ),
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG2_AT_8",
-                    base="UDP",
-                    offset=16,
-                    size=4,
-                    mask="0xFFFFFFFF",
-                ),
+                {
+                    "name": "SIG1_AT_0",
+                    "base": "UDP",
+                    "offset": 8,
+                    "size": 2,
+                    "mask": "0x8F00",
+                },
+                {
+                    "name": "SIG2_AT_8",
+                    "base": "UDP",
+                    "offset": 16,
+                    "size": 4,
+                    "mask": "0xFFFFFFFF",
+                },
             ])
         ```
 
@@ -610,13 +610,13 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyDdosProtectionConfigArgs']]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -647,7 +647,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyDdosProtectionConfigArgs']]] = None,
+            ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -657,7 +657,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None) -> 'RegionSecurityPolicy':
+            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None) -> 'RegionSecurityPolicy':
         """
         Get an existing RegionSecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -665,7 +665,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyDdosProtectionConfigArgs']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
+        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
@@ -688,7 +688,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
                Structure is documented below.

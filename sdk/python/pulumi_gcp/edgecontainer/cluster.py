@@ -744,20 +744,20 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']]] = None,
-                 control_plane_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']]] = None,
+                 control_plane_encryption: Optional[pulumi.Input[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  external_load_balancer_ipv4_address_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 system_addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']]] = None,
+                 system_addons_config: Optional[pulumi.Input[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict']]] = None,
                  target_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -781,18 +781,18 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="basic-cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
@@ -808,29 +808,29 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="cluster-with-maintenance",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
-                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
-                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
-                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
-                            start_time="2023-01-01T08:00:00Z",
-                            end_time="2023-01-01T17:00:00Z",
-                        ),
-                        recurrence="FREQ=WEEKLY;BYDAY=SA",
-                    ),
-                ),
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
+            maintenance_policy={
+                "window": {
+                    "recurringWindow": {
+                        "window": {
+                            "startTime": "2023-01-01T08:00:00Z",
+                            "endTime": "2023-01-01T17:00:00Z",
+                        },
+                        "recurrence": "FREQ=WEEKLY;BYDAY=SA",
+                    },
+                },
+            })
         ```
         ### Edgecontainer Local Control Plane Cluster
 
@@ -842,27 +842,27 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="local-control-plane-cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    node_location="us-central1-edge-example-edgesite",
-                    node_count=1,
-                    machine_filter="machine-name",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ))
+            control_plane={
+                "local": {
+                    "nodeLocation": "us-central1-edge-example-edgesite",
+                    "nodeCount": 1,
+                    "machineFilter": "machine-name",
+                    "sharedDeploymentPolicy": "ALLOWED",
+                },
+            })
         ```
 
         ## Import
@@ -891,14 +891,14 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GEC.
+        :param pulumi.Input[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict']] authorization: RBAC policy that will be applied and managed by GEC.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']] control_plane: The configuration of the cluster control plane.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']] control_plane: The configuration of the cluster control plane.
+        :param pulumi.Input[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
                cluster. If unspecified, the Kubernetes default value will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
-        :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet related configuration.
+        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
@@ -907,15 +907,15 @@ class Cluster(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: Cluster-wide maintenance policy configuration.
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Cluster-wide maintenance policy configuration.
         :param pulumi.Input[str] name: The GDCE cluster name.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']] networking: Fleet related configuration.
+        :param pulumi.Input[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict']] networking: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                Structure is documented below.
         :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
-        :param pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
+        :param pulumi.Input[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
         :param pulumi.Input[str] target_version: (Output)
                The target version of the cluster.
         """
@@ -946,18 +946,18 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="basic-cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
@@ -973,29 +973,29 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="cluster-with-maintenance",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
-                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
-                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
-                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
-                            start_time="2023-01-01T08:00:00Z",
-                            end_time="2023-01-01T17:00:00Z",
-                        ),
-                        recurrence="FREQ=WEEKLY;BYDAY=SA",
-                    ),
-                ),
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
+            maintenance_policy={
+                "window": {
+                    "recurringWindow": {
+                        "window": {
+                            "startTime": "2023-01-01T08:00:00Z",
+                            "endTime": "2023-01-01T17:00:00Z",
+                        },
+                        "recurrence": "FREQ=WEEKLY;BYDAY=SA",
+                    },
+                },
+            })
         ```
         ### Edgecontainer Local Control Plane Cluster
 
@@ -1007,27 +1007,27 @@ class Cluster(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="local-control-plane-cluster",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    node_location="us-central1-edge-example-edgesite",
-                    node_count=1,
-                    machine_filter="machine-name",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ))
+            control_plane={
+                "local": {
+                    "nodeLocation": "us-central1-edge-example-edgesite",
+                    "nodeCount": 1,
+                    "machineFilter": "machine-name",
+                    "sharedDeploymentPolicy": "ALLOWED",
+                },
+            })
         ```
 
         ## Import
@@ -1069,20 +1069,20 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']]] = None,
-                 control_plane_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']]] = None,
+                 control_plane_encryption: Optional[pulumi.Input[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  external_load_balancer_ipv4_address_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 system_addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']]] = None,
+                 system_addons_config: Optional[pulumi.Input[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict']]] = None,
                  target_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1139,30 +1139,30 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict']]] = None,
             cluster_ca_certificate: Optional[pulumi.Input[str]] = None,
-            control_plane: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']]] = None,
-            control_plane_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']]] = None,
+            control_plane: Optional[pulumi.Input[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']]] = None,
+            control_plane_encryption: Optional[pulumi.Input[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']]] = None,
             control_plane_version: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             external_load_balancer_ipv4_address_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
+            fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            maintenance_events: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMaintenanceEventArgs']]]]] = None,
-            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
+            maintenance_events: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceEventArgs', 'ClusterMaintenanceEventArgsDict']]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networking: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']]] = None,
+            networking: Optional[pulumi.Input[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict']]] = None,
             node_version: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            system_addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']]] = None,
+            system_addons_config: Optional[pulumi.Input[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict']]] = None,
             target_version: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -1172,12 +1172,12 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GEC.
+        :param pulumi.Input[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict']] authorization: RBAC policy that will be applied and managed by GEC.
                Structure is documented below.
         :param pulumi.Input[str] cluster_ca_certificate: The PEM-encoded public certificate of the cluster's CA.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']] control_plane: The configuration of the cluster control plane.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']] control_plane: The configuration of the cluster control plane.
+        :param pulumi.Input[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         :param pulumi.Input[str] control_plane_version: The control plane release version.
         :param pulumi.Input[str] create_time: (Output)
                The time when the maintenance event request was created.
@@ -1186,7 +1186,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint: The IP address of the Kubernetes API server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
-        :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet related configuration.
+        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
@@ -1195,12 +1195,12 @@ class Cluster(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMaintenanceEventArgs']]]] maintenance_events: All the maintenance events scheduled for the cluster, including the ones
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceEventArgs', 'ClusterMaintenanceEventArgsDict']]]] maintenance_events: All the maintenance events scheduled for the cluster, including the ones
                ongoing, planned for the future and done in the past (up to 90 days).
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: Cluster-wide maintenance policy configuration.
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Cluster-wide maintenance policy configuration.
         :param pulumi.Input[str] name: The GDCE cluster name.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']] networking: Fleet related configuration.
+        :param pulumi.Input[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict']] networking: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
@@ -1212,7 +1212,7 @@ class Cluster(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         :param pulumi.Input[str] status: Indicates the status of the cluster.
-        :param pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
+        :param pulumi.Input[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
         :param pulumi.Input[str] target_version: (Output)
                The target version of the cluster.
         :param pulumi.Input[str] update_time: (Output)

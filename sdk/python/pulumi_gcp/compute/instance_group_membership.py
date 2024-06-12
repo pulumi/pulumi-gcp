@@ -211,14 +211,14 @@ class InstanceGroupMembership(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("default-instance",
             name="instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=default_network.name,
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": default_network.name,
+            }])
         default_instance_group = gcp.compute.InstanceGroup("default-instance-group", name="instance-group")
         default_ig_membership = gcp.compute.InstanceGroupMembership("default-ig-membership",
             instance=default_instance.self_link,
@@ -304,14 +304,14 @@ class InstanceGroupMembership(pulumi.CustomResource):
         default_instance = gcp.compute.Instance("default-instance",
             name="instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=default_network.name,
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": default_network.name,
+            }])
         default_instance_group = gcp.compute.InstanceGroup("default-instance-group", name="instance-group")
         default_ig_membership = gcp.compute.InstanceGroupMembership("default-ig-membership",
             instance=default_instance.self_link,

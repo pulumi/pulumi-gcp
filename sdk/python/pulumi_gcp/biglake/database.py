@@ -252,7 +252,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['DatabaseHiveOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -289,12 +289,12 @@ class Database(pulumi.CustomResource):
             name="my_database",
             catalog=catalog.id,
             type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
+            hive_options={
+                "locationUri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "parameters": {
                     "owner": "John Doe",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -312,7 +312,7 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog: The parent catalog.
-        :param pulumi.Input[pulumi.InputType['DatabaseHiveOptionsArgs']] hive_options: Options of a Hive database.
+        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[str] type: The database type.
@@ -356,12 +356,12 @@ class Database(pulumi.CustomResource):
             name="my_database",
             catalog=catalog.id,
             type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
+            hive_options={
+                "locationUri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "parameters": {
                     "owner": "John Doe",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -392,7 +392,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['DatabaseHiveOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -432,7 +432,7 @@ class Database(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
-            hive_options: Optional[pulumi.Input[pulumi.InputType['DatabaseHiveOptionsArgs']]] = None,
+            hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Database':
@@ -456,7 +456,7 @@ class Database(pulumi.CustomResource):
                after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[pulumi.InputType['DatabaseHiveOptionsArgs']] hive_options: Options of a Hive database.
+        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[str] type: The database type.

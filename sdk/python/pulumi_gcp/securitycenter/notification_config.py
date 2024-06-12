@@ -242,7 +242,7 @@ class NotificationConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 streaming_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']]] = None,
+                 streaming_config: Optional[pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center (Cloud SCC) notification configs. A
@@ -273,9 +273,9 @@ class NotificationConfig(pulumi.CustomResource):
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Notification Configuration",
             pubsub_topic=scc_notification.id,
-            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
-                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
-            ))
+            streaming_config={
+                "filter": "category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            })
         ```
 
         ## Import
@@ -304,7 +304,7 @@ class NotificationConfig(pulumi.CustomResource):
                Config lives in.
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         ...
@@ -342,9 +342,9 @@ class NotificationConfig(pulumi.CustomResource):
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Notification Configuration",
             pubsub_topic=scc_notification.id,
-            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
-                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
-            ))
+            streaming_config={
+                "filter": "category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            })
         ```
 
         ## Import
@@ -384,7 +384,7 @@ class NotificationConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 streaming_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']]] = None,
+                 streaming_config: Optional[pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,7 +425,7 @@ class NotificationConfig(pulumi.CustomResource):
             organization: Optional[pulumi.Input[str]] = None,
             pubsub_topic: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            streaming_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']]] = None) -> 'NotificationConfig':
+            streaming_config: Optional[pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None) -> 'NotificationConfig':
         """
         Get an existing NotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -443,7 +443,7 @@ class NotificationConfig(pulumi.CustomResource):
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
-        :param pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -392,7 +392,7 @@ class Instance(pulumi.CustomResource):
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
+                 private_config: Optional[pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -453,39 +453,39 @@ class Instance(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=True,
-                publish_crl=True,
-            ))
+            publishing_options={
+                "publishCaCert": True,
+                "publishCrl": True,
+            })
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
             location="us-central1",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="google",
-                        common_name="my-certificate-authority",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "google",
+                        "commonName": "my-certificate-authority",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             ignore_active_certificates_on_deletion=True,
             skip_grace_period=True)
@@ -500,10 +500,10 @@ class Instance(pulumi.CustomResource):
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
             location="us-central1",
-            private_config=gcp.securesourcemanager.InstancePrivateConfigArgs(
-                is_private=True,
-                ca_pool=ca_pool.id,
-            ),
+            private_config={
+                "isPrivate": True,
+                "caPool": ca_pool.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait60_seconds,
@@ -552,7 +552,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the Instance.
-        :param pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']] private_config: Private settings for private instance.
+        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']] private_config: Private settings for private instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -621,39 +621,39 @@ class Instance(pulumi.CustomResource):
             name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=True,
-                publish_crl=True,
-            ))
+            publishing_options={
+                "publishCaCert": True,
+                "publishCrl": True,
+            })
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
             location="us-central1",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="google",
-                        common_name="my-certificate-authority",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "google",
+                        "commonName": "my-certificate-authority",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             ignore_active_certificates_on_deletion=True,
             skip_grace_period=True)
@@ -668,10 +668,10 @@ class Instance(pulumi.CustomResource):
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
             location="us-central1",
-            private_config=gcp.securesourcemanager.InstancePrivateConfigArgs(
-                is_private=True,
-                ca_pool=ca_pool.id,
-            ),
+            private_config={
+                "isPrivate": True,
+                "caPool": ca_pool.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait60_seconds,
@@ -727,7 +727,7 @@ class Instance(pulumi.CustomResource):
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
+                 private_config: Optional[pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -770,13 +770,13 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            host_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHostConfigArgs']]]]] = None,
+            host_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             kms_key: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
+            private_config: Optional[pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -791,7 +791,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHostConfigArgs']]]] host_configs: A list of hostnames for this instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The name for the Instance.
                
@@ -804,7 +804,7 @@ class Instance(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the Instance.
         :param pulumi.Input[str] name: The resource name for the Instance.
-        :param pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']] private_config: Private settings for private instance.
+        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']] private_config: Private settings for private instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

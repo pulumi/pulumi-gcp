@@ -347,12 +347,12 @@ class PacketMirroring(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']]] = None,
+                 collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']]] = None,
-                 mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']]] = None,
+                 filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+                 mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']]] = None,
+                 network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -378,17 +378,17 @@ class PacketMirroring(pulumi.CustomResource):
 
         default = gcp.compute.Network("default", name="my-network")
         mirror = gcp.compute.Instance("mirror",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network=default.id,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": default.id,
+            }],
             name="my-instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            })
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
             network=default.id,
@@ -397,9 +397,9 @@ class PacketMirroring(pulumi.CustomResource):
             name="my-healthcheck",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="my-service",
             health_checks=default_health_check.id)
@@ -417,23 +417,23 @@ class PacketMirroring(pulumi.CustomResource):
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",
-            network=gcp.compute.PacketMirroringNetworkArgs(
-                url=default.id,
-            ),
-            collector_ilb=gcp.compute.PacketMirroringCollectorIlbArgs(
-                url=default_forwarding_rule.id,
-            ),
-            mirrored_resources=gcp.compute.PacketMirroringMirroredResourcesArgs(
-                tags=["foo"],
-                instances=[gcp.compute.PacketMirroringMirroredResourcesInstanceArgs(
-                    url=mirror.id,
-                )],
-            ),
-            filter=gcp.compute.PacketMirroringFilterArgs(
-                ip_protocols=["tcp"],
-                cidr_ranges=["0.0.0.0/0"],
-                direction="BOTH",
-            ))
+            network={
+                "url": default.id,
+            },
+            collector_ilb={
+                "url": default_forwarding_rule.id,
+            },
+            mirrored_resources={
+                "tags": ["foo"],
+                "instances": [{
+                    "url": mirror.id,
+                }],
+            },
+            filter={
+                "ipProtocols": ["tcp"],
+                "cidrRanges": ["0.0.0.0/0"],
+                "direction": "BOTH",
+            })
         ```
 
         ## Import
@@ -468,17 +468,17 @@ class PacketMirroring(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the rule.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the packet mirroring rule
-        :param pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']] network: Specifies the mirrored VPC network. Only packets in this network
+        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
@@ -513,17 +513,17 @@ class PacketMirroring(pulumi.CustomResource):
 
         default = gcp.compute.Network("default", name="my-network")
         mirror = gcp.compute.Instance("mirror",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network=default.id,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": default.id,
+            }],
             name="my-instance",
             machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            })
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
             network=default.id,
@@ -532,9 +532,9 @@ class PacketMirroring(pulumi.CustomResource):
             name="my-healthcheck",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="my-service",
             health_checks=default_health_check.id)
@@ -552,23 +552,23 @@ class PacketMirroring(pulumi.CustomResource):
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",
-            network=gcp.compute.PacketMirroringNetworkArgs(
-                url=default.id,
-            ),
-            collector_ilb=gcp.compute.PacketMirroringCollectorIlbArgs(
-                url=default_forwarding_rule.id,
-            ),
-            mirrored_resources=gcp.compute.PacketMirroringMirroredResourcesArgs(
-                tags=["foo"],
-                instances=[gcp.compute.PacketMirroringMirroredResourcesInstanceArgs(
-                    url=mirror.id,
-                )],
-            ),
-            filter=gcp.compute.PacketMirroringFilterArgs(
-                ip_protocols=["tcp"],
-                cidr_ranges=["0.0.0.0/0"],
-                direction="BOTH",
-            ))
+            network={
+                "url": default.id,
+            },
+            collector_ilb={
+                "url": default_forwarding_rule.id,
+            },
+            mirrored_resources={
+                "tags": ["foo"],
+                "instances": [{
+                    "url": mirror.id,
+                }],
+            },
+            filter={
+                "ipProtocols": ["tcp"],
+                "cidrRanges": ["0.0.0.0/0"],
+                "direction": "BOTH",
+            })
         ```
 
         ## Import
@@ -616,12 +616,12 @@ class PacketMirroring(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']]] = None,
+                 collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']]] = None,
-                 mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']]] = None,
+                 filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+                 mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']]] = None,
+                 network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -659,12 +659,12 @@ class PacketMirroring(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']]] = None,
+            collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            filter: Optional[pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']]] = None,
-            mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']]] = None,
+            filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+            mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']]] = None,
+            network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'PacketMirroring':
@@ -675,17 +675,17 @@ class PacketMirroring(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the rule.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
-        :param pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the packet mirroring rule
-        :param pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']] network: Specifies the mirrored VPC network. Only packets in this network
+        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.

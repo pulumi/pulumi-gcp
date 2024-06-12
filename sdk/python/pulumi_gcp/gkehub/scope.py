@@ -539,7 +539,7 @@ class Scope(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Scope':
         """
@@ -570,7 +570,7 @@ class Scope(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]] states: State of the scope resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Scope was updated in UTC.

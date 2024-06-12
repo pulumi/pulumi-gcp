@@ -554,8 +554,8 @@ class Automation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]]] = None,
-                 selector: Optional[pulumi.Input[pulumi.InputType['AutomationSelectorArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
+                 selector: Optional[pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -579,29 +579,29 @@ class Automation(pulumi.CustomResource):
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
             name="cd-pipeline",
             location="us-central1",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                    target_id="test",
-                    profiles=[],
-                )],
-            ))
+            serial_pipeline={
+                "stages": [{
+                    "targetId": "test",
+                    "profiles": [],
+                }],
+            })
         b_automation = gcp.clouddeploy.Automation("b-automation",
             name="cd-automation",
             project=pipeline.project,
             location=pipeline.location,
             delivery_pipeline=pipeline.name,
             service_account="my@service-account.com",
-            selector=gcp.clouddeploy.AutomationSelectorArgs(
-                targets=[gcp.clouddeploy.AutomationSelectorTargetArgs(
-                    id="*",
-                )],
-            ),
+            selector={
+                "targets": [{
+                    "id": "*",
+                }],
+            },
             suspended=False,
-            rules=[gcp.clouddeploy.AutomationRuleArgs(
-                promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
-                    id="promote-release",
-                ),
-            )])
+            rules=[{
+                "promoteReleaseRule": {
+                    "id": "promote-release",
+                },
+            }])
         ```
         ### Clouddeploy Automation Full
 
@@ -612,12 +612,12 @@ class Automation(pulumi.CustomResource):
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
             name="cd-pipeline",
             location="us-central1",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                    target_id="test",
-                    profiles=["test-profile"],
-                )],
-            ))
+            serial_pipeline={
+                "stages": [{
+                    "targetId": "test",
+                    "profiles": ["test-profile"],
+                }],
+            })
         f_automation = gcp.clouddeploy.Automation("f-automation",
             name="cd-automation",
             location="us-central1",
@@ -632,31 +632,31 @@ class Automation(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             },
             description="automation resource",
-            selector=gcp.clouddeploy.AutomationSelectorArgs(
-                targets=[gcp.clouddeploy.AutomationSelectorTargetArgs(
-                    id="test",
-                    labels={
+            selector={
+                "targets": [{
+                    "id": "test",
+                    "labels": {
                         "foo": "bar",
                     },
-                )],
-            ),
+                }],
+            },
             suspended=True,
             rules=[
-                gcp.clouddeploy.AutomationRuleArgs(
-                    promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
-                        id="promote-release",
-                        wait="200s",
-                        destination_target_id="@next",
-                        destination_phase="stable",
-                    ),
-                ),
-                gcp.clouddeploy.AutomationRuleArgs(
-                    advance_rollout_rule=gcp.clouddeploy.AutomationRuleAdvanceRolloutRuleArgs(
-                        id="advance-rollout",
-                        source_phases=["deploy"],
-                        wait="200s",
-                    ),
-                ),
+                {
+                    "promoteReleaseRule": {
+                        "id": "promote-release",
+                        "wait": "200s",
+                        "destinationTargetId": "@next",
+                        "destinationPhase": "stable",
+                    },
+                },
+                {
+                    "advanceRolloutRule": {
+                        "id": "advance-rollout",
+                        "sourcePhases": ["deploy"],
+                        "wait": "200s",
+                    },
+                },
             ])
         ```
 
@@ -706,9 +706,9 @@ class Automation(pulumi.CustomResource):
                resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `Automation`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AutomationSelectorArgs']] selector: Required. Selected resources to which the automation will be applied.
+        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']] selector: Required. Selected resources to which the automation will be applied.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
         :param pulumi.Input[bool] suspended: Optional. When Suspended, automation is deactivated from execution.
@@ -739,29 +739,29 @@ class Automation(pulumi.CustomResource):
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
             name="cd-pipeline",
             location="us-central1",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                    target_id="test",
-                    profiles=[],
-                )],
-            ))
+            serial_pipeline={
+                "stages": [{
+                    "targetId": "test",
+                    "profiles": [],
+                }],
+            })
         b_automation = gcp.clouddeploy.Automation("b-automation",
             name="cd-automation",
             project=pipeline.project,
             location=pipeline.location,
             delivery_pipeline=pipeline.name,
             service_account="my@service-account.com",
-            selector=gcp.clouddeploy.AutomationSelectorArgs(
-                targets=[gcp.clouddeploy.AutomationSelectorTargetArgs(
-                    id="*",
-                )],
-            ),
+            selector={
+                "targets": [{
+                    "id": "*",
+                }],
+            },
             suspended=False,
-            rules=[gcp.clouddeploy.AutomationRuleArgs(
-                promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
-                    id="promote-release",
-                ),
-            )])
+            rules=[{
+                "promoteReleaseRule": {
+                    "id": "promote-release",
+                },
+            }])
         ```
         ### Clouddeploy Automation Full
 
@@ -772,12 +772,12 @@ class Automation(pulumi.CustomResource):
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
             name="cd-pipeline",
             location="us-central1",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                    target_id="test",
-                    profiles=["test-profile"],
-                )],
-            ))
+            serial_pipeline={
+                "stages": [{
+                    "targetId": "test",
+                    "profiles": ["test-profile"],
+                }],
+            })
         f_automation = gcp.clouddeploy.Automation("f-automation",
             name="cd-automation",
             location="us-central1",
@@ -792,31 +792,31 @@ class Automation(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             },
             description="automation resource",
-            selector=gcp.clouddeploy.AutomationSelectorArgs(
-                targets=[gcp.clouddeploy.AutomationSelectorTargetArgs(
-                    id="test",
-                    labels={
+            selector={
+                "targets": [{
+                    "id": "test",
+                    "labels": {
                         "foo": "bar",
                     },
-                )],
-            ),
+                }],
+            },
             suspended=True,
             rules=[
-                gcp.clouddeploy.AutomationRuleArgs(
-                    promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
-                        id="promote-release",
-                        wait="200s",
-                        destination_target_id="@next",
-                        destination_phase="stable",
-                    ),
-                ),
-                gcp.clouddeploy.AutomationRuleArgs(
-                    advance_rollout_rule=gcp.clouddeploy.AutomationRuleAdvanceRolloutRuleArgs(
-                        id="advance-rollout",
-                        source_phases=["deploy"],
-                        wait="200s",
-                    ),
-                ),
+                {
+                    "promoteReleaseRule": {
+                        "id": "promote-release",
+                        "wait": "200s",
+                        "destinationTargetId": "@next",
+                        "destinationPhase": "stable",
+                    },
+                },
+                {
+                    "advanceRolloutRule": {
+                        "id": "advance-rollout",
+                        "sourcePhases": ["deploy"],
+                        "wait": "200s",
+                    },
+                },
             ])
         ```
 
@@ -866,8 +866,8 @@ class Automation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]]] = None,
-                 selector: Optional[pulumi.Input[pulumi.InputType['AutomationSelectorArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
+                 selector: Optional[pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -931,8 +931,8 @@ class Automation(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]]] = None,
-            selector: Optional[pulumi.Input[pulumi.InputType['AutomationSelectorArgs']]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
+            selector: Optional[pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -969,9 +969,9 @@ class Automation(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `Automation`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AutomationSelectorArgs']] selector: Required. Selected resources to which the automation will be applied.
+        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']] selector: Required. Selected resources to which the automation will be applied.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
         :param pulumi.Input[bool] suspended: Optional. When Suspended, automation is deactivated from execution.

@@ -564,10 +564,10 @@ class Secret(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
-                 rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
+                 replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
+                 rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version_destroy_ttl: Optional[pulumi.Input[str]] = None,
@@ -592,18 +592,18 @@ class Secret(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-central1",
-                        ),
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-east1",
-                        ),
+            replication={
+                "userManaged": {
+                    "replicas": [
+                        {
+                            "location": "us-central1",
+                        },
+                        {
+                            "location": "us-east1",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Secret With Annotations
 
@@ -623,9 +623,9 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         ```
         ### Secret With Version Destroy Ttl
 
@@ -636,9 +636,9 @@ class Secret(pulumi.CustomResource):
         secret_with_version_destroy_ttl = gcp.secretmanager.Secret("secret-with-version-destroy-ttl",
             secret_id="secret",
             version_destroy_ttl="2592000s",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         ```
         ### Secret With Automatic Cmek
 
@@ -653,13 +653,13 @@ class Secret(pulumi.CustomResource):
             member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
         secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(
-                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
-                        kms_key_name="kms-key",
-                    ),
-                ),
-            ),
+            replication={
+                "auto": {
+                    "customerManagedEncryption": {
+                        "kmsKeyName": "kms-key",
+                    },
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
@@ -708,13 +708,13 @@ class Secret(pulumi.CustomResource):
                resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
                }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
                the topics configured on the Secret. 'topics' must be set to configure rotation.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
                or its versions.
         :param pulumi.Input[str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                Only one of 'ttl' or 'expire_time' can be provided.
@@ -752,18 +752,18 @@ class Secret(pulumi.CustomResource):
             labels={
                 "label": "my-label",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-central1",
-                        ),
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-east1",
-                        ),
+            replication={
+                "userManaged": {
+                    "replicas": [
+                        {
+                            "location": "us-central1",
+                        },
+                        {
+                            "location": "us-east1",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Secret With Annotations
 
@@ -783,9 +783,9 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         ```
         ### Secret With Version Destroy Ttl
 
@@ -796,9 +796,9 @@ class Secret(pulumi.CustomResource):
         secret_with_version_destroy_ttl = gcp.secretmanager.Secret("secret-with-version-destroy-ttl",
             secret_id="secret",
             version_destroy_ttl="2592000s",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         ```
         ### Secret With Automatic Cmek
 
@@ -813,13 +813,13 @@ class Secret(pulumi.CustomResource):
             member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
         secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(
-                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
-                        kms_key_name="kms-key",
-                    ),
-                ),
-            ),
+            replication={
+                "auto": {
+                    "customerManagedEncryption": {
+                        "kmsKeyName": "kms-key",
+                    },
+                },
+            },
             opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
@@ -866,10 +866,10 @@ class Secret(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
-                 rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
+                 replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
+                 rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version_destroy_ttl: Optional[pulumi.Input[str]] = None,
@@ -923,10 +923,10 @@ class Secret(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
-            rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
+            replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
+            rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
             secret_id: Optional[pulumi.Input[str]] = None,
-            topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+            topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None,
             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version_destroy_ttl: Optional[pulumi.Input[str]] = None) -> 'Secret':
@@ -962,13 +962,13 @@ class Secret(pulumi.CustomResource):
                `projects/{{project}}/secrets/{{secret_id}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
                the topics configured on the Secret. 'topics' must be set to configure rotation.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
                or its versions.
         :param pulumi.Input[str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                Only one of 'ttl' or 'expire_time' can be provided.

@@ -113,7 +113,7 @@ class AddonsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
                  org: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -135,14 +135,14 @@ class AddonsConfig(pulumi.CustomResource):
 
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org="test_organization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-            ))
+            addons_config={
+                "apiSecurityConfig": {
+                    "enabled": True,
+                },
+                "monetizationConfig": {
+                    "enabled": True,
+                },
+            })
         ```
         ### Apigee Addons Full
 
@@ -186,23 +186,23 @@ class AddonsConfig(pulumi.CustomResource):
                 ]))
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
-                    enabled=True,
-                ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
-                    enabled=True,
-                ),
-            ))
+            addons_config={
+                "integrationConfig": {
+                    "enabled": True,
+                },
+                "apiSecurityConfig": {
+                    "enabled": True,
+                },
+                "connectorsPlatformConfig": {
+                    "enabled": True,
+                },
+                "monetizationConfig": {
+                    "enabled": True,
+                },
+                "advancedApiOpsConfig": {
+                    "enabled": True,
+                },
+            })
         ```
 
         ## Import
@@ -225,7 +225,7 @@ class AddonsConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                
@@ -257,14 +257,14 @@ class AddonsConfig(pulumi.CustomResource):
 
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org="test_organization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-            ))
+            addons_config={
+                "apiSecurityConfig": {
+                    "enabled": True,
+                },
+                "monetizationConfig": {
+                    "enabled": True,
+                },
+            })
         ```
         ### Apigee Addons Full
 
@@ -308,23 +308,23 @@ class AddonsConfig(pulumi.CustomResource):
                 ]))
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
-                    enabled=True,
-                ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
-                    enabled=True,
-                ),
-            ))
+            addons_config={
+                "integrationConfig": {
+                    "enabled": True,
+                },
+                "apiSecurityConfig": {
+                    "enabled": True,
+                },
+                "connectorsPlatformConfig": {
+                    "enabled": True,
+                },
+                "monetizationConfig": {
+                    "enabled": True,
+                },
+                "advancedApiOpsConfig": {
+                    "enabled": True,
+                },
+            })
         ```
 
         ## Import
@@ -360,7 +360,7 @@ class AddonsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
                  org: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -385,7 +385,7 @@ class AddonsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']]] = None,
+            addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
             org: Optional[pulumi.Input[str]] = None) -> 'AddonsConfig':
         """
         Get an existing AddonsConfig resource's state with the given name, id, and optional extra
@@ -394,7 +394,7 @@ class AddonsConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AddonsConfigAddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[str] org: Name of the Apigee organization.
                

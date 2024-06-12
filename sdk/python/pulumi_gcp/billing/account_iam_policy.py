@@ -146,10 +146,10 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -185,10 +185,10 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -276,10 +276,10 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
@@ -315,10 +315,10 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/billing.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.billing.AccountIamPolicy("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)

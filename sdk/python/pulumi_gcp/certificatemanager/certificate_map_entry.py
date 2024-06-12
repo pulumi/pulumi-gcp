@@ -476,16 +476,16 @@ class CertificateMapEntry(pulumi.CustomResource):
             name="cert-map-entry",
             description="The default cert",
             scope="DEFAULT",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         default = gcp.certificatemanager.CertificateMapEntry("default",
             name="cert-map-entry",
             description="My acceptance test certificate map entry",
@@ -585,16 +585,16 @@ class CertificateMapEntry(pulumi.CustomResource):
             name="cert-map-entry",
             description="The default cert",
             scope="DEFAULT",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         default = gcp.certificatemanager.CertificateMapEntry("default",
             name="cert-map-entry",
             description="My acceptance test certificate map entry",

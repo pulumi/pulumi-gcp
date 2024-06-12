@@ -427,7 +427,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[pulumi.InputType['ServiceAttributesArgs']]] = None,
+                 attributes: Optional[pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  discovered_service: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -450,9 +450,9 @@ class Service(pulumi.CustomResource):
         application = gcp.apphub.Application("application",
             location="us-central1",
             application_id="example-application-1",
-            scope=gcp.apphub.ApplicationScopeArgs(
-                type="REGIONAL",
-            ))
+            scope={
+                "type": "REGIONAL",
+            })
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
@@ -485,9 +485,9 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
+            tcp_health_check={
+                "port": 80,
+            },
             opts=pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
@@ -527,9 +527,9 @@ class Service(pulumi.CustomResource):
         application = gcp.apphub.Application("application",
             location="us-central1",
             application_id="example-application-1",
-            scope=gcp.apphub.ApplicationScopeArgs(
-                type="REGIONAL",
-            ))
+            scope={
+                "type": "REGIONAL",
+            })
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
@@ -562,9 +562,9 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
+            tcp_health_check={
+                "port": 80,
+            },
             opts=pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
@@ -595,26 +595,26 @@ class Service(pulumi.CustomResource):
             discovered_service=catalog_service.name,
             display_name="Example Service Full",
             description="Register service for testing",
-            attributes=gcp.apphub.ServiceAttributesArgs(
-                environment=gcp.apphub.ServiceAttributesEnvironmentArgs(
-                    type="STAGING",
-                ),
-                criticality=gcp.apphub.ServiceAttributesCriticalityArgs(
-                    type="MISSION_CRITICAL",
-                ),
-                business_owners=[gcp.apphub.ServiceAttributesBusinessOwnerArgs(
-                    display_name="Alice",
-                    email="alice@google.com",
-                )],
-                developer_owners=[gcp.apphub.ServiceAttributesDeveloperOwnerArgs(
-                    display_name="Bob",
-                    email="bob@google.com",
-                )],
-                operator_owners=[gcp.apphub.ServiceAttributesOperatorOwnerArgs(
-                    display_name="Charlie",
-                    email="charlie@google.com",
-                )],
-            ))
+            attributes={
+                "environment": {
+                    "type": "STAGING",
+                },
+                "criticality": {
+                    "type": "MISSION_CRITICAL",
+                },
+                "businessOwners": [{
+                    "displayName": "Alice",
+                    "email": "alice@google.com",
+                }],
+                "developerOwners": [{
+                    "displayName": "Bob",
+                    "email": "bob@google.com",
+                }],
+                "operatorOwners": [{
+                    "displayName": "Charlie",
+                    "email": "charlie@google.com",
+                }],
+            })
         ```
 
         ## Import
@@ -644,7 +644,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[pulumi.InputType['ServiceAttributesArgs']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[str] description: User-defined description of a Service.
         :param pulumi.Input[str] discovered_service: Immutable. The resource name of the original discovered service.
@@ -678,9 +678,9 @@ class Service(pulumi.CustomResource):
         application = gcp.apphub.Application("application",
             location="us-central1",
             application_id="example-application-1",
-            scope=gcp.apphub.ApplicationScopeArgs(
-                type="REGIONAL",
-            ))
+            scope={
+                "type": "REGIONAL",
+            })
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
@@ -713,9 +713,9 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
+            tcp_health_check={
+                "port": 80,
+            },
             opts=pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
@@ -755,9 +755,9 @@ class Service(pulumi.CustomResource):
         application = gcp.apphub.Application("application",
             location="us-central1",
             application_id="example-application-1",
-            scope=gcp.apphub.ApplicationScopeArgs(
-                type="REGIONAL",
-            ))
+            scope={
+                "type": "REGIONAL",
+            })
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
@@ -790,9 +790,9 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
+            tcp_health_check={
+                "port": 80,
+            },
             opts=pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
@@ -823,26 +823,26 @@ class Service(pulumi.CustomResource):
             discovered_service=catalog_service.name,
             display_name="Example Service Full",
             description="Register service for testing",
-            attributes=gcp.apphub.ServiceAttributesArgs(
-                environment=gcp.apphub.ServiceAttributesEnvironmentArgs(
-                    type="STAGING",
-                ),
-                criticality=gcp.apphub.ServiceAttributesCriticalityArgs(
-                    type="MISSION_CRITICAL",
-                ),
-                business_owners=[gcp.apphub.ServiceAttributesBusinessOwnerArgs(
-                    display_name="Alice",
-                    email="alice@google.com",
-                )],
-                developer_owners=[gcp.apphub.ServiceAttributesDeveloperOwnerArgs(
-                    display_name="Bob",
-                    email="bob@google.com",
-                )],
-                operator_owners=[gcp.apphub.ServiceAttributesOperatorOwnerArgs(
-                    display_name="Charlie",
-                    email="charlie@google.com",
-                )],
-            ))
+            attributes={
+                "environment": {
+                    "type": "STAGING",
+                },
+                "criticality": {
+                    "type": "MISSION_CRITICAL",
+                },
+                "businessOwners": [{
+                    "displayName": "Alice",
+                    "email": "alice@google.com",
+                }],
+                "developerOwners": [{
+                    "displayName": "Bob",
+                    "email": "bob@google.com",
+                }],
+                "operatorOwners": [{
+                    "displayName": "Charlie",
+                    "email": "charlie@google.com",
+                }],
+            })
         ```
 
         ## Import
@@ -885,7 +885,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[pulumi.InputType['ServiceAttributesArgs']]] = None,
+                 attributes: Optional[pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  discovered_service: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -935,7 +935,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            attributes: Optional[pulumi.Input[pulumi.InputType['ServiceAttributesArgs']]] = None,
+            attributes: Optional[pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             discovered_service: Optional[pulumi.Input[str]] = None,
@@ -944,8 +944,8 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            service_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServicePropertyArgs']]]]] = None,
-            service_references: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceReferenceArgs']]]]] = None,
+            service_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict']]]]] = None,
+            service_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Service':
@@ -957,7 +957,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[pulumi.InputType['ServiceAttributesArgs']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. Create time.
         :param pulumi.Input[str] description: User-defined description of a Service.
@@ -972,9 +972,9 @@ class Service(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServicePropertyArgs']]]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict']]]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceReferenceArgs']]]] service_references: Reference to an underlying networking resource that can comprise a Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict']]]] service_references: Reference to an underlying networking resource that can comprise a Service.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
         :param pulumi.Input[str] uid: Output only. A universally unique identifier (UUID) for the `Service` in the UUID4

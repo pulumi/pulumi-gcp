@@ -211,7 +211,7 @@ class IAMBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['IAMBindingConditionArgs', 'IAMBindingConditionArgsDict']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -245,10 +245,10 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -260,15 +260,15 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -296,11 +296,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -325,11 +325,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -342,13 +342,13 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -366,10 +366,10 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -381,15 +381,15 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -417,11 +417,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -446,11 +446,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -463,13 +463,13 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -501,7 +501,7 @@ class IAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['IAMBindingConditionArgs', 'IAMBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.
                Each entry can have one of the following values:
@@ -550,10 +550,10 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -565,15 +565,15 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -601,11 +601,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -630,11 +630,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -647,13 +647,13 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -671,10 +671,10 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -686,15 +686,15 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -722,11 +722,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -751,11 +751,11 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -768,13 +768,13 @@ class IAMBinding(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -819,7 +819,7 @@ class IAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['IAMBindingConditionArgs', 'IAMBindingConditionArgsDict']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -853,7 +853,7 @@ class IAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['IAMBindingConditionArgs', 'IAMBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -865,7 +865,7 @@ class IAMBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['IAMBindingConditionArgs', 'IAMBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`. projects.IAMBinding expects `members` field while projects.IAMMember expects `member` field.

@@ -540,13 +540,13 @@ class AzureNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
                  azure_availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
@@ -574,70 +574,70 @@ class AzureNodePool(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         primary_azure_node_pool = gcp.container.AzureNodePool("primary",
-            autoscaling=gcp.container.AzureNodePoolAutoscalingArgs(
-                max_node_count=3,
-                min_node_count=2,
-            ),
+            autoscaling={
+                "maxNodeCount": 3,
+                "minNodeCount": 2,
+            },
             cluster=primary.name,
-            config=gcp.container.AzureNodePoolConfigArgs(
-                ssh_config=gcp.container.AzureNodePoolConfigSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                proxy_config=gcp.container.AzureNodePoolConfigProxyConfigArgs(
-                    resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
-                    secret_id="https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
-                ),
-                root_volume=gcp.container.AzureNodePoolConfigRootVolumeArgs(
-                    size_gib=32,
-                ),
-                tags={
+            config={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "proxyConfig": {
+                    "resourceGroupId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+                    "secretId": "https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
+                },
+                "rootVolume": {
+                    "sizeGib": 32,
+                },
+                "tags": {
                     "owner": "mmv2",
                 },
-                labels={
+                "labels": {
                     "key_one": "label_one",
                 },
-                vm_size="Standard_DS2_v2",
-            ),
+                "vmSize": "Standard_DS2_v2",
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AzureNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
             version=versions.valid_versions[0],
             annotations={
                 "annotation-one": "value-one",
             },
-            management=gcp.container.AzureNodePoolManagementArgs(
-                auto_repair=True,
-            ),
+            management={
+                "autoRepair": True,
+            },
             project="my-project-name")
         ```
 
@@ -673,13 +673,13 @@ class AzureNodePool(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']] config: The node configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
@@ -713,70 +713,70 @@ class AzureNodePool(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         primary_azure_node_pool = gcp.container.AzureNodePool("primary",
-            autoscaling=gcp.container.AzureNodePoolAutoscalingArgs(
-                max_node_count=3,
-                min_node_count=2,
-            ),
+            autoscaling={
+                "maxNodeCount": 3,
+                "minNodeCount": 2,
+            },
             cluster=primary.name,
-            config=gcp.container.AzureNodePoolConfigArgs(
-                ssh_config=gcp.container.AzureNodePoolConfigSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                proxy_config=gcp.container.AzureNodePoolConfigProxyConfigArgs(
-                    resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
-                    secret_id="https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
-                ),
-                root_volume=gcp.container.AzureNodePoolConfigRootVolumeArgs(
-                    size_gib=32,
-                ),
-                tags={
+            config={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "proxyConfig": {
+                    "resourceGroupId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+                    "secretId": "https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
+                },
+                "rootVolume": {
+                    "sizeGib": 32,
+                },
+                "tags": {
                     "owner": "mmv2",
                 },
-                labels={
+                "labels": {
                     "key_one": "label_one",
                 },
-                vm_size="Standard_DS2_v2",
-            ),
+                "vmSize": "Standard_DS2_v2",
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AzureNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
             version=versions.valid_versions[0],
             annotations={
                 "annotation-one": "value-one",
             },
-            management=gcp.container.AzureNodePoolManagementArgs(
-                auto_repair=True,
-            ),
+            management={
+                "autoRepair": True,
+            },
             project="my-project-name")
         ```
 
@@ -820,13 +820,13 @@ class AzureNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
                  azure_availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
@@ -884,16 +884,16 @@ class AzureNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            autoscaling: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']]] = None,
+            autoscaling: Optional[pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
             azure_availability_zone: Optional[pulumi.Input[str]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
-            max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
+            management: Optional[pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
+            max_pods_constraint: Optional[pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
@@ -915,15 +915,15 @@ class AzureNodePool(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']] config: The node configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently pending changes to the node pool.

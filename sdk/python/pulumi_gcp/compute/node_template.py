@@ -407,10 +407,10 @@ class NodeTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 server_binding: Optional[pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']]] = None,
+                 server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
                  __props__=None):
         """
         Represents a NodeTemplate resource. Node templates specify properties
@@ -450,9 +450,9 @@ class NodeTemplate(pulumi.CustomResource):
             node_affinity_labels={
                 "foo": "baz",
             },
-            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
-                type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ))
+            server_binding={
+                "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
+            })
         ```
 
         ## Import
@@ -496,7 +496,7 @@ class NodeTemplate(pulumi.CustomResource):
                instance scheduling.
         :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template.
                Only one of nodeTypeFlexibility and nodeType can be specified.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: Flexible properties for the desired node type. Node groups that
+        :param pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']] node_type_flexibility: Flexible properties for the desired node type. Node groups that
                use this node template will create nodes of a type that matches
                these properties. Only one of nodeTypeFlexibility and nodeType can
                be specified.
@@ -505,7 +505,7 @@ class NodeTemplate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']] server_binding: The server binding policy for nodes using this template. Determines
+        :param pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']] server_binding: The server binding policy for nodes using this template. Determines
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """
@@ -553,9 +553,9 @@ class NodeTemplate(pulumi.CustomResource):
             node_affinity_labels={
                 "foo": "baz",
             },
-            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
-                type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ))
+            server_binding={
+                "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
+            })
         ```
 
         ## Import
@@ -608,10 +608,10 @@ class NodeTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 server_binding: Optional[pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']]] = None,
+                 server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -648,11 +648,11 @@ class NodeTemplate(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
-            node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
+            node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            server_binding: Optional[pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']]] = None) -> 'NodeTemplate':
+            server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None) -> 'NodeTemplate':
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -670,7 +670,7 @@ class NodeTemplate(pulumi.CustomResource):
                instance scheduling.
         :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template.
                Only one of nodeTypeFlexibility and nodeType can be specified.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: Flexible properties for the desired node type. Node groups that
+        :param pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']] node_type_flexibility: Flexible properties for the desired node type. Node groups that
                use this node template will create nodes of a type that matches
                these properties. Only one of nodeTypeFlexibility and nodeType can
                be specified.
@@ -680,7 +680,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']] server_binding: The server binding policy for nodes using this template. Determines
+        :param pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']] server_binding: The server binding policy for nodes using this template. Determines
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """

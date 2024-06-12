@@ -107,9 +107,9 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
         name="my-crypto-key",
         key_ring=my_key_ring.id,
         purpose="ASYMMETRIC_DECRYPT",
-        version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-            algorithm="RSA_DECRYPT_OAEP_4096_SHA256",
-        ))
+        version_template={
+            "algorithm": "RSA_DECRYPT_OAEP_4096_SHA256",
+        })
     my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
     ```
 
@@ -141,9 +141,9 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
     main = gcp.sql.DatabaseInstance("main",
         name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
         database_version="MYSQL_5_7",
-        settings=gcp.sql.DatabaseInstanceSettingsArgs(
-            tier="db-f1-micro",
-        ))
+        settings={
+            "tier": "db-f1-micro",
+        })
     users = gcp.sql.User("users",
         name="me",
         instance=main.name,
@@ -197,9 +197,9 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
         name="my-crypto-key",
         key_ring=my_key_ring.id,
         purpose="ASYMMETRIC_DECRYPT",
-        version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-            algorithm="RSA_DECRYPT_OAEP_4096_SHA256",
-        ))
+        version_template={
+            "algorithm": "RSA_DECRYPT_OAEP_4096_SHA256",
+        })
     my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
     ```
 
@@ -231,9 +231,9 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
     main = gcp.sql.DatabaseInstance("main",
         name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
         database_version="MYSQL_5_7",
-        settings=gcp.sql.DatabaseInstanceSettingsArgs(
-            tier="db-f1-micro",
-        ))
+        settings={
+            "tier": "db-f1-micro",
+        })
     users = gcp.sql.User("users",
         name="me",
         instance=main.name,

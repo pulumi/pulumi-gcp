@@ -238,7 +238,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['EnvironmentIamMemberConditionArgs', 'EnvironmentIamMemberConditionArgsDict']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -265,10 +265,10 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -307,10 +307,10 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -422,10 +422,10 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -464,10 +464,10 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -549,7 +549,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['EnvironmentIamMemberConditionArgs', 'EnvironmentIamMemberConditionArgsDict']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -587,7 +587,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['EnvironmentIamMemberConditionArgs', 'EnvironmentIamMemberConditionArgsDict']]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

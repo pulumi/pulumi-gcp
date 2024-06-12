@@ -382,7 +382,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -414,23 +414,23 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         ```
 
@@ -455,7 +455,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                "EGRESS"]
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
                export destination in Stackdriver.
-        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -497,23 +497,23 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         ```
 
@@ -548,7 +548,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -595,7 +595,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+            match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -615,7 +615,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                "EGRESS"]
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
                export destination in Stackdriver.
-        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.

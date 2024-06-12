@@ -290,7 +290,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -312,18 +312,18 @@ class TlsRoute(pulumi.CustomResource):
         default_tls_route = gcp.networkservices.TlsRoute("default",
             name="my-tls-route",
             description="my description",
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
         ### Network Services Tls Route Mesh Basic
 
@@ -349,18 +349,18 @@ class TlsRoute(pulumi.CustomResource):
             name="my-tls-route",
             description="my description",
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
         ### Network Services Tls Route Gateway Basic
 
@@ -389,18 +389,18 @@ class TlsRoute(pulumi.CustomResource):
             name="my-tls-route",
             description="my description",
             gateways=[default_gateway.id],
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
 
         ## Import
@@ -437,7 +437,7 @@ class TlsRoute(pulumi.CustomResource):
                by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
                Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
@@ -466,18 +466,18 @@ class TlsRoute(pulumi.CustomResource):
         default_tls_route = gcp.networkservices.TlsRoute("default",
             name="my-tls-route",
             description="my description",
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
         ### Network Services Tls Route Mesh Basic
 
@@ -503,18 +503,18 @@ class TlsRoute(pulumi.CustomResource):
             name="my-tls-route",
             description="my description",
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
         ### Network Services Tls Route Gateway Basic
 
@@ -543,18 +543,18 @@ class TlsRoute(pulumi.CustomResource):
             name="my-tls-route",
             description="my description",
             gateways=[default_gateway.id],
-            rules=[gcp.networkservices.TlsRouteRuleArgs(
-                matches=[gcp.networkservices.TlsRouteRuleMatchArgs(
-                    sni_hosts=["example.com"],
-                    alpns=["http/1.1"],
-                )],
-                action=gcp.networkservices.TlsRouteRuleActionArgs(
-                    destinations=[gcp.networkservices.TlsRouteRuleActionDestinationArgs(
-                        service_name=default.id,
-                        weight=1,
-                    )],
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "sniHosts": ["example.com"],
+                    "alpns": ["http/1.1"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "serviceName": default.id,
+                        "weight": 1,
+                    }],
+                },
+            }])
         ```
 
         ## Import
@@ -601,7 +601,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -638,7 +638,7 @@ class TlsRoute(pulumi.CustomResource):
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TlsRoute':
         """
@@ -657,7 +657,7 @@ class TlsRoute(pulumi.CustomResource):
                by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
                Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the TlsRoute was updated in UTC.

@@ -268,10 +268,10 @@ class Schema(pulumi.CustomResource):
         }\"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts=pulumi.ResourceOptions(depends_on=[example]))
         ```
 
@@ -379,10 +379,10 @@ class Schema(pulumi.CustomResource):
         }\"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts=pulumi.ResourceOptions(depends_on=[example]))
         ```
 

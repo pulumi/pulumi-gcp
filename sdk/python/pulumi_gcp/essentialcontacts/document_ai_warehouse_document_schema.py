@@ -214,7 +214,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         """
         A document schema is used to define document structure.
@@ -239,21 +239,21 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-text",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
-                name="prop3",
-                display_name="propdisp3",
-                is_repeatable=False,
-                is_filterable=True,
-                is_searchable=True,
-                is_metadata=False,
-                is_required=False,
-                retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
-                    name="dummy_source",
-                    processor_type="dummy_processor",
-                )],
-                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
-            )])
+            property_definitions=[{
+                "name": "prop3",
+                "displayName": "propdisp3",
+                "isRepeatable": False,
+                "isFilterable": True,
+                "isSearchable": True,
+                "isMetadata": False,
+                "isRequired": False,
+                "retrievalImportance": "HIGHEST",
+                "schemaSources": [{
+                    "name": "dummy_source",
+                    "processorType": "dummy_processor",
+                }],
+                "textTypeOptions": {},
+            }])
         ```
 
         ## Import
@@ -280,7 +280,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         ...
@@ -312,21 +312,21 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-text",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
-                name="prop3",
-                display_name="propdisp3",
-                is_repeatable=False,
-                is_filterable=True,
-                is_searchable=True,
-                is_metadata=False,
-                is_required=False,
-                retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
-                    name="dummy_source",
-                    processor_type="dummy_processor",
-                )],
-                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
-            )])
+            property_definitions=[{
+                "name": "prop3",
+                "displayName": "propdisp3",
+                "isRepeatable": False,
+                "isFilterable": True,
+                "isSearchable": True,
+                "isMetadata": False,
+                "isRequired": False,
+                "retrievalImportance": "HIGHEST",
+                "schemaSources": [{
+                    "name": "dummy_source",
+                    "processorType": "dummy_processor",
+                }],
+                "textTypeOptions": {},
+            }])
         ```
 
         ## Import
@@ -366,7 +366,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,7 +405,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_number: Optional[pulumi.Input[str]] = None,
-            property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
+            property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
         """
         Get an existing DocumentAiWarehouseDocumentSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -418,7 +418,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The resource name of the document schema.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

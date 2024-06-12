@@ -406,14 +406,14 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 org_config: Optional[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigOrgConfigArgs']]] = None,
+                 org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
                  __props__=None):
         """
         Configuration for discovery to scan resources for profile generation. Only one discovery configuration may exist per organization, folder, or project.
@@ -446,7 +446,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigActionArgs']]]] actions: Actions to execute at the completion of scanning
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
@@ -454,14 +454,14 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigOrgConfigArgs']] org_config: A nested object resource
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] status: Required. A status for this configuration
                Possible values are: `RUNNING`, `PAUSED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigTargetArgs']]]] targets: Target to match against for determining what to scan and how frequently
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]] targets: Target to match against for determining what to scan and how frequently
                Structure is documented below.
         """
         ...
@@ -514,14 +514,14 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 org_config: Optional[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigOrgConfigArgs']]] = None,
+                 org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -558,18 +558,18 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigActionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigErrorArgs']]]]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigErrorArgs', 'PreventionDiscoveryConfigErrorArgsDict']]]]] = None,
             inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             last_run_time: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            org_config: Optional[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigOrgConfigArgs']]] = None,
+            org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigTargetArgs']]]]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'PreventionDiscoveryConfig':
         """
         Get an existing PreventionDiscoveryConfig resource's state with the given name, id, and optional extra
@@ -578,11 +578,11 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigActionArgs']]]] actions: Actions to execute at the completion of scanning
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of a DiscoveryConfig.
         :param pulumi.Input[str] display_name: Display Name (max 1000 Chars)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigErrorArgs']]]] errors: Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigErrorArgs', 'PreventionDiscoveryConfigErrorArgsDict']]]] errors: Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[str] last_run_time: Output only. The timestamp of the last time this config was executed
@@ -591,14 +591,14 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
-        :param pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigOrgConfigArgs']] org_config: A nested object resource
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] status: Required. A status for this configuration
                Possible values are: `RUNNING`, `PAUSED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionDiscoveryConfigTargetArgs']]]] targets: Target to match against for determining what to scan and how frequently
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]] targets: Target to match against for determining what to scan and how frequently
                Structure is documented below.
         :param pulumi.Input[str] update_time: Output only. The last update timestamp of a DiscoveryConfig.
         """

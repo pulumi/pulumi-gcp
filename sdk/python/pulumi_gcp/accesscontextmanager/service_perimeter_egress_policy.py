@@ -153,8 +153,8 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressFromArgs']]] = None,
-                 egress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressToArgs']]] = None,
+                 egress_from: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']]] = None,
+                 egress_to: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -190,9 +190,9 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressFromArgs']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressToArgs']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
@@ -252,8 +252,8 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressFromArgs']]] = None,
-                 egress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressToArgs']]] = None,
+                 egress_from: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']]] = None,
+                 egress_to: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -279,8 +279,8 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            egress_from: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressFromArgs']]] = None,
-            egress_to: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressToArgs']]] = None,
+            egress_from: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']]] = None,
+            egress_to: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']]] = None,
             perimeter: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterEgressPolicy':
         """
         Get an existing ServicePerimeterEgressPolicy resource's state with the given name, id, and optional extra
@@ -289,9 +289,9 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressFromArgs']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterEgressPolicyEgressToArgs']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
+        :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.

@@ -842,17 +842,17 @@ class Address(pulumi.CustomResource):
             name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": debian_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "natIp": static.address,
+                }],
+            }])
         ```
         ### Compute Address Ipsec Interconnect
 
@@ -1043,17 +1043,17 @@ class Address(pulumi.CustomResource):
             name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": debian_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "natIp": static.address,
+                }],
+            }])
         ```
         ### Compute Address Ipsec Interconnect
 

@@ -244,7 +244,7 @@ class ApiIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiIamMemberConditionArgs', 'ApiIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -270,10 +270,10 @@ class ApiIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -312,10 +312,10 @@ class ApiIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -430,10 +430,10 @@ class ApiIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -472,10 +472,10 @@ class ApiIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=api["project"],
             api=api["apiId"],
@@ -560,7 +560,7 @@ class ApiIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiIamMemberConditionArgs', 'ApiIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -596,7 +596,7 @@ class ApiIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ApiIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ApiIamMemberConditionArgs', 'ApiIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,

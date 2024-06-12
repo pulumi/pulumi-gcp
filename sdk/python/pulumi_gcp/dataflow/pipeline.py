@@ -473,11 +473,11 @@ class Pipeline(pulumi.CustomResource):
                  pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 schedule_info: Optional[pulumi.Input[pulumi.InputType['PipelineScheduleInfoArgs']]] = None,
+                 schedule_info: Optional[pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
                  scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 workload: Optional[pulumi.Input[pulumi.InputType['PipelineWorkloadArgs']]] = None,
+                 workload: Optional[pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None,
                  __props__=None):
         """
         The main pipeline entity and all the necessary metadata for launching and managing linked jobs.
@@ -505,42 +505,42 @@ class Pipeline(pulumi.CustomResource):
             type="PIPELINE_TYPE_BATCH",
             state="STATE_ACTIVE",
             region="us-central1",
-            workload=gcp.dataflow.PipelineWorkloadArgs(
-                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
-                    project_id="my-project",
-                    gcs_path="gs://my-bucket/path",
-                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
-                        job_name="my-job",
-                        parameters={
+            workload={
+                "dataflowLaunchTemplateRequest": {
+                    "projectId": "my-project",
+                    "gcsPath": "gs://my-bucket/path",
+                    "launchParameters": {
+                        "jobName": "my-job",
+                        "parameters": {
                             "name": "wrench",
                         },
-                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
-                            num_workers=5,
-                            max_workers=5,
-                            zone="us-centra1-a",
-                            service_account_email=service_account.email,
-                            network="default",
-                            temp_location="gs://my-bucket/tmp_dir",
-                            bypass_temp_dir_validation=False,
-                            machine_type="E2",
-                            additional_user_labels={
+                        "environment": {
+                            "numWorkers": 5,
+                            "maxWorkers": 5,
+                            "zone": "us-centra1-a",
+                            "serviceAccountEmail": service_account.email,
+                            "network": "default",
+                            "tempLocation": "gs://my-bucket/tmp_dir",
+                            "bypassTempDirValidation": False,
+                            "machineType": "E2",
+                            "additionalUserLabels": {
                                 "context": "test",
                             },
-                            worker_region="us-central1",
-                            worker_zone="us-central1-a",
-                            enable_streaming_engine=False,
-                        ),
-                        update=False,
-                        transform_name_mapping={
+                            "workerRegion": "us-central1",
+                            "workerZone": "us-central1-a",
+                            "enableStreamingEngine": False,
+                        },
+                        "update": False,
+                        "transformNameMapping": {
                             "name": "wrench",
                         },
-                    ),
-                    location="us-central1",
-                ),
-            ),
-            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
-                schedule="* */2 * * *",
-            ))
+                    },
+                    "location": "us-central1",
+                },
+            },
+            schedule_info={
+                "schedule": "* */2 * * *",
+            })
         ```
 
         ## Import
@@ -585,7 +585,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input[pulumi.InputType['PipelineScheduleInfoArgs']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
@@ -598,7 +598,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
-        :param pulumi.Input[pulumi.InputType['PipelineWorkloadArgs']] workload: Workload information for creating new jobs.
+        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """
@@ -634,42 +634,42 @@ class Pipeline(pulumi.CustomResource):
             type="PIPELINE_TYPE_BATCH",
             state="STATE_ACTIVE",
             region="us-central1",
-            workload=gcp.dataflow.PipelineWorkloadArgs(
-                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
-                    project_id="my-project",
-                    gcs_path="gs://my-bucket/path",
-                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
-                        job_name="my-job",
-                        parameters={
+            workload={
+                "dataflowLaunchTemplateRequest": {
+                    "projectId": "my-project",
+                    "gcsPath": "gs://my-bucket/path",
+                    "launchParameters": {
+                        "jobName": "my-job",
+                        "parameters": {
                             "name": "wrench",
                         },
-                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
-                            num_workers=5,
-                            max_workers=5,
-                            zone="us-centra1-a",
-                            service_account_email=service_account.email,
-                            network="default",
-                            temp_location="gs://my-bucket/tmp_dir",
-                            bypass_temp_dir_validation=False,
-                            machine_type="E2",
-                            additional_user_labels={
+                        "environment": {
+                            "numWorkers": 5,
+                            "maxWorkers": 5,
+                            "zone": "us-centra1-a",
+                            "serviceAccountEmail": service_account.email,
+                            "network": "default",
+                            "tempLocation": "gs://my-bucket/tmp_dir",
+                            "bypassTempDirValidation": False,
+                            "machineType": "E2",
+                            "additionalUserLabels": {
                                 "context": "test",
                             },
-                            worker_region="us-central1",
-                            worker_zone="us-central1-a",
-                            enable_streaming_engine=False,
-                        ),
-                        update=False,
-                        transform_name_mapping={
+                            "workerRegion": "us-central1",
+                            "workerZone": "us-central1-a",
+                            "enableStreamingEngine": False,
+                        },
+                        "update": False,
+                        "transformNameMapping": {
                             "name": "wrench",
                         },
-                    ),
-                    location="us-central1",
-                ),
-            ),
-            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
-                schedule="* */2 * * *",
-            ))
+                    },
+                    "location": "us-central1",
+                },
+            },
+            schedule_info={
+                "schedule": "* */2 * * *",
+            })
         ```
 
         ## Import
@@ -722,11 +722,11 @@ class Pipeline(pulumi.CustomResource):
                  pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 schedule_info: Optional[pulumi.Input[pulumi.InputType['PipelineScheduleInfoArgs']]] = None,
+                 schedule_info: Optional[pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
                  scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 workload: Optional[pulumi.Input[pulumi.InputType['PipelineWorkloadArgs']]] = None,
+                 workload: Optional[pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -771,11 +771,11 @@ class Pipeline(pulumi.CustomResource):
             pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            schedule_info: Optional[pulumi.Input[pulumi.InputType['PipelineScheduleInfoArgs']]] = None,
+            schedule_info: Optional[pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
             scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            workload: Optional[pulumi.Input[pulumi.InputType['PipelineWorkloadArgs']]] = None) -> 'Pipeline':
+            workload: Optional[pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -798,7 +798,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input[pulumi.InputType['PipelineScheduleInfoArgs']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
@@ -811,7 +811,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
-        :param pulumi.Input[pulumi.InputType['PipelineWorkloadArgs']] workload: Workload information for creating new jobs.
+        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """

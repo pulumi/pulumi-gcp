@@ -302,7 +302,7 @@ class LinkedDataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LinkedDatasetBigqueryDatasetArgs']]]]] = None,
+                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,
@@ -370,7 +370,7 @@ class LinkedDataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LinkedDatasetBigqueryDatasetArgs']]]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
                with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
                Views corresponding to the LogViews in the bucket.
                Structure is documented below.
@@ -463,7 +463,7 @@ class LinkedDataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LinkedDatasetBigqueryDatasetArgs']]]]] = None,
+                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,
@@ -501,7 +501,7 @@ class LinkedDataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LinkedDatasetBigqueryDatasetArgs']]]]] = None,
+            bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
             bucket: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -517,7 +517,7 @@ class LinkedDataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LinkedDatasetBigqueryDatasetArgs']]]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
                with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
                Views corresponding to the LogViews in the bucket.
                Structure is documented below.

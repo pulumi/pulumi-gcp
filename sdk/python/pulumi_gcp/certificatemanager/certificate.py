@@ -407,11 +407,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None,
                  __props__=None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -439,16 +439,16 @@ class Certificate(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config
 
@@ -464,34 +464,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -499,11 +499,11 @@ class Certificate(pulumi.CustomResource):
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
+            certificate_authority_config={
+                "certificateAuthorityServiceConfig": {
+                    "caPool": pool.id,
+                },
+            },
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
@@ -512,10 +512,10 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config-cert",
             description="The default cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
+            managed={
+                "domains": ["terraform.subdomain1.com"],
+                "issuanceConfig": issuanceconfig.id,
+            })
         ```
         ### Certificate Manager Certificate Basic
 
@@ -535,16 +535,16 @@ class Certificate(pulumi.CustomResource):
             name="self-managed-cert",
             description="Global cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Self Managed Certificate Regional
 
@@ -557,10 +557,10 @@ class Certificate(pulumi.CustomResource):
             name="self-managed-cert",
             description="Regional cert",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
@@ -576,34 +576,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -611,11 +611,11 @@ class Certificate(pulumi.CustomResource):
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
+            certificate_authority_config={
+                "certificateAuthorityServiceConfig": {
+                    "caPool": pool.id,
+                },
+            },
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
@@ -624,10 +624,10 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config-cert",
             description="sample google managed all_regions certificate with issuance config for terraform",
             scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
+            managed={
+                "domains": ["terraform.subdomain1.com"],
+                "issuanceConfig": issuanceconfig.id,
+            })
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
@@ -647,16 +647,16 @@ class Certificate(pulumi.CustomResource):
             name="dns-cert",
             description="The default cert",
             scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
@@ -673,10 +673,10 @@ class Certificate(pulumi.CustomResource):
             name="dns-cert",
             description="regional managed certs",
             location="us-central1",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[instance.domain],
-                dns_authorizations=[instance.id],
-            ))
+            managed={
+                "domains": [instance.domain],
+                "dnsAuthorizations": [instance.id],
+            })
         ```
 
         ## Import
@@ -710,7 +710,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -729,7 +729,7 @@ class Certificate(pulumi.CustomResource):
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                See https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
@@ -766,16 +766,16 @@ class Certificate(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config
 
@@ -791,34 +791,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -826,11 +826,11 @@ class Certificate(pulumi.CustomResource):
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
+            certificate_authority_config={
+                "certificateAuthorityServiceConfig": {
+                    "caPool": pool.id,
+                },
+            },
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
@@ -839,10 +839,10 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config-cert",
             description="The default cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
+            managed={
+                "domains": ["terraform.subdomain1.com"],
+                "issuanceConfig": issuanceconfig.id,
+            })
         ```
         ### Certificate Manager Certificate Basic
 
@@ -862,16 +862,16 @@ class Certificate(pulumi.CustomResource):
             name="self-managed-cert",
             description="Global cert",
             scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Self Managed Certificate Regional
 
@@ -884,10 +884,10 @@ class Certificate(pulumi.CustomResource):
             name="self-managed-cert",
             description="Regional cert",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
@@ -903,34 +903,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -938,11 +938,11 @@ class Certificate(pulumi.CustomResource):
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
+            certificate_authority_config={
+                "certificateAuthorityServiceConfig": {
+                    "caPool": pool.id,
+                },
+            },
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
@@ -951,10 +951,10 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config-cert",
             description="sample google managed all_regions certificate with issuance config for terraform",
             scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
+            managed={
+                "domains": ["terraform.subdomain1.com"],
+                "issuanceConfig": issuanceconfig.id,
+            })
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
@@ -974,16 +974,16 @@ class Certificate(pulumi.CustomResource):
             name="dns-cert",
             description="The default cert",
             scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[
+            managed={
+                "domains": [
                     instance.domain,
                     instance2.domain,
                 ],
-                dns_authorizations=[
+                "dnsAuthorizations": [
                     instance.id,
                     instance2.id,
                 ],
-            ))
+            })
         ```
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
@@ -1000,10 +1000,10 @@ class Certificate(pulumi.CustomResource):
             name="dns-cert",
             description="regional managed certs",
             location="us-central1",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=[instance.domain],
-                dns_authorizations=[instance.id],
-            ))
+            managed={
+                "domains": [instance.domain],
+                "dnsAuthorizations": [instance.id],
+            })
         ```
 
         ## Import
@@ -1048,11 +1048,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1088,12 +1088,12 @@ class Certificate(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
+            managed: Optional[pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None) -> 'Certificate':
+            self_managed: Optional[pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1107,7 +1107,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -1128,7 +1128,7 @@ class Certificate(pulumi.CustomResource):
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
                See https://cloud.google.com/compute/docs/regions-zones
-        :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.

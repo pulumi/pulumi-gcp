@@ -474,11 +474,11 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input[pulumi.InputType['NodePoolLocalDiskEncryptionArgs']]] = None,
+                 local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -504,18 +504,18 @@ class NodePool(pulumi.CustomResource):
         cluster = gcp.edgecontainer.Cluster("cluster",
             name="default",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         default = gcp.edgecontainer.NodePool("default",
             name="nodepool-1",
             cluster=cluster.name,
@@ -537,18 +537,18 @@ class NodePool(pulumi.CustomResource):
         cluster = gcp.edgecontainer.Cluster("cluster",
             name="default",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         key_ring = gcp.kms.KeyRing("key_ring",
             name="keyring",
             location="us-central1")
@@ -565,9 +565,9 @@ class NodePool(pulumi.CustomResource):
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
-            local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
-                kms_key=crypto_key_crypto_key.id,
-            ),
+            local_disk_encryption={
+                "kmsKey": crypto_key_crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Edgecontainer Local Control Plane Node Pool
@@ -580,27 +580,27 @@ class NodePool(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    node_location="us-central1-edge-example-edgesite",
-                    node_count=1,
-                    machine_filter="machine-name",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ))
+            control_plane={
+                "local": {
+                    "nodeLocation": "us-central1-edge-example-edgesite",
+                    "nodeCount": 1,
+                    "machineFilter": "machine-name",
+                    "sharedDeploymentPolicy": "ALLOWED",
+                },
+            })
         default_node_pool = gcp.edgecontainer.NodePool("default",
             name="nodepool-1",
             cluster=cluster["name"],
@@ -642,14 +642,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['NodePoolLocalDiskEncryptionArgs']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] machine_filter: Only machines matching this filter will be allowed to join the node pool.
                The filtering language accepts strings like "name=<name>", and is
                documented in more detail in [AIP-160](https://google.aip.dev/160).
         :param pulumi.Input[str] name: The resource name of the node pool.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Configuration for each node in the NodePool
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Configuration for each node in the NodePool
                Structure is documented below.
         :param pulumi.Input[int] node_count: The number of nodes in the pool.
         :param pulumi.Input[str] node_location: Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
@@ -683,18 +683,18 @@ class NodePool(pulumi.CustomResource):
         cluster = gcp.edgecontainer.Cluster("cluster",
             name="default",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         default = gcp.edgecontainer.NodePool("default",
             name="nodepool-1",
             cluster=cluster.name,
@@ -716,18 +716,18 @@ class NodePool(pulumi.CustomResource):
         cluster = gcp.edgecontainer.Cluster("cluster",
             name="default",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         key_ring = gcp.kms.KeyRing("key_ring",
             name="keyring",
             location="us-central1")
@@ -744,9 +744,9 @@ class NodePool(pulumi.CustomResource):
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
-            local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
-                kms_key=crypto_key_crypto_key.id,
-            ),
+            local_disk_encryption={
+                "kmsKey": crypto_key_crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Edgecontainer Local Control Plane Node Pool
@@ -759,27 +759,27 @@ class NodePool(pulumi.CustomResource):
         default = gcp.edgecontainer.Cluster("default",
             name="",
             location="us-central1",
-            authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
-                admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
-                    username="admin@hashicorptest.com",
-                ),
-            ),
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            authorization={
+                "adminUsers": {
+                    "username": "admin@hashicorptest.com",
+                },
+            },
+            networking={
+                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
+                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+            },
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    node_location="us-central1-edge-example-edgesite",
-                    node_count=1,
-                    machine_filter="machine-name",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ))
+            control_plane={
+                "local": {
+                    "nodeLocation": "us-central1-edge-example-edgesite",
+                    "nodeCount": 1,
+                    "machineFilter": "machine-name",
+                    "sharedDeploymentPolicy": "ALLOWED",
+                },
+            })
         default_node_pool = gcp.edgecontainer.NodePool("default",
             name="nodepool-1",
             cluster=cluster["name"],
@@ -829,11 +829,11 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input[pulumi.InputType['NodePoolLocalDiskEncryptionArgs']]] = None,
+                 local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -885,11 +885,11 @@ class NodePool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            local_disk_encryption: Optional[pulumi.Input[pulumi.InputType['NodePoolLocalDiskEncryptionArgs']]] = None,
+            local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             machine_filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             node_location: Optional[pulumi.Input[str]] = None,
             node_version: Optional[pulumi.Input[str]] = None,
@@ -912,14 +912,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['NodePoolLocalDiskEncryptionArgs']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] machine_filter: Only machines matching this filter will be allowed to join the node pool.
                The filtering language accepts strings like "name=<name>", and is
                documented in more detail in [AIP-160](https://google.aip.dev/160).
         :param pulumi.Input[str] name: The resource name of the node pool.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Configuration for each node in the NodePool
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Configuration for each node in the NodePool
                Structure is documented below.
         :param pulumi.Input[int] node_count: The number of nodes in the pool.
         :param pulumi.Input[str] node_location: Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.

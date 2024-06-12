@@ -565,7 +565,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
-                 cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
+                 cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -649,9 +649,9 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
-            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            cmek_config={
+                "kmsKeyName": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
@@ -711,9 +711,9 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
-            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            cmek_config={
+                "kmsKeyName": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
@@ -745,7 +745,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        :param pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
                database. If not present, the database is secured by the default Google
                encryption key.
                Structure is documented below.
@@ -856,9 +856,9 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
-            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            cmek_config={
+                "kmsKeyName": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
@@ -918,9 +918,9 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
-            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            cmek_config={
+                "kmsKeyName": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
@@ -964,7 +964,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
-                 cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
+                 cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -1014,7 +1014,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
-            cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
+            cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
             concurrency_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_protection_state: Optional[pulumi.Input[str]] = None,
@@ -1039,7 +1039,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        :param pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
                database. If not present, the database is secured by the default Google
                encryption key.
                Structure is documented below.

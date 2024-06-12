@@ -470,14 +470,14 @@ class Zone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -501,15 +501,15 @@ class Zone(pulumi.CustomResource):
                 "my-lake": "exists",
             })
         primary = gcp.dataplex.Zone("primary",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
             lake=basic.name,
             location="us-west1",
             name="zone",
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="MULTI_REGION",
-            ),
+            resource_spec={
+                "locationType": "MULTI_REGION",
+            },
             type="RAW",
             description="Zone for DCL",
             display_name="Zone for DCL",
@@ -544,7 +544,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Description of the zone.
-        :param pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
+        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
@@ -553,7 +553,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the zone.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
+        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         """
         ...
@@ -583,15 +583,15 @@ class Zone(pulumi.CustomResource):
                 "my-lake": "exists",
             })
         primary = gcp.dataplex.Zone("primary",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
             lake=basic.name,
             location="us-west1",
             name="zone",
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="MULTI_REGION",
-            ),
+            resource_spec={
+                "locationType": "MULTI_REGION",
+            },
             type="RAW",
             description="Zone for DCL",
             display_name="Zone for DCL",
@@ -639,14 +639,14 @@ class Zone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -696,10 +696,10 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAssetStatusArgs']]]]] = None,
+            asset_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            discovery_spec: Optional[pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']]] = None,
+            discovery_spec: Optional[pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -708,7 +708,7 @@ class Zone(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            resource_spec: Optional[pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']]] = None,
+            resource_spec: Optional[pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -720,10 +720,10 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAssetStatusArgs']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
         :param pulumi.Input[str] create_time: Output only. The time when the zone was created.
         :param pulumi.Input[str] description: Optional. Description of the zone.
-        :param pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
+        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
@@ -734,7 +734,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the zone.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
+        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[str] state: Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.

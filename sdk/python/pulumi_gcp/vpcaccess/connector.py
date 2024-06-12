@@ -492,7 +492,7 @@ class Connector(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 subnet: Optional[pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']]] = None,
+                 subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
                  __props__=None):
         """
         Serverless VPC Access connector resource.
@@ -532,9 +532,9 @@ class Connector(pulumi.CustomResource):
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test.name,
-            ),
+            subnet={
+                "name": custom_test.name,
+            },
             machine_type="e2-standard-4")
         ```
 
@@ -591,7 +591,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
-        :param pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']] subnet: The subnet in which to house the connector
+        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
         ...
@@ -638,9 +638,9 @@ class Connector(pulumi.CustomResource):
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test.name,
-            ),
+            subnet={
+                "name": custom_test.name,
+            },
             machine_type="e2-standard-4")
         ```
 
@@ -699,7 +699,7 @@ class Connector(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 subnet: Optional[pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']]] = None,
+                 subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,7 +746,7 @@ class Connector(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            subnet: Optional[pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']]] = None) -> 'Connector':
+            subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -778,7 +778,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The fully qualified name of this VPC connector
         :param pulumi.Input[str] state: State of the VPC access connector.
-        :param pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']] subnet: The subnet in which to house the connector
+        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -286,7 +286,7 @@ class TableIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['TableIamMemberConditionArgs', 'TableIamMemberConditionArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -310,10 +310,10 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigtable.user",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
             instance="your-bigtable-instance",
@@ -353,10 +353,10 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigtable.user",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
             instance="your-bigtable-instance",
@@ -461,10 +461,10 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigtable.user",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
             instance="your-bigtable-instance",
@@ -504,10 +504,10 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigtable.user",
+            "members": ["user:jane@example.com"],
+        }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
             instance="your-bigtable-instance",
@@ -582,7 +582,7 @@ class TableIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['TableIamMemberConditionArgs', 'TableIamMemberConditionArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -622,7 +622,7 @@ class TableIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['TableIamMemberConditionArgs', 'TableIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

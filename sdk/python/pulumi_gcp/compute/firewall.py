@@ -893,14 +893,14 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]]] = None,
+                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -944,17 +944,17 @@ class Firewall(pulumi.CustomResource):
             name="test-firewall",
             network=default_network.name,
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=[
+                {
+                    "protocol": "icmp",
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": [
                         "80",
                         "8080",
                         "1000-2000",
                     ],
-                ),
+                },
             ],
             source_tags=["web"])
         ```
@@ -969,14 +969,14 @@ class Firewall(pulumi.CustomResource):
             name="my-firewall-rule",
             network="default",
             description="Creates firewall rule targeting tagged instances",
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=[
+            allows=[{
+                "protocol": "tcp",
+                "ports": [
                     "80",
                     "8080",
                     "1000-2000",
                 ],
-            )],
+            }],
             source_tags=["foo"],
             target_tags=["web"])
         ```
@@ -1007,11 +1007,11 @@ class Firewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]] allows: The list of ALLOW rules specified by this firewall. Each rule
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
                connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -1029,7 +1029,7 @@ class Firewall(pulumi.CustomResource):
                is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
-        :param pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']] log_config: This field denotes the logging options for a particular firewall rule.
+        :param pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']] log_config: This field denotes the logging options for a particular firewall rule.
                If defined, logging is enabled, and logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1132,17 +1132,17 @@ class Firewall(pulumi.CustomResource):
             name="test-firewall",
             network=default_network.name,
             allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=[
+                {
+                    "protocol": "icmp",
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": [
                         "80",
                         "8080",
                         "1000-2000",
                     ],
-                ),
+                },
             ],
             source_tags=["web"])
         ```
@@ -1157,14 +1157,14 @@ class Firewall(pulumi.CustomResource):
             name="my-firewall-rule",
             network="default",
             description="Creates firewall rule targeting tagged instances",
-            allows=[gcp.compute.FirewallAllowArgs(
-                protocol="tcp",
-                ports=[
+            allows=[{
+                "protocol": "tcp",
+                "ports": [
                     "80",
                     "8080",
                     "1000-2000",
                 ],
-            )],
+            }],
             source_tags=["foo"],
             target_tags=["web"])
         ```
@@ -1208,14 +1208,14 @@ class Firewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]]] = None,
+                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -1265,15 +1265,15 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]]] = None,
+            allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
-            denies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]]] = None,
+            denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -1291,12 +1291,12 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]] allows: The list of ALLOW rules specified by this firewall. Each rule
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
                connection.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -1314,7 +1314,7 @@ class Firewall(pulumi.CustomResource):
                is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
-        :param pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']] log_config: This field denotes the logging options for a particular firewall rule.
+        :param pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']] log_config: This field denotes the logging options for a particular firewall rule.
                If defined, logging is enabled, and logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is

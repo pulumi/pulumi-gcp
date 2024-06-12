@@ -403,12 +403,12 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         feature_group_feature = gcp.vertex.AiFeatureGroupFeature("feature_group_feature",
             name="example_feature",
             region="us-central1",
@@ -522,12 +522,12 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         feature_group_feature = gcp.vertex.AiFeatureGroupFeature("feature_group_feature",
             name="example_feature",
             region="us-central1",

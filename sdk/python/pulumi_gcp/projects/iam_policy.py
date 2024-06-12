@@ -174,10 +174,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -189,15 +189,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -225,11 +225,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -254,11 +254,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -271,13 +271,13 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -295,10 +295,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -310,15 +310,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -346,11 +346,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -375,11 +375,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -392,13 +392,13 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -476,10 +476,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -491,15 +491,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -527,11 +527,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -556,11 +556,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -573,13 +573,13 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -597,10 +597,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -612,15 +612,15 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -648,11 +648,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -677,11 +677,11 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -694,13 +694,13 @@ class IAMPolicy(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 

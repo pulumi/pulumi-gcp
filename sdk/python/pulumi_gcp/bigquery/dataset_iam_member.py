@@ -243,7 +243,7 @@ class DatasetIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['DatasetIamMemberConditionArgs', 'DatasetIamMemberConditionArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -274,10 +274,10 @@ class DatasetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
             dataset_id=dataset_dataset.dataset_id,
@@ -316,10 +316,10 @@ class DatasetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
             dataset_id=dataset_dataset.dataset_id,
@@ -427,10 +427,10 @@ class DatasetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
             dataset_id=dataset_dataset.dataset_id,
@@ -469,10 +469,10 @@ class DatasetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
             dataset_id=dataset_dataset.dataset_id,
@@ -546,7 +546,7 @@ class DatasetIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['DatasetIamMemberConditionArgs', 'DatasetIamMemberConditionArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -582,7 +582,7 @@ class DatasetIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['DatasetIamMemberConditionArgs', 'DatasetIamMemberConditionArgsDict']]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

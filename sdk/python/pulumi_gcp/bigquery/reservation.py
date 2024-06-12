@@ -361,7 +361,7 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
@@ -395,9 +395,9 @@ class Reservation(pulumi.CustomResource):
             edition="STANDARD",
             ignore_idle_slots=True,
             concurrency=0,
-            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
-                max_slots=100,
-            ))
+            autoscale={
+                "maxSlots": 100,
+            })
         ```
 
         ## Import
@@ -426,7 +426,7 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
+        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
@@ -476,9 +476,9 @@ class Reservation(pulumi.CustomResource):
             edition="STANDARD",
             ignore_idle_slots=True,
             concurrency=0,
-            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
-                max_slots=100,
-            ))
+            autoscale={
+                "maxSlots": 100,
+            })
         ```
 
         ## Import
@@ -520,7 +520,7 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
@@ -559,7 +559,7 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
+            autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
             concurrency: Optional[pulumi.Input[int]] = None,
             edition: Optional[pulumi.Input[str]] = None,
             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
@@ -575,7 +575,7 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
+        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS

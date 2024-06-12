@@ -253,9 +253,9 @@ class User(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="cluster_secret",
-            ))
+            initial_user={
+                "password": "cluster_secret",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -291,9 +291,9 @@ class User(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="cluster_secret",
-            ))
+            initial_user={
+                "password": "cluster_secret",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -383,9 +383,9 @@ class User(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="cluster_secret",
-            ))
+            initial_user={
+                "password": "cluster_secret",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -421,9 +421,9 @@ class User(pulumi.CustomResource):
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="cluster_secret",
-            ))
+            initial_user={
+                "password": "cluster_secret",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",

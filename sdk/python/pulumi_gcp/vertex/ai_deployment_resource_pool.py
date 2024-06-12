@@ -198,7 +198,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['AiDeploymentResourcePoolDedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -222,19 +222,19 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         deployment_resource_pool = gcp.vertex.AiDeploymentResourcePool("deployment_resource_pool",
             region="us-central1",
             name="example-deployment-resource-pool",
-            dedicated_resources=gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesArgs(
-                machine_spec=gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs(
-                    machine_type="n1-standard-4",
-                    accelerator_type="NVIDIA_TESLA_K80",
-                    accelerator_count=1,
-                ),
-                min_replica_count=1,
-                max_replica_count=2,
-                autoscaling_metric_specs=[gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs(
-                    metric_name="aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
-                    target=60,
-                )],
-            ))
+            dedicated_resources={
+                "machineSpec": {
+                    "machineType": "n1-standard-4",
+                    "acceleratorType": "NVIDIA_TESLA_K80",
+                    "acceleratorCount": 1,
+                },
+                "minReplicaCount": 1,
+                "maxReplicaCount": 2,
+                "autoscalingMetricSpecs": [{
+                    "metricName": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
+                    "target": 60,
+                }],
+            })
         ```
 
         ## Import
@@ -269,7 +269,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiDeploymentResourcePoolDedicatedResourcesArgs']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
+        :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
                
@@ -304,19 +304,19 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         deployment_resource_pool = gcp.vertex.AiDeploymentResourcePool("deployment_resource_pool",
             region="us-central1",
             name="example-deployment-resource-pool",
-            dedicated_resources=gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesArgs(
-                machine_spec=gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs(
-                    machine_type="n1-standard-4",
-                    accelerator_type="NVIDIA_TESLA_K80",
-                    accelerator_count=1,
-                ),
-                min_replica_count=1,
-                max_replica_count=2,
-                autoscaling_metric_specs=[gcp.vertex.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs(
-                    metric_name="aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
-                    target=60,
-                )],
-            ))
+            dedicated_resources={
+                "machineSpec": {
+                    "machineType": "n1-standard-4",
+                    "acceleratorType": "NVIDIA_TESLA_K80",
+                    "acceleratorCount": 1,
+                },
+                "minReplicaCount": 1,
+                "maxReplicaCount": 2,
+                "autoscalingMetricSpecs": [{
+                    "metricName": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
+                    "target": 60,
+                }],
+            })
         ```
 
         ## Import
@@ -364,7 +364,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['AiDeploymentResourcePoolDedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -393,7 +393,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            dedicated_resources: Optional[pulumi.Input[pulumi.InputType['AiDeploymentResourcePoolDedicatedResourcesArgs']]] = None,
+            dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'AiDeploymentResourcePool':
@@ -405,7 +405,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[pulumi.InputType['AiDeploymentResourcePoolDedicatedResourcesArgs']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
+        :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
                

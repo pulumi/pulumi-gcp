@@ -399,7 +399,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -479,7 +479,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
@@ -578,7 +578,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -617,7 +617,7 @@ class Environment(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             forward_proxy_uri: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
@@ -642,7 +642,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
-        :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.

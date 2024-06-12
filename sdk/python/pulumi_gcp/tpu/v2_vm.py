@@ -793,20 +793,20 @@ class V2Vm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['V2VmAcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['V2VmNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['V2VmShieldedInstanceConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -859,31 +859,31 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             description="Text description of the TPU.",
             runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_config=gcp.tpu.V2VmAcceleratorConfigArgs(
-                type="V2",
-                topology="2x2",
-            ),
+            accelerator_config={
+                "type": "V2",
+                "topology": "2x2",
+            },
             cidr_block="10.0.0.0/29",
-            network_config=gcp.tpu.V2VmNetworkConfigArgs(
-                can_ip_forward=True,
-                enable_external_ips=True,
-                network=network.id,
-                subnetwork=subnet.id,
-            ),
-            scheduling_config=gcp.tpu.V2VmSchedulingConfigArgs(
-                preemptible=True,
-            ),
-            shielded_instance_config=gcp.tpu.V2VmShieldedInstanceConfigArgs(
-                enable_secure_boot=True,
-            ),
-            service_account=gcp.tpu.V2VmServiceAccountArgs(
-                email=sa.email,
-                scopes=["https://www.googleapis.com/auth/cloud-platform"],
-            ),
-            data_disks=[gcp.tpu.V2VmDataDiskArgs(
-                source_disk=disk.id,
-                mode="READ_ONLY",
-            )],
+            network_config={
+                "canIpForward": True,
+                "enableExternalIps": True,
+                "network": network.id,
+                "subnetwork": subnet.id,
+            },
+            scheduling_config={
+                "preemptible": True,
+            },
+            shielded_instance_config={
+                "enableSecureBoot": True,
+            },
+            service_account={
+                "email": sa.email,
+                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+            },
+            data_disks=[{
+                "sourceDisk": disk.id,
+                "mode": "READ_ONLY",
+            }],
             labels={
                 "foo": "bar",
             },
@@ -926,7 +926,7 @@ class V2Vm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['V2VmAcceleratorConfigArgs']] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+        :param pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
         :param pulumi.Input[str] accelerator_type: TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
@@ -937,7 +937,7 @@ class V2Vm(pulumi.CustomResource):
                CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
                with any subnetworks in the user's provided network, or the provided network is peered with
                another network that is using that CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmDataDiskArgs']]]] data_disks: The additional data disks for the Node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]] data_disks: The additional data disks for the Node.
                Structure is documented below.
         :param pulumi.Input[str] description: Text description of the TPU.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -945,7 +945,7 @@ class V2Vm(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
         :param pulumi.Input[str] name: The immutable name of the TPU.
-        :param pulumi.Input[pulumi.InputType['V2VmNetworkConfigArgs']] network_config: Network configurations for the TPU node.
+        :param pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']] network_config: Network configurations for the TPU node.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -953,12 +953,12 @@ class V2Vm(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
+        :param pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+        :param pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
                specified, the default compute service account will be used.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['V2VmShieldedInstanceConfigArgs']] shielded_instance_config: Shielded Instance options.
+        :param pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']] shielded_instance_config: Shielded Instance options.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
@@ -1018,31 +1018,31 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             description="Text description of the TPU.",
             runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_config=gcp.tpu.V2VmAcceleratorConfigArgs(
-                type="V2",
-                topology="2x2",
-            ),
+            accelerator_config={
+                "type": "V2",
+                "topology": "2x2",
+            },
             cidr_block="10.0.0.0/29",
-            network_config=gcp.tpu.V2VmNetworkConfigArgs(
-                can_ip_forward=True,
-                enable_external_ips=True,
-                network=network.id,
-                subnetwork=subnet.id,
-            ),
-            scheduling_config=gcp.tpu.V2VmSchedulingConfigArgs(
-                preemptible=True,
-            ),
-            shielded_instance_config=gcp.tpu.V2VmShieldedInstanceConfigArgs(
-                enable_secure_boot=True,
-            ),
-            service_account=gcp.tpu.V2VmServiceAccountArgs(
-                email=sa.email,
-                scopes=["https://www.googleapis.com/auth/cloud-platform"],
-            ),
-            data_disks=[gcp.tpu.V2VmDataDiskArgs(
-                source_disk=disk.id,
-                mode="READ_ONLY",
-            )],
+            network_config={
+                "canIpForward": True,
+                "enableExternalIps": True,
+                "network": network.id,
+                "subnetwork": subnet.id,
+            },
+            scheduling_config={
+                "preemptible": True,
+            },
+            shielded_instance_config={
+                "enableSecureBoot": True,
+            },
+            service_account={
+                "email": sa.email,
+                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+            },
+            data_disks=[{
+                "sourceDisk": disk.id,
+                "mode": "READ_ONLY",
+            }],
             labels={
                 "foo": "bar",
             },
@@ -1098,20 +1098,20 @@ class V2Vm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['V2VmAcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['V2VmNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['V2VmShieldedInstanceConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1163,11 +1163,11 @@ class V2Vm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_config: Optional[pulumi.Input[pulumi.InputType['V2VmAcceleratorConfigArgs']]] = None,
+            accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
             accelerator_type: Optional[pulumi.Input[str]] = None,
             api_version: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             health: Optional[pulumi.Input[str]] = None,
@@ -1176,17 +1176,17 @@ class V2Vm(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             multislice_node: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['V2VmNetworkConfigArgs']]] = None,
-            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmNetworkEndpointArgs']]]]] = None,
+            network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             queued_resource: Optional[pulumi.Input[str]] = None,
             runtime_version: Optional[pulumi.Input[str]] = None,
-            scheduling_config: Optional[pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']]] = None,
-            service_account: Optional[pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']]] = None,
-            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['V2VmShieldedInstanceConfigArgs']]] = None,
+            scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+            service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+            shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            symptoms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmSymptomArgs']]]]] = None,
+            symptoms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmSymptomArgs', 'V2VmSymptomArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'V2Vm':
         """
@@ -1196,7 +1196,7 @@ class V2Vm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['V2VmAcceleratorConfigArgs']] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+        :param pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
         :param pulumi.Input[str] accelerator_type: TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
@@ -1208,7 +1208,7 @@ class V2Vm(pulumi.CustomResource):
                CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
                with any subnetworks in the user's provided network, or the provided network is peered with
                another network that is using that CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmDataDiskArgs']]]] data_disks: The additional data disks for the Node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]] data_disks: The additional data disks for the Node.
                Structure is documented below.
         :param pulumi.Input[str] description: Text description of the TPU.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1220,9 +1220,9 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
         :param pulumi.Input[bool] multislice_node: Whether the Node belongs to a Multislice group.
         :param pulumi.Input[str] name: The immutable name of the TPU.
-        :param pulumi.Input[pulumi.InputType['V2VmNetworkConfigArgs']] network_config: Network configurations for the TPU node.
+        :param pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']] network_config: Network configurations for the TPU node.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that
                runtime clients of the node reach out to the 0th entry in this map first.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1234,15 +1234,15 @@ class V2Vm(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
+        :param pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+        :param pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
                specified, the default compute service account will be used.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['V2VmShieldedInstanceConfigArgs']] shielded_instance_config: Shielded Instance options.
+        :param pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']] shielded_instance_config: Shielded Instance options.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state for the TPU Node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['V2VmSymptomArgs']]]] symptoms: The Symptoms that have occurred to the TPU Node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmSymptomArgs', 'V2VmSymptomArgsDict']]]] symptoms: The Symptoms that have occurred to the TPU Node.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.

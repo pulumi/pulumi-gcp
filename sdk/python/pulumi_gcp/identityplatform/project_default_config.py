@@ -123,7 +123,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sign_in: Optional[pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']]] = None,
+                 sign_in: Optional[pulumi.Input[Union['ProjectDefaultConfigSignInArgs', 'ProjectDefaultConfigSignInArgsDict']]] = None,
                  __props__=None):
         """
         > **Warning:** `identityplatform.Config` is deprecated and will be removed in the next major release of the provider. Use the `identityplatform.Config` resource instead. It contains a more comprehensive list of fields, and was created before `identityplatform.ProjectDefaultConfig` was added.
@@ -144,22 +144,22 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
-            allow_duplicate_emails=True,
-            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
-                enabled=True,
-            ),
-            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
-                enabled=True,
-                password_required=False,
-            ),
-            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
-                enabled=True,
-                test_phone_numbers={
+        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in={
+            "allowDuplicateEmails": True,
+            "anonymous": {
+                "enabled": True,
+            },
+            "email": {
+                "enabled": True,
+                "passwordRequired": False,
+            },
+            "phoneNumber": {
+                "enabled": True,
+                "testPhoneNumbers": {
                     "+11231231234": "000000",
                 },
-            ),
-        ))
+            },
+        })
         ```
 
         ## Import
@@ -190,7 +190,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[Union['ProjectDefaultConfigSignInArgs', 'ProjectDefaultConfigSignInArgsDict']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
         ...
@@ -218,22 +218,22 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
-            allow_duplicate_emails=True,
-            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
-                enabled=True,
-            ),
-            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
-                enabled=True,
-                password_required=False,
-            ),
-            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
-                enabled=True,
-                test_phone_numbers={
+        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in={
+            "allowDuplicateEmails": True,
+            "anonymous": {
+                "enabled": True,
+            },
+            "email": {
+                "enabled": True,
+                "passwordRequired": False,
+            },
+            "phoneNumber": {
+                "enabled": True,
+                "testPhoneNumbers": {
                     "+11231231234": "000000",
                 },
-            ),
-        ))
+            },
+        })
         ```
 
         ## Import
@@ -276,7 +276,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sign_in: Optional[pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']]] = None,
+                 sign_in: Optional[pulumi.Input[Union['ProjectDefaultConfigSignInArgs', 'ProjectDefaultConfigSignInArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -301,7 +301,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sign_in: Optional[pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']]] = None) -> 'ProjectDefaultConfig':
+            sign_in: Optional[pulumi.Input[Union['ProjectDefaultConfigSignInArgs', 'ProjectDefaultConfigSignInArgsDict']]] = None) -> 'ProjectDefaultConfig':
         """
         Get an existing ProjectDefaultConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -312,7 +312,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Config resource. Example: "projects/my-awesome-project/config"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[Union['ProjectDefaultConfigSignInArgs', 'ProjectDefaultConfigSignInArgsDict']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

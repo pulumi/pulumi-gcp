@@ -167,7 +167,7 @@ class InstanceSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -190,11 +190,11 @@ class InstanceSettings(pulumi.CustomResource):
 
         gce_instance_settings = gcp.compute.InstanceSettings("gce_instance_settings",
             zone="us-east7-b",
-            metadata=gcp.compute.InstanceSettingsMetadataArgs(
-                items={
+            metadata={
+                "items": {
                     "foo": "baz",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -223,7 +223,7 @@ class InstanceSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -257,11 +257,11 @@ class InstanceSettings(pulumi.CustomResource):
 
         gce_instance_settings = gcp.compute.InstanceSettings("gce_instance_settings",
             zone="us-east7-b",
-            metadata=gcp.compute.InstanceSettingsMetadataArgs(
-                items={
+            metadata={
+                "items": {
                     "foo": "baz",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -303,7 +303,7 @@ class InstanceSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -332,7 +332,7 @@ class InstanceSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceSettings':
         """
@@ -344,7 +344,7 @@ class InstanceSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
-        :param pulumi.Input[pulumi.InputType['InstanceSettingsMetadataArgs']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

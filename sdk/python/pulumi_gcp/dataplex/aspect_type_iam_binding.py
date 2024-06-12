@@ -288,7 +288,7 @@ class AspectTypeIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspect_type_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AspectTypeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AspectTypeIamBindingConditionArgs', 'AspectTypeIamBindingConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -315,10 +315,10 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AspectTypeIamPolicy("policy",
             project=test_aspect_type_basic["project"],
             location=test_aspect_type_basic["location"],
@@ -360,10 +360,10 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AspectTypeIamPolicy("policy",
             project=test_aspect_type_basic["project"],
             location=test_aspect_type_basic["location"],
@@ -487,10 +487,10 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AspectTypeIamPolicy("policy",
             project=test_aspect_type_basic["project"],
             location=test_aspect_type_basic["location"],
@@ -532,10 +532,10 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AspectTypeIamPolicy("policy",
             project=test_aspect_type_basic["project"],
             location=test_aspect_type_basic["location"],
@@ -625,7 +625,7 @@ class AspectTypeIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspect_type_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AspectTypeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AspectTypeIamBindingConditionArgs', 'AspectTypeIamBindingConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -663,7 +663,7 @@ class AspectTypeIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aspect_type_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AspectTypeIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['AspectTypeIamBindingConditionArgs', 'AspectTypeIamBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

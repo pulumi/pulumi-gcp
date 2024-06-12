@@ -484,7 +484,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -533,9 +533,9 @@ class CryptoKey(pulumi.CustomResource):
             name="crypto-key-example",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
+            version_template={
+                "algorithm": "EC_SIGN_P384_SHA384",
+            })
         ```
 
         ## Import
@@ -583,7 +583,7 @@ class CryptoKey(pulumi.CustomResource):
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         ...
@@ -639,9 +639,9 @@ class CryptoKey(pulumi.CustomResource):
             name="crypto-key-example",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
+            version_template={
+                "algorithm": "EC_SIGN_P384_SHA384",
+            })
         ```
 
         ## Import
@@ -686,7 +686,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -730,12 +730,12 @@ class CryptoKey(pulumi.CustomResource):
             key_ring: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            primaries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyPrimaryArgs']]]]] = None,
+            primaries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-            version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None) -> 'CryptoKey':
+            version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -759,7 +759,7 @@ class CryptoKey(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyPrimaryArgs']]]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
                Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -774,7 +774,7 @@ class CryptoKey(pulumi.CustomResource):
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -956,20 +956,20 @@ class Volume(pulumi.CustomResource):
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 export_policy: Optional[pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']]] = None,
+                 export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
+                 restore_parameters: Optional[pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  share_name: Optional[pulumi.Input[str]] = None,
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
-                 snapshot_policy: Optional[pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']]] = None,
+                 snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1043,7 +1043,7 @@ class Volume(pulumi.CustomResource):
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1059,7 +1059,7 @@ class Volume(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
-        :param pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
@@ -1070,7 +1070,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
         :param pulumi.Input[bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
-        :param pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
+        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
@@ -1163,20 +1163,20 @@ class Volume(pulumi.CustomResource):
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 export_policy: Optional[pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']]] = None,
+                 export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
+                 restore_parameters: Optional[pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  share_name: Optional[pulumi.Input[str]] = None,
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
-                 snapshot_policy: Optional[pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']]] = None,
+                 snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1251,28 +1251,28 @@ class Volume(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_type: Optional[pulumi.Input[str]] = None,
-            export_policy: Optional[pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']]] = None,
+            export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
             has_replication: Optional[pulumi.Input[bool]] = None,
             kerberos_enabled: Optional[pulumi.Input[bool]] = None,
             kms_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ldap_enabled: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeMountOptionArgs']]]]] = None,
+            mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             psa_range: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
+            restore_parameters: Optional[pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
             restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_style: Optional[pulumi.Input[str]] = None,
             service_level: Optional[pulumi.Input[str]] = None,
             share_name: Optional[pulumi.Input[str]] = None,
             smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             snapshot_directory: Optional[pulumi.Input[bool]] = None,
-            snapshot_policy: Optional[pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']]] = None,
+            snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_details: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
@@ -1294,7 +1294,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
-        :param pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
         :param pulumi.Input[bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -1305,7 +1305,7 @@ class Volume(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeMountOptionArgs']]]] mount_options: Reports mount instructions for this volume.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
                
@@ -1319,7 +1319,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
@@ -1331,7 +1331,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
         :param pulumi.Input[bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
-        :param pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
+        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[str] state: State of the volume.

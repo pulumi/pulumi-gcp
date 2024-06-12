@@ -215,7 +215,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['TagKeyIamMemberConditionArgs', 'TagKeyIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tag_key: Optional[pulumi.Input[str]] = None,
@@ -241,10 +241,10 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.tags.TagKeyIamPolicy("policy",
             tag_key=key["name"],
             policy_data=admin.policy_data)
@@ -280,10 +280,10 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.tags.TagKeyIamPolicy("policy",
             tag_key=key["name"],
             policy_data=admin.policy_data)
@@ -392,10 +392,10 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.tags.TagKeyIamPolicy("policy",
             tag_key=key["name"],
             policy_data=admin.policy_data)
@@ -431,10 +431,10 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.tags.TagKeyIamPolicy("policy",
             tag_key=key["name"],
             policy_data=admin.policy_data)
@@ -513,7 +513,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['TagKeyIamMemberConditionArgs', 'TagKeyIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tag_key: Optional[pulumi.Input[str]] = None,
@@ -547,7 +547,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['TagKeyIamMemberConditionArgs', 'TagKeyIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,

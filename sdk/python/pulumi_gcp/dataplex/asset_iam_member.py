@@ -322,7 +322,7 @@ class AssetIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AssetIamMemberConditionArgs', 'AssetIamMemberConditionArgsDict']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -351,10 +351,10 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AssetIamPolicy("policy",
             project=example["project"],
             location=example["location"],
@@ -402,10 +402,10 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AssetIamPolicy("policy",
             project=example["project"],
             location=example["location"],
@@ -532,10 +532,10 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AssetIamPolicy("policy",
             project=example["project"],
             location=example["location"],
@@ -583,10 +583,10 @@ class AssetIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.dataplex.AssetIamPolicy("policy",
             project=example["project"],
             location=example["location"],
@@ -682,7 +682,7 @@ class AssetIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['AssetIamMemberConditionArgs', 'AssetIamMemberConditionArgsDict']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -728,7 +728,7 @@ class AssetIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             asset: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AssetIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['AssetIamMemberConditionArgs', 'AssetIamMemberConditionArgsDict']]] = None,
             dataplex_zone: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,

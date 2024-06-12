@@ -203,10 +203,10 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -245,10 +245,10 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -355,10 +355,10 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],
@@ -397,10 +397,10 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/apigateway.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigateway.ApiConfigIamPolicy("policy",
             api=api_cfg["api"],
             api_config=api_cfg["apiConfigId"],

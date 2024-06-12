@@ -175,10 +175,10 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/containeranalysis.notes.occurrences.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
             project=note["project"],
             note=note["name"],
@@ -217,10 +217,10 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/containeranalysis.notes.occurrences.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
             project=note["project"],
             note=note["name"],
@@ -324,10 +324,10 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/containeranalysis.notes.occurrences.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
             project=note["project"],
             note=note["name"],
@@ -366,10 +366,10 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/containeranalysis.notes.occurrences.viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
             project=note["project"],
             note=note["name"],

@@ -228,7 +228,7 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
+                 default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -251,12 +251,12 @@ class Fleet(pulumi.CustomResource):
 
         default = gcp.gkehub.Fleet("default",
             display_name="my production fleet",
-            default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
-                security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
-                    mode="DISABLED",
-                    vulnerability_mode="VULNERABILITY_DISABLED",
-                ),
-            ))
+            default_cluster_config={
+                "securityPostureConfig": {
+                    "mode": "DISABLED",
+                    "vulnerabilityMode": "VULNERABILITY_DISABLED",
+                },
+            })
         ```
 
         ## Import
@@ -279,7 +279,7 @@ class Fleet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']] default_cluster_config: The default cluster configurations to apply across the fleet.
+        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -311,12 +311,12 @@ class Fleet(pulumi.CustomResource):
 
         default = gcp.gkehub.Fleet("default",
             display_name="my production fleet",
-            default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
-                security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
-                    mode="DISABLED",
-                    vulnerability_mode="VULNERABILITY_DISABLED",
-                ),
-            ))
+            default_cluster_config={
+                "securityPostureConfig": {
+                    "mode": "DISABLED",
+                    "vulnerabilityMode": "VULNERABILITY_DISABLED",
+                },
+            })
         ```
 
         ## Import
@@ -352,7 +352,7 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
+                 default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -383,11 +383,11 @@ class Fleet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
+            default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Fleet':
         """
@@ -398,14 +398,14 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time the fleet was created, in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']] default_cluster_config: The default cluster configurations to apply across the fleet.
+        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time the fleet was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetStateArgs']]]] states: The state of the fleet resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]] states: The state of the fleet resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource. This is unique across all
                Fleet resources. If a Fleet resource is deleted and another

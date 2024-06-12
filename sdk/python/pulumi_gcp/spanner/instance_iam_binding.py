@@ -239,7 +239,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['InstanceIAMBindingConditionArgs', 'InstanceIAMBindingConditionArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -265,10 +265,10 @@ class InstanceIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         instance = gcp.spanner.InstanceIAMPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
@@ -304,10 +304,10 @@ class InstanceIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         instance = gcp.spanner.InstanceIAMPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
@@ -406,10 +406,10 @@ class InstanceIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         instance = gcp.spanner.InstanceIAMPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
@@ -445,10 +445,10 @@ class InstanceIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         instance = gcp.spanner.InstanceIAMPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
@@ -519,7 +519,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['InstanceIAMBindingConditionArgs', 'InstanceIAMBindingConditionArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -555,7 +555,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['InstanceIAMBindingConditionArgs', 'InstanceIAMBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

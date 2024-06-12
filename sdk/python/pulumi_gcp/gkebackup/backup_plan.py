@@ -536,8 +536,8 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+                 backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -545,7 +545,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
                  __props__=None):
         """
         Represents a Backup Plan instance.
@@ -568,14 +568,14 @@ class BackupPlan(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -583,11 +583,11 @@ class BackupPlan(pulumi.CustomResource):
             name="basic-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Autopilot
 
@@ -599,15 +599,15 @@ class BackupPlan(pulumi.CustomResource):
             name="autopilot-cluster",
             location="us-central1",
             enable_autopilot=True,
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
-            release_channel=gcp.container.ClusterReleaseChannelArgs(
-                channel="RAPID",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            ip_allocation_policy={},
+            release_channel={
+                "channel": "RAPID",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -615,11 +615,11 @@ class BackupPlan(pulumi.CustomResource):
             name="autopilot-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Cmek
 
@@ -631,14 +631,14 @@ class BackupPlan(pulumi.CustomResource):
             name="cmek-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -652,19 +652,19 @@ class BackupPlan(pulumi.CustomResource):
             name="cmek-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
-                    namespaces=[
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "selectedNamespaces": {
+                    "namespaces": [
                         "default",
                         "test",
                     ],
-                ),
-                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
-                    gcp_kms_encryption_key=crypto_key.id,
-                ),
-            ))
+                },
+                "encryptionKey": {
+                    "gcpKmsEncryptionKey": crypto_key.id,
+                },
+            })
         ```
         ### Gkebackup Backupplan Full
 
@@ -676,14 +676,14 @@ class BackupPlan(pulumi.CustomResource):
             name="full-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -691,29 +691,29 @@ class BackupPlan(pulumi.CustomResource):
             name="full-plan",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                cron_schedule="0 9 * * 1",
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
-                    namespaced_names=[
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
-                            name="app1",
-                            namespace="ns1",
-                        ),
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
-                            name="app2",
-                            namespace="ns2",
-                        ),
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "cronSchedule": "0 9 * * 1",
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "selectedApplications": {
+                    "namespacedNames": [
+                        {
+                            "name": "app1",
+                            "namespace": "ns1",
+                        },
+                        {
+                            "name": "app2",
+                            "namespace": "ns2",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Gkebackup Backupplan Rpo Daily Window
 
@@ -725,14 +725,14 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-daily-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -740,44 +740,44 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-daily-window",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                paused=True,
-                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
-                    target_rpo_minutes=1440,
-                    exclusion_windows=[
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=12,
-                            ),
-                            duration="7200s",
-                            daily=True,
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=8,
-                                minutes=40,
-                                seconds=1,
-                                nanos=100,
-                            ),
-                            duration="3600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=16,
-                            ),
-                        ),
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "paused": True,
+                "rpoConfig": {
+                    "targetRpoMinutes": 1440,
+                    "exclusionWindows": [
+                        {
+                            "startTime": {
+                                "hours": 12,
+                            },
+                            "duration": "7200s",
+                            "daily": True,
+                        },
+                        {
+                            "startTime": {
+                                "hours": 8,
+                                "minutes": 40,
+                                "seconds": 1,
+                                "nanos": 100,
+                            },
+                            "duration": "3600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 16,
+                            },
+                        },
                     ],
-                ),
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+                },
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Rpo Weekly Window
 
@@ -789,14 +789,14 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-weekly-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -804,59 +804,59 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-weekly-window",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                paused=True,
-                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
-                    target_rpo_minutes=1440,
-                    exclusion_windows=[
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=1,
-                                minutes=23,
-                            ),
-                            duration="1800s",
-                            days_of_week=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs(
-                                days_of_weeks=[
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "paused": True,
+                "rpoConfig": {
+                    "targetRpoMinutes": 1440,
+                    "exclusionWindows": [
+                        {
+                            "startTime": {
+                                "hours": 1,
+                                "minutes": 23,
+                            },
+                            "duration": "1800s",
+                            "daysOfWeek": {
+                                "daysOfWeeks": [
                                     "MONDAY",
                                     "THURSDAY",
                                 ],
-                            ),
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=12,
-                            ),
-                            duration="3600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=17,
-                            ),
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=8,
-                                minutes=40,
-                            ),
-                            duration="600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=18,
-                            ),
-                        ),
+                            },
+                        },
+                        {
+                            "startTime": {
+                                "hours": 12,
+                            },
+                            "duration": "3600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 17,
+                            },
+                        },
+                        {
+                            "startTime": {
+                                "hours": 8,
+                                "minutes": 40,
+                            },
+                            "duration": "600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 18,
+                            },
+                        },
                     ],
-                ),
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+                },
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
 
         ## Import
@@ -885,9 +885,9 @@ class BackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -908,7 +908,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         """
         ...
@@ -938,14 +938,14 @@ class BackupPlan(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -953,11 +953,11 @@ class BackupPlan(pulumi.CustomResource):
             name="basic-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Autopilot
 
@@ -969,15 +969,15 @@ class BackupPlan(pulumi.CustomResource):
             name="autopilot-cluster",
             location="us-central1",
             enable_autopilot=True,
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
-            release_channel=gcp.container.ClusterReleaseChannelArgs(
-                channel="RAPID",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            ip_allocation_policy={},
+            release_channel={
+                "channel": "RAPID",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -985,11 +985,11 @@ class BackupPlan(pulumi.CustomResource):
             name="autopilot-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Cmek
 
@@ -1001,14 +1001,14 @@ class BackupPlan(pulumi.CustomResource):
             name="cmek-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -1022,19 +1022,19 @@ class BackupPlan(pulumi.CustomResource):
             name="cmek-plan",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
-                    namespaces=[
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "selectedNamespaces": {
+                    "namespaces": [
                         "default",
                         "test",
                     ],
-                ),
-                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
-                    gcp_kms_encryption_key=crypto_key.id,
-                ),
-            ))
+                },
+                "encryptionKey": {
+                    "gcpKmsEncryptionKey": crypto_key.id,
+                },
+            })
         ```
         ### Gkebackup Backupplan Full
 
@@ -1046,14 +1046,14 @@ class BackupPlan(pulumi.CustomResource):
             name="full-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -1061,29 +1061,29 @@ class BackupPlan(pulumi.CustomResource):
             name="full-plan",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                cron_schedule="0 9 * * 1",
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
-                    namespaced_names=[
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
-                            name="app1",
-                            namespace="ns1",
-                        ),
-                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
-                            name="app2",
-                            namespace="ns2",
-                        ),
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "cronSchedule": "0 9 * * 1",
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "selectedApplications": {
+                    "namespacedNames": [
+                        {
+                            "name": "app1",
+                            "namespace": "ns1",
+                        },
+                        {
+                            "name": "app2",
+                            "namespace": "ns2",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Gkebackup Backupplan Rpo Daily Window
 
@@ -1095,14 +1095,14 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-daily-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -1110,44 +1110,44 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-daily-window",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                paused=True,
-                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
-                    target_rpo_minutes=1440,
-                    exclusion_windows=[
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=12,
-                            ),
-                            duration="7200s",
-                            daily=True,
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=8,
-                                minutes=40,
-                                seconds=1,
-                                nanos=100,
-                            ),
-                            duration="3600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=16,
-                            ),
-                        ),
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "paused": True,
+                "rpoConfig": {
+                    "targetRpoMinutes": 1440,
+                    "exclusionWindows": [
+                        {
+                            "startTime": {
+                                "hours": 12,
+                            },
+                            "duration": "7200s",
+                            "daily": True,
+                        },
+                        {
+                            "startTime": {
+                                "hours": 8,
+                                "minutes": 40,
+                                "seconds": 1,
+                                "nanos": 100,
+                            },
+                            "duration": "3600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 16,
+                            },
+                        },
                     ],
-                ),
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+                },
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
         ### Gkebackup Backupplan Rpo Weekly Window
 
@@ -1159,14 +1159,14 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-weekly-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
@@ -1174,59 +1174,59 @@ class BackupPlan(pulumi.CustomResource):
             name="rpo-weekly-window",
             cluster=primary.id,
             location="us-central1",
-            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
-                backup_delete_lock_days=30,
-                backup_retain_days=180,
-            ),
-            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
-                paused=True,
-                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
-                    target_rpo_minutes=1440,
-                    exclusion_windows=[
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=1,
-                                minutes=23,
-                            ),
-                            duration="1800s",
-                            days_of_week=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs(
-                                days_of_weeks=[
+            retention_policy={
+                "backupDeleteLockDays": 30,
+                "backupRetainDays": 180,
+            },
+            backup_schedule={
+                "paused": True,
+                "rpoConfig": {
+                    "targetRpoMinutes": 1440,
+                    "exclusionWindows": [
+                        {
+                            "startTime": {
+                                "hours": 1,
+                                "minutes": 23,
+                            },
+                            "duration": "1800s",
+                            "daysOfWeek": {
+                                "daysOfWeeks": [
                                     "MONDAY",
                                     "THURSDAY",
                                 ],
-                            ),
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=12,
-                            ),
-                            duration="3600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=17,
-                            ),
-                        ),
-                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
-                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
-                                hours=8,
-                                minutes=40,
-                            ),
-                            duration="600s",
-                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
-                                year=2024,
-                                month=3,
-                                day=18,
-                            ),
-                        ),
+                            },
+                        },
+                        {
+                            "startTime": {
+                                "hours": 12,
+                            },
+                            "duration": "3600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 17,
+                            },
+                        },
+                        {
+                            "startTime": {
+                                "hours": 8,
+                                "minutes": 40,
+                            },
+                            "duration": "600s",
+                            "singleOccurrenceDate": {
+                                "year": 2024,
+                                "month": 3,
+                                "day": 18,
+                            },
+                        },
                     ],
-                ),
-            ),
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+                },
+            },
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         ```
 
         ## Import
@@ -1268,8 +1268,8 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+                 backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1277,7 +1277,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1320,8 +1320,8 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_config: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']]] = None,
-            backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']]] = None,
+            backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+            backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             deactivated: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1333,7 +1333,7 @@ class BackupPlan(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protected_pod_count: Optional[pulumi.Input[int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+            retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'BackupPlan':
@@ -1344,9 +1344,9 @@ class BackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackupPlanBackupScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -1377,7 +1377,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.

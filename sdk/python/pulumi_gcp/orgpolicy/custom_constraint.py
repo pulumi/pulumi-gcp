@@ -374,11 +374,11 @@ class CustomConstraint(pulumi.CustomResource):
         bool = gcp.orgpolicy.Policy("bool",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="TRUE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "TRUE",
+                }],
+            })
         ```
 
         ## Import
@@ -464,11 +464,11 @@ class CustomConstraint(pulumi.CustomResource):
         bool = gcp.orgpolicy.Policy("bool",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="TRUE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "TRUE",
+                }],
+            })
         ```
 
         ## Import

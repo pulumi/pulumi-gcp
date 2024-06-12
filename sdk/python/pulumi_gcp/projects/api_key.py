@@ -197,7 +197,7 @@ class ApiKey(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
                  __props__=None):
         """
         The Apikeys Key resource
@@ -218,18 +218,18 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="com.example.app123",
-                        sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
-                    )],
-                ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-            ))
+            restrictions={
+                "androidKeyRestrictions": {
+                    "allowedApplications": [{
+                        "packageName": "com.example.app123",
+                        "sha1Fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
+                    }],
+                },
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+            })
         ```
         ### Basic_key
         A basic example of a api keys key
@@ -245,15 +245,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=[".*"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "browserKeyRestrictions": {
+                    "allowedReferrers": [".*"],
+                },
+            })
         ```
         ### Ios_key
         A basic example of a ios api keys key
@@ -269,15 +269,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
-                    allowed_bundle_ids=["com.google.app.macos"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "iosKeyRestrictions": {
+                    "allowedBundleIds": ["com.google.app.macos"],
+                },
+            })
         ```
         ### Minimal_key
         A minimal example of a api keys key
@@ -308,15 +308,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
-                    allowed_ips=["127.0.0.1"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "serverKeyRestrictions": {
+                    "allowedIps": ["127.0.0.1"],
+                },
+            })
         ```
 
         ## Import
@@ -348,7 +348,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         """
         ...
     @overload
@@ -375,18 +375,18 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="com.example.app123",
-                        sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
-                    )],
-                ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-            ))
+            restrictions={
+                "androidKeyRestrictions": {
+                    "allowedApplications": [{
+                        "packageName": "com.example.app123",
+                        "sha1Fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
+                    }],
+                },
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+            })
         ```
         ### Basic_key
         A basic example of a api keys key
@@ -402,15 +402,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=[".*"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "browserKeyRestrictions": {
+                    "allowedReferrers": [".*"],
+                },
+            })
         ```
         ### Ios_key
         A basic example of a ios api keys key
@@ -426,15 +426,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
-                    allowed_bundle_ids=["com.google.app.macos"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "iosKeyRestrictions": {
+                    "allowedBundleIds": ["com.google.app.macos"],
+                },
+            })
         ```
         ### Minimal_key
         A minimal example of a api keys key
@@ -465,15 +465,15 @@ class ApiKey(pulumi.CustomResource):
             name="key",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
-                    allowed_ips=["127.0.0.1"],
-                ),
-            ))
+            restrictions={
+                "apiTargets": [{
+                    "service": "translate.googleapis.com",
+                    "methods": ["GET*"],
+                }],
+                "serverKeyRestrictions": {
+                    "allowedIps": ["127.0.0.1"],
+                },
+            })
         ```
 
         ## Import
@@ -518,7 +518,7 @@ class ApiKey(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,7 +550,7 @@ class ApiKey(pulumi.CustomResource):
             key_string: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+            restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'ApiKey':
         """
         Get an existing ApiKey resource's state with the given name, id, and optional extra
@@ -563,7 +563,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

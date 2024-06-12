@@ -479,7 +479,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             entity_id: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[int]] = None,
             object: Optional[pulumi.Input[str]] = None,
-            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]]] = None,
+            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DefaultObjectAccessControlProjectTeamArgs', 'DefaultObjectAccessControlProjectTeamArgsDict']]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'DefaultObjectAccessControl':
         """
         Get an existing DefaultObjectAccessControl resource's state with the given name, id, and optional extra
@@ -503,7 +503,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The ID for the entity
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DefaultObjectAccessControlProjectTeamArgs', 'DefaultObjectAccessControlProjectTeamArgsDict']]]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.

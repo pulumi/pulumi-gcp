@@ -559,12 +559,12 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  security_profile_group: Optional[pulumi.Input[str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -613,19 +613,19 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             priority=1000,
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
-                src_ip_ranges=["10.100.0.1/32"],
-                src_fqdns=["google.com"],
-                src_region_codes=["US"],
-                src_threat_intelligences=["iplist-known-malicious-ips"],
-                src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
-                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
-                )],
-                layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="all",
-                )],
-                src_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
+            match={
+                "srcIpRanges": ["10.100.0.1/32"],
+                "srcFqdns": ["google.com"],
+                "srcRegionCodes": ["US"],
+                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
+                "srcSecureTags": [{
+                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                }],
+                "layer4Configs": [{
+                    "ipProtocol": "all",
+                }],
+                "srcAddressGroups": [basic_global_networksecurity_address_group.id],
+            })
         ```
 
         ## Import
@@ -663,14 +663,14 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
                "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfileGroup resource. Example:
                https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
                It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
                specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
                tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
                <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither
@@ -731,19 +731,19 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             priority=1000,
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
-                src_ip_ranges=["10.100.0.1/32"],
-                src_fqdns=["google.com"],
-                src_region_codes=["US"],
-                src_threat_intelligences=["iplist-known-malicious-ips"],
-                src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
-                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
-                )],
-                layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="all",
-                )],
-                src_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
+            match={
+                "srcIpRanges": ["10.100.0.1/32"],
+                "srcFqdns": ["google.com"],
+                "srcRegionCodes": ["US"],
+                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
+                "srcSecureTags": [{
+                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                }],
+                "layer4Configs": [{
+                    "ipProtocol": "all",
+                }],
+                "srcAddressGroups": [basic_global_networksecurity_address_group.id],
+            })
         ```
 
         ## Import
@@ -791,12 +791,12 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  security_profile_group: Optional[pulumi.Input[str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -851,13 +851,13 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             enable_logging: Optional[pulumi.Input[bool]] = None,
             firewall_policy: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleMatchArgs']]] = None,
+            match: Optional[pulumi.Input[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict']]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             rule_tuple_count: Optional[pulumi.Input[int]] = None,
             security_profile_group: Optional[pulumi.Input[str]] = None,
-            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]]] = None,
+            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tls_inspect: Optional[pulumi.Input[bool]] = None) -> 'NetworkFirewallPolicyRule':
         """
@@ -877,7 +877,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
@@ -885,7 +885,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfileGroup resource. Example:
                https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
                It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
                specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
                tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
                <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither

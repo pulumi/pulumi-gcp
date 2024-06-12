@@ -443,10 +443,10 @@ def get_disk(name: Optional[str] = None,
 
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
+    default = gcp.compute.Instance("default", boot_disk={
+        "source": persistent_boot_disk.self_link,
+        "autoDelete": False,
+    })
     ```
 
 
@@ -521,10 +521,10 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
 
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
+    default = gcp.compute.Instance("default", boot_disk={
+        "source": persistent_boot_disk.self_link,
+        "autoDelete": False,
+    })
     ```
 
 

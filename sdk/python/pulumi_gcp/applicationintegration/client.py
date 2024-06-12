@@ -325,7 +325,7 @@ class Client(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+                 cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
                  create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -375,13 +375,13 @@ class Client(pulumi.CustomResource):
             location="us-east1",
             create_sample_integrations=True,
             run_as_service_account=service_account.email,
-            cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
-                kms_location="us-east1",
-                kms_ring=keyring.id,
-                key=cryptokey.id,
-                key_version=test_key.id,
-                kms_project_id=test_project.project_id,
-            ))
+            cloud_kms_config={
+                "kmsLocation": "us-east1",
+                "kmsRing": keyring.id,
+                "key": cryptokey.id,
+                "keyVersion": test_key.id,
+                "kmsProjectId": test_project.project_id,
+            })
         ```
 
         ## Import
@@ -410,7 +410,7 @@ class Client(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
+        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)
@@ -477,13 +477,13 @@ class Client(pulumi.CustomResource):
             location="us-east1",
             create_sample_integrations=True,
             run_as_service_account=service_account.email,
-            cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
-                kms_location="us-east1",
-                kms_ring=keyring.id,
-                key=cryptokey.id,
-                key_version=test_key.id,
-                kms_project_id=test_project.project_id,
-            ))
+            cloud_kms_config={
+                "kmsLocation": "us-east1",
+                "kmsRing": keyring.id,
+                "key": cryptokey.id,
+                "keyVersion": test_key.id,
+                "kmsProjectId": test_project.project_id,
+            })
         ```
 
         ## Import
@@ -525,7 +525,7 @@ class Client(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+                 cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
                  create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -560,7 +560,7 @@ class Client(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+            cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
             create_sample_integrations: Optional[pulumi.Input[bool]] = None,
             create_sample_workflows: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -574,7 +574,7 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
+        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)

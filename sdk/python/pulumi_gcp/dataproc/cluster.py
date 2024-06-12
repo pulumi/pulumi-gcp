@@ -322,13 +322,13 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -370,47 +370,47 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=30,
-                    ),
-                ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
-                    num_instances=2,
-                    machine_type="e2-medium",
-                    min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
-                        boot_disk_size_gb=30,
-                        num_local_ssds=1,
-                    ),
-                ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
-                    num_instances=0,
-                ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="2.0.35-debian10",
-                    override_properties={
+            cluster_config={
+                "stagingBucket": "dataproc-staging-bucket",
+                "masterConfig": {
+                    "numInstances": 1,
+                    "machineType": "e2-medium",
+                    "diskConfig": {
+                        "bootDiskType": "pd-ssd",
+                        "bootDiskSizeGb": 30,
+                    },
+                },
+                "workerConfig": {
+                    "numInstances": 2,
+                    "machineType": "e2-medium",
+                    "minCpuPlatform": "Intel Skylake",
+                    "diskConfig": {
+                        "bootDiskSizeGb": 30,
+                        "numLocalSsds": 1,
+                    },
+                },
+                "preemptibleWorkerConfig": {
+                    "numInstances": 0,
+                },
+                "softwareConfig": {
+                    "imageVersion": "2.0.35-debian10",
+                    "overrideProperties": {
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
-                ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    tags=[
+                },
+                "gceClusterConfig": {
+                    "tags": [
                         "foo",
                         "bar",
                     ],
-                    service_account=default.email,
-                    service_account_scopes=["cloud-platform"],
-                ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
-                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    timeout_sec=500,
-                )],
-            ))
+                    "serviceAccount": default.email,
+                    "serviceAccountScopes": ["cloud-platform"],
+                },
+                "initializationActions": [{
+                    "script": "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+                    "timeoutSec": 500,
+                }],
+            })
         ```
 
         ### Using A GPU Accelerator
@@ -422,17 +422,17 @@ class Cluster(pulumi.CustomResource):
         accelerated_cluster = gcp.dataproc.Cluster("accelerated_cluster",
             name="my-cluster-with-gpu",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    zone="us-central1-a",
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_type="nvidia-tesla-k80",
-                        accelerator_count=1,
-                    )],
-                ),
-            ))
+            cluster_config={
+                "gceClusterConfig": {
+                    "zone": "us-central1-a",
+                },
+                "masterConfig": {
+                    "accelerators": [{
+                        "acceleratorType": "nvidia-tesla-k80",
+                        "acceleratorCount": 1,
+                    }],
+                },
+            })
         ```
 
         ## Import
@@ -441,7 +441,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
@@ -454,7 +454,7 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         ...
@@ -503,47 +503,47 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=30,
-                    ),
-                ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
-                    num_instances=2,
-                    machine_type="e2-medium",
-                    min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
-                        boot_disk_size_gb=30,
-                        num_local_ssds=1,
-                    ),
-                ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
-                    num_instances=0,
-                ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="2.0.35-debian10",
-                    override_properties={
+            cluster_config={
+                "stagingBucket": "dataproc-staging-bucket",
+                "masterConfig": {
+                    "numInstances": 1,
+                    "machineType": "e2-medium",
+                    "diskConfig": {
+                        "bootDiskType": "pd-ssd",
+                        "bootDiskSizeGb": 30,
+                    },
+                },
+                "workerConfig": {
+                    "numInstances": 2,
+                    "machineType": "e2-medium",
+                    "minCpuPlatform": "Intel Skylake",
+                    "diskConfig": {
+                        "bootDiskSizeGb": 30,
+                        "numLocalSsds": 1,
+                    },
+                },
+                "preemptibleWorkerConfig": {
+                    "numInstances": 0,
+                },
+                "softwareConfig": {
+                    "imageVersion": "2.0.35-debian10",
+                    "overrideProperties": {
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
-                ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    tags=[
+                },
+                "gceClusterConfig": {
+                    "tags": [
                         "foo",
                         "bar",
                     ],
-                    service_account=default.email,
-                    service_account_scopes=["cloud-platform"],
-                ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
-                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    timeout_sec=500,
-                )],
-            ))
+                    "serviceAccount": default.email,
+                    "serviceAccountScopes": ["cloud-platform"],
+                },
+                "initializationActions": [{
+                    "script": "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+                    "timeoutSec": 500,
+                }],
+            })
         ```
 
         ### Using A GPU Accelerator
@@ -555,17 +555,17 @@ class Cluster(pulumi.CustomResource):
         accelerated_cluster = gcp.dataproc.Cluster("accelerated_cluster",
             name="my-cluster-with-gpu",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    zone="us-central1-a",
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_type="nvidia-tesla-k80",
-                        accelerator_count=1,
-                    )],
-                ),
-            ))
+            cluster_config={
+                "gceClusterConfig": {
+                    "zone": "us-central1-a",
+                },
+                "masterConfig": {
+                    "accelerators": [{
+                        "acceleratorType": "nvidia-tesla-k80",
+                        "acceleratorCount": 1,
+                    }],
+                },
+            })
         ```
 
         ## Import
@@ -587,13 +587,13 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -624,7 +624,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+            cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -632,7 +632,7 @@ class Cluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None) -> 'Cluster':
+            virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,7 +640,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -657,7 +657,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

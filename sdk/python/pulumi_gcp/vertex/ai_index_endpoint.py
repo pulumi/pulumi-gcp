@@ -447,7 +447,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -503,10 +503,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArgs(
-                enable_private_service_connect=True,
-                project_allowlists=[project.number],
-            ))
+            private_service_connect_config={
+                "enablePrivateServiceConnect": True,
+                "projectAllowlists": [project.number],
+            })
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint
 
@@ -568,7 +568,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -632,10 +632,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            private_service_connect_config=gcp.vertex.AiIndexEndpointPrivateServiceConnectConfigArgs(
-                enable_private_service_connect=True,
-                project_allowlists=[project.number],
-            ))
+            private_service_connect_config={
+                "enablePrivateServiceConnect": True,
+                "projectAllowlists": [project.number],
+            })
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint
 
@@ -702,7 +702,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -752,7 +752,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']]] = None,
+            private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
@@ -782,7 +782,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[pulumi.InputType['AiIndexEndpointPrivateServiceConnectConfigArgs']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

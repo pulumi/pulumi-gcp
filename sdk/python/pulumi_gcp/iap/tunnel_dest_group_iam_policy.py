@@ -214,10 +214,10 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -231,15 +231,15 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -272,11 +272,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelDestGroupIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## iap.TunnelDestGroupIamMember
 
@@ -304,11 +304,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelDestGroupIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## iap.TunnelDestGroupIamPolicy
@@ -317,10 +317,10 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -334,15 +334,15 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -375,11 +375,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelDestGroupIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## iap.TunnelDestGroupIamMember
 
@@ -407,11 +407,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelDestGroupIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -494,10 +494,10 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -511,15 +511,15 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -552,11 +552,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelDestGroupIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## iap.TunnelDestGroupIamMember
 
@@ -584,11 +584,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelDestGroupIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## iap.TunnelDestGroupIamPolicy
@@ -597,10 +597,10 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -614,15 +614,15 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.tunnelResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iap.tunnelResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.iap.TunnelDestGroupIamPolicy("policy",
             project=dest_group["project"],
             region=dest_group["region"],
@@ -655,11 +655,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelDestGroupIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## iap.TunnelDestGroupIamMember
 
@@ -687,11 +687,11 @@ class TunnelDestGroupIamPolicy(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelDestGroupIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

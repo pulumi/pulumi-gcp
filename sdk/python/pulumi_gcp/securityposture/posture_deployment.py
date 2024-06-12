@@ -472,21 +472,21 @@ class PostureDeployment(pulumi.CustomResource):
             location="global",
             state="ACTIVE",
             description="a new posture",
-            policy_sets=[gcp.securityposture.PosturePolicySetArgs(
-                policy_set_id="org_policy_set",
-                description="set of org policies",
-                policies=[gcp.securityposture.PosturePolicySetPolicyArgs(
-                    policy_id="policy_1",
-                    constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                        org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
-                            canned_constraint_id="storage.uniformBucketLevelAccess",
-                            policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
-                                enforce=True,
-                            )],
-                        ),
-                    ),
-                )],
-            )])
+            policy_sets=[{
+                "policySetId": "org_policy_set",
+                "description": "set of org policies",
+                "policies": [{
+                    "policyId": "policy_1",
+                    "constraint": {
+                        "orgPolicyConstraint": {
+                            "cannedConstraintId": "storage.uniformBucketLevelAccess",
+                            "policyRules": [{
+                                "enforce": True,
+                            }],
+                        },
+                    },
+                }],
+            }])
         posture_deployment = gcp.securityposture.PostureDeployment("postureDeployment",
             posture_deployment_id="posture_deployment_1",
             parent="organizations/123456789",
@@ -558,21 +558,21 @@ class PostureDeployment(pulumi.CustomResource):
             location="global",
             state="ACTIVE",
             description="a new posture",
-            policy_sets=[gcp.securityposture.PosturePolicySetArgs(
-                policy_set_id="org_policy_set",
-                description="set of org policies",
-                policies=[gcp.securityposture.PosturePolicySetPolicyArgs(
-                    policy_id="policy_1",
-                    constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                        org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
-                            canned_constraint_id="storage.uniformBucketLevelAccess",
-                            policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
-                                enforce=True,
-                            )],
-                        ),
-                    ),
-                )],
-            )])
+            policy_sets=[{
+                "policySetId": "org_policy_set",
+                "description": "set of org policies",
+                "policies": [{
+                    "policyId": "policy_1",
+                    "constraint": {
+                        "orgPolicyConstraint": {
+                            "cannedConstraintId": "storage.uniformBucketLevelAccess",
+                            "policyRules": [{
+                                "enforce": True,
+                            }],
+                        },
+                    },
+                }],
+            }])
         posture_deployment = gcp.securityposture.PostureDeployment("postureDeployment",
             posture_deployment_id="posture_deployment_1",
             parent="organizations/123456789",

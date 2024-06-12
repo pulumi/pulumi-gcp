@@ -696,13 +696,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attribute_condition: Optional[pulumi.Input[str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']]] = None,
+                 aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
+                 oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
+                 saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -727,9 +727,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
-            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
-                account_id="999999999999",
-            ))
+            aws={
+                "accountId": "999999999999",
+            })
         ```
         ### Iam Workload Identity Pool Provider Aws Full
 
@@ -750,9 +750,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
-                account_id="999999999999",
-            ))
+            aws={
+                "accountId": "999999999999",
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Basic
 
@@ -767,9 +767,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             attribute_mapping={
                 "google.subject": "assertion.sub",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ))
+            oidc={
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Full
 
@@ -794,13 +794,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
               }[assertion.oid]
         \"\"\",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                allowed_audiences=[
+            oidc={
+                "allowedAudiences": [
                     "https://example.com/gcp-oidc-federation",
                     "example.com/gcp-oidc-federation",
                 ],
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ))
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+            })
         ```
         ### Iam Workload Identity Pool Provider Saml Basic
 
@@ -818,9 +818,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
-            ))
+            saml={
+                "idpMetadataXml": std.file(input="test-fixtures/metadata.xml").result,
+            })
         ```
         ### Iam Workload Identity Pool Provider Saml Full
 
@@ -841,9 +841,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
-            ))
+            saml={
+                "idpMetadataXml": std.file(input="test-fixtures/metadata.xml").result,
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
@@ -868,14 +868,14 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
               }[assertion.oid]
         \"\"\",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                allowed_audiences=[
+            oidc={
+                "allowedAudiences": [
                     "https://example.com/gcp-oidc-federation",
                     "example.com/gcp-oidc-federation",
                 ],
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-                jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
-            ))
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+                "jwksJson": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
+            })
         ```
 
         ## Import
@@ -960,17 +960,17 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
                {"google.subject": "assertion.sub"}
                ```
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
                Structure is documented below.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -1009,9 +1009,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
-            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
-                account_id="999999999999",
-            ))
+            aws={
+                "accountId": "999999999999",
+            })
         ```
         ### Iam Workload Identity Pool Provider Aws Full
 
@@ -1032,9 +1032,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
-                account_id="999999999999",
-            ))
+            aws={
+                "accountId": "999999999999",
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Basic
 
@@ -1049,9 +1049,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             attribute_mapping={
                 "google.subject": "assertion.sub",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ))
+            oidc={
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Full
 
@@ -1076,13 +1076,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
               }[assertion.oid]
         \"\"\",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                allowed_audiences=[
+            oidc={
+                "allowedAudiences": [
                     "https://example.com/gcp-oidc-federation",
                     "example.com/gcp-oidc-federation",
                 ],
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ))
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+            })
         ```
         ### Iam Workload Identity Pool Provider Saml Basic
 
@@ -1100,9 +1100,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
-            ))
+            saml={
+                "idpMetadataXml": std.file(input="test-fixtures/metadata.xml").result,
+            })
         ```
         ### Iam Workload Identity Pool Provider Saml Full
 
@@ -1123,9 +1123,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.aws_account": "assertion.account",
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
-            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
-            ))
+            saml={
+                "idpMetadataXml": std.file(input="test-fixtures/metadata.xml").result,
+            })
         ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
@@ -1150,14 +1150,14 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
               }[assertion.oid]
         \"\"\",
             },
-            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
-                allowed_audiences=[
+            oidc={
+                "allowedAudiences": [
                     "https://example.com/gcp-oidc-federation",
                     "example.com/gcp-oidc-federation",
                 ],
-                issuer_uri="https://sts.windows.net/azure-tenant-id",
-                jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
-            ))
+                "issuerUri": "https://sts.windows.net/azure-tenant-id",
+                "jwksJson": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
+            })
         ```
 
         ## Import
@@ -1201,13 +1201,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attribute_condition: Optional[pulumi.Input[str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']]] = None,
+                 aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
+                 oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
+                 saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1248,14 +1248,14 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attribute_condition: Optional[pulumi.Input[str]] = None,
             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            aws: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']]] = None,
+            aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
+            oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
+            saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
             workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None) -> 'WorkloadIdentityPoolProvider':
@@ -1322,7 +1322,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
                {"google.subject": "assertion.sub"}
                ```
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -1330,11 +1330,11 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the provider as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of the provider.
                * STATE_UNSPECIFIED: State unspecified.

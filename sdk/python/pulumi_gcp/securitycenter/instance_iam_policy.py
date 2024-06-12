@@ -221,14 +221,14 @@ class InstanceIamPolicy(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -251,9 +251,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -279,10 +279,10 @@ class InstanceIamPolicy(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 
@@ -389,14 +389,14 @@ class InstanceIamPolicy(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -419,9 +419,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -447,10 +447,10 @@ class InstanceIamPolicy(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 

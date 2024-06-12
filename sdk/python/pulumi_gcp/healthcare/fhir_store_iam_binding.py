@@ -215,7 +215,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,10 +237,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
@@ -276,10 +276,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
@@ -376,10 +376,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
@@ -415,10 +415,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
@@ -489,7 +489,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -523,7 +523,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             fhir_store_id: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

@@ -540,16 +540,16 @@ class AwsNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+                 update_settings: Optional[pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -568,117 +568,117 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="PREFER_NO_SCHEDULE",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-            ),
+                "taints": [{
+                    "effect": "PREFER_NO_SCHEDULE",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
                 "label-one": "value-one",
             },
-            management=gcp.container.AwsNodePoolManagementArgs(
-                auto_repair=True,
-            ),
+            management={
+                "autoRepair": True,
+            },
             project="my-project-name")
         ```
         ### Basic_enum_aws_cluster
@@ -690,108 +690,108 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "gp3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="prefer_no_schedule",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-            ),
+                "taints": [{
+                    "effect": "prefer_no_schedule",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
@@ -809,112 +809,112 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "gp3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="prefer_no_schedule",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArgs(
-                    tenancy="dedicated",
-                ),
-                image_type="ubuntu",
-            ),
+                "taints": [{
+                    "effect": "prefer_no_schedule",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+                "instancePlacement": {
+                    "tenancy": "dedicated",
+                },
+                "imageType": "ubuntu",
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
@@ -956,16 +956,16 @@ class AwsNodePool(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
+        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
@@ -990,117 +990,117 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="PREFER_NO_SCHEDULE",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-            ),
+                "taints": [{
+                    "effect": "PREFER_NO_SCHEDULE",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
                 "label-one": "value-one",
             },
-            management=gcp.container.AwsNodePoolManagementArgs(
-                auto_repair=True,
-            ),
+            management={
+                "autoRepair": True,
+            },
             project="my-project-name")
         ```
         ### Basic_enum_aws_cluster
@@ -1112,108 +1112,108 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "gp3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="prefer_no_schedule",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-            ),
+                "taints": [{
+                    "effect": "prefer_no_schedule",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
@@ -1231,112 +1231,112 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "my@service-account.com",
+                }],
+            },
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+            control_plane={
+                "awsServicesAuthentication": {
+                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "roleSessionName": "my--1p-dev-session",
+                },
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "databaseEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-controlplane",
+                "subnetIds": ["subnet-00000000000000000"],
+                "version": versions.valid_versions[0],
+                "instanceType": "t3.medium",
+                "mainVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "GP3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "owner": "my@service-account.com",
                 },
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.2.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
+                "vpcId": "vpc-00000000000000000",
+            },
             annotations={
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
-                max_node_count=5,
-                min_node_count=1,
-            ),
+            autoscaling={
+                "maxNodeCount": 5,
+                "minNodeCount": 1,
+            },
             cluster=primary.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-nodepool",
-                instance_type="t3.medium",
-                labels={
+            config={
+                "configEncryption": {
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                },
+                "iamInstanceProfile": "my--1p-dev-nodepool",
+                "instanceType": "t3.medium",
+                "labels": {
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
+                "rootVolume": {
+                    "iops": 3000,
+                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "sizeGib": 10,
+                    "volumeType": "gp3",
+                },
+                "securityGroupIds": ["sg-00000000000000000"],
+                "proxyConfig": {
+                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                },
+                "sshConfig": {
+                    "ec2KeyPair": "my--1p-dev-ssh",
+                },
+                "tags": {
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
-                    effect="prefer_no_schedule",
-                    key="taint-key",
-                    value="taint-value",
-                )],
-                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArgs(
-                    tenancy="dedicated",
-                ),
-                image_type="ubuntu",
-            ),
+                "taints": [{
+                    "effect": "prefer_no_schedule",
+                    "key": "taint-key",
+                    "value": "taint-value",
+                }],
+                "instancePlacement": {
+                    "tenancy": "dedicated",
+                },
+                "imageType": "ubuntu",
+            },
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
-                max_pods_per_node=110,
-            ),
+            max_pods_constraint={
+                "maxPodsPerNode": 110,
+            },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
@@ -1386,16 +1386,16 @@ class AwsNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+                 update_settings: Optional[pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1450,22 +1450,22 @@ class AwsNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+            autoscaling: Optional[pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-            max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+            management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
+            max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
-            update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+            update_settings: Optional[pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'AwsNodePool':
         """
@@ -1481,21 +1481,21 @@ class AwsNodePool(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
+        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """

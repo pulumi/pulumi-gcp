@@ -421,9 +421,9 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
-                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
+                 github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -448,12 +448,12 @@ class Connection(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="tf-test-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=0,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/gcb-terraform-creds/secrets/github-pat/versions/1",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 0,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/gcb-terraform-creds/secrets/github-pat/versions/1",
+                },
+            })
         ```
         ### Cloudbuildv2 Connection Ghe
 
@@ -464,24 +464,24 @@ class Connection(pulumi.CustomResource):
 
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
             secret_data=std.file(input="private-key.pem").result)
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
             secret_data="<webhook-secret-data>")
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
@@ -491,14 +491,14 @@ class Connection(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-terraform-ghe-connection",
-            github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
-                host_uri="https://ghe.com",
-                private_key_secret_version=private_key_secret_version.id,
-                webhook_secret_secret_version=webhook_secret_secret_version.id,
-                app_id=200,
-                app_slug="gcb-app",
-                app_installation_id=300,
-            ),
+            github_enterprise_config={
+                "hostUri": "https://ghe.com",
+                "privateKeySecretVersion": private_key_secret_version.id,
+                "webhookSecretSecretVersion": webhook_secret_secret_version.id,
+                "appId": 200,
+                "appSlug": "gcb-app",
+                "appInstallationId": 300,
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
@@ -513,28 +513,28 @@ class Connection(pulumi.CustomResource):
 
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
             secret_data=std.file(input="my-github-token.txt").result)
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version=github_token_secret_version.id,
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": github_token_secret_version.id,
+                },
+            })
         ```
 
         ## Import
@@ -573,11 +573,11 @@ class Connection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
+        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
                
@@ -613,12 +613,12 @@ class Connection(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="tf-test-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=0,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/gcb-terraform-creds/secrets/github-pat/versions/1",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 0,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/gcb-terraform-creds/secrets/github-pat/versions/1",
+                },
+            })
         ```
         ### Cloudbuildv2 Connection Ghe
 
@@ -629,24 +629,24 @@ class Connection(pulumi.CustomResource):
 
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
             secret_data=std.file(input="private-key.pem").result)
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
             secret_data="<webhook-secret-data>")
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
@@ -656,14 +656,14 @@ class Connection(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-terraform-ghe-connection",
-            github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
-                host_uri="https://ghe.com",
-                private_key_secret_version=private_key_secret_version.id,
-                webhook_secret_secret_version=webhook_secret_secret_version.id,
-                app_id=200,
-                app_slug="gcb-app",
-                app_installation_id=300,
-            ),
+            github_enterprise_config={
+                "hostUri": "https://ghe.com",
+                "privateKeySecretVersion": private_key_secret_version.id,
+                "webhookSecretSecretVersion": webhook_secret_secret_version.id,
+                "appId": 200,
+                "appSlug": "gcb-app",
+                "appInstallationId": 300,
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
@@ -678,28 +678,28 @@ class Connection(pulumi.CustomResource):
 
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
             secret_data=std.file(input="my-github-token.txt").result)
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version=github_token_secret_version.id,
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": github_token_secret_version.id,
+                },
+            })
         ```
 
         ## Import
@@ -749,9 +749,9 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
-                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
+                 github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -795,10 +795,10 @@ class Connection(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
-            github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
-            gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
-            installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]]] = None,
+            github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+            github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+            gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+            installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -817,13 +817,13 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
+        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]] installation_states: Output only. Installation state of the Connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
                

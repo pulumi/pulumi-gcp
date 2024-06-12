@@ -553,7 +553,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -586,9 +586,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -647,9 +647,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -689,10 +689,10 @@ class ServiceAttachment(pulumi.CustomResource):
                 "673497134629",
                 "482878270665",
             ],
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                project_id_or_num="658859330310",
-                connection_limit=4,
-            )])
+            consumer_accept_lists=[{
+                "projectIdOrNum": "658859330310",
+                "connectionLimit": 4,
+            }])
         psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
             name="psc-ilb-consumer-address",
             region="us-west2",
@@ -719,9 +719,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -756,10 +756,10 @@ class ServiceAttachment(pulumi.CustomResource):
             connection_preference="ACCEPT_MANUAL",
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id,
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                network_url=psc_ilb_consumer_network.self_link,
-                connection_limit=1,
-            )])
+            consumer_accept_lists=[{
+                "networkUrl": psc_ilb_consumer_network.self_link,
+                "connectionLimit": 1,
+            }])
         psc_ilb_consumer_subnetwork = gcp.compute.Subnetwork("psc_ilb_consumer_subnetwork",
             name="psc-ilb-consumer-network",
             ip_cidr_range="10.0.0.0/16",
@@ -789,9 +789,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -831,10 +831,10 @@ class ServiceAttachment(pulumi.CustomResource):
                 "673497134629",
                 "482878270665",
             ],
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                project_id_or_num="658859330310",
-                connection_limit=4,
-            )],
+            consumer_accept_lists=[{
+                "projectIdOrNum": "658859330310",
+                "connectionLimit": 4,
+            }],
             reconcile_connections=False)
         ```
 
@@ -872,7 +872,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -931,9 +931,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -992,9 +992,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -1034,10 +1034,10 @@ class ServiceAttachment(pulumi.CustomResource):
                 "673497134629",
                 "482878270665",
             ],
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                project_id_or_num="658859330310",
-                connection_limit=4,
-            )])
+            consumer_accept_lists=[{
+                "projectIdOrNum": "658859330310",
+                "connectionLimit": 4,
+            }])
         psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
             name="psc-ilb-consumer-address",
             region="us-west2",
@@ -1064,9 +1064,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -1101,10 +1101,10 @@ class ServiceAttachment(pulumi.CustomResource):
             connection_preference="ACCEPT_MANUAL",
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id,
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                network_url=psc_ilb_consumer_network.self_link,
-                connection_limit=1,
-            )])
+            consumer_accept_lists=[{
+                "networkUrl": psc_ilb_consumer_network.self_link,
+                "connectionLimit": 1,
+            }])
         psc_ilb_consumer_subnetwork = gcp.compute.Subnetwork("psc_ilb_consumer_subnetwork",
             name="psc-ilb-consumer-network",
             ip_cidr_range="10.0.0.0/16",
@@ -1134,9 +1134,9 @@ class ServiceAttachment(pulumi.CustomResource):
             name="producer-service-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
             name="producer-service",
             region="us-west2",
@@ -1176,10 +1176,10 @@ class ServiceAttachment(pulumi.CustomResource):
                 "673497134629",
                 "482878270665",
             ],
-            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
-                project_id_or_num="658859330310",
-                connection_limit=4,
-            )],
+            consumer_accept_lists=[{
+                "projectIdOrNum": "658859330310",
+                "connectionLimit": 4,
+            }],
             reconcile_connections=False)
         ```
 
@@ -1229,7 +1229,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1282,9 +1282,9 @@ class ServiceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
+            connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]]] = None,
             connection_preference: Optional[pulumi.Input[str]] = None,
-            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]]] = None,
+            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
             consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1304,12 +1304,12 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service

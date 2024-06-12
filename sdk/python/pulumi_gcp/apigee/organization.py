@@ -651,7 +651,7 @@ class Organization(pulumi.CustomResource):
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
@@ -819,7 +819,7 @@ class Organization(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']] properties: Properties defined in the Apigee organization profile.
+        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
                is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -1005,7 +1005,7 @@ class Organization(pulumi.CustomResource):
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
@@ -1061,7 +1061,7 @@ class Organization(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']]] = None,
+            properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
             retention: Optional[pulumi.Input[str]] = None,
             runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
             runtime_type: Optional[pulumi.Input[str]] = None,
@@ -1099,7 +1099,7 @@ class Organization(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']] properties: Properties defined in the Apigee organization profile.
+        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
                is not EVALUATION). It controls how long Organization data will be retained after the initial delete

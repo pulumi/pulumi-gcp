@@ -342,14 +342,14 @@ class AttachedDisk(pulumi.CustomResource):
             name="attached-disk-instance",
             machine_type="e2-medium",
             zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         default = gcp.compute.AttachedDisk("default",
             disk=default_google_compute_disk["id"],
             instance=default_instance.id)
@@ -435,14 +435,14 @@ class AttachedDisk(pulumi.CustomResource):
             name="attached-disk-instance",
             machine_type="e2-medium",
             zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         default = gcp.compute.AttachedDisk("default",
             disk=default_google_compute_disk["id"],
             instance=default_instance.id)

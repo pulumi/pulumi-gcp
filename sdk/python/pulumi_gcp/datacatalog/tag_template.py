@@ -241,7 +241,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -270,40 +270,40 @@ class TagTemplate(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="source",
-                    display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        primitive_type="STRING",
-                    ),
-                    is_required=True,
-                ),
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="num_rows",
-                    display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        primitive_type="DOUBLE",
-                    ),
-                ),
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="pii_type",
-                    display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
-                            allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="EMAIL",
-                                ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="SOCIAL SECURITY NUMBER",
-                                ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="NONE",
-                                ),
+                {
+                    "fieldId": "source",
+                    "displayName": "Source of data asset",
+                    "type": {
+                        "primitiveType": "STRING",
+                    },
+                    "isRequired": True,
+                },
+                {
+                    "fieldId": "num_rows",
+                    "displayName": "Number of rows in the data asset",
+                    "type": {
+                        "primitiveType": "DOUBLE",
+                    },
+                },
+                {
+                    "fieldId": "pii_type",
+                    "displayName": "PII type",
+                    "type": {
+                        "enumType": {
+                            "allowedValues": [
+                                {
+                                    "displayName": "EMAIL",
+                                },
+                                {
+                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                },
+                                {
+                                    "displayName": "NONE",
+                                },
                             ],
-                        ),
-                    ),
-                ),
+                        },
+                    },
+                },
             ],
             force_delete=False)
         ```
@@ -323,7 +323,7 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
                template.
@@ -359,40 +359,40 @@ class TagTemplate(pulumi.CustomResource):
             region="us-central1",
             display_name="Demo Tag Template",
             fields=[
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="source",
-                    display_name="Source of data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        primitive_type="STRING",
-                    ),
-                    is_required=True,
-                ),
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="num_rows",
-                    display_name="Number of rows in the data asset",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        primitive_type="DOUBLE",
-                    ),
-                ),
-                gcp.datacatalog.TagTemplateFieldArgs(
-                    field_id="pii_type",
-                    display_name="PII type",
-                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
-                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
-                            allowed_values=[
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="EMAIL",
-                                ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="SOCIAL SECURITY NUMBER",
-                                ),
-                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
-                                    display_name="NONE",
-                                ),
+                {
+                    "fieldId": "source",
+                    "displayName": "Source of data asset",
+                    "type": {
+                        "primitiveType": "STRING",
+                    },
+                    "isRequired": True,
+                },
+                {
+                    "fieldId": "num_rows",
+                    "displayName": "Number of rows in the data asset",
+                    "type": {
+                        "primitiveType": "DOUBLE",
+                    },
+                },
+                {
+                    "fieldId": "pii_type",
+                    "displayName": "PII type",
+                    "type": {
+                        "enumType": {
+                            "allowedValues": [
+                                {
+                                    "displayName": "EMAIL",
+                                },
+                                {
+                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                },
+                                {
+                                    "displayName": "NONE",
+                                },
                             ],
-                        ),
-                    ),
-                ),
+                        },
+                    },
+                },
             ],
             force_delete=False)
         ```
@@ -425,7 +425,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -461,7 +461,7 @@ class TagTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -475,7 +475,7 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
                template.

@@ -363,13 +363,13 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
+                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
                  __props__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
@@ -389,14 +389,14 @@ class ResourcePolicy(pulumi.CustomResource):
         foo = gcp.compute.ResourcePolicy("foo",
             name="gce-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         ```
         ### Resource Policy Full
 
@@ -407,25 +407,25 @@ class ResourcePolicy(pulumi.CustomResource):
         bar = gcp.compute.ResourcePolicy("bar",
             name="gce-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
-                        hours_in_cycle=20,
-                        start_time="23:00",
-                    ),
-                ),
-                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
-                    max_retention_days=10,
-                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
-                ),
-                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
-                    labels={
+            snapshot_schedule_policy={
+                "schedule": {
+                    "hourlySchedule": {
+                        "hoursInCycle": 20,
+                        "startTime": "23:00",
+                    },
+                },
+                "retentionPolicy": {
+                    "maxRetentionDays": 10,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                "snapshotProperties": {
+                    "labels": {
                         "my_label": "value",
                     },
-                    storage_locations="us",
-                    guest_flush=True,
-                ),
-            ))
+                    "storageLocations": "us",
+                    "guestFlush": True,
+                },
+            })
         ```
         ### Resource Policy Placement Policy
 
@@ -436,10 +436,10 @@ class ResourcePolicy(pulumi.CustomResource):
         baz = gcp.compute.ResourcePolicy("baz",
             name="gce-policy",
             region="us-central1",
-            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
-                vm_count=2,
-                collocation="COLLOCATED",
-            ))
+            group_placement_policy={
+                "vmCount": 2,
+                "collocation": "COLLOCATED",
+            })
         ```
         ### Resource Policy Placement Policy Max Distance
 
@@ -450,11 +450,11 @@ class ResourcePolicy(pulumi.CustomResource):
         baz = gcp.compute.ResourcePolicy("baz",
             name="gce-policy",
             region="us-central1",
-            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
-                vm_count=2,
-                collocation="COLLOCATED",
-                max_distance=2,
-            ))
+            group_placement_policy={
+                "vmCount": 2,
+                "collocation": "COLLOCATED",
+                "maxDistance": 2,
+            })
         ```
         ### Resource Policy Instance Schedule Policy
 
@@ -466,15 +466,15 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             description="Start and stop instances",
-            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
-                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
-                    schedule="0 * * * *",
-                ),
-                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
-                    schedule="15 * * * *",
-                ),
-                time_zone="US/Central",
-            ))
+            instance_schedule_policy={
+                "vmStartSchedule": {
+                    "schedule": "0 * * * *",
+                },
+                "vmStopSchedule": {
+                    "schedule": "15 * * * *",
+                },
+                "timeZone": "US/Central",
+            })
         ```
         ### Resource Policy Snapshot Schedule Chain Name
 
@@ -486,26 +486,26 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             description="chain name snapshot",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
-                        hours_in_cycle=20,
-                        start_time="23:00",
-                    ),
-                ),
-                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
-                    max_retention_days=14,
-                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
-                ),
-                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
-                    labels={
+            snapshot_schedule_policy={
+                "schedule": {
+                    "hourlySchedule": {
+                        "hoursInCycle": 20,
+                        "startTime": "23:00",
+                    },
+                },
+                "retentionPolicy": {
+                    "maxRetentionDays": 14,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                "snapshotProperties": {
+                    "labels": {
                         "my_label": "value",
                     },
-                    storage_locations="us",
-                    guest_flush=True,
-                    chain_name="test-schedule-chain-name",
-                ),
-            ))
+                    "storageLocations": "us",
+                    "guestFlush": True,
+                    "chainName": "test-schedule-chain-name",
+                },
+            })
         ```
         ### Resource Policy Consistency Group
 
@@ -516,9 +516,9 @@ class ResourcePolicy(pulumi.CustomResource):
         cgroup = gcp.compute.ResourcePolicy("cgroup",
             name="gce-policy",
             region="europe-west1",
-            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
-                enabled=True,
-            ))
+            disk_consistency_group_policy={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -554,11 +554,11 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
+        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
+        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
+        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -573,7 +573,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
         ...
@@ -600,14 +600,14 @@ class ResourcePolicy(pulumi.CustomResource):
         foo = gcp.compute.ResourcePolicy("foo",
             name="gce-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         ```
         ### Resource Policy Full
 
@@ -618,25 +618,25 @@ class ResourcePolicy(pulumi.CustomResource):
         bar = gcp.compute.ResourcePolicy("bar",
             name="gce-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
-                        hours_in_cycle=20,
-                        start_time="23:00",
-                    ),
-                ),
-                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
-                    max_retention_days=10,
-                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
-                ),
-                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
-                    labels={
+            snapshot_schedule_policy={
+                "schedule": {
+                    "hourlySchedule": {
+                        "hoursInCycle": 20,
+                        "startTime": "23:00",
+                    },
+                },
+                "retentionPolicy": {
+                    "maxRetentionDays": 10,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                "snapshotProperties": {
+                    "labels": {
                         "my_label": "value",
                     },
-                    storage_locations="us",
-                    guest_flush=True,
-                ),
-            ))
+                    "storageLocations": "us",
+                    "guestFlush": True,
+                },
+            })
         ```
         ### Resource Policy Placement Policy
 
@@ -647,10 +647,10 @@ class ResourcePolicy(pulumi.CustomResource):
         baz = gcp.compute.ResourcePolicy("baz",
             name="gce-policy",
             region="us-central1",
-            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
-                vm_count=2,
-                collocation="COLLOCATED",
-            ))
+            group_placement_policy={
+                "vmCount": 2,
+                "collocation": "COLLOCATED",
+            })
         ```
         ### Resource Policy Placement Policy Max Distance
 
@@ -661,11 +661,11 @@ class ResourcePolicy(pulumi.CustomResource):
         baz = gcp.compute.ResourcePolicy("baz",
             name="gce-policy",
             region="us-central1",
-            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
-                vm_count=2,
-                collocation="COLLOCATED",
-                max_distance=2,
-            ))
+            group_placement_policy={
+                "vmCount": 2,
+                "collocation": "COLLOCATED",
+                "maxDistance": 2,
+            })
         ```
         ### Resource Policy Instance Schedule Policy
 
@@ -677,15 +677,15 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             description="Start and stop instances",
-            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
-                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
-                    schedule="0 * * * *",
-                ),
-                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
-                    schedule="15 * * * *",
-                ),
-                time_zone="US/Central",
-            ))
+            instance_schedule_policy={
+                "vmStartSchedule": {
+                    "schedule": "0 * * * *",
+                },
+                "vmStopSchedule": {
+                    "schedule": "15 * * * *",
+                },
+                "timeZone": "US/Central",
+            })
         ```
         ### Resource Policy Snapshot Schedule Chain Name
 
@@ -697,26 +697,26 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             description="chain name snapshot",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
-                        hours_in_cycle=20,
-                        start_time="23:00",
-                    ),
-                ),
-                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
-                    max_retention_days=14,
-                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
-                ),
-                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
-                    labels={
+            snapshot_schedule_policy={
+                "schedule": {
+                    "hourlySchedule": {
+                        "hoursInCycle": 20,
+                        "startTime": "23:00",
+                    },
+                },
+                "retentionPolicy": {
+                    "maxRetentionDays": 14,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                "snapshotProperties": {
+                    "labels": {
                         "my_label": "value",
                     },
-                    storage_locations="us",
-                    guest_flush=True,
-                    chain_name="test-schedule-chain-name",
-                ),
-            ))
+                    "storageLocations": "us",
+                    "guestFlush": True,
+                    "chainName": "test-schedule-chain-name",
+                },
+            })
         ```
         ### Resource Policy Consistency Group
 
@@ -727,9 +727,9 @@ class ResourcePolicy(pulumi.CustomResource):
         cgroup = gcp.compute.ResourcePolicy("cgroup",
             name="gce-policy",
             region="europe-west1",
-            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
-                enabled=True,
-            ))
+            disk_consistency_group_policy={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -778,13 +778,13 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
+                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -814,14 +814,14 @@ class ResourcePolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
-            group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-            instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
+            disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+            group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+            instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None) -> 'ResourcePolicy':
+            snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None) -> 'ResourcePolicy':
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -830,11 +830,11 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
+        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
+        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
+        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -850,7 +850,7 @@ class ResourcePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

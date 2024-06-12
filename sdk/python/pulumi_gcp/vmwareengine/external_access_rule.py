@@ -448,13 +448,13 @@ class ExternalAccessRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleDestinationIpRangeArgs']]]]] = None,
+                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
                  destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleSourceIpRangeArgs']]]]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
                  source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -488,13 +488,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             priority=101,
             action="DENY",
             ip_protocol="TCP",
-            source_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleSourceIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            source_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             source_ports=["80"],
-            destination_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleDestinationIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            destination_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             destination_ports=["433"])
         ```
         ### Vmware Engine External Access Rule Full
@@ -512,17 +512,17 @@ class ExternalAccessRule(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.50.0/24",
-                vmware_engine_network=external_access_rule_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.50.0/24",
+                "vmwareEngineNetwork": external_access_rule_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
             name="sample-np",
@@ -539,13 +539,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             priority=101,
             action="ALLOW",
             ip_protocol="tcp",
-            source_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleSourceIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            source_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             source_ports=["80"],
-            destination_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleDestinationIpRangeArgs(
-                external_address=external_access_rule_ea.id,
-            )],
+            destination_ip_ranges=[{
+                "externalAddress": external_access_rule_ea.id,
+            }],
             destination_ports=["433"])
         ```
 
@@ -566,7 +566,7 @@ class ExternalAccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The action that the external access rule performs.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] description: User-provided description for the external access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleDestinationIpRangeArgs']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
                traffic that has a destination IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ports: A list of destination ports to which the external access rule applies.
@@ -576,7 +576,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleSourceIpRangeArgs']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
                traffic that has a source IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ports: A list of source ports to which the external access rule applies.
@@ -618,13 +618,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             priority=101,
             action="DENY",
             ip_protocol="TCP",
-            source_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleSourceIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            source_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             source_ports=["80"],
-            destination_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleDestinationIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            destination_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             destination_ports=["433"])
         ```
         ### Vmware Engine External Access Rule Full
@@ -642,17 +642,17 @@ class ExternalAccessRule(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.50.0/24",
-                vmware_engine_network=external_access_rule_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.50.0/24",
+                "vmwareEngineNetwork": external_access_rule_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
             name="sample-np",
@@ -669,13 +669,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             priority=101,
             action="ALLOW",
             ip_protocol="tcp",
-            source_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleSourceIpRangeArgs(
-                ip_address_range="0.0.0.0/0",
-            )],
+            source_ip_ranges=[{
+                "ipAddressRange": "0.0.0.0/0",
+            }],
             source_ports=["80"],
-            destination_ip_ranges=[gcp.vmwareengine.ExternalAccessRuleDestinationIpRangeArgs(
-                external_address=external_access_rule_ea.id,
-            )],
+            destination_ip_ranges=[{
+                "externalAddress": external_access_rule_ea.id,
+            }],
             destination_ports=["433"])
         ```
 
@@ -708,13 +708,13 @@ class ExternalAccessRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleDestinationIpRangeArgs']]]]] = None,
+                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
                  destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleSourceIpRangeArgs']]]]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
                  source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -768,13 +768,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             action: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleDestinationIpRangeArgs']]]]] = None,
+            destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
             destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
-            source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleSourceIpRangeArgs']]]]] = None,
+            source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
             source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -792,7 +792,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: User-provided description for the external access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleDestinationIpRangeArgs']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
                traffic that has a destination IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ports: A list of destination ports to which the external access rule applies.
@@ -802,7 +802,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalAccessRuleSourceIpRangeArgs']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
                traffic that has a source IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ports: A list of source ports to which the external access rule applies.

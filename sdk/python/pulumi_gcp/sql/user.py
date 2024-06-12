@@ -362,7 +362,7 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -382,9 +382,9 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         users = gcp.sql.User("users",
             name="me",
             instance=main.name,
@@ -404,13 +404,13 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql_iam_authentication",
-                    value="on",
-                )],
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "databaseFlags": [{
+                    "name": "cloudsql_iam_authentication",
+                    "value": "on",
+                }],
+            })
         iam_user = gcp.sql.User("iam_user",
             name="me@example.com",
             instance=main.name,
@@ -433,13 +433,13 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql_iam_authentication",
-                    value="on",
-                )],
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "databaseFlags": [{
+                    "name": "cloudsql_iam_authentication",
+                    "value": "on",
+                }],
+            })
         iam_group_user = gcp.sql.User("iam_group_user",
             name="iam_group@example.com",
             instance=main.name,
@@ -518,9 +518,9 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         users = gcp.sql.User("users",
             name="me",
             instance=main.name,
@@ -540,13 +540,13 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="POSTGRES_15",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql_iam_authentication",
-                    value="on",
-                )],
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "databaseFlags": [{
+                    "name": "cloudsql_iam_authentication",
+                    "value": "on",
+                }],
+            })
         iam_user = gcp.sql.User("iam_user",
             name="me@example.com",
             instance=main.name,
@@ -569,13 +569,13 @@ class User(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql_iam_authentication",
-                    value="on",
-                )],
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "databaseFlags": [{
+                    "name": "cloudsql_iam_authentication",
+                    "value": "on",
+                }],
+            })
         iam_group_user = gcp.sql.User("iam_group_user",
             name="iam_group@example.com",
             instance=main.name,
@@ -626,7 +626,7 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -666,9 +666,9 @@ class User(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+            password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailArgs']]]]] = None,
+            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra

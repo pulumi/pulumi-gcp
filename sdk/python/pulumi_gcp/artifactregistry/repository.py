@@ -688,20 +688,20 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
+                 docker_config: Optional[pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+                 maven_config: Optional[pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
+                 remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
                  __props__=None):
         """
         A repository for storing artifacts
@@ -737,9 +737,9 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             description="example docker repository",
             format="DOCKER",
-            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
-                immutable_tags=True,
-            ))
+            docker_config={
+                "immutableTags": True,
+            })
         ```
         ### Artifact Registry Repository Cmek
 
@@ -782,20 +782,20 @@ class Repository(pulumi.CustomResource):
             description="example virtual docker repository",
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
-            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[
-                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                        id="my-repository-upstream-1",
-                        repository=my_repo_upstream_1.id,
-                        priority=20,
-                    ),
-                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                        id="my-repository-upstream-2",
-                        repository=my_repo_upstream_2.id,
-                        priority=10,
-                    ),
+            virtual_repository_config={
+                "upstreamPolicies": [
+                    {
+                        "id": "my-repository-upstream-1",
+                        "repository": my_repo_upstream_1.id,
+                        "priority": 20,
+                    },
+                    {
+                        "id": "my-repository-upstream-2",
+                        "repository": my_repo_upstream_2.id,
+                        "priority": 10,
+                    },
                 ],
-            ))
+            })
         ```
         ### Artifact Registry Repository Remote
 
@@ -809,12 +809,12 @@ class Repository(pulumi.CustomResource):
             description="example remote docker repository",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub",
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-            ))
+            remote_repository_config={
+                "description": "docker hub",
+                "dockerRepository": {
+                    "publicRepository": "DOCKER_HUB",
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Apt
 
@@ -828,15 +828,15 @@ class Repository(pulumi.CustomResource):
             description="example remote apt repository",
             format="APT",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Debian buster remote repository",
-                apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
-                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
-                        repository_base="DEBIAN",
-                        repository_path="debian/dists/buster",
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "Debian buster remote repository",
+                "aptRepository": {
+                    "publicRepository": {
+                        "repositoryBase": "DEBIAN",
+                        "repositoryPath": "debian/dists/buster",
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Yum
 
@@ -850,15 +850,15 @@ class Repository(pulumi.CustomResource):
             description="example remote yum repository",
             format="YUM",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Centos 8 remote repository",
-                yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
-                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
-                        repository_base="CENTOS",
-                        repository_path="centos/8-stream/BaseOS/x86_64/os",
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "Centos 8 remote repository",
+                "yumRepository": {
+                    "publicRepository": {
+                        "repositoryBase": "CENTOS",
+                        "repositoryPath": "centos/8-stream/BaseOS/x86_64/os",
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Cleanup
 
@@ -873,42 +873,42 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             cleanup_policy_dry_run=False,
             cleanup_policies=[
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
-                    action="DELETE",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=[
+                {
+                    "id": "delete-prerelease",
+                    "action": "DELETE",
+                    "condition": {
+                        "tagState": "TAGGED",
+                        "tagPrefixes": [
                             "alpha",
                             "v0",
                         ],
-                        older_than="2592000s",
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
-                    action="KEEP",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
-                        package_name_prefixes=[
+                        "olderThan": "2592000s",
+                    },
+                },
+                {
+                    "id": "keep-tagged-release",
+                    "action": "KEEP",
+                    "condition": {
+                        "tagState": "TAGGED",
+                        "tagPrefixes": ["release"],
+                        "packageNamePrefixes": [
                             "webapp",
                             "mobile",
                         ],
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
-                    action="KEEP",
-                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        package_name_prefixes=[
+                    },
+                },
+                {
+                    "id": "keep-minimum-versions",
+                    "action": "KEEP",
+                    "mostRecentVersions": {
+                        "packageNamePrefixes": [
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        keep_count=5,
-                    ),
-                ),
+                        "keepCount": 5,
+                    },
+                },
             ])
         ```
         ### Artifact Registry Repository Remote Dockerhub Auth
@@ -920,9 +920,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -936,19 +936,19 @@ class Repository(pulumi.CustomResource):
             description="example remote dockerhub repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub with custom credentials",
-                disable_upstream_validation=True,
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "docker hub with custom credentials",
+                "disableUpstreamValidation": True,
+                "dockerRepository": {
+                    "publicRepository": "DOCKER_HUB",
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Docker Custom With Auth
 
@@ -959,9 +959,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -975,21 +975,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom docker repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom docker remote with credentials",
-                disable_upstream_validation=True,
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs(
-                        uri="https://registry-1.docker.io",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom docker remote with credentials",
+                "disableUpstreamValidation": True,
+                "dockerRepository": {
+                    "customRepository": {
+                        "uri": "https://registry-1.docker.io",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Maven Custom With Auth
 
@@ -1000,9 +1000,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1016,21 +1016,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom maven repository with credentials",
             format="MAVEN",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom maven remote with credentials",
-                disable_upstream_validation=True,
-                maven_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs(
-                        uri="https://my.maven.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom maven remote with credentials",
+                "disableUpstreamValidation": True,
+                "mavenRepository": {
+                    "customRepository": {
+                        "uri": "https://my.maven.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Npm Custom With Auth
 
@@ -1041,9 +1041,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1057,21 +1057,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom npm repository with credentials",
             format="NPM",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom npm with credentials",
-                disable_upstream_validation=True,
-                npm_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs(
-                        uri="https://my.npm.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom npm with credentials",
+                "disableUpstreamValidation": True,
+                "npmRepository": {
+                    "customRepository": {
+                        "uri": "https://my.npm.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Python Custom With Auth
 
@@ -1082,9 +1082,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1098,21 +1098,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom python repository with credentials",
             format="PYTHON",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom npm with credentials",
-                disable_upstream_validation=True,
-                python_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs(
-                        uri="https://my.python.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom npm with credentials",
+                "disableUpstreamValidation": True,
+                "pythonRepository": {
+                    "customRepository": {
+                        "uri": "https://my.python.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -1147,7 +1147,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
@@ -1155,7 +1155,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -1177,7 +1177,7 @@ class Repository(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
-        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
+        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
@@ -1186,11 +1186,11 @@ class Repository(pulumi.CustomResource):
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
+        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
         ...
@@ -1233,9 +1233,9 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             description="example docker repository",
             format="DOCKER",
-            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
-                immutable_tags=True,
-            ))
+            docker_config={
+                "immutableTags": True,
+            })
         ```
         ### Artifact Registry Repository Cmek
 
@@ -1278,20 +1278,20 @@ class Repository(pulumi.CustomResource):
             description="example virtual docker repository",
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
-            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[
-                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                        id="my-repository-upstream-1",
-                        repository=my_repo_upstream_1.id,
-                        priority=20,
-                    ),
-                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                        id="my-repository-upstream-2",
-                        repository=my_repo_upstream_2.id,
-                        priority=10,
-                    ),
+            virtual_repository_config={
+                "upstreamPolicies": [
+                    {
+                        "id": "my-repository-upstream-1",
+                        "repository": my_repo_upstream_1.id,
+                        "priority": 20,
+                    },
+                    {
+                        "id": "my-repository-upstream-2",
+                        "repository": my_repo_upstream_2.id,
+                        "priority": 10,
+                    },
                 ],
-            ))
+            })
         ```
         ### Artifact Registry Repository Remote
 
@@ -1305,12 +1305,12 @@ class Repository(pulumi.CustomResource):
             description="example remote docker repository",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub",
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-            ))
+            remote_repository_config={
+                "description": "docker hub",
+                "dockerRepository": {
+                    "publicRepository": "DOCKER_HUB",
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Apt
 
@@ -1324,15 +1324,15 @@ class Repository(pulumi.CustomResource):
             description="example remote apt repository",
             format="APT",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Debian buster remote repository",
-                apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
-                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
-                        repository_base="DEBIAN",
-                        repository_path="debian/dists/buster",
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "Debian buster remote repository",
+                "aptRepository": {
+                    "publicRepository": {
+                        "repositoryBase": "DEBIAN",
+                        "repositoryPath": "debian/dists/buster",
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Yum
 
@@ -1346,15 +1346,15 @@ class Repository(pulumi.CustomResource):
             description="example remote yum repository",
             format="YUM",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Centos 8 remote repository",
-                yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
-                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
-                        repository_base="CENTOS",
-                        repository_path="centos/8-stream/BaseOS/x86_64/os",
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "Centos 8 remote repository",
+                "yumRepository": {
+                    "publicRepository": {
+                        "repositoryBase": "CENTOS",
+                        "repositoryPath": "centos/8-stream/BaseOS/x86_64/os",
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Cleanup
 
@@ -1369,42 +1369,42 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             cleanup_policy_dry_run=False,
             cleanup_policies=[
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
-                    action="DELETE",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=[
+                {
+                    "id": "delete-prerelease",
+                    "action": "DELETE",
+                    "condition": {
+                        "tagState": "TAGGED",
+                        "tagPrefixes": [
                             "alpha",
                             "v0",
                         ],
-                        older_than="2592000s",
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
-                    action="KEEP",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
-                        package_name_prefixes=[
+                        "olderThan": "2592000s",
+                    },
+                },
+                {
+                    "id": "keep-tagged-release",
+                    "action": "KEEP",
+                    "condition": {
+                        "tagState": "TAGGED",
+                        "tagPrefixes": ["release"],
+                        "packageNamePrefixes": [
                             "webapp",
                             "mobile",
                         ],
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
-                    action="KEEP",
-                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        package_name_prefixes=[
+                    },
+                },
+                {
+                    "id": "keep-minimum-versions",
+                    "action": "KEEP",
+                    "mostRecentVersions": {
+                        "packageNamePrefixes": [
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        keep_count=5,
-                    ),
-                ),
+                        "keepCount": 5,
+                    },
+                },
             ])
         ```
         ### Artifact Registry Repository Remote Dockerhub Auth
@@ -1416,9 +1416,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1432,19 +1432,19 @@ class Repository(pulumi.CustomResource):
             description="example remote dockerhub repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub with custom credentials",
-                disable_upstream_validation=True,
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "docker hub with custom credentials",
+                "disableUpstreamValidation": True,
+                "dockerRepository": {
+                    "publicRepository": "DOCKER_HUB",
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Docker Custom With Auth
 
@@ -1455,9 +1455,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1471,21 +1471,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom docker repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom docker remote with credentials",
-                disable_upstream_validation=True,
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs(
-                        uri="https://registry-1.docker.io",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom docker remote with credentials",
+                "disableUpstreamValidation": True,
+                "dockerRepository": {
+                    "customRepository": {
+                        "uri": "https://registry-1.docker.io",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Maven Custom With Auth
 
@@ -1496,9 +1496,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1512,21 +1512,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom maven repository with credentials",
             format="MAVEN",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom maven remote with credentials",
-                disable_upstream_validation=True,
-                maven_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs(
-                        uri="https://my.maven.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom maven remote with credentials",
+                "disableUpstreamValidation": True,
+                "mavenRepository": {
+                    "customRepository": {
+                        "uri": "https://my.maven.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Npm Custom With Auth
 
@@ -1537,9 +1537,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1553,21 +1553,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom npm repository with credentials",
             format="NPM",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom npm with credentials",
-                disable_upstream_validation=True,
-                npm_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs(
-                        uri="https://my.npm.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom npm with credentials",
+                "disableUpstreamValidation": True,
+                "npmRepository": {
+                    "customRepository": {
+                        "uri": "https://my.npm.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
         ### Artifact Registry Repository Remote Python Custom With Auth
 
@@ -1578,9 +1578,9 @@ class Repository(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
             secret=example_remote_secret.id,
             secret_data="remote-password")
@@ -1594,21 +1594,21 @@ class Repository(pulumi.CustomResource):
             description="example remote custom python repository with credentials",
             format="PYTHON",
             mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="custom npm with credentials",
-                disable_upstream_validation=True,
-                python_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryArgs(
-                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs(
-                        uri="https://my.python.registry",
-                    ),
-                ),
-                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
-                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
-                        username="remote-username",
-                        password_secret_version=example_remote_secret_version.name,
-                    ),
-                ),
-            ))
+            remote_repository_config={
+                "description": "custom npm with credentials",
+                "disableUpstreamValidation": True,
+                "pythonRepository": {
+                    "customRepository": {
+                        "uri": "https://my.python.registry",
+                    },
+                },
+                "upstreamCredentials": {
+                    "usernamePasswordCredentials": {
+                        "username": "remote-username",
+                        "passwordSecretVersion": example_remote_secret_version.name,
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -1656,20 +1656,20 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
+                 docker_config: Optional[pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+                 maven_config: Optional[pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
+                 remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1714,25 +1714,25 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+            cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
             cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
+            docker_config: Optional[pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             format: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+            maven_config: Optional[pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
+            remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None) -> 'Repository':
+            virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1740,7 +1740,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
@@ -1749,7 +1749,7 @@ class Repository(pulumi.CustomResource):
                repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
@@ -1772,7 +1772,7 @@ class Repository(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
-        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
+        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
@@ -1785,12 +1785,12 @@ class Repository(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
-        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
+        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

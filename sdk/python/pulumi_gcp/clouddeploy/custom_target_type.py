@@ -420,7 +420,7 @@ class CustomTargetType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 custom_actions: Optional[pulumi.Input[pulumi.InputType['CustomTargetTypeCustomActionsArgs']]] = None,
+                 custom_actions: Optional[pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -457,10 +457,10 @@ class CustomTargetType(pulumi.CustomResource):
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
             },
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+            })
         ```
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
@@ -472,18 +472,18 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    git=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs(
-                        repo="http://github.com/example/example-repo.git",
-                        path="configs/skaffold.yaml",
-                        ref="main",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "git": {
+                        "repo": "http://github.com/example/example-repo.git",
+                        "path": "configs/skaffold.yaml",
+                        "ref": "main",
+                    },
+                }],
+            })
         ```
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
@@ -495,17 +495,17 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    google_cloud_storage=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs(
-                        source="gs://example-bucket/dir/configs/*",
-                        path="skaffold.yaml",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "googleCloudStorage": {
+                        "source": "gs://example-bucket/dir/configs/*",
+                        "path": "skaffold.yaml",
+                    },
+                }],
+            })
         ```
         ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
 
@@ -517,18 +517,18 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    google_cloud_build_repo=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs(
-                        repository="projects/example/locations/us-central1/connections/git/repositories/example-repo",
-                        path="configs/skaffold.yaml",
-                        ref="main",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "googleCloudBuildRepo": {
+                        "repository": "projects/example/locations/us-central1/connections/git/repositories/example-repo",
+                        "path": "configs/skaffold.yaml",
+                        "ref": "main",
+                    },
+                }],
+            })
         ```
 
         ## Import
@@ -560,7 +560,7 @@ class CustomTargetType(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['CustomTargetTypeCustomActionsArgs']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the `CustomTargetType`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
@@ -610,10 +610,10 @@ class CustomTargetType(pulumi.CustomResource):
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
             },
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+            })
         ```
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
@@ -625,18 +625,18 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    git=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs(
-                        repo="http://github.com/example/example-repo.git",
-                        path="configs/skaffold.yaml",
-                        ref="main",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "git": {
+                        "repo": "http://github.com/example/example-repo.git",
+                        "path": "configs/skaffold.yaml",
+                        "ref": "main",
+                    },
+                }],
+            })
         ```
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
@@ -648,17 +648,17 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    google_cloud_storage=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs(
-                        source="gs://example-bucket/dir/configs/*",
-                        path="skaffold.yaml",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "googleCloudStorage": {
+                        "source": "gs://example-bucket/dir/configs/*",
+                        "path": "skaffold.yaml",
+                    },
+                }],
+            })
         ```
         ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
 
@@ -670,18 +670,18 @@ class CustomTargetType(pulumi.CustomResource):
             location="us-central1",
             name="my-custom-target-type",
             description="My custom target type",
-            custom_actions=gcp.clouddeploy.CustomTargetTypeCustomActionsArgs(
-                render_action="renderAction",
-                deploy_action="deployAction",
-                include_skaffold_modules=[gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs(
-                    configs=["my-config"],
-                    google_cloud_build_repo=gcp.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs(
-                        repository="projects/example/locations/us-central1/connections/git/repositories/example-repo",
-                        path="configs/skaffold.yaml",
-                        ref="main",
-                    ),
-                )],
-            ))
+            custom_actions={
+                "renderAction": "renderAction",
+                "deployAction": "deployAction",
+                "includeSkaffoldModules": [{
+                    "configs": ["my-config"],
+                    "googleCloudBuildRepo": {
+                        "repository": "projects/example/locations/us-central1/connections/git/repositories/example-repo",
+                        "path": "configs/skaffold.yaml",
+                        "ref": "main",
+                    },
+                }],
+            })
         ```
 
         ## Import
@@ -724,7 +724,7 @@ class CustomTargetType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 custom_actions: Optional[pulumi.Input[pulumi.InputType['CustomTargetTypeCustomActionsArgs']]] = None,
+                 custom_actions: Optional[pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -770,7 +770,7 @@ class CustomTargetType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            custom_actions: Optional[pulumi.Input[pulumi.InputType['CustomTargetTypeCustomActionsArgs']]] = None,
+            custom_actions: Optional[pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
             custom_target_type_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -794,7 +794,7 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Time at which the `CustomTargetType` was created.
-        :param pulumi.Input[pulumi.InputType['CustomTargetTypeCustomActionsArgs']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[str] custom_target_type_id: Resource id of the `CustomTargetType`.
         :param pulumi.Input[str] description: Description of the `CustomTargetType`. Max length is 255 characters.

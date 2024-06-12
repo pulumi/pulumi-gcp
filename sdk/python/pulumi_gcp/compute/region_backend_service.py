@@ -1357,30 +1357,30 @@ class RegionBackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
-                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
+                 circuit_breakers: Optional[pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
-                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
+                 consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
-                 failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
+                 failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
+                 iap: Optional[pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']]] = None,
+                 outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
-                 subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
+                 subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1405,9 +1405,9 @@ class RegionBackendService(pulumi.CustomResource):
             name="rbs-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
@@ -1426,10 +1426,10 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
-            iap=gcp.compute.RegionBackendServiceIapArgs(
-                oauth2_client_id="abc",
-                oauth2_client_secret="xyz",
-            ))
+            iap={
+                "oauth2ClientId": "abc",
+                "oauth2ClientSecret": "xyz",
+            })
         ```
         ### Region Backend Service Cache
 
@@ -1440,22 +1440,22 @@ class RegionBackendService(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             name="rbs-health-check",
             region="us-central1",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
             health_checks=default_region_health_check.id,
             enable_cdn=True,
-            cdn_policy=gcp.compute.RegionBackendServiceCdnPolicyArgs(
-                cache_mode="CACHE_ALL_STATIC",
-                default_ttl=3600,
-                client_ttl=7200,
-                max_ttl=10800,
-                negative_caching=True,
-                signed_url_cache_max_age_sec=7200,
-            ),
+            cdn_policy={
+                "cacheMode": "CACHE_ALL_STATIC",
+                "defaultTtl": 3600,
+                "clientTtl": 7200,
+                "maxTtl": 10800,
+                "negativeCaching": True,
+                "signedUrlCacheMaxAgeSec": 7200,
+            },
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
@@ -1467,9 +1467,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         health_check = gcp.compute.HealthCheck("health_check",
             name="rbs-health-check",
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1487,9 +1487,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1506,9 +1506,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1525,9 +1525,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         health_check = gcp.compute.HealthCheck("health_check",
             name="rbs-health-check",
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1536,21 +1536,21 @@ class RegionBackendService(pulumi.CustomResource):
             locality_lb_policy="RING_HASH",
             session_affinity="HTTP_COOKIE",
             protocol="HTTP",
-            circuit_breakers=gcp.compute.RegionBackendServiceCircuitBreakersArgs(
-                max_connections=10,
-            ),
-            consistent_hash=gcp.compute.RegionBackendServiceConsistentHashArgs(
-                http_cookie=gcp.compute.RegionBackendServiceConsistentHashHttpCookieArgs(
-                    ttl=gcp.compute.RegionBackendServiceConsistentHashHttpCookieTtlArgs(
-                        seconds=11,
-                        nanos=1111,
-                    ),
-                    name="mycookie",
-                ),
-            ),
-            outlier_detection=gcp.compute.RegionBackendServiceOutlierDetectionArgs(
-                consecutive_errors=2,
-            ))
+            circuit_breakers={
+                "maxConnections": 10,
+            },
+            consistent_hash={
+                "httpCookie": {
+                    "ttl": {
+                        "seconds": 11,
+                        "nanos": 1111,
+                    },
+                    "name": "mycookie",
+                },
+            },
+            outlier_detection={
+                "consecutiveErrors": 2,
+            })
         ```
         ### Region Backend Service Balancing Mode
 
@@ -1572,15 +1572,15 @@ class RegionBackendService(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-region-service",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -1588,25 +1588,25 @@ class RegionBackendService(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="rbs-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="rbs-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ))
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            })
         default = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="region-service",
             protocol="HTTP",
@@ -1622,9 +1622,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=22,
-            ))
+            tcp_health_check={
+                "port": 22,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
@@ -1633,12 +1633,12 @@ class RegionBackendService(pulumi.CustomResource):
             session_affinity="CLIENT_IP",
             protocol="TCP",
             load_balancing_scheme="EXTERNAL",
-            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
-                tracking_mode="PER_SESSION",
-                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
-                idle_timeout_sec=60,
-                enable_strong_affinity=True,
-            ))
+            connection_tracking_policy={
+                "trackingMode": "PER_SESSION",
+                "connectionPersistenceOnUnhealthyBackends": "NEVER_PERSIST",
+                "idleTimeoutSec": 60,
+                "enableStrongAffinity": True,
+            })
         ```
 
         ## Import
@@ -1678,21 +1678,21 @@ class RegionBackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]] backends: The set of backends that serve this RegionBackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, or HTTP2.
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -1701,14 +1701,14 @@ class RegionBackendService(pulumi.CustomResource):
                This field only applies when all of the following are true -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']] failover_policy: Policy for failovers.
+        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
                Structure is documented below.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
                this RegionBackendService. Currently at most one health
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
@@ -1763,7 +1763,7 @@ class RegionBackendService(pulumi.CustomResource):
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
                Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1778,7 +1778,7 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
                Structure is documented below.
@@ -1801,7 +1801,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -1834,9 +1834,9 @@ class RegionBackendService(pulumi.CustomResource):
             name="rbs-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
@@ -1855,10 +1855,10 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
-            iap=gcp.compute.RegionBackendServiceIapArgs(
-                oauth2_client_id="abc",
-                oauth2_client_secret="xyz",
-            ))
+            iap={
+                "oauth2ClientId": "abc",
+                "oauth2ClientSecret": "xyz",
+            })
         ```
         ### Region Backend Service Cache
 
@@ -1869,22 +1869,22 @@ class RegionBackendService(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             name="rbs-health-check",
             region="us-central1",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
             health_checks=default_region_health_check.id,
             enable_cdn=True,
-            cdn_policy=gcp.compute.RegionBackendServiceCdnPolicyArgs(
-                cache_mode="CACHE_ALL_STATIC",
-                default_ttl=3600,
-                client_ttl=7200,
-                max_ttl=10800,
-                negative_caching=True,
-                signed_url_cache_max_age_sec=7200,
-            ),
+            cdn_policy={
+                "cacheMode": "CACHE_ALL_STATIC",
+                "defaultTtl": 3600,
+                "clientTtl": 7200,
+                "maxTtl": 10800,
+                "negativeCaching": True,
+                "signedUrlCacheMaxAgeSec": 7200,
+            },
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
@@ -1896,9 +1896,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         health_check = gcp.compute.HealthCheck("health_check",
             name="rbs-health-check",
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1916,9 +1916,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1935,9 +1935,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1954,9 +1954,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         health_check = gcp.compute.HealthCheck("health_check",
             name="rbs-health-check",
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="region-service",
@@ -1965,21 +1965,21 @@ class RegionBackendService(pulumi.CustomResource):
             locality_lb_policy="RING_HASH",
             session_affinity="HTTP_COOKIE",
             protocol="HTTP",
-            circuit_breakers=gcp.compute.RegionBackendServiceCircuitBreakersArgs(
-                max_connections=10,
-            ),
-            consistent_hash=gcp.compute.RegionBackendServiceConsistentHashArgs(
-                http_cookie=gcp.compute.RegionBackendServiceConsistentHashHttpCookieArgs(
-                    ttl=gcp.compute.RegionBackendServiceConsistentHashHttpCookieTtlArgs(
-                        seconds=11,
-                        nanos=1111,
-                    ),
-                    name="mycookie",
-                ),
-            ),
-            outlier_detection=gcp.compute.RegionBackendServiceOutlierDetectionArgs(
-                consecutive_errors=2,
-            ))
+            circuit_breakers={
+                "maxConnections": 10,
+            },
+            consistent_hash={
+                "httpCookie": {
+                    "ttl": {
+                        "seconds": 11,
+                        "nanos": 1111,
+                    },
+                    "name": "mycookie",
+                },
+            },
+            outlier_detection={
+                "consecutiveErrors": 2,
+            })
         ```
         ### Region Backend Service Balancing Mode
 
@@ -2001,15 +2001,15 @@ class RegionBackendService(pulumi.CustomResource):
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-region-service",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=default_network.id,
-                subnetwork=default_subnetwork.id,
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
+            network_interfaces=[{
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
+            }],
+            disks=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
             tags=[
                 "allow-ssh",
                 "load-balanced-backend",
@@ -2017,25 +2017,25 @@ class RegionBackendService(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             name="rbs-rigm",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": instance_template.id,
+                "name": "primary",
+            }],
             base_instance_name="internal-glb",
             target_size=1)
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="rbs-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port_specification="USE_SERVING_PORT",
-            ))
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            })
         default = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
-            backends=[gcp.compute.RegionBackendServiceBackendArgs(
-                group=rigm.instance_group,
-                balancing_mode="UTILIZATION",
-                capacity_scaler=1,
-            )],
+            backends=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
             region="us-central1",
             name="region-service",
             protocol="HTTP",
@@ -2051,9 +2051,9 @@ class RegionBackendService(pulumi.CustomResource):
         health_check = gcp.compute.RegionHealthCheck("health_check",
             name="rbs-health-check",
             region="us-central1",
-            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
-                port=22,
-            ))
+            tcp_health_check={
+                "port": 22,
+            })
         default = gcp.compute.RegionBackendService("default",
             name="region-service",
             region="us-central1",
@@ -2062,12 +2062,12 @@ class RegionBackendService(pulumi.CustomResource):
             session_affinity="CLIENT_IP",
             protocol="TCP",
             load_balancing_scheme="EXTERNAL",
-            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
-                tracking_mode="PER_SESSION",
-                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
-                idle_timeout_sec=60,
-                enable_strong_affinity=True,
-            ))
+            connection_tracking_policy={
+                "trackingMode": "PER_SESSION",
+                "connectionPersistenceOnUnhealthyBackends": "NEVER_PERSIST",
+                "idleTimeoutSec": 60,
+                "enableStrongAffinity": True,
+            })
         ```
 
         ## Import
@@ -2116,30 +2116,30 @@ class RegionBackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
-                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
+                 circuit_breakers: Optional[pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
-                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
+                 consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
-                 failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
+                 failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
+                 iap: Optional[pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']]] = None,
+                 outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
-                 subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
+                 subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2191,26 +2191,26 @@ class RegionBackendService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-            backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
-            cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
-            circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
+            backends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
+            cdn_policy: Optional[pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
+            circuit_breakers: Optional[pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-            connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
-            consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
+            connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
+            consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
-            failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
+            failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             generated_id: Optional[pulumi.Input[int]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
-            iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
+            iap: Optional[pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            outlier_detection: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']]] = None,
+            outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
             port_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
@@ -2218,7 +2218,7 @@ class RegionBackendService(pulumi.CustomResource):
             security_policy: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
-            subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
+            subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'RegionBackendService':
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
@@ -2232,21 +2232,21 @@ class RegionBackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]] backends: The set of backends that serve this RegionBackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, or HTTP2.
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -2256,7 +2256,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']] failover_policy: Policy for failovers.
+        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
                Structure is documented below.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
@@ -2266,7 +2266,7 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
@@ -2321,7 +2321,7 @@ class RegionBackendService(pulumi.CustomResource):
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
                Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -2336,7 +2336,7 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
                Structure is documented below.
@@ -2360,7 +2360,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].

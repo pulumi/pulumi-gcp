@@ -139,10 +139,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/accesscontextmanager.policyAdmin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy",
             name=access_policy["name"],
             policy_data=admin.policy_data)
@@ -178,10 +178,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/accesscontextmanager.policyAdmin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy",
             name=access_policy["name"],
             policy_data=admin.policy_data)
@@ -278,10 +278,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/accesscontextmanager.policyAdmin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy",
             name=access_policy["name"],
             policy_data=admin.policy_data)
@@ -317,10 +317,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/accesscontextmanager.policyAdmin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy",
             name=access_policy["name"],
             policy_data=admin.policy_data)

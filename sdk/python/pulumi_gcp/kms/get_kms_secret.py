@@ -132,9 +132,9 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
     main = gcp.sql.DatabaseInstance("main",
         name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
         database_version="MYSQL_5_7",
-        settings=gcp.sql.DatabaseInstanceSettingsArgs(
-            tier="db-f1-micro",
-        ))
+        settings={
+            "tier": "db-f1-micro",
+        })
     users = gcp.sql.User("users",
         name="me",
         instance=main.name,
@@ -216,9 +216,9 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
     main = gcp.sql.DatabaseInstance("main",
         name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
         database_version="MYSQL_5_7",
-        settings=gcp.sql.DatabaseInstanceSettingsArgs(
-            tier="db-f1-micro",
-        ))
+        settings={
+            "tier": "db-f1-micro",
+        })
     users = gcp.sql.User("users",
         name="me",
         instance=main.name,

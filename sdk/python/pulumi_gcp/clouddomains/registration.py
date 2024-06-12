@@ -509,15 +509,15 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 contact_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationContactSettingsArgs']]] = None,
-                 dns_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationDnsSettingsArgs']]] = None,
+                 contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+                 dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationManagementSettingsArgs']]] = None,
+                 management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 yearly_price: Optional[pulumi.Input[pulumi.InputType['RegistrationYearlyPriceArgs']]] = None,
+                 yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -534,59 +534,59 @@ class Registration(pulumi.CustomResource):
             labels={
                 "labelkey": "labelvalue",
             },
-            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
-                currency_code="USD",
-                units="12",
-            ),
-            dns_settings=gcp.clouddomains.RegistrationDnsSettingsArgs(
-                custom_dns=gcp.clouddomains.RegistrationDnsSettingsCustomDnsArgs(
-                    name_servers=[
+            yearly_price={
+                "currencyCode": "USD",
+                "units": "12",
+            },
+            dns_settings={
+                "customDns": {
+                    "nameServers": [
                         "ns-cloud-a1.googledomains.com.",
                         "ns-cloud-a2.googledomains.com.",
                         "ns-cloud-a3.googledomains.com.",
                         "ns-cloud-a4.googledomains.com.",
                     ],
-                ),
-            ),
-            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
-                privacy="REDACTED_CONTACT_DATA",
-                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-            ))
+                },
+            },
+            contact_settings={
+                "privacy": "REDACTED_CONTACT_DATA",
+                "registrantContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+                "adminContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+                "technicalContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -616,17 +616,17 @@ class Registration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-        :param pulumi.Input[pulumi.InputType['RegistrationContactSettingsArgs']] contact_settings: Required. Settings for contact information linked to the Registration.
+        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegistrationDnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the Registration.
+        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
         :param pulumi.Input[str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['RegistrationManagementSettingsArgs']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
-        :param pulumi.Input[pulumi.InputType['RegistrationYearlyPriceArgs']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
+        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
                registrations.retrieveRegisterParameters or registrations.searchDomains calls.
                Structure is documented below.
         """
@@ -651,59 +651,59 @@ class Registration(pulumi.CustomResource):
             labels={
                 "labelkey": "labelvalue",
             },
-            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
-                currency_code="USD",
-                units="12",
-            ),
-            dns_settings=gcp.clouddomains.RegistrationDnsSettingsArgs(
-                custom_dns=gcp.clouddomains.RegistrationDnsSettingsCustomDnsArgs(
-                    name_servers=[
+            yearly_price={
+                "currencyCode": "USD",
+                "units": "12",
+            },
+            dns_settings={
+                "customDns": {
+                    "nameServers": [
                         "ns-cloud-a1.googledomains.com.",
                         "ns-cloud-a2.googledomains.com.",
                         "ns-cloud-a3.googledomains.com.",
                         "ns-cloud-a4.googledomains.com.",
                     ],
-                ),
-            ),
-            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
-                privacy="REDACTED_CONTACT_DATA",
-                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
-                    phone_number="+12345000000",
-                    email="user@example.com",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
-                        region_code="US",
-                        postal_code="95050",
-                        administrative_area="CA",
-                        locality="Example City",
-                        address_lines=["1234 Example street"],
-                        recipients=["example recipient"],
-                    ),
-                ),
-            ))
+                },
+            },
+            contact_settings={
+                "privacy": "REDACTED_CONTACT_DATA",
+                "registrantContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+                "adminContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+                "technicalContact": {
+                    "phoneNumber": "+12345000000",
+                    "email": "user@example.com",
+                    "postalAddress": {
+                        "regionCode": "US",
+                        "postalCode": "95050",
+                        "administrativeArea": "CA",
+                        "locality": "Example City",
+                        "addressLines": ["1234 Example street"],
+                        "recipients": ["example recipient"],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -746,15 +746,15 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 contact_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationContactSettingsArgs']]] = None,
-                 dns_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationDnsSettingsArgs']]] = None,
+                 contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+                 dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationManagementSettingsArgs']]] = None,
+                 management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 yearly_price: Optional[pulumi.Input[pulumi.InputType['RegistrationYearlyPriceArgs']]] = None,
+                 yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -804,9 +804,9 @@ class Registration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            contact_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationContactSettingsArgs']]] = None,
+            contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            dns_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationDnsSettingsArgs']]] = None,
+            dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -814,14 +814,14 @@ class Registration(pulumi.CustomResource):
             issues: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management_settings: Optional[pulumi.Input[pulumi.InputType['RegistrationManagementSettingsArgs']]] = None,
+            management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             register_failure_reason: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             supported_privacies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            yearly_price: Optional[pulumi.Input[pulumi.InputType['RegistrationYearlyPriceArgs']]] = None) -> 'Registration':
+            yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None) -> 'Registration':
         """
         Get an existing Registration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -830,10 +830,10 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-        :param pulumi.Input[pulumi.InputType['RegistrationContactSettingsArgs']] contact_settings: Required. Settings for contact information linked to the Registration.
+        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. Time at which the automation was created.
-        :param pulumi.Input[pulumi.InputType['RegistrationDnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the Registration.
+        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
         :param pulumi.Input[str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -843,14 +843,14 @@ class Registration(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['RegistrationManagementSettingsArgs']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
         :param pulumi.Input[str] name: Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
-        :param pulumi.Input[pulumi.InputType['RegistrationYearlyPriceArgs']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
+        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
                registrations.retrieveRegisterParameters or registrations.searchDomains calls.
                Structure is documented below.
         """
