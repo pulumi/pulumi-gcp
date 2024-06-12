@@ -392,13 +392,29 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 	integration.ProgramTest(t, &opts)
 }
 
-func (st labelsState) expectedLabels() map[string]string {
+func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 	r := map[string]string{}
 	for k, v := range st.DefaultLabels {
-		r[k] = v
+		if v != "" {
+			r[k] = v
+		} else {
+			if prev.DefaultLabels[k] != "" {
+				r[k] = prev.DefaultLabels[k]
+			} else if prev.Labels[k] != "" {
+				r[k] = prev.Labels[k]
+			}
+		}
 	}
 	for k, v := range st.Labels {
-		r[k] = v
+		if v != "" {
+			r[k] = v
+		} else {
+			if prev.DefaultLabels[k] != "" {
+				r[k] = prev.DefaultLabels[k]
+			} else if prev.Labels[k] != "" {
+				r[k] = prev.Labels[k]
+			}
+		}
 	}
 	return r
 }
@@ -423,10 +439,12 @@ func validateStateResult(phase int, st1, st2 labelsState) func(
 			require.NoError(t, err)
 			t.Logf("phase: %d", phase)
 			t.Logf("state1: %v", st1.serialize(t))
+			prev := labelsState{}
 			if phase == 2 {
+				prev = st1
 				t.Logf("state2: %v", st2.serialize(t))
 			}
-			require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			require.Equalf(t, st.expectedLabels(prev), actualLabels, "key=%s", k)
 			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
 		}
 	}
