@@ -458,7 +458,7 @@ func Provider() tfbridge.ProviderInfo {
 		context.Background(),
 		shimv2.NewProvider(gcpProvider.Provider(),
 			shimv2.WithDiffStrategy(shimv2.PlanState),
-			shimv2.WithPlanResourceChange(func(s string) bool {
+			shimv2.WithPlanResourceChange(func(_ string) bool {
 				return true
 			}),
 		),
