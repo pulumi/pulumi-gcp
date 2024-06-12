@@ -13,6 +13,7 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
+	"reflect"
 	"testing"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
@@ -392,7 +393,9 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 	integration.ProgramTest(t, &opts)
 }
 
-func (st labelsState) expectedLabels(prev labelsState) map[string]string {
+func (st labelsState) expectedLabelsPRC(prev labelsState) map[string]string {
+	// Note that the upstream provider actually takes a "" value for a label to mean "keep the previous value".
+	// This behaviour is exposed under PlanResourceChange
 	r := map[string]string{}
 	for k, v := range st.DefaultLabels {
 		if v != "" {
@@ -415,6 +418,17 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 				r[k] = prev.Labels[k]
 			}
 		}
+	}
+	return r
+}
+
+func (st labelsState) expectedLabels() map[string]string {
+	r := map[string]string{}
+	for k, v := range st.DefaultLabels {
+		r[k] = v
+	}
+	for k, v := range st.Labels {
+		r[k] = v
 	}
 	return r
 }
@@ -444,7 +458,9 @@ func validateStateResult(phase int, st1, st2 labelsState) func(
 				prev = st1
 				t.Logf("state2: %v", st2.serialize(t))
 			}
-			require.Equalf(t, st.expectedLabels(prev), actualLabels, "key=%s", k)
+			if !reflect.DeepEqual(actualLabels, st.expectedLabelsPRC(prev)) {
+				require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			}
 			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
 		}
 	}
