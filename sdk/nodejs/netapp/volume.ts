@@ -106,6 +106,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly activeDirectory!: pulumi.Output<string>;
     /**
+     * Backup configuration for the volume.
+     * Structure is documented below.
+     */
+    public readonly backupConfig!: pulumi.Output<outputs.netapp.VolumeBackupConfig | undefined>;
+    /**
      * Capacity of the volume (in GiB).
      */
     public readonly capacityGib!: pulumi.Output<string>;
@@ -272,6 +277,7 @@ export class Volume extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
+            resourceInputs["backupConfig"] = state ? state.backupConfig : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
@@ -322,6 +328,7 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.storagePool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storagePool'");
             }
+            resourceInputs["backupConfig"] = args ? args.backupConfig : undefined;
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -372,6 +379,11 @@ export interface VolumeState {
      * Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
      */
     activeDirectory?: pulumi.Input<string>;
+    /**
+     * Backup configuration for the volume.
+     * Structure is documented below.
+     */
+    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
     /**
      * Capacity of the volume (in GiB).
      */
@@ -530,6 +542,11 @@ export interface VolumeState {
  * The set of arguments for constructing a Volume resource.
  */
 export interface VolumeArgs {
+    /**
+     * Backup configuration for the volume.
+     * Structure is documented below.
+     */
+    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
     /**
      * Capacity of the volume (in GiB).
      */

@@ -1033,6 +1033,13 @@ namespace Pulumi.Gcp
             set => _securityCenterCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _securityCenterManagementCustomEndpoint = new __Value<string?>(() => __config.Get("securityCenterManagementCustomEndpoint"));
+        public static string? SecurityCenterManagementCustomEndpoint
+        {
+            get => _securityCenterManagementCustomEndpoint.Get();
+            set => _securityCenterManagementCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _securityScannerCustomEndpoint = new __Value<string?>(() => __config.Get("securityScannerCustomEndpoint"));
         public static string? SecurityScannerCustomEndpoint
         {

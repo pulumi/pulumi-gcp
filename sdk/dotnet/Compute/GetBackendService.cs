@@ -166,6 +166,7 @@ namespace Pulumi.Gcp.Compute
         /// The URI of the Backend Service.
         /// </summary>
         public readonly string SelfLink;
+        public readonly string ServiceLbPolicy;
         /// <summary>
         /// The Backend Service session stickiness configuration.
         /// </summary>
@@ -237,6 +238,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            string serviceLbPolicy,
+
             string sessionAffinity,
 
             int timeoutSec)
@@ -271,6 +274,7 @@ namespace Pulumi.Gcp.Compute
             SecurityPolicy = securityPolicy;
             SecuritySettings = securitySettings;
             SelfLink = selfLink;
+            ServiceLbPolicy = serviceLbPolicy;
             SessionAffinity = sessionAffinity;
             TimeoutSec = timeoutSec;
         }

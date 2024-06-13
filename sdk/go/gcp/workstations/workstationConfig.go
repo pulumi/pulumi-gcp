@@ -536,8 +536,11 @@ import (
 //								},
 //							},
 //							&workstations.WorkstationConfigHostGceInstanceBoostConfigArgs{
-//								Id:          pulumi.String("boost-1"),
-//								MachineType: pulumi.String("e2-standard-2"),
+//								Id:                         pulumi.String("boost-2"),
+//								MachineType:                pulumi.String("n1-standard-2"),
+//								PoolSize:                   pulumi.Int(2),
+//								BootDiskSizeGb:             pulumi.Int(30),
+//								EnableNestedVirtualization: pulumi.Bool(true),
 //							},
 //						},
 //					},

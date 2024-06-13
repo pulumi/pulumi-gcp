@@ -87,6 +87,25 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * This flag specifies whether Backups will not fail when
+     * Backup for GKE detects Kubernetes configuration that is
+     * non-standard or requires additional setup to restore.
+     * 
+     */
+    @Import(name="permissiveMode")
+    private @Nullable Output<Boolean> permissiveMode;
+
+    /**
+     * @return This flag specifies whether Backups will not fail when
+     * Backup for GKE detects Kubernetes configuration that is
+     * non-standard or requires additional setup to restore.
+     * 
+     */
+    public Optional<Output<Boolean>> permissiveMode() {
+        return Optional.ofNullable(this.permissiveMode);
+    }
+
+    /**
      * A list of namespaced Kubernetes Resources.
      * Structure is documented below.
      * 
@@ -127,6 +146,7 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
         this.encryptionKey = $.encryptionKey;
         this.includeSecrets = $.includeSecrets;
         this.includeVolumeData = $.includeVolumeData;
+        this.permissiveMode = $.permissiveMode;
         this.selectedApplications = $.selectedApplications;
         this.selectedNamespaces = $.selectedNamespaces;
     }
@@ -239,6 +259,31 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder includeVolumeData(Boolean includeVolumeData) {
             return includeVolumeData(Output.of(includeVolumeData));
+        }
+
+        /**
+         * @param permissiveMode This flag specifies whether Backups will not fail when
+         * Backup for GKE detects Kubernetes configuration that is
+         * non-standard or requires additional setup to restore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissiveMode(@Nullable Output<Boolean> permissiveMode) {
+            $.permissiveMode = permissiveMode;
+            return this;
+        }
+
+        /**
+         * @param permissiveMode This flag specifies whether Backups will not fail when
+         * Backup for GKE detects Kubernetes configuration that is
+         * non-standard or requires additional setup to restore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissiveMode(Boolean permissiveMode) {
+            return permissiveMode(Output.of(permissiveMode));
         }
 
         /**

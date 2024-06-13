@@ -36,8 +36,6 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// <summary>
         /// A string that specifies the desired value in string format
         /// to use for transformation.
-        /// 
-        /// - - -
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

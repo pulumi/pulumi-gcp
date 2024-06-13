@@ -32,11 +32,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolNetworkConfigNetworkPerformanceConfig? NetworkPerformanceConfig;
         /// <summary>
-        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>

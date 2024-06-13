@@ -117,6 +117,7 @@ type LookupInstanceResult struct {
 	// The network performance configuration setting for the instance, if set. Structure is documented below.
 	NetworkPerformanceConfigs []GetInstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	Params                    []GetInstanceParam                    `pulumi:"params"`
+	PartnerMetadata           map[string]string                     `pulumi:"partnerMetadata"`
 	Project                   *string                               `pulumi:"project"`
 	PulumiLabels              map[string]string                     `pulumi:"pulumiLabels"`
 	ReservationAffinities     []GetInstanceReservationAffinity      `pulumi:"reservationAffinities"`
@@ -317,6 +318,10 @@ func (o LookupInstanceResultOutput) NetworkPerformanceConfigs() GetInstanceNetwo
 
 func (o LookupInstanceResultOutput) Params() GetInstanceParamArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceParam { return v.Params }).(GetInstanceParamArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {

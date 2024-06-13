@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseIAMPolicy{}
 	case "gcp:spanner/instance:Instance":
 		r = &Instance{}
+	case "gcp:spanner/instanceConfig:InstanceConfig":
+		r = &InstanceConfig{}
 	case "gcp:spanner/instanceIAMBinding:InstanceIAMBinding":
 		r = &InstanceIAMBinding{}
 	case "gcp:spanner/instanceIAMMember:InstanceIAMMember":
@@ -73,6 +75,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"spanner/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"spanner/instanceConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

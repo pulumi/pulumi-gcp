@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,23 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs exten
     }
 
     /**
+     * The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tableReference")
+    private @Nullable Output<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs> tableReference;
+
+    /**
+     * @return The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs>> tableReference() {
+        return Optional.ofNullable(this.tableReference);
+    }
+
+    /**
      * A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
      * Structure is documented below.
      * 
@@ -52,6 +70,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs exten
 
     private PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs(PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs $) {
         this.otherTables = $.otherTables;
+        this.tableReference = $.tableReference;
         this.tables = $.tables;
     }
 
@@ -92,6 +111,29 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs exten
          */
         public Builder otherTables(PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs otherTables) {
             return otherTables(Output.of(otherTables));
+        }
+
+        /**
+         * @param tableReference The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableReference(@Nullable Output<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs> tableReference) {
+            $.tableReference = tableReference;
+            return this;
+        }
+
+        /**
+         * @param tableReference The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableReference(PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs tableReference) {
+            return tableReference(Output.of(tableReference));
         }
 
         /**

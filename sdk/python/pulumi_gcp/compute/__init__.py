@@ -77,6 +77,7 @@ from .get_resource_policy import *
 from .get_router import *
 from .get_router_nat import *
 from .get_router_status import *
+from .get_security_policy import *
 from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_policy import *
@@ -135,6 +136,7 @@ from .organization_security_policy_association import *
 from .organization_security_policy_rule import *
 from .packet_mirroring import *
 from .per_instance_config import *
+from .project_cloud_armor_tier import *
 from .project_default_network_tier import *
 from .project_metadata import *
 from .project_metadata_item import *

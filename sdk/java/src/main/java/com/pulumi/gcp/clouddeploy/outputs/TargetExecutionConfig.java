@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,11 @@ public final class TargetExecutionConfig {
      * 
      */
     private List<String> usages;
+    /**
+     * @return Optional. If true, additional logging will be enabled when running builds in this execution environment.
+     * 
+     */
+    private @Nullable Boolean verbose;
     /**
      * @return Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
      * 
@@ -69,6 +75,13 @@ public final class TargetExecutionConfig {
         return this.usages;
     }
     /**
+     * @return Optional. If true, additional logging will be enabled when running builds in this execution environment.
+     * 
+     */
+    public Optional<Boolean> verbose() {
+        return Optional.ofNullable(this.verbose);
+    }
+    /**
      * @return Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
      * 
      */
@@ -89,6 +102,7 @@ public final class TargetExecutionConfig {
         private @Nullable String executionTimeout;
         private @Nullable String serviceAccount;
         private List<String> usages;
+        private @Nullable Boolean verbose;
         private @Nullable String workerPool;
         public Builder() {}
         public Builder(TargetExecutionConfig defaults) {
@@ -97,6 +111,7 @@ public final class TargetExecutionConfig {
     	      this.executionTimeout = defaults.executionTimeout;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.usages = defaults.usages;
+    	      this.verbose = defaults.verbose;
     	      this.workerPool = defaults.workerPool;
         }
 
@@ -130,6 +145,12 @@ public final class TargetExecutionConfig {
             return usages(List.of(usages));
         }
         @CustomType.Setter
+        public Builder verbose(@Nullable Boolean verbose) {
+
+            this.verbose = verbose;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
 
             this.workerPool = workerPool;
@@ -141,6 +162,7 @@ public final class TargetExecutionConfig {
             _resultValue.executionTimeout = executionTimeout;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.usages = usages;
+            _resultValue.verbose = verbose;
             _resultValue.workerPool = workerPool;
             return _resultValue;
         }

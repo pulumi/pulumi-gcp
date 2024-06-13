@@ -35,6 +35,11 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { ManagementOrganizationEventThreatDetectionCustomModuleArgs, ManagementOrganizationEventThreatDetectionCustomModuleState } from "./managementOrganizationEventThreatDetectionCustomModule";
+export type ManagementOrganizationEventThreatDetectionCustomModule = import("./managementOrganizationEventThreatDetectionCustomModule").ManagementOrganizationEventThreatDetectionCustomModule;
+export const ManagementOrganizationEventThreatDetectionCustomModule: typeof import("./managementOrganizationEventThreatDetectionCustomModule").ManagementOrganizationEventThreatDetectionCustomModule = null as any;
+utilities.lazyLoad(exports, ["ManagementOrganizationEventThreatDetectionCustomModule"], () => require("./managementOrganizationEventThreatDetectionCustomModule"));
+
 export { MuteConfigArgs, MuteConfigState } from "./muteConfig";
 export type MuteConfig = import("./muteConfig").MuteConfig;
 export const MuteConfig: typeof import("./muteConfig").MuteConfig = null as any;
@@ -90,6 +95,8 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule":
+                return new ManagementOrganizationEventThreatDetectionCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/muteConfig:MuteConfig":
                 return new MuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
@@ -116,6 +123,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule"
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementOrganizationEventThreatDetectionCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)

@@ -75,6 +75,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
+    }
+
+    /**
      * The instance type to create. One of `&#34;DEVELOPMENT&#34;` or `&#34;PRODUCTION&#34;`. Defaults to `&#34;PRODUCTION&#34;`.
      * It is recommended to leave this field unspecified since the distinction between `&#34;DEVELOPMENT&#34;` and `&#34;PRODUCTION&#34;` instances is going away,
      * and all instances will become `&#34;PRODUCTION&#34;` instances. This means that new and existing `&#34;DEVELOPMENT&#34;` instances will be converted to
@@ -164,6 +179,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.clusters = $.clusters;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
+        this.forceDestroy = $.forceDestroy;
         this.instanceType = $.instanceType;
         this.labels = $.labels;
         this.name = $.name;
@@ -273,6 +289,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         /**

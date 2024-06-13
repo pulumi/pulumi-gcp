@@ -43,6 +43,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
+        /// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+        /// </summary>
+        [Input("verbose")]
+        public Input<bool>? Verbose { get; set; }
+
+        /// <summary>
         /// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         /// </summary>
         [Input("workerPool")]

@@ -486,6 +486,20 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.params;
     }
     /**
+     * Partner Metadata Map made available within the instance.
+     * 
+     */
+    @Export(name="partnerMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> partnerMetadata;
+
+    /**
+     * @return Partner Metadata Map made available within the instance.
+     * 
+     */
+    public Output<Map<String,String>> partnerMetadata() {
+        return this.partnerMetadata;
+    }
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      * 

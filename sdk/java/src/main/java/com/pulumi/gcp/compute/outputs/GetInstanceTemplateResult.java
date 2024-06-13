@@ -134,6 +134,7 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
+    private Map<String,String> partnerMetadata;
     /**
      * @return The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -350,6 +351,9 @@ public final class GetInstanceTemplateResult {
     public List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs() {
         return this.networkPerformanceConfigs;
     }
+    public Map<String,String> partnerMetadata() {
+        return this.partnerMetadata;
+    }
     /**
      * @return The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -470,6 +474,7 @@ public final class GetInstanceTemplateResult {
         private String namePrefix;
         private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
+        private Map<String,String> partnerMetadata;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String region;
@@ -508,6 +513,7 @@ public final class GetInstanceTemplateResult {
     	      this.namePrefix = defaults.namePrefix;
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
+    	      this.partnerMetadata = defaults.partnerMetadata;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
@@ -712,6 +718,14 @@ public final class GetInstanceTemplateResult {
             return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
         @CustomType.Setter
+        public Builder partnerMetadata(Map<String,String> partnerMetadata) {
+            if (partnerMetadata == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "partnerMetadata");
+            }
+            this.partnerMetadata = partnerMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -853,6 +867,7 @@ public final class GetInstanceTemplateResult {
             _resultValue.namePrefix = namePrefix;
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
+            _resultValue.partnerMetadata = partnerMetadata;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;

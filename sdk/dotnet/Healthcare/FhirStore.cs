@@ -53,9 +53,12 @@ namespace Pulumi.Gcp.Healthcare
     ///         DisableResourceVersioning = false,
     ///         EnableHistoryImport = false,
     ///         DefaultSearchHandlingStrict = false,
-    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///         NotificationConfigs = new[]
     ///         {
-    ///             PubsubTopic = topic.Id,
+    ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
     ///         },
     ///         Labels = 
     ///         {
@@ -140,48 +143,6 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Fhir Store Notification Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic", new()
-    ///     {
-    ///         Name = "fhir-notifications",
-    ///     });
-    /// 
-    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
-    ///     {
-    ///         Name = "example-dataset",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
-    ///     {
-    ///         Name = "example-fhir-store",
-    ///         Dataset = dataset.Id,
-    ///         Version = "R4",
-    ///         EnableUpdateCreate = false,
-    ///         DisableReferentialIntegrity = false,
-    ///         DisableResourceVersioning = false,
-    ///         EnableHistoryImport = false,
-    ///         Labels = 
-    ///         {
-    ///             { "label1", "labelvalue1" },
-    ///         },
-    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
-    ///         {
-    ///             PubsubTopic = topic.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Healthcare Fhir Store Notification Configs
     /// 
     /// ```csharp
@@ -212,7 +173,6 @@ namespace Pulumi.Gcp.Healthcare
     ///         DisableReferentialIntegrity = false,
     ///         DisableResourceVersioning = false,
     ///         EnableHistoryImport = false,
-    ///         EnableHistoryModifications = false,
     ///         Labels = 
     ///         {
     ///             { "label1", "labelvalue1" },
@@ -358,8 +318,11 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -561,8 +524,11 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -736,8 +702,11 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }

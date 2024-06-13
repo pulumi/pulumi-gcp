@@ -769,6 +769,170 @@ func (o ClusterStateInfoUpdateInfoPtrOutput) TargetShardCount() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClusterZoneDistributionConfig struct {
+	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
+	// If not provided, MULTI_ZONE will be used as default
+	// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+	Mode *string `pulumi:"mode"`
+	// Immutable. The zone for single zone Memorystore Redis cluster.
+	Zone *string `pulumi:"zone"`
+}
+
+// ClusterZoneDistributionConfigInput is an input type that accepts ClusterZoneDistributionConfigArgs and ClusterZoneDistributionConfigOutput values.
+// You can construct a concrete instance of `ClusterZoneDistributionConfigInput` via:
+//
+//	ClusterZoneDistributionConfigArgs{...}
+type ClusterZoneDistributionConfigInput interface {
+	pulumi.Input
+
+	ToClusterZoneDistributionConfigOutput() ClusterZoneDistributionConfigOutput
+	ToClusterZoneDistributionConfigOutputWithContext(context.Context) ClusterZoneDistributionConfigOutput
+}
+
+type ClusterZoneDistributionConfigArgs struct {
+	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
+	// If not provided, MULTI_ZONE will be used as default
+	// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Immutable. The zone for single zone Memorystore Redis cluster.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (ClusterZoneDistributionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterZoneDistributionConfig)(nil)).Elem()
+}
+
+func (i ClusterZoneDistributionConfigArgs) ToClusterZoneDistributionConfigOutput() ClusterZoneDistributionConfigOutput {
+	return i.ToClusterZoneDistributionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterZoneDistributionConfigArgs) ToClusterZoneDistributionConfigOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterZoneDistributionConfigOutput)
+}
+
+func (i ClusterZoneDistributionConfigArgs) ToClusterZoneDistributionConfigPtrOutput() ClusterZoneDistributionConfigPtrOutput {
+	return i.ToClusterZoneDistributionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterZoneDistributionConfigArgs) ToClusterZoneDistributionConfigPtrOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterZoneDistributionConfigOutput).ToClusterZoneDistributionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterZoneDistributionConfigPtrInput is an input type that accepts ClusterZoneDistributionConfigArgs, ClusterZoneDistributionConfigPtr and ClusterZoneDistributionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterZoneDistributionConfigPtrInput` via:
+//
+//	        ClusterZoneDistributionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterZoneDistributionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterZoneDistributionConfigPtrOutput() ClusterZoneDistributionConfigPtrOutput
+	ToClusterZoneDistributionConfigPtrOutputWithContext(context.Context) ClusterZoneDistributionConfigPtrOutput
+}
+
+type clusterZoneDistributionConfigPtrType ClusterZoneDistributionConfigArgs
+
+func ClusterZoneDistributionConfigPtr(v *ClusterZoneDistributionConfigArgs) ClusterZoneDistributionConfigPtrInput {
+	return (*clusterZoneDistributionConfigPtrType)(v)
+}
+
+func (*clusterZoneDistributionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterZoneDistributionConfig)(nil)).Elem()
+}
+
+func (i *clusterZoneDistributionConfigPtrType) ToClusterZoneDistributionConfigPtrOutput() ClusterZoneDistributionConfigPtrOutput {
+	return i.ToClusterZoneDistributionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterZoneDistributionConfigPtrType) ToClusterZoneDistributionConfigPtrOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterZoneDistributionConfigPtrOutput)
+}
+
+type ClusterZoneDistributionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterZoneDistributionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterZoneDistributionConfig)(nil)).Elem()
+}
+
+func (o ClusterZoneDistributionConfigOutput) ToClusterZoneDistributionConfigOutput() ClusterZoneDistributionConfigOutput {
+	return o
+}
+
+func (o ClusterZoneDistributionConfigOutput) ToClusterZoneDistributionConfigOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigOutput {
+	return o
+}
+
+func (o ClusterZoneDistributionConfigOutput) ToClusterZoneDistributionConfigPtrOutput() ClusterZoneDistributionConfigPtrOutput {
+	return o.ToClusterZoneDistributionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterZoneDistributionConfigOutput) ToClusterZoneDistributionConfigPtrOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterZoneDistributionConfig) *ClusterZoneDistributionConfig {
+		return &v
+	}).(ClusterZoneDistributionConfigPtrOutput)
+}
+
+// Immutable. The mode for zone distribution for Memorystore Redis cluster.
+// If not provided, MULTI_ZONE will be used as default
+// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+func (o ClusterZoneDistributionConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterZoneDistributionConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The zone for single zone Memorystore Redis cluster.
+func (o ClusterZoneDistributionConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterZoneDistributionConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type ClusterZoneDistributionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterZoneDistributionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterZoneDistributionConfig)(nil)).Elem()
+}
+
+func (o ClusterZoneDistributionConfigPtrOutput) ToClusterZoneDistributionConfigPtrOutput() ClusterZoneDistributionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterZoneDistributionConfigPtrOutput) ToClusterZoneDistributionConfigPtrOutputWithContext(ctx context.Context) ClusterZoneDistributionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterZoneDistributionConfigPtrOutput) Elem() ClusterZoneDistributionConfigOutput {
+	return o.ApplyT(func(v *ClusterZoneDistributionConfig) ClusterZoneDistributionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterZoneDistributionConfig
+		return ret
+	}).(ClusterZoneDistributionConfigOutput)
+}
+
+// Immutable. The mode for zone distribution for Memorystore Redis cluster.
+// If not provided, MULTI_ZONE will be used as default
+// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+func (o ClusterZoneDistributionConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterZoneDistributionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The zone for single zone Memorystore Redis cluster.
+func (o ClusterZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterZoneDistributionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceMaintenancePolicy struct {
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -2913,6 +3077,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoArrayInput)(nil)).Elem(), ClusterStateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoPtrInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterZoneDistributionConfigInput)(nil)).Elem(), ClusterZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterZoneDistributionConfigPtrInput)(nil)).Elem(), ClusterZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
@@ -2952,6 +3118,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterStateInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoPtrOutput{})
+	pulumi.RegisterOutputType(ClusterZoneDistributionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterZoneDistributionConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})

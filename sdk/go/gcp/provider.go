@@ -155,6 +155,7 @@ type Provider struct {
 	SecretManagerCustomEndpoint               pulumi.StringPtrOutput `pulumi:"secretManagerCustomEndpoint"`
 	SecureSourceManagerCustomEndpoint         pulumi.StringPtrOutput `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint              pulumi.StringPtrOutput `pulumi:"securityCenterCustomEndpoint"`
+	SecurityCenterManagementCustomEndpoint    pulumi.StringPtrOutput `pulumi:"securityCenterManagementCustomEndpoint"`
 	SecurityScannerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"securityScannerCustomEndpoint"`
 	SecuritypostureCustomEndpoint             pulumi.StringPtrOutput `pulumi:"securitypostureCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint            pulumi.StringPtrOutput `pulumi:"serviceDirectoryCustomEndpoint"`
@@ -364,6 +365,7 @@ type providerArgs struct {
 	SecretManagerCustomEndpoint               *string           `pulumi:"secretManagerCustomEndpoint"`
 	SecureSourceManagerCustomEndpoint         *string           `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint              *string           `pulumi:"securityCenterCustomEndpoint"`
+	SecurityCenterManagementCustomEndpoint    *string           `pulumi:"securityCenterManagementCustomEndpoint"`
 	SecurityScannerCustomEndpoint             *string           `pulumi:"securityScannerCustomEndpoint"`
 	SecuritypostureCustomEndpoint             *string           `pulumi:"securitypostureCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint            *string           `pulumi:"serviceDirectoryCustomEndpoint"`
@@ -537,6 +539,7 @@ type ProviderArgs struct {
 	SecretManagerCustomEndpoint               pulumi.StringPtrInput
 	SecureSourceManagerCustomEndpoint         pulumi.StringPtrInput
 	SecurityCenterCustomEndpoint              pulumi.StringPtrInput
+	SecurityCenterManagementCustomEndpoint    pulumi.StringPtrInput
 	SecurityScannerCustomEndpoint             pulumi.StringPtrInput
 	SecuritypostureCustomEndpoint             pulumi.StringPtrInput
 	ServiceDirectoryCustomEndpoint            pulumi.StringPtrInput
@@ -1148,6 +1151,10 @@ func (o ProviderOutput) SecureSourceManagerCustomEndpoint() pulumi.StringPtrOutp
 
 func (o ProviderOutput) SecurityCenterCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecurityCenterCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SecurityCenterManagementCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecurityCenterManagementCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) SecurityScannerCustomEndpoint() pulumi.StringPtrOutput {

@@ -248,18 +248,32 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
+     * @deprecated
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     @Import(name="notificationConfig")
     private @Nullable Output<FhirStoreNotificationConfigArgs> notificationConfig;
 
     /**
-     * @return A nested object resource
+     * @return (Optional, Deprecated)
+     * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
+     * @deprecated
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     public Optional<Output<FhirStoreNotificationConfigArgs>> notificationConfig() {
         return Optional.ofNullable(this.notificationConfig);
     }
@@ -651,24 +665,38 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig A nested object resource
+         * @param notificationConfig (Optional, Deprecated)
+         * A nested object resource
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * 
          */
+        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
         public Builder notificationConfig(@Nullable Output<FhirStoreNotificationConfigArgs> notificationConfig) {
             $.notificationConfig = notificationConfig;
             return this;
         }
 
         /**
-         * @param notificationConfig A nested object resource
+         * @param notificationConfig (Optional, Deprecated)
+         * A nested object resource
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * 
          */
+        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
         public Builder notificationConfig(FhirStoreNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
         }

@@ -173,6 +173,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly params!: pulumi.Output<outputs.compute.InstanceFromMachineImageParams>;
     /**
+     * Partner Metadata Map made available within the instance.
+     */
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
      * nor project are provided, the provider project is used.
      */
@@ -276,6 +280,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
+            resourceInputs["partnerMetadata"] = state ? state.partnerMetadata : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
@@ -313,6 +318,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -457,6 +463,10 @@ export interface InstanceFromMachineImageState {
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      */
     params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
+    /**
+     * Partner Metadata Map made available within the instance.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
      * nor project are provided, the provider project is used.
@@ -606,6 +616,10 @@ export interface InstanceFromMachineImageArgs {
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      */
     params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
+    /**
+     * Partner Metadata Map made available within the instance.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
      * nor project are provided, the provider project is used.

@@ -86,6 +86,8 @@ type EndpointAttachment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Enable global access for endpoint attachment.
+	EndpointGlobalAccess pulumi.BoolPtrOutput `pulumi:"endpointGlobalAccess"`
 	// The Private Service Connect connection endpoint ip.
 	EndpointIp pulumi.StringOutput `pulumi:"endpointIp"`
 	// Resource labels to represent user provided metadata.
@@ -158,6 +160,8 @@ type endpointAttachmentState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Enable global access for endpoint attachment.
+	EndpointGlobalAccess *bool `pulumi:"endpointGlobalAccess"`
 	// The Private Service Connect connection endpoint ip.
 	EndpointIp *string `pulumi:"endpointIp"`
 	// Resource labels to represent user provided metadata.
@@ -190,6 +194,8 @@ type EndpointAttachmentState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Enable global access for endpoint attachment.
+	EndpointGlobalAccess pulumi.BoolPtrInput
 	// The Private Service Connect connection endpoint ip.
 	EndpointIp pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
@@ -222,6 +228,8 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 type endpointAttachmentArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable global access for endpoint attachment.
+	EndpointGlobalAccess *bool `pulumi:"endpointGlobalAccess"`
 	// Resource labels to represent user provided metadata.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -244,6 +252,8 @@ type endpointAttachmentArgs struct {
 type EndpointAttachmentArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable global access for endpoint attachment.
+	EndpointGlobalAccess pulumi.BoolPtrInput
 	// Resource labels to represent user provided metadata.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -362,6 +372,11 @@ func (o EndpointAttachmentOutput) Description() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o EndpointAttachmentOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Enable global access for endpoint attachment.
+func (o EndpointAttachmentOutput) EndpointGlobalAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.BoolPtrOutput { return v.EndpointGlobalAccess }).(pulumi.BoolPtrOutput)
 }
 
 // The Private Service Connect connection endpoint ip.

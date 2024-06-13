@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,8 +24,8 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * Structure is documented below.
      * 
      */
-    @Import(name="infoType", required=true)
-    private Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType;
+    @Import(name="infoType")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType;
 
     /**
      * @return Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
@@ -32,8 +34,8 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * Structure is documented below.
      * 
      */
-    public Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType() {
-        return this.infoType;
+    public Optional<Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs>> infoType() {
+        return Optional.ofNullable(this.infoType);
     }
 
     /**
@@ -85,7 +87,7 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
          * @return builder
          * 
          */
-        public Builder infoType(Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType) {
+        public Builder infoType(@Nullable Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType) {
             $.infoType = infoType;
             return this;
         }
@@ -125,9 +127,6 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
         }
 
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs build() {
-            if ($.infoType == null) {
-                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs", "infoType");
-            }
             if ($.maxFindings == null) {
                 throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs", "maxFindings");
             }

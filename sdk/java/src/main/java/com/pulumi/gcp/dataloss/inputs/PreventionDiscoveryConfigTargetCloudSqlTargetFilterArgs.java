@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +35,23 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     }
 
     /**
+     * The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="databaseResourceReference")
+    private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs> databaseResourceReference;
+
+    /**
+     * @return The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs>> databaseResourceReference() {
+        return Optional.ofNullable(this.databaseResourceReference);
+    }
+
+    /**
      * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
      * 
      */
@@ -52,6 +70,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs(PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs $) {
         this.collection = $.collection;
+        this.databaseResourceReference = $.databaseResourceReference;
         this.others = $.others;
     }
 
@@ -94,6 +113,29 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
          */
         public Builder collection(PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs collection) {
             return collection(Output.of(collection));
+        }
+
+        /**
+         * @param databaseResourceReference The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseResourceReference(@Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs> databaseResourceReference) {
+            $.databaseResourceReference = databaseResourceReference;
+            return this;
+        }
+
+        /**
+         * @param databaseResourceReference The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseResourceReference(PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs databaseResourceReference) {
+            return databaseResourceReference(Output.of(databaseResourceReference));
         }
 
         /**

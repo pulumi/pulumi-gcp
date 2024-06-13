@@ -14,9 +14,17 @@ public final class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs extends c
 
     public static final NodePoolNetworkConfigPodCidrOverprovisionConfigArgs Empty = new NodePoolNetworkConfigPodCidrOverprovisionConfigArgs();
 
+    /**
+     * Whether pod cidr overprovision is disabled.
+     * 
+     */
     @Import(name="disabled", required=true)
     private Output<Boolean> disabled;
 
+    /**
+     * @return Whether pod cidr overprovision is disabled.
+     * 
+     */
     public Output<Boolean> disabled() {
         return this.disabled;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs extends c
             $ = new NodePoolNetworkConfigPodCidrOverprovisionConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disabled Whether pod cidr overprovision is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled Whether pod cidr overprovision is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }

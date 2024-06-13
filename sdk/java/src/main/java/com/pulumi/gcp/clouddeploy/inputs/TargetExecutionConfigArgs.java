@@ -6,6 +6,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -78,6 +79,21 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. If true, additional logging will be enabled when running builds in this execution environment.
+     * 
+     */
+    @Import(name="verbose")
+    private @Nullable Output<Boolean> verbose;
+
+    /**
+     * @return Optional. If true, additional logging will be enabled when running builds in this execution environment.
+     * 
+     */
+    public Optional<Output<Boolean>> verbose() {
+        return Optional.ofNullable(this.verbose);
+    }
+
+    /**
      * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
      * 
      */
@@ -99,6 +115,7 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
         this.executionTimeout = $.executionTimeout;
         this.serviceAccount = $.serviceAccount;
         this.usages = $.usages;
+        this.verbose = $.verbose;
         this.workerPool = $.workerPool;
     }
 
@@ -212,6 +229,27 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder usages(String... usages) {
             return usages(List.of(usages));
+        }
+
+        /**
+         * @param verbose Optional. If true, additional logging will be enabled when running builds in this execution environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verbose(@Nullable Output<Boolean> verbose) {
+            $.verbose = verbose;
+            return this;
+        }
+
+        /**
+         * @param verbose Optional. If true, additional logging will be enabled when running builds in this execution environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verbose(Boolean verbose) {
+            return verbose(Output.of(verbose));
         }
 
         /**

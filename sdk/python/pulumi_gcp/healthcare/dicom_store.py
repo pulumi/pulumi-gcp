@@ -378,6 +378,7 @@ class DicomStore(pulumi.CustomResource):
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
+                send_for_bulk_import=True,
             ),
             labels={
                 "label1": "labelvalue1",
@@ -496,6 +497,7 @@ class DicomStore(pulumi.CustomResource):
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
+                send_for_bulk_import=True,
             ),
             labels={
                 "label1": "labelvalue1",

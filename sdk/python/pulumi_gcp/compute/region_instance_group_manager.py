@@ -30,11 +30,14 @@ class RegionInstanceGroupManagerArgs:
                  params: Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_stopped_size: Optional[pulumi.Input[int]] = None,
+                 target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
                  wait_for_instances_status: Optional[pulumi.Input[str]] = None):
@@ -80,6 +83,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
                
                - - -
+        :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -88,6 +92,8 @@ class RegionInstanceGroupManagerArgs:
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group.
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, the provider will
@@ -123,6 +129,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if standby_policy is not None:
+            pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
             pulumi.set(__self__, "stateful_disks", stateful_disks)
         if stateful_external_ips is not None:
@@ -133,6 +141,10 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_stopped_size is not None:
+            pulumi.set(__self__, "target_stopped_size", target_stopped_size)
+        if target_suspended_size is not None:
+            pulumi.set(__self__, "target_suspended_size", target_suspended_size)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
         if wait_for_instances is not None:
@@ -335,6 +347,18 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]:
+        """
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @standby_policy.setter
+    def standby_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]):
+        pulumi.set(self, "standby_policy", value)
+
+    @property
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
         """
@@ -398,6 +422,30 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "target_size", value)
 
     @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The target number of stopped instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_stopped_size")
+
+    @target_stopped_size.setter
+    def target_stopped_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_stopped_size", value)
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The target number of suspended instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_suspended_size")
+
+    @target_suspended_size.setter
+    def target_suspended_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_suspended_size", value)
+
+    @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]:
         """
@@ -459,12 +507,15 @@ class _RegionInstanceGroupManagerState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_stopped_size: Optional[pulumi.Input[int]] = None,
+                 target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
@@ -512,6 +563,7 @@ class _RegionInstanceGroupManagerState:
                
                - - -
         :param pulumi.Input[str] self_link: The URL of the created resource.
+        :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -521,6 +573,8 @@ class _RegionInstanceGroupManagerState:
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group.
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -567,6 +621,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if standby_policy is not None:
+            pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
             pulumi.set(__self__, "stateful_disks", stateful_disks)
         if stateful_external_ips is not None:
@@ -579,6 +635,10 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_stopped_size is not None:
+            pulumi.set(__self__, "target_stopped_size", target_stopped_size)
+        if target_suspended_size is not None:
+            pulumi.set(__self__, "target_suspended_size", target_suspended_size)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
         if versions is not None:
@@ -817,6 +877,18 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]:
+        """
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @standby_policy.setter
+    def standby_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]):
+        pulumi.set(self, "standby_policy", value)
+
+    @property
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
         """
@@ -892,6 +964,30 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "target_size", value)
 
     @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The target number of stopped instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_stopped_size")
+
+    @target_stopped_size.setter
+    def target_stopped_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_stopped_size", value)
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The target number of suspended instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_suspended_size")
+
+    @target_suspended_size.setter
+    def target_suspended_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_suspended_size", value)
+
+    @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]:
         """
@@ -965,11 +1061,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  params: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStandbyPolicyArgs']]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_stopped_size: Optional[pulumi.Input[int]] = None,
+                 target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
@@ -1060,6 +1159,28 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
+        ### With Standby Policy (`Google-Beta` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        igm_sr = gcp.compute.RegionInstanceGroupManager("igm-sr",
+            name="tf-sr-igm",
+            base_instance_name="tf-sr-igm-instance",
+            region="us-central1",
+            target_size=5,
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=sr_igm["selfLink"],
+                name="primary",
+            )],
+            standby_policy=gcp.compute.RegionInstanceGroupManagerStandbyPolicyArgs(
+                initial_delay_sec=50,
+                mode="SCALE_OUT_POOL",
+            ),
+            target_suspended_size=1,
+            target_stopped_size=1)
+        ```
+
         ## Import
 
         Instance group managers can be imported using any of these accepted formats:
@@ -1111,6 +1232,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
                
                - - -
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStandbyPolicyArgs']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1119,6 +1241,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group.
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1222,6 +1346,28 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
+        ### With Standby Policy (`Google-Beta` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        igm_sr = gcp.compute.RegionInstanceGroupManager("igm-sr",
+            name="tf-sr-igm",
+            base_instance_name="tf-sr-igm-instance",
+            region="us-central1",
+            target_size=5,
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=sr_igm["selfLink"],
+                name="primary",
+            )],
+            standby_policy=gcp.compute.RegionInstanceGroupManagerStandbyPolicyArgs(
+                initial_delay_sec=50,
+                mode="SCALE_OUT_POOL",
+            ),
+            target_suspended_size=1,
+            target_stopped_size=1)
+        ```
+
         ## Import
 
         Instance group managers can be imported using any of these accepted formats:
@@ -1262,11 +1408,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  params: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStandbyPolicyArgs']]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_stopped_size: Optional[pulumi.Input[int]] = None,
+                 target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
@@ -1295,11 +1444,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["standby_policy"] = standby_policy
             __props__.__dict__["stateful_disks"] = stateful_disks
             __props__.__dict__["stateful_external_ips"] = stateful_external_ips
             __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
+            __props__.__dict__["target_stopped_size"] = target_stopped_size
+            __props__.__dict__["target_suspended_size"] = target_suspended_size
             __props__.__dict__["update_policy"] = update_policy
             if versions is None and not opts.urn:
                 raise TypeError("Missing required property 'versions'")
@@ -1338,12 +1490,15 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            standby_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStandbyPolicyArgs']]] = None,
             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
             stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
             stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatusArgs']]]]] = None,
             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_size: Optional[pulumi.Input[int]] = None,
+            target_stopped_size: Optional[pulumi.Input[int]] = None,
+            target_suspended_size: Optional[pulumi.Input[int]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
             versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
             wait_for_instances: Optional[pulumi.Input[bool]] = None,
@@ -1396,6 +1551,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] self_link: The URL of the created resource.
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStandbyPolicyArgs']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1405,6 +1561,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group.
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1438,12 +1596,15 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["standby_policy"] = standby_policy
         __props__.__dict__["stateful_disks"] = stateful_disks
         __props__.__dict__["stateful_external_ips"] = stateful_external_ips
         __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["target_pools"] = target_pools
         __props__.__dict__["target_size"] = target_size
+        __props__.__dict__["target_stopped_size"] = target_stopped_size
+        __props__.__dict__["target_suspended_size"] = target_suspended_size
         __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["versions"] = versions
         __props__.__dict__["wait_for_instances"] = wait_for_instances
@@ -1611,6 +1772,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> pulumi.Output['outputs.RegionInstanceGroupManagerStandbyPolicy']:
+        """
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @property
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> pulumi.Output[Optional[Sequence['outputs.RegionInstanceGroupManagerStatefulDisk']]]:
         """
@@ -1660,6 +1829,22 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         """
         return pulumi.get(self, "target_size")
+
+    @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> pulumi.Output[int]:
+        """
+        The target number of stopped instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_stopped_size")
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> pulumi.Output[int]:
+        """
+        The target number of suspended instances for this managed instance group.
+        """
+        return pulumi.get(self, "target_suspended_size")
 
     @property
     @pulumi.getter(name="updatePolicy")

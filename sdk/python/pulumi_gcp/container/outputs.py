@@ -220,6 +220,7 @@ __all__ = [
     'ClusterReleaseChannel',
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
+    'ClusterSecretManagerConfig',
     'ClusterSecurityPostureConfig',
     'ClusterServiceExternalIpsConfig',
     'ClusterTpuConfig',
@@ -408,6 +409,7 @@ __all__ = [
     'GetClusterReleaseChannelResult',
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
+    'GetClusterSecretManagerConfigResult',
     'GetClusterSecurityPostureConfigResult',
     'GetClusterServiceExternalIpsConfigResult',
     'GetClusterTpuConfigResult',
@@ -12020,6 +12022,24 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
+class ClusterSecretManagerConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the Secret Manager add-on for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the Secret Manager add-on for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClusterSecurityPostureConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12446,8 +12466,8 @@ class NodePoolNetworkConfig(dict):
                Structure is documented below
         :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         :param bool enable_private_nodes: Whether nodes have internal IP addresses only.
-        :param 'NodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration.
-        :param 'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        :param 'NodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration. Structure is documented below.
+        :param 'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
@@ -12506,7 +12526,7 @@ class NodePoolNetworkConfig(dict):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional['outputs.NodePoolNetworkConfigNetworkPerformanceConfig']:
         """
-        Network bandwidth tier configuration.
+        Network bandwidth tier configuration. Structure is documented below.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -12514,7 +12534,7 @@ class NodePoolNetworkConfig(dict):
     @pulumi.getter(name="podCidrOverprovisionConfig")
     def pod_cidr_overprovision_config(self) -> Optional['outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig']:
         """
-        Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
         """
         return pulumi.get(self, "pod_cidr_overprovision_config")
 
@@ -12667,11 +12687,17 @@ class NodePoolNetworkConfigNetworkPerformanceConfig(dict):
 class NodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
+        """
+        :param bool disabled: Whether pod cidr overprovision is disabled.
+        """
         pulumi.set(__self__, "disabled", disabled)
 
     @property
     @pulumi.getter
     def disabled(self) -> bool:
+        """
+        Whether pod cidr overprovision is disabled.
+        """
         return pulumi.get(self, "disabled")
 
 
@@ -19795,6 +19821,24 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
         The ID of a BigQuery Dataset.
         """
         return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
+class GetClusterSecretManagerConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the Secret manager csi component.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the Secret manager csi component.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

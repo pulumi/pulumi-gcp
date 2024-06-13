@@ -341,7 +341,8 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     }
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * 
      */
     @Export(name="skipInitialVersionCreation", refs={Boolean.class}, tree="[0]")
@@ -349,7 +350,8 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * 
      */
     public Output<Optional<Boolean>> skipInitialVersionCreation() {

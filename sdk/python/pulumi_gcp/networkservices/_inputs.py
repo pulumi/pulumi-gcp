@@ -78,6 +78,8 @@ __all__ = [
     'LbTrafficExtensionExtensionChainArgs',
     'LbTrafficExtensionExtensionChainExtensionArgs',
     'LbTrafficExtensionExtensionChainMatchConditionArgs',
+    'ServiceLbPoliciesAutoCapacityDrainArgs',
+    'ServiceLbPoliciesFailoverConfigArgs',
     'TcpRouteRuleArgs',
     'TcpRouteRuleActionArgs',
     'TcpRouteRuleActionDestinationArgs',
@@ -4724,6 +4726,51 @@ class LbTrafficExtensionExtensionChainMatchConditionArgs:
     @cel_expression.setter
     def cel_expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "cel_expression", value)
+
+
+@pulumi.input_type
+class ServiceLbPoliciesAutoCapacityDrainArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable: Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+
+@pulumi.input_type
+class ServiceLbPoliciesFailoverConfigArgs:
+    def __init__(__self__, *,
+                 failover_health_threshold: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] failover_health_threshold: Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        pulumi.set(__self__, "failover_health_threshold", failover_health_threshold)
+
+    @property
+    @pulumi.getter(name="failoverHealthThreshold")
+    def failover_health_threshold(self) -> pulumi.Input[int]:
+        """
+        Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        return pulumi.get(self, "failover_health_threshold")
+
+    @failover_health_threshold.setter
+    def failover_health_threshold(self, value: pulumi.Input[int]):
+        pulumi.set(self, "failover_health_threshold", value)
 
 
 @pulumi.input_type

@@ -105,6 +105,7 @@ export interface GetBackendServiceResult {
      * The URI of the Backend Service.
      */
     readonly selfLink: string;
+    readonly serviceLbPolicy: string;
     /**
      * The Backend Service session stickiness configuration.
      */

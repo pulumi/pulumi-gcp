@@ -258,6 +258,34 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dlp Inspect Template Max Infotype Per Finding Default
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const maxInfotypePerFindingDefault = new gcp.dataloss.PreventionInspectTemplate("max_infotype_per_finding_default", {
+ *     parent: "projects/my-project-name",
+ *     inspectConfig: {
+ *         infoTypes: [
+ *             {
+ *                 name: "EMAIL_ADDRESS",
+ *             },
+ *             {
+ *                 name: "PERSON_NAME",
+ *             },
+ *         ],
+ *         minLikelihood: "UNLIKELY",
+ *         limits: {
+ *             maxFindingsPerRequest: 333,
+ *             maxFindingsPerItem: 222,
+ *             maxFindingsPerInfoTypes: [{
+ *                 maxFindings: 111,
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

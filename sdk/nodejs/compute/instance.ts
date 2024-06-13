@@ -268,6 +268,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly params!: pulumi.Output<outputs.compute.InstanceParams | undefined>;
     /**
+     * Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -364,6 +368,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
+            resourceInputs["partnerMetadata"] = state ? state.partnerMetadata : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
@@ -408,6 +413,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -597,6 +603,10 @@ export interface InstanceState {
      * .
      */
     params?: pulumi.Input<inputs.compute.InstanceParams>;
+    /**
+     * Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -794,6 +804,10 @@ export interface InstanceArgs {
      * .
      */
     params?: pulumi.Input<inputs.compute.InstanceParams>;
+    /**
+     * Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

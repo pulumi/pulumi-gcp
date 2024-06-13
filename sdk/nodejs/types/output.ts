@@ -3227,6 +3227,17 @@ export namespace appengine {
         shell: string;
     }
 
+    export interface FlexibleAppVersionFlexibleRuntimeSettings {
+        /**
+         * Operating System of the application runtime.
+         */
+        operatingSystem?: string;
+        /**
+         * The runtime version of an App Engine flexible application.
+         */
+        runtimeVersion?: string;
+    }
+
     export interface FlexibleAppVersionHandler {
         /**
          * Actions to take when the user is not logged in.
@@ -12981,6 +12992,10 @@ export namespace clouddeploy {
          */
         usages: string[];
         /**
+         * Optional. If true, additional logging will be enabled when running builds in this execution environment.
+         */
+        verbose?: boolean;
+        /**
          * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
          */
         workerPool?: string;
@@ -22677,6 +22692,17 @@ export namespace compute {
         resourceManagerTags: {[key: string]: any};
     }
 
+    export interface GetInstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec: number;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+         */
+        mode: string;
+    }
+
     export interface GetInstanceGroupManagerStatefulDisk {
         /**
          * A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
@@ -24976,6 +25002,338 @@ export namespace compute {
         tags: string[];
     }
 
+    export interface GetSecurityPolicyAdaptiveProtectionConfig {
+        /**
+         * Auto Deploy Config of this security policy
+         */
+        autoDeployConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig[];
+        /**
+         * Layer 7 DDoS Defense Config of this security policy
+         */
+        layer7DdosDefenseConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig[];
+    }
+
+    export interface GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+        /**
+         * Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+         */
+        confidenceThreshold: number;
+        /**
+         * Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+         */
+        expirationSec: number;
+        /**
+         * Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+         */
+        impactedBaselineThreshold: number;
+        /**
+         * Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+         */
+        loadThreshold: number;
+    }
+
+    export interface GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+        /**
+         * If set to true, enables CAAP for L7 DDoS detection.
+         */
+        enable: boolean;
+        /**
+         * Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+         */
+        ruleVisibility: string;
+    }
+
+    export interface GetSecurityPolicyAdvancedOptionsConfig {
+        /**
+         * Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+         */
+        jsonCustomConfigs: outputs.compute.GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig[];
+        /**
+         * JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+         */
+        jsonParsing: string;
+        /**
+         * Logging level. Supported values include: "NORMAL", "VERBOSE".
+         */
+        logLevel: string;
+        /**
+         * An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         */
+        userIpRequestHeaders: string[];
+    }
+
+    export interface GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+        /**
+         * A list of custom Content-Type header values to apply the JSON parsing.
+         */
+        contentTypes: string[];
+    }
+
+    export interface GetSecurityPolicyRecaptchaOptionsConfig {
+        /**
+         * A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+         */
+        redirectSiteKey: string;
+    }
+
+    export interface GetSecurityPolicyRule {
+        /**
+         * Action to take when match matches the request.
+         */
+        action: string;
+        /**
+         * An optional description of this rule. Max size is 64.
+         */
+        description: string;
+        /**
+         * Additional actions that are performed on headers.
+         */
+        headerActions: outputs.compute.GetSecurityPolicyRuleHeaderAction[];
+        /**
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+         */
+        matches: outputs.compute.GetSecurityPolicyRuleMatch[];
+        /**
+         * Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         */
+        preconfiguredWafConfigs: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfig[];
+        /**
+         * When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+         */
+        preview: boolean;
+        /**
+         * An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+         */
+        priority: number;
+        /**
+         * Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+         */
+        rateLimitOptions: outputs.compute.GetSecurityPolicyRuleRateLimitOption[];
+        /**
+         * Parameters defining the redirect action. Cannot be specified for any other actions.
+         */
+        redirectOptions: outputs.compute.GetSecurityPolicyRuleRedirectOption[];
+    }
+
+    export interface GetSecurityPolicyRuleHeaderAction {
+        /**
+         * The list of request headers to add or overwrite if they're already present.
+         */
+        requestHeadersToAdds: outputs.compute.GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd[];
+    }
+
+    export interface GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header to set.
+         */
+        headerName: string;
+        /**
+         * The value to set the named header to.
+         */
+        headerValue: string;
+    }
+
+    export interface GetSecurityPolicyRuleMatch {
+        /**
+         * The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+         */
+        configs: outputs.compute.GetSecurityPolicyRuleMatchConfig[];
+        /**
+         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         */
+        exprs: outputs.compute.GetSecurityPolicyRuleMatchExpr[];
+        /**
+         * Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
+         */
+        versionedExpr: string;
+    }
+
+    export interface GetSecurityPolicyRuleMatchConfig {
+        /**
+         * Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+         */
+        srcIpRanges: string[];
+    }
+
+    export interface GetSecurityPolicyRuleMatchExpr {
+        /**
+         * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+         */
+        expression: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfig {
+        /**
+         * An exclusion to apply during preconfigured WAF evaluation.
+         */
+        exclusions: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusion[];
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
+        /**
+         * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         */
+        requestCookies: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky[];
+        /**
+         * Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         */
+        requestHeaders: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader[];
+        /**
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+         */
+        requestQueryParams: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam[];
+        /**
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+         */
+        requestUris: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri[];
+        /**
+         * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+         */
+        targetRuleIds: string[];
+        /**
+         * Target WAF rule set to apply the preconfigured WAF exclusion.
+         */
+        targetRuleSet: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
+    }
+
+    export interface GetSecurityPolicyRuleRateLimitOption {
+        /**
+         * Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+         */
+        banDurationSec: number;
+        /**
+         * Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+         */
+        banThresholds: outputs.compute.GetSecurityPolicyRuleRateLimitOptionBanThreshold[];
+        /**
+         * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+         */
+        conformAction: string;
+        /**
+         * Determines the key to enforce the rateLimitThreshold on
+         */
+        enforceOnKey: string;
+        /**
+         * Enforce On Key Config of this security policy
+         */
+        enforceOnKeyConfigs: outputs.compute.GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig[];
+        /**
+         * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         */
+        enforceOnKeyName: string;
+        /**
+         * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+         */
+        exceedAction: string;
+        /**
+         * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+         */
+        exceedRedirectOptions: outputs.compute.GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption[];
+        /**
+         * Threshold at which to begin ratelimiting.
+         */
+        rateLimitThresholds: outputs.compute.GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold[];
+    }
+
+    export interface GetSecurityPolicyRuleRateLimitOptionBanThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec: number;
+    }
+
+    export interface GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
+        /**
+         * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         */
+        enforceOnKeyName: string;
+        /**
+         * Determines the key to enforce the rateLimitThreshold on
+         */
+        enforceOnKeyType: string;
+    }
+
+    export interface GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
+        /**
+         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+         */
+        target: string;
+        /**
+         * Type of the redirect action.
+         */
+        type: string;
+    }
+
+    export interface GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec: number;
+    }
+
+    export interface GetSecurityPolicyRuleRedirectOption {
+        /**
+         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+         */
+        target: string;
+        /**
+         * Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+         */
+        type: string;
+    }
+
     export interface GetSnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -26579,6 +26937,18 @@ export namespace compute {
          * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          */
         resourceManagerTags?: {[key: string]: any};
+    }
+
+    export interface InstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec: number;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+         * - - -
+         */
+        mode: string;
     }
 
     export interface InstanceGroupManagerStatefulDisk {
@@ -29581,6 +29951,18 @@ export namespace compute {
          * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          */
         resourceManagerTags?: {[key: string]: any};
+    }
+
+    export interface RegionInstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec: number;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+         * - - -
+         */
+        mode: string;
     }
 
     export interface RegionInstanceGroupManagerStatefulDisk {
@@ -38962,6 +39344,13 @@ export namespace container {
         datasetId: string;
     }
 
+    export interface ClusterSecretManagerConfig {
+        /**
+         * Enable the Secret Manager add-on for this cluster.
+         */
+        enabled: boolean;
+    }
+
     export interface ClusterSecurityPostureConfig {
         /**
          * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
@@ -40939,6 +41328,13 @@ export namespace container {
         datasetId: string;
     }
 
+    export interface GetClusterSecretManagerConfig {
+        /**
+         * Enable the Secret manager csi component.
+         */
+        enabled: boolean;
+    }
+
     export interface GetClusterSecurityPostureConfig {
         /**
          * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
@@ -41057,11 +41453,11 @@ export namespace container {
          */
         enablePrivateNodes: boolean;
         /**
-         * Network bandwidth tier configuration.
+         * Network bandwidth tier configuration. Structure is documented below.
          */
         networkPerformanceConfig?: outputs.container.NodePoolNetworkConfigNetworkPerformanceConfig;
         /**
-         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
          */
         podCidrOverprovisionConfig: outputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig;
         /**
@@ -41108,6 +41504,9 @@ export namespace container {
     }
 
     export interface NodePoolNetworkConfigPodCidrOverprovisionConfig {
+        /**
+         * Whether pod cidr overprovision is disabled.
+         */
         disabled: boolean;
     }
 
@@ -46460,6 +46859,10 @@ export namespace dataloss {
          * Structure is documented below.
          */
         cloudSqlTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTarget;
+        /**
+         * Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+         */
+        secretsTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetSecretsTarget;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTarget {
@@ -46573,6 +46976,11 @@ export namespace dataloss {
          */
         otherTables?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables;
         /**
+         * The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+         * Structure is documented below.
+         */
+        tableReference?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference;
+        /**
          * A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
          * Structure is documented below.
          */
@@ -46580,6 +46988,17 @@ export namespace dataloss {
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables {
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
+        /**
+         * Dataset ID of the table.
+         */
+        datasetId: string;
+        /**
+         * Name of the table.
+         */
+        tableId: string;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
@@ -46658,6 +47077,11 @@ export namespace dataloss {
          */
         collection?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection;
         /**
+         * The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+         * Structure is documented below.
+         */
+        databaseResourceReference?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference;
+        /**
          * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
          */
         others?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers;
@@ -46698,6 +47122,25 @@ export namespace dataloss {
         projectIdRegex?: string;
     }
 
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference {
+        /**
+         * Required. Name of a database within the instance.
+         */
+        database: string;
+        /**
+         * Required. Name of a database resource, for example, a table within the database.
+         */
+        databaseResource: string;
+        /**
+         * Required. The instance where this resource is located. For example: Cloud SQL instance ID.
+         */
+        instance: string;
+        /**
+         * Required. If within a project-level config, then this must match the config's project ID.
+         */
+        projectId: string;
+    }
+
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers {
     }
 
@@ -46725,6 +47168,9 @@ export namespace dataloss {
          * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          */
         types?: string[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetSecretsTarget {
     }
 
     export interface PreventionInspectTemplateInspectConfig {
@@ -46952,7 +47398,7 @@ export namespace dataloss {
          * specified in another InfoTypeLimit.
          * Structure is documented below.
          */
-        infoType: outputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
+        infoType?: outputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
         /**
          * Max findings limit for the given infoType.
          */
@@ -58242,6 +58688,12 @@ export namespace gkebackup {
          */
         includeVolumeData: boolean;
         /**
+         * This flag specifies whether Backups will not fail when
+         * Backup for GKE detects Kubernetes configuration that is
+         * non-standard or requires additional setup to restore.
+         */
+        permissiveMode?: boolean;
+        /**
          * A list of namespaced Kubernetes Resources.
          * Structure is documented below.
          */
@@ -58498,7 +58950,7 @@ export namespace gkebackup {
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
          * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
          * for more information on each mode.
-         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
          */
         namespacedResourceRestoreMode?: string;
         /**
@@ -58506,6 +58958,11 @@ export namespace gkebackup {
          * Specifying this field to "False" is not allowed.
          */
         noNamespaces?: boolean;
+        /**
+         * It contains custom ordering to use on a Restore.
+         * Structure is documented below.
+         */
+        restoreOrder?: outputs.gkebackup.RestorePlanRestoreConfigRestoreOrder;
         /**
          * A list of selected ProtectedApplications to restore.
          * The listed ProtectedApplications and all the resources
@@ -58538,6 +58995,13 @@ export namespace gkebackup {
          * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
          */
         volumeDataRestorePolicy?: string;
+        /**
+         * A table that binds volumes by their scope to a restore policy. Bindings
+         * must have a unique scope. Any volumes not scoped in the bindings are
+         * subject to the policy defined in volume_data_restore_policy.
+         * Structure is documented below.
+         */
+        volumeDataRestorePolicyBindings?: outputs.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBinding[];
     }
 
     export interface RestorePlanRestoreConfigClusterResourceRestoreScope {
@@ -58601,6 +59065,61 @@ export namespace gkebackup {
          * A list of Kubernetes Namespaces.
          */
         namespaces: string[];
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrder {
+        /**
+         * A list of group kind dependency pairs
+         * that is used by Backup for GKE to
+         * generate a group kind restore order.
+         * Structure is documented below.
+         */
+        groupKindDependencies: outputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependency[];
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
+        /**
+         * The requiring group kind requires that the satisfying
+         * group kind be restored first.
+         * Structure is documented below.
+         */
+        requiring: outputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring;
+        /**
+         * The satisfying group kind must be restored first
+         * in order to satisfy the dependency.
+         * Structure is documented below.
+         */
+        satisfying: outputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring {
+        /**
+         * API Group of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: string;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         *
+         * - - -
+         */
+        resourceKind?: string;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying {
+        /**
+         * API Group of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: string;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         */
+        resourceKind?: string;
     }
 
     export interface RestorePlanRestoreConfigSelectedApplications {
@@ -58672,8 +59191,6 @@ export namespace gkebackup {
         /**
          * A string that specifies the desired value in string format
          * to use for transformation.
-         *
-         * - - -
          */
         value?: string;
     }
@@ -58719,6 +59236,22 @@ export namespace gkebackup {
          * "CustomResourceDefinition", "StorageClass", etc.
          */
         resourceKind?: string;
+    }
+
+    export interface RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
+        /**
+         * Specifies the mechanism to be used to restore this volume data.
+         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+         * for more information on each policy option.
+         * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+         */
+        policy: string;
+        /**
+         * The volume type, as determined by the PVC's
+         * bound PV, to apply the policy to.
+         * Possible values are: `GCE_PERSISTENT_DISK`.
+         */
+        volumeType: string;
     }
 
 }
@@ -61675,6 +62208,10 @@ export namespace healthcare {
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: string;
+        /**
+         * Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+         */
+        sendForBulkImport?: boolean;
     }
 
     export interface DicomStoreStreamConfig {
@@ -66657,6 +67194,22 @@ export namespace monitoring {
 }
 
 export namespace netapp {
+    export interface VolumeBackupConfig {
+        /**
+         * Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+         */
+        backupPolicies?: string[];
+        /**
+         * ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+         * Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+         */
+        backupVault?: string;
+        /**
+         * When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+         */
+        scheduledBackupEnabled?: boolean;
+    }
+
     export interface VolumeExportPolicy {
         /**
          * Export rules (up to 5) control NFS volume access.
@@ -68842,6 +69395,20 @@ export namespace networkservices {
          * A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
          */
         celExpression: string;
+    }
+
+    export interface ServiceLbPoliciesAutoCapacityDrain {
+        /**
+         * Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+         */
+        enable?: boolean;
+    }
+
+    export interface ServiceLbPoliciesFailoverConfig {
+        /**
+         * Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+         */
+        failoverHealthThreshold: number;
     }
 
     export interface TcpRouteRule {
@@ -72947,6 +73514,19 @@ export namespace redis {
         targetShardCount?: number;
     }
 
+    export interface ClusterZoneDistributionConfig {
+        /**
+         * Immutable. The mode for zone distribution for Memorystore Redis cluster.
+         * If not provided, MULTI_ZONE will be used as default
+         * Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+         */
+        mode: string;
+        /**
+         * Immutable. The zone for single zone Memorystore Redis cluster.
+         */
+        zone?: string;
+    }
+
     export interface GetInstanceMaintenancePolicy {
         /**
          * Output only. The time when the policy was created.
@@ -73532,13 +74112,25 @@ export namespace secretmanager {
 
     export interface SecretIamBindingCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface SecretIamMemberCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
@@ -74742,6 +75334,27 @@ export namespace spanner {
         storageUtilizationPercent?: number;
     }
 
+    export interface InstanceConfigReplica {
+        /**
+         * If true, this location is designated as the default leader location where
+         * leader replicas are placed.
+         *
+         * - - -
+         */
+        defaultLeaderLocation?: boolean;
+        /**
+         * The location of the serving resources, e.g. "us-central1".
+         */
+        location?: string;
+        /**
+         * Indicates the type of replica.  See the [replica types
+         * documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+         * for more details.
+         * Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+         */
+        type?: string;
+    }
+
     export interface InstanceIAMBindingCondition {
         description?: string;
         expression: string;
@@ -75137,7 +75750,9 @@ export namespace sql {
          */
         pscConfigs?: outputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig[];
         /**
-         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+         *
+         * @deprecated `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
          */
         requireSsl?: boolean;
         /**
@@ -75618,7 +76233,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }
@@ -76134,7 +76749,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }
@@ -79343,6 +79958,15 @@ export namespace workstations {
          */
         accelerators?: outputs.workstations.WorkstationConfigHostGceInstanceBoostConfigAccelerator[];
         /**
+         * Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         */
+        enableNestedVirtualization: boolean;
+        /**
          * The id to be used for the boost config.
          */
         id: string;
@@ -79350,6 +79974,10 @@ export namespace workstations {
          * The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
          */
         machineType?: string;
+        /**
+         * Number of instances to pool for faster workstation boosting.
+         */
+        poolSize: number;
     }
 
     export interface WorkstationConfigHostGceInstanceBoostConfigAccelerator {

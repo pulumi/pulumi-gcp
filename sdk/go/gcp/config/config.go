@@ -456,6 +456,9 @@ func GetSecureSourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityCenterCustomEndpoint")
 }
+func GetSecurityCenterManagementCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:securityCenterManagementCustomEndpoint")
+}
 func GetSecurityScannerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityScannerCustomEndpoint")
 }

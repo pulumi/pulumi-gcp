@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection? Collection;
         /// <summary>
+        /// The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference? DatabaseResourceReference;
+        /// <summary>
         /// Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers? Others;
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionDiscoveryConfigTargetCloudSqlTargetFilter(
             Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection? collection,
 
+            Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference? databaseResourceReference,
+
             Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers? others)
         {
             Collection = collection;
+            DatabaseResourceReference = databaseResourceReference;
             Others = others;
         }
     }

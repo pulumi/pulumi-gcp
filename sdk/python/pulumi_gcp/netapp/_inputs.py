@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'VolumeBackupConfigArgs',
     'VolumeExportPolicyArgs',
     'VolumeExportPolicyRuleArgs',
     'VolumeMountOptionArgs',
@@ -22,6 +23,63 @@ __all__ = [
     'VolumeSnapshotPolicyMonthlyScheduleArgs',
     'VolumeSnapshotPolicyWeeklyScheduleArgs',
 ]
+
+@pulumi.input_type
+class VolumeBackupConfigArgs:
+    def __init__(__self__, *,
+                 backup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_vault: Optional[pulumi.Input[str]] = None,
+                 scheduled_backup_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_policies: Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+        :param pulumi.Input[str] backup_vault: ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+               Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+        :param pulumi.Input[bool] scheduled_backup_enabled: When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+        """
+        if backup_policies is not None:
+            pulumi.set(__self__, "backup_policies", backup_policies)
+        if backup_vault is not None:
+            pulumi.set(__self__, "backup_vault", backup_vault)
+        if scheduled_backup_enabled is not None:
+            pulumi.set(__self__, "scheduled_backup_enabled", scheduled_backup_enabled)
+
+    @property
+    @pulumi.getter(name="backupPolicies")
+    def backup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+        """
+        return pulumi.get(self, "backup_policies")
+
+    @backup_policies.setter
+    def backup_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backup_policies", value)
+
+    @property
+    @pulumi.getter(name="backupVault")
+    def backup_vault(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+        Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+        """
+        return pulumi.get(self, "backup_vault")
+
+    @backup_vault.setter
+    def backup_vault(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_vault", value)
+
+    @property
+    @pulumi.getter(name="scheduledBackupEnabled")
+    def scheduled_backup_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+        """
+        return pulumi.get(self, "scheduled_backup_enabled")
+
+    @scheduled_backup_enabled.setter
+    def scheduled_backup_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scheduled_backup_enabled", value)
+
 
 @pulumi.input_type
 class VolumeExportPolicyArgs:

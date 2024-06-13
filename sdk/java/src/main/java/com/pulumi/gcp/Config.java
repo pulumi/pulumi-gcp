@@ -444,6 +444,9 @@ public final class Config {
     public Optional<String> securityCenterCustomEndpoint() {
         return Codegen.stringProp("securityCenterCustomEndpoint").config(config).get();
     }
+    public Optional<String> securityCenterManagementCustomEndpoint() {
+        return Codegen.stringProp("securityCenterManagementCustomEndpoint").config(config).get();
+    }
     public Optional<String> securityScannerCustomEndpoint() {
         return Codegen.stringProp("securityScannerCustomEndpoint").config(config).get();
     }

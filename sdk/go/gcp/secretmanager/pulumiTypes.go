@@ -15,8 +15,10 @@ var _ = internal.GetEnvOrDefault
 
 type SecretIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // SecretIamBindingConditionInput is an input type that accepts SecretIamBindingConditionArgs and SecretIamBindingConditionOutput values.
@@ -32,8 +34,10 @@ type SecretIamBindingConditionInput interface {
 
 type SecretIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (SecretIamBindingConditionArgs) ElementType() reflect.Type {
@@ -117,10 +121,12 @@ func (o SecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SecretIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SecretIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -158,6 +164,7 @@ func (o SecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SecretIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
 		if v == nil {
@@ -167,6 +174,7 @@ func (o SecretIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
 		if v == nil {
@@ -178,8 +186,10 @@ func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type SecretIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // SecretIamMemberConditionInput is an input type that accepts SecretIamMemberConditionArgs and SecretIamMemberConditionOutput values.
@@ -195,8 +205,10 @@ type SecretIamMemberConditionInput interface {
 
 type SecretIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (SecretIamMemberConditionArgs) ElementType() reflect.Type {
@@ -280,10 +292,12 @@ func (o SecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SecretIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SecretIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -321,6 +335,7 @@ func (o SecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SecretIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
 		if v == nil {
@@ -330,6 +345,7 @@ func (o SecretIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
 		if v == nil {

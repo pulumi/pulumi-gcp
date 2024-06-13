@@ -504,6 +504,33 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Dlp Inspect Template Max Infotype Per Finding Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        max_infotype_per_finding_default = gcp.dataloss.PreventionInspectTemplate("max_infotype_per_finding_default",
+            parent="projects/my-project-name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                info_types=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="EMAIL_ADDRESS",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="PERSON_NAME",
+                    ),
+                ],
+                min_likelihood="UNLIKELY",
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_request=333,
+                    max_findings_per_item=222,
+                    max_findings_per_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs(
+                        max_findings=111,
+                    )],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -793,6 +820,33 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
                     max_findings_per_item=10,
                     max_findings_per_request=50,
+                ),
+            ))
+        ```
+        ### Dlp Inspect Template Max Infotype Per Finding Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        max_infotype_per_finding_default = gcp.dataloss.PreventionInspectTemplate("max_infotype_per_finding_default",
+            parent="projects/my-project-name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                info_types=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="EMAIL_ADDRESS",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="PERSON_NAME",
+                    ),
+                ],
+                min_likelihood="UNLIKELY",
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_request=333,
+                    max_findings_per_item=222,
+                    max_findings_per_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs(
+                        max_findings=111,
+                    )],
                 ),
             ))
         ```

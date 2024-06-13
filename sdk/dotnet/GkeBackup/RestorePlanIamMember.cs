@@ -534,6 +534,241 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// ### Gkebackup Restoreplan Gitops Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "gitops-mode-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
+    ///     {
+    ///         Name = "gitops-mode",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             AllNamespaces = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var gitopsMode = new Gcp.GkeBackup.RestorePlan("gitops_mode", new()
+    ///     {
+    ///         Name = "gitops-mode",
+    ///         Location = "us-central1",
+    ///         BackupPlan = basic.Id,
+    ///         Cluster = primary.Id,
+    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
+    ///         {
+    ///             AllNamespaces = true,
+    ///             NamespacedResourceRestoreMode = "MERGE_SKIP_ON_CONFLICT",
+    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
+    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
+    ///             {
+    ///                 AllGroupKinds = true,
+    ///             },
+    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gkebackup Restoreplan Restore Order
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "restore-order-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
+    ///     {
+    ///         Name = "restore-order",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             AllNamespaces = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var restoreOrder = new Gcp.GkeBackup.RestorePlan("restore_order", new()
+    ///     {
+    ///         Name = "restore-order",
+    ///         Location = "us-central1",
+    ///         BackupPlan = basic.Id,
+    ///         Cluster = primary.Id,
+    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
+    ///         {
+    ///             AllNamespaces = true,
+    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
+    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
+    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
+    ///             {
+    ///                 AllGroupKinds = true,
+    ///             },
+    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
+    ///             RestoreOrder = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderArgs
+    ///             {
+    ///                 GroupKindDependencies = new[]
+    ///                 {
+    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs
+    ///                     {
+    ///                         Satisfying = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs
+    ///                         {
+    ///                             ResourceGroup = "stable.example.com",
+    ///                             ResourceKind = "kindA",
+    ///                         },
+    ///                         Requiring = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs
+    ///                         {
+    ///                             ResourceGroup = "stable.example.com",
+    ///                             ResourceKind = "kindB",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs
+    ///                     {
+    ///                         Satisfying = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs
+    ///                         {
+    ///                             ResourceGroup = "stable.example.com",
+    ///                             ResourceKind = "kindB",
+    ///                         },
+    ///                         Requiring = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs
+    ///                         {
+    ///                             ResourceGroup = "stable.example.com",
+    ///                             ResourceKind = "kindC",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gkebackup Restoreplan Volume Res
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "volume-res-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
+    ///     {
+    ///         Name = "volume-res",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             AllNamespaces = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var volumeRes = new Gcp.GkeBackup.RestorePlan("volume_res", new()
+    ///     {
+    ///         Name = "volume-res",
+    ///         Location = "us-central1",
+    ///         BackupPlan = basic.Id,
+    ///         Cluster = primary.Id,
+    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
+    ///         {
+    ///             AllNamespaces = true,
+    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
+    ///             VolumeDataRestorePolicy = "NO_VOLUME_DATA_RESTORATION",
+    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
+    ///             {
+    ///                 AllGroupKinds = true,
+    ///             },
+    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
+    ///             VolumeDataRestorePolicyBindings = new[]
+    ///             {
+    ///                 new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs
+    ///                 {
+    ///                     Policy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
+    ///                     VolumeType = "GCE_PERSISTENT_DISK",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

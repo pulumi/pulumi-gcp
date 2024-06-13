@@ -16,9 +16,19 @@ public final class SecretIamMemberState extends com.pulumi.resources.ResourceArg
 
     public static final SecretIamMemberState Empty = new SecretIamMemberState();
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<SecretIamMemberConditionArgs> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<SecretIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -145,11 +155,25 @@ public final class SecretIamMemberState extends com.pulumi.resources.ResourceArg
             $ = new SecretIamMemberState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<SecretIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(SecretIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }

@@ -245,6 +245,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateParams> Params { get; private set; } = null!;
 
         /// <summary>
+        /// Partner Metadata Map made available within the instance.
+        /// </summary>
+        [Output("partnerMetadata")]
+        public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
         /// </summary>
@@ -543,6 +549,18 @@ namespace Pulumi.Gcp.Compute
         [Input("params")]
         public Input<Inputs.InstanceFromTemplateParamsArgs>? Params { get; set; }
 
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Partner Metadata Map made available within the instance.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
@@ -836,6 +854,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceFromTemplateParamsGetArgs>? Params { get; set; }
+
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Partner Metadata Map made available within the instance.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

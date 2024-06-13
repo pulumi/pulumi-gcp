@@ -1979,10 +1979,17 @@ type WorkstationConfigHostGceInstanceBoostConfig struct {
 	// An accelerator card attached to the boost instance.
 	// Structure is documented below.
 	Accelerators []WorkstationConfigHostGceInstanceBoostConfigAccelerator `pulumi:"accelerators"`
+	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The id to be used for the boost config.
 	Id string `pulumi:"id"`
 	// The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
 	MachineType *string `pulumi:"machineType"`
+	// Number of instances to pool for faster workstation boosting.
+	PoolSize *int `pulumi:"poolSize"`
 }
 
 // WorkstationConfigHostGceInstanceBoostConfigInput is an input type that accepts WorkstationConfigHostGceInstanceBoostConfigArgs and WorkstationConfigHostGceInstanceBoostConfigOutput values.
@@ -2000,10 +2007,17 @@ type WorkstationConfigHostGceInstanceBoostConfigArgs struct {
 	// An accelerator card attached to the boost instance.
 	// Structure is documented below.
 	Accelerators WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayInput `pulumi:"accelerators"`
+	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The id to be used for the boost config.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Number of instances to pool for faster workstation boosting.
+	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
 }
 
 func (WorkstationConfigHostGceInstanceBoostConfigArgs) ElementType() reflect.Type {
@@ -2065,6 +2079,17 @@ func (o WorkstationConfigHostGceInstanceBoostConfigOutput) Accelerators() Workst
 	}).(WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayOutput)
 }
 
+// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+func (o WorkstationConfigHostGceInstanceBoostConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+func (o WorkstationConfigHostGceInstanceBoostConfigOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // The id to be used for the boost config.
 func (o WorkstationConfigHostGceInstanceBoostConfigOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) string { return v.Id }).(pulumi.StringOutput)
@@ -2073,6 +2098,11 @@ func (o WorkstationConfigHostGceInstanceBoostConfigOutput) Id() pulumi.StringOut
 // The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
 func (o WorkstationConfigHostGceInstanceBoostConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Number of instances to pool for faster workstation boosting.
+func (o WorkstationConfigHostGceInstanceBoostConfigOutput) PoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
 }
 
 type WorkstationConfigHostGceInstanceBoostConfigArrayOutput struct{ *pulumi.OutputState }

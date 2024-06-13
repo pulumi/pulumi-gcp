@@ -19,6 +19,15 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator> Accelerators;
         /// <summary>
+        /// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        /// </summary>
+        public readonly int? BootDiskSizeGb;
+        /// <summary>
+        /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+        /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        /// </summary>
+        public readonly bool? EnableNestedVirtualization;
+        /// <summary>
         /// The id to be used for the boost config.
         /// </summary>
         public readonly string Id;
@@ -26,18 +35,31 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// Number of instances to pool for faster workstation boosting.
+        /// </summary>
+        public readonly int? PoolSize;
 
         [OutputConstructor]
         private WorkstationConfigHostGceInstanceBoostConfig(
             ImmutableArray<Outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator> accelerators,
 
+            int? bootDiskSizeGb,
+
+            bool? enableNestedVirtualization,
+
             string id,
 
-            string? machineType)
+            string? machineType,
+
+            int? poolSize)
         {
             Accelerators = accelerators;
+            BootDiskSizeGb = bootDiskSizeGb;
+            EnableNestedVirtualization = enableNestedVirtualization;
             Id = id;
             MachineType = machineType;
+            PoolSize = poolSize;
         }
     }
 }

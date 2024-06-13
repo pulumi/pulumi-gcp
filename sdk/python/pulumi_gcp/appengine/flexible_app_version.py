@@ -29,6 +29,7 @@ class FlexibleAppVersionArgs:
                  endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
                  entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,7 @@ class FlexibleAppVersionArgs:
         :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
         :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
+        :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
                request and other request handlers are not attempted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -111,6 +113,8 @@ class FlexibleAppVersionArgs:
             pulumi.set(__self__, "entrypoint", entrypoint)
         if env_variables is not None:
             pulumi.set(__self__, "env_variables", env_variables)
+        if flexible_runtime_settings is not None:
+            pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if inbound_services is not None:
@@ -299,6 +303,18 @@ class FlexibleAppVersionArgs:
     @env_variables.setter
     def env_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "env_variables", value)
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]:
+        """
+        Runtime settings for App Engine flexible environment.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
+
+    @flexible_runtime_settings.setter
+    def flexible_runtime_settings(self, value: Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]):
+        pulumi.set(self, "flexible_runtime_settings", value)
 
     @property
     @pulumi.getter
@@ -513,6 +529,7 @@ class _FlexibleAppVersionState:
                  endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
                  entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -545,6 +562,7 @@ class _FlexibleAppVersionState:
         :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
         :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
+        :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
                request and other request handlers are not attempted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -597,6 +615,8 @@ class _FlexibleAppVersionState:
             pulumi.set(__self__, "entrypoint", entrypoint)
         if env_variables is not None:
             pulumi.set(__self__, "env_variables", env_variables)
+        if flexible_runtime_settings is not None:
+            pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if inbound_services is not None:
@@ -745,6 +765,18 @@ class _FlexibleAppVersionState:
     @env_variables.setter
     def env_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "env_variables", value)
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]:
+        """
+        Runtime settings for App Engine flexible environment.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
+
+    @flexible_runtime_settings.setter
+    def flexible_runtime_settings(self, value: Optional[pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]):
+        pulumi.set(self, "flexible_runtime_settings", value)
 
     @property
     @pulumi.getter
@@ -1023,6 +1055,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -1180,6 +1213,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']] deployment: Code and application artifacts that make up this version.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']] endpoints_api_service: Code and application artifacts that make up this version.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionFlexibleRuntimeSettingsArgs']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
                request and other request handlers are not attempted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -1368,6 +1402,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -1406,6 +1441,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__.__dict__["endpoints_api_service"] = endpoints_api_service
             __props__.__dict__["entrypoint"] = entrypoint
             __props__.__dict__["env_variables"] = env_variables
+            __props__.__dict__["flexible_runtime_settings"] = flexible_runtime_settings
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
@@ -1454,6 +1490,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']]] = None,
             entrypoint: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']]] = None,
             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionFlexibleRuntimeSettingsArgs']]] = None,
             handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]]] = None,
             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_class: Optional[pulumi.Input[str]] = None,
@@ -1491,6 +1528,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionDeploymentArgs']] deployment: Code and application artifacts that make up this version.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEndpointsApiServiceArgs']] endpoints_api_service: Code and application artifacts that make up this version.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[pulumi.InputType['FlexibleAppVersionFlexibleRuntimeSettingsArgs']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
                request and other request handlers are not attempted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -1538,6 +1576,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__.__dict__["endpoints_api_service"] = endpoints_api_service
         __props__.__dict__["entrypoint"] = entrypoint
         __props__.__dict__["env_variables"] = env_variables
+        __props__.__dict__["flexible_runtime_settings"] = flexible_runtime_settings
         __props__.__dict__["handlers"] = handlers
         __props__.__dict__["inbound_services"] = inbound_services
         __props__.__dict__["instance_class"] = instance_class
@@ -1630,6 +1669,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "env_variables")
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionFlexibleRuntimeSettings']]:
+        """
+        Runtime settings for App Engine flexible environment.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
 
     @property
     @pulumi.getter

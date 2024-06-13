@@ -204,6 +204,10 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     public readonly entrypoint!: pulumi.Output<outputs.appengine.FlexibleAppVersionEntrypoint | undefined>;
     public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Runtime settings for App Engine flexible environment.
+     */
+    public readonly flexibleRuntimeSettings!: pulumi.Output<outputs.appengine.FlexibleAppVersionFlexibleRuntimeSettings | undefined>;
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
      * request and other request handlers are not attempted.
      */
@@ -320,6 +324,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             resourceInputs["endpointsApiService"] = state ? state.endpointsApiService : undefined;
             resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
             resourceInputs["envVariables"] = state ? state.envVariables : undefined;
+            resourceInputs["flexibleRuntimeSettings"] = state ? state.flexibleRuntimeSettings : undefined;
             resourceInputs["handlers"] = state ? state.handlers : undefined;
             resourceInputs["inboundServices"] = state ? state.inboundServices : undefined;
             resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
@@ -364,6 +369,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             resourceInputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
             resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
             resourceInputs["envVariables"] = args ? args.envVariables : undefined;
+            resourceInputs["flexibleRuntimeSettings"] = args ? args.flexibleRuntimeSettings : undefined;
             resourceInputs["handlers"] = args ? args.handlers : undefined;
             resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
             resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
@@ -429,6 +435,10 @@ export interface FlexibleAppVersionState {
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Runtime settings for App Engine flexible environment.
+     */
+    flexibleRuntimeSettings?: pulumi.Input<inputs.appengine.FlexibleAppVersionFlexibleRuntimeSettings>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
      * request and other request handlers are not attempted.
@@ -563,6 +573,10 @@ export interface FlexibleAppVersionArgs {
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Runtime settings for App Engine flexible environment.
+     */
+    flexibleRuntimeSettings?: pulumi.Input<inputs.appengine.FlexibleAppVersionFlexibleRuntimeSettings>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
      * request and other request handlers are not attempted.

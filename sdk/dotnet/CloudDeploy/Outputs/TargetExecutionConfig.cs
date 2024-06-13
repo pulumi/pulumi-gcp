@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Usages;
         /// <summary>
+        /// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+        /// </summary>
+        public readonly bool? Verbose;
+        /// <summary>
         /// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         /// </summary>
         public readonly string? WorkerPool;
@@ -44,12 +48,15 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             ImmutableArray<string> usages,
 
+            bool? verbose,
+
             string? workerPool)
         {
             ArtifactStorage = artifactStorage;
             ExecutionTimeout = executionTimeout;
             ServiceAccount = serviceAccount;
             Usages = usages;
+            Verbose = verbose;
             WorkerPool = workerPool;
         }
     }

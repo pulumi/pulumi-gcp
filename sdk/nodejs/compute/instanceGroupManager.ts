@@ -87,6 +87,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### With Standby Policy (`Google-Beta` Provider)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const igm_sr = new gcp.compute.InstanceGroupManager("igm-sr", {
+ *     name: "tf-sr-igm",
+ *     baseInstanceName: "tf-sr-igm-instance",
+ *     zone: "us-central1-a",
+ *     targetSize: 5,
+ *     versions: [{
+ *         instanceTemplate: sr_igm.selfLink,
+ *         name: "primary",
+ *     }],
+ *     standbyPolicy: {
+ *         initialDelaySec: 30,
+ *         mode: "MANUAL",
+ *     },
+ *     targetSuspendedSize: 2,
+ *     targetStoppedSize: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance group managers can be imported using any of these accepted formats:
@@ -224,6 +247,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    public readonly standbyPolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
@@ -250,6 +277,14 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     public readonly targetSize!: pulumi.Output<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    public readonly targetStoppedSize!: pulumi.Output<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    public readonly targetSuspendedSize!: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
@@ -309,12 +344,15 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["standbyPolicy"] = state ? state.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = state ? state.statefulExternalIps : undefined;
             resourceInputs["statefulInternalIps"] = state ? state.statefulInternalIps : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["targetPools"] = state ? state.targetPools : undefined;
             resourceInputs["targetSize"] = state ? state.targetSize : undefined;
+            resourceInputs["targetStoppedSize"] = state ? state.targetStoppedSize : undefined;
+            resourceInputs["targetSuspendedSize"] = state ? state.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["versions"] = state ? state.versions : undefined;
             resourceInputs["waitForInstances"] = state ? state.waitForInstances : undefined;
@@ -338,11 +376,14 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
             resourceInputs["statefulInternalIps"] = args ? args.statefulInternalIps : undefined;
             resourceInputs["targetPools"] = args ? args.targetPools : undefined;
             resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
+            resourceInputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["versions"] = args ? args.versions : undefined;
             resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
@@ -443,6 +484,10 @@ export interface InstanceGroupManagerState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
@@ -469,6 +514,14 @@ export interface InstanceGroupManagerState {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
@@ -567,6 +620,10 @@ export interface InstanceGroupManagerArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
@@ -589,6 +646,14 @@ export interface InstanceGroupManagerArgs {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */

@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNetworkConfigPodCidrOverprovisionConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether pod cidr overprovision is disabled.
+        /// </summary>
         [Input("disabled", required: true)]
         public Input<bool> Disabled { get; set; } = null!;
 

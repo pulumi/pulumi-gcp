@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAutoHealingPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerParam;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulInternalIp;
@@ -46,12 +47,15 @@ public final class GetInstanceGroupManagerResult {
     private List<GetInstanceGroupManagerParam> params;
     private @Nullable String project;
     private @Nullable String selfLink;
+    private List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies;
     private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
     private List<GetInstanceGroupManagerStatefulExternalIp> statefulExternalIps;
     private List<GetInstanceGroupManagerStatefulInternalIp> statefulInternalIps;
     private List<GetInstanceGroupManagerStatus> statuses;
     private List<String> targetPools;
     private Integer targetSize;
+    private Integer targetStoppedSize;
+    private Integer targetSuspendedSize;
     private List<GetInstanceGroupManagerUpdatePolicy> updatePolicies;
     private List<GetInstanceGroupManagerVersion> versions;
     private Boolean waitForInstances;
@@ -111,6 +115,9 @@ public final class GetInstanceGroupManagerResult {
     public Optional<String> selfLink() {
         return Optional.ofNullable(this.selfLink);
     }
+    public List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies() {
+        return this.standbyPolicies;
+    }
     public List<GetInstanceGroupManagerStatefulDisk> statefulDisks() {
         return this.statefulDisks;
     }
@@ -128,6 +135,12 @@ public final class GetInstanceGroupManagerResult {
     }
     public Integer targetSize() {
         return this.targetSize;
+    }
+    public Integer targetStoppedSize() {
+        return this.targetStoppedSize;
+    }
+    public Integer targetSuspendedSize() {
+        return this.targetSuspendedSize;
     }
     public List<GetInstanceGroupManagerUpdatePolicy> updatePolicies() {
         return this.updatePolicies;
@@ -170,12 +183,15 @@ public final class GetInstanceGroupManagerResult {
         private List<GetInstanceGroupManagerParam> params;
         private @Nullable String project;
         private @Nullable String selfLink;
+        private List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies;
         private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
         private List<GetInstanceGroupManagerStatefulExternalIp> statefulExternalIps;
         private List<GetInstanceGroupManagerStatefulInternalIp> statefulInternalIps;
         private List<GetInstanceGroupManagerStatus> statuses;
         private List<String> targetPools;
         private Integer targetSize;
+        private Integer targetStoppedSize;
+        private Integer targetSuspendedSize;
         private List<GetInstanceGroupManagerUpdatePolicy> updatePolicies;
         private List<GetInstanceGroupManagerVersion> versions;
         private Boolean waitForInstances;
@@ -200,12 +216,15 @@ public final class GetInstanceGroupManagerResult {
     	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
+    	      this.standbyPolicies = defaults.standbyPolicies;
     	      this.statefulDisks = defaults.statefulDisks;
     	      this.statefulExternalIps = defaults.statefulExternalIps;
     	      this.statefulInternalIps = defaults.statefulInternalIps;
     	      this.statuses = defaults.statuses;
     	      this.targetPools = defaults.targetPools;
     	      this.targetSize = defaults.targetSize;
+    	      this.targetStoppedSize = defaults.targetStoppedSize;
+    	      this.targetSuspendedSize = defaults.targetSuspendedSize;
     	      this.updatePolicies = defaults.updatePolicies;
     	      this.versions = defaults.versions;
     	      this.waitForInstances = defaults.waitForInstances;
@@ -351,6 +370,17 @@ public final class GetInstanceGroupManagerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder standbyPolicies(List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies) {
+            if (standbyPolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "standbyPolicies");
+            }
+            this.standbyPolicies = standbyPolicies;
+            return this;
+        }
+        public Builder standbyPolicies(GetInstanceGroupManagerStandbyPolicy... standbyPolicies) {
+            return standbyPolicies(List.of(standbyPolicies));
+        }
+        @CustomType.Setter
         public Builder statefulDisks(List<GetInstanceGroupManagerStatefulDisk> statefulDisks) {
             if (statefulDisks == null) {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "statefulDisks");
@@ -411,6 +441,22 @@ public final class GetInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetSize");
             }
             this.targetSize = targetSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targetStoppedSize(Integer targetStoppedSize) {
+            if (targetStoppedSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetStoppedSize");
+            }
+            this.targetStoppedSize = targetStoppedSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targetSuspendedSize(Integer targetSuspendedSize) {
+            if (targetSuspendedSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetSuspendedSize");
+            }
+            this.targetSuspendedSize = targetSuspendedSize;
             return this;
         }
         @CustomType.Setter
@@ -475,12 +521,15 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;
+            _resultValue.standbyPolicies = standbyPolicies;
             _resultValue.statefulDisks = statefulDisks;
             _resultValue.statefulExternalIps = statefulExternalIps;
             _resultValue.statefulInternalIps = statefulInternalIps;
             _resultValue.statuses = statuses;
             _resultValue.targetPools = targetPools;
             _resultValue.targetSize = targetSize;
+            _resultValue.targetStoppedSize = targetStoppedSize;
+            _resultValue.targetSuspendedSize = targetSuspendedSize;
             _resultValue.updatePolicies = updatePolicies;
             _resultValue.versions = versions;
             _resultValue.waitForInstances = waitForInstances;

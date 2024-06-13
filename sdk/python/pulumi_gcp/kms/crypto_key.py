@@ -52,7 +52,8 @@ class CryptoKeyArgs:
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+               or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -192,7 +193,8 @@ class CryptoKeyArgs:
     def skip_initial_version_creation(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-        You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+        or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 
@@ -262,7 +264,8 @@ class _CryptoKeyState:
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+               or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -448,7 +451,8 @@ class _CryptoKeyState:
     def skip_initial_version_creation(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-        You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+        or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 
@@ -582,7 +586,8 @@ class CryptoKey(pulumi.CustomResource):
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+               or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -773,7 +778,8 @@ class CryptoKey(pulumi.CustomResource):
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+               or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -907,7 +913,8 @@ class CryptoKey(pulumi.CustomResource):
     def skip_initial_version_creation(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-        You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+        or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 

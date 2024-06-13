@@ -6,8 +6,11 @@ package com.pulumi.gcp.healthcare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DicomStoreNotificationConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -39,10 +42,26 @@ public final class DicomStoreNotificationConfigArgs extends com.pulumi.resources
         return this.pubsubTopic;
     }
 
+    /**
+     * Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+     * 
+     */
+    @Import(name="sendForBulkImport")
+    private @Nullable Output<Boolean> sendForBulkImport;
+
+    /**
+     * @return Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+     * 
+     */
+    public Optional<Output<Boolean>> sendForBulkImport() {
+        return Optional.ofNullable(this.sendForBulkImport);
+    }
+
     private DicomStoreNotificationConfigArgs() {}
 
     private DicomStoreNotificationConfigArgs(DicomStoreNotificationConfigArgs $) {
         this.pubsubTopic = $.pubsubTopic;
+        this.sendForBulkImport = $.sendForBulkImport;
     }
 
     public static Builder builder() {
@@ -92,6 +111,27 @@ public final class DicomStoreNotificationConfigArgs extends com.pulumi.resources
          */
         public Builder pubsubTopic(String pubsubTopic) {
             return pubsubTopic(Output.of(pubsubTopic));
+        }
+
+        /**
+         * @param sendForBulkImport Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendForBulkImport(@Nullable Output<Boolean> sendForBulkImport) {
+            $.sendForBulkImport = sendForBulkImport;
+            return this;
+        }
+
+        /**
+         * @param sendForBulkImport Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendForBulkImport(Boolean sendForBulkImport) {
+            return sendForBulkImport(Output.of(sendForBulkImport));
         }
 
         public DicomStoreNotificationConfigArgs build() {

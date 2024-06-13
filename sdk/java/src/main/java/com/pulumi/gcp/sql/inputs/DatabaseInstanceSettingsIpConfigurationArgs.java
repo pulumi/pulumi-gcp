@@ -114,16 +114,24 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+     * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+     * 
+     * @deprecated
+     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
      * 
      */
+    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
     @Import(name="requireSsl")
     private @Nullable Output<Boolean> requireSsl;
 
     /**
-     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+     * 
+     * @deprecated
+     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
      * 
      */
+    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
     public Optional<Output<Boolean>> requireSsl() {
         return Optional.ofNullable(this.requireSsl);
     }
@@ -321,22 +329,30 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+         * 
          */
+        @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
         public Builder requireSsl(@Nullable Output<Boolean> requireSsl) {
             $.requireSsl = requireSsl;
             return this;
         }
 
         /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+         * 
          */
+        @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
         public Builder requireSsl(Boolean requireSsl) {
             return requireSsl(Output.of(requireSsl));
         }

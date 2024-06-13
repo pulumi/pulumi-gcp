@@ -116,6 +116,8 @@ type InstanceFromMachineImage struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsOutput `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -254,6 +256,8 @@ type instanceFromMachineImageState struct {
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromMachineImageParams `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -355,6 +359,8 @@ type InstanceFromMachineImageState struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsPtrInput
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -443,6 +449,8 @@ type instanceFromMachineImageArgs struct {
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromMachineImageParams `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -520,6 +528,8 @@ type InstanceFromMachineImageArgs struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsPtrInput
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -790,6 +800,11 @@ func (o InstanceFromMachineImageOutput) NetworkPerformanceConfig() InstanceFromM
 // Stores additional params passed with the request, but not persisted as part of resource payload.
 func (o InstanceFromMachineImageOutput) Params() InstanceFromMachineImageParamsOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageParamsOutput { return v.Params }).(InstanceFromMachineImageParamsOutput)
+}
+
+// Partner Metadata Map made available within the instance.
+func (o InstanceFromMachineImageOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink

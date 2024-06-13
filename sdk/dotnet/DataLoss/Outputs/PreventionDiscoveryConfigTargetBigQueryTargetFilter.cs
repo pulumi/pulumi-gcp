@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables? OtherTables;
         /// <summary>
+        /// The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference? TableReference;
+        /// <summary>
         /// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
         /// Structure is documented below.
         /// </summary>
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionDiscoveryConfigTargetBigQueryTargetFilter(
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables? otherTables,
 
+            Outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference? tableReference,
+
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables? tables)
         {
             OtherTables = otherTables;
+            TableReference = tableReference;
             Tables = tables;
         }
     }

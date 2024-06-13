@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool RequireSsl;
         /// <summary>
-        /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+        /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         /// </summary>
         public readonly string SslMode;
 

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +20,12 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection collection;
     /**
+     * @return The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference databaseResourceReference;
+    /**
      * @return Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
      * 
      */
@@ -32,6 +39,14 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
      */
     public Optional<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection> collection() {
         return Optional.ofNullable(this.collection);
+    }
+    /**
+     * @return The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference> databaseResourceReference() {
+        return Optional.ofNullable(this.databaseResourceReference);
     }
     /**
      * @return Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
@@ -51,11 +66,13 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection collection;
+        private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference databaseResourceReference;
         private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers others;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetCloudSqlTargetFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.collection = defaults.collection;
+    	      this.databaseResourceReference = defaults.databaseResourceReference;
     	      this.others = defaults.others;
         }
 
@@ -63,6 +80,12 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
         public Builder collection(@Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection collection) {
 
             this.collection = collection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databaseResourceReference(@Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference databaseResourceReference) {
+
+            this.databaseResourceReference = databaseResourceReference;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
         public PreventionDiscoveryConfigTargetCloudSqlTargetFilter build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetCloudSqlTargetFilter();
             _resultValue.collection = collection;
+            _resultValue.databaseResourceReference = databaseResourceReference;
             _resultValue.others = others;
             return _resultValue;
         }

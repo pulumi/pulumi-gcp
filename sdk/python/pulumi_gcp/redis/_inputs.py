@@ -16,6 +16,7 @@ __all__ = [
     'ClusterPscConnectionArgs',
     'ClusterStateInfoArgs',
     'ClusterStateInfoUpdateInfoArgs',
+    'ClusterZoneDistributionConfigArgs',
     'InstanceMaintenancePolicyArgs',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
@@ -286,6 +287,49 @@ class ClusterStateInfoUpdateInfoArgs:
     @target_shard_count.setter
     def target_shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_shard_count", value)
+
+
+@pulumi.input_type
+class ClusterZoneDistributionConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
+               If not provided, MULTI_ZONE will be used as default
+               Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+        :param pulumi.Input[str] zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The mode for zone distribution for Memorystore Redis cluster.
+        If not provided, MULTI_ZONE will be used as default
+        Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type

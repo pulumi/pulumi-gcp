@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerParamsArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStandbyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulInternalIpArgs;
@@ -289,6 +290,21 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    @Import(name="standbyPolicy")
+    private @Nullable Output<InstanceGroupManagerStandbyPolicyArgs> standbyPolicy;
+
+    /**
+     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    public Optional<Output<InstanceGroupManagerStandbyPolicyArgs>> standbyPolicy() {
+        return Optional.ofNullable(this.standbyPolicy);
+    }
+
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
@@ -382,6 +398,36 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Integer>> targetSize() {
         return Optional.ofNullable(this.targetSize);
+    }
+
+    /**
+     * The target number of stopped instances for this managed instance group.
+     * 
+     */
+    @Import(name="targetStoppedSize")
+    private @Nullable Output<Integer> targetStoppedSize;
+
+    /**
+     * @return The target number of stopped instances for this managed instance group.
+     * 
+     */
+    public Optional<Output<Integer>> targetStoppedSize() {
+        return Optional.ofNullable(this.targetStoppedSize);
+    }
+
+    /**
+     * The target number of suspended instances for this managed instance group.
+     * 
+     */
+    @Import(name="targetSuspendedSize")
+    private @Nullable Output<Integer> targetSuspendedSize;
+
+    /**
+     * @return The target number of suspended instances for this managed instance group.
+     * 
+     */
+    public Optional<Output<Integer>> targetSuspendedSize() {
+        return Optional.ofNullable(this.targetSuspendedSize);
     }
 
     /**
@@ -497,12 +543,15 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         this.params = $.params;
         this.project = $.project;
         this.selfLink = $.selfLink;
+        this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
         this.statefulInternalIps = $.statefulInternalIps;
         this.statuses = $.statuses;
         this.targetPools = $.targetPools;
         this.targetSize = $.targetSize;
+        this.targetStoppedSize = $.targetStoppedSize;
+        this.targetSuspendedSize = $.targetSuspendedSize;
         this.updatePolicy = $.updatePolicy;
         this.versions = $.versions;
         this.waitForInstances = $.waitForInstances;
@@ -885,6 +934,27 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyPolicy(@Nullable Output<InstanceGroupManagerStandbyPolicyArgs> standbyPolicy) {
+            $.standbyPolicy = standbyPolicy;
+            return this;
+        }
+
+        /**
+         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyPolicy(InstanceGroupManagerStandbyPolicyArgs standbyPolicy) {
+            return standbyPolicy(Output.of(standbyPolicy));
+        }
+
+        /**
          * @param statefulDisks Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
          * 
          * @return builder
@@ -1066,6 +1136,48 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
          */
         public Builder targetSize(Integer targetSize) {
             return targetSize(Output.of(targetSize));
+        }
+
+        /**
+         * @param targetStoppedSize The target number of stopped instances for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetStoppedSize(@Nullable Output<Integer> targetStoppedSize) {
+            $.targetStoppedSize = targetStoppedSize;
+            return this;
+        }
+
+        /**
+         * @param targetStoppedSize The target number of stopped instances for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetStoppedSize(Integer targetStoppedSize) {
+            return targetStoppedSize(Output.of(targetStoppedSize));
+        }
+
+        /**
+         * @param targetSuspendedSize The target number of suspended instances for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSuspendedSize(@Nullable Output<Integer> targetSuspendedSize) {
+            $.targetSuspendedSize = targetSuspendedSize;
+            return this;
+        }
+
+        /**
+         * @param targetSuspendedSize The target number of suspended instances for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSuspendedSize(Integer targetSuspendedSize) {
+            return targetSuspendedSize(Output.of(targetSuspendedSize));
         }
 
         /**

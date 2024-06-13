@@ -22,7 +22,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -113,6 +113,9 @@ class GetBackendServiceResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_lb_policy and not isinstance(service_lb_policy, str):
+            raise TypeError("Expected argument 'service_lb_policy' to be a str")
+        pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
@@ -304,6 +307,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> str:
+        return pulumi.get(self, "service_lb_policy")
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> str:
         """
@@ -356,6 +364,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             security_policy=self.security_policy,
             security_settings=self.security_settings,
             self_link=self.self_link,
+            service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             timeout_sec=self.timeout_sec)
 
@@ -413,6 +422,7 @@ def get_backend_service(name: Optional[str] = None,
         security_policy=pulumi.get(__ret__, 'security_policy'),
         security_settings=pulumi.get(__ret__, 'security_settings'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        service_lb_policy=pulumi.get(__ret__, 'service_lb_policy'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
 

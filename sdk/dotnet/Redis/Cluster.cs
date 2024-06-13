@@ -80,6 +80,77 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Cluster Ha Single Zone
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "mynetwork",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "mysubnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "mypolicy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_ha_single_zone = new Gcp.Redis.Cluster("cluster-ha-single-zone", new()
+    ///     {
+    ///         Name = "ha-cluster-single-zone",
+    ///         ShardCount = 3,
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "SINGLE_ZONE",
+    ///             Zone = "us-central1-f",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -247,6 +318,12 @@ namespace Pulumi.Gcp.Redis
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
 
+        /// <summary>
+        /// Immutable. Zone distribution config for Memorystore Redis cluster.
+        /// </summary>
+        [Output("zoneDistributionConfig")]
+        public Output<Outputs.ClusterZoneDistributionConfig?> ZoneDistributionConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Cluster resource with the given unique name, arguments, and options.
@@ -372,6 +449,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }
+
+        /// <summary>
+        /// Immutable. Zone distribution config for Memorystore Redis cluster.
+        /// </summary>
+        [Input("zoneDistributionConfig")]
+        public Input<Inputs.ClusterZoneDistributionConfigArgs>? ZoneDistributionConfig { get; set; }
 
         public ClusterArgs()
         {
@@ -533,6 +616,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Immutable. Zone distribution config for Memorystore Redis cluster.
+        /// </summary>
+        [Input("zoneDistributionConfig")]
+        public Input<Inputs.ClusterZoneDistributionConfigGetArgs>? ZoneDistributionConfig { get; set; }
 
         public ClusterState()
         {

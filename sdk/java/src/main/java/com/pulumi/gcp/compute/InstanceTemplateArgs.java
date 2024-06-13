@@ -340,6 +340,21 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     * 
+     */
+    @Import(name="partnerMetadata")
+    private @Nullable Output<Map<String,String>> partnerMetadata;
+
+    /**
+     * @return Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> partnerMetadata() {
+        return Optional.ofNullable(this.partnerMetadata);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -512,6 +527,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         this.namePrefix = $.namePrefix;
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
+        this.partnerMetadata = $.partnerMetadata;
         this.project = $.project;
         this.region = $.region;
         this.reservationAffinity = $.reservationAffinity;
@@ -984,6 +1000,27 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder networkPerformanceConfig(InstanceTemplateNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
+        }
+
+        /**
+         * @param partnerMetadata Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerMetadata(@Nullable Output<Map<String,String>> partnerMetadata) {
+            $.partnerMetadata = partnerMetadata;
+            return this;
+        }
+
+        /**
+         * @param partnerMetadata Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerMetadata(Map<String,String> partnerMetadata) {
+            return partnerMetadata(Output.of(partnerMetadata));
         }
 
         /**

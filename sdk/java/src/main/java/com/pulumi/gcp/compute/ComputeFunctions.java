@@ -100,6 +100,8 @@ import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetSecurityPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
@@ -163,6 +165,7 @@ import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
@@ -7860,6 +7863,312 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSSLPolicyResult> getSSLPolicyPlain(GetSSLPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSSLPolicy:getSSLPolicy", TypeShape.of(GetSSLPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityPolicyResult> getSecurityPolicy() {
+        return getSecurityPolicy(GetSecurityPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyResult> getSecurityPolicyPlain() {
+        return getSecurityPolicyPlain(GetSecurityPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityPolicyResult> getSecurityPolicy(GetSecurityPolicyArgs args) {
+        return getSecurityPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyResult> getSecurityPolicyPlain(GetSecurityPolicyPlainArgs args) {
+        return getSecurityPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityPolicyResult> getSecurityPolicy(GetSecurityPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getSecurityPolicy:getSecurityPolicy", TypeShape.of(GetSecurityPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Google Compute Security Policy, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sp1 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .name("my-policy")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         final var sp2 = ComputeFunctions.getSecurityPolicy(GetSecurityPolicyArgs.builder()
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyResult> getSecurityPolicyPlain(GetSecurityPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getSecurityPolicy:getSecurityPolicy", TypeShape.of(GetSecurityPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * To get more information about Snapshot, see:

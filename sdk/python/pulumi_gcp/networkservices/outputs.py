@@ -79,6 +79,8 @@ __all__ = [
     'LbTrafficExtensionExtensionChain',
     'LbTrafficExtensionExtensionChainExtension',
     'LbTrafficExtensionExtensionChainMatchCondition',
+    'ServiceLbPoliciesAutoCapacityDrain',
+    'ServiceLbPoliciesFailoverConfig',
     'TcpRouteRule',
     'TcpRouteRuleAction',
     'TcpRouteRuleActionDestination',
@@ -4973,6 +4975,60 @@ class LbTrafficExtensionExtensionChainMatchCondition(dict):
         A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
         """
         return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
+class ServiceLbPoliciesAutoCapacityDrain(dict):
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None):
+        """
+        :param bool enable: Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class ServiceLbPoliciesFailoverConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverHealthThreshold":
+            suggest = "failover_health_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceLbPoliciesFailoverConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceLbPoliciesFailoverConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceLbPoliciesFailoverConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failover_health_threshold: int):
+        """
+        :param int failover_health_threshold: Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        pulumi.set(__self__, "failover_health_threshold", failover_health_threshold)
+
+    @property
+    @pulumi.getter(name="failoverHealthThreshold")
+    def failover_health_threshold(self) -> int:
+        """
+        Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        return pulumi.get(self, "failover_health_threshold")
 
 
 @pulumi.output_type

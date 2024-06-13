@@ -31,6 +31,7 @@ __all__ = [
     'FlexibleAppVersionDeploymentZip',
     'FlexibleAppVersionEndpointsApiService',
     'FlexibleAppVersionEntrypoint',
+    'FlexibleAppVersionFlexibleRuntimeSettings',
     'FlexibleAppVersionHandler',
     'FlexibleAppVersionHandlerScript',
     'FlexibleAppVersionHandlerStaticFiles',
@@ -1359,6 +1360,56 @@ class FlexibleAppVersionEntrypoint(dict):
         The format should be a shell command that can be fed to bash -c.
         """
         return pulumi.get(self, "shell")
+
+
+@pulumi.output_type
+class FlexibleAppVersionFlexibleRuntimeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatingSystem":
+            suggest = "operating_system"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionFlexibleRuntimeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionFlexibleRuntimeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionFlexibleRuntimeSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operating_system: Optional[str] = None,
+                 runtime_version: Optional[str] = None):
+        """
+        :param str operating_system: Operating System of the application runtime.
+        :param str runtime_version: The runtime version of an App Engine flexible application.
+        """
+        if operating_system is not None:
+            pulumi.set(__self__, "operating_system", operating_system)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> Optional[str]:
+        """
+        Operating System of the application runtime.
+        """
+        return pulumi.get(self, "operating_system")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[str]:
+        """
+        The runtime version of an App Engine flexible application.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type

@@ -619,6 +619,23 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * 
+     */
+    @Import(name="serviceLbPolicy")
+    private @Nullable Output<String> serviceLbPolicy;
+
+    /**
+     * @return URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * 
+     */
+    public Optional<Output<String>> serviceLbPolicy() {
+        return Optional.ofNullable(this.serviceLbPolicy);
+    }
+
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -682,6 +699,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.protocol = $.protocol;
         this.securityPolicy = $.securityPolicy;
         this.securitySettings = $.securitySettings;
+        this.serviceLbPolicy = $.serviceLbPolicy;
         this.sessionAffinity = $.sessionAffinity;
         this.timeoutSec = $.timeoutSec;
     }
@@ -1492,6 +1510,29 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder securitySettings(BackendServiceSecuritySettingsArgs securitySettings) {
             return securitySettings(Output.of(securitySettings));
+        }
+
+        /**
+         * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
+         * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLbPolicy(@Nullable Output<String> serviceLbPolicy) {
+            $.serviceLbPolicy = serviceLbPolicy;
+            return this;
+        }
+
+        /**
+         * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
+         * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLbPolicy(String serviceLbPolicy) {
+            return serviceLbPolicy(Output.of(serviceLbPolicy));
         }
 
         /**
