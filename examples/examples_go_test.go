@@ -13,6 +13,7 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
+	"reflect"
 	"testing"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
@@ -233,6 +234,28 @@ func TestLabelsCombinationsGo(t *testing.T) {
 			},
 		},
 		{
+			"make label empty",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": "s"},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": ""},
+			},
+		},
+		{
+			"make default label empty",
+			labelsState{
+				DefaultLabels: map[string]string{"x": "s"},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+				Labels:        map[string]string{},
+			},
+		},
+		{
 			"convoluted test case found by random-sampling",
 			labelsState{
 				DefaultLabels: map[string]string{"x": "", "y": "s"},
@@ -370,6 +393,35 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 	integration.ProgramTest(t, &opts)
 }
 
+func (st labelsState) expectedLabelsPRC(prev labelsState) map[string]string {
+	// Note that the upstream provider actually takes a "" value for a label to mean "keep the previous value".
+	// This behaviour is exposed under PlanResourceChange
+	r := map[string]string{}
+	for k, v := range st.DefaultLabels {
+		if v != "" {
+			r[k] = v
+		} else {
+			if prev.DefaultLabels[k] != "" {
+				r[k] = prev.DefaultLabels[k]
+			} else if prev.Labels[k] != "" {
+				r[k] = prev.Labels[k]
+			}
+		}
+	}
+	for k, v := range st.Labels {
+		if v != "" {
+			r[k] = v
+		} else {
+			if prev.DefaultLabels[k] != "" {
+				r[k] = prev.DefaultLabels[k]
+			} else if prev.Labels[k] != "" {
+				r[k] = prev.Labels[k]
+			}
+		}
+	}
+	return r
+}
+
 func (st labelsState) expectedLabels() map[string]string {
 	r := map[string]string{}
 	for k, v := range st.DefaultLabels {
@@ -401,10 +453,14 @@ func validateStateResult(phase int, st1, st2 labelsState) func(
 			require.NoError(t, err)
 			t.Logf("phase: %d", phase)
 			t.Logf("state1: %v", st1.serialize(t))
+			prev := labelsState{}
 			if phase == 2 {
+				prev = st1
 				t.Logf("state2: %v", st2.serialize(t))
 			}
-			require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			if !reflect.DeepEqual(actualLabels, st.expectedLabelsPRC(prev)) {
+				require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			}
 			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
 		}
 	}
