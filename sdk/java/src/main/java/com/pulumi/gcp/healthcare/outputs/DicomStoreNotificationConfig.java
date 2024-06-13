@@ -5,8 +5,11 @@ package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DicomStoreNotificationConfig {
@@ -20,6 +23,11 @@ public final class DicomStoreNotificationConfig {
      * 
      */
     private String pubsubTopic;
+    /**
+     * @return Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+     * 
+     */
+    private @Nullable Boolean sendForBulkImport;
 
     private DicomStoreNotificationConfig() {}
     /**
@@ -34,6 +42,13 @@ public final class DicomStoreNotificationConfig {
     public String pubsubTopic() {
         return this.pubsubTopic;
     }
+    /**
+     * @return Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+     * 
+     */
+    public Optional<Boolean> sendForBulkImport() {
+        return Optional.ofNullable(this.sendForBulkImport);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -45,10 +60,12 @@ public final class DicomStoreNotificationConfig {
     @CustomType.Builder
     public static final class Builder {
         private String pubsubTopic;
+        private @Nullable Boolean sendForBulkImport;
         public Builder() {}
         public Builder(DicomStoreNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubTopic = defaults.pubsubTopic;
+    	      this.sendForBulkImport = defaults.sendForBulkImport;
         }
 
         @CustomType.Setter
@@ -59,9 +76,16 @@ public final class DicomStoreNotificationConfig {
             this.pubsubTopic = pubsubTopic;
             return this;
         }
+        @CustomType.Setter
+        public Builder sendForBulkImport(@Nullable Boolean sendForBulkImport) {
+
+            this.sendForBulkImport = sendForBulkImport;
+            return this;
+        }
         public DicomStoreNotificationConfig build() {
             final var _resultValue = new DicomStoreNotificationConfig();
             _resultValue.pubsubTopic = pubsubTopic;
+            _resultValue.sendForBulkImport = sendForBulkImport;
             return _resultValue;
         }
     }

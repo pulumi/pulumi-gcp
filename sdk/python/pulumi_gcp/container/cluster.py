@@ -78,6 +78,7 @@ class ClusterArgs:
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+                 secret_manager_config: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']] = None,
                  security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
                  service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -275,6 +276,9 @@ class ClusterArgs:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
+               [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+               Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
@@ -413,6 +417,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if secret_manager_config is not None:
+            pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
         if service_external_ips_config is not None:
@@ -1297,6 +1303,20 @@ class ClusterArgs:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]:
+        """
+        Configuration for the
+        [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_manager_config")
+
+    @secret_manager_config.setter
+    def secret_manager_config(self, value: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]):
+        pulumi.set(self, "secret_manager_config", value)
+
+    @property
     @pulumi.getter(name="securityPostureConfig")
     def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
         """
@@ -1456,6 +1476,7 @@ class _ClusterState:
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+                 secret_manager_config: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']] = None,
                  security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
@@ -1661,6 +1682,9 @@ class _ClusterState:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
+               [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+               Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
@@ -1815,6 +1839,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if secret_manager_config is not None:
+            pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
         if self_link is not None:
@@ -2752,6 +2778,20 @@ class _ClusterState:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]:
+        """
+        Configuration for the
+        [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_manager_config")
+
+    @secret_manager_config.setter
+    def secret_manager_config(self, value: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]):
+        pulumi.set(self, "secret_manager_config", value)
+
+    @property
     @pulumi.getter(name="securityPostureConfig")
     def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
         """
@@ -2950,6 +2990,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 secret_manager_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecretManagerConfigArgs']]] = None,
                  security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
                  service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -3268,6 +3309,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecretManagerConfigArgs']] secret_manager_config: Configuration for the
+               [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
@@ -3487,6 +3531,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 secret_manager_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecretManagerConfigArgs']]] = None,
                  security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
                  service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -3565,6 +3610,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["secret_manager_config"] = secret_manager_config
             __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["service_external_ips_config"] = service_external_ips_config
             __props__.__dict__["subnetwork"] = subnetwork
@@ -3655,6 +3701,7 @@ class Cluster(pulumi.CustomResource):
             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+            secret_manager_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecretManagerConfigArgs']]] = None,
             security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
@@ -3865,6 +3912,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecretManagerConfigArgs']] secret_manager_config: Configuration for the
+               [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
@@ -3957,6 +4007,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+        __props__.__dict__["secret_manager_config"] = secret_manager_config
         __props__.__dict__["security_posture_config"] = security_posture_config
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_external_ips_config"] = service_external_ips_config
@@ -4619,6 +4670,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> pulumi.Output[Optional['outputs.ClusterSecretManagerConfig']]:
+        """
+        Configuration for the
+        [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_manager_config")
 
     @property
     @pulumi.getter(name="securityPostureConfig")

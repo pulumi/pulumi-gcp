@@ -2686,6 +2686,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/projectCloudArmorTier",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier": "ProjectCloudArmorTier"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/projectDefaultNetworkTier",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -6246,6 +6254,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/serviceLbPolicies",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies": "ServiceLbPolicies"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/tcpRoute",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
@@ -6886,6 +6902,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/managementOrganizationEventThreatDetectionCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule": "ManagementOrganizationEventThreatDetectionCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/muteConfig",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7170,6 +7194,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.spanner",
   "classes": {
    "gcp:spanner/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "spanner/instanceConfig",
+  "fqn": "pulumi_gcp.spanner",
+  "classes": {
+   "gcp:spanner/instanceConfig:InstanceConfig": "InstanceConfig"
   }
  },
  {

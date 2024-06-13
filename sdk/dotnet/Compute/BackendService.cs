@@ -726,6 +726,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// </summary>
+        [Output("serviceLbPolicy")]
+        public Output<string?> ServiceLbPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
         /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1070,6 +1077,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.BackendServiceSecuritySettingsArgs>? SecuritySettings { get; set; }
 
         /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// </summary>
+        [Input("serviceLbPolicy")]
+        public Input<string>? ServiceLbPolicy { get; set; }
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
         /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1399,6 +1413,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// </summary>
+        [Input("serviceLbPolicy")]
+        public Input<string>? ServiceLbPolicy { get; set; }
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is

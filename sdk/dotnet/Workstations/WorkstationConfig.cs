@@ -497,8 +497,11 @@ namespace Pulumi.Gcp.Workstations
     ///                     },
     ///                     new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs
     ///                     {
-    ///                         Id = "boost-1",
-    ///                         MachineType = "e2-standard-2",
+    ///                         Id = "boost-2",
+    ///                         MachineType = "n1-standard-2",
+    ///                         PoolSize = 2,
+    ///                         BootDiskSizeGb = 30,
+    ///                         EnableNestedVirtualization = true,
     ///                     },
     ///                 },
     ///             },

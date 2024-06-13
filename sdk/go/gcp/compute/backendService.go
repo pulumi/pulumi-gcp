@@ -684,6 +684,9 @@ type BackendService struct {
 	SecuritySettings BackendServiceSecuritySettingsPtrOutput `pulumi:"securitySettings"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy pulumi.StringPtrOutput `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -890,6 +893,9 @@ type backendServiceState struct {
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1067,6 +1073,9 @@ type BackendServiceState struct {
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1239,6 +1248,9 @@ type backendServiceArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1408,6 +1420,9 @@ type BackendServiceArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1756,6 +1771,12 @@ func (o BackendServiceOutput) SecuritySettings() BackendServiceSecuritySettingsP
 // The URI of the created resource.
 func (o BackendServiceOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URL to networkservices.ServiceLbPolicy resource.
+// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+func (o BackendServiceOutput) ServiceLbPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.ServiceLbPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Type of session affinity to use. The default is NONE. Session affinity is

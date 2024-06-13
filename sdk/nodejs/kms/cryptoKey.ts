@@ -172,7 +172,8 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
     /**
@@ -301,7 +302,8 @@ export interface CryptoKeyState {
     rotationPeriod?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**
@@ -364,7 +366,8 @@ export interface CryptoKeyArgs {
     rotationPeriod?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**

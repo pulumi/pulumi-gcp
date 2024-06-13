@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +35,38 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
      */
     public Optional<Output<List<WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs>>> accelerators() {
         return Optional.ofNullable(this.accelerators);
+    }
+
+    /**
+     * Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+     * 
+     */
+    @Import(name="bootDiskSizeGb")
+    private @Nullable Output<Integer> bootDiskSizeGb;
+
+    /**
+     * @return Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+     * 
+     */
+    public Optional<Output<Integer>> bootDiskSizeGb() {
+        return Optional.ofNullable(this.bootDiskSizeGb);
+    }
+
+    /**
+     * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * 
+     */
+    @Import(name="enableNestedVirtualization")
+    private @Nullable Output<Boolean> enableNestedVirtualization;
+
+    /**
+     * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * 
+     */
+    public Optional<Output<Boolean>> enableNestedVirtualization() {
+        return Optional.ofNullable(this.enableNestedVirtualization);
     }
 
     /**
@@ -65,12 +99,30 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
         return Optional.ofNullable(this.machineType);
     }
 
+    /**
+     * Number of instances to pool for faster workstation boosting.
+     * 
+     */
+    @Import(name="poolSize")
+    private @Nullable Output<Integer> poolSize;
+
+    /**
+     * @return Number of instances to pool for faster workstation boosting.
+     * 
+     */
+    public Optional<Output<Integer>> poolSize() {
+        return Optional.ofNullable(this.poolSize);
+    }
+
     private WorkstationConfigHostGceInstanceBoostConfigArgs() {}
 
     private WorkstationConfigHostGceInstanceBoostConfigArgs(WorkstationConfigHostGceInstanceBoostConfigArgs $) {
         this.accelerators = $.accelerators;
+        this.bootDiskSizeGb = $.bootDiskSizeGb;
+        this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.id = $.id;
         this.machineType = $.machineType;
+        this.poolSize = $.poolSize;
     }
 
     public static Builder builder() {
@@ -126,6 +178,50 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
         }
 
         /**
+         * @param bootDiskSizeGb Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskSizeGb(@Nullable Output<Integer> bootDiskSizeGb) {
+            $.bootDiskSizeGb = bootDiskSizeGb;
+            return this;
+        }
+
+        /**
+         * @param bootDiskSizeGb Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskSizeGb(Integer bootDiskSizeGb) {
+            return bootDiskSizeGb(Output.of(bootDiskSizeGb));
+        }
+
+        /**
+         * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(@Nullable Output<Boolean> enableNestedVirtualization) {
+            $.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+
+        /**
+         * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
+            return enableNestedVirtualization(Output.of(enableNestedVirtualization));
+        }
+
+        /**
          * @param id The id to be used for the boost config.
          * 
          * @return builder
@@ -165,6 +261,27 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param poolSize Number of instances to pool for faster workstation boosting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poolSize(@Nullable Output<Integer> poolSize) {
+            $.poolSize = poolSize;
+            return this;
+        }
+
+        /**
+         * @param poolSize Number of instances to pool for faster workstation boosting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poolSize(Integer poolSize) {
+            return poolSize(Output.of(poolSize));
         }
 
         public WorkstationConfigHostGceInstanceBoostConfigArgs build() {

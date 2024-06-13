@@ -597,6 +597,286 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Restoreplan Gitops Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlan;
+ * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("gitops-mode-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool("my-project-name.svc.id.goog")
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
+ *             .build());
+ * 
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
+ *             .name("gitops-mode")
+ *             .cluster(primary.id())
+ *             .location("us-central1")
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .allNamespaces(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var gitopsMode = new RestorePlan("gitopsMode", RestorePlanArgs.builder()
+ *             .name("gitops-mode")
+ *             .location("us-central1")
+ *             .backupPlan(basic.id())
+ *             .cluster(primary.id())
+ *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
+ *                 .allNamespaces(true)
+ *                 .namespacedResourceRestoreMode("MERGE_SKIP_ON_CONFLICT")
+ *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
+ *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
+ *                     .allGroupKinds(true)
+ *                     .build())
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Restoreplan Restore Order
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlan;
+ * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("restore-order-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool("my-project-name.svc.id.goog")
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
+ *             .build());
+ * 
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
+ *             .name("restore-order")
+ *             .cluster(primary.id())
+ *             .location("us-central1")
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .allNamespaces(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var restoreOrder = new RestorePlan("restoreOrder", RestorePlanArgs.builder()
+ *             .name("restore-order")
+ *             .location("us-central1")
+ *             .backupPlan(basic.id())
+ *             .cluster(primary.id())
+ *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
+ *                 .allNamespaces(true)
+ *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
+ *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
+ *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
+ *                     .allGroupKinds(true)
+ *                     .build())
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
+ *                 .restoreOrder(RestorePlanRestoreConfigRestoreOrderArgs.builder()
+ *                     .groupKindDependencies(                    
+ *                         RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs.builder()
+ *                             .satisfying(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs.builder()
+ *                                 .resourceGroup("stable.example.com")
+ *                                 .resourceKind("kindA")
+ *                                 .build())
+ *                             .requiring(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs.builder()
+ *                                 .resourceGroup("stable.example.com")
+ *                                 .resourceKind("kindB")
+ *                                 .build())
+ *                             .build(),
+ *                         RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs.builder()
+ *                             .satisfying(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs.builder()
+ *                                 .resourceGroup("stable.example.com")
+ *                                 .resourceKind("kindB")
+ *                                 .build())
+ *                             .requiring(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs.builder()
+ *                                 .resourceGroup("stable.example.com")
+ *                                 .resourceKind("kindC")
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Restoreplan Volume Res
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlan;
+ * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("volume-res-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool("my-project-name.svc.id.goog")
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
+ *             .build());
+ * 
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
+ *             .name("volume-res")
+ *             .cluster(primary.id())
+ *             .location("us-central1")
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .allNamespaces(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var volumeRes = new RestorePlan("volumeRes", RestorePlanArgs.builder()
+ *             .name("volume-res")
+ *             .location("us-central1")
+ *             .backupPlan(basic.id())
+ *             .cluster(primary.id())
+ *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
+ *                 .allNamespaces(true)
+ *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
+ *                 .volumeDataRestorePolicy("NO_VOLUME_DATA_RESTORATION")
+ *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
+ *                     .allGroupKinds(true)
+ *                     .build())
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
+ *                 .volumeDataRestorePolicyBindings(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs.builder()
+ *                     .policy("RESTORE_VOLUME_DATA_FROM_BACKUP")
+ *                     .volumeType("GCE_PERSISTENT_DISK")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

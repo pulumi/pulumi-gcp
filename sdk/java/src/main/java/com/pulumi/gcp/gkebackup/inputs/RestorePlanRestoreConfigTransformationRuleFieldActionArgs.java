@@ -71,8 +71,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldActionArgs ext
      * A string that specifies the desired value in string format
      * to use for transformation.
      * 
-     * ***
-     * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
@@ -80,8 +78,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldActionArgs ext
     /**
      * @return A string that specifies the desired value in string format
      * to use for transformation.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> value() {
@@ -188,8 +184,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldActionArgs ext
          * @param value A string that specifies the desired value in string format
          * to use for transformation.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -201,8 +195,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldActionArgs ext
         /**
          * @param value A string that specifies the desired value in string format
          * to use for transformation.
-         * 
-         * ***
          * 
          * @return builder
          * 

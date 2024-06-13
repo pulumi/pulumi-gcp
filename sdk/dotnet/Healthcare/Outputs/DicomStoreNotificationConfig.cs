@@ -22,11 +22,19 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         /// </summary>
         public readonly string PubsubTopic;
+        /// <summary>
+        /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        /// </summary>
+        public readonly bool? SendForBulkImport;
 
         [OutputConstructor]
-        private DicomStoreNotificationConfig(string pubsubTopic)
+        private DicomStoreNotificationConfig(
+            string pubsubTopic,
+
+            bool? sendForBulkImport)
         {
             PubsubTopic = pubsubTopic;
+            SendForBulkImport = sendForBulkImport;
         }
     }
 }

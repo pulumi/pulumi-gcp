@@ -416,6 +416,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceTemplateNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        /// </summary>
+        [Output("partnerMetadata")]
+        public Output<ImmutableDictionary<string, string>?> PartnerMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -713,6 +719,18 @@ namespace Pulumi.Gcp.Compute
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceTemplateNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -976,6 +994,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceTemplateNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

@@ -126,6 +126,41 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### With Standby Policy (`Google-Beta` Provider)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var igm_sr = new Gcp.Compute.InstanceGroupManager("igm-sr", new()
+    ///     {
+    ///         Name = "tf-sr-igm",
+    ///         BaseInstanceName = "tf-sr-igm-instance",
+    ///         Zone = "us-central1-a",
+    ///         TargetSize = 5,
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = sr_igm.SelfLink,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         StandbyPolicy = new Gcp.Compute.Inputs.InstanceGroupManagerStandbyPolicyArgs
+    ///         {
+    ///             InitialDelaySec = 30,
+    ///             Mode = "MANUAL",
+    ///         },
+    ///         TargetSuspendedSize = 2,
+    ///         TargetStoppedSize = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance group managers can be imported using any of these accepted formats:
@@ -268,6 +303,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        /// </summary>
+        [Output("standbyPolicy")]
+        public Output<Outputs.InstanceGroupManagerStandbyPolicy> StandbyPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         [Output("statefulDisks")]
@@ -305,6 +346,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group.
+        /// </summary>
+        [Output("targetStoppedSize")]
+        public Output<int> TargetStoppedSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group.
+        /// </summary>
+        [Output("targetSuspendedSize")]
+        public Output<int> TargetSuspendedSize { get; private set; } = null!;
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -479,6 +532,12 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        /// </summary>
+        [Input("standbyPolicy")]
+        public Input<Inputs.InstanceGroupManagerStandbyPolicyArgs>? StandbyPolicy { get; set; }
+
         [Input("statefulDisks")]
         private InputList<Inputs.InstanceGroupManagerStatefulDiskArgs>? _statefulDisks;
 
@@ -535,6 +594,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group.
+        /// </summary>
+        [Input("targetStoppedSize")]
+        public Input<int>? TargetStoppedSize { get; set; }
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group.
+        /// </summary>
+        [Input("targetSuspendedSize")]
+        public Input<int>? TargetSuspendedSize { get; set; }
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -704,6 +775,12 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        /// </summary>
+        [Input("standbyPolicy")]
+        public Input<Inputs.InstanceGroupManagerStandbyPolicyGetArgs>? StandbyPolicy { get; set; }
+
         [Input("statefulDisks")]
         private InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs>? _statefulDisks;
 
@@ -772,6 +849,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group.
+        /// </summary>
+        [Input("targetStoppedSize")]
+        public Input<int>? TargetStoppedSize { get; set; }
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group.
+        /// </summary>
+        [Input("targetSuspendedSize")]
+        public Input<int>? TargetSuspendedSize { get; set; }
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).

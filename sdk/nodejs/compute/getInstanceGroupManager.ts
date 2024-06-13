@@ -83,12 +83,15 @@ export interface GetInstanceGroupManagerResult {
     readonly params: outputs.compute.GetInstanceGroupManagerParam[];
     readonly project?: string;
     readonly selfLink?: string;
+    readonly standbyPolicies: outputs.compute.GetInstanceGroupManagerStandbyPolicy[];
     readonly statefulDisks: outputs.compute.GetInstanceGroupManagerStatefulDisk[];
     readonly statefulExternalIps: outputs.compute.GetInstanceGroupManagerStatefulExternalIp[];
     readonly statefulInternalIps: outputs.compute.GetInstanceGroupManagerStatefulInternalIp[];
     readonly statuses: outputs.compute.GetInstanceGroupManagerStatus[];
     readonly targetPools: string[];
     readonly targetSize: number;
+    readonly targetStoppedSize: number;
+    readonly targetSuspendedSize: number;
     readonly updatePolicies: outputs.compute.GetInstanceGroupManagerUpdatePolicy[];
     readonly versions: outputs.compute.GetInstanceGroupManagerVersion[];
     readonly waitForInstances: boolean;

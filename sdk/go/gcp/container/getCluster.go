@@ -107,6 +107,7 @@ type LookupClusterResult struct {
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
+	SecretManagerConfigs            []GetClusterSecretManagerConfig            `pulumi:"secretManagerConfigs"`
 	SecurityPostureConfigs          []GetClusterSecurityPostureConfig          `pulumi:"securityPostureConfigs"`
 	SelfLink                        string                                     `pulumi:"selfLink"`
 	ServiceExternalIpsConfigs       []GetClusterServiceExternalIpsConfig       `pulumi:"serviceExternalIpsConfigs"`
@@ -433,6 +434,10 @@ func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
 
 func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResourceUsageExportConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterResourceUsageExportConfig { return v.ResourceUsageExportConfigs }).(GetClusterResourceUsageExportConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) SecretManagerConfigs() GetClusterSecretManagerConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterSecretManagerConfig { return v.SecretManagerConfigs }).(GetClusterSecretManagerConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) SecurityPostureConfigs() GetClusterSecurityPostureConfigArrayOutput {

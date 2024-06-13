@@ -45,6 +45,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceConfigArgs, InstanceConfigState } from "./instanceConfig";
+export type InstanceConfig = import("./instanceConfig").InstanceConfig;
+export const InstanceConfig: typeof import("./instanceConfig").InstanceConfig = null as any;
+utilities.lazyLoad(exports, ["InstanceConfig"], () => require("./instanceConfig"));
+
 export { InstanceIAMBindingArgs, InstanceIAMBindingState } from "./instanceIAMBinding";
 export type InstanceIAMBinding = import("./instanceIAMBinding").InstanceIAMBinding;
 export const InstanceIAMBinding: typeof import("./instanceIAMBinding").InstanceIAMBinding = null as any;
@@ -75,6 +80,8 @@ const _module = {
                 return new DatabaseIAMPolicy(name, <any>undefined, { urn })
             case "gcp:spanner/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "gcp:spanner/instanceConfig:InstanceConfig":
+                return new InstanceConfig(name, <any>undefined, { urn })
             case "gcp:spanner/instanceIAMBinding:InstanceIAMBinding":
                 return new InstanceIAMBinding(name, <any>undefined, { urn })
             case "gcp:spanner/instanceIAMMember:InstanceIAMMember":
@@ -91,6 +98,7 @@ pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMBinding", _modu
 pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instance", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/instanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMPolicy", _module)

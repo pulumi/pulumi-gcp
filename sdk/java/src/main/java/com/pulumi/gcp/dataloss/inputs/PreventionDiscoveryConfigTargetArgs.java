@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetSecretsTargetArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +51,27 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
         return Optional.ofNullable(this.cloudSqlTarget);
     }
 
+    /**
+     * Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+     * 
+     */
+    @Import(name="secretsTarget")
+    private @Nullable Output<PreventionDiscoveryConfigTargetSecretsTargetArgs> secretsTarget;
+
+    /**
+     * @return Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetSecretsTargetArgs>> secretsTarget() {
+        return Optional.ofNullable(this.secretsTarget);
+    }
+
     private PreventionDiscoveryConfigTargetArgs() {}
 
     private PreventionDiscoveryConfigTargetArgs(PreventionDiscoveryConfigTargetArgs $) {
         this.bigQueryTarget = $.bigQueryTarget;
         this.cloudSqlTarget = $.cloudSqlTarget;
+        this.secretsTarget = $.secretsTarget;
     }
 
     public static Builder builder() {
@@ -119,6 +136,27 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
          */
         public Builder cloudSqlTarget(PreventionDiscoveryConfigTargetCloudSqlTargetArgs cloudSqlTarget) {
             return cloudSqlTarget(Output.of(cloudSqlTarget));
+        }
+
+        /**
+         * @param secretsTarget Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsTarget(@Nullable Output<PreventionDiscoveryConfigTargetSecretsTargetArgs> secretsTarget) {
+            $.secretsTarget = secretsTarget;
+            return this;
+        }
+
+        /**
+         * @param secretsTarget Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsTarget(PreventionDiscoveryConfigTargetSecretsTargetArgs secretsTarget) {
+            return secretsTarget(Output.of(secretsTarget));
         }
 
         public PreventionDiscoveryConfigTargetArgs build() {

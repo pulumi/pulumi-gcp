@@ -86,14 +86,14 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
@@ -101,14 +101,14 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
      * 
      */
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
     /**
-     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
@@ -287,7 +287,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
          * 
          * @return builder
          * 

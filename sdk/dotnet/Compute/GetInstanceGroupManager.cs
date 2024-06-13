@@ -164,12 +164,15 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerParamResult> Params;
         public readonly string? Project;
         public readonly string? SelfLink;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStandbyPolicyResult> StandbyPolicies;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> StatefulDisks;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulExternalIpResult> StatefulExternalIps;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulInternalIpResult> StatefulInternalIps;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatusResult> Statuses;
         public readonly ImmutableArray<string> TargetPools;
         public readonly int TargetSize;
+        public readonly int TargetStoppedSize;
+        public readonly int TargetSuspendedSize;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerUpdatePolicyResult> UpdatePolicies;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerVersionResult> Versions;
         public readonly bool WaitForInstances;
@@ -210,6 +213,8 @@ namespace Pulumi.Gcp.Compute
 
             string? selfLink,
 
+            ImmutableArray<Outputs.GetInstanceGroupManagerStandbyPolicyResult> standbyPolicies,
+
             ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> statefulDisks,
 
             ImmutableArray<Outputs.GetInstanceGroupManagerStatefulExternalIpResult> statefulExternalIps,
@@ -221,6 +226,10 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<string> targetPools,
 
             int targetSize,
+
+            int targetStoppedSize,
+
+            int targetSuspendedSize,
 
             ImmutableArray<Outputs.GetInstanceGroupManagerUpdatePolicyResult> updatePolicies,
 
@@ -248,12 +257,15 @@ namespace Pulumi.Gcp.Compute
             Params = @params;
             Project = project;
             SelfLink = selfLink;
+            StandbyPolicies = standbyPolicies;
             StatefulDisks = statefulDisks;
             StatefulExternalIps = statefulExternalIps;
             StatefulInternalIps = statefulInternalIps;
             Statuses = statuses;
             TargetPools = targetPools;
             TargetSize = targetSize;
+            TargetStoppedSize = targetStoppedSize;
+            TargetSuspendedSize = targetSuspendedSize;
             UpdatePolicies = updatePolicies;
             Versions = versions;
             WaitForInstances = waitForInstances;

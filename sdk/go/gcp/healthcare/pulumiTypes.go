@@ -999,6 +999,8 @@ type DicomStoreNotificationConfig struct {
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport *bool `pulumi:"sendForBulkImport"`
 }
 
 // DicomStoreNotificationConfigInput is an input type that accepts DicomStoreNotificationConfigArgs and DicomStoreNotificationConfigOutput values.
@@ -1020,6 +1022,8 @@ type DicomStoreNotificationConfigArgs struct {
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport pulumi.BoolPtrInput `pulumi:"sendForBulkImport"`
 }
 
 func (DicomStoreNotificationConfigArgs) ElementType() reflect.Type {
@@ -1109,6 +1113,11 @@ func (o DicomStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o DicomStoreNotificationConfigOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DicomStoreNotificationConfig) *bool { return v.SendForBulkImport }).(pulumi.BoolPtrOutput)
+}
+
 type DicomStoreNotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreNotificationConfigPtrOutput) ElementType() reflect.Type {
@@ -1146,6 +1155,16 @@ func (o DicomStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOut
 		}
 		return &v.PubsubTopic
 	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o DicomStoreNotificationConfigPtrOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DicomStoreNotificationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendForBulkImport
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DicomStoreStreamConfig struct {

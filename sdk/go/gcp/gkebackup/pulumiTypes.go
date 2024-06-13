@@ -26,6 +26,10 @@ type BackupPlanBackupConfig struct {
 	// This flag specifies whether volume data should be backed up when PVCs are
 	// included in the scope of a Backup.
 	IncludeVolumeData *bool `pulumi:"includeVolumeData"`
+	// This flag specifies whether Backups will not fail when
+	// Backup for GKE detects Kubernetes configuration that is
+	// non-standard or requires additional setup to restore.
+	PermissiveMode *bool `pulumi:"permissiveMode"`
 	// A list of namespaced Kubernetes Resources.
 	// Structure is documented below.
 	SelectedApplications *BackupPlanBackupConfigSelectedApplications `pulumi:"selectedApplications"`
@@ -58,6 +62,10 @@ type BackupPlanBackupConfigArgs struct {
 	// This flag specifies whether volume data should be backed up when PVCs are
 	// included in the scope of a Backup.
 	IncludeVolumeData pulumi.BoolPtrInput `pulumi:"includeVolumeData"`
+	// This flag specifies whether Backups will not fail when
+	// Backup for GKE detects Kubernetes configuration that is
+	// non-standard or requires additional setup to restore.
+	PermissiveMode pulumi.BoolPtrInput `pulumi:"permissiveMode"`
 	// A list of namespaced Kubernetes Resources.
 	// Structure is documented below.
 	SelectedApplications BackupPlanBackupConfigSelectedApplicationsPtrInput `pulumi:"selectedApplications"`
@@ -167,6 +175,13 @@ func (o BackupPlanBackupConfigOutput) IncludeVolumeData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupPlanBackupConfig) *bool { return v.IncludeVolumeData }).(pulumi.BoolPtrOutput)
 }
 
+// This flag specifies whether Backups will not fail when
+// Backup for GKE detects Kubernetes configuration that is
+// non-standard or requires additional setup to restore.
+func (o BackupPlanBackupConfigOutput) PermissiveMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupConfig) *bool { return v.PermissiveMode }).(pulumi.BoolPtrOutput)
+}
+
 // A list of namespaced Kubernetes Resources.
 // Structure is documented below.
 func (o BackupPlanBackupConfigOutput) SelectedApplications() BackupPlanBackupConfigSelectedApplicationsPtrOutput {
@@ -246,6 +261,18 @@ func (o BackupPlanBackupConfigPtrOutput) IncludeVolumeData() pulumi.BoolPtrOutpu
 			return nil
 		}
 		return v.IncludeVolumeData
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This flag specifies whether Backups will not fail when
+// Backup for GKE detects Kubernetes configuration that is
+// non-standard or requires additional setup to restore.
+func (o BackupPlanBackupConfigPtrOutput) PermissiveMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PermissiveMode
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2691,11 +2718,14 @@ type RestorePlanRestoreConfig struct {
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
 	// for more information on each mode.
-	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 	NamespacedResourceRestoreMode *string `pulumi:"namespacedResourceRestoreMode"`
 	// Do not restore any namespaced resources if set to "True".
 	// Specifying this field to "False" is not allowed.
 	NoNamespaces *bool `pulumi:"noNamespaces"`
+	// It contains custom ordering to use on a Restore.
+	// Structure is documented below.
+	RestoreOrder *RestorePlanRestoreConfigRestoreOrder `pulumi:"restoreOrder"`
 	// A list of selected ProtectedApplications to restore.
 	// The listed ProtectedApplications and all the resources
 	// to which they refer will be restored.
@@ -2720,6 +2750,11 @@ type RestorePlanRestoreConfig struct {
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	VolumeDataRestorePolicy *string `pulumi:"volumeDataRestorePolicy"`
+	// A table that binds volumes by their scope to a restore policy. Bindings
+	// must have a unique scope. Any volumes not scoped in the bindings are
+	// subject to the policy defined in volume_data_restore_policy.
+	// Structure is documented below.
+	VolumeDataRestorePolicyBindings []RestorePlanRestoreConfigVolumeDataRestorePolicyBinding `pulumi:"volumeDataRestorePolicyBindings"`
 }
 
 // RestorePlanRestoreConfigInput is an input type that accepts RestorePlanRestoreConfigArgs and RestorePlanRestoreConfigOutput values.
@@ -2758,11 +2793,14 @@ type RestorePlanRestoreConfigArgs struct {
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
 	// for more information on each mode.
-	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 	NamespacedResourceRestoreMode pulumi.StringPtrInput `pulumi:"namespacedResourceRestoreMode"`
 	// Do not restore any namespaced resources if set to "True".
 	// Specifying this field to "False" is not allowed.
 	NoNamespaces pulumi.BoolPtrInput `pulumi:"noNamespaces"`
+	// It contains custom ordering to use on a Restore.
+	// Structure is documented below.
+	RestoreOrder RestorePlanRestoreConfigRestoreOrderPtrInput `pulumi:"restoreOrder"`
 	// A list of selected ProtectedApplications to restore.
 	// The listed ProtectedApplications and all the resources
 	// to which they refer will be restored.
@@ -2787,6 +2825,11 @@ type RestorePlanRestoreConfigArgs struct {
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	VolumeDataRestorePolicy pulumi.StringPtrInput `pulumi:"volumeDataRestorePolicy"`
+	// A table that binds volumes by their scope to a restore policy. Bindings
+	// must have a unique scope. Any volumes not scoped in the bindings are
+	// subject to the policy defined in volume_data_restore_policy.
+	// Structure is documented below.
+	VolumeDataRestorePolicyBindings RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayInput `pulumi:"volumeDataRestorePolicyBindings"`
 }
 
 func (RestorePlanRestoreConfigArgs) ElementType() reflect.Type {
@@ -2906,7 +2949,7 @@ func (o RestorePlanRestoreConfigOutput) ExcludedNamespaces() RestorePlanRestoreC
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 // See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
 // for more information on each mode.
-// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 func (o RestorePlanRestoreConfigOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfig) *string { return v.NamespacedResourceRestoreMode }).(pulumi.StringPtrOutput)
 }
@@ -2915,6 +2958,12 @@ func (o RestorePlanRestoreConfigOutput) NamespacedResourceRestoreMode() pulumi.S
 // Specifying this field to "False" is not allowed.
 func (o RestorePlanRestoreConfigOutput) NoNamespaces() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfig) *bool { return v.NoNamespaces }).(pulumi.BoolPtrOutput)
+}
+
+// It contains custom ordering to use on a Restore.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) RestoreOrder() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *RestorePlanRestoreConfigRestoreOrder { return v.RestoreOrder }).(RestorePlanRestoreConfigRestoreOrderPtrOutput)
 }
 
 // A list of selected ProtectedApplications to restore.
@@ -2957,6 +3006,16 @@ func (o RestorePlanRestoreConfigOutput) TransformationRules() RestorePlanRestore
 // Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 func (o RestorePlanRestoreConfigOutput) VolumeDataRestorePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfig) *string { return v.VolumeDataRestorePolicy }).(pulumi.StringPtrOutput)
+}
+
+// A table that binds volumes by their scope to a restore policy. Bindings
+// must have a unique scope. Any volumes not scoped in the bindings are
+// subject to the policy defined in volume_data_restore_policy.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) VolumeDataRestorePolicyBindings() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) []RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
+		return v.VolumeDataRestorePolicyBindings
+	}).(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput)
 }
 
 type RestorePlanRestoreConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3039,7 +3098,7 @@ func (o RestorePlanRestoreConfigPtrOutput) ExcludedNamespaces() RestorePlanResto
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 // See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
 // for more information on each mode.
-// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 func (o RestorePlanRestoreConfigPtrOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlanRestoreConfig) *string {
 		if v == nil {
@@ -3058,6 +3117,17 @@ func (o RestorePlanRestoreConfigPtrOutput) NoNamespaces() pulumi.BoolPtrOutput {
 		}
 		return v.NoNamespaces
 	}).(pulumi.BoolPtrOutput)
+}
+
+// It contains custom ordering to use on a Restore.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) RestoreOrder() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *RestorePlanRestoreConfigRestoreOrder {
+		if v == nil {
+			return nil
+		}
+		return v.RestoreOrder
+	}).(RestorePlanRestoreConfigRestoreOrderPtrOutput)
 }
 
 // A list of selected ProtectedApplications to restore.
@@ -3114,6 +3184,19 @@ func (o RestorePlanRestoreConfigPtrOutput) VolumeDataRestorePolicy() pulumi.Stri
 		}
 		return v.VolumeDataRestorePolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+// A table that binds volumes by their scope to a restore policy. Bindings
+// must have a unique scope. Any volumes not scoped in the bindings are
+// subject to the policy defined in volume_data_restore_policy.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) VolumeDataRestorePolicyBindings() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) []RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeDataRestorePolicyBindings
+	}).(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput)
 }
 
 type RestorePlanRestoreConfigClusterResourceRestoreScope struct {
@@ -3725,6 +3808,433 @@ func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) Namespaces() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+type RestorePlanRestoreConfigRestoreOrder struct {
+	// A list of group kind dependency pairs
+	// that is used by Backup for GKE to
+	// generate a group kind restore order.
+	// Structure is documented below.
+	GroupKindDependencies []RestorePlanRestoreConfigRestoreOrderGroupKindDependency `pulumi:"groupKindDependencies"`
+}
+
+// RestorePlanRestoreConfigRestoreOrderInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderArgs and RestorePlanRestoreConfigRestoreOrderOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderInput` via:
+//
+//	RestorePlanRestoreConfigRestoreOrderArgs{...}
+type RestorePlanRestoreConfigRestoreOrderInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderOutput() RestorePlanRestoreConfigRestoreOrderOutput
+	ToRestorePlanRestoreConfigRestoreOrderOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderOutput
+}
+
+type RestorePlanRestoreConfigRestoreOrderArgs struct {
+	// A list of group kind dependency pairs
+	// that is used by Backup for GKE to
+	// generate a group kind restore order.
+	// Structure is documented below.
+	GroupKindDependencies RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayInput `pulumi:"groupKindDependencies"`
+}
+
+func (RestorePlanRestoreConfigRestoreOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrder)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderArgs) ToRestorePlanRestoreConfigRestoreOrderOutput() RestorePlanRestoreConfigRestoreOrderOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderArgs) ToRestorePlanRestoreConfigRestoreOrderOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderOutput)
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderArgs) ToRestorePlanRestoreConfigRestoreOrderPtrOutput() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderArgs) ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderOutput).ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigRestoreOrderPtrInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderArgs, RestorePlanRestoreConfigRestoreOrderPtr and RestorePlanRestoreConfigRestoreOrderPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderPtrInput` via:
+//
+//	        RestorePlanRestoreConfigRestoreOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigRestoreOrderPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderPtrOutput() RestorePlanRestoreConfigRestoreOrderPtrOutput
+	ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderPtrOutput
+}
+
+type restorePlanRestoreConfigRestoreOrderPtrType RestorePlanRestoreConfigRestoreOrderArgs
+
+func RestorePlanRestoreConfigRestoreOrderPtr(v *RestorePlanRestoreConfigRestoreOrderArgs) RestorePlanRestoreConfigRestoreOrderPtrInput {
+	return (*restorePlanRestoreConfigRestoreOrderPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigRestoreOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigRestoreOrder)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigRestoreOrderPtrType) ToRestorePlanRestoreConfigRestoreOrderPtrOutput() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigRestoreOrderPtrType) ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderPtrOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrder)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderOutput) ToRestorePlanRestoreConfigRestoreOrderOutput() RestorePlanRestoreConfigRestoreOrderOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderOutput) ToRestorePlanRestoreConfigRestoreOrderOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderOutput) ToRestorePlanRestoreConfigRestoreOrderPtrOutput() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o.ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderOutput) ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigRestoreOrder) *RestorePlanRestoreConfigRestoreOrder {
+		return &v
+	}).(RestorePlanRestoreConfigRestoreOrderPtrOutput)
+}
+
+// A list of group kind dependency pairs
+// that is used by Backup for GKE to
+// generate a group kind restore order.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigRestoreOrderOutput) GroupKindDependencies() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrder) []RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
+		return v.GroupKindDependencies
+	}).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigRestoreOrder)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderPtrOutput) ToRestorePlanRestoreConfigRestoreOrderPtrOutput() RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderPtrOutput) ToRestorePlanRestoreConfigRestoreOrderPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderPtrOutput) Elem() RestorePlanRestoreConfigRestoreOrderOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigRestoreOrder) RestorePlanRestoreConfigRestoreOrder {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigRestoreOrder
+		return ret
+	}).(RestorePlanRestoreConfigRestoreOrderOutput)
+}
+
+// A list of group kind dependency pairs
+// that is used by Backup for GKE to
+// generate a group kind restore order.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigRestoreOrderPtrOutput) GroupKindDependencies() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigRestoreOrder) []RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
+		if v == nil {
+			return nil
+		}
+		return v.GroupKindDependencies
+	}).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependency struct {
+	// The requiring group kind requires that the satisfying
+	// group kind be restored first.
+	// Structure is documented below.
+	Requiring RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring `pulumi:"requiring"`
+	// The satisfying group kind must be restored first
+	// in order to satisfy the dependency.
+	// Structure is documented below.
+	Satisfying RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying `pulumi:"satisfying"`
+}
+
+// RestorePlanRestoreConfigRestoreOrderGroupKindDependencyInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs and RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderGroupKindDependencyInput` via:
+//
+//	RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{...}
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs struct {
+	// The requiring group kind requires that the satisfying
+	// group kind be restored first.
+	// Structure is documented below.
+	Requiring RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringInput `pulumi:"requiring"`
+	// The satisfying group kind must be restored first
+	// in order to satisfy the dependency.
+	// Structure is documented below.
+	Satisfying RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingInput `pulumi:"satisfying"`
+}
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependency)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput)
+}
+
+// RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray and RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayInput` via:
+//
+//	RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray{ RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{...} }
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray []RestorePlanRestoreConfigRestoreOrderGroupKindDependencyInput
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigRestoreOrderGroupKindDependency)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependency)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput {
+	return o
+}
+
+// The requiring group kind requires that the satisfying
+// group kind be restored first.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput) Requiring() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependency) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring {
+		return v.Requiring
+	}).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput)
+}
+
+// The satisfying group kind must be restored first
+// in order to satisfy the dependency.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput) Satisfying() RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependency) RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying {
+		return v.Satisfying
+	}).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigRestoreOrderGroupKindDependency)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
+		return vs[0].([]RestorePlanRestoreConfigRestoreOrderGroupKindDependency)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring struct {
+	// API Group of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	//
+	// ***
+	ResourceKind *string `pulumi:"resourceKind"`
+}
+
+// RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs and RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringInput` via:
+//
+//	RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{...}
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs struct {
+	// API Group of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	//
+	// ***
+	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
+}
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput {
+	return o
+}
+
+// API Group of a Kubernetes resource, e.g.
+// "apiextensions.k8s.io", "storage.k8s.io", etc.
+// Use empty string for core group.
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring) *string {
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of a Kubernetes resource, e.g.
+// "CustomResourceDefinition", "StorageClass", etc.
+//
+// ***
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring) *string {
+		return v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying struct {
+	// API Group of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind *string `pulumi:"resourceKind"`
+}
+
+// RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingInput is an input type that accepts RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs and RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingInput` via:
+//
+//	RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{...}
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput
+	ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutputWithContext(context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs struct {
+	// API Group of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
+}
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput {
+	return i.ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput)
+}
+
+type RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput() RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput) ToRestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutputWithContext(ctx context.Context) RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput {
+	return o
+}
+
+// API Group of a Kubernetes resource, e.g.
+// "apiextensions.k8s.io", "storage.k8s.io", etc.
+// Use empty string for core group.
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying) *string {
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of a Kubernetes resource, e.g.
+// "CustomResourceDefinition", "StorageClass", etc.
+func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying) *string {
+		return v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
 type RestorePlanRestoreConfigSelectedApplications struct {
 	// A list of namespaced Kubernetes resources.
 	// Structure is documented below.
@@ -4269,8 +4779,6 @@ type RestorePlanRestoreConfigTransformationRuleFieldAction struct {
 	Path *string `pulumi:"path"`
 	// A string that specifies the desired value in string format
 	// to use for transformation.
-	//
-	// ***
 	Value *string `pulumi:"value"`
 }
 
@@ -4297,8 +4805,6 @@ type RestorePlanRestoreConfigTransformationRuleFieldActionArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// A string that specifies the desired value in string format
 	// to use for transformation.
-	//
-	// ***
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4373,8 +4879,6 @@ func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Path() pulu
 
 // A string that specifies the desired value in string format
 // to use for transformation.
-//
-// ***
 func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4751,6 +5255,127 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOu
 	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput)
 }
 
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBinding struct {
+	// Specifies the mechanism to be used to restore this volume data.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// for more information on each policy option.
+	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+	Policy string `pulumi:"policy"`
+	// The volume type, as determined by the PVC's
+	// bound PV, to apply the policy to.
+	// Possible values are: `GCE_PERSISTENT_DISK`.
+	VolumeType string `pulumi:"volumeType"`
+}
+
+// RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput is an input type that accepts RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs and RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput` via:
+//
+//	RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs{...}
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput
+	ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutputWithContext(context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput
+}
+
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs struct {
+	// Specifies the mechanism to be used to restore this volume data.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// for more information on each policy option.
+	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// The volume type, as determined by the PVC's
+	// bound PV, to apply the policy to.
+	// Possible values are: `GCE_PERSISTENT_DISK`.
+	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+}
+
+func (RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigVolumeDataRestorePolicyBinding)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput {
+	return i.ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutputWithContext(ctx context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput)
+}
+
+// RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayInput is an input type that accepts RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray and RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayInput` via:
+//
+//	RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray{ RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs{...} }
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput
+	ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutputWithContext(context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput
+}
+
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray []RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput
+
+func (RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigVolumeDataRestorePolicyBinding)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return i.ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput)
+}
+
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigVolumeDataRestorePolicyBinding)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutputWithContext(ctx context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput {
+	return o
+}
+
+// Specifies the mechanism to be used to restore this volume data.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// for more information on each policy option.
+// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigVolumeDataRestorePolicyBinding) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The volume type, as determined by the PVC's
+// bound PV, to apply the policy to.
+// Possible values are: `GCE_PERSISTENT_DISK`.
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigVolumeDataRestorePolicyBinding) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigVolumeDataRestorePolicyBinding)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput() RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput) ToRestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
+		return vs[0].([]RestorePlanRestoreConfigVolumeDataRestorePolicyBinding)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigInput)(nil)).Elem(), BackupPlanBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigPtrInput)(nil)).Elem(), BackupPlanBackupConfigArgs{})
@@ -4793,6 +5418,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespacesInput)(nil)).Elem(), RestorePlanRestoreConfigExcludedNamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespacesPtrInput)(nil)).Elem(), RestorePlanRestoreConfigExcludedNamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderPtrInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencyInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingInput)(nil)).Elem(), RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsPtrInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs{})
@@ -4807,6 +5438,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput)(nil)).Elem(), RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayInput)(nil)).Elem(), RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigEncryptionKeyOutput{})
@@ -4848,6 +5481,12 @@ func init() {
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigExcludedNamespacesOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigExcludedNamespacesPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsPtrOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput{})
@@ -4862,4 +5501,6 @@ func init() {
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput{})
 	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArrayOutput{})
 }

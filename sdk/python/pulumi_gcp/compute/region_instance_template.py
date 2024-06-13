@@ -33,6 +33,7 @@ class RegionInstanceTemplateArgs:
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['RegionInstanceTemplateNetworkPerformanceConfigArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinityArgs']] = None,
@@ -86,6 +87,7 @@ class RegionInstanceTemplateArgs:
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the resource belongs.
@@ -133,6 +135,8 @@ class RegionInstanceTemplateArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -380,6 +384,18 @@ class RegionInstanceTemplateArgs:
         pulumi.set(self, "network_performance_config", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -515,6 +531,7 @@ class _RegionInstanceTemplateState:
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['RegionInstanceTemplateNetworkPerformanceConfigArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -573,6 +590,7 @@ class _RegionInstanceTemplateState:
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -629,6 +647,8 @@ class _RegionInstanceTemplateState:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -906,6 +926,18 @@ class _RegionInstanceTemplateState:
         pulumi.set(self, "network_performance_config", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1077,6 +1109,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkPerformanceConfigArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
@@ -1156,6 +1189,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the resource belongs.
@@ -1234,6 +1268,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkPerformanceConfigArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
@@ -1273,6 +1308,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_performance_config"] = network_performance_config
+            __props__.__dict__["partner_metadata"] = partner_metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["reservation_affinity"] = reservation_affinity
@@ -1318,6 +1354,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             name_prefix: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkPerformanceConfigArgs']]] = None,
+            partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1381,6 +1418,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1422,6 +1460,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
+        __props__.__dict__["partner_metadata"] = partner_metadata
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
@@ -1610,6 +1649,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         in order for this setting to take effect.
         """
         return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
 
     @property
     @pulumi.getter

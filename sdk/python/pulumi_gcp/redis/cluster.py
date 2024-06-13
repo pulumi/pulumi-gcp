@@ -25,7 +25,8 @@ class ClusterArgs:
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[str]] = None):
+                 transit_encryption_mode: Optional[pulumi.Input[str]] = None,
+                 zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
@@ -48,6 +49,7 @@ class ClusterArgs:
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
                Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
                "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input['ClusterZoneDistributionConfigArgs'] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
         """
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "shard_count", shard_count)
@@ -67,6 +69,8 @@ class ClusterArgs:
             pulumi.set(__self__, "replica_count", replica_count)
         if transit_encryption_mode is not None:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
+        if zone_distribution_config is not None:
+            pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
 
     @property
     @pulumi.getter(name="pscConfigs")
@@ -196,6 +200,18 @@ class ClusterArgs:
     def transit_encryption_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
+    @property
+    @pulumi.getter(name="zoneDistributionConfig")
+    def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
+        """
+        Immutable. Zone distribution config for Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone_distribution_config")
+
+    @zone_distribution_config.setter
+    def zone_distribution_config(self, value: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]):
+        pulumi.set(self, "zone_distribution_config", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -217,7 +233,8 @@ class _ClusterState:
                  state: Optional[pulumi.Input[str]] = None,
                  state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-                 uid: Optional[pulumi.Input[str]] = None):
+                 uid: Optional[pulumi.Input[str]] = None,
+                 zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -255,6 +272,7 @@ class _ClusterState:
                Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
                "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
         :param pulumi.Input[str] uid: System assigned, unique identifier for the cluster.
+        :param pulumi.Input['ClusterZoneDistributionConfigArgs'] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
         """
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -292,6 +310,8 @@ class _ClusterState:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if zone_distribution_config is not None:
+            pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
 
     @property
     @pulumi.getter(name="authorizationMode")
@@ -524,6 +544,18 @@ class _ClusterState:
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
 
+    @property
+    @pulumi.getter(name="zoneDistributionConfig")
+    def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
+        """
+        Immutable. Zone distribution config for Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone_distribution_config")
+
+    @zone_distribution_config.setter
+    def zone_distribution_config(self, value: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]):
+        pulumi.set(self, "zone_distribution_config", value)
+
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -540,6 +572,7 @@ class Cluster(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
+                 zone_distribution_config: Optional[pulumi.Input[pulumi.InputType['ClusterZoneDistributionConfigArgs']]] = None,
                  __props__=None):
         """
         A Google Cloud Redis Cluster instance.
@@ -589,6 +622,45 @@ class Cluster(pulumi.CustomResource):
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
+            zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
+                mode="MULTI_ZONE",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Ha Single Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ))
+        cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
+            name="ha-cluster-single-zone",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
+                mode="SINGLE_ZONE",
+                zone="us-central1-f",
+            ),
             opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
@@ -644,6 +716,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
                Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
                "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input[pulumi.InputType['ClusterZoneDistributionConfigArgs']] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
         """
         ...
     @overload
@@ -699,6 +772,45 @@ class Cluster(pulumi.CustomResource):
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
+            zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
+                mode="MULTI_ZONE",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Ha Single Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ))
+        cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
+            name="ha-cluster-single-zone",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
+                mode="SINGLE_ZONE",
+                zone="us-central1-f",
+            ),
             opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
@@ -757,6 +869,7 @@ class Cluster(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
+                 zone_distribution_config: Optional[pulumi.Input[pulumi.InputType['ClusterZoneDistributionConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -780,6 +893,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'shard_count'")
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
+            __props__.__dict__["zone_distribution_config"] = zone_distribution_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
             __props__.__dict__["precise_size_gb"] = None
@@ -815,7 +929,8 @@ class Cluster(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArgs']]]]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-            uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
+            uid: Optional[pulumi.Input[str]] = None,
+            zone_distribution_config: Optional[pulumi.Input[pulumi.InputType['ClusterZoneDistributionConfigArgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -858,6 +973,7 @@ class Cluster(pulumi.CustomResource):
                Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
                "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
         :param pulumi.Input[str] uid: System assigned, unique identifier for the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterZoneDistributionConfigArgs']] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -881,6 +997,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["state_infos"] = state_infos
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["zone_distribution_config"] = zone_distribution_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1041,4 +1158,12 @@ class Cluster(pulumi.CustomResource):
         System assigned, unique identifier for the cluster.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="zoneDistributionConfig")
+    def zone_distribution_config(self) -> pulumi.Output[Optional['outputs.ClusterZoneDistributionConfig']]:
+        """
+        Immutable. Zone distribution config for Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone_distribution_config")
 

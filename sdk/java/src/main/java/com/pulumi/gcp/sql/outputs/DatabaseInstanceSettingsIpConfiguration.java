@@ -48,9 +48,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
     /**
-     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+     * 
+     * @deprecated
+     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
      * 
      */
+    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
     private @Nullable Boolean requireSsl;
     /**
      * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
@@ -107,9 +111,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return this.pscConfigs == null ? List.of() : this.pscConfigs;
     }
     /**
-     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
+     * 
+     * @deprecated
+     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
      * 
      */
+    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
     public Optional<Boolean> requireSsl() {
         return Optional.ofNullable(this.requireSsl);
     }

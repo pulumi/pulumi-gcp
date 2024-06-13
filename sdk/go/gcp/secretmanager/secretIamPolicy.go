@@ -26,107 +26,7 @@ import (
 //
 // > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## secretmanager.SecretIamPolicy
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/secretmanager.secretAccessor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
-//				Project:    pulumi.Any(secret_basic.Project),
-//				SecretId:   pulumi.Any(secret_basic.SecretId),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## secretmanager.SecretIamBinding
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecretIamBinding(ctx, "binding", &secretmanager.SecretIamBindingArgs{
-//				Project:  pulumi.Any(secret_basic.Project),
-//				SecretId: pulumi.Any(secret_basic.SecretId),
-//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## secretmanager.SecretIamMember
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecretIamMember(ctx, "member", &secretmanager.SecretIamMemberArgs{
-//				Project:  pulumi.Any(secret_basic.Project),
-//				SecretId: pulumi.Any(secret_basic.SecretId),
-//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
 // ## secretmanager.SecretIamPolicy
 //
@@ -170,6 +70,52 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/secretmanager.secretAccessor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+//				Project:    pulumi.Any(secret_basic.Project),
+//				SecretId:   pulumi.Any(secret_basic.SecretId),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## secretmanager.SecretIamBinding
 //
 // ```go
@@ -201,6 +147,41 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamBinding(ctx, "binding", &secretmanager.SecretIamBindingArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &secretmanager.SecretIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## secretmanager.SecretIamMember
 //
 // ```go
@@ -220,6 +201,257 @@ import (
 //				SecretId: pulumi.Any(secret_basic.SecretId),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamMember(ctx, "member", &secretmanager.SecretIamMemberArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//				Condition: &secretmanager.SecretIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## secretmanager.SecretIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/secretmanager.secretAccessor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+//				Project:    pulumi.Any(secret_basic.Project),
+//				SecretId:   pulumi.Any(secret_basic.SecretId),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/secretmanager.secretAccessor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+//				Project:    pulumi.Any(secret_basic.Project),
+//				SecretId:   pulumi.Any(secret_basic.SecretId),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## secretmanager.SecretIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamBinding(ctx, "binding", &secretmanager.SecretIamBindingArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamBinding(ctx, "binding", &secretmanager.SecretIamBindingArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &secretmanager.SecretIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## secretmanager.SecretIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamMember(ctx, "member", &secretmanager.SecretIamMemberArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecretIamMember(ctx, "member", &secretmanager.SecretIamMemberArgs{
+//				Project:  pulumi.Any(secret_basic.Project),
+//				SecretId: pulumi.Any(secret_basic.SecretId),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//				Condition: &secretmanager.SecretIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err

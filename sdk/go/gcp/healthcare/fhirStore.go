@@ -61,8 +61,10 @@ import (
 //				DisableResourceVersioning:       pulumi.Bool(false),
 //				EnableHistoryImport:             pulumi.Bool(false),
 //				DefaultSearchHandlingStrict:     pulumi.Bool(false),
-//				NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
-//					PubsubTopic: topic.ID(),
+//				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
+//					&healthcare.FhirStoreNotificationConfigArgs{
+//						PubsubTopic: topic.ID(),
+//					},
 //				},
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),
@@ -158,57 +160,6 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Fhir Store Notification Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
-//				Name: pulumi.String("fhir-notifications"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
-//				Name:     pulumi.String("example-dataset"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
-//				Name:                        pulumi.String("example-fhir-store"),
-//				Dataset:                     dataset.ID(),
-//				Version:                     pulumi.String("R4"),
-//				EnableUpdateCreate:          pulumi.Bool(false),
-//				DisableReferentialIntegrity: pulumi.Bool(false),
-//				DisableResourceVersioning:   pulumi.Bool(false),
-//				EnableHistoryImport:         pulumi.Bool(false),
-//				Labels: pulumi.StringMap{
-//					"label1": pulumi.String("labelvalue1"),
-//				},
-//				NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
-//					PubsubTopic: topic.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Healthcare Fhir Store Notification Configs
 //
 // ```go
@@ -245,7 +196,6 @@ import (
 //				DisableReferentialIntegrity: pulumi.Bool(false),
 //				DisableResourceVersioning:   pulumi.Bool(false),
 //				EnableHistoryImport:         pulumi.Bool(false),
-//				EnableHistoryModifications:  pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),
 //				},
@@ -346,8 +296,13 @@ type FhirStore struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
+	//
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
@@ -469,8 +424,13 @@ type fhirStoreState struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
+	//
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
@@ -555,8 +515,13 @@ type FhirStoreState struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
+	//
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
@@ -643,8 +608,13 @@ type fhirStoreArgs struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
+	//
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
@@ -723,8 +693,13 @@ type FhirStoreArgs struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
+	//
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
@@ -923,8 +898,13 @@ func (o FhirStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // A nested object resource
 // Structure is documented below.
+//
+// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+//
+// Deprecated: `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
 func (o FhirStoreOutput) NotificationConfig() FhirStoreNotificationConfigPtrOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigPtrOutput { return v.NotificationConfig }).(FhirStoreNotificationConfigPtrOutput)
 }

@@ -1261,6 +1261,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * 
+     */
+    @Export(name="serviceLbPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceLbPolicy;
+
+    /**
+     * @return URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * 
+     */
+    public Output<Optional<String>> serviceLbPolicy() {
+        return Codegen.optional(this.serviceLbPolicy);
+    }
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.

@@ -81,8 +81,11 @@ class FhirStoreArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
+               A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -115,6 +118,9 @@ class FhirStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notification_config is not None:
+            warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
@@ -287,9 +293,15 @@ class FhirStoreArgs:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
+        (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
+
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -414,8 +426,11 @@ class _FhirStoreState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
+               A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -454,6 +469,9 @@ class _FhirStoreState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notification_config is not None:
+            warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
@@ -642,9 +660,15 @@ class _FhirStoreState:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
+        (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
+
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -774,9 +798,9 @@ class FhirStore(pulumi.CustomResource):
             disable_resource_versioning=False,
             enable_history_import=False,
             default_search_handling_strict=False,
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
-            ),
+            )],
             labels={
                 "label1": "labelvalue1",
             })
@@ -822,31 +846,6 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
-        ### Healthcare Fhir Store Notification Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
-        dataset = gcp.healthcare.Dataset("dataset",
-            name="example-dataset",
-            location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            name="example-fhir-store",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ))
-        ```
         ### Healthcare Fhir Store Notification Configs
 
         ```python
@@ -865,7 +864,6 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
-            enable_history_modifications=False,
             labels={
                 "label1": "labelvalue1",
             },
@@ -945,8 +943,11 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+               A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -998,9 +999,9 @@ class FhirStore(pulumi.CustomResource):
             disable_resource_versioning=False,
             enable_history_import=False,
             default_search_handling_strict=False,
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
-            ),
+            )],
             labels={
                 "label1": "labelvalue1",
             })
@@ -1046,31 +1047,6 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
-        ### Healthcare Fhir Store Notification Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
-        dataset = gcp.healthcare.Dataset("dataset",
-            name="example-dataset",
-            location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            name="example-fhir-store",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ))
-        ```
         ### Healthcare Fhir Store Notification Configs
 
         ```python
@@ -1089,7 +1065,6 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
-            enable_history_modifications=False,
             labels={
                 "label1": "labelvalue1",
             },
@@ -1261,8 +1236,11 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+               A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1433,9 +1411,15 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> pulumi.Output[Optional['outputs.FhirStoreNotificationConfig']]:
         """
+        (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
+
         return pulumi.get(self, "notification_config")
 
     @property

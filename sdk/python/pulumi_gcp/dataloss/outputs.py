@@ -231,6 +231,7 @@ __all__ = [
     'PreventionDiscoveryConfigTargetBigQueryTargetDisabled',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilter',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTables',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes',
     'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern',
@@ -241,9 +242,11 @@ __all__ = [
     'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection',
     'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes',
     'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference',
     'PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence',
+    'PreventionDiscoveryConfigTargetSecretsTarget',
     'PreventionInspectTemplateInspectConfig',
     'PreventionInspectTemplateInspectConfigCustomInfoType',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary',
@@ -11747,6 +11750,8 @@ class PreventionDiscoveryConfigTarget(dict):
             suggest = "big_query_target"
         elif key == "cloudSqlTarget":
             suggest = "cloud_sql_target"
+        elif key == "secretsTarget":
+            suggest = "secrets_target"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTarget. Access the value via the '{suggest}' property getter instead.")
@@ -11761,17 +11766,21 @@ class PreventionDiscoveryConfigTarget(dict):
 
     def __init__(__self__, *,
                  big_query_target: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTarget'] = None,
-                 cloud_sql_target: Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTarget'] = None):
+                 cloud_sql_target: Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTarget'] = None,
+                 secrets_target: Optional['outputs.PreventionDiscoveryConfigTargetSecretsTarget'] = None):
         """
         :param 'PreventionDiscoveryConfigTargetBigQueryTargetArgs' big_query_target: BigQuery target for Discovery. The first target to match a table will be the one applied.
                Structure is documented below.
         :param 'PreventionDiscoveryConfigTargetCloudSqlTargetArgs' cloud_sql_target: Cloud SQL target for Discovery. The first target to match a table will be the one applied.
                Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetSecretsTargetArgs' secrets_target: Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
         """
         if big_query_target is not None:
             pulumi.set(__self__, "big_query_target", big_query_target)
         if cloud_sql_target is not None:
             pulumi.set(__self__, "cloud_sql_target", cloud_sql_target)
+        if secrets_target is not None:
+            pulumi.set(__self__, "secrets_target", secrets_target)
 
     @property
     @pulumi.getter(name="bigQueryTarget")
@@ -11790,6 +11799,14 @@ class PreventionDiscoveryConfigTarget(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql_target")
+
+    @property
+    @pulumi.getter(name="secretsTarget")
+    def secrets_target(self) -> Optional['outputs.PreventionDiscoveryConfigTargetSecretsTarget']:
+        """
+        Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+        """
+        return pulumi.get(self, "secrets_target")
 
 
 @pulumi.output_type
@@ -12143,6 +12160,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter(dict):
         suggest = None
         if key == "otherTables":
             suggest = "other_tables"
+        elif key == "tableReference":
+            suggest = "table_reference"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilter. Access the value via the '{suggest}' property getter instead.")
@@ -12157,14 +12176,19 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter(dict):
 
     def __init__(__self__, *,
                  other_tables: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables'] = None,
+                 table_reference: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference'] = None,
                  tables: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables'] = None):
         """
         :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs' other_tables: Catch-all. This should always be the last filter in the list because anything above it will apply first.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs' table_reference: The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+               Structure is documented below.
         :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs' tables: A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
                Structure is documented below.
         """
         if other_tables is not None:
             pulumi.set(__self__, "other_tables", other_tables)
+        if table_reference is not None:
+            pulumi.set(__self__, "table_reference", table_reference)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
 
@@ -12175,6 +12199,15 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter(dict):
         Catch-all. This should always be the last filter in the list because anything above it will apply first.
         """
         return pulumi.get(self, "other_tables")
+
+    @property
+    @pulumi.getter(name="tableReference")
+    def table_reference(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference']:
+        """
+        The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_reference")
 
     @property
     @pulumi.getter
@@ -12190,6 +12223,54 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter(dict):
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 table_id: str):
+        """
+        :param str dataset_id: Dataset ID of the table.
+        :param str table_id: Name of the table.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        Dataset ID of the table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> str:
+        """
+        Name of the table.
+        """
+        return pulumi.get(self, "table_id")
 
 
 @pulumi.output_type
@@ -12452,16 +12533,38 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetDisabled(dict):
 
 @pulumi.output_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseResourceReference":
+            suggest = "database_resource_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetCloudSqlTargetFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetCloudSqlTargetFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetCloudSqlTargetFilter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  collection: Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection'] = None,
+                 database_resource_reference: Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference'] = None,
                  others: Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers'] = None):
         """
         :param 'PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs' collection: A specific set of database resources for this filter to apply to.
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs' database_resource_reference: The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
                Structure is documented below.
         :param 'PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs' others: Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
         """
         if collection is not None:
             pulumi.set(__self__, "collection", collection)
+        if database_resource_reference is not None:
+            pulumi.set(__self__, "database_resource_reference", database_resource_reference)
         if others is not None:
             pulumi.set(__self__, "others", others)
 
@@ -12473,6 +12576,15 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilter(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "collection")
+
+    @property
+    @pulumi.getter(name="databaseResourceReference")
+    def database_resource_reference(self) -> Optional['outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference']:
+        """
+        The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "database_resource_reference")
 
     @property
     @pulumi.getter
@@ -12621,6 +12733,76 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
 
 
 @pulumi.output_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseResource":
+            suggest = "database_resource"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 database_resource: str,
+                 instance: str,
+                 project_id: str):
+        """
+        :param str database: Required. Name of a database within the instance.
+        :param str database_resource: Required. Name of a database resource, for example, a table within the database.
+        :param str instance: Required. The instance where this resource is located. For example: Cloud SQL instance ID.
+        :param str project_id: Required. If within a project-level config, then this must match the config's project ID.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "database_resource", database_resource)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Required. Name of a database within the instance.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="databaseResource")
+    def database_resource(self) -> str:
+        """
+        Required. Name of a database resource, for example, a table within the database.
+        """
+        return pulumi.get(self, "database_resource")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> str:
+        """
+        Required. The instance where this resource is located. For example: Cloud SQL instance ID.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Required. If within a project-level config, then this must match the config's project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers(dict):
     def __init__(__self__):
         pass
@@ -12713,6 +12895,12 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifi
         Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
         """
         return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetSecretsTarget(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -13442,10 +13630,10 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "infoType":
-            suggest = "info_type"
-        elif key == "maxFindings":
+        if key == "maxFindings":
             suggest = "max_findings"
+        elif key == "infoType":
+            suggest = "info_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType. Access the value via the '{suggest}' property getter instead.")
@@ -13459,28 +13647,18 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
-                 max_findings: int):
+                 max_findings: int,
+                 info_type: Optional['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType'] = None):
         """
+        :param int max_findings: Max findings limit for the given infoType.
         :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
                not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
                specified in another InfoTypeLimit.
                Structure is documented below.
-        :param int max_findings: Max findings limit for the given infoType.
         """
-        pulumi.set(__self__, "info_type", info_type)
         pulumi.set(__self__, "max_findings", max_findings)
-
-    @property
-    @pulumi.getter(name="infoType")
-    def info_type(self) -> 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType':
-        """
-        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-        specified in another InfoTypeLimit.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "info_type")
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
 
     @property
     @pulumi.getter(name="maxFindings")
@@ -13489,6 +13667,17 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
         Max findings limit for the given infoType.
         """
         return pulumi.get(self, "max_findings")
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType']:
+        """
+        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+        specified in another InfoTypeLimit.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
 
 
 @pulumi.output_type

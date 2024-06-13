@@ -23,15 +23,22 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? CloudSqlTarget;
+        /// <summary>
+        /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetSecretsTarget? SecretsTarget;
 
         [OutputConstructor]
         private PreventionDiscoveryConfigTarget(
             Outputs.PreventionDiscoveryConfigTargetBigQueryTarget? bigQueryTarget,
 
-            Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? cloudSqlTarget)
+            Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? cloudSqlTarget,
+
+            Outputs.PreventionDiscoveryConfigTargetSecretsTarget? secretsTarget)
         {
             BigQueryTarget = bigQueryTarget;
             CloudSqlTarget = cloudSqlTarget;
+            SecretsTarget = secretsTarget;
         }
     }
 }

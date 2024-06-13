@@ -14,6 +14,7 @@ import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
+import com.pulumi.gcp.redis.outputs.ClusterZoneDistributionConfig;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -53,6 +54,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.Cluster;
  * import com.pulumi.gcp.redis.ClusterArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -102,6 +104,87 @@ import javax.annotation.Nullable;
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Redis Cluster Ha Single Zone
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("mynetwork")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+ *             .name("mysubnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("mypolicy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(producerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_ha_single_zone = new Cluster("cluster-ha-single-zone", ClusterArgs.builder()
+ *             .name("ha-cluster-single-zone")
+ *             .shardCount(3)
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .region("us-central1")
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("SINGLE_ZONE")
+ *                 .zone("us-central1-f")
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
  *                 .build());
@@ -424,6 +507,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Immutable. Zone distribution config for Memorystore Redis cluster.
+     * 
+     */
+    @Export(name="zoneDistributionConfig", refs={ClusterZoneDistributionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterZoneDistributionConfig> zoneDistributionConfig;
+
+    /**
+     * @return Immutable. Zone distribution config for Memorystore Redis cluster.
+     * 
+     */
+    public Output<Optional<ClusterZoneDistributionConfig>> zoneDistributionConfig() {
+        return Codegen.optional(this.zoneDistributionConfig);
     }
 
     /**

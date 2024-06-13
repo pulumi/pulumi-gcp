@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *     dataset: dataset.id,
  *     notificationConfig: {
  *         pubsubTopic: topic.id,
+ *         sendForBulkImport: true,
  *     },
  *     labels: {
  *         label1: "labelvalue1",

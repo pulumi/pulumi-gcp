@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNetworkConfigPodCidrOverprovisionConfig
     {
+        /// <summary>
+        /// Whether pod cidr overprovision is disabled.
+        /// </summary>
         public readonly bool Disabled;
 
         [OutputConstructor]

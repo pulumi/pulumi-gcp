@@ -1074,6 +1074,139 @@ func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) StorageUtilization
 	}).(pulumi.IntPtrOutput)
 }
 
+type InstanceConfigReplica struct {
+	// If true, this location is designated as the default leader location where
+	// leader replicas are placed.
+	//
+	// ***
+	DefaultLeaderLocation *bool `pulumi:"defaultLeaderLocation"`
+	// The location of the serving resources, e.g. "us-central1".
+	Location *string `pulumi:"location"`
+	// Indicates the type of replica.  See the [replica types
+	// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+	// for more details.
+	// Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+	Type *string `pulumi:"type"`
+}
+
+// InstanceConfigReplicaInput is an input type that accepts InstanceConfigReplicaArgs and InstanceConfigReplicaOutput values.
+// You can construct a concrete instance of `InstanceConfigReplicaInput` via:
+//
+//	InstanceConfigReplicaArgs{...}
+type InstanceConfigReplicaInput interface {
+	pulumi.Input
+
+	ToInstanceConfigReplicaOutput() InstanceConfigReplicaOutput
+	ToInstanceConfigReplicaOutputWithContext(context.Context) InstanceConfigReplicaOutput
+}
+
+type InstanceConfigReplicaArgs struct {
+	// If true, this location is designated as the default leader location where
+	// leader replicas are placed.
+	//
+	// ***
+	DefaultLeaderLocation pulumi.BoolPtrInput `pulumi:"defaultLeaderLocation"`
+	// The location of the serving resources, e.g. "us-central1".
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Indicates the type of replica.  See the [replica types
+	// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+	// for more details.
+	// Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InstanceConfigReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigReplica)(nil)).Elem()
+}
+
+func (i InstanceConfigReplicaArgs) ToInstanceConfigReplicaOutput() InstanceConfigReplicaOutput {
+	return i.ToInstanceConfigReplicaOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigReplicaArgs) ToInstanceConfigReplicaOutputWithContext(ctx context.Context) InstanceConfigReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigReplicaOutput)
+}
+
+// InstanceConfigReplicaArrayInput is an input type that accepts InstanceConfigReplicaArray and InstanceConfigReplicaArrayOutput values.
+// You can construct a concrete instance of `InstanceConfigReplicaArrayInput` via:
+//
+//	InstanceConfigReplicaArray{ InstanceConfigReplicaArgs{...} }
+type InstanceConfigReplicaArrayInput interface {
+	pulumi.Input
+
+	ToInstanceConfigReplicaArrayOutput() InstanceConfigReplicaArrayOutput
+	ToInstanceConfigReplicaArrayOutputWithContext(context.Context) InstanceConfigReplicaArrayOutput
+}
+
+type InstanceConfigReplicaArray []InstanceConfigReplicaInput
+
+func (InstanceConfigReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigReplica)(nil)).Elem()
+}
+
+func (i InstanceConfigReplicaArray) ToInstanceConfigReplicaArrayOutput() InstanceConfigReplicaArrayOutput {
+	return i.ToInstanceConfigReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigReplicaArray) ToInstanceConfigReplicaArrayOutputWithContext(ctx context.Context) InstanceConfigReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigReplicaArrayOutput)
+}
+
+type InstanceConfigReplicaOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigReplica)(nil)).Elem()
+}
+
+func (o InstanceConfigReplicaOutput) ToInstanceConfigReplicaOutput() InstanceConfigReplicaOutput {
+	return o
+}
+
+func (o InstanceConfigReplicaOutput) ToInstanceConfigReplicaOutputWithContext(ctx context.Context) InstanceConfigReplicaOutput {
+	return o
+}
+
+// If true, this location is designated as the default leader location where
+// leader replicas are placed.
+//
+// ***
+func (o InstanceConfigReplicaOutput) DefaultLeaderLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigReplica) *bool { return v.DefaultLeaderLocation }).(pulumi.BoolPtrOutput)
+}
+
+// The location of the serving resources, e.g. "us-central1".
+func (o InstanceConfigReplicaOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigReplica) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the type of replica.  See the [replica types
+// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+// for more details.
+// Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+func (o InstanceConfigReplicaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigReplica) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstanceConfigReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigReplica)(nil)).Elem()
+}
+
+func (o InstanceConfigReplicaArrayOutput) ToInstanceConfigReplicaArrayOutput() InstanceConfigReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceConfigReplicaArrayOutput) ToInstanceConfigReplicaArrayOutputWithContext(ctx context.Context) InstanceConfigReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceConfigReplicaArrayOutput) Index(i pulumi.IntInput) InstanceConfigReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigReplica {
+		return vs[0].([]InstanceConfigReplica)[vs[1].(int)]
+	}).(InstanceConfigReplicaOutput)
+}
+
 type InstanceIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1798,6 +1931,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargetsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargetsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigReplicaInput)(nil)).Elem(), InstanceConfigReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigReplicaArrayInput)(nil)).Elem(), InstanceConfigReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionPtrInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
@@ -1820,6 +1955,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingTargetsOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceConfigReplicaOutput{})
+	pulumi.RegisterOutputType(InstanceConfigReplicaArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionOutput{})

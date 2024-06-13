@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
@@ -18,7 +20,7 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * Structure is documented below.
      * 
      */
-    private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
+    private @Nullable PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
     /**
      * @return Max findings limit for the given infoType.
      * 
@@ -33,8 +35,8 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * Structure is documented below.
      * 
      */
-    public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType() {
-        return this.infoType;
+    public Optional<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType> infoType() {
+        return Optional.ofNullable(this.infoType);
     }
     /**
      * @return Max findings limit for the given infoType.
@@ -53,7 +55,7 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
     }
     @CustomType.Builder
     public static final class Builder {
-        private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
+        private @Nullable PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
         private Integer maxFindings;
         public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType defaults) {
@@ -63,10 +65,8 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
         }
 
         @CustomType.Setter
-        public Builder infoType(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType) {
-            if (infoType == null) {
-              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType", "infoType");
-            }
+        public Builder infoType(@Nullable PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType) {
+
             this.infoType = infoType;
             return this;
         }

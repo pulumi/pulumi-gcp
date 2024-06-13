@@ -128,6 +128,7 @@ public final class GetDiskResult {
      * 
      */
     private String sourceSnapshotId;
+    private String storagePool;
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -320,6 +321,9 @@ public final class GetDiskResult {
     public String sourceSnapshotId() {
         return this.sourceSnapshotId;
     }
+    public String storagePool() {
+        return this.storagePool;
+    }
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -386,6 +390,7 @@ public final class GetDiskResult {
         private String sourceImageId;
         private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String sourceSnapshotId;
+        private String storagePool;
         private String type;
         private List<String> users;
         private @Nullable String zone;
@@ -425,6 +430,7 @@ public final class GetDiskResult {
     	      this.sourceImageId = defaults.sourceImageId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.sourceSnapshotId = defaults.sourceSnapshotId;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
     	      this.users = defaults.users;
     	      this.zone = defaults.zone;
@@ -714,6 +720,14 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePool(String storagePool) {
+            if (storagePool == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "storagePool");
+            }
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetDiskResult", "type");
@@ -773,6 +787,7 @@ public final class GetDiskResult {
             _resultValue.sourceImageId = sourceImageId;
             _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             _resultValue.sourceSnapshotId = sourceSnapshotId;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             _resultValue.users = users;
             _resultValue.zone = zone;

@@ -3151,6 +3151,17 @@ export namespace appengine {
         shell: pulumi.Input<string>;
     }
 
+    export interface FlexibleAppVersionFlexibleRuntimeSettings {
+        /**
+         * Operating System of the application runtime.
+         */
+        operatingSystem?: pulumi.Input<string>;
+        /**
+         * The runtime version of an App Engine flexible application.
+         */
+        runtimeVersion?: pulumi.Input<string>;
+    }
+
     export interface FlexibleAppVersionHandler {
         /**
          * Actions to take when the user is not logged in.
@@ -10921,6 +10932,10 @@ export namespace clouddeploy {
          */
         usages: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Optional. If true, additional logging will be enabled when running builds in this execution environment.
+         */
+        verbose?: pulumi.Input<boolean>;
+        /**
          * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
          */
         workerPool?: pulumi.Input<string>;
@@ -17564,6 +17579,18 @@ export namespace compute {
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
+    export interface InstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec?: pulumi.Input<number>;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+         * - - -
+         */
+        mode?: pulumi.Input<string>;
+    }
+
     export interface InstanceGroupManagerStatefulDisk {
         /**
          * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
@@ -20564,6 +20591,18 @@ export namespace compute {
          * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+    }
+
+    export interface RegionInstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec?: pulumi.Input<number>;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+         * - - -
+         */
+        mode?: pulumi.Input<string>;
     }
 
     export interface RegionInstanceGroupManagerStatefulDisk {
@@ -29747,6 +29786,13 @@ export namespace container {
         datasetId: pulumi.Input<string>;
     }
 
+    export interface ClusterSecretManagerConfig {
+        /**
+         * Enable the Secret Manager add-on for this cluster.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterSecurityPostureConfig {
         /**
          * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
@@ -29865,11 +29911,11 @@ export namespace container {
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
         /**
-         * Network bandwidth tier configuration.
+         * Network bandwidth tier configuration. Structure is documented below.
          */
         networkPerformanceConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigNetworkPerformanceConfig>;
         /**
-         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
          */
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig>;
         /**
@@ -29916,6 +29962,9 @@ export namespace container {
     }
 
     export interface NodePoolNetworkConfigPodCidrOverprovisionConfig {
+        /**
+         * Whether pod cidr overprovision is disabled.
+         */
         disabled: pulumi.Input<boolean>;
     }
 
@@ -35261,6 +35310,10 @@ export namespace dataloss {
          * Structure is documented below.
          */
         cloudSqlTarget?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTarget>;
+        /**
+         * Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+         */
+        secretsTarget?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetSecretsTarget>;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTarget {
@@ -35374,6 +35427,11 @@ export namespace dataloss {
          */
         otherTables?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables>;
         /**
+         * The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+         * Structure is documented below.
+         */
+        tableReference?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference>;
+        /**
          * A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
          * Structure is documented below.
          */
@@ -35381,6 +35439,17 @@ export namespace dataloss {
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables {
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
+        /**
+         * Dataset ID of the table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * Name of the table.
+         */
+        tableId: pulumi.Input<string>;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
@@ -35459,6 +35528,11 @@ export namespace dataloss {
          */
         collection?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection>;
         /**
+         * The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+         * Structure is documented below.
+         */
+        databaseResourceReference?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference>;
+        /**
          * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
          */
         others?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers>;
@@ -35499,6 +35573,25 @@ export namespace dataloss {
         projectIdRegex?: pulumi.Input<string>;
     }
 
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference {
+        /**
+         * Required. Name of a database within the instance.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Required. Name of a database resource, for example, a table within the database.
+         */
+        databaseResource: pulumi.Input<string>;
+        /**
+         * Required. The instance where this resource is located. For example: Cloud SQL instance ID.
+         */
+        instance: pulumi.Input<string>;
+        /**
+         * Required. If within a project-level config, then this must match the config's project ID.
+         */
+        projectId: pulumi.Input<string>;
+    }
+
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers {
     }
 
@@ -35526,6 +35619,9 @@ export namespace dataloss {
          * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          */
         types?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetSecretsTarget {
     }
 
     export interface PreventionInspectTemplateInspectConfig {
@@ -35753,7 +35849,7 @@ export namespace dataloss {
          * specified in another InfoTypeLimit.
          * Structure is documented below.
          */
-        infoType: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>;
+        infoType?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>;
         /**
          * Max findings limit for the given infoType.
          */
@@ -46609,6 +46705,12 @@ export namespace gkebackup {
          */
         includeVolumeData?: pulumi.Input<boolean>;
         /**
+         * This flag specifies whether Backups will not fail when
+         * Backup for GKE detects Kubernetes configuration that is
+         * non-standard or requires additional setup to restore.
+         */
+        permissiveMode?: pulumi.Input<boolean>;
+        /**
          * A list of namespaced Kubernetes Resources.
          * Structure is documented below.
          */
@@ -46865,7 +46967,7 @@ export namespace gkebackup {
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
          * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
          * for more information on each mode.
-         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
          */
         namespacedResourceRestoreMode?: pulumi.Input<string>;
         /**
@@ -46873,6 +46975,11 @@ export namespace gkebackup {
          * Specifying this field to "False" is not allowed.
          */
         noNamespaces?: pulumi.Input<boolean>;
+        /**
+         * It contains custom ordering to use on a Restore.
+         * Structure is documented below.
+         */
+        restoreOrder?: pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfigRestoreOrder>;
         /**
          * A list of selected ProtectedApplications to restore.
          * The listed ProtectedApplications and all the resources
@@ -46905,6 +47012,13 @@ export namespace gkebackup {
          * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
          */
         volumeDataRestorePolicy?: pulumi.Input<string>;
+        /**
+         * A table that binds volumes by their scope to a restore policy. Bindings
+         * must have a unique scope. Any volumes not scoped in the bindings are
+         * subject to the policy defined in volume_data_restore_policy.
+         * Structure is documented below.
+         */
+        volumeDataRestorePolicyBindings?: pulumi.Input<pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>[]>;
     }
 
     export interface RestorePlanRestoreConfigClusterResourceRestoreScope {
@@ -46968,6 +47082,61 @@ export namespace gkebackup {
          * A list of Kubernetes Namespaces.
          */
         namespaces: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrder {
+        /**
+         * A list of group kind dependency pairs
+         * that is used by Backup for GKE to
+         * generate a group kind restore order.
+         * Structure is documented below.
+         */
+        groupKindDependencies: pulumi.Input<pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependency>[]>;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
+        /**
+         * The requiring group kind requires that the satisfying
+         * group kind be restored first.
+         * Structure is documented below.
+         */
+        requiring: pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring>;
+        /**
+         * The satisfying group kind must be restored first
+         * in order to satisfy the dependency.
+         * Structure is documented below.
+         */
+        satisfying: pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying>;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring {
+        /**
+         * API Group of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         *
+         * - - -
+         */
+        resourceKind?: pulumi.Input<string>;
+    }
+
+    export interface RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying {
+        /**
+         * API Group of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         */
+        resourceKind?: pulumi.Input<string>;
     }
 
     export interface RestorePlanRestoreConfigSelectedApplications {
@@ -47039,8 +47208,6 @@ export namespace gkebackup {
         /**
          * A string that specifies the desired value in string format
          * to use for transformation.
-         *
-         * - - -
          */
         value?: pulumi.Input<string>;
     }
@@ -47086,6 +47253,22 @@ export namespace gkebackup {
          * "CustomResourceDefinition", "StorageClass", etc.
          */
         resourceKind?: pulumi.Input<string>;
+    }
+
+    export interface RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
+        /**
+         * Specifies the mechanism to be used to restore this volume data.
+         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+         * for more information on each policy option.
+         * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+         */
+        policy: pulumi.Input<string>;
+        /**
+         * The volume type, as determined by the PVC's
+         * bound PV, to apply the policy to.
+         * Possible values are: `GCE_PERSISTENT_DISK`.
+         */
+        volumeType: pulumi.Input<string>;
     }
 }
 
@@ -50039,6 +50222,10 @@ export namespace healthcare {
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: pulumi.Input<string>;
+        /**
+         * Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+         */
+        sendForBulkImport?: pulumi.Input<boolean>;
     }
 
     export interface DicomStoreStreamConfig {
@@ -54793,6 +54980,22 @@ export namespace monitoring {
 }
 
 export namespace netapp {
+    export interface VolumeBackupConfig {
+        /**
+         * Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+         */
+        backupPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+         * Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+         */
+        backupVault?: pulumi.Input<string>;
+        /**
+         * When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+         */
+        scheduledBackupEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface VolumeExportPolicy {
         /**
          * Export rules (up to 5) control NFS volume access.
@@ -56974,6 +57177,20 @@ export namespace networkservices {
          * A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
          */
         celExpression: pulumi.Input<string>;
+    }
+
+    export interface ServiceLbPoliciesAutoCapacityDrain {
+        /**
+         * Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceLbPoliciesFailoverConfig {
+        /**
+         * Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+         */
+        failoverHealthThreshold: pulumi.Input<number>;
     }
 
     export interface TcpRouteRule {
@@ -60749,6 +60966,19 @@ export namespace redis {
         targetShardCount?: pulumi.Input<number>;
     }
 
+    export interface ClusterZoneDistributionConfig {
+        /**
+         * Immutable. The mode for zone distribution for Memorystore Redis cluster.
+         * If not provided, MULTI_ZONE will be used as default
+         * Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Immutable. The zone for single zone Memorystore Redis cluster.
+         */
+        zone?: pulumi.Input<string>;
+    }
+
     export interface InstanceMaintenancePolicy {
         /**
          * (Output)
@@ -60949,13 +61179,25 @@ export namespace runtimeconfig {
 export namespace secretmanager {
     export interface SecretIamBindingCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface SecretIamMemberCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
@@ -62079,6 +62321,27 @@ export namespace spanner {
         storageUtilizationPercent?: pulumi.Input<number>;
     }
 
+    export interface InstanceConfigReplica {
+        /**
+         * If true, this location is designated as the default leader location where
+         * leader replicas are placed.
+         *
+         * - - -
+         */
+        defaultLeaderLocation?: pulumi.Input<boolean>;
+        /**
+         * The location of the serving resources, e.g. "us-central1".
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Indicates the type of replica.  See the [replica types
+         * documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+         * for more details.
+         * Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface InstanceIAMBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -62473,7 +62736,9 @@ export namespace sql {
          */
         pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
-         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+         *
+         * @deprecated `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
          */
         requireSsl?: pulumi.Input<boolean>;
         /**
@@ -64950,6 +65215,15 @@ export namespace workstations {
          */
         accelerators?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceBoostConfigAccelerator>[]>;
         /**
+         * Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+         */
+        bootDiskSizeGb?: pulumi.Input<number>;
+        /**
+         * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         */
+        enableNestedVirtualization?: pulumi.Input<boolean>;
+        /**
          * The id to be used for the boost config.
          */
         id: pulumi.Input<string>;
@@ -64957,6 +65231,10 @@ export namespace workstations {
          * The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * Number of instances to pool for faster workstation boosting.
+         */
+        poolSize?: pulumi.Input<number>;
     }
 
     export interface WorkstationConfigHostGceInstanceBoostConfigAccelerator {

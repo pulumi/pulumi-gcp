@@ -1871,12 +1871,14 @@ class TargetExecutionConfig(dict):
                  artifact_storage: Optional[str] = None,
                  execution_timeout: Optional[str] = None,
                  service_account: Optional[str] = None,
+                 verbose: Optional[bool] = None,
                  worker_pool: Optional[str] = None):
         """
         :param Sequence[str] usages: Required. Usages when this configuration should be applied.
         :param str artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param str execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param str service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+        :param bool verbose: Optional. If true, additional logging will be enabled when running builds in this execution environment.
         :param str worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
@@ -1886,6 +1888,8 @@ class TargetExecutionConfig(dict):
             pulumi.set(__self__, "execution_timeout", execution_timeout)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if verbose is not None:
+            pulumi.set(__self__, "verbose", verbose)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
 
@@ -1920,6 +1924,14 @@ class TargetExecutionConfig(dict):
         Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def verbose(self) -> Optional[bool]:
+        """
+        Optional. If true, additional logging will be enabled when running builds in this execution environment.
+        """
+        return pulumi.get(self, "verbose")
 
     @property
     @pulumi.getter(name="workerPool")

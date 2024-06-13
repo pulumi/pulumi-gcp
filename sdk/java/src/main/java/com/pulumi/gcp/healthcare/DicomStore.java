@@ -147,6 +147,7 @@ import javax.annotation.Nullable;
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
+ *                 .sendForBulkImport(true)
  *                 .build())
  *             .labels(Map.of("label1", "labelvalue1"))
  *             .streamConfigs(DicomStoreStreamConfigArgs.builder()

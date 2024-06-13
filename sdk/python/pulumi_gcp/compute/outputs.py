@@ -132,6 +132,7 @@ __all__ = [
     'InstanceGroupManagerInstanceLifecyclePolicy',
     'InstanceGroupManagerNamedPort',
     'InstanceGroupManagerParams',
+    'InstanceGroupManagerStandbyPolicy',
     'InstanceGroupManagerStatefulDisk',
     'InstanceGroupManagerStatefulExternalIp',
     'InstanceGroupManagerStatefulInternalIp',
@@ -270,6 +271,7 @@ __all__ = [
     'RegionInstanceGroupManagerInstanceLifecyclePolicy',
     'RegionInstanceGroupManagerNamedPort',
     'RegionInstanceGroupManagerParams',
+    'RegionInstanceGroupManagerStandbyPolicy',
     'RegionInstanceGroupManagerStatefulDisk',
     'RegionInstanceGroupManagerStatefulExternalIp',
     'RegionInstanceGroupManagerStatefulInternalIp',
@@ -601,6 +603,7 @@ __all__ = [
     'GetInstanceGroupManagerInstanceLifecyclePolicyResult',
     'GetInstanceGroupManagerNamedPortResult',
     'GetInstanceGroupManagerParamResult',
+    'GetInstanceGroupManagerStandbyPolicyResult',
     'GetInstanceGroupManagerStatefulDiskResult',
     'GetInstanceGroupManagerStatefulExternalIpResult',
     'GetInstanceGroupManagerStatefulInternalIpResult',
@@ -713,6 +716,30 @@ __all__ = [
     'GetRouterNatSubnetworkResult',
     'GetRouterStatusBestRouteResult',
     'GetRouterStatusBestRoutesForRouterResult',
+    'GetSecurityPolicyAdaptiveProtectionConfigResult',
+    'GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult',
+    'GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult',
+    'GetSecurityPolicyAdvancedOptionsConfigResult',
+    'GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult',
+    'GetSecurityPolicyRecaptchaOptionsConfigResult',
+    'GetSecurityPolicyRuleResult',
+    'GetSecurityPolicyRuleHeaderActionResult',
+    'GetSecurityPolicyRuleHeaderActionRequestHeadersToAddResult',
+    'GetSecurityPolicyRuleMatchResult',
+    'GetSecurityPolicyRuleMatchConfigResult',
+    'GetSecurityPolicyRuleMatchExprResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigExclusionResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult',
+    'GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult',
+    'GetSecurityPolicyRuleRateLimitOptionResult',
+    'GetSecurityPolicyRuleRateLimitOptionBanThresholdResult',
+    'GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult',
+    'GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionResult',
+    'GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult',
+    'GetSecurityPolicyRuleRedirectOptionResult',
     'GetSnapshotSnapshotEncryptionKeyResult',
     'GetSnapshotSourceDiskEncryptionKeyResult',
     'GetSubnetworkSecondaryIpRangeResult',
@@ -9765,6 +9792,56 @@ class InstanceGroupManagerParams(dict):
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class InstanceGroupManagerStandbyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialDelaySec":
+            suggest = "initial_delay_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStandbyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStandbyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStandbyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_delay_sec: Optional[int] = None,
+                 mode: Optional[str] = None):
+        """
+        :param int initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param str mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+               - - -
+        """
+        if initial_delay_sec is not None:
+            pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> Optional[int]:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -19553,6 +19630,56 @@ class RegionInstanceGroupManagerParams(dict):
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerStandbyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialDelaySec":
+            suggest = "initial_delay_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerStandbyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerStandbyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerStandbyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_delay_sec: Optional[int] = None,
+                 mode: Optional[str] = None):
+        """
+        :param int initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param str mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+               - - -
+        """
+        if initial_delay_sec is not None:
+            pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> Optional[int]:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -44010,6 +44137,35 @@ class GetInstanceGroupManagerParamResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceGroupManagerStandbyPolicyResult(dict):
+    def __init__(__self__, *,
+                 initial_delay_sec: int,
+                 mode: str):
+        """
+        :param int initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param str mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+        """
+        pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> int:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
 class GetInstanceGroupManagerStatefulDiskResult(dict):
     def __init__(__self__, *,
                  delete_rule: str,
@@ -49946,6 +50102,889 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetSecurityPolicyAdaptiveProtectionConfigResult(dict):
+    def __init__(__self__, *,
+                 auto_deploy_configs: Sequence['outputs.GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult'],
+                 layer7_ddos_defense_configs: Sequence['outputs.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult']):
+        """
+        :param Sequence['GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs'] auto_deploy_configs: Auto Deploy Config of this security policy
+        :param Sequence['GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_configs: Layer 7 DDoS Defense Config of this security policy
+        """
+        pulumi.set(__self__, "auto_deploy_configs", auto_deploy_configs)
+        pulumi.set(__self__, "layer7_ddos_defense_configs", layer7_ddos_defense_configs)
+
+    @property
+    @pulumi.getter(name="autoDeployConfigs")
+    def auto_deploy_configs(self) -> Sequence['outputs.GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult']:
+        """
+        Auto Deploy Config of this security policy
+        """
+        return pulumi.get(self, "auto_deploy_configs")
+
+    @property
+    @pulumi.getter(name="layer7DdosDefenseConfigs")
+    def layer7_ddos_defense_configs(self) -> Sequence['outputs.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult']:
+        """
+        Layer 7 DDoS Defense Config of this security policy
+        """
+        return pulumi.get(self, "layer7_ddos_defense_configs")
+
+
+@pulumi.output_type
+class GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult(dict):
+    def __init__(__self__, *,
+                 confidence_threshold: float,
+                 expiration_sec: int,
+                 impacted_baseline_threshold: float,
+                 load_threshold: float):
+        """
+        :param float confidence_threshold: Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+        :param int expiration_sec: Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+        :param float impacted_baseline_threshold: Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+        :param float load_threshold: Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+        """
+        pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        pulumi.set(__self__, "expiration_sec", expiration_sec)
+        pulumi.set(__self__, "impacted_baseline_threshold", impacted_baseline_threshold)
+        pulumi.set(__self__, "load_threshold", load_threshold)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> float:
+        """
+        Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @property
+    @pulumi.getter(name="expirationSec")
+    def expiration_sec(self) -> int:
+        """
+        Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+        """
+        return pulumi.get(self, "expiration_sec")
+
+    @property
+    @pulumi.getter(name="impactedBaselineThreshold")
+    def impacted_baseline_threshold(self) -> float:
+        """
+        Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+        """
+        return pulumi.get(self, "impacted_baseline_threshold")
+
+    @property
+    @pulumi.getter(name="loadThreshold")
+    def load_threshold(self) -> float:
+        """
+        Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+        """
+        return pulumi.get(self, "load_threshold")
+
+
+@pulumi.output_type
+class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 rule_visibility: str):
+        """
+        :param bool enable: If set to true, enables CAAP for L7 DDoS detection.
+        :param str rule_visibility: Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "rule_visibility", rule_visibility)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        If set to true, enables CAAP for L7 DDoS detection.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="ruleVisibility")
+    def rule_visibility(self) -> str:
+        """
+        Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+        """
+        return pulumi.get(self, "rule_visibility")
+
+
+@pulumi.output_type
+class GetSecurityPolicyAdvancedOptionsConfigResult(dict):
+    def __init__(__self__, *,
+                 json_custom_configs: Sequence['outputs.GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult'],
+                 json_parsing: str,
+                 log_level: str,
+                 user_ip_request_headers: Sequence[str]):
+        """
+        :param Sequence['GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_configs: Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+        :param str json_parsing: JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+        :param str log_level: Logging level. Supported values include: "NORMAL", "VERBOSE".
+        :param Sequence[str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        pulumi.set(__self__, "json_custom_configs", json_custom_configs)
+        pulumi.set(__self__, "json_parsing", json_parsing)
+        pulumi.set(__self__, "log_level", log_level)
+        pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfigs")
+    def json_custom_configs(self) -> Sequence['outputs.GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult']:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+        """
+        return pulumi.get(self, "json_custom_configs")
+
+    @property
+    @pulumi.getter(name="jsonParsing")
+    def json_parsing(self) -> str:
+        """
+        JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+        """
+        return pulumi.get(self, "json_parsing")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> str:
+        """
+        Logging level. Supported values include: "NORMAL", "VERBOSE".
+        """
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="userIpRequestHeaders")
+    def user_ip_request_headers(self) -> Sequence[str]:
+        """
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        return pulumi.get(self, "user_ip_request_headers")
+
+
+@pulumi.output_type
+class GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult(dict):
+    def __init__(__self__, *,
+                 content_types: Sequence[str]):
+        """
+        :param Sequence[str] content_types: A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[str]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        return pulumi.get(self, "content_types")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRecaptchaOptionsConfigResult(dict):
+    def __init__(__self__, *,
+                 redirect_site_key: str):
+        """
+        :param str redirect_site_key: A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        pulumi.set(__self__, "redirect_site_key", redirect_site_key)
+
+    @property
+    @pulumi.getter(name="redirectSiteKey")
+    def redirect_site_key(self) -> str:
+        """
+        A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        return pulumi.get(self, "redirect_site_key")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 description: str,
+                 header_actions: Sequence['outputs.GetSecurityPolicyRuleHeaderActionResult'],
+                 matches: Sequence['outputs.GetSecurityPolicyRuleMatchResult'],
+                 preconfigured_waf_configs: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigResult'],
+                 preview: bool,
+                 priority: int,
+                 rate_limit_options: Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionResult'],
+                 redirect_options: Sequence['outputs.GetSecurityPolicyRuleRedirectOptionResult']):
+        """
+        :param str action: Action to take when match matches the request.
+        :param str description: An optional description of this rule. Max size is 64.
+        :param Sequence['GetSecurityPolicyRuleHeaderActionArgs'] header_actions: Additional actions that are performed on headers.
+        :param Sequence['GetSecurityPolicyRuleMatchArgs'] matches: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_configs: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        :param bool preview: When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+        :param int priority: An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        :param Sequence['GetSecurityPolicyRuleRateLimitOptionArgs'] rate_limit_options: Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param Sequence['GetSecurityPolicyRuleRedirectOptionArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "header_actions", header_actions)
+        pulumi.set(__self__, "matches", matches)
+        pulumi.set(__self__, "preconfigured_waf_configs", preconfigured_waf_configs)
+        pulumi.set(__self__, "preview", preview)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+        pulumi.set(__self__, "redirect_options", redirect_options)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Action to take when match matches the request.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        An optional description of this rule. Max size is 64.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="headerActions")
+    def header_actions(self) -> Sequence['outputs.GetSecurityPolicyRuleHeaderActionResult']:
+        """
+        Additional actions that are performed on headers.
+        """
+        return pulumi.get(self, "header_actions")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.GetSecurityPolicyRuleMatchResult']:
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+        """
+        return pulumi.get(self, "matches")
+
+    @property
+    @pulumi.getter(name="preconfiguredWafConfigs")
+    def preconfigured_waf_configs(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigResult']:
+        """
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        """
+        return pulumi.get(self, "preconfigured_waf_configs")
+
+    @property
+    @pulumi.getter
+    def preview(self) -> bool:
+        """
+        When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+        """
+        return pulumi.get(self, "preview")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionResult']:
+        """
+        Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Sequence['outputs.GetSecurityPolicyRuleRedirectOptionResult']:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions.
+        """
+        return pulumi.get(self, "redirect_options")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleHeaderActionResult(dict):
+    def __init__(__self__, *,
+                 request_headers_to_adds: Sequence['outputs.GetSecurityPolicyRuleHeaderActionRequestHeadersToAddResult']):
+        """
+        :param Sequence['GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present.
+        """
+        pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+
+    @property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Sequence['outputs.GetSecurityPolicyRuleHeaderActionRequestHeadersToAddResult']:
+        """
+        The list of request headers to add or overwrite if they're already present.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleHeaderActionRequestHeadersToAddResult(dict):
+    def __init__(__self__, *,
+                 header_name: str,
+                 header_value: str):
+        """
+        :param str header_name: The name of the header to set.
+        :param str header_value: The value to set the named header to.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+        pulumi.set(__self__, "header_value", header_value)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> str:
+        """
+        The name of the header to set.
+        """
+        return pulumi.get(self, "header_name")
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> str:
+        """
+        The value to set the named header to.
+        """
+        return pulumi.get(self, "header_value")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence['outputs.GetSecurityPolicyRuleMatchConfigResult'],
+                 exprs: Sequence['outputs.GetSecurityPolicyRuleMatchExprResult'],
+                 versioned_expr: str):
+        """
+        :param Sequence['GetSecurityPolicyRuleMatchConfigArgs'] configs: The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+        :param Sequence['GetSecurityPolicyRuleMatchExprArgs'] exprs: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        :param str versioned_expr: Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "exprs", exprs)
+        pulumi.set(__self__, "versioned_expr", versioned_expr)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence['outputs.GetSecurityPolicyRuleMatchConfigResult']:
+        """
+        The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def exprs(self) -> Sequence['outputs.GetSecurityPolicyRuleMatchExprResult']:
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        """
+        return pulumi.get(self, "exprs")
+
+    @property
+    @pulumi.getter(name="versionedExpr")
+    def versioned_expr(self) -> str:
+        """
+        Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+        """
+        return pulumi.get(self, "versioned_expr")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleMatchConfigResult(dict):
+    def __init__(__self__, *,
+                 src_ip_ranges: Sequence[str]):
+        """
+        :param Sequence[str] src_ip_ranges: Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+        """
+        pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Sequence[str]:
+        """
+        Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleMatchExprResult(dict):
+    def __init__(__self__, *,
+                 expression: str):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigResult(dict):
+    def __init__(__self__, *,
+                 exclusions: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionResult']):
+        """
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs'] exclusions: An exclusion to apply during preconfigured WAF evaluation.
+        """
+        pulumi.set(__self__, "exclusions", exclusions)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionResult']:
+        """
+        An exclusion to apply during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "exclusions")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigExclusionResult(dict):
+    def __init__(__self__, *,
+                 request_cookies: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult'],
+                 request_headers: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult'],
+                 request_query_params: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult'],
+                 request_uris: Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult'],
+                 target_rule_ids: Sequence[str],
+                 target_rule_set: str):
+        """
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs'] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs'] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+        :param Sequence['GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs'] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        :param Sequence[str] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        :param str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        pulumi.set(__self__, "request_cookies", request_cookies)
+        pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "request_query_params", request_query_params)
+        pulumi.set(__self__, "request_uris", request_uris)
+        pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+        pulumi.set(__self__, "target_rule_set", target_rule_set)
+
+    @property
+    @pulumi.getter(name="requestCookies")
+    def request_cookies(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult']:
+        """
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_cookies")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult']:
+        """
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="requestQueryParams")
+    def request_query_params(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult']:
+        """
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+        """
+        return pulumi.get(self, "request_query_params")
+
+    @property
+    @pulumi.getter(name="requestUris")
+    def request_uris(self) -> Sequence['outputs.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult']:
+        """
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        """
+        return pulumi.get(self, "request_uris")
+
+    @property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Sequence[str]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+    @property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> str:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: str):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: str):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: str):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 value: str):
+        """
+        :param str operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRateLimitOptionResult(dict):
+    def __init__(__self__, *,
+                 ban_duration_sec: int,
+                 ban_thresholds: Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionBanThresholdResult'],
+                 conform_action: str,
+                 enforce_on_key: str,
+                 enforce_on_key_configs: Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult'],
+                 enforce_on_key_name: str,
+                 exceed_action: str,
+                 exceed_redirect_options: Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionResult'],
+                 rate_limit_thresholds: Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult']):
+        """
+        :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        :param Sequence['GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs'] ban_thresholds: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        :param str enforce_on_key: Determines the key to enforce the rateLimitThreshold on
+        :param Sequence['GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs'] enforce_on_key_configs: Enforce On Key Config of this security policy
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        :param Sequence['GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        :param Sequence['GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs'] rate_limit_thresholds: Threshold at which to begin ratelimiting.
+        """
+        pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
+        pulumi.set(__self__, "ban_thresholds", ban_thresholds)
+        pulumi.set(__self__, "conform_action", conform_action)
+        pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        pulumi.set(__self__, "exceed_action", exceed_action)
+        pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
+        pulumi.set(__self__, "rate_limit_thresholds", rate_limit_thresholds)
+
+    @property
+    @pulumi.getter(name="banDurationSec")
+    def ban_duration_sec(self) -> int:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        return pulumi.get(self, "ban_duration_sec")
+
+    @property
+    @pulumi.getter(name="banThresholds")
+    def ban_thresholds(self) -> Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionBanThresholdResult']:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        """
+        return pulumi.get(self, "ban_thresholds")
+
+    @property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> str:
+        """
+        Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @property
+    @pulumi.getter(name="enforceOnKey")
+    def enforce_on_key(self) -> str:
+        """
+        Determines the key to enforce the rateLimitThreshold on
+        """
+        return pulumi.get(self, "enforce_on_key")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyConfigs")
+    def enforce_on_key_configs(self) -> Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult']:
+        """
+        Enforce On Key Config of this security policy
+        """
+        return pulumi.get(self, "enforce_on_key_configs")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> str:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> str:
+        """
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @property
+    @pulumi.getter(name="exceedRedirectOptions")
+    def exceed_redirect_options(self) -> Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionResult']:
+        """
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        """
+        return pulumi.get(self, "exceed_redirect_options")
+
+    @property
+    @pulumi.getter(name="rateLimitThresholds")
+    def rate_limit_thresholds(self) -> Sequence['outputs.GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult']:
+        """
+        Threshold at which to begin ratelimiting.
+        """
+        return pulumi.get(self, "rate_limit_thresholds")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRateLimitOptionBanThresholdResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 interval_sec: int):
+        """
+        :param int count: Number of HTTP(S) requests for calculating the threshold.
+        :param int interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> int:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult(dict):
+    def __init__(__self__, *,
+                 enforce_on_key_name: str,
+                 enforce_on_key_type: str):
+        """
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on
+        """
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> str:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyType")
+    def enforce_on_key_type(self) -> str:
+        """
+        Determines the key to enforce the rate_limit_threshold on
+        """
+        return pulumi.get(self, "enforce_on_key_type")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionResult(dict):
+    def __init__(__self__, *,
+                 target: str,
+                 type: str):
+        """
+        :param str target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        :param str type: Type of the redirect action.
+        """
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the redirect action.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 interval_sec: int):
+        """
+        :param int count: Number of HTTP(S) requests for calculating the threshold.
+        :param int interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> int:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+
+@pulumi.output_type
+class GetSecurityPolicyRuleRedirectOptionResult(dict):
+    def __init__(__self__, *,
+                 target: str,
+                 type: str):
+        """
+        :param str target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        :param str type: Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+        """
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -532,6 +532,246 @@ import (
 //	}
 //
 // ```
+// ### Gkebackup Restoreplan Gitops Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("gitops-mode-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("gitops-mode"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					AllNamespaces:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewRestorePlan(ctx, "gitops_mode", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("gitops-mode"),
+//				Location:   pulumi.String("us-central1"),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
+//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
+//					AllNamespaces:                 pulumi.Bool(true),
+//					NamespacedResourceRestoreMode: pulumi.String("MERGE_SKIP_ON_CONFLICT"),
+//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
+//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
+//						AllGroupKinds: pulumi.Bool(true),
+//					},
+//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gkebackup Restoreplan Restore Order
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("restore-order-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("restore-order"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					AllNamespaces:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewRestorePlan(ctx, "restore_order", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("restore-order"),
+//				Location:   pulumi.String("us-central1"),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
+//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
+//					AllNamespaces:                 pulumi.Bool(true),
+//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
+//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
+//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
+//						AllGroupKinds: pulumi.Bool(true),
+//					},
+//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
+//					RestoreOrder: &gkebackup.RestorePlanRestoreConfigRestoreOrderArgs{
+//						GroupKindDependencies: gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray{
+//							&gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{
+//								Satisfying: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{
+//									ResourceGroup: pulumi.String("stable.example.com"),
+//									ResourceKind:  pulumi.String("kindA"),
+//								},
+//								Requiring: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{
+//									ResourceGroup: pulumi.String("stable.example.com"),
+//									ResourceKind:  pulumi.String("kindB"),
+//								},
+//							},
+//							&gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{
+//								Satisfying: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{
+//									ResourceGroup: pulumi.String("stable.example.com"),
+//									ResourceKind:  pulumi.String("kindB"),
+//								},
+//								Requiring: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{
+//									ResourceGroup: pulumi.String("stable.example.com"),
+//									ResourceKind:  pulumi.String("kindC"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gkebackup Restoreplan Volume Res
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("volume-res-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("volume-res"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					AllNamespaces:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewRestorePlan(ctx, "volume_res", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("volume-res"),
+//				Location:   pulumi.String("us-central1"),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
+//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
+//					AllNamespaces:                 pulumi.Bool(true),
+//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
+//					VolumeDataRestorePolicy:       pulumi.String("NO_VOLUME_DATA_RESTORATION"),
+//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
+//						AllGroupKinds: pulumi.Bool(true),
+//					},
+//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
+//					VolumeDataRestorePolicyBindings: gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray{
+//						&gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs{
+//							Policy:     pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
+//							VolumeType: pulumi.String("GCE_PERSISTENT_DISK"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

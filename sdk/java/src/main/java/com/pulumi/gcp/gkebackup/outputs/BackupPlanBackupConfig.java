@@ -39,6 +39,13 @@ public final class BackupPlanBackupConfig {
      */
     private @Nullable Boolean includeVolumeData;
     /**
+     * @return This flag specifies whether Backups will not fail when
+     * Backup for GKE detects Kubernetes configuration that is
+     * non-standard or requires additional setup to restore.
+     * 
+     */
+    private @Nullable Boolean permissiveMode;
+    /**
      * @return A list of namespaced Kubernetes Resources.
      * Structure is documented below.
      * 
@@ -85,6 +92,15 @@ public final class BackupPlanBackupConfig {
         return Optional.ofNullable(this.includeVolumeData);
     }
     /**
+     * @return This flag specifies whether Backups will not fail when
+     * Backup for GKE detects Kubernetes configuration that is
+     * non-standard or requires additional setup to restore.
+     * 
+     */
+    public Optional<Boolean> permissiveMode() {
+        return Optional.ofNullable(this.permissiveMode);
+    }
+    /**
      * @return A list of namespaced Kubernetes Resources.
      * Structure is documented below.
      * 
@@ -114,6 +130,7 @@ public final class BackupPlanBackupConfig {
         private @Nullable BackupPlanBackupConfigEncryptionKey encryptionKey;
         private @Nullable Boolean includeSecrets;
         private @Nullable Boolean includeVolumeData;
+        private @Nullable Boolean permissiveMode;
         private @Nullable BackupPlanBackupConfigSelectedApplications selectedApplications;
         private @Nullable BackupPlanBackupConfigSelectedNamespaces selectedNamespaces;
         public Builder() {}
@@ -123,6 +140,7 @@ public final class BackupPlanBackupConfig {
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.includeSecrets = defaults.includeSecrets;
     	      this.includeVolumeData = defaults.includeVolumeData;
+    	      this.permissiveMode = defaults.permissiveMode;
     	      this.selectedApplications = defaults.selectedApplications;
     	      this.selectedNamespaces = defaults.selectedNamespaces;
         }
@@ -152,6 +170,12 @@ public final class BackupPlanBackupConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder permissiveMode(@Nullable Boolean permissiveMode) {
+
+            this.permissiveMode = permissiveMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selectedApplications(@Nullable BackupPlanBackupConfigSelectedApplications selectedApplications) {
 
             this.selectedApplications = selectedApplications;
@@ -169,6 +193,7 @@ public final class BackupPlanBackupConfig {
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.includeSecrets = includeSecrets;
             _resultValue.includeVolumeData = includeVolumeData;
+            _resultValue.permissiveMode = permissiveMode;
             _resultValue.selectedApplications = selectedApplications;
             _resultValue.selectedNamespaces = selectedNamespaces;
             return _resultValue;

@@ -6106,6 +6106,8 @@ type TargetExecutionConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
 	Usages []string `pulumi:"usages"`
+	// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+	Verbose *bool `pulumi:"verbose"`
 	// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
 	WorkerPool *string `pulumi:"workerPool"`
 }
@@ -6130,6 +6132,8 @@ type TargetExecutionConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
 	Usages pulumi.StringArrayInput `pulumi:"usages"`
+	// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+	Verbose pulumi.BoolPtrInput `pulumi:"verbose"`
 	// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
 	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
 }
@@ -6203,6 +6207,11 @@ func (o TargetExecutionConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Required. Usages when this configuration should be applied.
 func (o TargetExecutionConfigOutput) Usages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetExecutionConfig) []string { return v.Usages }).(pulumi.StringArrayOutput)
+}
+
+// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+func (o TargetExecutionConfigOutput) Verbose() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfig) *bool { return v.Verbose }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.

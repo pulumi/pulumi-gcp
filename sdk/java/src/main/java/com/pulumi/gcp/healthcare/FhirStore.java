@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
  *             .defaultSearchHandlingStrict(false)
- *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
+ *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
  *             .labels(Map.of("label1", "labelvalue1"))
@@ -176,64 +176,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Healthcare Fhir Store Notification Config
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.healthcare.Dataset;
- * import com.pulumi.gcp.healthcare.DatasetArgs;
- * import com.pulumi.gcp.healthcare.FhirStore;
- * import com.pulumi.gcp.healthcare.FhirStoreArgs;
- * import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var topic = new Topic("topic", TopicArgs.builder()
- *             .name("fhir-notifications")
- *             .build());
- * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
- *             .name("example-dataset")
- *             .location("us-central1")
- *             .build());
- * 
- *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
- *             .name("example-fhir-store")
- *             .dataset(dataset.id())
- *             .version("R4")
- *             .enableUpdateCreate(false)
- *             .disableReferentialIntegrity(false)
- *             .disableResourceVersioning(false)
- *             .enableHistoryImport(false)
- *             .labels(Map.of("label1", "labelvalue1"))
- *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
- *                 .pubsubTopic(topic.id())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Fhir Store Notification Configs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -281,7 +223,6 @@ import javax.annotation.Nullable;
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
- *             .enableHistoryModifications(false)
  *             .labels(Map.of("label1", "labelvalue1"))
  *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
@@ -548,16 +489,26 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
+     * @deprecated
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     @Export(name="notificationConfig", refs={FhirStoreNotificationConfig.class}, tree="[0]")
     private Output</* @Nullable */ FhirStoreNotificationConfig> notificationConfig;
 
     /**
-     * @return A nested object resource
+     * @return (Optional, Deprecated)
+     * A nested object resource
      * Structure is documented below.
+     * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      * 
      */
     public Output<Optional<FhirStoreNotificationConfig>> notificationConfig() {

@@ -11595,6 +11595,280 @@ func (o LbTrafficExtensionExtensionChainMatchConditionOutput) CelExpression() pu
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
 }
 
+type ServiceLbPoliciesAutoCapacityDrain struct {
+	// Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+	Enable *bool `pulumi:"enable"`
+}
+
+// ServiceLbPoliciesAutoCapacityDrainInput is an input type that accepts ServiceLbPoliciesAutoCapacityDrainArgs and ServiceLbPoliciesAutoCapacityDrainOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesAutoCapacityDrainInput` via:
+//
+//	ServiceLbPoliciesAutoCapacityDrainArgs{...}
+type ServiceLbPoliciesAutoCapacityDrainInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesAutoCapacityDrainOutput() ServiceLbPoliciesAutoCapacityDrainOutput
+	ToServiceLbPoliciesAutoCapacityDrainOutputWithContext(context.Context) ServiceLbPoliciesAutoCapacityDrainOutput
+}
+
+type ServiceLbPoliciesAutoCapacityDrainArgs struct {
+	// Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (ServiceLbPoliciesAutoCapacityDrainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrain)(nil)).Elem()
+}
+
+func (i ServiceLbPoliciesAutoCapacityDrainArgs) ToServiceLbPoliciesAutoCapacityDrainOutput() ServiceLbPoliciesAutoCapacityDrainOutput {
+	return i.ToServiceLbPoliciesAutoCapacityDrainOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesAutoCapacityDrainArgs) ToServiceLbPoliciesAutoCapacityDrainOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesAutoCapacityDrainOutput)
+}
+
+func (i ServiceLbPoliciesAutoCapacityDrainArgs) ToServiceLbPoliciesAutoCapacityDrainPtrOutput() ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return i.ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesAutoCapacityDrainArgs) ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesAutoCapacityDrainOutput).ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(ctx)
+}
+
+// ServiceLbPoliciesAutoCapacityDrainPtrInput is an input type that accepts ServiceLbPoliciesAutoCapacityDrainArgs, ServiceLbPoliciesAutoCapacityDrainPtr and ServiceLbPoliciesAutoCapacityDrainPtrOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesAutoCapacityDrainPtrInput` via:
+//
+//	        ServiceLbPoliciesAutoCapacityDrainArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceLbPoliciesAutoCapacityDrainPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesAutoCapacityDrainPtrOutput() ServiceLbPoliciesAutoCapacityDrainPtrOutput
+	ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(context.Context) ServiceLbPoliciesAutoCapacityDrainPtrOutput
+}
+
+type serviceLbPoliciesAutoCapacityDrainPtrType ServiceLbPoliciesAutoCapacityDrainArgs
+
+func ServiceLbPoliciesAutoCapacityDrainPtr(v *ServiceLbPoliciesAutoCapacityDrainArgs) ServiceLbPoliciesAutoCapacityDrainPtrInput {
+	return (*serviceLbPoliciesAutoCapacityDrainPtrType)(v)
+}
+
+func (*serviceLbPoliciesAutoCapacityDrainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesAutoCapacityDrain)(nil)).Elem()
+}
+
+func (i *serviceLbPoliciesAutoCapacityDrainPtrType) ToServiceLbPoliciesAutoCapacityDrainPtrOutput() ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return i.ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLbPoliciesAutoCapacityDrainPtrType) ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesAutoCapacityDrainPtrOutput)
+}
+
+type ServiceLbPoliciesAutoCapacityDrainOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesAutoCapacityDrainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrain)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainOutput) ToServiceLbPoliciesAutoCapacityDrainOutput() ServiceLbPoliciesAutoCapacityDrainOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainOutput) ToServiceLbPoliciesAutoCapacityDrainOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainOutput) ToServiceLbPoliciesAutoCapacityDrainPtrOutput() ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return o.ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainOutput) ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPoliciesAutoCapacityDrain) *ServiceLbPoliciesAutoCapacityDrain {
+		return &v
+	}).(ServiceLbPoliciesAutoCapacityDrainPtrOutput)
+}
+
+// Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+func (o ServiceLbPoliciesAutoCapacityDrainOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceLbPoliciesAutoCapacityDrain) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceLbPoliciesAutoCapacityDrainPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesAutoCapacityDrainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesAutoCapacityDrain)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainPtrOutput) ToServiceLbPoliciesAutoCapacityDrainPtrOutput() ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainPtrOutput) ToServiceLbPoliciesAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesAutoCapacityDrainPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesAutoCapacityDrainPtrOutput) Elem() ServiceLbPoliciesAutoCapacityDrainOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesAutoCapacityDrain) ServiceLbPoliciesAutoCapacityDrain {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPoliciesAutoCapacityDrain
+		return ret
+	}).(ServiceLbPoliciesAutoCapacityDrainOutput)
+}
+
+// Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+func (o ServiceLbPoliciesAutoCapacityDrainPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesAutoCapacityDrain) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ServiceLbPoliciesFailoverConfig struct {
+	// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+	FailoverHealthThreshold int `pulumi:"failoverHealthThreshold"`
+}
+
+// ServiceLbPoliciesFailoverConfigInput is an input type that accepts ServiceLbPoliciesFailoverConfigArgs and ServiceLbPoliciesFailoverConfigOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesFailoverConfigInput` via:
+//
+//	ServiceLbPoliciesFailoverConfigArgs{...}
+type ServiceLbPoliciesFailoverConfigInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesFailoverConfigOutput() ServiceLbPoliciesFailoverConfigOutput
+	ToServiceLbPoliciesFailoverConfigOutputWithContext(context.Context) ServiceLbPoliciesFailoverConfigOutput
+}
+
+type ServiceLbPoliciesFailoverConfigArgs struct {
+	// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+	FailoverHealthThreshold pulumi.IntInput `pulumi:"failoverHealthThreshold"`
+}
+
+func (ServiceLbPoliciesFailoverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesFailoverConfig)(nil)).Elem()
+}
+
+func (i ServiceLbPoliciesFailoverConfigArgs) ToServiceLbPoliciesFailoverConfigOutput() ServiceLbPoliciesFailoverConfigOutput {
+	return i.ToServiceLbPoliciesFailoverConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesFailoverConfigArgs) ToServiceLbPoliciesFailoverConfigOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesFailoverConfigOutput)
+}
+
+func (i ServiceLbPoliciesFailoverConfigArgs) ToServiceLbPoliciesFailoverConfigPtrOutput() ServiceLbPoliciesFailoverConfigPtrOutput {
+	return i.ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesFailoverConfigArgs) ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesFailoverConfigOutput).ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceLbPoliciesFailoverConfigPtrInput is an input type that accepts ServiceLbPoliciesFailoverConfigArgs, ServiceLbPoliciesFailoverConfigPtr and ServiceLbPoliciesFailoverConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesFailoverConfigPtrInput` via:
+//
+//	        ServiceLbPoliciesFailoverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceLbPoliciesFailoverConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesFailoverConfigPtrOutput() ServiceLbPoliciesFailoverConfigPtrOutput
+	ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(context.Context) ServiceLbPoliciesFailoverConfigPtrOutput
+}
+
+type serviceLbPoliciesFailoverConfigPtrType ServiceLbPoliciesFailoverConfigArgs
+
+func ServiceLbPoliciesFailoverConfigPtr(v *ServiceLbPoliciesFailoverConfigArgs) ServiceLbPoliciesFailoverConfigPtrInput {
+	return (*serviceLbPoliciesFailoverConfigPtrType)(v)
+}
+
+func (*serviceLbPoliciesFailoverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesFailoverConfig)(nil)).Elem()
+}
+
+func (i *serviceLbPoliciesFailoverConfigPtrType) ToServiceLbPoliciesFailoverConfigPtrOutput() ServiceLbPoliciesFailoverConfigPtrOutput {
+	return i.ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLbPoliciesFailoverConfigPtrType) ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesFailoverConfigPtrOutput)
+}
+
+type ServiceLbPoliciesFailoverConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesFailoverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesFailoverConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesFailoverConfigOutput) ToServiceLbPoliciesFailoverConfigOutput() ServiceLbPoliciesFailoverConfigOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesFailoverConfigOutput) ToServiceLbPoliciesFailoverConfigOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesFailoverConfigOutput) ToServiceLbPoliciesFailoverConfigPtrOutput() ServiceLbPoliciesFailoverConfigPtrOutput {
+	return o.ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPoliciesFailoverConfigOutput) ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPoliciesFailoverConfig) *ServiceLbPoliciesFailoverConfig {
+		return &v
+	}).(ServiceLbPoliciesFailoverConfigPtrOutput)
+}
+
+// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+func (o ServiceLbPoliciesFailoverConfigOutput) FailoverHealthThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceLbPoliciesFailoverConfig) int { return v.FailoverHealthThreshold }).(pulumi.IntOutput)
+}
+
+type ServiceLbPoliciesFailoverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesFailoverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesFailoverConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesFailoverConfigPtrOutput) ToServiceLbPoliciesFailoverConfigPtrOutput() ServiceLbPoliciesFailoverConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesFailoverConfigPtrOutput) ToServiceLbPoliciesFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesFailoverConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesFailoverConfigPtrOutput) Elem() ServiceLbPoliciesFailoverConfigOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesFailoverConfig) ServiceLbPoliciesFailoverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPoliciesFailoverConfig
+		return ret
+	}).(ServiceLbPoliciesFailoverConfigOutput)
+}
+
+// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+func (o ServiceLbPoliciesFailoverConfigPtrOutput) FailoverHealthThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesFailoverConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FailoverHealthThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
 type TcpRouteRule struct {
 	// A detailed rule defining how to route traffic.
 	// Structure is documented below.
@@ -12527,6 +12801,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainMatchConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainPtrInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigPtrInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleInput)(nil)).Elem(), TcpRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleArrayInput)(nil)).Elem(), TcpRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionInput)(nil)).Elem(), TcpRouteRuleActionArgs{})
@@ -12675,6 +12953,10 @@ func init() {
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionArrayOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainMatchConditionOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigPtrOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleActionOutput{})

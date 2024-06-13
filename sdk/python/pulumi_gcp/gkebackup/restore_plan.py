@@ -732,6 +732,169 @@ class RestorePlan(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Gkebackup Restoreplan Gitops Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="gitops-mode-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="gitops-mode",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
+            name="gitops-mode",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="MERGE_SKIP_ON_CONFLICT",
+                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+            ))
+        ```
+        ### Gkebackup Restoreplan Restore Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="restore-order-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="restore-order",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        restore_order = gcp.gkebackup.RestorePlan("restore_order",
+            name="restore-order",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
+                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+                restore_order=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderArgs(
+                    group_kind_dependencies=[
+                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
+                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindA",
+                            ),
+                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindB",
+                            ),
+                        ),
+                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
+                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindB",
+                            ),
+                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindC",
+                            ),
+                        ),
+                    ],
+                ),
+            ))
+        ```
+        ### Gkebackup Restoreplan Volume Res
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="volume-res-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="volume-res",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        volume_res = gcp.gkebackup.RestorePlan("volume_res",
+            name="volume-res",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
+                volume_data_restore_policy="NO_VOLUME_DATA_RESTORATION",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+                volume_data_restore_policy_bindings=[gcp.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs(
+                    policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                    volume_type="GCE_PERSISTENT_DISK",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -1121,6 +1284,169 @@ class RestorePlan(pulumi.CustomResource):
                         path="/spec/initContainers/0/env",
                         from_path="/spec/containers/0/env",
                     )],
+                )],
+            ))
+        ```
+        ### Gkebackup Restoreplan Gitops Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="gitops-mode-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="gitops-mode",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
+            name="gitops-mode",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="MERGE_SKIP_ON_CONFLICT",
+                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+            ))
+        ```
+        ### Gkebackup Restoreplan Restore Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="restore-order-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="restore-order",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        restore_order = gcp.gkebackup.RestorePlan("restore_order",
+            name="restore-order",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
+                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+                restore_order=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderArgs(
+                    group_kind_dependencies=[
+                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
+                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindA",
+                            ),
+                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindB",
+                            ),
+                        ),
+                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
+                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindB",
+                            ),
+                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
+                                resource_group="stable.example.com",
+                                resource_kind="kindC",
+                            ),
+                        ),
+                    ],
+                ),
+            ))
+        ```
+        ### Gkebackup Restoreplan Volume Res
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="volume-res-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
+        basic = gcp.gkebackup.BackupPlan("basic",
+            name="volume-res",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        volume_res = gcp.gkebackup.RestorePlan("volume_res",
+            name="volume-res",
+            location="us-central1",
+            backup_plan=basic.id,
+            cluster=primary.id,
+            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
+                all_namespaces=True,
+                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
+                volume_data_restore_policy="NO_VOLUME_DATA_RESTORATION",
+                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
+                    all_group_kinds=True,
+                ),
+                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
+                volume_data_restore_policy_bindings=[gcp.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs(
+                    policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
+                    volume_type="GCE_PERSISTENT_DISK",
                 )],
             ))
         ```

@@ -98,6 +98,7 @@ public final class GetBackendServiceResult {
      * 
      */
     private String selfLink;
+    private String serviceLbPolicy;
     /**
      * @return The Backend Service session stickiness configuration.
      * 
@@ -244,6 +245,9 @@ public final class GetBackendServiceResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public String serviceLbPolicy() {
+        return this.serviceLbPolicy;
+    }
     /**
      * @return The Backend Service session stickiness configuration.
      * 
@@ -298,6 +302,7 @@ public final class GetBackendServiceResult {
         private String securityPolicy;
         private List<GetBackendServiceSecuritySetting> securitySettings;
         private String selfLink;
+        private String serviceLbPolicy;
         private String sessionAffinity;
         private Integer timeoutSec;
         public Builder() {}
@@ -333,6 +338,7 @@ public final class GetBackendServiceResult {
     	      this.securityPolicy = defaults.securityPolicy;
     	      this.securitySettings = defaults.securitySettings;
     	      this.selfLink = defaults.selfLink;
+    	      this.serviceLbPolicy = defaults.serviceLbPolicy;
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.timeoutSec = defaults.timeoutSec;
         }
@@ -612,6 +618,14 @@ public final class GetBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLbPolicy(String serviceLbPolicy) {
+            if (serviceLbPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "serviceLbPolicy");
+            }
+            this.serviceLbPolicy = serviceLbPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionAffinity(String sessionAffinity) {
             if (sessionAffinity == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "sessionAffinity");
@@ -659,6 +673,7 @@ public final class GetBackendServiceResult {
             _resultValue.securityPolicy = securityPolicy;
             _resultValue.securitySettings = securitySettings;
             _resultValue.selfLink = selfLink;
+            _resultValue.serviceLbPolicy = serviceLbPolicy;
             _resultValue.sessionAffinity = sessionAffinity;
             _resultValue.timeoutSec = timeoutSec;
             return _resultValue;

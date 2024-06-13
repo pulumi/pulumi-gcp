@@ -37,6 +37,8 @@ class SecretIamBindingArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input['SecretIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -96,6 +98,10 @@ class SecretIamBindingArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -127,6 +133,8 @@ class _SecretIamBindingState:
                  secret_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecretIamBinding resources.
+        :param pulumi.Input['SecretIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -161,6 +169,10 @@ class _SecretIamBindingState:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -264,47 +276,7 @@ class SecretIamBinding(pulumi.CustomResource):
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## secretmanager.SecretIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## secretmanager.SecretIamBinding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        ## secretmanager.SecretIamMember
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.secretmanager.SecretIamMember("member",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            role="roles/secretmanager.secretAccessor",
-            member="user:jane@example.com")
-        ```
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
         ## secretmanager.SecretIamPolicy
 
@@ -322,6 +294,26 @@ class SecretIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
         ## secretmanager.SecretIamBinding
 
         ```python
@@ -335,6 +327,23 @@ class SecretIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
         ## secretmanager.SecretIamMember
 
         ```python
@@ -346,6 +355,121 @@ class SecretIamBinding(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com",
+            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+
+        ## secretmanager.SecretIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
+        ## secretmanager.SecretIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## secretmanager.SecretIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com",
+            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
         ```
 
         ## Import
@@ -386,6 +510,8 @@ class SecretIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['SecretIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -424,47 +550,7 @@ class SecretIamBinding(pulumi.CustomResource):
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## secretmanager.SecretIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## secretmanager.SecretIamBinding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        ## secretmanager.SecretIamMember
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.secretmanager.SecretIamMember("member",
-            project=secret_basic["project"],
-            secret_id=secret_basic["secretId"],
-            role="roles/secretmanager.secretAccessor",
-            member="user:jane@example.com")
-        ```
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
         ## secretmanager.SecretIamPolicy
 
@@ -482,6 +568,26 @@ class SecretIamBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
         ## secretmanager.SecretIamBinding
 
         ```python
@@ -495,6 +601,23 @@ class SecretIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
         ## secretmanager.SecretIamMember
 
         ```python
@@ -506,6 +629,121 @@ class SecretIamBinding(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com",
+            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+
+        ## secretmanager.SecretIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            policy_data=admin.policy_data)
+        ```
+        ## secretmanager.SecretIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.secretmanager.SecretIamBinding("binding",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## secretmanager.SecretIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.secretmanager.SecretIamMember("member",
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
+            role="roles/secretmanager.secretAccessor",
+            member="user:jane@example.com",
+            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
         ```
 
         ## Import
@@ -608,6 +846,8 @@ class SecretIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['SecretIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -641,6 +881,10 @@ class SecretIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.SecretIamBindingCondition']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @property

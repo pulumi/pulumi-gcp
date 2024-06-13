@@ -17,6 +17,7 @@ class EndpointAttachmentArgs:
                  location: pulumi.Input[str],
                  service_attachment: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 endpoint_global_access: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -25,6 +26,7 @@ class EndpointAttachmentArgs:
         :param pulumi.Input[str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[str] service_attachment: The path of the service attachment.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] endpoint_global_access: Enable global access for endpoint attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -40,6 +42,8 @@ class EndpointAttachmentArgs:
         pulumi.set(__self__, "service_attachment", service_attachment)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if endpoint_global_access is not None:
+            pulumi.set(__self__, "endpoint_global_access", endpoint_global_access)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -82,6 +86,18 @@ class EndpointAttachmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endpointGlobalAccess")
+    def endpoint_global_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable global access for endpoint attachment.
+        """
+        return pulumi.get(self, "endpoint_global_access")
+
+    @endpoint_global_access.setter
+    def endpoint_global_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "endpoint_global_access", value)
 
     @property
     @pulumi.getter
@@ -133,6 +149,7 @@ class _EndpointAttachmentState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 endpoint_global_access: Optional[pulumi.Input[bool]] = None,
                  endpoint_ip: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -146,6 +163,7 @@ class _EndpointAttachmentState:
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] endpoint_global_access: Enable global access for endpoint attachment.
         :param pulumi.Input[str] endpoint_ip: The Private Service Connect connection endpoint ip.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
@@ -169,6 +187,8 @@ class _EndpointAttachmentState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if endpoint_global_access is not None:
+            pulumi.set(__self__, "endpoint_global_access", endpoint_global_access)
         if endpoint_ip is not None:
             pulumi.set(__self__, "endpoint_ip", endpoint_ip)
         if labels is not None:
@@ -221,6 +241,18 @@ class _EndpointAttachmentState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="endpointGlobalAccess")
+    def endpoint_global_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable global access for endpoint attachment.
+        """
+        return pulumi.get(self, "endpoint_global_access")
+
+    @endpoint_global_access.setter
+    def endpoint_global_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "endpoint_global_access", value)
 
     @property
     @pulumi.getter(name="endpointIp")
@@ -333,6 +365,7 @@ class EndpointAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 endpoint_global_access: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -393,6 +426,7 @@ class EndpointAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] endpoint_global_access: Enable global access for endpoint attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -479,6 +513,7 @@ class EndpointAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 endpoint_global_access: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -494,6 +529,7 @@ class EndpointAttachment(pulumi.CustomResource):
             __props__ = EndpointAttachmentArgs.__new__(EndpointAttachmentArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["endpoint_global_access"] = endpoint_global_access
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -523,6 +559,7 @@ class EndpointAttachment(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            endpoint_global_access: Optional[pulumi.Input[bool]] = None,
             endpoint_ip: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -541,6 +578,7 @@ class EndpointAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] endpoint_global_access: Enable global access for endpoint attachment.
         :param pulumi.Input[str] endpoint_ip: The Private Service Connect connection endpoint ip.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
@@ -565,6 +603,7 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["endpoint_global_access"] = endpoint_global_access
         __props__.__dict__["endpoint_ip"] = endpoint_ip
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -598,6 +637,14 @@ class EndpointAttachment(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="endpointGlobalAccess")
+    def endpoint_global_access(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable global access for endpoint attachment.
+        """
+        return pulumi.get(self, "endpoint_global_access")
 
     @property
     @pulumi.getter(name="endpointIp")

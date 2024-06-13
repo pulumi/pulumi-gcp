@@ -31,8 +31,6 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// <summary>
         /// A string that specifies the desired value in string format
         /// to use for transformation.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Value;
 

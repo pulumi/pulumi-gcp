@@ -131,6 +131,7 @@ __all__ = [
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerNamedPortArgs',
     'InstanceGroupManagerParamsArgs',
+    'InstanceGroupManagerStandbyPolicyArgs',
     'InstanceGroupManagerStatefulDiskArgs',
     'InstanceGroupManagerStatefulExternalIpArgs',
     'InstanceGroupManagerStatefulInternalIpArgs',
@@ -269,6 +270,7 @@ __all__ = [
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
     'RegionInstanceGroupManagerParamsArgs',
+    'RegionInstanceGroupManagerStandbyPolicyArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
     'RegionInstanceGroupManagerStatefulExternalIpArgs',
     'RegionInstanceGroupManagerStatefulInternalIpArgs',
@@ -9694,6 +9696,47 @@ class InstanceGroupManagerParamsArgs:
     @resource_manager_tags.setter
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStandbyPolicyArgs:
+    def __init__(__self__, *,
+                 initial_delay_sec: Optional[pulumi.Input[int]] = None,
+                 mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param pulumi.Input[str] mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+               - - -
+        """
+        if initial_delay_sec is not None:
+            pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @initial_delay_sec.setter
+    def initial_delay_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_sec", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -19475,6 +19518,47 @@ class RegionInstanceGroupManagerParamsArgs:
     @resource_manager_tags.setter
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStandbyPolicyArgs:
+    def __init__(__self__, *,
+                 initial_delay_sec: Optional[pulumi.Input[int]] = None,
+                 mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param pulumi.Input[str] mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+               - - -
+        """
+        if initial_delay_sec is not None:
+            pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @initial_delay_sec.setter
+    def initial_delay_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_sec", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type

@@ -31,127 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## gcp.secretmanager.SecretIamPolicy
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
- * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/secretmanager.secretAccessor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.secretmanager.SecretIamBinding
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.secretmanager.SecretIamBinding;
- * import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
- *             .role("roles/secretmanager.secretAccessor")
- *             .members("user:jane{@literal @}example.com")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.secretmanager.SecretIamMember
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.secretmanager.SecretIamMember;
- * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
- *             .role("roles/secretmanager.secretAccessor")
- *             .member("user:jane{@literal @}example.com")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
  * ## gcp.secretmanager.SecretIamPolicy
  * 
@@ -199,6 +79,56 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("user:jane{@literal @}example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.secretmanager.SecretIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -237,6 +167,49 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamBinding;
+ * import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .members("user:jane{@literal @}example.com")
+ *             .condition(SecretIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.secretmanager.SecretIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -267,6 +240,309 @@ import javax.annotation.Nullable;
  *             .secretId(secret_basic.secretId())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane{@literal @}example.com")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member("user:jane{@literal @}example.com")
+ *             .condition(SecretIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## gcp.secretmanager.SecretIamPolicy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("user:jane{@literal @}example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("user:jane{@literal @}example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ## gcp.secretmanager.SecretIamBinding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamBinding;
+ * import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .members("user:jane{@literal @}example.com")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamBinding;
+ * import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .members("user:jane{@literal @}example.com")
+ *             .condition(SecretIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ## gcp.secretmanager.SecretIamMember
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member("user:jane{@literal @}example.com")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member("user:jane{@literal @}example.com")
+ *             .condition(SecretIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -314,9 +590,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:secretmanager/secretIamBinding:SecretIamBinding")
 public class SecretIamBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={SecretIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ SecretIamBindingCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<SecretIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }

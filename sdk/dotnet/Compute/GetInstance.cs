@@ -230,6 +230,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
         public readonly ImmutableArray<Outputs.GetInstanceParamResult> Params;
+        public readonly ImmutableDictionary<string, string> PartnerMetadata;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
@@ -322,6 +323,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceParamResult> @params,
 
+            ImmutableDictionary<string, string> partnerMetadata,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -374,6 +377,7 @@ namespace Pulumi.Gcp.Compute
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Params = @params;
+            PartnerMetadata = partnerMetadata;
             Project = project;
             PulumiLabels = pulumiLabels;
             ReservationAffinities = reservationAffinities;

@@ -132,6 +132,7 @@ public final class GetInstanceResult {
      */
     private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetInstanceParam> params;
+    private Map<String,String> partnerMetadata;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private List<GetInstanceReservationAffinity> reservationAffinities;
@@ -334,6 +335,9 @@ public final class GetInstanceResult {
     public List<GetInstanceParam> params() {
         return this.params;
     }
+    public Map<String,String> partnerMetadata() {
+        return this.partnerMetadata;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -436,6 +440,7 @@ public final class GetInstanceResult {
         private List<GetInstanceNetworkInterface> networkInterfaces;
         private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetInstanceParam> params;
+        private Map<String,String> partnerMetadata;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private List<GetInstanceReservationAffinity> reservationAffinities;
@@ -479,6 +484,7 @@ public final class GetInstanceResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.params = defaults.params;
+    	      this.partnerMetadata = defaults.partnerMetadata;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reservationAffinities = defaults.reservationAffinities;
@@ -740,6 +746,14 @@ public final class GetInstanceResult {
             return params(List.of(params));
         }
         @CustomType.Setter
+        public Builder partnerMetadata(Map<String,String> partnerMetadata) {
+            if (partnerMetadata == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "partnerMetadata");
+            }
+            this.partnerMetadata = partnerMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -880,6 +894,7 @@ public final class GetInstanceResult {
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
             _resultValue.params = params;
+            _resultValue.partnerMetadata = partnerMetadata;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reservationAffinities = reservationAffinities;

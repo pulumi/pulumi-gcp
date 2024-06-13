@@ -231,6 +231,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * 
+     */
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
+    }
+    /**
      * The instance type to create. One of `&#34;DEVELOPMENT&#34;` or `&#34;PRODUCTION&#34;`. Defaults to `&#34;PRODUCTION&#34;`.
      * It is recommended to leave this field unspecified since the distinction between `&#34;DEVELOPMENT&#34;` and `&#34;PRODUCTION&#34;` instances is going away,
      * and all instances will become `&#34;PRODUCTION&#34;` instances. This means that new and existing `&#34;DEVELOPMENT&#34;` instances will be converted to

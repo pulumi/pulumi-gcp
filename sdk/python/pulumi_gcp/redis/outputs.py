@@ -17,6 +17,7 @@ __all__ = [
     'ClusterPscConnection',
     'ClusterStateInfo',
     'ClusterStateInfoUpdateInfo',
+    'ClusterZoneDistributionConfig',
     'InstanceMaintenancePolicy',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindow',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime',
@@ -316,6 +317,41 @@ class ClusterStateInfoUpdateInfo(dict):
         Target number of shards for redis cluster.
         """
         return pulumi.get(self, "target_shard_count")
+
+
+@pulumi.output_type
+class ClusterZoneDistributionConfig(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None,
+                 zone: Optional[str] = None):
+        """
+        :param str mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
+               If not provided, MULTI_ZONE will be used as default
+               Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+        :param str zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Immutable. The mode for zone distribution for Memorystore Redis cluster.
+        If not provided, MULTI_ZONE will be used as default
+        Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        """
+        Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

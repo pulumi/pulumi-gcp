@@ -122,7 +122,8 @@ import (
 //				Name:    pulumi.String("example-dicom-store"),
 //				Dataset: dataset.ID(),
 //				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-//					PubsubTopic: topic.ID(),
+//					PubsubTopic:       topic.ID(),
+//					SendForBulkImport: pulumi.Bool(true),
 //				},
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),

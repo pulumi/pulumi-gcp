@@ -341,6 +341,11 @@ type Disk struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
+	// The URL of the storage pool in which the new disk is created.
+	// For example:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+	StoragePool pulumi.StringPtrOutput `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -542,6 +547,11 @@ type diskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
+	// The URL of the storage pool in which the new disk is created.
+	// For example:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+	StoragePool *string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
@@ -709,6 +719,11 @@ type DiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringPtrInput
+	// The URL of the storage pool in which the new disk is created.
+	// For example:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+	StoragePool pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
@@ -845,6 +860,11 @@ type diskArgs struct {
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
+	// The URL of the storage pool in which the new disk is created.
+	// For example:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+	StoragePool *string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
@@ -975,6 +995,11 @@ type DiskArgs struct {
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
+	// The URL of the storage pool in which the new disk is created.
+	// For example:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+	StoragePool pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
@@ -1319,6 +1344,14 @@ func (o DiskOutput) SourceSnapshotEncryptionKey() DiskSourceSnapshotEncryptionKe
 // used.
 func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+// The URL of the storage pool in which the new disk is created.
+// For example:
+// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+func (o DiskOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.StoragePool }).(pulumi.StringPtrOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

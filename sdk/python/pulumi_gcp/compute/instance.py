@@ -37,6 +37,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -120,6 +121,7 @@ class InstanceArgs:
                in order for this setting to take effect.
         :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
                .
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -177,6 +179,8 @@ class InstanceArgs:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
             pulumi.set(__self__, "params", params)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -500,6 +504,18 @@ class InstanceArgs:
         pulumi.set(self, "params", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -646,6 +662,7 @@ class _InstanceState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
@@ -738,6 +755,7 @@ class _InstanceState:
                in order for this setting to take effect.
         :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
                .
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -813,6 +831,8 @@ class _InstanceState:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
             pulumi.set(__self__, "params", params)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -1214,6 +1234,18 @@ class _InstanceState:
         pulumi.set(self, "params", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1392,6 +1424,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1548,6 +1581,7 @@ class Instance(pulumi.CustomResource):
                in order for this setting to take effect.
         :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
                .
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1680,6 +1714,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1725,6 +1760,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["params"] = params
+            __props__.__dict__["partner_metadata"] = partner_metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
@@ -1782,6 +1818,7 @@ class Instance(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
             params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
+            partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
@@ -1879,6 +1916,7 @@ class Instance(pulumi.CustomResource):
                in order for this setting to take effect.
         :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
                .
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1931,6 +1969,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["params"] = params
+        __props__.__dict__["partner_metadata"] = partner_metadata
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reservation_affinity"] = reservation_affinity
@@ -2211,6 +2250,14 @@ class Instance(pulumi.CustomResource):
         .
         """
         return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+        """
+        return pulumi.get(self, "partner_metadata")
 
     @property
     @pulumi.getter

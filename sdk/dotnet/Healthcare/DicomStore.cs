@@ -102,6 +102,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
     ///         {
     ///             PubsubTopic = topic.Id,
+    ///             SendForBulkImport = true,
     ///         },
     ///         Labels = 
     ///         {

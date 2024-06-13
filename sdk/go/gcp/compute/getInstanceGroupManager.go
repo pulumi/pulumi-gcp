@@ -88,12 +88,15 @@ type LookupInstanceGroupManagerResult struct {
 	Params                      []GetInstanceGroupManagerParam                   `pulumi:"params"`
 	Project                     *string                                          `pulumi:"project"`
 	SelfLink                    *string                                          `pulumi:"selfLink"`
+	StandbyPolicies             []GetInstanceGroupManagerStandbyPolicy           `pulumi:"standbyPolicies"`
 	StatefulDisks               []GetInstanceGroupManagerStatefulDisk            `pulumi:"statefulDisks"`
 	StatefulExternalIps         []GetInstanceGroupManagerStatefulExternalIp      `pulumi:"statefulExternalIps"`
 	StatefulInternalIps         []GetInstanceGroupManagerStatefulInternalIp      `pulumi:"statefulInternalIps"`
 	Statuses                    []GetInstanceGroupManagerStatus                  `pulumi:"statuses"`
 	TargetPools                 []string                                         `pulumi:"targetPools"`
 	TargetSize                  int                                              `pulumi:"targetSize"`
+	TargetStoppedSize           int                                              `pulumi:"targetStoppedSize"`
+	TargetSuspendedSize         int                                              `pulumi:"targetSuspendedSize"`
 	UpdatePolicies              []GetInstanceGroupManagerUpdatePolicy            `pulumi:"updatePolicies"`
 	Versions                    []GetInstanceGroupManagerVersion                 `pulumi:"versions"`
 	WaitForInstances            bool                                             `pulumi:"waitForInstances"`
@@ -216,6 +219,12 @@ func (o LookupInstanceGroupManagerResultOutput) SelfLink() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceGroupManagerResultOutput) StandbyPolicies() GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) []GetInstanceGroupManagerStandbyPolicy {
+		return v.StandbyPolicies
+	}).(GetInstanceGroupManagerStandbyPolicyArrayOutput)
+}
+
 func (o LookupInstanceGroupManagerResultOutput) StatefulDisks() GetInstanceGroupManagerStatefulDiskArrayOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) []GetInstanceGroupManagerStatefulDisk { return v.StatefulDisks }).(GetInstanceGroupManagerStatefulDiskArrayOutput)
 }
@@ -242,6 +251,14 @@ func (o LookupInstanceGroupManagerResultOutput) TargetPools() pulumi.StringArray
 
 func (o LookupInstanceGroupManagerResultOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) TargetStoppedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetStoppedSize }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) TargetSuspendedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetSuspendedSize }).(pulumi.IntOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) UpdatePolicies() GetInstanceGroupManagerUpdatePolicyArrayOutput {

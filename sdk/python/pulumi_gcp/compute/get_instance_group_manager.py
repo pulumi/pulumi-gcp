@@ -22,7 +22,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -71,6 +71,9 @@ class GetInstanceGroupManagerResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if standby_policies and not isinstance(standby_policies, list):
+            raise TypeError("Expected argument 'standby_policies' to be a list")
+        pulumi.set(__self__, "standby_policies", standby_policies)
         if stateful_disks and not isinstance(stateful_disks, list):
             raise TypeError("Expected argument 'stateful_disks' to be a list")
         pulumi.set(__self__, "stateful_disks", stateful_disks)
@@ -89,6 +92,12 @@ class GetInstanceGroupManagerResult:
         if target_size and not isinstance(target_size, int):
             raise TypeError("Expected argument 'target_size' to be a int")
         pulumi.set(__self__, "target_size", target_size)
+        if target_stopped_size and not isinstance(target_stopped_size, int):
+            raise TypeError("Expected argument 'target_stopped_size' to be a int")
+        pulumi.set(__self__, "target_stopped_size", target_stopped_size)
+        if target_suspended_size and not isinstance(target_suspended_size, int):
+            raise TypeError("Expected argument 'target_suspended_size' to be a int")
+        pulumi.set(__self__, "target_suspended_size", target_suspended_size)
         if update_policies and not isinstance(update_policies, list):
             raise TypeError("Expected argument 'update_policies' to be a list")
         pulumi.set(__self__, "update_policies", update_policies)
@@ -189,6 +198,11 @@ class GetInstanceGroupManagerResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="standbyPolicies")
+    def standby_policies(self) -> Sequence['outputs.GetInstanceGroupManagerStandbyPolicyResult']:
+        return pulumi.get(self, "standby_policies")
+
+    @property
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> Sequence['outputs.GetInstanceGroupManagerStatefulDiskResult']:
         return pulumi.get(self, "stateful_disks")
@@ -217,6 +231,16 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> int:
         return pulumi.get(self, "target_size")
+
+    @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> int:
+        return pulumi.get(self, "target_stopped_size")
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> int:
+        return pulumi.get(self, "target_suspended_size")
 
     @property
     @pulumi.getter(name="updatePolicies")
@@ -266,12 +290,15 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             params=self.params,
             project=self.project,
             self_link=self.self_link,
+            standby_policies=self.standby_policies,
             stateful_disks=self.stateful_disks,
             stateful_external_ips=self.stateful_external_ips,
             stateful_internal_ips=self.stateful_internal_ips,
             statuses=self.statuses,
             target_pools=self.target_pools,
             target_size=self.target_size,
+            target_stopped_size=self.target_stopped_size,
+            target_suspended_size=self.target_suspended_size,
             update_policies=self.update_policies,
             versions=self.versions,
             wait_for_instances=self.wait_for_instances,
@@ -331,12 +358,15 @@ def get_instance_group_manager(name: Optional[str] = None,
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        standby_policies=pulumi.get(__ret__, 'standby_policies'),
         stateful_disks=pulumi.get(__ret__, 'stateful_disks'),
         stateful_external_ips=pulumi.get(__ret__, 'stateful_external_ips'),
         stateful_internal_ips=pulumi.get(__ret__, 'stateful_internal_ips'),
         statuses=pulumi.get(__ret__, 'statuses'),
         target_pools=pulumi.get(__ret__, 'target_pools'),
         target_size=pulumi.get(__ret__, 'target_size'),
+        target_stopped_size=pulumi.get(__ret__, 'target_stopped_size'),
+        target_suspended_size=pulumi.get(__ret__, 'target_suspended_size'),
         update_policies=pulumi.get(__ret__, 'update_policies'),
         versions=pulumi.get(__ret__, 'versions'),
         wait_for_instances=pulumi.get(__ret__, 'wait_for_instances'),

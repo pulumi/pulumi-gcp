@@ -60,6 +60,11 @@ export type ServiceBinding = import("./serviceBinding").ServiceBinding;
 export const ServiceBinding: typeof import("./serviceBinding").ServiceBinding = null as any;
 utilities.lazyLoad(exports, ["ServiceBinding"], () => require("./serviceBinding"));
 
+export { ServiceLbPoliciesArgs, ServiceLbPoliciesState } from "./serviceLbPolicies";
+export type ServiceLbPolicies = import("./serviceLbPolicies").ServiceLbPolicies;
+export const ServiceLbPolicies: typeof import("./serviceLbPolicies").ServiceLbPolicies = null as any;
+utilities.lazyLoad(exports, ["ServiceLbPolicies"], () => require("./serviceLbPolicies"));
+
 export { TcpRouteArgs, TcpRouteState } from "./tcpRoute";
 export type TcpRoute = import("./tcpRoute").TcpRoute;
 export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
@@ -97,6 +102,8 @@ const _module = {
                 return new Mesh(name, <any>undefined, { urn })
             case "gcp:networkservices/serviceBinding:ServiceBinding":
                 return new ServiceBinding(name, <any>undefined, { urn })
+            case "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies":
+                return new ServiceLbPolicies(name, <any>undefined, { urn })
             case "gcp:networkservices/tcpRoute:TcpRoute":
                 return new TcpRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/tlsRoute:TlsRoute":
@@ -117,5 +124,6 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/lbRouteExtension",
 pulumi.runtime.registerResourceModule("gcp", "networkservices/lbTrafficExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/mesh", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceLbPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tlsRoute", _module)

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNetworkConfigPodCidrOverprovisionConfig {
+    /**
+     * @return Whether pod cidr overprovision is disabled.
+     * 
+     */
     private Boolean disabled;
 
     private NodePoolNetworkConfigPodCidrOverprovisionConfig() {}
+    /**
+     * @return Whether pod cidr overprovision is disabled.
+     * 
+     */
     public Boolean disabled() {
         return this.disabled;
     }

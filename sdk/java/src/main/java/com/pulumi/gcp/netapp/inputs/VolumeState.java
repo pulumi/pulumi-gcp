@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.netapp.inputs.VolumeBackupConfigArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeMountOptionArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
@@ -35,6 +36,23 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> activeDirectory() {
         return Optional.ofNullable(this.activeDirectory);
+    }
+
+    /**
+     * Backup configuration for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="backupConfig")
+    private @Nullable Output<VolumeBackupConfigArgs> backupConfig;
+
+    /**
+     * @return Backup configuration for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeBackupConfigArgs>> backupConfig() {
+        return Optional.ofNullable(this.backupConfig);
     }
 
     /**
@@ -574,6 +592,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     private VolumeState(VolumeState $) {
         this.activeDirectory = $.activeDirectory;
+        this.backupConfig = $.backupConfig;
         this.capacityGib = $.capacityGib;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -646,6 +665,29 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder activeDirectory(String activeDirectory) {
             return activeDirectory(Output.of(activeDirectory));
+        }
+
+        /**
+         * @param backupConfig Backup configuration for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupConfig(@Nullable Output<VolumeBackupConfigArgs> backupConfig) {
+            $.backupConfig = backupConfig;
+            return this;
+        }
+
+        /**
+         * @param backupConfig Backup configuration for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupConfig(VolumeBackupConfigArgs backupConfig) {
+            return backupConfig(Output.of(backupConfig));
         }
 
         /**

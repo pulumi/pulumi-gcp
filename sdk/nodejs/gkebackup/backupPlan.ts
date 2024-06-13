@@ -184,6 +184,58 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Gkebackup Backupplan Permissive
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "permissive-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const permissive = new gcp.gkebackup.BackupPlan("permissive", {
+ *     name: "permissive-plan",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     retentionPolicy: {
+ *         backupDeleteLockDays: 30,
+ *         backupRetainDays: 180,
+ *     },
+ *     backupSchedule: {
+ *         cronSchedule: "0 9 * * 1",
+ *     },
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         permissiveMode: true,
+ *         selectedApplications: {
+ *             namespacedNames: [
+ *                 {
+ *                     name: "app1",
+ *                     namespace: "ns1",
+ *                 },
+ *                 {
+ *                     name: "app2",
+ *                     namespace: "ns2",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Gkebackup Backupplan Rpo Daily Window
  *
  * ```typescript

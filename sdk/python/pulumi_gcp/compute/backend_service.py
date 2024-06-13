@@ -41,6 +41,7 @@ class BackendServiceArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
+                 service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -179,6 +180,8 @@ class BackendServiceArgs:
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -235,6 +238,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "security_policy", security_policy)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
+        if service_lb_policy is not None:
+            pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
@@ -650,6 +655,19 @@ class BackendServiceArgs:
         pulumi.set(self, "security_settings", value)
 
     @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        """
+        return pulumi.get(self, "service_lb_policy")
+
+    @service_lb_policy.setter
+    def service_lb_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_lb_policy", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -709,6 +727,7 @@ class _BackendServiceState:
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -852,6 +871,8 @@ class _BackendServiceState:
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -916,6 +937,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "security_settings", security_settings)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_lb_policy is not None:
+            pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
@@ -1380,6 +1403,19 @@ class _BackendServiceState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        """
+        return pulumi.get(self, "service_lb_policy")
+
+    @service_lb_policy.setter
+    def service_lb_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_lb_policy", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1437,6 +1473,7 @@ class BackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
+                 service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1857,6 +1894,8 @@ class BackendService(pulumi.CustomResource):
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -2190,6 +2229,7 @@ class BackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
+                 service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -2226,6 +2266,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["security_settings"] = security_settings
+            __props__.__dict__["service_lb_policy"] = service_lb_policy
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
@@ -2271,6 +2312,7 @@ class BackendService(pulumi.CustomResource):
             security_policy: Optional[pulumi.Input[str]] = None,
             security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            service_lb_policy: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'BackendService':
         """
@@ -2419,6 +2461,8 @@ class BackendService(pulumi.CustomResource):
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -2458,6 +2502,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["security_settings"] = security_settings
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_lb_policy"] = service_lb_policy
         __props__.__dict__["session_affinity"] = session_affinity
         __props__.__dict__["timeout_sec"] = timeout_sec
         return BackendService(resource_name, opts=opts, __props__=__props__)
@@ -2803,6 +2848,15 @@ class BackendService(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        """
+        return pulumi.get(self, "service_lb_policy")
 
     @property
     @pulumi.getter(name="sessionAffinity")

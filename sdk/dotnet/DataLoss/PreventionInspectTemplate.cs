@@ -411,6 +411,50 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Inspect Template Max Infotype Per Finding Default
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var maxInfotypePerFindingDefault = new Gcp.DataLoss.PreventionInspectTemplate("max_infotype_per_finding_default", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         InspectConfig = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigArgs
+    ///         {
+    ///             InfoTypes = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "EMAIL_ADDRESS",
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "PERSON_NAME",
+    ///                 },
+    ///             },
+    ///             MinLikelihood = "UNLIKELY",
+    ///             Limits = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigLimitsArgs
+    ///             {
+    ///                 MaxFindingsPerRequest = 333,
+    ///                 MaxFindingsPerItem = 222,
+    ///                 MaxFindingsPerInfoTypes = new[]
+    ///                 {
+    ///                     new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs
+    ///                     {
+    ///                         MaxFindings = 111,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

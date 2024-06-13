@@ -369,6 +369,178 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Gkebackup Restoreplan Gitops Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "gitops-mode-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "gitops-mode",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const gitopsMode = new gcp.gkebackup.RestorePlan("gitops_mode", {
+ *     name: "gitops-mode",
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         allNamespaces: true,
+ *         namespacedResourceRestoreMode: "MERGE_SKIP_ON_CONFLICT",
+ *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             allGroupKinds: true,
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Restore Order
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "restore-order-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "restore-order",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const restoreOrder = new gcp.gkebackup.RestorePlan("restore_order", {
+ *     name: "restore-order",
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         allNamespaces: true,
+ *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
+ *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             allGroupKinds: true,
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *         restoreOrder: {
+ *             groupKindDependencies: [
+ *                 {
+ *                     satisfying: {
+ *                         resourceGroup: "stable.example.com",
+ *                         resourceKind: "kindA",
+ *                     },
+ *                     requiring: {
+ *                         resourceGroup: "stable.example.com",
+ *                         resourceKind: "kindB",
+ *                     },
+ *                 },
+ *                 {
+ *                     satisfying: {
+ *                         resourceGroup: "stable.example.com",
+ *                         resourceKind: "kindB",
+ *                     },
+ *                     requiring: {
+ *                         resourceGroup: "stable.example.com",
+ *                         resourceKind: "kindC",
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Volume Res
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "volume-res-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "volume-res",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const volumeRes = new gcp.gkebackup.RestorePlan("volume_res", {
+ *     name: "volume-res",
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         allNamespaces: true,
+ *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
+ *         volumeDataRestorePolicy: "NO_VOLUME_DATA_RESTORATION",
+ *         clusterResourceRestoreScope: {
+ *             allGroupKinds: true,
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *         volumeDataRestorePolicyBindings: [{
+ *             policy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *             volumeType: "GCE_PERSISTENT_DISK",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

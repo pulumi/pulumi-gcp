@@ -3575,6 +3575,162 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FlexibleAppVersionFlexibleRuntimeSettings struct {
+	// Operating System of the application runtime.
+	OperatingSystem *string `pulumi:"operatingSystem"`
+	// The runtime version of an App Engine flexible application.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// FlexibleAppVersionFlexibleRuntimeSettingsInput is an input type that accepts FlexibleAppVersionFlexibleRuntimeSettingsArgs and FlexibleAppVersionFlexibleRuntimeSettingsOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionFlexibleRuntimeSettingsInput` via:
+//
+//	FlexibleAppVersionFlexibleRuntimeSettingsArgs{...}
+type FlexibleAppVersionFlexibleRuntimeSettingsInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionFlexibleRuntimeSettingsOutput() FlexibleAppVersionFlexibleRuntimeSettingsOutput
+	ToFlexibleAppVersionFlexibleRuntimeSettingsOutputWithContext(context.Context) FlexibleAppVersionFlexibleRuntimeSettingsOutput
+}
+
+type FlexibleAppVersionFlexibleRuntimeSettingsArgs struct {
+	// Operating System of the application runtime.
+	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
+	// The runtime version of an App Engine flexible application.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (FlexibleAppVersionFlexibleRuntimeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionFlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionFlexibleRuntimeSettingsArgs) ToFlexibleAppVersionFlexibleRuntimeSettingsOutput() FlexibleAppVersionFlexibleRuntimeSettingsOutput {
+	return i.ToFlexibleAppVersionFlexibleRuntimeSettingsOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionFlexibleRuntimeSettingsArgs) ToFlexibleAppVersionFlexibleRuntimeSettingsOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionFlexibleRuntimeSettingsOutput)
+}
+
+func (i FlexibleAppVersionFlexibleRuntimeSettingsArgs) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutput() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return i.ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionFlexibleRuntimeSettingsArgs) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionFlexibleRuntimeSettingsOutput).ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(ctx)
+}
+
+// FlexibleAppVersionFlexibleRuntimeSettingsPtrInput is an input type that accepts FlexibleAppVersionFlexibleRuntimeSettingsArgs, FlexibleAppVersionFlexibleRuntimeSettingsPtr and FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionFlexibleRuntimeSettingsPtrInput` via:
+//
+//	        FlexibleAppVersionFlexibleRuntimeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlexibleAppVersionFlexibleRuntimeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutput() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput
+	ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(context.Context) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput
+}
+
+type flexibleAppVersionFlexibleRuntimeSettingsPtrType FlexibleAppVersionFlexibleRuntimeSettingsArgs
+
+func FlexibleAppVersionFlexibleRuntimeSettingsPtr(v *FlexibleAppVersionFlexibleRuntimeSettingsArgs) FlexibleAppVersionFlexibleRuntimeSettingsPtrInput {
+	return (*flexibleAppVersionFlexibleRuntimeSettingsPtrType)(v)
+}
+
+func (*flexibleAppVersionFlexibleRuntimeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionFlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionFlexibleRuntimeSettingsPtrType) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutput() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return i.ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionFlexibleRuntimeSettingsPtrType) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput)
+}
+
+type FlexibleAppVersionFlexibleRuntimeSettingsOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionFlexibleRuntimeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionFlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsOutput() FlexibleAppVersionFlexibleRuntimeSettingsOutput {
+	return o
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsOutput {
+	return o
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutput() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return o.ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionFlexibleRuntimeSettings) *FlexibleAppVersionFlexibleRuntimeSettings {
+		return &v
+	}).(FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput)
+}
+
+// Operating System of the application runtime.
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionFlexibleRuntimeSettings) *string { return v.OperatingSystem }).(pulumi.StringPtrOutput)
+}
+
+// The runtime version of an App Engine flexible application.
+func (o FlexibleAppVersionFlexibleRuntimeSettingsOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionFlexibleRuntimeSettings) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionFlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutput() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) ToFlexibleAppVersionFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) Elem() FlexibleAppVersionFlexibleRuntimeSettingsOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionFlexibleRuntimeSettings) FlexibleAppVersionFlexibleRuntimeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionFlexibleRuntimeSettings
+		return ret
+	}).(FlexibleAppVersionFlexibleRuntimeSettingsOutput)
+}
+
+// Operating System of the application runtime.
+func (o FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionFlexibleRuntimeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime version of an App Engine flexible application.
+func (o FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionFlexibleRuntimeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 type FlexibleAppVersionHandler struct {
 	// Actions to take when the user is not logged in.
 	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -7906,6 +8062,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionEndpointsApiServicePtrInput)(nil)).Elem(), FlexibleAppVersionEndpointsApiServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionEntrypointInput)(nil)).Elem(), FlexibleAppVersionEntrypointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionEntrypointPtrInput)(nil)).Elem(), FlexibleAppVersionEntrypointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionFlexibleRuntimeSettingsInput)(nil)).Elem(), FlexibleAppVersionFlexibleRuntimeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionFlexibleRuntimeSettingsPtrInput)(nil)).Elem(), FlexibleAppVersionFlexibleRuntimeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionHandlerInput)(nil)).Elem(), FlexibleAppVersionHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionHandlerArrayInput)(nil)).Elem(), FlexibleAppVersionHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionHandlerScriptInput)(nil)).Elem(), FlexibleAppVersionHandlerScriptArgs{})
@@ -7994,6 +8152,8 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionEndpointsApiServicePtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionFlexibleRuntimeSettingsOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionHandlerOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionHandlerArrayOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionHandlerScriptOutput{})

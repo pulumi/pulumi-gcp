@@ -238,6 +238,7 @@ namespace Pulumi.Gcp.Compute
         /// used.
         /// </summary>
         public readonly string SourceSnapshotId;
+        public readonly string StoragePool;
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
         /// create the disk.
@@ -321,6 +322,8 @@ namespace Pulumi.Gcp.Compute
 
             string sourceSnapshotId,
 
+            string storagePool,
+
             string type,
 
             ImmutableArray<string> users,
@@ -360,6 +363,7 @@ namespace Pulumi.Gcp.Compute
             SourceImageId = sourceImageId;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             SourceSnapshotId = sourceSnapshotId;
+            StoragePool = storagePool;
             Type = type;
             Users = users;
             Zone = zone;

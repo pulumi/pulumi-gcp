@@ -344,6 +344,51 @@ import (
 //	}
 //
 // ```
+// ### Dlp Inspect Template Max Infotype Per Finding Default
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionInspectTemplate(ctx, "max_infotype_per_finding_default", &dataloss.PreventionInspectTemplateArgs{
+//				Parent: pulumi.String("projects/my-project-name"),
+//				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
+//					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("EMAIL_ADDRESS"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("PERSON_NAME"),
+//						},
+//					},
+//					MinLikelihood: pulumi.String("UNLIKELY"),
+//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
+//						MaxFindingsPerRequest: pulumi.Int(333),
+//						MaxFindingsPerItem:    pulumi.Int(222),
+//						MaxFindingsPerInfoTypes: dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArray{
+//							&dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{
+//								MaxFindings: pulumi.Int(111),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

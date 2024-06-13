@@ -78,7 +78,8 @@ type LookupBackendServiceResult struct {
 	SecurityPolicy   string                             `pulumi:"securityPolicy"`
 	SecuritySettings []GetBackendServiceSecuritySetting `pulumi:"securitySettings"`
 	// The URI of the Backend Service.
-	SelfLink string `pulumi:"selfLink"`
+	SelfLink        string `pulumi:"selfLink"`
+	ServiceLbPolicy string `pulumi:"serviceLbPolicy"`
 	// The Backend Service session stickiness configuration.
 	SessionAffinity string `pulumi:"sessionAffinity"`
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
@@ -256,6 +257,10 @@ func (o LookupBackendServiceResultOutput) SecuritySettings() GetBackendServiceSe
 // The URI of the Backend Service.
 func (o LookupBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) ServiceLbPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.ServiceLbPolicy }).(pulumi.StringOutput)
 }
 
 // The Backend Service session stickiness configuration.

@@ -37,6 +37,7 @@ import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterProtectConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterServiceExternalIpsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterTpuConfigArgs;
@@ -1290,6 +1291,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="secretManagerConfig")
+    private @Nullable Output<ClusterSecretManagerConfigArgs> secretManagerConfig;
+
+    /**
+     * @return Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterSecretManagerConfigArgs>> secretManagerConfig() {
+        return Optional.ofNullable(this.secretManagerConfig);
+    }
+
+    /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      * 
      */
@@ -1530,6 +1550,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.removeDefaultNodePool = $.removeDefaultNodePool;
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
+        this.secretManagerConfig = $.secretManagerConfig;
         this.securityPostureConfig = $.securityPostureConfig;
         this.selfLink = $.selfLink;
         this.serviceExternalIpsConfig = $.serviceExternalIpsConfig;
@@ -3213,6 +3234,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceUsageExportConfig(ClusterResourceUsageExportConfigArgs resourceUsageExportConfig) {
             return resourceUsageExportConfig(Output.of(resourceUsageExportConfig));
+        }
+
+        /**
+         * @param secretManagerConfig Configuration for the
+         * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerConfig(@Nullable Output<ClusterSecretManagerConfigArgs> secretManagerConfig) {
+            $.secretManagerConfig = secretManagerConfig;
+            return this;
+        }
+
+        /**
+         * @param secretManagerConfig Configuration for the
+         * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerConfig(ClusterSecretManagerConfigArgs secretManagerConfig) {
+            return secretManagerConfig(Output.of(secretManagerConfig));
         }
 
         /**

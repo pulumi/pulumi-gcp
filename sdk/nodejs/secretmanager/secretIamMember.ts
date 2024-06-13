@@ -21,52 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## gcp.secretmanager.SecretIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/secretmanager.secretAccessor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
- *     project: secret_basic.project,
- *     secretId: secret_basic.secretId,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## gcp.secretmanager.SecretIamBinding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.secretmanager.SecretIamBinding("binding", {
- *     project: secret_basic.project,
- *     secretId: secret_basic.secretId,
- *     role: "roles/secretmanager.secretAccessor",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## gcp.secretmanager.SecretIamMember
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.secretmanager.SecretIamMember("member", {
- *     project: secret_basic.project,
- *     secretId: secret_basic.secretId,
- *     role: "roles/secretmanager.secretAccessor",
- *     member: "user:jane@example.com",
- * });
- * ```
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
  * ## gcp.secretmanager.SecretIamPolicy
  *
@@ -87,6 +42,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  * ## gcp.secretmanager.SecretIamBinding
  *
  * ```typescript
@@ -101,6 +79,24 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.secretmanager.SecretIamBinding("binding", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  * ## gcp.secretmanager.SecretIamMember
  *
  * ```typescript
@@ -112,6 +108,132 @@ import * as utilities from "../utilities";
  *     secretId: secret_basic.secretId,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.secretmanager.SecretIamMember("member", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.secretmanager.SecretIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## gcp.secretmanager.SecretIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.secretmanager.SecretIamBinding("binding", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.secretmanager.SecretIamBinding("binding", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## gcp.secretmanager.SecretIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.secretmanager.SecretIamMember("member", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.secretmanager.SecretIamMember("member", {
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -179,6 +301,10 @@ export class SecretIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretIamMember.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.secretmanager.SecretIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -257,6 +383,10 @@ export class SecretIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretIamMember resources.
  */
 export interface SecretIamMemberState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.secretmanager.SecretIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -294,6 +424,10 @@ export interface SecretIamMemberState {
  * The set of arguments for constructing a SecretIamMember resource.
  */
 export interface SecretIamMemberArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.secretmanager.SecretIamMemberCondition>;
     /**
      * Identities that will be granted the privilege in `role`.

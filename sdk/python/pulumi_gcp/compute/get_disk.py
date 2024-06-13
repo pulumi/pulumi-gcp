@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, storage_pool=None, type=None, users=None, zone=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -122,6 +122,9 @@ class GetDiskResult:
         if source_snapshot_id and not isinstance(source_snapshot_id, str):
             raise TypeError("Expected argument 'source_snapshot_id' to be a str")
         pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
+        if storage_pool and not isinstance(storage_pool, str):
+            raise TypeError("Expected argument 'storage_pool' to be a str")
+        pulumi.set(__self__, "storage_pool", storage_pool)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -356,6 +359,11 @@ class GetDiskResult:
         return pulumi.get(self, "source_snapshot_id")
 
     @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> str:
+        return pulumi.get(self, "storage_pool")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -421,6 +429,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             source_image_id=self.source_image_id,
             source_snapshot_encryption_keys=self.source_snapshot_encryption_keys,
             source_snapshot_id=self.source_snapshot_id,
+            storage_pool=self.storage_pool,
             type=self.type,
             users=self.users,
             zone=self.zone)
@@ -498,6 +507,7 @@ def get_disk(name: Optional[str] = None,
         source_image_id=pulumi.get(__ret__, 'source_image_id'),
         source_snapshot_encryption_keys=pulumi.get(__ret__, 'source_snapshot_encryption_keys'),
         source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
+        storage_pool=pulumi.get(__ret__, 'storage_pool'),
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'),
         zone=pulumi.get(__ret__, 'zone'))

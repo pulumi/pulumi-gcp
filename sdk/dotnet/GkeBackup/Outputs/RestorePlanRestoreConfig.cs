@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
         /// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
         /// for more information on each mode.
-        /// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+        /// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         /// </summary>
         public readonly string? NamespacedResourceRestoreMode;
         /// <summary>
@@ -54,6 +54,11 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// Specifying this field to "False" is not allowed.
         /// </summary>
         public readonly bool? NoNamespaces;
+        /// <summary>
+        /// It contains custom ordering to use on a Restore.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RestorePlanRestoreConfigRestoreOrder? RestoreOrder;
         /// <summary>
         /// A list of selected ProtectedApplications to restore.
         /// The listed ProtectedApplications and all the resources
@@ -86,6 +91,13 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
         /// </summary>
         public readonly string? VolumeDataRestorePolicy;
+        /// <summary>
+        /// A table that binds volumes by their scope to a restore policy. Bindings
+        /// must have a unique scope. Any volumes not scoped in the bindings are
+        /// subject to the policy defined in volume_data_restore_policy.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> VolumeDataRestorePolicyBindings;
 
         [OutputConstructor]
         private RestorePlanRestoreConfig(
@@ -101,13 +113,17 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
 
             bool? noNamespaces,
 
+            Outputs.RestorePlanRestoreConfigRestoreOrder? restoreOrder,
+
             Outputs.RestorePlanRestoreConfigSelectedApplications? selectedApplications,
 
             Outputs.RestorePlanRestoreConfigSelectedNamespaces? selectedNamespaces,
 
             ImmutableArray<Outputs.RestorePlanRestoreConfigTransformationRule> transformationRules,
 
-            string? volumeDataRestorePolicy)
+            string? volumeDataRestorePolicy,
+
+            ImmutableArray<Outputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> volumeDataRestorePolicyBindings)
         {
             AllNamespaces = allNamespaces;
             ClusterResourceConflictPolicy = clusterResourceConflictPolicy;
@@ -115,10 +131,12 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
             ExcludedNamespaces = excludedNamespaces;
             NamespacedResourceRestoreMode = namespacedResourceRestoreMode;
             NoNamespaces = noNamespaces;
+            RestoreOrder = restoreOrder;
             SelectedApplications = selectedApplications;
             SelectedNamespaces = selectedNamespaces;
             TransformationRules = transformationRules;
             VolumeDataRestorePolicy = volumeDataRestorePolicy;
+            VolumeDataRestorePolicyBindings = volumeDataRestorePolicyBindings;
         }
     }
 }

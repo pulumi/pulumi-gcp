@@ -370,6 +370,11 @@ export const getSSLPolicy: typeof import("./getSSLPolicy").getSSLPolicy = null a
 export const getSSLPolicyOutput: typeof import("./getSSLPolicy").getSSLPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSSLPolicy","getSSLPolicyOutput"], () => require("./getSSLPolicy"));
 
+export { GetSecurityPolicyArgs, GetSecurityPolicyResult, GetSecurityPolicyOutputArgs } from "./getSecurityPolicy";
+export const getSecurityPolicy: typeof import("./getSecurityPolicy").getSecurityPolicy = null as any;
+export const getSecurityPolicyOutput: typeof import("./getSecurityPolicy").getSecurityPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityPolicy","getSecurityPolicyOutput"], () => require("./getSecurityPolicy"));
+
 export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
 export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
 export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
@@ -654,6 +659,11 @@ export { PerInstanceConfigArgs, PerInstanceConfigState } from "./perInstanceConf
 export type PerInstanceConfig = import("./perInstanceConfig").PerInstanceConfig;
 export const PerInstanceConfig: typeof import("./perInstanceConfig").PerInstanceConfig = null as any;
 utilities.lazyLoad(exports, ["PerInstanceConfig"], () => require("./perInstanceConfig"));
+
+export { ProjectCloudArmorTierArgs, ProjectCloudArmorTierState } from "./projectCloudArmorTier";
+export type ProjectCloudArmorTier = import("./projectCloudArmorTier").ProjectCloudArmorTier;
+export const ProjectCloudArmorTier: typeof import("./projectCloudArmorTier").ProjectCloudArmorTier = null as any;
+utilities.lazyLoad(exports, ["ProjectCloudArmorTier"], () => require("./projectCloudArmorTier"));
 
 export { ProjectDefaultNetworkTierArgs, ProjectDefaultNetworkTierState } from "./projectDefaultNetworkTier";
 export type ProjectDefaultNetworkTier = import("./projectDefaultNetworkTier").ProjectDefaultNetworkTier;
@@ -1147,6 +1157,8 @@ const _module = {
                 return new PacketMirroring(name, <any>undefined, { urn })
             case "gcp:compute/perInstanceConfig:PerInstanceConfig":
                 return new PerInstanceConfig(name, <any>undefined, { urn })
+            case "gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier":
+                return new ProjectCloudArmorTier(name, <any>undefined, { urn })
             case "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier":
                 return new ProjectDefaultNetworkTier(name, <any>undefined, { urn })
             case "gcp:compute/projectMetadata:ProjectMetadata":
@@ -1360,6 +1372,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicy
 pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/packetMirroring", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/perInstanceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/projectCloudArmorTier", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectDefaultNetworkTier", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadata", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadataItem", _module)

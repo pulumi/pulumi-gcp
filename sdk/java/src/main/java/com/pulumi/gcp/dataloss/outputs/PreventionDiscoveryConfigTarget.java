@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTarget;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTarget;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetSecretsTarget;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,11 @@ public final class PreventionDiscoveryConfigTarget {
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudSqlTarget cloudSqlTarget;
+    /**
+     * @return Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetSecretsTarget secretsTarget;
 
     private PreventionDiscoveryConfigTarget() {}
     /**
@@ -42,6 +48,13 @@ public final class PreventionDiscoveryConfigTarget {
     public Optional<PreventionDiscoveryConfigTargetCloudSqlTarget> cloudSqlTarget() {
         return Optional.ofNullable(this.cloudSqlTarget);
     }
+    /**
+     * @return Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetSecretsTarget> secretsTarget() {
+        return Optional.ofNullable(this.secretsTarget);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +67,13 @@ public final class PreventionDiscoveryConfigTarget {
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTarget bigQueryTarget;
         private @Nullable PreventionDiscoveryConfigTargetCloudSqlTarget cloudSqlTarget;
+        private @Nullable PreventionDiscoveryConfigTargetSecretsTarget secretsTarget;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigQueryTarget = defaults.bigQueryTarget;
     	      this.cloudSqlTarget = defaults.cloudSqlTarget;
+    	      this.secretsTarget = defaults.secretsTarget;
         }
 
         @CustomType.Setter
@@ -73,10 +88,17 @@ public final class PreventionDiscoveryConfigTarget {
             this.cloudSqlTarget = cloudSqlTarget;
             return this;
         }
+        @CustomType.Setter
+        public Builder secretsTarget(@Nullable PreventionDiscoveryConfigTargetSecretsTarget secretsTarget) {
+
+            this.secretsTarget = secretsTarget;
+            return this;
+        }
         public PreventionDiscoveryConfigTarget build() {
             final var _resultValue = new PreventionDiscoveryConfigTarget();
             _resultValue.bigQueryTarget = bigQueryTarget;
             _resultValue.cloudSqlTarget = cloudSqlTarget;
+            _resultValue.secretsTarget = secretsTarget;
             return _resultValue;
         }
     }

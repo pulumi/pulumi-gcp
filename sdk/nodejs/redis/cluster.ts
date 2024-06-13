@@ -57,6 +57,50 @@ import * as utilities from "../utilities";
  *     redisConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ * ### Redis Cluster Ha Single Zone
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "mynetwork",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "mysubnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "mypolicy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
+ * });
+ * const cluster_ha_single_zone = new gcp.redis.Cluster("cluster-ha-single-zone", {
+ *     name: "ha-cluster-single-zone",
+ *     shardCount: 3,
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     region: "us-central1",
+ *     zoneDistributionConfig: {
+ *         mode: "SINGLE_ZONE",
+ *         zone: "us-central1-f",
+ *     },
  * }, {
  *     dependsOn: [_default],
  * });
@@ -207,6 +251,10 @@ export class Cluster extends pulumi.CustomResource {
      * System assigned, unique identifier for the cluster.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * Immutable. Zone distribution config for Memorystore Redis cluster.
+     */
+    public readonly zoneDistributionConfig!: pulumi.Output<outputs.redis.ClusterZoneDistributionConfig | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -239,6 +287,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["stateInfos"] = state ? state.stateInfos : undefined;
             resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["zoneDistributionConfig"] = state ? state.zoneDistributionConfig : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.pscConfigs === undefined) && !opts.urn) {
@@ -257,6 +306,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
+            resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["preciseSizeGb"] = undefined /*out*/;
@@ -362,6 +412,10 @@ export interface ClusterState {
      * System assigned, unique identifier for the cluster.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Immutable. Zone distribution config for Memorystore Redis cluster.
+     */
+    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig>;
 }
 
 /**
@@ -416,4 +470,8 @@ export interface ClusterArgs {
      * "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
      */
     transitEncryptionMode?: pulumi.Input<string>;
+    /**
+     * Immutable. Zone distribution config for Memorystore Redis cluster.
+     */
+    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig>;
 }

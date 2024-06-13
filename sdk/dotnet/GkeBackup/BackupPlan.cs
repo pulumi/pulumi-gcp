@@ -252,6 +252,77 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// ### Gkebackup Backupplan Permissive
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "permissive-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var permissive = new Gcp.GkeBackup.BackupPlan("permissive", new()
+    ///     {
+    ///         Name = "permissive-plan",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
+    ///         {
+    ///             BackupDeleteLockDays = 30,
+    ///             BackupRetainDays = 180,
+    ///         },
+    ///         BackupSchedule = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleArgs
+    ///         {
+    ///             CronSchedule = "0 9 * * 1",
+    ///         },
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             PermissiveMode = true,
+    ///             SelectedApplications = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigSelectedApplicationsArgs
+    ///             {
+    ///                 NamespacedNames = new[]
+    ///                 {
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs
+    ///                     {
+    ///                         Name = "app1",
+    ///                         Namespace = "ns1",
+    ///                     },
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs
+    ///                     {
+    ///                         Name = "app2",
+    ///                         Namespace = "ns2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Gkebackup Backupplan Rpo Daily Window
     /// 
     /// ```csharp

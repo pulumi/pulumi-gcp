@@ -51,13 +51,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NodePoolNetworkConfigNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
-        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
         /// </summary>
         [Input("podCidrOverprovisionConfig")]
         public Input<Inputs.NodePoolNetworkConfigPodCidrOverprovisionConfigArgs>? PodCidrOverprovisionConfig { get; set; }

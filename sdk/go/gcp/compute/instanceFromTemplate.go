@@ -144,6 +144,8 @@ type InstanceFromTemplate struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsOutput `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -281,6 +283,8 @@ type instanceFromTemplateState struct {
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -381,6 +385,8 @@ type InstanceFromTemplateState struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -472,6 +478,8 @@ type instanceFromTemplateArgs struct {
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -554,6 +562,8 @@ type InstanceFromTemplateArgs struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
+	// Partner Metadata Map made available within the instance.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
 	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -823,6 +833,11 @@ func (o InstanceFromTemplateOutput) NetworkPerformanceConfig() InstanceFromTempl
 // Stores additional params passed with the request, but not persisted as part of resource payload.
 func (o InstanceFromTemplateOutput) Params() InstanceFromTemplateParamsOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateParamsOutput { return v.Params }).(InstanceFromTemplateParamsOutput)
+}
+
+// Partner Metadata Map made available within the instance.
+func (o InstanceFromTemplateOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
