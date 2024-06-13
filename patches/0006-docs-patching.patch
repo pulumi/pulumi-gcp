@@ -147,10 +147,10 @@ index de386e9ff..0029e996e 100644
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index 9cd05ee8e..865b6fe33 100644
+index 20dbca48c..bc9d08794 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
-@@ -302,7 +302,7 @@ The following arguments are supported:
+@@ -307,7 +307,7 @@ The following arguments are supported:
  
  * `env_variables` -
    (Optional)
@@ -188,7 +188,7 @@ index ff370dce5..423d163bb 100644
    location = "us-central1"
    slot_capacity = 0
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index dc0c5df59..451e468b9 100644
+index 48109ed6a..e3bd7d19c 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -200,18 +200,20 @@ index dc0c5df59..451e468b9 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy.
  
  ## Example Usage
-@@ -161,8 +161,8 @@ The following arguments are supported:
+@@ -161,10 +161,8 @@ The following arguments are supported:
  * `materialized_view` - (Optional) If specified, configures this table as a materialized view.
      Structure is [documented below](#nested_materialized_view).
  
--* `deletion_protection` - (Optional) Whether or not to allow Terraform to destroy the instance. Unless this field is set to false
--in Terraform state, a `terraform destroy` or `terraform apply` that would delete the instance will fail.
+-* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the table.
+-    When the field is set to true or unset in Terraform state, a `terraform apply`
+-    or `terraform destroy` that would delete the table will fail.
+-    When the field is set to false, deleting the table is allowed..
 +* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 +in state, a `=destroy` or `=update` that would delete the instance will fail.
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -257,8 +257,8 @@ in Terraform state, a `terraform destroy` or `terraform apply` that would delete
+@@ -278,8 +276,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -238,7 +240,7 @@ index cb9d983d6..79d52eba7 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/bigtable_instance.html.markdown b/website/docs/r/bigtable_instance.html.markdown
-index c04a97d50..ec907661c 100644
+index c9b952fde..a17feabfb 100644
 --- a/website/docs/r/bigtable_instance.html.markdown
 +++ b/website/docs/r/bigtable_instance.html.markdown
 @@ -1,4 +1,4 @@
@@ -265,18 +267,22 @@ index c04a97d50..ec907661c 100644
  ## Example Usage - Simple Instance
  
  ```hcl
-@@ -97,8 +86,8 @@ to default to the backend value. See [structure below](#nested_cluster).
+@@ -97,11 +86,10 @@ to default to the backend value. See [structure below](#nested_cluster).
  
  * `display_name` - (Optional) The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
  
--* `deletion_protection` - (Optional) Whether or not to allow Terraform to destroy the instance. Unless this field is set to false
--in Terraform state, a `terraform destroy` or `terraform apply` that would delete the instance will fail.
+-* `force_destroy` - (Optional) Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
++* `force_destroy` - (Optional) Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+ 
+-* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the instance. 
+-  When the field is set to true or unset in Terraform state, a `terraform apply` or `terraform destroy` that would delete
+-  the instance will fail. When the field is set to false, deleting the instance is allowed.
 +* `deletion_protection` - (Optional) Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 +in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
  
  * `labels` - (Optional) A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
  
-@@ -140,8 +129,10 @@ If no value is set, Cloud Bigtable automatically allocates nodes based on your d
+@@ -143,8 +131,10 @@ If no value is set, Cloud Bigtable automatically allocates nodes based on your d
  
  -> **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
  
@@ -410,7 +416,7 @@ index 285a707b8..d2632266f 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index fe378c677..11b3297ce 100644
+index 64411b7c3..5fa1ea293 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -506,7 +512,7 @@ index fe378c677..11b3297ce 100644
    Structure is [documented below](#nested_liveness_probe).
  
  
-@@ -980,7 +1036,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1001,7 +1057,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata. More
    info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -529,7 +535,7 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 9ec2914b1..ce5805f76 100644
+index 27acf1c3b..68be70b82 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -27,18 +27,18 @@ To get more information about Environments, see:
@@ -594,7 +600,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index f6304a9cb..2faaac368 100644
+index 4a3cafcef..977f32f58 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -34,9 +34,8 @@ To get more information about BackendService, see:
@@ -626,7 +632,7 @@ index a6bbbfa4b..92a6811de 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index f87237034..0e33439d5 100644
+index 71c68faa2..2a483de9a 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -690,7 +696,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 9c7c41e14..62103fea5 100644
+index 9f7553b52..b3ae4ddc6 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -819,10 +825,10 @@ index 5d846e846..8dda2ecb4 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 06fe5a3b0..78cb6f237 100644
+index 7f59c534c..cf9f9c52d 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
-@@ -140,7 +140,7 @@ The following arguments are supported:
+@@ -165,7 +165,7 @@ The following arguments are supported:
      not affect existing instances.
  
  * `wait_for_instances` - (Optional) Whether to wait for all instances to be created/updated before
@@ -847,7 +853,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 8700dbdff..14fa13967 100644
+index e1030a25b..807ac4bb7 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -911,7 +917,7 @@ index 8700dbdff..14fa13967 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
-@@ -501,7 +501,7 @@ The following arguments are supported:
+@@ -503,7 +503,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1152,10 +1158,10 @@ index db7f57628..dceb98ac2 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index b1c16d386..3a38d2595 100644
+index 4a4e7be0e..3891cdef3 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
-@@ -142,7 +142,7 @@ The following arguments are supported:
+@@ -166,7 +166,7 @@ The following arguments are supported:
      not affect existing instances.
  
  * `wait_for_instances` - (Optional) Whether to wait for all instances to be created/updated before
@@ -1484,7 +1490,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 26305820e..63e16cd7f 100644
+index 76bb154d9..f605d8c1b 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1604,7 +1610,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index d8a9314fb..4d3a2ceef 100644
+index 94443c5c1..803ba538a 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1686,7 +1692,7 @@ index d8a9314fb..4d3a2ceef 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -313,7 +331,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -317,7 +335,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1695,7 +1701,7 @@ index d8a9314fb..4d3a2ceef 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -852,8 +870,6 @@ gvnic {
+@@ -856,8 +874,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1704,7 +1710,7 @@ index d8a9314fb..4d3a2ceef 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -874,7 +890,7 @@ gvnic {
+@@ -878,7 +894,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1713,7 +1719,7 @@ index d8a9314fb..4d3a2ceef 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -899,10 +915,7 @@ gvnic {
+@@ -903,10 +919,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1725,7 +1731,7 @@ index d8a9314fb..4d3a2ceef 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -914,13 +927,14 @@ gvnic {
+@@ -918,13 +931,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1747,10 +1753,16 @@ index d8a9314fb..4d3a2ceef 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -977,6 +991,14 @@ sole_tenant_config {
+@@ -977,6 +991,20 @@ sole_tenant_config {
  
- * `total_egress_bandwidth_tier` (Required) - Specifies the total network bandwidth tier for the NodePool.
+ * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
++* `network_performance_config` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)) Network bandwidth tier configuration.
++
++<a name="network_performance_config"></a>The `network_performance_config` block supports:
++
++* `total_egress_bandwidth_tier` (Required) - Specifies the total network bandwidth tier for the NodePool.
++
 +<a name="nested_network_config"></a>The `network_config` block supports:
 +
 +* `create_pod_range` - (Optional) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -1762,7 +1774,7 @@ index d8a9314fb..4d3a2ceef 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1133,7 +1155,7 @@ for more details. This field only applies to private clusters, when
+@@ -1137,7 +1165,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1771,7 +1783,7 @@ index d8a9314fb..4d3a2ceef 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1234,9 +1256,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1238,9 +1266,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1785,7 +1797,7 @@ index d8a9314fb..4d3a2ceef 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 0df385456..ebe1ac0b7 100644
+index 0eef08600..efb12c98b 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -6,14 +6,11 @@ description: |-
@@ -3069,7 +3081,7 @@ index 3eff57c07..662d642d1 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index d91ecfeca..c0aa7efee 100644
+index a1ee8d077..a3d2e5e41 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3335,7 +3347,7 @@ index 7967f8278..5ad114b4f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 15f0a2498..d1fe8a6de 100644
+index 042cec9a6..5f4fe6afb 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -28,9 +28,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3552,7 +3564,7 @@ index 7ff5ee271..7d1b76182 100644
  
  * How-to Guides
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index 26478edfe..da87bdaae 100644
+index 2ac02739f..da87bdaae 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
 @@ -29,12 +29,10 @@ To get more information about Database, see:
@@ -3570,19 +3582,23 @@ index 26478edfe..da87bdaae 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=spanner_database_basic&open_in_editor=main.tf" target="_blank">
-@@ -120,8 +118,8 @@ The following arguments are supported:
+@@ -120,12 +118,8 @@ The following arguments are supported:
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
  
--* `deletion_protection` - (Optional) Whether or not to allow Terraform to destroy the database. Defaults to true. Unless this field is set to false
--in Terraform state, a `terraform destroy` or `terraform apply` that would delete the database will fail.
+-* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the database. Defaults to true.
+-When a`terraform destroy` or `terraform apply` would delete the database,
+-the command will fail if this field is not set to false in Terraform state.
+-When the field is set to true or unset in Terraform state, a `terraform apply`
+-or `terraform destroy` that would delete the database will fail.
+-When the field is set to false, deleting the database is allowed.
 +* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 +in state, a `destroy` or `update` that would delete the instance will fail.
  
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index df8d9ee0f..9c006da71 100644
+index 806bcd2bd..e571081a3 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3618,12 +3634,14 @@ index df8d9ee0f..9c006da71 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -248,18 +248,16 @@ includes an up-to-date reference of supported versions.
+@@ -248,20 +248,16 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
--* `deletion_protection` - (Optional) Whether or not to allow Terraform to destroy the instance. Unless this field is set to false
--in Terraform state, a `terraform destroy` or `terraform apply` command that deletes the instance will fail. Defaults to `true`.
+-* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the instance.
+-    When the field is set to true or unset in Terraform state, a `terraform apply`
+-    or `terraform destroy` that would delete the instance will fail.
+-    When the field is set to false, deleting the instance is allowed.
 -
 -  ~> **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 +* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false
@@ -3642,7 +3660,7 @@ index df8d9ee0f..9c006da71 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -499,7 +497,7 @@ The optional `clone` block supports:
+@@ -500,7 +496,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3651,7 +3669,7 @@ index df8d9ee0f..9c006da71 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -537,21 +535,13 @@ instance.
+@@ -538,21 +534,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3691,7 +3709,7 @@ index 21e3d32cd..5fc2cc98d 100644
  ## Example Usage
  
 diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index fc3860367..0145f48ba 100644
+index 2f23a5971..a9ad72add 100644
 --- a/website/docs/r/sql_user.html.markdown
 +++ b/website/docs/r/sql_user.html.markdown
 @@ -9,8 +9,6 @@ description: |-
@@ -3704,7 +3722,7 @@ index fc3860367..0145f48ba 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index bd223adba..e267e7787 100644
+index e09ba9dae..cef2d6a02 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -115,7 +115,7 @@ The following arguments are supported:
@@ -3716,7 +3734,7 @@ index bd223adba..e267e7787 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -249,9 +249,9 @@ The following arguments are supported:
+@@ -255,9 +255,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.

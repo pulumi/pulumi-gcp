@@ -5,10 +5,10 @@ Subject: [PATCH] fix label imports
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index ecb3e6ee9..b2890f736 100644
+index 772e911ac..932dfb4a3 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
-@@ -1785,10 +1785,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
+@@ -1837,10 +1837,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
  	if err := d.Set("lifecycle_rule", flattenBucketLifecycle(d, res.Lifecycle)); err != nil {
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}
