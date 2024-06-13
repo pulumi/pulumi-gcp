@@ -91,6 +91,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Enable global access for endpoint attachment.
+        /// </summary>
+        [Output("endpointGlobalAccess")]
+        public Output<bool?> EndpointGlobalAccess { get; private set; } = null!;
+
+        /// <summary>
         /// The Private Service Connect connection endpoint ip.
         /// </summary>
         [Output("endpointIp")]
@@ -203,6 +209,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Enable global access for endpoint attachment.
+        /// </summary>
+        [Input("endpointGlobalAccess")]
+        public Input<bool>? EndpointGlobalAccess { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -281,6 +293,12 @@ namespace Pulumi.Gcp.IntegrationConnectors
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Enable global access for endpoint attachment.
+        /// </summary>
+        [Input("endpointGlobalAccess")]
+        public Input<bool>? EndpointGlobalAccess { get; set; }
 
         /// <summary>
         /// The Private Service Connect connection endpoint ip.

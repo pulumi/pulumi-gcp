@@ -163,7 +163,8 @@ type CryptoKey struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrOutput `pulumi:"rotationPeriod"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -248,7 +249,8 @@ type cryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -296,7 +298,8 @@ type CryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -339,7 +342,8 @@ type cryptoKeyArgs struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -379,7 +383,8 @@ type CryptoKeyArgs struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -546,7 +551,8 @@ func (o CryptoKeyOutput) RotationPeriod() pulumi.StringPtrOutput {
 }
 
 // If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.BoolPtrOutput)
 }

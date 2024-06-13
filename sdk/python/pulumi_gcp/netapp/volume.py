@@ -21,6 +21,7 @@ class VolumeArgs:
                  protocols: pulumi.Input[Sequence[pulumi.Input[str]]],
                  share_name: pulumi.Input[str],
                  storage_pool: pulumi.Input[str],
+                 backup_config: Optional[pulumi.Input['VolumeBackupConfigArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
@@ -43,6 +44,8 @@ class VolumeArgs:
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input['VolumeBackupConfigArgs'] backup_config: Backup configuration for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -80,6 +83,8 @@ class VolumeArgs:
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "share_name", share_name)
         pulumi.set(__self__, "storage_pool", storage_pool)
+        if backup_config is not None:
+            pulumi.set(__self__, "backup_config", backup_config)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -169,6 +174,19 @@ class VolumeArgs:
     @storage_pool.setter
     def storage_pool(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_pool", value)
+
+    @property
+    @pulumi.getter(name="backupConfig")
+    def backup_config(self) -> Optional[pulumi.Input['VolumeBackupConfigArgs']]:
+        """
+        Backup configuration for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_config")
+
+    @backup_config.setter
+    def backup_config(self, value: Optional[pulumi.Input['VolumeBackupConfigArgs']]):
+        pulumi.set(self, "backup_config", value)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -360,6 +378,7 @@ class VolumeArgs:
 class _VolumeState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input[str]] = None,
+                 backup_config: Optional[pulumi.Input['VolumeBackupConfigArgs']] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -396,6 +415,8 @@ class _VolumeState:
         """
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
+        :param pulumi.Input['VolumeBackupConfigArgs'] backup_config: Backup configuration for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
@@ -452,6 +473,8 @@ class _VolumeState:
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
+        if backup_config is not None:
+            pulumi.set(__self__, "backup_config", backup_config)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
         if create_time is not None:
@@ -530,6 +553,19 @@ class _VolumeState:
     @active_directory.setter
     def active_directory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_directory", value)
+
+    @property
+    @pulumi.getter(name="backupConfig")
+    def backup_config(self) -> Optional[pulumi.Input['VolumeBackupConfigArgs']]:
+        """
+        Backup configuration for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_config")
+
+    @backup_config.setter
+    def backup_config(self, value: Optional[pulumi.Input['VolumeBackupConfigArgs']]):
+        pulumi.set(self, "backup_config", value)
 
     @property
     @pulumi.getter(name="capacityGib")
@@ -953,6 +989,7 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_config: Optional[pulumi.Input[pulumi.InputType['VolumeBackupConfigArgs']]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1038,6 +1075,8 @@ class Volume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['VolumeBackupConfigArgs']] backup_config: Backup configuration for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
@@ -1160,6 +1199,7 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_config: Optional[pulumi.Input[pulumi.InputType['VolumeBackupConfigArgs']]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1188,6 +1228,7 @@ class Volume(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VolumeArgs.__new__(VolumeArgs)
 
+            __props__.__dict__["backup_config"] = backup_config
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
@@ -1245,6 +1286,7 @@ class Volume(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[str]] = None,
+            backup_config: Optional[pulumi.Input[pulumi.InputType['VolumeBackupConfigArgs']]] = None,
             capacity_gib: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -1286,6 +1328,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
+        :param pulumi.Input[pulumi.InputType['VolumeBackupConfigArgs']] backup_config: Backup configuration for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
@@ -1345,6 +1389,7 @@ class Volume(pulumi.CustomResource):
         __props__ = _VolumeState.__new__(_VolumeState)
 
         __props__.__dict__["active_directory"] = active_directory
+        __props__.__dict__["backup_config"] = backup_config
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1387,6 +1432,15 @@ class Volume(pulumi.CustomResource):
         Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         """
         return pulumi.get(self, "active_directory")
+
+    @property
+    @pulumi.getter(name="backupConfig")
+    def backup_config(self) -> pulumi.Output[Optional['outputs.VolumeBackupConfig']]:
+        """
+        Backup configuration for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_config")
 
     @property
     @pulumi.getter(name="capacityGib")

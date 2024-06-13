@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+        /// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
         /// </summary>
         [Input("requireSsl")]
         public Input<bool>? RequireSsl { get; set; }

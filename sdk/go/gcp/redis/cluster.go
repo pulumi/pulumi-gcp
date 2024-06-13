@@ -85,6 +85,80 @@ import (
 //				RedisConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Cluster Ha Single Zone
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mynetwork"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-ha-single-zone", &redis.ClusterArgs{
+//				Name:       pulumi.String("ha-cluster-single-zone"),
+//				ShardCount: pulumi.Int(3),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				Region: pulumi.String("us-central1"),
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("SINGLE_ZONE"),
+//					Zone: pulumi.String("us-central1-f"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
@@ -182,6 +256,8 @@ type Cluster struct {
 	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
 	// System assigned, unique identifier for the cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	ZoneDistributionConfig ClusterZoneDistributionConfigPtrOutput `pulumi:"zoneDistributionConfig"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -273,6 +349,8 @@ type clusterState struct {
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 	// System assigned, unique identifier for the cluster.
 	Uid *string `pulumi:"uid"`
+	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	ZoneDistributionConfig *ClusterZoneDistributionConfig `pulumi:"zoneDistributionConfig"`
 }
 
 type ClusterState struct {
@@ -329,6 +407,8 @@ type ClusterState struct {
 	TransitEncryptionMode pulumi.StringPtrInput
 	// System assigned, unique identifier for the cluster.
 	Uid pulumi.StringPtrInput
+	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	ZoneDistributionConfig ClusterZoneDistributionConfigPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -366,6 +446,8 @@ type clusterArgs struct {
 	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
 	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
+	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	ZoneDistributionConfig *ClusterZoneDistributionConfig `pulumi:"zoneDistributionConfig"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -400,6 +482,8 @@ type ClusterArgs struct {
 	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
 	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
 	TransitEncryptionMode pulumi.StringPtrInput
+	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	ZoneDistributionConfig ClusterZoneDistributionConfigPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -594,6 +678,11 @@ func (o ClusterOutput) TransitEncryptionMode() pulumi.StringPtrOutput {
 // System assigned, unique identifier for the cluster.
 func (o ClusterOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Immutable. Zone distribution config for Memorystore Redis cluster.
+func (o ClusterOutput) ZoneDistributionConfig() ClusterZoneDistributionConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterZoneDistributionConfigPtrOutput { return v.ZoneDistributionConfig }).(ClusterZoneDistributionConfigPtrOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

@@ -699,6 +699,14 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterResourceUsageExportConfig?> ResourceUsageExportConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the
+        /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("secretManagerConfig")]
+        public Output<Outputs.ClusterSecretManagerConfig?> SecretManagerConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         /// </summary>
         [Output("securityPostureConfig")]
@@ -1330,6 +1338,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the
+        /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secretManagerConfig")]
+        public Input<Inputs.ClusterSecretManagerConfigArgs>? SecretManagerConfig { get; set; }
+
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("securityPostureConfig")]
@@ -1921,6 +1937,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ClusterResourceUsageExportConfigGetArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for the
+        /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secretManagerConfig")]
+        public Input<Inputs.ClusterSecretManagerConfigGetArgs>? SecretManagerConfig { get; set; }
 
         /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.

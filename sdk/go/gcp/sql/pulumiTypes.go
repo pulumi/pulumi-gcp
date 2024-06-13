@@ -3053,7 +3053,9 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// PSC settings for a Cloud SQL instance.
 	PscConfigs []DatabaseInstanceSettingsIpConfigurationPscConfig `pulumi:"pscConfigs"`
-	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+	//
+	// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 	RequireSsl *bool `pulumi:"requireSsl"`
 	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
@@ -3091,7 +3093,9 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// PSC settings for a Cloud SQL instance.
 	PscConfigs DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
-	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+	//
+	// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
 	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
@@ -3218,7 +3222,9 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) PscConfigs() DatabaseInst
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
-// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+//
+// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
@@ -3320,7 +3326,9 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PscConfigs() DatabaseI
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
-// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
+// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
+//
+// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
 		if v == nil {
@@ -6835,7 +6843,7 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl bool `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode string `pulumi:"sslMode"`
 }
 
@@ -6864,7 +6872,7 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
 
@@ -6959,7 +6967,7 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.Boo
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.SslMode }).(pulumi.StringOutput)
 }
@@ -9927,7 +9935,7 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl bool `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode string `pulumi:"sslMode"`
 }
 
@@ -9956,7 +9964,7 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
 
@@ -10051,7 +10059,7 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) RequireSsl() p
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.SslMode }).(pulumi.StringOutput)
 }

@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerParams;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulInternalIp;
@@ -154,6 +155,55 @@ import javax.annotation.Nullable;
  *                         .fixed(1)
  *                         .build())
  *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### With Standby Policy (`Google-Beta` Provider)
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStandbyPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var igm_sr = new InstanceGroupManager("igm-sr", InstanceGroupManagerArgs.builder()
+ *             .name("tf-sr-igm")
+ *             .baseInstanceName("tf-sr-igm-instance")
+ *             .zone("us-central1-a")
+ *             .targetSize(5)
+ *             .versions(InstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(sr_igm.selfLink())
+ *                 .name("primary")
+ *                 .build())
+ *             .standbyPolicy(InstanceGroupManagerStandbyPolicyArgs.builder()
+ *                 .initialDelaySec(30)
+ *                 .mode("MANUAL")
+ *                 .build())
+ *             .targetSuspendedSize(2)
+ *             .targetStoppedSize(1)
  *             .build());
  * 
  *     }
@@ -440,6 +490,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    @Export(name="standbyPolicy", refs={InstanceGroupManagerStandbyPolicy.class}, tree="[0]")
+    private Output<InstanceGroupManagerStandbyPolicy> standbyPolicy;
+
+    /**
+     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    public Output<InstanceGroupManagerStandbyPolicy> standbyPolicy() {
+        return this.standbyPolicy;
+    }
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
@@ -528,6 +592,34 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> targetSize() {
         return this.targetSize;
+    }
+    /**
+     * The target number of stopped instances for this managed instance group.
+     * 
+     */
+    @Export(name="targetStoppedSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> targetStoppedSize;
+
+    /**
+     * @return The target number of stopped instances for this managed instance group.
+     * 
+     */
+    public Output<Integer> targetStoppedSize() {
+        return this.targetStoppedSize;
+    }
+    /**
+     * The target number of suspended instances for this managed instance group.
+     * 
+     */
+    @Export(name="targetSuspendedSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> targetSuspendedSize;
+
+    /**
+     * @return The target number of suspended instances for this managed instance group.
+     * 
+     */
+    public Output<Integer> targetSuspendedSize() {
+        return this.targetSuspendedSize;
     }
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).

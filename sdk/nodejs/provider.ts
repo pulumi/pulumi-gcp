@@ -164,6 +164,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly secretManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secureSourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityCenterCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly securityCenterManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityScannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securitypostureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceDirectoryCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -344,6 +345,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
             resourceInputs["secureSourceManagerCustomEndpoint"] = args ? args.secureSourceManagerCustomEndpoint : undefined;
             resourceInputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
+            resourceInputs["securityCenterManagementCustomEndpoint"] = args ? args.securityCenterManagementCustomEndpoint : undefined;
             resourceInputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
             resourceInputs["securitypostureCustomEndpoint"] = args ? args.securitypostureCustomEndpoint : undefined;
             resourceInputs["serviceDirectoryCustomEndpoint"] = args ? args.serviceDirectoryCustomEndpoint : undefined;
@@ -525,6 +527,7 @@ export interface ProviderArgs {
     secretManagerCustomEndpoint?: pulumi.Input<string>;
     secureSourceManagerCustomEndpoint?: pulumi.Input<string>;
     securityCenterCustomEndpoint?: pulumi.Input<string>;
+    securityCenterManagementCustomEndpoint?: pulumi.Input<string>;
     securityScannerCustomEndpoint?: pulumi.Input<string>;
     securitypostureCustomEndpoint?: pulumi.Input<string>;
     serviceDirectoryCustomEndpoint?: pulumi.Input<string>;

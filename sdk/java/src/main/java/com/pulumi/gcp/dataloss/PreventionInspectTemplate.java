@@ -339,6 +339,59 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dlp Inspect Template Max Infotype Per Finding Default
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var maxInfotypePerFindingDefault = new PreventionInspectTemplate("maxInfotypePerFindingDefault", PreventionInspectTemplateArgs.builder()
+ *             .parent("projects/my-project-name")
+ *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
+ *                 .infoTypes(                
+ *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                         .name("EMAIL_ADDRESS")
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                         .name("PERSON_NAME")
+ *                         .build())
+ *                 .minLikelihood("UNLIKELY")
+ *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
+ *                     .maxFindingsPerRequest(333)
+ *                     .maxFindingsPerItem(222)
+ *                     .maxFindingsPerInfoTypes(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs.builder()
+ *                         .maxFindings(111)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

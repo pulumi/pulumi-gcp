@@ -272,6 +272,77 @@ import (
 //	}
 //
 // ```
+// ### Gkebackup Backupplan Permissive
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("permissive-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewBackupPlan(ctx, "permissive", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("permissive-plan"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
+//					BackupDeleteLockDays: pulumi.Int(30),
+//					BackupRetainDays:     pulumi.Int(180),
+//				},
+//				BackupSchedule: &gkebackup.BackupPlanBackupScheduleArgs{
+//					CronSchedule: pulumi.String("0 9 * * 1"),
+//				},
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					PermissiveMode:    pulumi.Bool(true),
+//					SelectedApplications: &gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs{
+//						NamespacedNames: gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray{
+//							&gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs{
+//								Name:      pulumi.String("app1"),
+//								Namespace: pulumi.String("ns1"),
+//							},
+//							&gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs{
+//								Name:      pulumi.String("app2"),
+//								Namespace: pulumi.String("ns2"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Gkebackup Backupplan Rpo Daily Window
 //
 // ```go

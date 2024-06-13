@@ -7,9 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigExcludedNamespacesArgs;
+import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderArgs;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsArgs;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleArgs;
+import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -109,7 +111,7 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
      * for more information on each mode.
-     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
      */
     @Import(name="namespacedResourceRestoreMode")
@@ -122,7 +124,7 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
      * for more information on each mode.
-     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
      */
     public Optional<Output<String>> namespacedResourceRestoreMode() {
@@ -144,6 +146,23 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<Boolean>> noNamespaces() {
         return Optional.ofNullable(this.noNamespaces);
+    }
+
+    /**
+     * It contains custom ordering to use on a Restore.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreOrder")
+    private @Nullable Output<RestorePlanRestoreConfigRestoreOrderArgs> restoreOrder;
+
+    /**
+     * @return It contains custom ordering to use on a Restore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RestorePlanRestoreConfigRestoreOrderArgs>> restoreOrder() {
+        return Optional.ofNullable(this.restoreOrder);
     }
 
     /**
@@ -238,6 +257,27 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.volumeDataRestorePolicy);
     }
 
+    /**
+     * A table that binds volumes by their scope to a restore policy. Bindings
+     * must have a unique scope. Any volumes not scoped in the bindings are
+     * subject to the policy defined in volume_data_restore_policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="volumeDataRestorePolicyBindings")
+    private @Nullable Output<List<RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs>> volumeDataRestorePolicyBindings;
+
+    /**
+     * @return A table that binds volumes by their scope to a restore policy. Bindings
+     * must have a unique scope. Any volumes not scoped in the bindings are
+     * subject to the policy defined in volume_data_restore_policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs>>> volumeDataRestorePolicyBindings() {
+        return Optional.ofNullable(this.volumeDataRestorePolicyBindings);
+    }
+
     private RestorePlanRestoreConfigArgs() {}
 
     private RestorePlanRestoreConfigArgs(RestorePlanRestoreConfigArgs $) {
@@ -247,10 +287,12 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
         this.excludedNamespaces = $.excludedNamespaces;
         this.namespacedResourceRestoreMode = $.namespacedResourceRestoreMode;
         this.noNamespaces = $.noNamespaces;
+        this.restoreOrder = $.restoreOrder;
         this.selectedApplications = $.selectedApplications;
         this.selectedNamespaces = $.selectedNamespaces;
         this.transformationRules = $.transformationRules;
         this.volumeDataRestorePolicy = $.volumeDataRestorePolicy;
+        this.volumeDataRestorePolicyBindings = $.volumeDataRestorePolicyBindings;
     }
 
     public static Builder builder() {
@@ -382,7 +424,7 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
          * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
          * for more information on each mode.
-         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
          * 
          * @return builder
          * 
@@ -399,7 +441,7 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
          * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
          * for more information on each mode.
-         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
          * 
          * @return builder
          * 
@@ -429,6 +471,29 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
          */
         public Builder noNamespaces(Boolean noNamespaces) {
             return noNamespaces(Output.of(noNamespaces));
+        }
+
+        /**
+         * @param restoreOrder It contains custom ordering to use on a Restore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreOrder(@Nullable Output<RestorePlanRestoreConfigRestoreOrderArgs> restoreOrder) {
+            $.restoreOrder = restoreOrder;
+            return this;
+        }
+
+        /**
+         * @param restoreOrder It contains custom ordering to use on a Restore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreOrder(RestorePlanRestoreConfigRestoreOrderArgs restoreOrder) {
+            return restoreOrder(Output.of(restoreOrder));
         }
 
         /**
@@ -560,6 +625,46 @@ public final class RestorePlanRestoreConfigArgs extends com.pulumi.resources.Res
          */
         public Builder volumeDataRestorePolicy(String volumeDataRestorePolicy) {
             return volumeDataRestorePolicy(Output.of(volumeDataRestorePolicy));
+        }
+
+        /**
+         * @param volumeDataRestorePolicyBindings A table that binds volumes by their scope to a restore policy. Bindings
+         * must have a unique scope. Any volumes not scoped in the bindings are
+         * subject to the policy defined in volume_data_restore_policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeDataRestorePolicyBindings(@Nullable Output<List<RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs>> volumeDataRestorePolicyBindings) {
+            $.volumeDataRestorePolicyBindings = volumeDataRestorePolicyBindings;
+            return this;
+        }
+
+        /**
+         * @param volumeDataRestorePolicyBindings A table that binds volumes by their scope to a restore policy. Bindings
+         * must have a unique scope. Any volumes not scoped in the bindings are
+         * subject to the policy defined in volume_data_restore_policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeDataRestorePolicyBindings(List<RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs> volumeDataRestorePolicyBindings) {
+            return volumeDataRestorePolicyBindings(Output.of(volumeDataRestorePolicyBindings));
+        }
+
+        /**
+         * @param volumeDataRestorePolicyBindings A table that binds volumes by their scope to a restore policy. Bindings
+         * must have a unique scope. Any volumes not scoped in the bindings are
+         * subject to the policy defined in volume_data_restore_policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeDataRestorePolicyBindings(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs... volumeDataRestorePolicyBindings) {
+            return volumeDataRestorePolicyBindings(List.of(volumeDataRestorePolicyBindings));
         }
 
         public RestorePlanRestoreConfigArgs build() {

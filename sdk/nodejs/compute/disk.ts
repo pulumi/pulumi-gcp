@@ -379,6 +379,13 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
+     * The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     */
+    public readonly storagePool!: pulumi.Output<string | undefined>;
+    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
@@ -438,6 +445,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
+            resourceInputs["storagePool"] = state ? state.storagePool : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -464,6 +472,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
+            resourceInputs["storagePool"] = args ? args.storagePool : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -712,6 +721,13 @@ export interface DiskState {
      */
     sourceSnapshotId?: pulumi.Input<string>;
     /**
+     * The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     */
+    storagePool?: pulumi.Input<string>;
+    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
@@ -895,6 +911,13 @@ export interface DiskArgs {
      * Structure is documented below.
      */
     sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
+    /**
+     * The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     */
+    storagePool?: pulumi.Input<string>;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.

@@ -18,8 +18,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// specified in another InfoTypeLimit.
         /// Structure is documented below.
         /// </summary>
-        [Input("infoType", required: true)]
-        public Input<Inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> InfoType { get; set; } = null!;
+        [Input("infoType")]
+        public Input<Inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs>? InfoType { get; set; }
 
         /// <summary>
         /// Max findings limit for the given infoType.

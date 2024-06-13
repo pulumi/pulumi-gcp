@@ -203,6 +203,8 @@ class DicomStoreNotificationConfig(dict):
         suggest = None
         if key == "pubsubTopic":
             suggest = "pubsub_topic"
+        elif key == "sendForBulkImport":
+            suggest = "send_for_bulk_import"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DicomStoreNotificationConfig. Access the value via the '{suggest}' property getter instead.")
@@ -216,7 +218,8 @@ class DicomStoreNotificationConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pubsub_topic: str):
+                 pubsub_topic: str,
+                 send_for_bulk_import: Optional[bool] = None):
         """
         :param str pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -224,8 +227,11 @@ class DicomStoreNotificationConfig(dict):
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        :param bool send_for_bulk_import: Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if send_for_bulk_import is not None:
+            pulumi.set(__self__, "send_for_bulk_import", send_for_bulk_import)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -239,6 +245,14 @@ class DicomStoreNotificationConfig(dict):
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
+
+    @property
+    @pulumi.getter(name="sendForBulkImport")
+    def send_for_bulk_import(self) -> Optional[bool]:
+        """
+        Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        """
+        return pulumi.get(self, "send_for_bulk_import")
 
 
 @pulumi.output_type

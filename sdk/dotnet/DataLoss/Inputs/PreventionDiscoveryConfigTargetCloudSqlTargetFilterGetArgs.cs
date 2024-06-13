@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionGetArgs>? Collection { get; set; }
 
         /// <summary>
+        /// The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("databaseResourceReference")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceGetArgs>? DatabaseResourceReference { get; set; }
+
+        /// <summary>
         /// Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
         /// </summary>
         [Input("others")]

@@ -101,6 +101,7 @@ type LookupInstanceTemplateResult struct {
 	// The network performance configuration setting
 	// for the instance, if set. Structure is documented below.
 	NetworkPerformanceConfigs []GetInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
+	PartnerMetadata           map[string]string                             `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project      *string           `pulumi:"project"`
@@ -309,6 +310,10 @@ func (o LookupInstanceTemplateResultOutput) NetworkPerformanceConfigs() GetInsta
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateNetworkPerformanceConfig {
 		return v.NetworkPerformanceConfigs
 	}).(GetInstanceTemplateNetworkPerformanceConfigArrayOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs. If it

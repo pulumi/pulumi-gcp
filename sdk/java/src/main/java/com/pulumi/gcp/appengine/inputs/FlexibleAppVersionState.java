@@ -10,6 +10,7 @@ import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionEndpointsApiServiceArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionEntrypointArgs;
+import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionHandlerArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionLivenessCheckArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionManualScalingArgs;
@@ -157,6 +158,21 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
     public Optional<Output<Map<String,String>>> envVariables() {
         return Optional.ofNullable(this.envVariables);
+    }
+
+    /**
+     * Runtime settings for App Engine flexible environment.
+     * 
+     */
+    @Import(name="flexibleRuntimeSettings")
+    private @Nullable Output<FlexibleAppVersionFlexibleRuntimeSettingsArgs> flexibleRuntimeSettings;
+
+    /**
+     * @return Runtime settings for App Engine flexible environment.
+     * 
+     */
+    public Optional<Output<FlexibleAppVersionFlexibleRuntimeSettingsArgs>> flexibleRuntimeSettings() {
+        return Optional.ofNullable(this.flexibleRuntimeSettings);
     }
 
     /**
@@ -504,6 +520,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         this.endpointsApiService = $.endpointsApiService;
         this.entrypoint = $.entrypoint;
         this.envVariables = $.envVariables;
+        this.flexibleRuntimeSettings = $.flexibleRuntimeSettings;
         this.handlers = $.handlers;
         this.inboundServices = $.inboundServices;
         this.instanceClass = $.instanceClass;
@@ -722,6 +739,27 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
         public Builder envVariables(Map<String,String> envVariables) {
             return envVariables(Output.of(envVariables));
+        }
+
+        /**
+         * @param flexibleRuntimeSettings Runtime settings for App Engine flexible environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexibleRuntimeSettings(@Nullable Output<FlexibleAppVersionFlexibleRuntimeSettingsArgs> flexibleRuntimeSettings) {
+            $.flexibleRuntimeSettings = flexibleRuntimeSettings;
+            return this;
+        }
+
+        /**
+         * @param flexibleRuntimeSettings Runtime settings for App Engine flexible environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexibleRuntimeSettings(FlexibleAppVersionFlexibleRuntimeSettingsArgs flexibleRuntimeSettings) {
+            return flexibleRuntimeSettings(Output.of(flexibleRuntimeSettings));
         }
 
         /**

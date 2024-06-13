@@ -16,6 +16,7 @@ __all__ = [
     'InstanceAutoscalingConfigArgs',
     'InstanceAutoscalingConfigAutoscalingLimitsArgs',
     'InstanceAutoscalingConfigAutoscalingTargetsArgs',
+    'InstanceConfigReplicaArgs',
     'InstanceIAMBindingConditionArgs',
     'InstanceIAMMemberConditionArgs',
 ]
@@ -323,6 +324,73 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
     @storage_utilization_percent.setter
     def storage_utilization_percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "storage_utilization_percent", value)
+
+
+@pulumi.input_type
+class InstanceConfigReplicaArgs:
+    def __init__(__self__, *,
+                 default_leader_location: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] default_leader_location: If true, this location is designated as the default leader location where
+               leader replicas are placed.
+               
+               - - -
+        :param pulumi.Input[str] location: The location of the serving resources, e.g. "us-central1".
+        :param pulumi.Input[str] type: Indicates the type of replica.  See the [replica types
+               documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+               for more details.
+               Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+        """
+        if default_leader_location is not None:
+            pulumi.set(__self__, "default_leader_location", default_leader_location)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="defaultLeaderLocation")
+    def default_leader_location(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this location is designated as the default leader location where
+        leader replicas are placed.
+
+        - - -
+        """
+        return pulumi.get(self, "default_leader_location")
+
+    @default_leader_location.setter
+    def default_leader_location(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_leader_location", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the serving resources, e.g. "us-central1".
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the type of replica.  See the [replica types
+        documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+        for more details.
+        Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

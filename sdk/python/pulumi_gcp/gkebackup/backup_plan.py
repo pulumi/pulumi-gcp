@@ -715,6 +715,56 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Gkebackup Backupplan Permissive
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="permissive-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        permissive = gcp.gkebackup.BackupPlan("permissive",
+            name="permissive-plan",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                cron_schedule="0 9 * * 1",
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                permissive_mode=True,
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                    namespaced_names=[
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app1",
+                            namespace="ns1",
+                        ),
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app2",
+                            namespace="ns2",
+                        ),
+                    ],
+                ),
+            ))
+        ```
         ### Gkebackup Backupplan Rpo Daily Window
 
         ```python
@@ -1071,6 +1121,56 @@ class BackupPlan(pulumi.CustomResource):
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
                 include_volume_data=True,
                 include_secrets=True,
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                    namespaced_names=[
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app1",
+                            namespace="ns1",
+                        ),
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app2",
+                            namespace="ns2",
+                        ),
+                    ],
+                ),
+            ))
+        ```
+        ### Gkebackup Backupplan Permissive
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="permissive-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        permissive = gcp.gkebackup.BackupPlan("permissive",
+            name="permissive-plan",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                cron_schedule="0 9 * * 1",
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                permissive_mode=True,
                 selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
                     namespaced_names=[
                         gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(

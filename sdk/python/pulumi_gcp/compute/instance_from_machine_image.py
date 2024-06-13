@@ -36,6 +36,7 @@ class InstanceFromMachineImageArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceFromMachineImageParamsArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -75,6 +76,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
         :param pulumi.Input['InstanceFromMachineImageParamsArgs'] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -131,6 +133,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
             pulumi.set(__self__, "params", params)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -396,6 +400,18 @@ class InstanceFromMachineImageArgs:
         pulumi.set(self, "params", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Partner Metadata Map made available within the instance.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -530,6 +546,7 @@ class _InstanceFromMachineImageState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceFromMachineImageParamsArgs']] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
@@ -579,6 +596,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
         :param pulumi.Input['InstanceFromMachineImageParamsArgs'] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -658,6 +676,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
             pulumi.set(__self__, "params", params)
+        if partner_metadata is not None:
+            pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -1013,6 +1033,18 @@ class _InstanceFromMachineImageState:
         pulumi.set(self, "params", value)
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Partner Metadata Map made available within the instance.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @partner_metadata.setter
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "partner_metadata", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1204,6 +1236,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1267,6 +1300,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1354,6 +1388,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1391,6 +1426,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["params"] = params
+            __props__.__dict__["partner_metadata"] = partner_metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
@@ -1453,6 +1489,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
             params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+            partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
@@ -1507,6 +1544,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1563,6 +1601,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["params"] = params
+        __props__.__dict__["partner_metadata"] = partner_metadata
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reservation_affinity"] = reservation_affinity
@@ -1796,6 +1835,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         Stores additional params passed with the request, but not persisted as part of resource payload.
         """
         return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Partner Metadata Map made available within the instance.
+        """
+        return pulumi.get(self, "partner_metadata")
 
     @property
     @pulumi.getter

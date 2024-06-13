@@ -40,12 +40,12 @@ public final class NodePoolNetworkConfig {
      */
     private @Nullable Boolean enablePrivateNodes;
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     private @Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
     /**
-     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
      * 
      */
     private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
@@ -92,14 +92,14 @@ public final class NodePoolNetworkConfig {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Optional<NodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfig() {
         return Optional.ofNullable(this.networkPerformanceConfig);
     }
     /**
-     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
      * 
      */
     public Optional<NodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {

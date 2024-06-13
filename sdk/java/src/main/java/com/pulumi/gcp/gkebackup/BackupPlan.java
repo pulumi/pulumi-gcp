@@ -333,6 +333,91 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Backupplan Permissive
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("permissive-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool("my-project-name.svc.id.goog")
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
+ *             .build());
+ * 
+ *         var permissive = new BackupPlan("permissive", BackupPlanArgs.builder()
+ *             .name("permissive-plan")
+ *             .cluster(primary.id())
+ *             .location("us-central1")
+ *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
+ *                 .backupDeleteLockDays(30)
+ *                 .backupRetainDays(180)
+ *                 .build())
+ *             .backupSchedule(BackupPlanBackupScheduleArgs.builder()
+ *                 .cronSchedule("0 9 * * 1")
+ *                 .build())
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .permissiveMode(true)
+ *                 .selectedApplications(BackupPlanBackupConfigSelectedApplicationsArgs.builder()
+ *                     .namespacedNames(                    
+ *                         BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs.builder()
+ *                             .name("app1")
+ *                             .namespace("ns1")
+ *                             .build(),
+ *                         BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs.builder()
+ *                             .name("app2")
+ *                             .namespace("ns2")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Rpo Daily Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

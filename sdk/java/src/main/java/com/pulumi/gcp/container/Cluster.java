@@ -42,6 +42,7 @@ import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
@@ -1435,6 +1436,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterResourceUsageExportConfig>> resourceUsageExportConfig() {
         return Codegen.optional(this.resourceUsageExportConfig);
+    }
+    /**
+     * Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="secretManagerConfig", refs={ClusterSecretManagerConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterSecretManagerConfig> secretManagerConfig;
+
+    /**
+     * @return Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterSecretManagerConfig>> secretManagerConfig() {
+        return Codegen.optional(this.secretManagerConfig);
     }
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.

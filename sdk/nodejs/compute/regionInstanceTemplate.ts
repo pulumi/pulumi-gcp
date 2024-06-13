@@ -159,6 +159,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.RegionInstanceTemplateNetworkPerformanceConfig | undefined>;
     /**
+     * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -244,6 +248,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
+            resourceInputs["partnerMetadata"] = state ? state.partnerMetadata : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -281,6 +286,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
@@ -406,6 +412,10 @@ export interface RegionInstanceTemplateState {
      * in order for this setting to take effect.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.RegionInstanceTemplateNetworkPerformanceConfig>;
+    /**
+     * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -556,6 +566,10 @@ export interface RegionInstanceTemplateArgs {
      * in order for this setting to take effect.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.RegionInstanceTemplateNetworkPerformanceConfig>;
+    /**
+     * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

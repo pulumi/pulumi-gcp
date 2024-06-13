@@ -550,6 +550,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
+     * Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     */
+    public readonly secretManagerConfig!: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
+    /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */
     public readonly securityPostureConfig!: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
@@ -680,6 +686,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
+            resourceInputs["secretManagerConfig"] = state ? state.secretManagerConfig : undefined;
             resourceInputs["securityPostureConfig"] = state ? state.securityPostureConfig : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serviceExternalIpsConfig"] = state ? state.serviceExternalIpsConfig : undefined;
@@ -754,6 +761,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
+            resourceInputs["secretManagerConfig"] = args ? args.secretManagerConfig : undefined;
             resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
             resourceInputs["serviceExternalIpsConfig"] = args ? args.serviceExternalIpsConfig : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -1165,6 +1173,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     */
+    secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */
@@ -1594,6 +1608,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * Configuration for the
+     * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+     * Structure is documented below.
+     */
+    secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */

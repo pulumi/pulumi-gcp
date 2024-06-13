@@ -259,6 +259,7 @@ namespace Pulumi.Gcp.Compute
         /// for the instance, if set. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
+        public readonly ImmutableDictionary<string, string> PartnerMetadata;
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -345,6 +346,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkPerformanceConfigResult> networkPerformanceConfigs,
 
+            ImmutableDictionary<string, string> partnerMetadata,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -391,6 +394,7 @@ namespace Pulumi.Gcp.Compute
             NamePrefix = namePrefix;
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfigs = networkPerformanceConfigs;
+            PartnerMetadata = partnerMetadata;
             Project = project;
             PulumiLabels = pulumiLabels;
             Region = region;

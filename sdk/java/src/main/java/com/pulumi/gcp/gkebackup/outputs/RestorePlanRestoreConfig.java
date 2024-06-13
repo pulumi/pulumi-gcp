@@ -6,9 +6,11 @@ package com.pulumi.gcp.gkebackup.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigClusterResourceRestoreScope;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigExcludedNamespaces;
+import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigRestoreOrder;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigSelectedApplications;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigSelectedNamespaces;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigTransformationRule;
+import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBinding;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -55,7 +57,7 @@ public final class RestorePlanRestoreConfig {
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
      * for more information on each mode.
-     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
      */
     private @Nullable String namespacedResourceRestoreMode;
@@ -65,6 +67,12 @@ public final class RestorePlanRestoreConfig {
      * 
      */
     private @Nullable Boolean noNamespaces;
+    /**
+     * @return It contains custom ordering to use on a Restore.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RestorePlanRestoreConfigRestoreOrder restoreOrder;
     /**
      * @return A list of selected ProtectedApplications to restore.
      * The listed ProtectedApplications and all the resources
@@ -101,6 +109,14 @@ public final class RestorePlanRestoreConfig {
      * 
      */
     private @Nullable String volumeDataRestorePolicy;
+    /**
+     * @return A table that binds volumes by their scope to a restore policy. Bindings
+     * must have a unique scope. Any volumes not scoped in the bindings are
+     * subject to the policy defined in volume_data_restore_policy.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> volumeDataRestorePolicyBindings;
 
     private RestorePlanRestoreConfig() {}
     /**
@@ -148,7 +164,7 @@ public final class RestorePlanRestoreConfig {
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
      * for more information on each mode.
-     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+     * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
      */
     public Optional<String> namespacedResourceRestoreMode() {
@@ -161,6 +177,14 @@ public final class RestorePlanRestoreConfig {
      */
     public Optional<Boolean> noNamespaces() {
         return Optional.ofNullable(this.noNamespaces);
+    }
+    /**
+     * @return It contains custom ordering to use on a Restore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RestorePlanRestoreConfigRestoreOrder> restoreOrder() {
+        return Optional.ofNullable(this.restoreOrder);
     }
     /**
      * @return A list of selected ProtectedApplications to restore.
@@ -206,6 +230,16 @@ public final class RestorePlanRestoreConfig {
     public Optional<String> volumeDataRestorePolicy() {
         return Optional.ofNullable(this.volumeDataRestorePolicy);
     }
+    /**
+     * @return A table that binds volumes by their scope to a restore policy. Bindings
+     * must have a unique scope. Any volumes not scoped in the bindings are
+     * subject to the policy defined in volume_data_restore_policy.
+     * Structure is documented below.
+     * 
+     */
+    public List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> volumeDataRestorePolicyBindings() {
+        return this.volumeDataRestorePolicyBindings == null ? List.of() : this.volumeDataRestorePolicyBindings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -222,10 +256,12 @@ public final class RestorePlanRestoreConfig {
         private @Nullable RestorePlanRestoreConfigExcludedNamespaces excludedNamespaces;
         private @Nullable String namespacedResourceRestoreMode;
         private @Nullable Boolean noNamespaces;
+        private @Nullable RestorePlanRestoreConfigRestoreOrder restoreOrder;
         private @Nullable RestorePlanRestoreConfigSelectedApplications selectedApplications;
         private @Nullable RestorePlanRestoreConfigSelectedNamespaces selectedNamespaces;
         private @Nullable List<RestorePlanRestoreConfigTransformationRule> transformationRules;
         private @Nullable String volumeDataRestorePolicy;
+        private @Nullable List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> volumeDataRestorePolicyBindings;
         public Builder() {}
         public Builder(RestorePlanRestoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -235,10 +271,12 @@ public final class RestorePlanRestoreConfig {
     	      this.excludedNamespaces = defaults.excludedNamespaces;
     	      this.namespacedResourceRestoreMode = defaults.namespacedResourceRestoreMode;
     	      this.noNamespaces = defaults.noNamespaces;
+    	      this.restoreOrder = defaults.restoreOrder;
     	      this.selectedApplications = defaults.selectedApplications;
     	      this.selectedNamespaces = defaults.selectedNamespaces;
     	      this.transformationRules = defaults.transformationRules;
     	      this.volumeDataRestorePolicy = defaults.volumeDataRestorePolicy;
+    	      this.volumeDataRestorePolicyBindings = defaults.volumeDataRestorePolicyBindings;
         }
 
         @CustomType.Setter
@@ -278,6 +316,12 @@ public final class RestorePlanRestoreConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder restoreOrder(@Nullable RestorePlanRestoreConfigRestoreOrder restoreOrder) {
+
+            this.restoreOrder = restoreOrder;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selectedApplications(@Nullable RestorePlanRestoreConfigSelectedApplications selectedApplications) {
 
             this.selectedApplications = selectedApplications;
@@ -304,6 +348,15 @@ public final class RestorePlanRestoreConfig {
             this.volumeDataRestorePolicy = volumeDataRestorePolicy;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumeDataRestorePolicyBindings(@Nullable List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding> volumeDataRestorePolicyBindings) {
+
+            this.volumeDataRestorePolicyBindings = volumeDataRestorePolicyBindings;
+            return this;
+        }
+        public Builder volumeDataRestorePolicyBindings(RestorePlanRestoreConfigVolumeDataRestorePolicyBinding... volumeDataRestorePolicyBindings) {
+            return volumeDataRestorePolicyBindings(List.of(volumeDataRestorePolicyBindings));
+        }
         public RestorePlanRestoreConfig build() {
             final var _resultValue = new RestorePlanRestoreConfig();
             _resultValue.allNamespaces = allNamespaces;
@@ -312,10 +365,12 @@ public final class RestorePlanRestoreConfig {
             _resultValue.excludedNamespaces = excludedNamespaces;
             _resultValue.namespacedResourceRestoreMode = namespacedResourceRestoreMode;
             _resultValue.noNamespaces = noNamespaces;
+            _resultValue.restoreOrder = restoreOrder;
             _resultValue.selectedApplications = selectedApplications;
             _resultValue.selectedNamespaces = selectedNamespaces;
             _resultValue.transformationRules = transformationRules;
             _resultValue.volumeDataRestorePolicy = volumeDataRestorePolicy;
+            _resultValue.volumeDataRestorePolicyBindings = volumeDataRestorePolicyBindings;
             return _resultValue;
         }
     }

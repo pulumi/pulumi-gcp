@@ -349,8 +349,11 @@ import * as utilities from "../utilities";
  *                     }],
  *                 },
  *                 {
- *                     id: "boost-1",
- *                     machineType: "e2-standard-2",
+ *                     id: "boost-2",
+ *                     machineType: "n1-standard-2",
+ *                     poolSize: 2,
+ *                     bootDiskSizeGb: 30,
+ *                     enableNestedVirtualization: true,
  *                 },
  *             ],
  *         },

@@ -153,6 +153,7 @@ export interface GetDiskResult {
      * used.
      */
     readonly sourceSnapshotId: string;
+    readonly storagePool: string;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk.

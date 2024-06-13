@@ -39,9 +39,9 @@ import * as utilities from "../utilities";
  *     disableResourceVersioning: false,
  *     enableHistoryImport: false,
  *     defaultSearchHandlingStrict: false,
- *     notificationConfig: {
+ *     notificationConfigs: [{
  *         pubsubTopic: topic.id,
- *     },
+ *     }],
  *     labels: {
  *         label1: "labelvalue1",
  *     },
@@ -91,33 +91,6 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
  * ```
- * ### Healthcare Fhir Store Notification Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
- * const dataset = new gcp.healthcare.Dataset("dataset", {
- *     name: "example-dataset",
- *     location: "us-central1",
- * });
- * const _default = new gcp.healthcare.FhirStore("default", {
- *     name: "example-fhir-store",
- *     dataset: dataset.id,
- *     version: "R4",
- *     enableUpdateCreate: false,
- *     disableReferentialIntegrity: false,
- *     disableResourceVersioning: false,
- *     enableHistoryImport: false,
- *     labels: {
- *         label1: "labelvalue1",
- *     },
- *     notificationConfig: {
- *         pubsubTopic: topic.id,
- *     },
- * });
- * ```
  * ### Healthcare Fhir Store Notification Configs
  *
  * ```typescript
@@ -137,7 +110,6 @@ import * as utilities from "../utilities";
  *     disableReferentialIntegrity: false,
  *     disableResourceVersioning: false,
  *     enableHistoryImport: false,
- *     enableHistoryModifications: false,
  *     labels: {
  *         label1: "labelvalue1",
  *     },
@@ -279,8 +251,13 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
+     *
+     * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     *
+     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
@@ -462,8 +439,13 @@ export interface FhirStoreState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
+     *
+     * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     *
+     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
@@ -582,8 +564,13 @@ export interface FhirStoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
+     *
+     * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     *
+     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**

@@ -94,6 +94,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### With Standby Policy (`Google-Beta` Provider)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const igm_sr = new gcp.compute.RegionInstanceGroupManager("igm-sr", {
+ *     name: "tf-sr-igm",
+ *     baseInstanceName: "tf-sr-igm-instance",
+ *     region: "us-central1",
+ *     targetSize: 5,
+ *     versions: [{
+ *         instanceTemplate: sr_igm.selfLink,
+ *         name: "primary",
+ *     }],
+ *     standbyPolicy: {
+ *         initialDelaySec: 50,
+ *         mode: "SCALE_OUT_POOL",
+ *     },
+ *     targetSuspendedSize: 1,
+ *     targetStoppedSize: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance group managers can be imported using any of these accepted formats:
@@ -227,6 +250,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    public readonly standbyPolicy!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStatefulDisk[] | undefined>;
@@ -253,6 +280,14 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     public readonly targetSize!: pulumi.Output<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    public readonly targetStoppedSize!: pulumi.Output<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    public readonly targetSuspendedSize!: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
@@ -307,12 +342,15 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["standbyPolicy"] = state ? state.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = state ? state.statefulExternalIps : undefined;
             resourceInputs["statefulInternalIps"] = state ? state.statefulInternalIps : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["targetPools"] = state ? state.targetPools : undefined;
             resourceInputs["targetSize"] = state ? state.targetSize : undefined;
+            resourceInputs["targetStoppedSize"] = state ? state.targetStoppedSize : undefined;
+            resourceInputs["targetSuspendedSize"] = state ? state.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["versions"] = state ? state.versions : undefined;
             resourceInputs["waitForInstances"] = state ? state.waitForInstances : undefined;
@@ -338,11 +376,14 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
             resourceInputs["statefulInternalIps"] = args ? args.statefulInternalIps : undefined;
             resourceInputs["targetPools"] = args ? args.targetPools : undefined;
             resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
+            resourceInputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["versions"] = args ? args.versions : undefined;
             resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
@@ -455,6 +496,10 @@ export interface RegionInstanceGroupManagerState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
@@ -481,6 +526,14 @@ export interface RegionInstanceGroupManagerState {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
@@ -587,6 +640,10 @@ export interface RegionInstanceGroupManagerArgs {
      */
     region?: pulumi.Input<string>;
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
@@ -609,6 +666,14 @@ export interface RegionInstanceGroupManagerArgs {
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group.
+     */
+    targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group.
+     */
+    targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */

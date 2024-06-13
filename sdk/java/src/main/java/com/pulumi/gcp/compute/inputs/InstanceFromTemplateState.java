@@ -439,6 +439,21 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Partner Metadata Map made available within the instance.
+     * 
+     */
+    @Import(name="partnerMetadata")
+    private @Nullable Output<Map<String,String>> partnerMetadata;
+
+    /**
+     * @return Partner Metadata Map made available within the instance.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> partnerMetadata() {
+        return Optional.ofNullable(this.partnerMetadata);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      * 
@@ -683,6 +698,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.params = $.params;
+        this.partnerMetadata = $.partnerMetadata;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.reservationAffinity = $.reservationAffinity;
@@ -1305,6 +1321,27 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          */
         public Builder params(InstanceFromTemplateParamsArgs params) {
             return params(Output.of(params));
+        }
+
+        /**
+         * @param partnerMetadata Partner Metadata Map made available within the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerMetadata(@Nullable Output<Map<String,String>> partnerMetadata) {
+            $.partnerMetadata = partnerMetadata;
+            return this;
+        }
+
+        /**
+         * @param partnerMetadata Partner Metadata Map made available within the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerMetadata(Map<String,String> partnerMetadata) {
+            return partnerMetadata(Output.of(partnerMetadata));
         }
 
         /**

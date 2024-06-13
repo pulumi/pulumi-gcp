@@ -101,6 +101,8 @@ type RegionInstanceTemplate struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig RegionInstanceTemplateNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
+	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -236,6 +238,8 @@ type regionInstanceTemplateState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig *RegionInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -331,6 +335,8 @@ type RegionInstanceTemplateState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig RegionInstanceTemplateNetworkPerformanceConfigPtrInput
+	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -426,6 +432,8 @@ type regionInstanceTemplateArgs struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig *RegionInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -512,6 +520,8 @@ type RegionInstanceTemplateArgs struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig RegionInstanceTemplateNetworkPerformanceConfigPtrInput
+	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -752,6 +762,11 @@ func (o RegionInstanceTemplateOutput) NetworkPerformanceConfig() RegionInstanceT
 	return o.ApplyT(func(v *RegionInstanceTemplate) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
 		return v.NetworkPerformanceConfig
 	}).(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+func (o RegionInstanceTemplateOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs. If it

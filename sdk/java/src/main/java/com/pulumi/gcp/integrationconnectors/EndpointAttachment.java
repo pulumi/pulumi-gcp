@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.integrationconnectors.EndpointAttachmentArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.EndpointAttachmentState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -134,6 +135,20 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Enable global access for endpoint attachment.
+     * 
+     */
+    @Export(name="endpointGlobalAccess", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> endpointGlobalAccess;
+
+    /**
+     * @return Enable global access for endpoint attachment.
+     * 
+     */
+    public Output<Optional<Boolean>> endpointGlobalAccess() {
+        return Codegen.optional(this.endpointGlobalAccess);
     }
     /**
      * The Private Service Connect connection endpoint ip.

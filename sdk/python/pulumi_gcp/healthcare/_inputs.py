@@ -270,7 +270,8 @@ class DicomStoreIamMemberConditionArgs:
 @pulumi.input_type
 class DicomStoreNotificationConfigArgs:
     def __init__(__self__, *,
-                 pubsub_topic: pulumi.Input[str]):
+                 pubsub_topic: pulumi.Input[str],
+                 send_for_bulk_import: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -278,8 +279,11 @@ class DicomStoreNotificationConfigArgs:
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        :param pulumi.Input[bool] send_for_bulk_import: Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if send_for_bulk_import is not None:
+            pulumi.set(__self__, "send_for_bulk_import", send_for_bulk_import)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -297,6 +301,18 @@ class DicomStoreNotificationConfigArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "pubsub_topic", value)
+
+    @property
+    @pulumi.getter(name="sendForBulkImport")
+    def send_for_bulk_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        """
+        return pulumi.get(self, "send_for_bulk_import")
+
+    @send_for_bulk_import.setter
+    def send_for_bulk_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_for_bulk_import", value)
 
 
 @pulumi.input_type

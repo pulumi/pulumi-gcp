@@ -28,6 +28,10 @@ class SecretIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -36,6 +40,9 @@ class SecretIamBindingConditionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -45,6 +52,9 @@ class SecretIamBindingConditionArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -67,6 +77,10 @@ class SecretIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -75,6 +89,9 @@ class SecretIamMemberConditionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -84,6 +101,9 @@ class SecretIamMemberConditionArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter

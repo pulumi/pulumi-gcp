@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -59,6 +60,21 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Enable global access for endpoint attachment.
+     * 
+     */
+    @Import(name="endpointGlobalAccess")
+    private @Nullable Output<Boolean> endpointGlobalAccess;
+
+    /**
+     * @return Enable global access for endpoint attachment.
+     * 
+     */
+    public Optional<Output<Boolean>> endpointGlobalAccess() {
+        return Optional.ofNullable(this.endpointGlobalAccess);
     }
 
     /**
@@ -201,6 +217,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.endpointGlobalAccess = $.endpointGlobalAccess;
         this.endpointIp = $.endpointIp;
         this.labels = $.labels;
         this.location = $.location;
@@ -290,6 +307,27 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param endpointGlobalAccess Enable global access for endpoint attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointGlobalAccess(@Nullable Output<Boolean> endpointGlobalAccess) {
+            $.endpointGlobalAccess = endpointGlobalAccess;
+            return this;
+        }
+
+        /**
+         * @param endpointGlobalAccess Enable global access for endpoint attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointGlobalAccess(Boolean endpointGlobalAccess) {
+            return endpointGlobalAccess(Output.of(endpointGlobalAccess));
         }
 
         /**

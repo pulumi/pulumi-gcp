@@ -9,6 +9,7 @@ import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
 import com.pulumi.gcp.redis.inputs.ClusterStateInfoArgs;
+import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -321,6 +322,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * Immutable. Zone distribution config for Memorystore Redis cluster.
+     * 
+     */
+    @Import(name="zoneDistributionConfig")
+    private @Nullable Output<ClusterZoneDistributionConfigArgs> zoneDistributionConfig;
+
+    /**
+     * @return Immutable. Zone distribution config for Memorystore Redis cluster.
+     * 
+     */
+    public Optional<Output<ClusterZoneDistributionConfigArgs>> zoneDistributionConfig() {
+        return Optional.ofNullable(this.zoneDistributionConfig);
+    }
+
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
@@ -342,6 +358,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.stateInfos = $.stateInfos;
         this.transitEncryptionMode = $.transitEncryptionMode;
         this.uid = $.uid;
+        this.zoneDistributionConfig = $.zoneDistributionConfig;
     }
 
     public static Builder builder() {
@@ -810,6 +827,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param zoneDistributionConfig Immutable. Zone distribution config for Memorystore Redis cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneDistributionConfig(@Nullable Output<ClusterZoneDistributionConfigArgs> zoneDistributionConfig) {
+            $.zoneDistributionConfig = zoneDistributionConfig;
+            return this;
+        }
+
+        /**
+         * @param zoneDistributionConfig Immutable. Zone distribution config for Memorystore Redis cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneDistributionConfig(ClusterZoneDistributionConfigArgs zoneDistributionConfig) {
+            return zoneDistributionConfig(Output.of(zoneDistributionConfig));
         }
 
         public ClusterState build() {

@@ -562,6 +562,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     */
+    public readonly serviceLbPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -615,6 +620,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceLbPolicy"] = state ? state.serviceLbPolicy : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
@@ -644,6 +650,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["serviceLbPolicy"] = args ? args.serviceLbPolicy : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -887,6 +894,11 @@ export interface BackendServiceState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     */
+    serviceLbPolicy?: pulumi.Input<string>;
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
@@ -1112,6 +1124,11 @@ export interface BackendServiceArgs {
      * Structure is documented below.
      */
     securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings>;
+    /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     */
+    serviceLbPolicy?: pulumi.Input<string>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.

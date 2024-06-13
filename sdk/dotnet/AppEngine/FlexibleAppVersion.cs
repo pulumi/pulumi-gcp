@@ -243,6 +243,12 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
+        /// Runtime settings for App Engine flexible environment.
+        /// </summary>
+        [Output("flexibleRuntimeSettings")]
+        public Output<Outputs.FlexibleAppVersionFlexibleRuntimeSettings?> FlexibleRuntimeSettings { get; private set; } = null!;
+
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
         /// request and other request handlers are not attempted.
         /// </summary>
@@ -487,6 +493,12 @@ namespace Pulumi.Gcp.AppEngine
             set => _envVariables = value;
         }
 
+        /// <summary>
+        /// Runtime settings for App Engine flexible environment.
+        /// </summary>
+        [Input("flexibleRuntimeSettings")]
+        public Input<Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs>? FlexibleRuntimeSettings { get; set; }
+
         [Input("handlers")]
         private InputList<Inputs.FlexibleAppVersionHandlerArgs>? _handlers;
 
@@ -699,6 +711,12 @@ namespace Pulumi.Gcp.AppEngine
             get => _envVariables ?? (_envVariables = new InputMap<string>());
             set => _envVariables = value;
         }
+
+        /// <summary>
+        /// Runtime settings for App Engine flexible environment.
+        /// </summary>
+        [Input("flexibleRuntimeSettings")]
+        public Input<Inputs.FlexibleAppVersionFlexibleRuntimeSettingsGetArgs>? FlexibleRuntimeSettings { get; set; }
 
         [Input("handlers")]
         private InputList<Inputs.FlexibleAppVersionHandlerGetArgs>? _handlers;

@@ -31,6 +31,10 @@ __all__ = [
     'RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs',
     'RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs',
     'RestorePlanRestoreConfigExcludedNamespacesArgs',
+    'RestorePlanRestoreConfigRestoreOrderArgs',
+    'RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs',
+    'RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs',
+    'RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs',
     'RestorePlanRestoreConfigSelectedApplicationsArgs',
     'RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs',
     'RestorePlanRestoreConfigSelectedNamespacesArgs',
@@ -38,6 +42,7 @@ __all__ = [
     'RestorePlanRestoreConfigTransformationRuleFieldActionArgs',
     'RestorePlanRestoreConfigTransformationRuleResourceFilterArgs',
     'RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs',
+    'RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs',
 ]
 
 @pulumi.input_type
@@ -47,6 +52,7 @@ class BackupPlanBackupConfigArgs:
                  encryption_key: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']] = None,
                  include_secrets: Optional[pulumi.Input[bool]] = None,
                  include_volume_data: Optional[pulumi.Input[bool]] = None,
+                 permissive_mode: Optional[pulumi.Input[bool]] = None,
                  selected_applications: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']] = None,
                  selected_namespaces: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']] = None):
         """
@@ -58,6 +64,9 @@ class BackupPlanBackupConfigArgs:
                when they fall into the scope of Backups.
         :param pulumi.Input[bool] include_volume_data: This flag specifies whether volume data should be backed up when PVCs are
                included in the scope of a Backup.
+        :param pulumi.Input[bool] permissive_mode: This flag specifies whether Backups will not fail when
+               Backup for GKE detects Kubernetes configuration that is
+               non-standard or requires additional setup to restore.
         :param pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs'] selected_applications: A list of namespaced Kubernetes Resources.
                Structure is documented below.
         :param pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs'] selected_namespaces: If set, include just the resources in the listed namespaces.
@@ -71,6 +80,8 @@ class BackupPlanBackupConfigArgs:
             pulumi.set(__self__, "include_secrets", include_secrets)
         if include_volume_data is not None:
             pulumi.set(__self__, "include_volume_data", include_volume_data)
+        if permissive_mode is not None:
+            pulumi.set(__self__, "permissive_mode", permissive_mode)
         if selected_applications is not None:
             pulumi.set(__self__, "selected_applications", selected_applications)
         if selected_namespaces is not None:
@@ -127,6 +138,20 @@ class BackupPlanBackupConfigArgs:
     @include_volume_data.setter
     def include_volume_data(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_volume_data", value)
+
+    @property
+    @pulumi.getter(name="permissiveMode")
+    def permissive_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag specifies whether Backups will not fail when
+        Backup for GKE detects Kubernetes configuration that is
+        non-standard or requires additional setup to restore.
+        """
+        return pulumi.get(self, "permissive_mode")
+
+    @permissive_mode.setter
+    def permissive_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permissive_mode", value)
 
     @property
     @pulumi.getter(name="selectedApplications")
@@ -905,10 +930,12 @@ class RestorePlanRestoreConfigArgs:
                  excluded_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']] = None,
                  namespaced_resource_restore_mode: Optional[pulumi.Input[str]] = None,
                  no_namespaces: Optional[pulumi.Input[bool]] = None,
+                 restore_order: Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']] = None,
                  selected_applications: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']] = None,
                  selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
                  transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
-                 volume_data_restore_policy: Optional[pulumi.Input[str]] = None):
+                 volume_data_restore_policy: Optional[pulumi.Input[str]] = None,
+                 volume_data_restore_policy_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]] = None):
         """
         :param pulumi.Input[bool] all_namespaces: If True, restore all namespaced resources in the Backup.
                Setting this field to False will result in an error.
@@ -930,9 +957,11 @@ class RestorePlanRestoreConfigArgs:
                if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
                See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
                for more information on each mode.
-               Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+               Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         :param pulumi.Input[bool] no_namespaces: Do not restore any namespaced resources if set to "True".
                Specifying this field to "False" is not allowed.
+        :param pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs'] restore_order: It contains custom ordering to use on a Restore.
+               Structure is documented below.
         :param pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs'] selected_applications: A list of selected ProtectedApplications to restore.
                The listed ProtectedApplications and all the resources
                to which they refer will be restored.
@@ -953,6 +982,10 @@ class RestorePlanRestoreConfigArgs:
                See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
                for more information on each policy option.
                Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]] volume_data_restore_policy_bindings: A table that binds volumes by their scope to a restore policy. Bindings
+               must have a unique scope. Any volumes not scoped in the bindings are
+               subject to the policy defined in volume_data_restore_policy.
+               Structure is documented below.
         """
         if all_namespaces is not None:
             pulumi.set(__self__, "all_namespaces", all_namespaces)
@@ -966,6 +999,8 @@ class RestorePlanRestoreConfigArgs:
             pulumi.set(__self__, "namespaced_resource_restore_mode", namespaced_resource_restore_mode)
         if no_namespaces is not None:
             pulumi.set(__self__, "no_namespaces", no_namespaces)
+        if restore_order is not None:
+            pulumi.set(__self__, "restore_order", restore_order)
         if selected_applications is not None:
             pulumi.set(__self__, "selected_applications", selected_applications)
         if selected_namespaces is not None:
@@ -974,6 +1009,8 @@ class RestorePlanRestoreConfigArgs:
             pulumi.set(__self__, "transformation_rules", transformation_rules)
         if volume_data_restore_policy is not None:
             pulumi.set(__self__, "volume_data_restore_policy", volume_data_restore_policy)
+        if volume_data_restore_policy_bindings is not None:
+            pulumi.set(__self__, "volume_data_restore_policy_bindings", volume_data_restore_policy_bindings)
 
     @property
     @pulumi.getter(name="allNamespaces")
@@ -1043,7 +1080,7 @@ class RestorePlanRestoreConfigArgs:
         if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
         See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
         for more information on each mode.
-        Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+        Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         """
         return pulumi.get(self, "namespaced_resource_restore_mode")
 
@@ -1063,6 +1100,19 @@ class RestorePlanRestoreConfigArgs:
     @no_namespaces.setter
     def no_namespaces(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_namespaces", value)
+
+    @property
+    @pulumi.getter(name="restoreOrder")
+    def restore_order(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']]:
+        """
+        It contains custom ordering to use on a Restore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_order")
+
+    @restore_order.setter
+    def restore_order(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']]):
+        pulumi.set(self, "restore_order", value)
 
     @property
     @pulumi.getter(name="selectedApplications")
@@ -1127,6 +1177,21 @@ class RestorePlanRestoreConfigArgs:
     @volume_data_restore_policy.setter
     def volume_data_restore_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "volume_data_restore_policy", value)
+
+    @property
+    @pulumi.getter(name="volumeDataRestorePolicyBindings")
+    def volume_data_restore_policy_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]:
+        """
+        A table that binds volumes by their scope to a restore policy. Bindings
+        must have a unique scope. Any volumes not scoped in the bindings are
+        subject to the policy defined in volume_data_restore_policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_data_restore_policy_bindings")
+
+    @volume_data_restore_policy_bindings.setter
+    def volume_data_restore_policy_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]):
+        pulumi.set(self, "volume_data_restore_policy_bindings", value)
 
 
 @pulumi.input_type
@@ -1331,6 +1396,173 @@ class RestorePlanRestoreConfigExcludedNamespacesArgs:
 
 
 @pulumi.input_type
+class RestorePlanRestoreConfigRestoreOrderArgs:
+    def __init__(__self__, *,
+                 group_kind_dependencies: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs']]] group_kind_dependencies: A list of group kind dependency pairs
+               that is used by Backup for GKE to
+               generate a group kind restore order.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "group_kind_dependencies", group_kind_dependencies)
+
+    @property
+    @pulumi.getter(name="groupKindDependencies")
+    def group_kind_dependencies(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs']]]:
+        """
+        A list of group kind dependency pairs
+        that is used by Backup for GKE to
+        generate a group kind restore order.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_kind_dependencies")
+
+    @group_kind_dependencies.setter
+    def group_kind_dependencies(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs']]]):
+        pulumi.set(self, "group_kind_dependencies", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs:
+    def __init__(__self__, *,
+                 requiring: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs'],
+                 satisfying: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs']):
+        """
+        :param pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs'] requiring: The requiring group kind requires that the satisfying
+               group kind be restored first.
+               Structure is documented below.
+        :param pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs'] satisfying: The satisfying group kind must be restored first
+               in order to satisfy the dependency.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "requiring", requiring)
+        pulumi.set(__self__, "satisfying", satisfying)
+
+    @property
+    @pulumi.getter
+    def requiring(self) -> pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs']:
+        """
+        The requiring group kind requires that the satisfying
+        group kind be restored first.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "requiring")
+
+    @requiring.setter
+    def requiring(self, value: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs']):
+        pulumi.set(self, "requiring", value)
+
+    @property
+    @pulumi.getter
+    def satisfying(self) -> pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs']:
+        """
+        The satisfying group kind must be restored first
+        in order to satisfy the dependency.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "satisfying")
+
+    @satisfying.setter
+    def satisfying(self, value: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs']):
+        pulumi.set(self, "satisfying", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 resource_kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_group: API Group of a Kubernetes resource, e.g.
+               "apiextensions.k8s.io", "storage.k8s.io", etc.
+               Use empty string for core group.
+        :param pulumi.Input[str] resource_kind: Kind of a Kubernetes resource, e.g.
+               "CustomResourceDefinition", "StorageClass", etc.
+               
+               - - -
+        """
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if resource_kind is not None:
+            pulumi.set(__self__, "resource_kind", resource_kind)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Group of a Kubernetes resource, e.g.
+        "apiextensions.k8s.io", "storage.k8s.io", etc.
+        Use empty string for core group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="resourceKind")
+    def resource_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of a Kubernetes resource, e.g.
+        "CustomResourceDefinition", "StorageClass", etc.
+
+        - - -
+        """
+        return pulumi.get(self, "resource_kind")
+
+    @resource_kind.setter
+    def resource_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_kind", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 resource_kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_group: API Group of a Kubernetes resource, e.g.
+               "apiextensions.k8s.io", "storage.k8s.io", etc.
+               Use empty string for core group.
+        :param pulumi.Input[str] resource_kind: Kind of a Kubernetes resource, e.g.
+               "CustomResourceDefinition", "StorageClass", etc.
+        """
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if resource_kind is not None:
+            pulumi.set(__self__, "resource_kind", resource_kind)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Group of a Kubernetes resource, e.g.
+        "apiextensions.k8s.io", "storage.k8s.io", etc.
+        Use empty string for core group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="resourceKind")
+    def resource_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of a Kubernetes resource, e.g.
+        "CustomResourceDefinition", "StorageClass", etc.
+        """
+        return pulumi.get(self, "resource_kind")
+
+    @resource_kind.setter
+    def resource_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_kind", value)
+
+
+@pulumi.input_type
 class RestorePlanRestoreConfigSelectedApplicationsArgs:
     def __init__(__self__, *,
                  namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]):
@@ -1501,8 +1733,6 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
                location within the target document where the operation is performed.
         :param pulumi.Input[str] value: A string that specifies the desired value in string format
                to use for transformation.
-               
-               - - -
         """
         pulumi.set(__self__, "op", op)
         if from_path is not None:
@@ -1557,8 +1787,6 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
         """
         A string that specifies the desired value in string format
         to use for transformation.
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -1693,5 +1921,52 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
     @resource_kind.setter
     def resource_kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_kind", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[str],
+                 volume_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] policy: Specifies the mechanism to be used to restore this volume data.
+               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+               for more information on each policy option.
+               Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+        :param pulumi.Input[str] volume_type: The volume type, as determined by the PVC's
+               bound PV, to apply the policy to.
+               Possible values are: `GCE_PERSISTENT_DISK`.
+        """
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[str]:
+        """
+        Specifies the mechanism to be used to restore this volume data.
+        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+        for more information on each policy option.
+        Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> pulumi.Input[str]:
+        """
+        The volume type, as determined by the PVC's
+        bound PV, to apply the policy to.
+        Possible values are: `GCE_PERSISTENT_DISK`.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_type", value)
 
 

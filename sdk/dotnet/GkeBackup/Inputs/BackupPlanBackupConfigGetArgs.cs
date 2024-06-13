@@ -41,6 +41,14 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         public Input<bool>? IncludeVolumeData { get; set; }
 
         /// <summary>
+        /// This flag specifies whether Backups will not fail when
+        /// Backup for GKE detects Kubernetes configuration that is
+        /// non-standard or requires additional setup to restore.
+        /// </summary>
+        [Input("permissiveMode")]
+        public Input<bool>? PermissiveMode { get; set; }
+
+        /// <summary>
         /// A list of namespaced Kubernetes Resources.
         /// Structure is documented below.
         /// </summary>

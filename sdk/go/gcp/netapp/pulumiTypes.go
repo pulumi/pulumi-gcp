@@ -13,6 +13,185 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VolumeBackupConfig struct {
+	// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+	BackupPolicies []string `pulumi:"backupPolicies"`
+	// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+	// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+	BackupVault *string `pulumi:"backupVault"`
+	// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+	ScheduledBackupEnabled *bool `pulumi:"scheduledBackupEnabled"`
+}
+
+// VolumeBackupConfigInput is an input type that accepts VolumeBackupConfigArgs and VolumeBackupConfigOutput values.
+// You can construct a concrete instance of `VolumeBackupConfigInput` via:
+//
+//	VolumeBackupConfigArgs{...}
+type VolumeBackupConfigInput interface {
+	pulumi.Input
+
+	ToVolumeBackupConfigOutput() VolumeBackupConfigOutput
+	ToVolumeBackupConfigOutputWithContext(context.Context) VolumeBackupConfigOutput
+}
+
+type VolumeBackupConfigArgs struct {
+	// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+	BackupPolicies pulumi.StringArrayInput `pulumi:"backupPolicies"`
+	// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+	// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+	BackupVault pulumi.StringPtrInput `pulumi:"backupVault"`
+	// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+	ScheduledBackupEnabled pulumi.BoolPtrInput `pulumi:"scheduledBackupEnabled"`
+}
+
+func (VolumeBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeBackupConfig)(nil)).Elem()
+}
+
+func (i VolumeBackupConfigArgs) ToVolumeBackupConfigOutput() VolumeBackupConfigOutput {
+	return i.ToVolumeBackupConfigOutputWithContext(context.Background())
+}
+
+func (i VolumeBackupConfigArgs) ToVolumeBackupConfigOutputWithContext(ctx context.Context) VolumeBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupConfigOutput)
+}
+
+func (i VolumeBackupConfigArgs) ToVolumeBackupConfigPtrOutput() VolumeBackupConfigPtrOutput {
+	return i.ToVolumeBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeBackupConfigArgs) ToVolumeBackupConfigPtrOutputWithContext(ctx context.Context) VolumeBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupConfigOutput).ToVolumeBackupConfigPtrOutputWithContext(ctx)
+}
+
+// VolumeBackupConfigPtrInput is an input type that accepts VolumeBackupConfigArgs, VolumeBackupConfigPtr and VolumeBackupConfigPtrOutput values.
+// You can construct a concrete instance of `VolumeBackupConfigPtrInput` via:
+//
+//	        VolumeBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToVolumeBackupConfigPtrOutput() VolumeBackupConfigPtrOutput
+	ToVolumeBackupConfigPtrOutputWithContext(context.Context) VolumeBackupConfigPtrOutput
+}
+
+type volumeBackupConfigPtrType VolumeBackupConfigArgs
+
+func VolumeBackupConfigPtr(v *VolumeBackupConfigArgs) VolumeBackupConfigPtrInput {
+	return (*volumeBackupConfigPtrType)(v)
+}
+
+func (*volumeBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeBackupConfig)(nil)).Elem()
+}
+
+func (i *volumeBackupConfigPtrType) ToVolumeBackupConfigPtrOutput() VolumeBackupConfigPtrOutput {
+	return i.ToVolumeBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeBackupConfigPtrType) ToVolumeBackupConfigPtrOutputWithContext(ctx context.Context) VolumeBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupConfigPtrOutput)
+}
+
+type VolumeBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (VolumeBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeBackupConfig)(nil)).Elem()
+}
+
+func (o VolumeBackupConfigOutput) ToVolumeBackupConfigOutput() VolumeBackupConfigOutput {
+	return o
+}
+
+func (o VolumeBackupConfigOutput) ToVolumeBackupConfigOutputWithContext(ctx context.Context) VolumeBackupConfigOutput {
+	return o
+}
+
+func (o VolumeBackupConfigOutput) ToVolumeBackupConfigPtrOutput() VolumeBackupConfigPtrOutput {
+	return o.ToVolumeBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeBackupConfigOutput) ToVolumeBackupConfigPtrOutputWithContext(ctx context.Context) VolumeBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeBackupConfig) *VolumeBackupConfig {
+		return &v
+	}).(VolumeBackupConfigPtrOutput)
+}
+
+// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+func (o VolumeBackupConfigOutput) BackupPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeBackupConfig) []string { return v.BackupPolicies }).(pulumi.StringArrayOutput)
+}
+
+// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+func (o VolumeBackupConfigOutput) BackupVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeBackupConfig) *string { return v.BackupVault }).(pulumi.StringPtrOutput)
+}
+
+// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+func (o VolumeBackupConfigOutput) ScheduledBackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeBackupConfig) *bool { return v.ScheduledBackupEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeBackupConfig)(nil)).Elem()
+}
+
+func (o VolumeBackupConfigPtrOutput) ToVolumeBackupConfigPtrOutput() VolumeBackupConfigPtrOutput {
+	return o
+}
+
+func (o VolumeBackupConfigPtrOutput) ToVolumeBackupConfigPtrOutputWithContext(ctx context.Context) VolumeBackupConfigPtrOutput {
+	return o
+}
+
+func (o VolumeBackupConfigPtrOutput) Elem() VolumeBackupConfigOutput {
+	return o.ApplyT(func(v *VolumeBackupConfig) VolumeBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeBackupConfig
+		return ret
+	}).(VolumeBackupConfigOutput)
+}
+
+// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+func (o VolumeBackupConfigPtrOutput) BackupPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VolumeBackupConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupPolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+func (o VolumeBackupConfigPtrOutput) BackupVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupVault
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
+func (o VolumeBackupConfigPtrOutput) ScheduledBackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeBackupConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledBackupEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type VolumeExportPolicy struct {
 	// Export rules (up to 5) control NFS volume access.
 	// Structure is documented below.
@@ -1995,6 +2174,8 @@ func (o VolumeSnapshotPolicyWeeklySchedulePtrOutput) SnapshotsToKeep() pulumi.In
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeBackupConfigInput)(nil)).Elem(), VolumeBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeBackupConfigPtrInput)(nil)).Elem(), VolumeBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyInput)(nil)).Elem(), VolumeExportPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyPtrInput)(nil)).Elem(), VolumeExportPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyRuleInput)(nil)).Elem(), VolumeExportPolicyRuleArgs{})
@@ -2017,6 +2198,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyMonthlySchedulePtrInput)(nil)).Elem(), VolumeSnapshotPolicyMonthlyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyWeeklyScheduleInput)(nil)).Elem(), VolumeSnapshotPolicyWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyWeeklySchedulePtrInput)(nil)).Elem(), VolumeSnapshotPolicyWeeklyScheduleArgs{})
+	pulumi.RegisterOutputType(VolumeBackupConfigOutput{})
+	pulumi.RegisterOutputType(VolumeBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(VolumeExportPolicyOutput{})
 	pulumi.RegisterOutputType(VolumeExportPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeExportPolicyRuleOutput{})

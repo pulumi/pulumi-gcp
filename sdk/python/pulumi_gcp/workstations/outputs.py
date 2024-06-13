@@ -812,8 +812,14 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "machineType":
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
+        elif key == "machineType":
             suggest = "machine_type"
+        elif key == "poolSize":
+            suggest = "pool_size"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceBoostConfig. Access the value via the '{suggest}' property getter instead.")
@@ -829,18 +835,31 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
     def __init__(__self__, *,
                  id: str,
                  accelerators: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator']] = None,
-                 machine_type: Optional[str] = None):
+                 boot_disk_size_gb: Optional[int] = None,
+                 enable_nested_virtualization: Optional[bool] = None,
+                 machine_type: Optional[str] = None,
+                 pool_size: Optional[int] = None):
         """
         :param str id: The id to be used for the boost config.
         :param Sequence['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs'] accelerators: An accelerator card attached to the boost instance.
                Structure is documented below.
+        :param int boot_disk_size_gb: Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        :param bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param str machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        :param int pool_size: Number of instances to pool for faster workstation boosting.
         """
         pulumi.set(__self__, "id", id)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if pool_size is not None:
+            pulumi.set(__self__, "pool_size", pool_size)
 
     @property
     @pulumi.getter
@@ -860,12 +879,37 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
         return pulumi.get(self, "accelerators")
 
     @property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[int]:
+        """
+        Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[bool]:
+        """
+        Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
         The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="poolSize")
+    def pool_size(self) -> Optional[int]:
+        """
+        Number of instances to pool for faster workstation boosting.
+        """
+        return pulumi.get(self, "pool_size")
 
 
 @pulumi.output_type

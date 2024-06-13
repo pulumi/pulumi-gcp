@@ -1869,12 +1869,14 @@ class TargetExecutionConfigArgs:
                  artifact_storage: Optional[pulumi.Input[str]] = None,
                  execution_timeout: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 verbose: Optional[pulumi.Input[bool]] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] usages: Required. Usages when this configuration should be applied.
         :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param pulumi.Input[str] execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+        :param pulumi.Input[bool] verbose: Optional. If true, additional logging will be enabled when running builds in this execution environment.
         :param pulumi.Input[str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
@@ -1884,6 +1886,8 @@ class TargetExecutionConfigArgs:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if verbose is not None:
+            pulumi.set(__self__, "verbose", verbose)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
 
@@ -1934,6 +1938,18 @@ class TargetExecutionConfigArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def verbose(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, additional logging will be enabled when running builds in this execution environment.
+        """
+        return pulumi.get(self, "verbose")
+
+    @verbose.setter
+    def verbose(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verbose", value)
 
     @property
     @pulumi.getter(name="workerPool")

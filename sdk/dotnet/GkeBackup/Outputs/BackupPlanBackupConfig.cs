@@ -34,6 +34,12 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// </summary>
         public readonly bool? IncludeVolumeData;
         /// <summary>
+        /// This flag specifies whether Backups will not fail when
+        /// Backup for GKE detects Kubernetes configuration that is
+        /// non-standard or requires additional setup to restore.
+        /// </summary>
+        public readonly bool? PermissiveMode;
+        /// <summary>
         /// A list of namespaced Kubernetes Resources.
         /// Structure is documented below.
         /// </summary>
@@ -54,6 +60,8 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
 
             bool? includeVolumeData,
 
+            bool? permissiveMode,
+
             Outputs.BackupPlanBackupConfigSelectedApplications? selectedApplications,
 
             Outputs.BackupPlanBackupConfigSelectedNamespaces? selectedNamespaces)
@@ -62,6 +70,7 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
             EncryptionKey = encryptionKey;
             IncludeSecrets = includeSecrets;
             IncludeVolumeData = includeVolumeData;
+            PermissiveMode = permissiveMode;
             SelectedApplications = selectedApplications;
             SelectedNamespaces = selectedNamespaces;
         }

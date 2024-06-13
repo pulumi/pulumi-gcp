@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("cloudSqlTarget")]
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetGetArgs>? CloudSqlTarget { get; set; }
 
+        /// <summary>
+        /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+        /// </summary>
+        [Input("secretsTarget")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetSecretsTargetGetArgs>? SecretsTarget { get; set; }
+
         public PreventionDiscoveryConfigTargetGetArgs()
         {
         }

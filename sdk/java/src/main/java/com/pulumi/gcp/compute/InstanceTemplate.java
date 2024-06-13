@@ -624,6 +624,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkPerformanceConfig);
     }
     /**
+     * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     * 
+     */
+    @Export(name="partnerMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> partnerMetadata;
+
+    /**
+     * @return Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> partnerMetadata() {
+        return Codegen.optional(this.partnerMetadata);
+    }
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 

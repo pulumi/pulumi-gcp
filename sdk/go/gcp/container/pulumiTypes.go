@@ -34527,6 +34527,143 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterSecretManagerConfig struct {
+	// Enable the Secret Manager add-on for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterSecretManagerConfigInput is an input type that accepts ClusterSecretManagerConfigArgs and ClusterSecretManagerConfigOutput values.
+// You can construct a concrete instance of `ClusterSecretManagerConfigInput` via:
+//
+//	ClusterSecretManagerConfigArgs{...}
+type ClusterSecretManagerConfigInput interface {
+	pulumi.Input
+
+	ToClusterSecretManagerConfigOutput() ClusterSecretManagerConfigOutput
+	ToClusterSecretManagerConfigOutputWithContext(context.Context) ClusterSecretManagerConfigOutput
+}
+
+type ClusterSecretManagerConfigArgs struct {
+	// Enable the Secret Manager add-on for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterSecretManagerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i ClusterSecretManagerConfigArgs) ToClusterSecretManagerConfigOutput() ClusterSecretManagerConfigOutput {
+	return i.ToClusterSecretManagerConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretManagerConfigArgs) ToClusterSecretManagerConfigOutputWithContext(ctx context.Context) ClusterSecretManagerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigOutput)
+}
+
+func (i ClusterSecretManagerConfigArgs) ToClusterSecretManagerConfigPtrOutput() ClusterSecretManagerConfigPtrOutput {
+	return i.ToClusterSecretManagerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretManagerConfigArgs) ToClusterSecretManagerConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigOutput).ToClusterSecretManagerConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterSecretManagerConfigPtrInput is an input type that accepts ClusterSecretManagerConfigArgs, ClusterSecretManagerConfigPtr and ClusterSecretManagerConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterSecretManagerConfigPtrInput` via:
+//
+//	        ClusterSecretManagerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterSecretManagerConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterSecretManagerConfigPtrOutput() ClusterSecretManagerConfigPtrOutput
+	ToClusterSecretManagerConfigPtrOutputWithContext(context.Context) ClusterSecretManagerConfigPtrOutput
+}
+
+type clusterSecretManagerConfigPtrType ClusterSecretManagerConfigArgs
+
+func ClusterSecretManagerConfigPtr(v *ClusterSecretManagerConfigArgs) ClusterSecretManagerConfigPtrInput {
+	return (*clusterSecretManagerConfigPtrType)(v)
+}
+
+func (*clusterSecretManagerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i *clusterSecretManagerConfigPtrType) ToClusterSecretManagerConfigPtrOutput() ClusterSecretManagerConfigPtrOutput {
+	return i.ToClusterSecretManagerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSecretManagerConfigPtrType) ToClusterSecretManagerConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigPtrOutput)
+}
+
+type ClusterSecretManagerConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretManagerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o ClusterSecretManagerConfigOutput) ToClusterSecretManagerConfigOutput() ClusterSecretManagerConfigOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigOutput) ToClusterSecretManagerConfigOutputWithContext(ctx context.Context) ClusterSecretManagerConfigOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigOutput) ToClusterSecretManagerConfigPtrOutput() ClusterSecretManagerConfigPtrOutput {
+	return o.ToClusterSecretManagerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretManagerConfigOutput) ToClusterSecretManagerConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSecretManagerConfig) *ClusterSecretManagerConfig {
+		return &v
+	}).(ClusterSecretManagerConfigPtrOutput)
+}
+
+// Enable the Secret Manager add-on for this cluster.
+func (o ClusterSecretManagerConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterSecretManagerConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterSecretManagerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretManagerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o ClusterSecretManagerConfigPtrOutput) ToClusterSecretManagerConfigPtrOutput() ClusterSecretManagerConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigPtrOutput) ToClusterSecretManagerConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigPtrOutput) Elem() ClusterSecretManagerConfigOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfig) ClusterSecretManagerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecretManagerConfig
+		return ret
+	}).(ClusterSecretManagerConfigOutput)
+}
+
+// Enable the Secret Manager add-on for this cluster.
+func (o ClusterSecretManagerConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterSecurityPostureConfig struct {
 	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
 	Mode *string `pulumi:"mode"`
@@ -35826,9 +35963,9 @@ type NodePoolNetworkConfig struct {
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig *NodePoolNetworkConfigNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
-	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
 	PodCidrOverprovisionConfig *NodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
@@ -35858,9 +35995,9 @@ type NodePoolNetworkConfigArgs struct {
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig NodePoolNetworkConfigNetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
-	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
 	PodCidrOverprovisionConfig NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
@@ -35971,14 +36108,14 @@ func (o NodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Network bandwidth tier configuration.
+// Network bandwidth tier configuration. Structure is documented below.
 func (o NodePoolNetworkConfigOutput) NetworkPerformanceConfig() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfigNetworkPerformanceConfig {
 		return v.NetworkPerformanceConfig
 	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
-// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
 func (o NodePoolNetworkConfigOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
 		return v.PodCidrOverprovisionConfig
@@ -36061,7 +36198,7 @@ func (o NodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Network bandwidth tier configuration.
+// Network bandwidth tier configuration. Structure is documented below.
 func (o NodePoolNetworkConfigPtrOutput) NetworkPerformanceConfig() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *NodePoolNetworkConfigNetworkPerformanceConfig {
 		if v == nil {
@@ -36071,7 +36208,7 @@ func (o NodePoolNetworkConfigPtrOutput) NetworkPerformanceConfig() NodePoolNetwo
 	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
-// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
 func (o NodePoolNetworkConfigPtrOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
 		if v == nil {
@@ -36460,6 +36597,7 @@ func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgressBandw
 }
 
 type NodePoolNetworkConfigPodCidrOverprovisionConfig struct {
+	// Whether pod cidr overprovision is disabled.
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -36475,6 +36613,7 @@ type NodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
 }
 
 type NodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
+	// Whether pod cidr overprovision is disabled.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -36555,6 +36694,7 @@ func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToNodePoolNetwork
 	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
 }
 
+// Whether pod cidr overprovision is disabled.
 func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -36583,6 +36723,7 @@ func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Elem() NodePoo
 	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
 }
 
+// Whether pod cidr overprovision is disabled.
 func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfigPodCidrOverprovisionConfig) *bool {
 		if v == nil {
@@ -58220,6 +58361,103 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+type GetClusterSecretManagerConfig struct {
+	// Enable the Secret manager csi component.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterSecretManagerConfigInput is an input type that accepts GetClusterSecretManagerConfigArgs and GetClusterSecretManagerConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigInput` via:
+//
+//	GetClusterSecretManagerConfigArgs{...}
+type GetClusterSecretManagerConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput
+	ToGetClusterSecretManagerConfigOutputWithContext(context.Context) GetClusterSecretManagerConfigOutput
+}
+
+type GetClusterSecretManagerConfigArgs struct {
+	// Enable the Secret manager csi component.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterSecretManagerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigArgs) ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput {
+	return i.ToGetClusterSecretManagerConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigArgs) ToGetClusterSecretManagerConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigOutput)
+}
+
+// GetClusterSecretManagerConfigArrayInput is an input type that accepts GetClusterSecretManagerConfigArray and GetClusterSecretManagerConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigArrayInput` via:
+//
+//	GetClusterSecretManagerConfigArray{ GetClusterSecretManagerConfigArgs{...} }
+type GetClusterSecretManagerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput
+	ToGetClusterSecretManagerConfigArrayOutputWithContext(context.Context) GetClusterSecretManagerConfigArrayOutput
+}
+
+type GetClusterSecretManagerConfigArray []GetClusterSecretManagerConfigInput
+
+func (GetClusterSecretManagerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigArray) ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput {
+	return i.ToGetClusterSecretManagerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigArray) ToGetClusterSecretManagerConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigArrayOutput)
+}
+
+type GetClusterSecretManagerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigOutput) ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigOutput) ToGetClusterSecretManagerConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigOutput {
+	return o
+}
+
+// Enable the Secret manager csi component.
+func (o GetClusterSecretManagerConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterSecretManagerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) ToGetClusterSecretManagerConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretManagerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretManagerConfig {
+		return vs[0].([]GetClusterSecretManagerConfig)[vs[1].(int)]
+	}).(GetClusterSecretManagerConfigOutput)
+}
+
 type GetClusterSecurityPostureConfig struct {
 	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
 	Mode string `pulumi:"mode"`
@@ -59245,6 +59483,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigPtrInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigPtrInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
@@ -59620,6 +59860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigInput)(nil)).Elem(), GetClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigArrayInput)(nil)).Elem(), GetClusterSecurityPostureConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArgs{})
@@ -60047,6 +60289,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSecretManagerConfigOutput{})
+	pulumi.RegisterOutputType(ClusterSecretManagerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigOutput{})
@@ -60422,6 +60666,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigOutput{})

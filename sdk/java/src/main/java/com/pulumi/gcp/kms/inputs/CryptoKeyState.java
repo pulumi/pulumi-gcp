@@ -221,7 +221,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * 
      */
     @Import(name="skipInitialVersionCreation")
@@ -229,7 +230,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+     * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * 
      */
     public Optional<Output<Boolean>> skipInitialVersionCreation() {
@@ -568,7 +570,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param skipInitialVersionCreation If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-         * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+         * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+         * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
          * 
          * @return builder
          * 
@@ -580,7 +583,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param skipInitialVersionCreation If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-         * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+         * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+         * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
          * 
          * @return builder
          * 

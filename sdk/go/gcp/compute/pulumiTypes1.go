@@ -13,6 +13,338 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay struct {
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
+	FixedDelay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
+	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage float64 `pulumi:"percentage"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{...}
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs struct {
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
+	FixedDelay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput `pulumi:"fixedDelay"`
+	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput).ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs, URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtr and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrType URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs
+
+func URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtr(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+		return v.FixedDelay
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) float64 { return v.Percentage }).(pulumi.Float64Output)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput)
+}
+
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+		if v == nil {
+			return nil
+		}
+		return &v.FixedDelay
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{...}
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput).ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs, URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtr and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrType URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs
+
+func URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtr(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) string {
+		return v.Seconds
+	}).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
@@ -15306,6 +15638,112 @@ func (o GetInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) GetIns
 	}).(GetInstanceGroupManagerParamOutput)
 }
 
+type GetInstanceGroupManagerStandbyPolicy struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode string `pulumi:"mode"`
+}
+
+// GetInstanceGroupManagerStandbyPolicyInput is an input type that accepts GetInstanceGroupManagerStandbyPolicyArgs and GetInstanceGroupManagerStandbyPolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStandbyPolicyInput` via:
+//
+//	GetInstanceGroupManagerStandbyPolicyArgs{...}
+type GetInstanceGroupManagerStandbyPolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput
+	ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(context.Context) GetInstanceGroupManagerStandbyPolicyOutput
+}
+
+type GetInstanceGroupManagerStandbyPolicyArgs struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetInstanceGroupManagerStandbyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArgs) ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput {
+	return i.ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArgs) ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStandbyPolicyOutput)
+}
+
+// GetInstanceGroupManagerStandbyPolicyArrayInput is an input type that accepts GetInstanceGroupManagerStandbyPolicyArray and GetInstanceGroupManagerStandbyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStandbyPolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerStandbyPolicyArray{ GetInstanceGroupManagerStandbyPolicyArgs{...} }
+type GetInstanceGroupManagerStandbyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput
+	ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput
+}
+
+type GetInstanceGroupManagerStandbyPolicyArray []GetInstanceGroupManagerStandbyPolicyInput
+
+func (GetInstanceGroupManagerStandbyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArray) ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArray) ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStandbyPolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerStandbyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStandbyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyOutput) ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyOutput) ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+func (o GetInstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStandbyPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+func (o GetInstanceGroupManagerStandbyPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStandbyPolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStandbyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStandbyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStandbyPolicy {
+		return vs[0].([]GetInstanceGroupManagerStandbyPolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStandbyPolicyOutput)
+}
+
 type GetInstanceGroupManagerStatefulDisk struct {
 	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
 	DeleteRule string `pulumi:"deleteRule"`
@@ -30007,6 +30445,2739 @@ func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetRouterStatusBestRoutesForRouterOutput)
 }
 
+type GetSecurityPolicyAdaptiveProtectionConfig struct {
+	// Auto Deploy Config of this security policy
+	AutoDeployConfigs []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig `pulumi:"autoDeployConfigs"`
+	// Layer 7 DDoS Defense Config of this security policy
+	Layer7DdosDefenseConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig `pulumi:"layer7DdosDefenseConfigs"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArgs struct {
+	// Auto Deploy Config of this security policy
+	AutoDeployConfigs GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput `pulumi:"autoDeployConfigs"`
+	// Layer 7 DDoS Defense Config of this security policy
+	Layer7DdosDefenseConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput `pulumi:"layer7DdosDefenseConfigs"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigArray and GetSecurityPolicyAdaptiveProtectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArray []GetSecurityPolicyAdaptiveProtectionConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+// Auto Deploy Config of this security policy
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) AutoDeployConfigs() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfig) []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return v.AutoDeployConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput)
+}
+
+// Layer 7 DDoS Defense Config of this security policy
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) Layer7DdosDefenseConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return v.Layer7DdosDefenseConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold float64 `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec int `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold float64 `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold float64 `pulumi:"loadThreshold"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold pulumi.Float64Input `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec pulumi.IntInput `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold pulumi.Float64Input `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold pulumi.Float64Input `pulumi:"loadThreshold"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray and GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) int { return v.ExpirationSec }).(pulumi.IntOutput)
+}
+
+// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 {
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) LoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 { return v.LoadThreshold }).(pulumi.Float64Output)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable bool `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility string `pulumi:"ruleVisibility"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility pulumi.StringInput `pulumi:"ruleVisibility"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+// If set to true, enables CAAP for L7 DDoS detection.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) string {
+		return v.RuleVisibility
+	}).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfig struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+	JsonParsing string `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE".
+	LogLevel string `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigArgs and GetSecurityPolicyAdvancedOptionsConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigArgs{...}
+type GetSecurityPolicyAdvancedOptionsConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArgs struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+	JsonParsing pulumi.StringInput `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE".
+	LogLevel pulumi.StringInput `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
+}
+
+func (GetSecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigArrayInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigArray and GetSecurityPolicyAdvancedOptionsConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigArray{ GetSecurityPolicyAdvancedOptionsConfigArgs{...} }
+type GetSecurityPolicyAdvancedOptionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArray []GetSecurityPolicyAdvancedOptionsConfigInput
+
+func (GetSecurityPolicyAdvancedOptionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfigs() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfigs
+	}).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.JsonParsing }).(pulumi.StringOutput)
+}
+
+// Logging level. Supported values include: "NORMAL", "VERBOSE".
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdvancedOptionsConfig {
+		return vs[0].([]GetSecurityPolicyAdvancedOptionsConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray and GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{ GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...} }
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing.
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return vs[0].([]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfig struct {
+	// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey string `pulumi:"redirectSiteKey"`
+}
+
+// GetSecurityPolicyRecaptchaOptionsConfigInput is an input type that accepts GetSecurityPolicyRecaptchaOptionsConfigArgs and GetSecurityPolicyRecaptchaOptionsConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRecaptchaOptionsConfigInput` via:
+//
+//	GetSecurityPolicyRecaptchaOptionsConfigArgs{...}
+type GetSecurityPolicyRecaptchaOptionsConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput
+	ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArgs struct {
+	// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey pulumi.StringInput `pulumi:"redirectSiteKey"`
+}
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArgs) ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return i.ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArgs) ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+// GetSecurityPolicyRecaptchaOptionsConfigArrayInput is an input type that accepts GetSecurityPolicyRecaptchaOptionsConfigArray and GetSecurityPolicyRecaptchaOptionsConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRecaptchaOptionsConfigArrayInput` via:
+//
+//	GetSecurityPolicyRecaptchaOptionsConfigArray{ GetSecurityPolicyRecaptchaOptionsConfigArgs{...} }
+type GetSecurityPolicyRecaptchaOptionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput
+	ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArray []GetSecurityPolicyRecaptchaOptionsConfigInput
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArray) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return i.ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArray) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRecaptchaOptionsConfigArrayOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRecaptchaOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRecaptchaOptionsConfig) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRecaptchaOptionsConfig {
+		return vs[0].([]GetSecurityPolicyRecaptchaOptionsConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+type GetSecurityPolicyRuleType struct {
+	// Action to take when match matches the request.
+	Action string `pulumi:"action"`
+	// An optional description of this rule. Max size is 64.
+	Description string `pulumi:"description"`
+	// Additional actions that are performed on headers.
+	HeaderActions []GetSecurityPolicyRuleHeaderAction `pulumi:"headerActions"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+	Matches []GetSecurityPolicyRuleMatch `pulumi:"matches"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs []GetSecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfigs"`
+	// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+	Preview bool `pulumi:"preview"`
+	// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+	Priority int `pulumi:"priority"`
+	// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions []GetSecurityPolicyRuleRateLimitOption `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	RedirectOptions []GetSecurityPolicyRuleRedirectOption `pulumi:"redirectOptions"`
+}
+
+// GetSecurityPolicyRuleTypeInput is an input type that accepts GetSecurityPolicyRuleTypeArgs and GetSecurityPolicyRuleTypeOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleTypeInput` via:
+//
+//	GetSecurityPolicyRuleTypeArgs{...}
+type GetSecurityPolicyRuleTypeInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput
+	ToGetSecurityPolicyRuleTypeOutputWithContext(context.Context) GetSecurityPolicyRuleTypeOutput
+}
+
+type GetSecurityPolicyRuleTypeArgs struct {
+	// Action to take when match matches the request.
+	Action pulumi.StringInput `pulumi:"action"`
+	// An optional description of this rule. Max size is 64.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Additional actions that are performed on headers.
+	HeaderActions GetSecurityPolicyRuleHeaderActionArrayInput `pulumi:"headerActions"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+	Matches GetSecurityPolicyRuleMatchArrayInput `pulumi:"matches"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs GetSecurityPolicyRulePreconfiguredWafConfigArrayInput `pulumi:"preconfiguredWafConfigs"`
+	// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+	Preview pulumi.BoolInput `pulumi:"preview"`
+	// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions GetSecurityPolicyRuleRateLimitOptionArrayInput `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	RedirectOptions GetSecurityPolicyRuleRedirectOptionArrayInput `pulumi:"redirectOptions"`
+}
+
+func (GetSecurityPolicyRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleTypeArgs) ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput {
+	return i.ToGetSecurityPolicyRuleTypeOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleTypeArgs) ToGetSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleTypeOutput)
+}
+
+// GetSecurityPolicyRuleTypeArrayInput is an input type that accepts GetSecurityPolicyRuleTypeArray and GetSecurityPolicyRuleTypeArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleTypeArrayInput` via:
+//
+//	GetSecurityPolicyRuleTypeArray{ GetSecurityPolicyRuleTypeArgs{...} }
+type GetSecurityPolicyRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput
+	ToGetSecurityPolicyRuleTypeArrayOutputWithContext(context.Context) GetSecurityPolicyRuleTypeArrayOutput
+}
+
+type GetSecurityPolicyRuleTypeArray []GetSecurityPolicyRuleTypeInput
+
+func (GetSecurityPolicyRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleTypeArray) ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput {
+	return i.ToGetSecurityPolicyRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleTypeArray) ToGetSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleTypeArrayOutput)
+}
+
+type GetSecurityPolicyRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleTypeOutput) ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeOutput) ToGetSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+// Action to take when match matches the request.
+func (o GetSecurityPolicyRuleTypeOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// An optional description of this rule. Max size is 64.
+func (o GetSecurityPolicyRuleTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Additional actions that are performed on headers.
+func (o GetSecurityPolicyRuleTypeOutput) HeaderActions() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleHeaderAction { return v.HeaderActions }).(GetSecurityPolicyRuleHeaderActionArrayOutput)
+}
+
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+func (o GetSecurityPolicyRuleTypeOutput) Matches() GetSecurityPolicyRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleMatch { return v.Matches }).(GetSecurityPolicyRuleMatchArrayOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o GetSecurityPolicyRuleTypeOutput) PreconfiguredWafConfigs() GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRulePreconfiguredWafConfig {
+		return v.PreconfiguredWafConfigs
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput)
+}
+
+// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+func (o GetSecurityPolicyRuleTypeOutput) Preview() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) bool { return v.Preview }).(pulumi.BoolOutput)
+}
+
+// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+func (o GetSecurityPolicyRuleTypeOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+func (o GetSecurityPolicyRuleTypeOutput) RateLimitOptions() GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleRateLimitOption { return v.RateLimitOptions }).(GetSecurityPolicyRuleRateLimitOptionArrayOutput)
+}
+
+// Parameters defining the redirect action. Cannot be specified for any other actions.
+func (o GetSecurityPolicyRuleTypeOutput) RedirectOptions() GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleRedirectOption { return v.RedirectOptions }).(GetSecurityPolicyRuleRedirectOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) ToGetSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleType {
+		return vs[0].([]GetSecurityPolicyRuleType)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleTypeOutput)
+}
+
+type GetSecurityPolicyRuleHeaderAction struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds []GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+}
+
+// GetSecurityPolicyRuleHeaderActionInput is an input type that accepts GetSecurityPolicyRuleHeaderActionArgs and GetSecurityPolicyRuleHeaderActionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionArgs{...}
+type GetSecurityPolicyRuleHeaderActionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput
+	ToGetSecurityPolicyRuleHeaderActionOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionArgs struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+}
+
+func (GetSecurityPolicyRuleHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArgs) ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArgs) ToGetSecurityPolicyRuleHeaderActionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionOutput)
+}
+
+// GetSecurityPolicyRuleHeaderActionArrayInput is an input type that accepts GetSecurityPolicyRuleHeaderActionArray and GetSecurityPolicyRuleHeaderActionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionArrayInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionArray{ GetSecurityPolicyRuleHeaderActionArgs{...} }
+type GetSecurityPolicyRuleHeaderActionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput
+	ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionArray []GetSecurityPolicyRuleHeaderActionInput
+
+func (GetSecurityPolicyRuleHeaderActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArray) ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArray) ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionArrayOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionOutput) ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionOutput) ToGetSecurityPolicyRuleHeaderActionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionOutput {
+	return o
+}
+
+// The list of request headers to add or overwrite if they're already present.
+func (o GetSecurityPolicyRuleHeaderActionOutput) RequestHeadersToAdds() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleHeaderAction) []GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleHeaderActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleHeaderAction {
+		return vs[0].([]GetSecurityPolicyRuleHeaderAction)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleHeaderActionOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to set.
+	HeaderName string `pulumi:"headerName"`
+	// The value to set the named header to.
+	HeaderValue string `pulumi:"headerValue"`
+}
+
+// GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput is an input type that accepts GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs and GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{...}
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput
+	ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to set.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value to set the named header to.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+}
+
+func (GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput)
+}
+
+// GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput is an input type that accepts GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray and GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray{ GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{...} }
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput
+	ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray []GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput
+
+func (GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to set.
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value to set the named header to.
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput) ToGetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd {
+		return vs[0].([]GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput)
+}
+
+type GetSecurityPolicyRuleMatch struct {
+	// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+	Configs []GetSecurityPolicyRuleMatchConfig `pulumi:"configs"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	Exprs []GetSecurityPolicyRuleMatchExpr `pulumi:"exprs"`
+	// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
+	VersionedExpr string `pulumi:"versionedExpr"`
+}
+
+// GetSecurityPolicyRuleMatchInput is an input type that accepts GetSecurityPolicyRuleMatchArgs and GetSecurityPolicyRuleMatchOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchInput` via:
+//
+//	GetSecurityPolicyRuleMatchArgs{...}
+type GetSecurityPolicyRuleMatchInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchOutput() GetSecurityPolicyRuleMatchOutput
+	ToGetSecurityPolicyRuleMatchOutputWithContext(context.Context) GetSecurityPolicyRuleMatchOutput
+}
+
+type GetSecurityPolicyRuleMatchArgs struct {
+	// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+	Configs GetSecurityPolicyRuleMatchConfigArrayInput `pulumi:"configs"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	Exprs GetSecurityPolicyRuleMatchExprArrayInput `pulumi:"exprs"`
+	// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
+	VersionedExpr pulumi.StringInput `pulumi:"versionedExpr"`
+}
+
+func (GetSecurityPolicyRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchArgs) ToGetSecurityPolicyRuleMatchOutput() GetSecurityPolicyRuleMatchOutput {
+	return i.ToGetSecurityPolicyRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchArgs) ToGetSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchOutput)
+}
+
+// GetSecurityPolicyRuleMatchArrayInput is an input type that accepts GetSecurityPolicyRuleMatchArray and GetSecurityPolicyRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchArrayInput` via:
+//
+//	GetSecurityPolicyRuleMatchArray{ GetSecurityPolicyRuleMatchArgs{...} }
+type GetSecurityPolicyRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchArrayOutput() GetSecurityPolicyRuleMatchArrayOutput
+	ToGetSecurityPolicyRuleMatchArrayOutputWithContext(context.Context) GetSecurityPolicyRuleMatchArrayOutput
+}
+
+type GetSecurityPolicyRuleMatchArray []GetSecurityPolicyRuleMatchInput
+
+func (GetSecurityPolicyRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchArray) ToGetSecurityPolicyRuleMatchArrayOutput() GetSecurityPolicyRuleMatchArrayOutput {
+	return i.ToGetSecurityPolicyRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchArray) ToGetSecurityPolicyRuleMatchArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchOutput) ToGetSecurityPolicyRuleMatchOutput() GetSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchOutput) ToGetSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+func (o GetSecurityPolicyRuleMatchOutput) Configs() GetSecurityPolicyRuleMatchConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatch) []GetSecurityPolicyRuleMatchConfig { return v.Configs }).(GetSecurityPolicyRuleMatchConfigArrayOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+func (o GetSecurityPolicyRuleMatchOutput) Exprs() GetSecurityPolicyRuleMatchExprArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatch) []GetSecurityPolicyRuleMatchExpr { return v.Exprs }).(GetSecurityPolicyRuleMatchExprArrayOutput)
+}
+
+// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
+func (o GetSecurityPolicyRuleMatchOutput) VersionedExpr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatch) string { return v.VersionedExpr }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchArrayOutput) ToGetSecurityPolicyRuleMatchArrayOutput() GetSecurityPolicyRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchArrayOutput) ToGetSecurityPolicyRuleMatchArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatch {
+		return vs[0].([]GetSecurityPolicyRuleMatch)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleMatchOutput)
+}
+
+type GetSecurityPolicyRuleMatchConfig struct {
+	// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// GetSecurityPolicyRuleMatchConfigInput is an input type that accepts GetSecurityPolicyRuleMatchConfigArgs and GetSecurityPolicyRuleMatchConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchConfigInput` via:
+//
+//	GetSecurityPolicyRuleMatchConfigArgs{...}
+type GetSecurityPolicyRuleMatchConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchConfigOutput() GetSecurityPolicyRuleMatchConfigOutput
+	ToGetSecurityPolicyRuleMatchConfigOutputWithContext(context.Context) GetSecurityPolicyRuleMatchConfigOutput
+}
+
+type GetSecurityPolicyRuleMatchConfigArgs struct {
+	// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (GetSecurityPolicyRuleMatchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchConfigArgs) ToGetSecurityPolicyRuleMatchConfigOutput() GetSecurityPolicyRuleMatchConfigOutput {
+	return i.ToGetSecurityPolicyRuleMatchConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchConfigArgs) ToGetSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchConfigOutput)
+}
+
+// GetSecurityPolicyRuleMatchConfigArrayInput is an input type that accepts GetSecurityPolicyRuleMatchConfigArray and GetSecurityPolicyRuleMatchConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchConfigArrayInput` via:
+//
+//	GetSecurityPolicyRuleMatchConfigArray{ GetSecurityPolicyRuleMatchConfigArgs{...} }
+type GetSecurityPolicyRuleMatchConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchConfigArrayOutput() GetSecurityPolicyRuleMatchConfigArrayOutput
+	ToGetSecurityPolicyRuleMatchConfigArrayOutputWithContext(context.Context) GetSecurityPolicyRuleMatchConfigArrayOutput
+}
+
+type GetSecurityPolicyRuleMatchConfigArray []GetSecurityPolicyRuleMatchConfigInput
+
+func (GetSecurityPolicyRuleMatchConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchConfigArray) ToGetSecurityPolicyRuleMatchConfigArrayOutput() GetSecurityPolicyRuleMatchConfigArrayOutput {
+	return i.ToGetSecurityPolicyRuleMatchConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchConfigArray) ToGetSecurityPolicyRuleMatchConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchConfigArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchConfigOutput) ToGetSecurityPolicyRuleMatchConfigOutput() GetSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchConfigOutput) ToGetSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+func (o GetSecurityPolicyRuleMatchConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatchConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchConfigArrayOutput) ToGetSecurityPolicyRuleMatchConfigArrayOutput() GetSecurityPolicyRuleMatchConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchConfigArrayOutput) ToGetSecurityPolicyRuleMatchConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleMatchConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatchConfig {
+		return vs[0].([]GetSecurityPolicyRuleMatchConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleMatchConfigOutput)
+}
+
+type GetSecurityPolicyRuleMatchExpr struct {
+	// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+	Expression string `pulumi:"expression"`
+}
+
+// GetSecurityPolicyRuleMatchExprInput is an input type that accepts GetSecurityPolicyRuleMatchExprArgs and GetSecurityPolicyRuleMatchExprOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprArgs{...}
+type GetSecurityPolicyRuleMatchExprInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprOutput() GetSecurityPolicyRuleMatchExprOutput
+	ToGetSecurityPolicyRuleMatchExprOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprOutput
+}
+
+type GetSecurityPolicyRuleMatchExprArgs struct {
+	// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (GetSecurityPolicyRuleMatchExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprArgs) ToGetSecurityPolicyRuleMatchExprOutput() GetSecurityPolicyRuleMatchExprOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprArgs) ToGetSecurityPolicyRuleMatchExprOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprOutput)
+}
+
+// GetSecurityPolicyRuleMatchExprArrayInput is an input type that accepts GetSecurityPolicyRuleMatchExprArray and GetSecurityPolicyRuleMatchExprArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprArrayInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprArray{ GetSecurityPolicyRuleMatchExprArgs{...} }
+type GetSecurityPolicyRuleMatchExprArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprArrayOutput() GetSecurityPolicyRuleMatchExprArrayOutput
+	ToGetSecurityPolicyRuleMatchExprArrayOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprArrayOutput
+}
+
+type GetSecurityPolicyRuleMatchExprArray []GetSecurityPolicyRuleMatchExprInput
+
+func (GetSecurityPolicyRuleMatchExprArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprArray) ToGetSecurityPolicyRuleMatchExprArrayOutput() GetSecurityPolicyRuleMatchExprArrayOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprArray) ToGetSecurityPolicyRuleMatchExprArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprOutput) ToGetSecurityPolicyRuleMatchExprOutput() GetSecurityPolicyRuleMatchExprOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOutput) ToGetSecurityPolicyRuleMatchExprOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOutput {
+	return o
+}
+
+// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+func (o GetSecurityPolicyRuleMatchExprOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatchExpr) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprArrayOutput) ToGetSecurityPolicyRuleMatchExprArrayOutput() GetSecurityPolicyRuleMatchExprArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprArrayOutput) ToGetSecurityPolicyRuleMatchExprArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleMatchExprOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatchExpr {
+		return vs[0].([]GetSecurityPolicyRuleMatchExpr)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleMatchExprOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfig struct {
+	// An exclusion to apply during preconfigured WAF evaluation.
+	Exclusions []GetSecurityPolicyRulePreconfiguredWafConfigExclusion `pulumi:"exclusions"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigArgs and GetSecurityPolicyRulePreconfiguredWafConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigOutput() GetSecurityPolicyRulePreconfiguredWafConfigOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigArgs struct {
+	// An exclusion to apply during preconfigured WAF evaluation.
+	Exclusions GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput `pulumi:"exclusions"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigOutput() GetSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigArray and GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigArray{ GetSecurityPolicyRulePreconfiguredWafConfigArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigArray []GetSecurityPolicyRulePreconfiguredWafConfigInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigArray) ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigArray) ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigOutput() GetSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+// An exclusion to apply during preconfigured WAF evaluation.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigOutput) Exclusions() GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfig) []GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return v.Exclusions
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfig {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookies []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky `pulumi:"requestCookies"`
+	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeaders []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader `pulumi:"requestHeaders"`
+	// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParams []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam `pulumi:"requestQueryParams"`
+	// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUris []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri `pulumi:"requestUris"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet string `pulumi:"targetRuleSet"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookies GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput `pulumi:"requestCookies"`
+	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeaders GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParams GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput `pulumi:"requestQueryParams"`
+	// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUris GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput `pulumi:"requestUris"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds pulumi.StringArrayInput `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet pulumi.StringInput `pulumi:"targetRuleSet"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookies() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+		return v.RequestCookies
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput)
+}
+
+// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestHeaders() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+		return v.RequestHeaders
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput)
+}
+
+// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestQueryParams() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+		return v.RequestQueryParams
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput)
+}
+
+// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestUris() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+		return v.RequestUris
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) string { return v.TargetRuleSet }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOption struct {
+	// Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+	BanThresholds []GetSecurityPolicyRuleRateLimitOptionBanThreshold `pulumi:"banThresholds"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction string `pulumi:"conformAction"`
+	// Determines the key to enforce the rateLimitThreshold on
+	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// Enforce On Key Config of this security policy
+	EnforceOnKeyConfigs []GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	ExceedAction string `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions []GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThresholds []GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold `pulumi:"rateLimitThresholds"`
+}
+
+// GetSecurityPolicyRuleRateLimitOptionInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionArgs and GetSecurityPolicyRuleRateLimitOptionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionArgs{...}
+type GetSecurityPolicyRuleRateLimitOptionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionOutput() GetSecurityPolicyRuleRateLimitOptionOutput
+	ToGetSecurityPolicyRuleRateLimitOptionOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionArgs struct {
+	// Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec pulumi.IntInput `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+	BanThresholds GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput `pulumi:"banThresholds"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction pulumi.StringInput `pulumi:"conformAction"`
+	// Determines the key to enforce the rateLimitThreshold on
+	EnforceOnKey pulumi.StringInput `pulumi:"enforceOnKey"`
+	// Enforce On Key Config of this security policy
+	EnforceOnKeyConfigs GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	ExceedAction pulumi.StringInput `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayInput `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThresholds GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput `pulumi:"rateLimitThresholds"`
+}
+
+func (GetSecurityPolicyRuleRateLimitOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionArgs) ToGetSecurityPolicyRuleRateLimitOptionOutput() GetSecurityPolicyRuleRateLimitOptionOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionArgs) ToGetSecurityPolicyRuleRateLimitOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionOutput)
+}
+
+// GetSecurityPolicyRuleRateLimitOptionArrayInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionArray and GetSecurityPolicyRuleRateLimitOptionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionArrayInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionArray{ GetSecurityPolicyRuleRateLimitOptionArgs{...} }
+type GetSecurityPolicyRuleRateLimitOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionArrayOutput
+	ToGetSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionArrayOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionArray []GetSecurityPolicyRuleRateLimitOptionInput
+
+func (GetSecurityPolicyRuleRateLimitOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionArray) ToGetSecurityPolicyRuleRateLimitOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionArray) ToGetSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) ToGetSecurityPolicyRuleRateLimitOptionOutput() GetSecurityPolicyRuleRateLimitOptionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) ToGetSecurityPolicyRuleRateLimitOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionOutput {
+	return o
+}
+
+// Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) BanDurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) int { return v.BanDurationSec }).(pulumi.IntOutput)
+}
+
+// Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) BanThresholds() GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) []GetSecurityPolicyRuleRateLimitOptionBanThreshold {
+		return v.BanThresholds
+	}).(GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) ConformAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) string { return v.ConformAction }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rateLimitThreshold on
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// Enforce On Key Config of this security policy
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKeyConfigs() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) []GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
+		return v.EnforceOnKeyConfigs
+	}).(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) ExceedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) ExceedRedirectOptions() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) []GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
+		return v.ExceedRedirectOptions
+	}).(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o GetSecurityPolicyRuleRateLimitOptionOutput) RateLimitThresholds() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOption) []GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
+		return v.RateLimitThresholds
+	}).(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRateLimitOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRateLimitOption {
+		return vs[0].([]GetSecurityPolicyRuleRateLimitOption)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRateLimitOptionOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionBanThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+// GetSecurityPolicyRuleRateLimitOptionBanThresholdInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs and GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionBanThresholdInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs{...}
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput
+	ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntInput `pulumi:"intervalSec"`
+}
+
+func (GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput)
+}
+
+// GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionBanThresholdArray and GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionBanThresholdArray{ GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs{...} }
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput
+	ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdArray []GetSecurityPolicyRuleRateLimitOptionBanThresholdInput
+
+func (GetSecurityPolicyRuleRateLimitOptionBanThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionBanThresholdArray) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionBanThresholdArray) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionBanThreshold) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionBanThreshold) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRateLimitOptionBanThreshold {
+		return vs[0].([]GetSecurityPolicyRuleRateLimitOptionBanThreshold)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rateLimitThreshold on
+	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
+}
+
+// GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs and GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{...}
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput
+	ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rateLimitThreshold on
+	EnforceOnKeyType pulumi.StringInput `pulumi:"enforceOnKeyType"`
+}
+
+func (GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput)
+}
+
+// GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray and GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray{ GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{...} }
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput
+	ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray []GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput
+
+func (GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rateLimitThreshold on
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) EnforceOnKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
+		return vs[0].([]GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target string `pulumi:"target"`
+	// Type of the redirect action.
+	Type string `pulumi:"type"`
+}
+
+// GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs and GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs{...}
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput
+	ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target pulumi.StringInput `pulumi:"target"`
+	// Type of the redirect action.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput)
+}
+
+// GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray and GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray{ GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs{...} }
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput
+	ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray []GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionInput
+
+func (GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput {
+	return o
+}
+
+// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Type of the redirect action.
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput() GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
+		return vs[0].([]GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+// GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs and GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{...}
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput
+	ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntInput `pulumi:"intervalSec"`
+}
+
+func (GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput)
+}
+
+// GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput is an input type that accepts GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray and GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput` via:
+//
+//	GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray{ GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{...} }
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput
+	ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput
+}
+
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray []GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput
+
+func (GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return i.ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
+type GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ToGetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
+		return vs[0].([]GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput)
+}
+
+type GetSecurityPolicyRuleRedirectOption struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target string `pulumi:"target"`
+	// Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+	Type string `pulumi:"type"`
+}
+
+// GetSecurityPolicyRuleRedirectOptionInput is an input type that accepts GetSecurityPolicyRuleRedirectOptionArgs and GetSecurityPolicyRuleRedirectOptionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRedirectOptionInput` via:
+//
+//	GetSecurityPolicyRuleRedirectOptionArgs{...}
+type GetSecurityPolicyRuleRedirectOptionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRedirectOptionOutput() GetSecurityPolicyRuleRedirectOptionOutput
+	ToGetSecurityPolicyRuleRedirectOptionOutputWithContext(context.Context) GetSecurityPolicyRuleRedirectOptionOutput
+}
+
+type GetSecurityPolicyRuleRedirectOptionArgs struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target pulumi.StringInput `pulumi:"target"`
+	// Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetSecurityPolicyRuleRedirectOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRedirectOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRedirectOptionArgs) ToGetSecurityPolicyRuleRedirectOptionOutput() GetSecurityPolicyRuleRedirectOptionOutput {
+	return i.ToGetSecurityPolicyRuleRedirectOptionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRedirectOptionArgs) ToGetSecurityPolicyRuleRedirectOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRedirectOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRedirectOptionOutput)
+}
+
+// GetSecurityPolicyRuleRedirectOptionArrayInput is an input type that accepts GetSecurityPolicyRuleRedirectOptionArray and GetSecurityPolicyRuleRedirectOptionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleRedirectOptionArrayInput` via:
+//
+//	GetSecurityPolicyRuleRedirectOptionArray{ GetSecurityPolicyRuleRedirectOptionArgs{...} }
+type GetSecurityPolicyRuleRedirectOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleRedirectOptionArrayOutput() GetSecurityPolicyRuleRedirectOptionArrayOutput
+	ToGetSecurityPolicyRuleRedirectOptionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleRedirectOptionArrayOutput
+}
+
+type GetSecurityPolicyRuleRedirectOptionArray []GetSecurityPolicyRuleRedirectOptionInput
+
+func (GetSecurityPolicyRuleRedirectOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRedirectOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleRedirectOptionArray) ToGetSecurityPolicyRuleRedirectOptionArrayOutput() GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return i.ToGetSecurityPolicyRuleRedirectOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleRedirectOptionArray) ToGetSecurityPolicyRuleRedirectOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleRedirectOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleRedirectOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRedirectOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleRedirectOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRedirectOptionOutput) ToGetSecurityPolicyRuleRedirectOptionOutput() GetSecurityPolicyRuleRedirectOptionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRedirectOptionOutput) ToGetSecurityPolicyRuleRedirectOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRedirectOptionOutput {
+	return o
+}
+
+// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+func (o GetSecurityPolicyRuleRedirectOptionOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRedirectOption) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+func (o GetSecurityPolicyRuleRedirectOptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleRedirectOption) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRuleRedirectOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleRedirectOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleRedirectOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleRedirectOptionArrayOutput) ToGetSecurityPolicyRuleRedirectOptionArrayOutput() GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRedirectOptionArrayOutput) ToGetSecurityPolicyRuleRedirectOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleRedirectOptionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleRedirectOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleRedirectOption {
+		return vs[0].([]GetSecurityPolicyRuleRedirectOption)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleRedirectOptionOutput)
+}
+
 type GetSnapshotSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
@@ -30513,6 +33684,10 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{})
@@ -30693,6 +33868,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamInput)(nil)).Elem(), GetInstanceGroupManagerParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetInstanceGroupManagerParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), GetInstanceGroupManagerStandbyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerStandbyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetInstanceGroupManagerStatefulExternalIpArgs{})
@@ -30917,6 +34094,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteArrayInput)(nil)).Elem(), GetRouterStatusBestRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), GetSecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRecaptchaOptionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleTypeInput)(nil)).Elem(), GetSecurityPolicyRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleTypeArrayInput)(nil)).Elem(), GetSecurityPolicyRuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchInput)(nil)).Elem(), GetSecurityPolicyRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchConfigInput)(nil)).Elem(), GetSecurityPolicyRuleMatchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionBanThresholdInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionBanThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionBanThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRedirectOptionInput)(nil)).Elem(), GetSecurityPolicyRuleRedirectOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRedirectOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRedirectOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
@@ -30925,6 +34150,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput{})
@@ -31105,6 +34334,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerParamOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerParamArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStandbyPolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStandbyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulExternalIpOutput{})
@@ -31329,6 +34560,54 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRecaptchaOptionsConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRecaptchaOptionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleTypeOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionBanThresholdOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionExceedRedirectOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRedirectOptionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleRedirectOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})

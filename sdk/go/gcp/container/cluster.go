@@ -463,6 +463,10 @@ type Cluster struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
+	// Configuration for the
+	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+	// Structure is documented below.
+	SecretManagerConfig ClusterSecretManagerConfigPtrOutput `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
@@ -785,6 +789,10 @@ type clusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Configuration for the
+	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+	// Structure is documented below.
+	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
@@ -1078,6 +1086,10 @@ type ClusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Configuration for the
+	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+	// Structure is documented below.
+	SecretManagerConfig ClusterSecretManagerConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// The server-defined URL for the resource.
@@ -1366,6 +1378,10 @@ type clusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Configuration for the
+	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+	// Structure is documented below.
+	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Structure is documented below.
@@ -1640,6 +1656,10 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Configuration for the
+	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+	// Structure is documented below.
+	SecretManagerConfig ClusterSecretManagerConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// Structure is documented below.
@@ -2204,6 +2224,13 @@ func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterResourceUsageExportConfigPtrOutput { return v.ResourceUsageExportConfig }).(ClusterResourceUsageExportConfigPtrOutput)
+}
+
+// Configuration for the
+// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
+// Structure is documented below.
+func (o ClusterOutput) SecretManagerConfig() ClusterSecretManagerConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterSecretManagerConfigPtrOutput { return v.SecretManagerConfig }).(ClusterSecretManagerConfigPtrOutput)
 }
 
 // Enable/Disable Security Posture API features for the cluster. Structure is documented below.

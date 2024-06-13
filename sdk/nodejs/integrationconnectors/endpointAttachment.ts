@@ -97,6 +97,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Enable global access for endpoint attachment.
+     */
+    public readonly endpointGlobalAccess!: pulumi.Output<boolean | undefined>;
+    /**
      * The Private Service Connect connection endpoint ip.
      */
     public /*out*/ readonly endpointIp!: pulumi.Output<string>;
@@ -153,6 +157,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["endpointGlobalAccess"] = state ? state.endpointGlobalAccess : undefined;
             resourceInputs["endpointIp"] = state ? state.endpointIp : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -170,6 +175,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAttachment'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpointGlobalAccess"] = args ? args.endpointGlobalAccess : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -204,6 +210,10 @@ export interface EndpointAttachmentState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Enable global access for endpoint attachment.
+     */
+    endpointGlobalAccess?: pulumi.Input<boolean>;
     /**
      * The Private Service Connect connection endpoint ip.
      */
@@ -254,6 +264,10 @@ export interface EndpointAttachmentArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable global access for endpoint attachment.
+     */
+    endpointGlobalAccess?: pulumi.Input<boolean>;
     /**
      * Resource labels to represent user provided metadata.
      *

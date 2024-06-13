@@ -134,6 +134,7 @@ type LookupDiskResult struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
+	StoragePool      string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk.
 	Type string `pulumi:"type"`
@@ -345,6 +346,10 @@ func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnap
 // used.
 func (o LookupDiskResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

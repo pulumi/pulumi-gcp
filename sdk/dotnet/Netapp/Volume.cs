@@ -100,6 +100,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> ActiveDirectory { get; private set; } = null!;
 
         /// <summary>
+        /// Backup configuration for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("backupConfig")]
+        public Output<Outputs.VolumeBackupConfig?> BackupConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Capacity of the volume (in GiB).
         /// </summary>
         [Output("capacityGib")]
@@ -369,6 +376,13 @@ namespace Pulumi.Gcp.Netapp
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Backup configuration for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("backupConfig")]
+        public Input<Inputs.VolumeBackupConfigArgs>? BackupConfig { get; set; }
+
+        /// <summary>
         /// Capacity of the volume (in GiB).
         /// </summary>
         [Input("capacityGib", required: true)]
@@ -537,6 +551,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("activeDirectory")]
         public Input<string>? ActiveDirectory { get; set; }
+
+        /// <summary>
+        /// Backup configuration for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("backupConfig")]
+        public Input<Inputs.VolumeBackupConfigGetArgs>? BackupConfig { get; set; }
 
         /// <summary>
         /// Capacity of the volume (in GiB).

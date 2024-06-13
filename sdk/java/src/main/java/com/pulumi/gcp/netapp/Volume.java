@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.netapp.VolumeArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeState;
+import com.pulumi.gcp.netapp.outputs.VolumeBackupConfig;
 import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
 import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
@@ -134,6 +135,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> activeDirectory() {
         return this.activeDirectory;
+    }
+    /**
+     * Backup configuration for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="backupConfig", refs={VolumeBackupConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeBackupConfig> backupConfig;
+
+    /**
+     * @return Backup configuration for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeBackupConfig>> backupConfig() {
+        return Codegen.optional(this.backupConfig);
     }
     /**
      * Capacity of the volume (in GiB).

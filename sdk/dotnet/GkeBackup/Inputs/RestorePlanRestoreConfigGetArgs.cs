@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
         /// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
         /// for more information on each mode.
-        /// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+        /// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         /// </summary>
         [Input("namespacedResourceRestoreMode")]
         public Input<string>? NamespacedResourceRestoreMode { get; set; }
@@ -64,6 +64,13 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// </summary>
         [Input("noNamespaces")]
         public Input<bool>? NoNamespaces { get; set; }
+
+        /// <summary>
+        /// It contains custom ordering to use on a Restore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreOrder")]
+        public Input<Inputs.RestorePlanRestoreConfigRestoreOrderGetArgs>? RestoreOrder { get; set; }
 
         /// <summary>
         /// A list of selected ProtectedApplications to restore.
@@ -110,6 +117,21 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// </summary>
         [Input("volumeDataRestorePolicy")]
         public Input<string>? VolumeDataRestorePolicy { get; set; }
+
+        [Input("volumeDataRestorePolicyBindings")]
+        private InputList<Inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingGetArgs>? _volumeDataRestorePolicyBindings;
+
+        /// <summary>
+        /// A table that binds volumes by their scope to a restore policy. Bindings
+        /// must have a unique scope. Any volumes not scoped in the bindings are
+        /// subject to the policy defined in volume_data_restore_policy.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingGetArgs> VolumeDataRestorePolicyBindings
+        {
+            get => _volumeDataRestorePolicyBindings ?? (_volumeDataRestorePolicyBindings = new InputList<Inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingGetArgs>());
+            set => _volumeDataRestorePolicyBindings = value;
+        }
 
         public RestorePlanRestoreConfigGetArgs()
         {

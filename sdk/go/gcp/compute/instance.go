@@ -219,6 +219,8 @@ type Instance struct {
 	// Additional instance parameters.
 	// .
 	Params InstanceParamsPtrOutput `pulumi:"params"`
+	// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -402,6 +404,8 @@ type instanceState struct {
 	// Additional instance parameters.
 	// .
 	Params *InstanceParams `pulumi:"params"`
+	// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -542,6 +546,8 @@ type InstanceState struct {
 	// Additional instance parameters.
 	// .
 	Params InstanceParamsPtrInput
+	// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -674,6 +680,8 @@ type instanceArgs struct {
 	// Additional instance parameters.
 	// .
 	Params *InstanceParams `pulumi:"params"`
+	// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -797,6 +805,8 @@ type InstanceArgs struct {
 	// Additional instance parameters.
 	// .
 	Params InstanceParamsPtrInput
+	// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1096,6 +1106,11 @@ func (o InstanceOutput) NetworkPerformanceConfig() InstanceNetworkPerformanceCon
 // .
 func (o InstanceOutput) Params() InstanceParamsPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceParamsPtrOutput { return v.Params }).(InstanceParamsPtrOutput)
+}
+
+// Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
+func (o InstanceOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs. If it

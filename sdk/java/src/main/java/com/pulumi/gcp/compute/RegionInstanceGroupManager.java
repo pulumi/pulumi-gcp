@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAutoHealingPolic
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerParams;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulInternalIp;
@@ -160,6 +161,55 @@ import javax.annotation.Nullable;
  *                         .fixed(1)
  *                         .build())
  *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### With Standby Policy (`Google-Beta` Provider)
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStandbyPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var igm_sr = new RegionInstanceGroupManager("igm-sr", RegionInstanceGroupManagerArgs.builder()
+ *             .name("tf-sr-igm")
+ *             .baseInstanceName("tf-sr-igm-instance")
+ *             .region("us-central1")
+ *             .targetSize(5)
+ *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(sr_igm.selfLink())
+ *                 .name("primary")
+ *                 .build())
+ *             .standbyPolicy(RegionInstanceGroupManagerStandbyPolicyArgs.builder()
+ *                 .initialDelaySec(50)
+ *                 .mode("SCALE_OUT_POOL")
+ *                 .build())
+ *             .targetSuspendedSize(1)
+ *             .targetStoppedSize(1)
  *             .build());
  * 
  *     }
@@ -470,6 +520,20 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    @Export(name="standbyPolicy", refs={RegionInstanceGroupManagerStandbyPolicy.class}, tree="[0]")
+    private Output<RegionInstanceGroupManagerStandbyPolicy> standbyPolicy;
+
+    /**
+     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * 
+     */
+    public Output<RegionInstanceGroupManagerStandbyPolicy> standbyPolicy() {
+        return this.standbyPolicy;
+    }
+    /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
      * 
      */
@@ -558,6 +622,34 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      */
     public Output<Integer> targetSize() {
         return this.targetSize;
+    }
+    /**
+     * The target number of stopped instances for this managed instance group.
+     * 
+     */
+    @Export(name="targetStoppedSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> targetStoppedSize;
+
+    /**
+     * @return The target number of stopped instances for this managed instance group.
+     * 
+     */
+    public Output<Integer> targetStoppedSize() {
+        return this.targetStoppedSize;
+    }
+    /**
+     * The target number of suspended instances for this managed instance group.
+     * 
+     */
+    @Export(name="targetSuspendedSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> targetSuspendedSize;
+
+    /**
+     * @return The target number of suspended instances for this managed instance group.
+     * 
+     */
+    public Output<Integer> targetSuspendedSize() {
+        return this.targetSuspendedSize;
     }
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)

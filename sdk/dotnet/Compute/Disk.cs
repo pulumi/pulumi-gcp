@@ -452,6 +452,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// </summary>
+        [Output("storagePool")]
+        public Output<string?> StoragePool { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the disk type resource describing which disk type to use to
         /// create the disk. Provide this when creating the disk.
         /// </summary>
@@ -749,6 +758,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.DiskSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
@@ -1097,6 +1115,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
+
+        /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to

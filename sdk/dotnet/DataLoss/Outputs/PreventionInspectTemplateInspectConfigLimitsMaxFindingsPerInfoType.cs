@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// specified in another InfoTypeLimit.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType InfoType;
+        public readonly Outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType? InfoType;
         /// <summary>
         /// Max findings limit for the given infoType.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(
-            Outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType,
+            Outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType? infoType,
 
             int maxFindings)
         {

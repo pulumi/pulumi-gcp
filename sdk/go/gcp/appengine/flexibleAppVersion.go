@@ -226,6 +226,8 @@ type FlexibleAppVersion struct {
 	// The entrypoint for the application.
 	Entrypoint   FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
 	EnvVariables pulumi.StringMapOutput                `pulumi:"envVariables"`
+	// Runtime settings for App Engine flexible environment.
+	FlexibleRuntimeSettings FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput `pulumi:"flexibleRuntimeSettings"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers FlexibleAppVersionHandlerArrayOutput `pulumi:"handlers"`
@@ -342,6 +344,8 @@ type flexibleAppVersionState struct {
 	// The entrypoint for the application.
 	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	EnvVariables map[string]string             `pulumi:"envVariables"`
+	// Runtime settings for App Engine flexible environment.
+	FlexibleRuntimeSettings *FlexibleAppVersionFlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
@@ -417,6 +421,8 @@ type FlexibleAppVersionState struct {
 	// The entrypoint for the application.
 	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
+	// Runtime settings for App Engine flexible environment.
+	FlexibleRuntimeSettings FlexibleAppVersionFlexibleRuntimeSettingsPtrInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers FlexibleAppVersionHandlerArrayInput
@@ -496,6 +502,8 @@ type flexibleAppVersionArgs struct {
 	// The entrypoint for the application.
 	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	EnvVariables map[string]string             `pulumi:"envVariables"`
+	// Runtime settings for App Engine flexible environment.
+	FlexibleRuntimeSettings *FlexibleAppVersionFlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
@@ -570,6 +578,8 @@ type FlexibleAppVersionArgs struct {
 	// The entrypoint for the application.
 	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
+	// Runtime settings for App Engine flexible environment.
+	FlexibleRuntimeSettings FlexibleAppVersionFlexibleRuntimeSettingsPtrInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers FlexibleAppVersionHandlerArrayInput
@@ -756,6 +766,13 @@ func (o FlexibleAppVersionOutput) Entrypoint() FlexibleAppVersionEntrypointPtrOu
 
 func (o FlexibleAppVersionOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringMapOutput { return v.EnvVariables }).(pulumi.StringMapOutput)
+}
+
+// Runtime settings for App Engine flexible environment.
+func (o FlexibleAppVersionOutput) FlexibleRuntimeSettings() FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersion) FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput {
+		return v.FlexibleRuntimeSettings
+	}).(FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput)
 }
 
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the

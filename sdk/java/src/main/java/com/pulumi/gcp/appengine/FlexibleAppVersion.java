@@ -15,6 +15,7 @@ import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionAutomaticScaling;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionDeployment;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionEndpointsApiService;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionEntrypoint;
+import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionFlexibleRuntimeSettings;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionHandler;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionLivenessCheck;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionManualScaling;
@@ -345,6 +346,20 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Map<String,String>>> envVariables() {
         return Codegen.optional(this.envVariables);
+    }
+    /**
+     * Runtime settings for App Engine flexible environment.
+     * 
+     */
+    @Export(name="flexibleRuntimeSettings", refs={FlexibleAppVersionFlexibleRuntimeSettings.class}, tree="[0]")
+    private Output</* @Nullable */ FlexibleAppVersionFlexibleRuntimeSettings> flexibleRuntimeSettings;
+
+    /**
+     * @return Runtime settings for App Engine flexible environment.
+     * 
+     */
+    public Output<Optional<FlexibleAppVersionFlexibleRuntimeSettings>> flexibleRuntimeSettings() {
+        return Codegen.optional(this.flexibleRuntimeSettings);
     }
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the

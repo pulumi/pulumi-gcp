@@ -106,6 +106,9 @@ type Volume struct {
 
 	// Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
 	ActiveDirectory pulumi.StringOutput `pulumi:"activeDirectory"`
+	// Backup configuration for the volume.
+	// Structure is documented below.
+	BackupConfig VolumeBackupConfigPtrOutput `pulumi:"backupConfig"`
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -245,6 +248,9 @@ func GetVolume(ctx *pulumi.Context,
 type volumeState struct {
 	// Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
 	ActiveDirectory *string `pulumi:"activeDirectory"`
+	// Backup configuration for the volume.
+	// Structure is documented below.
+	BackupConfig *VolumeBackupConfig `pulumi:"backupConfig"`
 	// Capacity of the volume (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -335,6 +341,9 @@ type volumeState struct {
 type VolumeState struct {
 	// Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
 	ActiveDirectory pulumi.StringPtrInput
+	// Backup configuration for the volume.
+	// Structure is documented below.
+	BackupConfig VolumeBackupConfigPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringPtrInput
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -427,6 +436,9 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
+	// Backup configuration for the volume.
+	// Structure is documented below.
+	BackupConfig *VolumeBackupConfig `pulumi:"backupConfig"`
 	// Capacity of the volume (in GiB).
 	CapacityGib string `pulumi:"capacityGib"`
 	// Policy to determine if the volume should be deleted forcefully.
@@ -486,6 +498,9 @@ type volumeArgs struct {
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
+	// Backup configuration for the volume.
+	// Structure is documented below.
+	BackupConfig VolumeBackupConfigPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringInput
 	// Policy to determine if the volume should be deleted forcefully.
@@ -633,6 +648,12 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 // Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
 func (o VolumeOutput) ActiveDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ActiveDirectory }).(pulumi.StringOutput)
+}
+
+// Backup configuration for the volume.
+// Structure is documented below.
+func (o VolumeOutput) BackupConfig() VolumeBackupConfigPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeBackupConfigPtrOutput { return v.BackupConfig }).(VolumeBackupConfigPtrOutput)
 }
 
 // Capacity of the volume (in GiB).

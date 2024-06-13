@@ -589,6 +589,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('securityCenterCustomEndpoint')
 
     @property
+    def security_center_management_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('securityCenterManagementCustomEndpoint')
+
+    @property
     def security_scanner_custom_endpoint(self) -> Optional[str]:
         return __config__.get('securityScannerCustomEndpoint')
 

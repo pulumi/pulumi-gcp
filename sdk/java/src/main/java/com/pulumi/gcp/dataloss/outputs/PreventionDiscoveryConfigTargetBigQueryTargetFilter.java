@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables otherTables;
+    /**
+     * @return The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference tableReference;
     /**
      * @return A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
      * Structure is documented below.
@@ -31,6 +38,14 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
      */
     public Optional<PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables> otherTables() {
         return Optional.ofNullable(this.otherTables);
+    }
+    /**
+     * @return The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference> tableReference() {
+        return Optional.ofNullable(this.tableReference);
     }
     /**
      * @return A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
@@ -51,11 +66,13 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables otherTables;
+        private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference tableReference;
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterTables tables;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetBigQueryTargetFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.otherTables = defaults.otherTables;
+    	      this.tableReference = defaults.tableReference;
     	      this.tables = defaults.tables;
         }
 
@@ -63,6 +80,12 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
         public Builder otherTables(@Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables otherTables) {
 
             this.otherTables = otherTables;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tableReference(@Nullable PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference tableReference) {
+
+            this.tableReference = tableReference;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
         public PreventionDiscoveryConfigTargetBigQueryTargetFilter build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetBigQueryTargetFilter();
             _resultValue.otherTables = otherTables;
+            _resultValue.tableReference = tableReference;
             _resultValue.tables = tables;
             return _resultValue;
         }
