@@ -1966,12 +1966,16 @@ github.com/pulumi/pulumi-java/pkg v0.11.0 h1:Jw9gBvyfmfOMq/EkYDm9+zGPxsDAA8jfeMp
 github.com/pulumi/pulumi-java/pkg v0.11.0/go.mod h1:sXAk25P47AQVQL6ilAbFmRNgZykC7og/+87ihnqzFTc=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.36.1-0.20240611152759-170c52d2e7b0 h1:JErBdsvxlFbvTHoTNU5pueslq+6PLhanVVfVsJ4OMDg=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.36.1-0.20240611152759-170c52d2e7b0/go.mod h1:r9OzhoQrbZEMnzi2V/Odw3juyk2JllCDWiaqAhiXq/s=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.36.1-0.20240613024757-5d6041830818 h1:SJ/2a1WtKtQTTHFKmjRDjk6n6JkiDny6qdhRFF2/gf8=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.36.1-0.20240613024757-5d6041830818/go.mod h1:r9OzhoQrbZEMnzi2V/Odw3juyk2JllCDWiaqAhiXq/s=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.37.0 h1:cpPdMg2d1EZFsJYnV4eNbFdAFVzI27Xfw8UuobXE2vM=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.37.0/go.mod h1:pM6IkUAZrdu0GE4U+7uUQ65iqTm2AZ6eQm4WnBwsZw4=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0 h1:WgRvBOGMkuUE6XLq0wzp27RkWuucrKLRPVB/5+7tBwU=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0/go.mod h1:ju1Cn9qmqkStWP0Hyfzt3NOm+PnaiWnodXGx3TYaGyU=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.1-0.20240611152759-170c52d2e7b0 h1:AyGOnpQVQa7KO/ApZRoIFnRcKf3R0RREn37cY88MUUU=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.1-0.20240611152759-170c52d2e7b0/go.mod h1:BBrK29JpUbUB64EK78O5QLgJ1aBiQjDiGZqofcamlNw=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.1-0.20240613024757-5d6041830818 h1:A+0KTEs3mBZ082sT5+ORyKS8sGpiZlu2C4FpZzIv8p4=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.1-0.20240613024757-5d6041830818/go.mod h1:BBrK29JpUbUB64EK78O5QLgJ1aBiQjDiGZqofcamlNw=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9-0.20240227144008-2da15b3d6f6e h1:yON1jwN6gg4cjnOQF607I3fTiFyIDr9WSsQNXHD6wbM=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9-0.20240227144008-2da15b3d6f6e/go.mod h1:AvlZujvfRiEu+60frCGEhaLeGttjHwM/g+47+IdPZXw=
 github.com/pulumi/pulumi-yaml v1.7.0 h1:SbFSaqkH8UiMEy0ZSH9sHLQlmV8so0iCLfvLbPtVP7s=
