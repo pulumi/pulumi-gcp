@@ -129,5 +129,5 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 	"kms_crypto_key.html.markdown",
 	"For this reason, it is strongly recommended that you add\nlifecycle\nhooks "+
 		"to the resource to prevent accidental destruction.",
-	"For this reason, it is strongly recommended that you use the "+
-		"[pulumi protect resource option](https://www.pulumi.com/docs/concepts/options/protect/)")
+	"For this reason, it is strongly recommended that you use "+
+		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")

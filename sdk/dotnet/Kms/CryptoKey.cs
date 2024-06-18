@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Kms
     /// and delete all CryptoKeyVersions, rendering the key unusable, but *will
     /// not delete the resource from the project.* When the provider destroys these keys,
     /// any data previously encrypted with these keys will be irrecoverable.
-    /// For this reason, it is strongly recommended that you use the [pulumi protect resource option](https://www.pulumi.com/docs/concepts/options/protect/)
+    /// For this reason, it is strongly recommended that you use Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).
     /// 
     /// To get more information about CryptoKey, see:
     /// 
