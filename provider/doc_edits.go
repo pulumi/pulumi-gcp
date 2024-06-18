@@ -1,6 +1,7 @@
 package gcp
 
 import (
+	"bytes"
 	"fmt"
 	"math/rand"
 	"regexp"
@@ -10,6 +11,7 @@ import (
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(defaults,
+		fixUpKmsCryptoKey,
 		fixupEffectiveLabels,
 		removeSecretsInPlainTextNote,
 		removeBetaFromDescriptionField,
@@ -112,3 +114,20 @@ var rewritemembersField = tfbridge.DocsEdit{
 		return returnContent, nil
 	},
 }
+
+func targetedSimpleReplace(filePath, from, to string) tfbridge.DocsEdit {
+	fromB, toB := []byte(from), []byte(to)
+	return tfbridge.DocsEdit{
+		Path: filePath,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return bytes.ReplaceAll(content, fromB, toB), nil
+		},
+	}
+}
+
+var fixUpKmsCryptoKey = targetedSimpleReplace(
+	"kms_crypto_key.html.markdown",
+	"For this reason, it is strongly recommended that you add\nlifecycle\nhooks "+
+		"to the resource to prevent accidental destruction.",
+	"For this reason, it is strongly recommended that you use "+
+		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")
