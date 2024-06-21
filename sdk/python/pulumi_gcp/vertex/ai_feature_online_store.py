@@ -31,8 +31,10 @@ class AiFeatureOnlineStoreArgs:
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
-        :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
+               
+               > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         :param pulumi.Input[bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your feature online stores.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -50,6 +52,9 @@ class AiFeatureOnlineStoreArgs:
             pulumi.set(__self__, "bigtable", bigtable)
         if dedicated_serving_endpoint is not None:
             pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
+        if embedding_management is not None:
+            warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
+            pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
         if embedding_management is not None:
             pulumi.set(__self__, "embedding_management", embedding_management)
         if force_destroy is not None:
@@ -95,9 +100,14 @@ class AiFeatureOnlineStoreArgs:
     @pulumi.getter(name="embeddingManagement")
     def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
-        The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         Structure is documented below.
+
+        > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
+        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
+
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
@@ -209,8 +219,10 @@ class _AiFeatureOnlineStoreState:
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
+               
+               > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your feature online stores.
@@ -237,6 +249,9 @@ class _AiFeatureOnlineStoreState:
             pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if embedding_management is not None:
+            warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
+            pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
         if embedding_management is not None:
             pulumi.set(__self__, "embedding_management", embedding_management)
         if etag is not None:
@@ -314,9 +329,14 @@ class _AiFeatureOnlineStoreState:
     @pulumi.getter(name="embeddingManagement")
     def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
-        The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         Structure is documented below.
+
+        > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
+        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
+
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
@@ -580,8 +600,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
+               
+               > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         :param pulumi.Input[bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your feature online stores.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -797,8 +819,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
+               
+               > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your feature online stores.
@@ -874,11 +898,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="embeddingManagement")
-    def embedding_management(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreEmbeddingManagement']]:
+    def embedding_management(self) -> pulumi.Output['outputs.AiFeatureOnlineStoreEmbeddingManagement']:
         """
-        The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         Structure is documented below.
+
+        > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
+        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
+
         return pulumi.get(self, "embedding_management")
 
     @property

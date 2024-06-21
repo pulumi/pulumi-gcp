@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .active_directory import *
+from .backup import *
 from .backup_policy import *
 from .backup_vault import *
 from .kmsconfig import *

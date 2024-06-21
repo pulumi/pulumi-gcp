@@ -1132,23 +1132,9 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * Applicable backend service types can be a global backend service with the
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-     * Structure is documented below.
-     * 
-     */
     @Export(name="outlierDetection", refs={BackendServiceOutlierDetection.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceOutlierDetection> outlierDetection;
 
-    /**
-     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * Applicable backend service types can be a global backend service with the
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-     * Structure is documented below.
-     * 
-     */
     public Output<Optional<BackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
     }
@@ -1295,16 +1281,20 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return this.sessionAffinity;
     }
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     @Export(name="timeoutSec", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutSec;
 
     /**
-     * @return How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * @return The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     public Output<Integer> timeoutSec() {

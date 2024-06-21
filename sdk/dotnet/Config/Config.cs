@@ -802,6 +802,13 @@ namespace Pulumi.Gcp
             set => _lookerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _managedKafkaCustomEndpoint = new __Value<string?>(() => __config.Get("managedKafkaCustomEndpoint"));
+        public static string? ManagedKafkaCustomEndpoint
+        {
+            get => _managedKafkaCustomEndpoint.Get();
+            set => _managedKafkaCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _memcacheCustomEndpoint = new __Value<string?>(() => __config.Get("memcacheCustomEndpoint"));
         public static string? MemcacheCustomEndpoint
         {

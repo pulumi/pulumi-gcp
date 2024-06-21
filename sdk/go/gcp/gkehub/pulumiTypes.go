@@ -373,6 +373,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
 	// OCI repo configuration for the cluster
 	// Structure is documented below.
 	Oci *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci `pulumi:"oci"`
+	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
 	SourceFormat *string `pulumi:"sourceFormat"`
 }
@@ -395,6 +397,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
 	// OCI repo configuration for the cluster
 	// Structure is documented below.
 	Oci FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
+	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
 }
@@ -492,6 +496,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Oci() F
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
 }
 
+// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool { return v.PreventDrift }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
@@ -541,6 +550,16 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Oci(
 		}
 		return v.Oci
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
+}
+
+// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) PreventDrift() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventDrift
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether the Config Sync Repo is in hierarchical or unstructured mode

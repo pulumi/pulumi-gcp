@@ -17,8 +17,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// A list of identities that are allowed access through this `EgressPolicy`.
-        /// Should be in the format of an email address. The email address should
-        /// represent an individual user, service account, or Google group.
+        /// Should be in the format of email address. The email address should
+        /// represent individual user or service account only.
         /// </summary>
         public InputList<string> Identities
         {

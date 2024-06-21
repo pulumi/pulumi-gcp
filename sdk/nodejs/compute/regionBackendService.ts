@@ -373,6 +373,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     /**
@@ -514,12 +515,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     public readonly network!: pulumi.Output<string | undefined>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
      * A named port on a backend instance group representing the port for
@@ -568,8 +563,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly subsetting!: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     public readonly timeoutSec!: pulumi.Output<number>;
 
@@ -686,6 +683,7 @@ export interface RegionBackendServiceState {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -827,12 +825,6 @@ export interface RegionBackendServiceState {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     network?: pulumi.Input<string>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
      * A named port on a backend instance group representing the port for
@@ -881,8 +873,10 @@ export interface RegionBackendServiceState {
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
 }
@@ -919,6 +913,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -1047,12 +1042,6 @@ export interface RegionBackendServiceArgs {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     network?: pulumi.Input<string>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
      * A named port on a backend instance group representing the port for
@@ -1097,8 +1086,10 @@ export interface RegionBackendServiceArgs {
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
 }

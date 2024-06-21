@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,6 +26,11 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
      * 
      */
     private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci oci;
+    /**
+     * @return Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+     * 
+     */
+    private @Nullable Boolean preventDrift;
     /**
      * @return Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
      * 
@@ -49,6 +55,13 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
         return Optional.ofNullable(this.oci);
     }
     /**
+     * @return Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+     * 
+     */
+    public Optional<Boolean> preventDrift() {
+        return Optional.ofNullable(this.preventDrift);
+    }
+    /**
      * @return Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
      * 
      */
@@ -67,12 +80,14 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     public static final class Builder {
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git;
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci oci;
+        private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
         public Builder() {}
         public Builder(FeatureFleetDefaultMemberConfigConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.git = defaults.git;
     	      this.oci = defaults.oci;
+    	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
         }
 
@@ -89,6 +104,12 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
             return this;
         }
         @CustomType.Setter
+        public Builder preventDrift(@Nullable Boolean preventDrift) {
+
+            this.preventDrift = preventDrift;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
 
             this.sourceFormat = sourceFormat;
@@ -98,6 +119,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
             final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
             _resultValue.git = git;
             _resultValue.oci = oci;
+            _resultValue.preventDrift = preventDrift;
             _resultValue.sourceFormat = sourceFormat;
             return _resultValue;
         }

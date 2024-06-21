@@ -230,6 +230,8 @@ loggingCustomEndpoint: Optional[str]
 
 lookerCustomEndpoint: Optional[str]
 
+managedKafkaCustomEndpoint: Optional[str]
+
 memcacheCustomEndpoint: Optional[str]
 
 migrationCenterCustomEndpoint: Optional[str]

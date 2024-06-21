@@ -17,6 +17,7 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[str],
+                 automated_backup_policy: Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,8 @@ class TableArgs:
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
+        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+               Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
@@ -39,6 +42,8 @@ class TableArgs:
                to delete/recreate the entire `bigtable.Table` resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
+        if automated_backup_policy is not None:
+            pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if change_stream_retention is not None:
             pulumi.set(__self__, "change_stream_retention", change_stream_retention)
         if column_families is not None:
@@ -63,6 +68,19 @@ class TableArgs:
     @instance_name.setter
     def instance_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]:
+        """
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+        Retention Period and Frequency to 0.
+        """
+        return pulumi.get(self, "automated_backup_policy")
+
+    @automated_backup_policy.setter
+    def automated_backup_policy(self, value: Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]):
+        pulumi.set(self, "automated_backup_policy", value)
 
     @property
     @pulumi.getter(name="changeStreamRetention")
@@ -145,6 +163,7 @@ class TableArgs:
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
+                 automated_backup_policy: Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
@@ -154,6 +173,8 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+               Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
@@ -167,6 +188,8 @@ class _TableState:
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
+        if automated_backup_policy is not None:
+            pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if change_stream_retention is not None:
             pulumi.set(__self__, "change_stream_retention", change_stream_retention)
         if column_families is not None:
@@ -181,6 +204,19 @@ class _TableState:
             pulumi.set(__self__, "project", project)
         if split_keys is not None:
             pulumi.set(__self__, "split_keys", split_keys)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]:
+        """
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+        Retention Period and Frequency to 0.
+        """
+        return pulumi.get(self, "automated_backup_policy")
+
+    @automated_backup_policy.setter
+    def automated_backup_policy(self, value: Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]):
+        pulumi.set(self, "automated_backup_policy", value)
 
     @property
     @pulumi.getter(name="changeStreamRetention")
@@ -277,6 +313,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
@@ -351,6 +388,8 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+               Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
@@ -449,6 +488,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
@@ -465,6 +505,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["automated_backup_policy"] = automated_backup_policy
             __props__.__dict__["change_stream_retention"] = change_stream_retention
             __props__.__dict__["column_families"] = column_families
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -484,6 +525,7 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
             change_stream_retention: Optional[pulumi.Input[str]] = None,
             column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[str]] = None,
@@ -498,6 +540,8 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+               Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
@@ -515,6 +559,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = _TableState.__new__(_TableState)
 
+        __props__.__dict__["automated_backup_policy"] = automated_backup_policy
         __props__.__dict__["change_stream_retention"] = change_stream_retention
         __props__.__dict__["column_families"] = column_families
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -523,6 +568,15 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["split_keys"] = split_keys
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> pulumi.Output[Optional['outputs.TableAutomatedBackupPolicy']]:
+        """
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+        Retention Period and Frequency to 0.
+        """
+        return pulumi.get(self, "automated_backup_policy")
 
     @property
     @pulumi.getter(name="changeStreamRetention")

@@ -119,6 +119,7 @@ const (
 	gcpLogging                  = "Logging"                  // Logging resources
 	gcpLooker                   = "Looker"                   // Looker resources
 	gcpMachingLearning          = "ML"                       // Machine Learning
+	gcpManagedKafka             = "ManagedKafka"             // Managed Kafka
 	gcpMemcache                 = "Memcache"                 // Memcache resources
 	gcpMigrationCenter          = "MigrationCenter"          // Migration Center
 	gcpMonitoring               = "Monitoring"               // Monitoring resources
@@ -242,6 +243,7 @@ var moduleMapping = map[string]string{
 	"kms":                        gcpKMS,
 	"logging":                    gcpLogging,
 	"looker":                     gcpLooker,
+	"managed_kafka":              gcpManagedKafka,
 	"memcache":                   gcpMemcache,
 	"migration_center":           gcpMigrationCenter,
 	"ml":                         gcpMachingLearning,

@@ -136,6 +136,98 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Network Endpoint Portmap
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpoint;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("subnetwork")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultRegionNetworkEndpointGroup = new RegionNetworkEndpointGroup("defaultRegionNetworkEndpointGroup", RegionNetworkEndpointGroupArgs.builder()
+ *             .name("portmap-neg")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .networkEndpointType("GCE_VM_IP_PORTMAP")
+ *             .build());
+ * 
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name("instance")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var regionNetworkEndpointPortmap = new RegionNetworkEndpoint("regionNetworkEndpointPortmap", RegionNetworkEndpointArgs.builder()
+ *             .regionNetworkEndpointGroup(defaultRegionNetworkEndpointGroup.name())
+ *             .region("us-central1")
+ *             .instance(defaultInstance.selfLink())
+ *             .port(80)
+ *             .ipAddress(defaultInstance.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *             .clientDestinationPort(8080)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -171,6 +263,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint")
 public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
     /**
+     * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     * 
+     */
+    @Export(name="clientDestinationPort", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> clientDestinationPort;
+
+    /**
+     * @return Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     * 
+     */
+    public Output<Optional<Integer>> clientDestinationPort() {
+        return Codegen.optional(this.clientDestinationPort);
+    }
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
      * 
@@ -185,6 +291,22 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> fqdn() {
         return Codegen.optional(this.fqdn);
+    }
+    /**
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     * 
+     */
+    @Export(name="instance", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instance;
+
+    /**
+     * @return The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     * 
+     */
+    public Output<Optional<String>> instance() {
+        return Codegen.optional(this.instance);
     }
     /**
      * IPv4 address external endpoint.

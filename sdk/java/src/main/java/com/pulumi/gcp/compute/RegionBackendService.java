@@ -692,6 +692,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     @Export(name="connectionDrainingTimeoutSec", refs={Integer.class}, tree="[0]")
@@ -700,6 +701,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     public Output<Optional<Integer>> connectionDrainingTimeoutSec() {
@@ -1071,23 +1073,9 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
     }
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     * 
-     */
     @Export(name="outlierDetection", refs={RegionBackendServiceOutlierDetection.class}, tree="[0]")
     private Output</* @Nullable */ RegionBackendServiceOutlierDetection> outlierDetection;
 
-    /**
-     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     * 
-     */
     public Output<Optional<RegionBackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
     }
@@ -1232,16 +1220,20 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.subsetting);
     }
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     @Export(name="timeoutSec", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutSec;
 
     /**
-     * @return How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * @return The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     public Output<Integer> timeoutSec() {

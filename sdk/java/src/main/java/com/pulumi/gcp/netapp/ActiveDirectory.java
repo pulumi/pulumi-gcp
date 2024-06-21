@@ -65,6 +65,9 @@ import javax.annotation.Nullable;
  *             .backupOperators(            
  *                 "test1",
  *                 "test2")
+ *             .administrators(            
+ *                 "test1",
+ *                 "test2")
  *             .description("ActiveDirectory is the public representation of the active directory config.")
  *             .encryptDcConnections(false)
  *             .kdcHostname("hostname")
@@ -112,6 +115,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:netapp/activeDirectory:ActiveDirectory")
 public class ActiveDirectory extends com.pulumi.resources.CustomResource {
+    /**
+     * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     * 
+     */
+    @Export(name="administrators", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> administrators;
+
+    /**
+     * @return Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     * 
+     */
+    public Output<Optional<List<String>>> administrators() {
+        return Codegen.optional(this.administrators);
+    }
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      * 

@@ -48,6 +48,50 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Datastore Document Processing Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var documentProcessingConfig = new Gcp.DiscoveryEngine.DataStore("document_processing_config", new()
+    ///     {
+    ///         Location = "global",
+    ///         DataStoreId = "data-store-id",
+    ///         DisplayName = "tf-test-structured-datastore",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "NO_CONTENT",
+    ///         SolutionTypes = new[]
+    ///         {
+    ///             "SOLUTION_TYPE_SEARCH",
+    ///         },
+    ///         CreateAdvancedSiteSearch = false,
+    ///         DocumentProcessingConfig = new Gcp.DiscoveryEngine.Inputs.DataStoreDocumentProcessingConfigArgs
+    ///         {
+    ///             DefaultParsingConfig = new Gcp.DiscoveryEngine.Inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs
+    ///             {
+    ///                 DigitalParsingConfig = null,
+    ///             },
+    ///             ParsingConfigOverrides = new[]
+    ///             {
+    ///                 new Gcp.DiscoveryEngine.Inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs
+    ///                 {
+    ///                     FileType = "pdf",
+    ///                     OcrParsingConfig = new Gcp.DiscoveryEngine.Inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs
+    ///                     {
+    ///                         UseNativeText = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -118,6 +162,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for Document understanding and enrichment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("documentProcessingConfig")]
+        public Output<Outputs.DataStoreDocumentProcessingConfig?> DocumentProcessingConfig { get; private set; } = null!;
 
         /// <summary>
         /// The industry vertical that the data store registers.
@@ -234,6 +285,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Configuration for Document understanding and enrichment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("documentProcessingConfig")]
+        public Input<Inputs.DataStoreDocumentProcessingConfigArgs>? DocumentProcessingConfig { get; set; }
+
+        /// <summary>
         /// The industry vertical that the data store registers.
         /// Possible values are: `GENERIC`, `MEDIA`.
         /// </summary>
@@ -317,6 +375,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Configuration for Document understanding and enrichment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("documentProcessingConfig")]
+        public Input<Inputs.DataStoreDocumentProcessingConfigGetArgs>? DocumentProcessingConfig { get; set; }
 
         /// <summary>
         /// The industry vertical that the data store registers.

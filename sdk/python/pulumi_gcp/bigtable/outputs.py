@@ -19,6 +19,7 @@ __all__ = [
     'InstanceClusterAutoscalingConfig',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
+    'TableAutomatedBackupPolicy',
     'TableColumnFamily',
     'TableIamBindingCondition',
     'TableIamMemberCondition',
@@ -475,6 +476,54 @@ class InstanceIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class TableAutomatedBackupPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPeriod":
+            suggest = "retention_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableAutomatedBackupPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableAutomatedBackupPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableAutomatedBackupPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 frequency: Optional[str] = None,
+                 retention_period: Optional[str] = None):
+        """
+        :param str frequency: How frequently automated backups should occur.
+        :param str retention_period: How long the automated backups should be retained.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if retention_period is not None:
+            pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        """
+        How frequently automated backups should occur.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> Optional[str]:
+        """
+        How long the automated backups should be retained.
+        """
+        return pulumi.get(self, "retention_period")
 
 
 @pulumi.output_type

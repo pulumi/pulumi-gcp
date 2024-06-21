@@ -34665,7 +34665,7 @@ func (o ClusterSecretManagerConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterSecurityPostureConfig struct {
-	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
 	Mode *string `pulumi:"mode"`
 	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
 	VulnerabilityMode *string `pulumi:"vulnerabilityMode"`
@@ -34683,7 +34683,7 @@ type ClusterSecurityPostureConfigInput interface {
 }
 
 type ClusterSecurityPostureConfigArgs struct {
-	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
 	VulnerabilityMode pulumi.StringPtrInput `pulumi:"vulnerabilityMode"`
@@ -34766,7 +34766,7 @@ func (o ClusterSecurityPostureConfigOutput) ToClusterSecurityPostureConfigPtrOut
 	}).(ClusterSecurityPostureConfigPtrOutput)
 }
 
-// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
 func (o ClusterSecurityPostureConfigOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterSecurityPostureConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -34800,7 +34800,7 @@ func (o ClusterSecurityPostureConfigPtrOutput) Elem() ClusterSecurityPostureConf
 	}).(ClusterSecurityPostureConfigOutput)
 }
 
-// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
 func (o ClusterSecurityPostureConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterSecurityPostureConfig) *string {
 		if v == nil {
@@ -58459,7 +58459,7 @@ func (o GetClusterSecretManagerConfigArrayOutput) Index(i pulumi.IntInput) GetCl
 }
 
 type GetClusterSecurityPostureConfig struct {
-	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
 	Mode string `pulumi:"mode"`
 	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
 	VulnerabilityMode string `pulumi:"vulnerabilityMode"`
@@ -58477,7 +58477,7 @@ type GetClusterSecurityPostureConfigInput interface {
 }
 
 type GetClusterSecurityPostureConfigArgs struct {
-	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
 	VulnerabilityMode pulumi.StringInput `pulumi:"vulnerabilityMode"`
@@ -58534,7 +58534,7 @@ func (o GetClusterSecurityPostureConfigOutput) ToGetClusterSecurityPostureConfig
 	return o
 }
 
-// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
 func (o GetClusterSecurityPostureConfigOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterSecurityPostureConfig) string { return v.Mode }).(pulumi.StringOutput)
 }

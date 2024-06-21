@@ -6,6 +6,7 @@ package com.pulumi.gcp.discoveryengine;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -91,6 +92,23 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="documentProcessingConfig")
+    private @Nullable Output<DataStoreDocumentProcessingConfigArgs> documentProcessingConfig;
+
+    /**
+     * @return Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataStoreDocumentProcessingConfigArgs>> documentProcessingConfig() {
+        return Optional.ofNullable(this.documentProcessingConfig);
+    }
+
+    /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`.
      * 
@@ -165,6 +183,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
         this.createAdvancedSiteSearch = $.createAdvancedSiteSearch;
         this.dataStoreId = $.dataStoreId;
         this.displayName = $.displayName;
+        this.documentProcessingConfig = $.documentProcessingConfig;
         this.industryVertical = $.industryVertical;
         this.location = $.location;
         this.project = $.project;
@@ -283,6 +302,29 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param documentProcessingConfig Configuration for Document understanding and enrichment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder documentProcessingConfig(@Nullable Output<DataStoreDocumentProcessingConfigArgs> documentProcessingConfig) {
+            $.documentProcessingConfig = documentProcessingConfig;
+            return this;
+        }
+
+        /**
+         * @param documentProcessingConfig Configuration for Document understanding and enrichment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder documentProcessingConfig(DataStoreDocumentProcessingConfigArgs documentProcessingConfig) {
+            return documentProcessingConfig(Output.of(documentProcessingConfig));
         }
 
         /**

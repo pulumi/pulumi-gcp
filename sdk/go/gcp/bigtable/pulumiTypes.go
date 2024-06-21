@@ -1291,6 +1291,162 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TableAutomatedBackupPolicy struct {
+	// How frequently automated backups should occur.
+	Frequency *string `pulumi:"frequency"`
+	// How long the automated backups should be retained.
+	RetentionPeriod *string `pulumi:"retentionPeriod"`
+}
+
+// TableAutomatedBackupPolicyInput is an input type that accepts TableAutomatedBackupPolicyArgs and TableAutomatedBackupPolicyOutput values.
+// You can construct a concrete instance of `TableAutomatedBackupPolicyInput` via:
+//
+//	TableAutomatedBackupPolicyArgs{...}
+type TableAutomatedBackupPolicyInput interface {
+	pulumi.Input
+
+	ToTableAutomatedBackupPolicyOutput() TableAutomatedBackupPolicyOutput
+	ToTableAutomatedBackupPolicyOutputWithContext(context.Context) TableAutomatedBackupPolicyOutput
+}
+
+type TableAutomatedBackupPolicyArgs struct {
+	// How frequently automated backups should occur.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// How long the automated backups should be retained.
+	RetentionPeriod pulumi.StringPtrInput `pulumi:"retentionPeriod"`
+}
+
+func (TableAutomatedBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i TableAutomatedBackupPolicyArgs) ToTableAutomatedBackupPolicyOutput() TableAutomatedBackupPolicyOutput {
+	return i.ToTableAutomatedBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i TableAutomatedBackupPolicyArgs) ToTableAutomatedBackupPolicyOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAutomatedBackupPolicyOutput)
+}
+
+func (i TableAutomatedBackupPolicyArgs) ToTableAutomatedBackupPolicyPtrOutput() TableAutomatedBackupPolicyPtrOutput {
+	return i.ToTableAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TableAutomatedBackupPolicyArgs) ToTableAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAutomatedBackupPolicyOutput).ToTableAutomatedBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// TableAutomatedBackupPolicyPtrInput is an input type that accepts TableAutomatedBackupPolicyArgs, TableAutomatedBackupPolicyPtr and TableAutomatedBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `TableAutomatedBackupPolicyPtrInput` via:
+//
+//	        TableAutomatedBackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableAutomatedBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTableAutomatedBackupPolicyPtrOutput() TableAutomatedBackupPolicyPtrOutput
+	ToTableAutomatedBackupPolicyPtrOutputWithContext(context.Context) TableAutomatedBackupPolicyPtrOutput
+}
+
+type tableAutomatedBackupPolicyPtrType TableAutomatedBackupPolicyArgs
+
+func TableAutomatedBackupPolicyPtr(v *TableAutomatedBackupPolicyArgs) TableAutomatedBackupPolicyPtrInput {
+	return (*tableAutomatedBackupPolicyPtrType)(v)
+}
+
+func (*tableAutomatedBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i *tableAutomatedBackupPolicyPtrType) ToTableAutomatedBackupPolicyPtrOutput() TableAutomatedBackupPolicyPtrOutput {
+	return i.ToTableAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *tableAutomatedBackupPolicyPtrType) ToTableAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAutomatedBackupPolicyPtrOutput)
+}
+
+type TableAutomatedBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (TableAutomatedBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o TableAutomatedBackupPolicyOutput) ToTableAutomatedBackupPolicyOutput() TableAutomatedBackupPolicyOutput {
+	return o
+}
+
+func (o TableAutomatedBackupPolicyOutput) ToTableAutomatedBackupPolicyOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyOutput {
+	return o
+}
+
+func (o TableAutomatedBackupPolicyOutput) ToTableAutomatedBackupPolicyPtrOutput() TableAutomatedBackupPolicyPtrOutput {
+	return o.ToTableAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TableAutomatedBackupPolicyOutput) ToTableAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableAutomatedBackupPolicy) *TableAutomatedBackupPolicy {
+		return &v
+	}).(TableAutomatedBackupPolicyPtrOutput)
+}
+
+// How frequently automated backups should occur.
+func (o TableAutomatedBackupPolicyOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableAutomatedBackupPolicy) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// How long the automated backups should be retained.
+func (o TableAutomatedBackupPolicyOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableAutomatedBackupPolicy) *string { return v.RetentionPeriod }).(pulumi.StringPtrOutput)
+}
+
+type TableAutomatedBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TableAutomatedBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o TableAutomatedBackupPolicyPtrOutput) ToTableAutomatedBackupPolicyPtrOutput() TableAutomatedBackupPolicyPtrOutput {
+	return o
+}
+
+func (o TableAutomatedBackupPolicyPtrOutput) ToTableAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) TableAutomatedBackupPolicyPtrOutput {
+	return o
+}
+
+func (o TableAutomatedBackupPolicyPtrOutput) Elem() TableAutomatedBackupPolicyOutput {
+	return o.ApplyT(func(v *TableAutomatedBackupPolicy) TableAutomatedBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TableAutomatedBackupPolicy
+		return ret
+	}).(TableAutomatedBackupPolicyOutput)
+}
+
+// How frequently automated backups should occur.
+func (o TableAutomatedBackupPolicyPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableAutomatedBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long the automated backups should be retained.
+func (o TableAutomatedBackupPolicyPtrOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableAutomatedBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableColumnFamily struct {
 	// The name of the column family.
 	Family string `pulumi:"family"`
@@ -1731,6 +1887,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableAutomatedBackupPolicyInput)(nil)).Elem(), TableAutomatedBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableAutomatedBackupPolicyPtrInput)(nil)).Elem(), TableAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnFamilyInput)(nil)).Elem(), TableColumnFamilyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnFamilyArrayInput)(nil)).Elem(), TableColumnFamilyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamBindingConditionInput)(nil)).Elem(), TableIamBindingConditionArgs{})
@@ -1753,6 +1911,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TableAutomatedBackupPolicyOutput{})
+	pulumi.RegisterOutputType(TableAutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnFamilyOutput{})
 	pulumi.RegisterOutputType(TableColumnFamilyArrayOutput{})
 	pulumi.RegisterOutputType(TableIamBindingConditionOutput{})

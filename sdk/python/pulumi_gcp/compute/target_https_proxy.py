@@ -34,11 +34,13 @@ class TargetHttpsProxyArgs:
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+               For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
                sslCertificates and certificateManagerCertificates fields can not be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
-               associated with the given target proxy. This field can only be set for global target proxies.
+               associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+               For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
@@ -125,7 +127,8 @@ class TargetHttpsProxyArgs:
     def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+        For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
         sslCertificates and certificateManagerCertificates fields can not be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
@@ -140,7 +143,8 @@ class TargetHttpsProxyArgs:
     def certificate_map(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the CertificateMap resource uri that identifies a certificate map
-        associated with the given target proxy. This field can only be set for global target proxies.
+        associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+        For INTERNAL_MANAGED, use certificate_manager_certificates instead.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         """
         return pulumi.get(self, "certificate_map")
@@ -309,11 +313,13 @@ class _TargetHttpsProxyState:
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+               For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
                sslCertificates and certificateManagerCertificates fields can not be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
-               associated with the given target proxy. This field can only be set for global target proxies.
+               associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+               For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -399,7 +405,8 @@ class _TargetHttpsProxyState:
     def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+        For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
         sslCertificates and certificateManagerCertificates fields can not be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
@@ -414,7 +421,8 @@ class _TargetHttpsProxyState:
     def certificate_map(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the CertificateMap resource uri that identifies a certificate map
-        associated with the given target proxy. This field can only be set for global target proxies.
+        associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+        For INTERNAL_MANAGED, use certificate_manager_certificates instead.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         """
         return pulumi.get(self, "certificate_map")
@@ -870,11 +878,13 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+               For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
                sslCertificates and certificateManagerCertificates fields can not be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
-               associated with the given target proxy. This field can only be set for global target proxies.
+               associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+               For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
@@ -1248,11 +1258,13 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+               For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
                sslCertificates and certificateManagerCertificates fields can not be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
-               associated with the given target proxy. This field can only be set for global target proxies.
+               associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+               For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -1328,7 +1340,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def certificate_manager_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+        For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
         sslCertificates and certificateManagerCertificates fields can not be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
@@ -1339,7 +1352,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def certificate_map(self) -> pulumi.Output[Optional[str]]:
         """
         A reference to the CertificateMap resource uri that identifies a certificate map
-        associated with the given target proxy. This field can only be set for global target proxies.
+        associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+        For INTERNAL_MANAGED, use certificate_manager_certificates instead.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         """
         return pulumi.get(self, "certificate_map")

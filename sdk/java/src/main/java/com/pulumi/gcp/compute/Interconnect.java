@@ -463,7 +463,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nocContactEmail);
     }
     /**
-     * The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+     * The current status of this Interconnect&#39;s functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -476,7 +476,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     private Output<String> operationalStatus;
 
     /**
-     * @return The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+     * @return The current status of this Interconnect&#39;s functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be

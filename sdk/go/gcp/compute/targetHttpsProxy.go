@@ -510,12 +510,14 @@ type TargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+	// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 	// sslCertificates and certificateManagerCertificates fields can not be defined together.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 	CertificateManagerCertificates pulumi.StringArrayOutput `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
-	// associated with the given target proxy. This field can only be set for global target proxies.
+	// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+	// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 	CertificateMap pulumi.StringPtrOutput `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
@@ -613,12 +615,14 @@ func GetTargetHttpsProxy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TargetHttpsProxy resources.
 type targetHttpsProxyState struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+	// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 	// sslCertificates and certificateManagerCertificates fields can not be defined together.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
-	// associated with the given target proxy. This field can only be set for global target proxies.
+	// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+	// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 	CertificateMap *string `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
@@ -684,12 +688,14 @@ type targetHttpsProxyState struct {
 
 type TargetHttpsProxyState struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+	// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 	// sslCertificates and certificateManagerCertificates fields can not be defined together.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 	CertificateManagerCertificates pulumi.StringArrayInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
-	// associated with the given target proxy. This field can only be set for global target proxies.
+	// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+	// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 	CertificateMap pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
@@ -759,12 +765,14 @@ func (TargetHttpsProxyState) ElementType() reflect.Type {
 
 type targetHttpsProxyArgs struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+	// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 	// sslCertificates and certificateManagerCertificates fields can not be defined together.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
-	// associated with the given target proxy. This field can only be set for global target proxies.
+	// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+	// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 	CertificateMap *string `pulumi:"certificateMap"`
 	// An optional description of this resource.
@@ -825,12 +833,14 @@ type targetHttpsProxyArgs struct {
 // The set of arguments for constructing a TargetHttpsProxy resource.
 type TargetHttpsProxyArgs struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+	// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 	// sslCertificates and certificateManagerCertificates fields can not be defined together.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 	CertificateManagerCertificates pulumi.StringArrayInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
-	// associated with the given target proxy. This field can only be set for global target proxies.
+	// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+	// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 	CertificateMap pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -976,7 +986,8 @@ func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.
 }
 
 // URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
+// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
 // sslCertificates and certificateManagerCertificates fields can not be defined together.
 // Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
 func (o TargetHttpsProxyOutput) CertificateManagerCertificates() pulumi.StringArrayOutput {
@@ -984,7 +995,8 @@ func (o TargetHttpsProxyOutput) CertificateManagerCertificates() pulumi.StringAr
 }
 
 // A reference to the CertificateMap resource uri that identifies a certificate map
-// associated with the given target proxy. This field can only be set for global target proxies.
+// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
+// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
 // Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
 func (o TargetHttpsProxyOutput) CertificateMap() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.CertificateMap }).(pulumi.StringPtrOutput)

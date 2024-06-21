@@ -186,11 +186,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Output("embeddingManagement")]
-        public Output<Outputs.AiFeatureOnlineStoreEmbeddingManagement?> EmbeddingManagement { get; private set; } = null!;
+        public Output<Outputs.AiFeatureOnlineStoreEmbeddingManagement> EmbeddingManagement { get; private set; } = null!;
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.
@@ -325,8 +327,10 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs>? DedicatedServingEndpoint { get; set; }
 
         /// <summary>
-        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Input("embeddingManagement")]
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs>? EmbeddingManagement { get; set; }
@@ -424,8 +428,10 @@ namespace Pulumi.Gcp.Vertex
         }
 
         /// <summary>
-        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+        /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Input("embeddingManagement")]
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementGetArgs>? EmbeddingManagement { get; set; }

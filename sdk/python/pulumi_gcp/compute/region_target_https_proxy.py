@@ -31,8 +31,7 @@ class RegionTargetHttpsProxyArgs:
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -101,8 +100,7 @@ class RegionTargetHttpsProxyArgs:
     def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        sslCertificates and certificateManagerCertificates can't be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
         return pulumi.get(self, "certificate_manager_certificates")
@@ -234,8 +232,7 @@ class _RegionTargetHttpsProxyState:
         """
         Input properties used for looking up and filtering RegionTargetHttpsProxy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -303,8 +300,7 @@ class _RegionTargetHttpsProxyState:
     def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        sslCertificates and certificateManagerCertificates can't be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
         return pulumi.get(self, "certificate_manager_certificates")
@@ -685,8 +681,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1001,8 +996,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -1063,8 +1057,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
     def certificate_manager_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        sslCertificates and certificateManagerCertificates can't be defined together.
         Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         """
         return pulumi.get(self, "certificate_manager_certificates")

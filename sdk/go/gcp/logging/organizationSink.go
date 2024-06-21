@@ -107,8 +107,8 @@ type OrganizationSink struct {
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrOutput `pulumi:"includeChildren"`
-	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	// Whether or not to intercept logs from child projects. If true, matching logs will not
+	// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 	InterceptChildren pulumi.BoolPtrOutput `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -180,8 +180,8 @@ type organizationSinkState struct {
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	// Whether or not to intercept logs from child projects. If true, matching logs will not
+	// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 	InterceptChildren *bool `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name *string `pulumi:"name"`
@@ -218,8 +218,8 @@ type OrganizationSinkState struct {
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	// Whether or not to intercept logs from child projects. If true, matching logs will not
+	// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 	InterceptChildren pulumi.BoolPtrInput
 	// The name of the logging sink.
 	Name pulumi.StringPtrInput
@@ -260,8 +260,8 @@ type organizationSinkArgs struct {
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	// Whether or not to intercept logs from child projects. If true, matching logs will not
+	// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 	InterceptChildren *bool `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name *string `pulumi:"name"`
@@ -296,8 +296,8 @@ type OrganizationSinkArgs struct {
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	// Whether or not to intercept logs from child projects. If true, matching logs will not
+	// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 	InterceptChildren pulumi.BoolPtrInput
 	// The name of the logging sink.
 	Name pulumi.StringPtrInput
@@ -438,8 +438,8 @@ func (o OrganizationSinkOutput) IncludeChildren() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.BoolPtrOutput { return v.IncludeChildren }).(pulumi.BoolPtrOutput)
 }
 
-// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+// Whether or not to intercept logs from child projects. If true, matching logs will not
+// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
 func (o OrganizationSinkOutput) InterceptChildren() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.BoolPtrOutput { return v.InterceptChildren }).(pulumi.BoolPtrOutput)
 }

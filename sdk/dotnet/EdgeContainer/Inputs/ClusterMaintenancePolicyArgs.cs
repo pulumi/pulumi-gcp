@@ -12,6 +12,21 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
 
     public sealed class ClusterMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("maintenanceExclusions")]
+        private InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>? _maintenanceExclusions;
+
+        /// <summary>
+        /// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+        /// in these windows. Each exclusion has a unique name and may be active or expired.
+        /// The max number of maintenance exclusions allowed at a given time is 3.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs> MaintenanceExclusions
+        {
+            get => _maintenanceExclusions ?? (_maintenanceExclusions = new InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>());
+            set => _maintenanceExclusions = value;
+        }
+
         /// <summary>
         /// Specifies the maintenance window in which maintenance may be performed.
         /// Structure is documented below.

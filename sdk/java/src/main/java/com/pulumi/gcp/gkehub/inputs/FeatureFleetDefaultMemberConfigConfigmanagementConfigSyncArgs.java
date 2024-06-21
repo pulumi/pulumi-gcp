@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +53,21 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     }
 
     /**
+     * Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+     * 
+     */
+    @Import(name="preventDrift")
+    private @Nullable Output<Boolean> preventDrift;
+
+    /**
+     * @return Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+     * 
+     */
+    public Optional<Output<Boolean>> preventDrift() {
+        return Optional.ofNullable(this.preventDrift);
+    }
+
+    /**
      * Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
      * 
      */
@@ -71,6 +87,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs $) {
         this.git = $.git;
         this.oci = $.oci;
+        this.preventDrift = $.preventDrift;
         this.sourceFormat = $.sourceFormat;
     }
 
@@ -136,6 +153,27 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
          */
         public Builder oci(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs oci) {
             return oci(Output.of(oci));
+        }
+
+        /**
+         * @param preventDrift Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventDrift(@Nullable Output<Boolean> preventDrift) {
+            $.preventDrift = preventDrift;
+            return this;
+        }
+
+        /**
+         * @param preventDrift Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventDrift(Boolean preventDrift) {
+            return preventDrift(Output.of(preventDrift));
         }
 
         /**

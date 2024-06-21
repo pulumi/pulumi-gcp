@@ -401,7 +401,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+     * The current status of this Interconnect&#39;s functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -414,7 +414,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> operationalStatus;
 
     /**
-     * @return The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+     * @return The current status of this Interconnect&#39;s functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -1191,7 +1191,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operationalStatus The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+         * @param operationalStatus The current status of this Interconnect&#39;s functionality, which can take one of the following:
          * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
          *   be provisioned on this Interconnect.
          * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -1208,7 +1208,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operationalStatus The current status of this Interconnect&#39;s functionality, which can take one of the following values:
+         * @param operationalStatus The current status of this Interconnect&#39;s functionality, which can take one of the following:
          * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
          *   be provisioned on this Interconnect.
          * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be

@@ -47,8 +47,8 @@ class OrganizationSinkArgs:
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
+               match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
         pulumi.set(__self__, "destination", destination)
@@ -181,8 +181,8 @@ class OrganizationSinkArgs:
     @pulumi.getter(name="interceptChildren")
     def intercept_children(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        Whether or not to intercept logs from child projects. If true, matching logs will not
+        match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         """
         return pulumi.get(self, "intercept_children")
 
@@ -237,8 +237,8 @@ class _OrganizationSinkState:
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
+               match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
@@ -366,8 +366,8 @@ class _OrganizationSinkState:
     @pulumi.getter(name="interceptChildren")
     def intercept_children(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        Whether or not to intercept logs from child projects. If true, matching logs will not
+        match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         """
         return pulumi.get(self, "intercept_children")
 
@@ -488,8 +488,8 @@ class OrganizationSink(pulumi.CustomResource):
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
+               match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
         """
@@ -633,8 +633,8 @@ class OrganizationSink(pulumi.CustomResource):
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
+               match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
@@ -728,8 +728,8 @@ class OrganizationSink(pulumi.CustomResource):
     @pulumi.getter(name="interceptChildren")
     def intercept_children(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        Whether or not to intercept logs from child projects. If true, matching logs will not
+        match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         """
         return pulumi.get(self, "intercept_children")
 

@@ -10,6 +10,11 @@ export type ActiveDirectory = import("./activeDirectory").ActiveDirectory;
 export const ActiveDirectory: typeof import("./activeDirectory").ActiveDirectory = null as any;
 utilities.lazyLoad(exports, ["ActiveDirectory"], () => require("./activeDirectory"));
 
+export { BackupArgs, BackupState } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -52,6 +57,8 @@ const _module = {
         switch (type) {
             case "gcp:netapp/activeDirectory:ActiveDirectory":
                 return new ActiveDirectory(name, <any>undefined, { urn })
+            case "gcp:netapp/backup:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "gcp:netapp/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "gcp:netapp/backupVault:BackupVault":
@@ -72,6 +79,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "netapp/activeDirectory", _module)
+pulumi.runtime.registerResourceModule("gcp", "netapp/backup", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/kmsconfig", _module)

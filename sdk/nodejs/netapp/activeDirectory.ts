@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *         "test1",
  *         "test2",
  *     ],
+ *     administrators: [
+ *         "test1",
+ *         "test2",
+ *     ],
  *     description: "ActiveDirectory is the public representation of the active directory config.",
  *     encryptDcConnections: false,
  *     kdcHostname: "hostname",
@@ -104,6 +108,10 @@ export class ActiveDirectory extends pulumi.CustomResource {
         return obj['__pulumiType'] === ActiveDirectory.__pulumiType;
     }
 
+    /**
+     * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     */
+    public readonly administrators!: pulumi.Output<string[] | undefined>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */
@@ -228,6 +236,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActiveDirectoryState | undefined;
+            resourceInputs["administrators"] = state ? state.administrators : undefined;
             resourceInputs["aesEncryption"] = state ? state.aesEncryption : undefined;
             resourceInputs["backupOperators"] = state ? state.backupOperators : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -273,6 +282,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            resourceInputs["administrators"] = args ? args.administrators : undefined;
             resourceInputs["aesEncryption"] = args ? args.aesEncryption : undefined;
             resourceInputs["backupOperators"] = args ? args.backupOperators : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -310,6 +320,10 @@ export class ActiveDirectory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ActiveDirectory resources.
  */
 export interface ActiveDirectoryState {
+    /**
+     * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     */
+    administrators?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */
@@ -426,6 +440,10 @@ export interface ActiveDirectoryState {
  * The set of arguments for constructing a ActiveDirectory resource.
  */
 export interface ActiveDirectoryArgs {
+    /**
+     * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     */
+    administrators?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */

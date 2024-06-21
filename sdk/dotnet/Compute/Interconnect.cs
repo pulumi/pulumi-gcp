@@ -234,7 +234,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NocContactEmail { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this Interconnect's functionality, which can take one of the following values:
+        /// The current status of this Interconnect's functionality, which can take one of the following:
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
         /// be provisioned on this Interconnect.
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -712,7 +712,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NocContactEmail { get; set; }
 
         /// <summary>
-        /// The current status of this Interconnect's functionality, which can take one of the following values:
+        /// The current status of this Interconnect's functionality, which can take one of the following:
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
         /// be provisioned on this Interconnect.
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be

@@ -14,6 +14,13 @@ __all__ = [
     'ChatEngineChatEngineConfigAgentCreationConfigArgs',
     'ChatEngineChatEngineMetadataArgs',
     'ChatEngineCommonConfigArgs',
+    'DataStoreDocumentProcessingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs',
     'SearchEngineCommonConfigArgs',
     'SearchEngineSearchEngineConfigArgs',
 ]
@@ -161,6 +168,226 @@ class ChatEngineCommonConfigArgs:
     @company_name.setter
     def company_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company_name", value)
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigArgs:
+    def __init__(__self__, *,
+                 default_parsing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parsing_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgs'] default_parsing_config: Configurations for default Document parser. If not specified, this resource
+               will be configured to use a default DigitalParsingConfig, and the default parsing
+               config will be applied to all file types for Document parsing.
+               Structure is documented below.
+        :param pulumi.Input[str] name: (Output)
+               The full resource name of the Document Processing Config. Format:
+               `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+        :param pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs']]] parsing_config_overrides: Map from file type to override the default parsing configuration based on the file type. Supported keys:
+        """
+        if default_parsing_config is not None:
+            pulumi.set(__self__, "default_parsing_config", default_parsing_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parsing_config_overrides is not None:
+            pulumi.set(__self__, "parsing_config_overrides", parsing_config_overrides)
+
+    @property
+    @pulumi.getter(name="defaultParsingConfig")
+    def default_parsing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgs']]:
+        """
+        Configurations for default Document parser. If not specified, this resource
+        will be configured to use a default DigitalParsingConfig, and the default parsing
+        config will be applied to all file types for Document parsing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_parsing_config")
+
+    @default_parsing_config.setter
+    def default_parsing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgs']]):
+        pulumi.set(self, "default_parsing_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The full resource name of the Document Processing Config. Format:
+        `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parsingConfigOverrides")
+    def parsing_config_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs']]]]:
+        """
+        Map from file type to override the default parsing configuration based on the file type. Supported keys:
+        """
+        return pulumi.get(self, "parsing_config_overrides")
+
+    @parsing_config_overrides.setter
+    def parsing_config_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs']]]]):
+        pulumi.set(self, "parsing_config_overrides", value)
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs:
+    def __init__(__self__, *,
+                 digital_parsing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs']] = None,
+                 ocr_parsing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs']] = None):
+        """
+        :param pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs'] digital_parsing_config: Configurations applied to digital parser.
+        :param pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs'] ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
+               Structure is documented below.
+        """
+        if digital_parsing_config is not None:
+            pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        if ocr_parsing_config is not None:
+            pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
+
+    @property
+    @pulumi.getter(name="digitalParsingConfig")
+    def digital_parsing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs']]:
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_config")
+
+    @digital_parsing_config.setter
+    def digital_parsing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs']]):
+        pulumi.set(self, "digital_parsing_config", value)
+
+    @property
+    @pulumi.getter(name="ocrParsingConfig")
+    def ocr_parsing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs']]:
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ocr_parsing_config")
+
+    @ocr_parsing_config.setter
+    def ocr_parsing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs']]):
+        pulumi.set(self, "ocr_parsing_config", value)
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs:
+    def __init__(__self__, *,
+                 use_native_text: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        if use_native_text is not None:
+            pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+    @use_native_text.setter
+    def use_native_text(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_native_text", value)
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs:
+    def __init__(__self__, *,
+                 file_type: pulumi.Input[str],
+                 digital_parsing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs']] = None,
+                 ocr_parsing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] file_type: The identifier for this object. Format specified above.
+        :param pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs'] digital_parsing_config: Configurations applied to digital parser.
+        :param pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs'] ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "file_type", file_type)
+        if digital_parsing_config is not None:
+            pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        if ocr_parsing_config is not None:
+            pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_type", value)
+
+    @property
+    @pulumi.getter(name="digitalParsingConfig")
+    def digital_parsing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs']]:
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_config")
+
+    @digital_parsing_config.setter
+    def digital_parsing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs']]):
+        pulumi.set(self, "digital_parsing_config", value)
+
+    @property
+    @pulumi.getter(name="ocrParsingConfig")
+    def ocr_parsing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs']]:
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ocr_parsing_config")
+
+    @ocr_parsing_config.setter
+    def ocr_parsing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs']]):
+        pulumi.set(self, "ocr_parsing_config", value)
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs:
+    def __init__(__self__, *,
+                 use_native_text: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        if use_native_text is not None:
+            pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+    @use_native_text.setter
+    def use_native_text(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_native_text", value)
 
 
 @pulumi.input_type

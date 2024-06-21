@@ -57,7 +57,7 @@ class RegionNetworkEndpointGroupArgs:
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
                Default value is `SERVERLESS`.
-               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
@@ -201,7 +201,7 @@ class RegionNetworkEndpointGroupArgs:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         Default value is `SERVERLESS`.
-        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -305,7 +305,7 @@ class _RegionNetworkEndpointGroupState:
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
                Default value is `SERVERLESS`.
-               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
@@ -442,7 +442,7 @@ class _RegionNetworkEndpointGroupState:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         Default value is `SERVERLESS`.
-        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -551,7 +551,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A regional NEG that can support Serverless Products and proxying traffic to external backends.
+        A regional NEG that can support Serverless Products, proxying traffic to
+        external backends and providing traffic to the PSC port mapping endpoints.
 
         To get more information about RegionNetworkEndpointGroup, see:
 
@@ -787,6 +788,25 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
+        ```
+        ### Region Network Endpoint Group Portmap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default.id)
+        region_network_endpoint_group_portmap = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_portmap",
+            name="portmap-neg",
+            region="us-central1",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_endpoint_type="GCE_VM_IP_PORTMAP")
         ```
 
         ## Import
@@ -844,7 +864,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
                Default value is `SERVERLESS`.
-               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
@@ -867,7 +887,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  args: RegionNetworkEndpointGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A regional NEG that can support Serverless Products and proxying traffic to external backends.
+        A regional NEG that can support Serverless Products, proxying traffic to
+        external backends and providing traffic to the PSC port mapping endpoints.
 
         To get more information about RegionNetworkEndpointGroup, see:
 
@@ -1103,6 +1124,25 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
+        ```
+        ### Region Network Endpoint Group Portmap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default.id)
+        region_network_endpoint_group_portmap = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_portmap",
+            name="portmap-neg",
+            region="us-central1",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_endpoint_type="GCE_VM_IP_PORTMAP")
         ```
 
         ## Import
@@ -1239,7 +1279,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
                Default value is `SERVERLESS`.
-               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
@@ -1344,7 +1384,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         Default value is `SERVERLESS`.
-        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         """
         return pulumi.get(self, "network_endpoint_type")
 

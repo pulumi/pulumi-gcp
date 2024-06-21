@@ -6,6 +6,8 @@ package com.pulumi.gcp.cloudbuildv2;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionBitbucketCloudConfigArgs;
+import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionBitbucketDataCenterConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigArgs;
@@ -38,6 +40,40 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bitbucketCloudConfig")
+    private @Nullable Output<ConnectionBitbucketCloudConfigArgs> bitbucketCloudConfig;
+
+    /**
+     * @return Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionBitbucketCloudConfigArgs>> bitbucketCloudConfig() {
+        return Optional.ofNullable(this.bitbucketCloudConfig);
+    }
+
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bitbucketDataCenterConfig")
+    private @Nullable Output<ConnectionBitbucketDataCenterConfigArgs> bitbucketDataCenterConfig;
+
+    /**
+     * @return Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionBitbucketDataCenterConfigArgs>> bitbucketDataCenterConfig() {
+        return Optional.ofNullable(this.bitbucketDataCenterConfig);
     }
 
     /**
@@ -161,6 +197,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     private ConnectionArgs(ConnectionArgs $) {
         this.annotations = $.annotations;
+        this.bitbucketCloudConfig = $.bitbucketCloudConfig;
+        this.bitbucketDataCenterConfig = $.bitbucketDataCenterConfig;
         this.disabled = $.disabled;
         this.githubConfig = $.githubConfig;
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
@@ -211,6 +249,52 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param bitbucketCloudConfig Configuration for connections to Bitbucket Cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketCloudConfig(@Nullable Output<ConnectionBitbucketCloudConfigArgs> bitbucketCloudConfig) {
+            $.bitbucketCloudConfig = bitbucketCloudConfig;
+            return this;
+        }
+
+        /**
+         * @param bitbucketCloudConfig Configuration for connections to Bitbucket Cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketCloudConfig(ConnectionBitbucketCloudConfigArgs bitbucketCloudConfig) {
+            return bitbucketCloudConfig(Output.of(bitbucketCloudConfig));
+        }
+
+        /**
+         * @param bitbucketDataCenterConfig Configuration for connections to Bitbucket Data Center.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketDataCenterConfig(@Nullable Output<ConnectionBitbucketDataCenterConfigArgs> bitbucketDataCenterConfig) {
+            $.bitbucketDataCenterConfig = bitbucketDataCenterConfig;
+            return this;
+        }
+
+        /**
+         * @param bitbucketDataCenterConfig Configuration for connections to Bitbucket Data Center.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketDataCenterConfig(ConnectionBitbucketDataCenterConfigArgs bitbucketDataCenterConfig) {
+            return bitbucketDataCenterConfig(Output.of(bitbucketDataCenterConfig));
         }
 
         /**

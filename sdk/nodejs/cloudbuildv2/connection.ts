@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+ * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center/Cloud or GitLab.
  *
  * To get more information about Connection, see:
  *
@@ -201,6 +201,16 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    public readonly bitbucketCloudConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketCloudConfig | undefined>;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    public readonly bitbucketDataCenterConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
+    /**
      * Output only. Server assigned timestamp for when the connection was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -272,6 +282,8 @@ export class Connection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["bitbucketCloudConfig"] = state ? state.bitbucketCloudConfig : undefined;
+            resourceInputs["bitbucketDataCenterConfig"] = state ? state.bitbucketDataCenterConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
@@ -291,6 +303,8 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["bitbucketCloudConfig"] = args ? args.bitbucketCloudConfig : undefined;
+            resourceInputs["bitbucketDataCenterConfig"] = args ? args.bitbucketDataCenterConfig : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["githubConfig"] = args ? args.githubConfig : undefined;
             resourceInputs["githubEnterpriseConfig"] = args ? args.githubEnterpriseConfig : undefined;
@@ -320,6 +334,16 @@ export interface ConnectionState {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig>;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig>;
     /**
      * Output only. Server assigned timestamp for when the connection was created.
      */
@@ -389,6 +413,16 @@ export interface ConnectionArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig>;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */

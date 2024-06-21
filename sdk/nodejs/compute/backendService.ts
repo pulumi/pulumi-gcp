@@ -518,12 +518,6 @@ export class BackendService extends pulumi.CustomResource {
      * - - -
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * Applicable backend service types can be a global backend service with the
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-     * Structure is documented below.
-     */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
      * Name of backend port. The same name should appear in the instance
@@ -573,8 +567,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     public readonly timeoutSec!: pulumi.Output<number>;
 
@@ -850,12 +846,6 @@ export interface BackendServiceState {
      * - - -
      */
     name?: pulumi.Input<string>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * Applicable backend service types can be a global backend service with the
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-     * Structure is documented below.
-     */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
      * Name of backend port. The same name should appear in the instance
@@ -905,8 +895,10 @@ export interface BackendServiceState {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
 }
@@ -1085,12 +1077,6 @@ export interface BackendServiceArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * Applicable backend service types can be a global backend service with the
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-     * Structure is documented below.
-     */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
      * Name of backend port. The same name should appear in the instance
@@ -1136,8 +1122,10 @@ export interface BackendServiceArgs {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
 }

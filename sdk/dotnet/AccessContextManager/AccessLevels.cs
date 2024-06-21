@@ -10,16 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager
 {
     /// <summary>
-    /// Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
-    /// This is a bulk edit of all Access Levels and may override existing Access Levels created by `gcp.accesscontextmanager.AccessLevel`,
-    /// thus causing a permadiff if used alongside `gcp.accesscontextmanager.AccessLevel` on the same parent.
-    /// 
-    /// To get more information about AccessLevels, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
-    /// * How-to Guides
-    ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Access Context Manager Access Levels Basic

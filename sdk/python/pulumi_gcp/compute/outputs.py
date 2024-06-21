@@ -1965,6 +1965,7 @@ class BackendServiceBackend(dict):
                and CONNECTION (for TCP/SSL).
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
+               From version 6.0.0 default value will be UTILIZATION to match default GCP value.
                Default value is `UTILIZATION`.
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
@@ -2061,6 +2062,7 @@ class BackendServiceBackend(dict):
         and CONNECTION (for TCP/SSL).
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
+        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
         Default value is `UTILIZATION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
@@ -3803,7 +3805,6 @@ class DiskGuestOsFeature(dict):
                  type: str):
         """
         :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -3812,7 +3813,6 @@ class DiskGuestOsFeature(dict):
     def type(self) -> str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
@@ -16549,6 +16549,7 @@ class RegionBackendServiceBackend(dict):
         :param str balancing_mode: Specifies the balancing mode for this backend.
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
+               From version 6.0.0 default value will be UTILIZATION to match default GCP value.
                Default value is `CONNECTION`.
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
@@ -16657,6 +16658,7 @@ class RegionBackendServiceBackend(dict):
         Specifies the balancing mode for this backend.
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
+        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
         Default value is `CONNECTION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
@@ -40426,7 +40428,9 @@ class GetBackendServiceBackendResult(dict):
                and CONNECTION (for TCP/SSL).
                
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-               for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+               for an explanation of load balancing modes.
+               
+               From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                
@@ -40512,7 +40516,9 @@ class GetBackendServiceBackendResult(dict):
         and CONNECTION (for TCP/SSL).
 
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-        for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+        for an explanation of load balancing modes.
+
+        From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
         """
         return pulumi.get(self, "balancing_mode")
 

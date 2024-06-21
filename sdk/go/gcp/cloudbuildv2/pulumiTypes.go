@@ -13,6 +13,1266 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConnectionBitbucketCloudConfig struct {
+	// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+	// Structure is documented below.
+	AuthorizerCredential ConnectionBitbucketCloudConfigAuthorizerCredential `pulumi:"authorizerCredential"`
+	// Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+	// Structure is documented below.
+	ReadAuthorizerCredential ConnectionBitbucketCloudConfigReadAuthorizerCredential `pulumi:"readAuthorizerCredential"`
+	// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+	// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+	Workspace string `pulumi:"workspace"`
+}
+
+// ConnectionBitbucketCloudConfigInput is an input type that accepts ConnectionBitbucketCloudConfigArgs and ConnectionBitbucketCloudConfigOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigInput` via:
+//
+//	ConnectionBitbucketCloudConfigArgs{...}
+type ConnectionBitbucketCloudConfigInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigOutput() ConnectionBitbucketCloudConfigOutput
+	ToConnectionBitbucketCloudConfigOutputWithContext(context.Context) ConnectionBitbucketCloudConfigOutput
+}
+
+type ConnectionBitbucketCloudConfigArgs struct {
+	// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+	// Structure is documented below.
+	AuthorizerCredential ConnectionBitbucketCloudConfigAuthorizerCredentialInput `pulumi:"authorizerCredential"`
+	// Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+	// Structure is documented below.
+	ReadAuthorizerCredential ConnectionBitbucketCloudConfigReadAuthorizerCredentialInput `pulumi:"readAuthorizerCredential"`
+	// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion pulumi.StringInput `pulumi:"webhookSecretSecretVersion"`
+	// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (ConnectionBitbucketCloudConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfig)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketCloudConfigArgs) ToConnectionBitbucketCloudConfigOutput() ConnectionBitbucketCloudConfigOutput {
+	return i.ToConnectionBitbucketCloudConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigArgs) ToConnectionBitbucketCloudConfigOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigOutput)
+}
+
+func (i ConnectionBitbucketCloudConfigArgs) ToConnectionBitbucketCloudConfigPtrOutput() ConnectionBitbucketCloudConfigPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigArgs) ToConnectionBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigOutput).ToConnectionBitbucketCloudConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketCloudConfigPtrInput is an input type that accepts ConnectionBitbucketCloudConfigArgs, ConnectionBitbucketCloudConfigPtr and ConnectionBitbucketCloudConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigPtrInput` via:
+//
+//	        ConnectionBitbucketCloudConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketCloudConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigPtrOutput() ConnectionBitbucketCloudConfigPtrOutput
+	ToConnectionBitbucketCloudConfigPtrOutputWithContext(context.Context) ConnectionBitbucketCloudConfigPtrOutput
+}
+
+type connectionBitbucketCloudConfigPtrType ConnectionBitbucketCloudConfigArgs
+
+func ConnectionBitbucketCloudConfigPtr(v *ConnectionBitbucketCloudConfigArgs) ConnectionBitbucketCloudConfigPtrInput {
+	return (*connectionBitbucketCloudConfigPtrType)(v)
+}
+
+func (*connectionBitbucketCloudConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfig)(nil)).Elem()
+}
+
+func (i *connectionBitbucketCloudConfigPtrType) ToConnectionBitbucketCloudConfigPtrOutput() ConnectionBitbucketCloudConfigPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketCloudConfigPtrType) ToConnectionBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigOutput) ToConnectionBitbucketCloudConfigOutput() ConnectionBitbucketCloudConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigOutput) ToConnectionBitbucketCloudConfigOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigOutput) ToConnectionBitbucketCloudConfigPtrOutput() ConnectionBitbucketCloudConfigPtrOutput {
+	return o.ToConnectionBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketCloudConfigOutput) ToConnectionBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketCloudConfig) *ConnectionBitbucketCloudConfig {
+		return &v
+	}).(ConnectionBitbucketCloudConfigPtrOutput)
+}
+
+// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+// Structure is documented below.
+func (o ConnectionBitbucketCloudConfigOutput) AuthorizerCredential() ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfig) ConnectionBitbucketCloudConfigAuthorizerCredential {
+		return v.AuthorizerCredential
+	}).(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput)
+}
+
+// Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+// Structure is documented below.
+func (o ConnectionBitbucketCloudConfigOutput) ReadAuthorizerCredential() ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfig) ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+		return v.ReadAuthorizerCredential
+	}).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfig) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+func (o ConnectionBitbucketCloudConfigOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfig) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type ConnectionBitbucketCloudConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigPtrOutput) ToConnectionBitbucketCloudConfigPtrOutput() ConnectionBitbucketCloudConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigPtrOutput) ToConnectionBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigPtrOutput) Elem() ConnectionBitbucketCloudConfigOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfig) ConnectionBitbucketCloudConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketCloudConfig
+		return ret
+	}).(ConnectionBitbucketCloudConfigOutput)
+}
+
+// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+// Structure is documented below.
+func (o ConnectionBitbucketCloudConfigPtrOutput) AuthorizerCredential() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfig) *ConnectionBitbucketCloudConfigAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizerCredential
+	}).(ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput)
+}
+
+// Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+// Structure is documented below.
+func (o ConnectionBitbucketCloudConfigPtrOutput) ReadAuthorizerCredential() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfig) *ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAuthorizerCredential
+	}).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigPtrOutput) WebhookSecretSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+func (o ConnectionBitbucketCloudConfigPtrOutput) Workspace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Workspace
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionBitbucketCloudConfigAuthorizerCredentialInput is an input type that accepts ConnectionBitbucketCloudConfigAuthorizerCredentialArgs and ConnectionBitbucketCloudConfigAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigAuthorizerCredentialInput` via:
+//
+//	ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{...}
+type ConnectionBitbucketCloudConfigAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialOutput
+	ToConnectionBitbucketCloudConfigAuthorizerCredentialOutputWithContext(context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialOutput
+}
+
+type ConnectionBitbucketCloudConfigAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return i.ToConnectionBitbucketCloudConfigAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput)
+}
+
+func (i ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput).ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketCloudConfigAuthorizerCredentialPtrInput is an input type that accepts ConnectionBitbucketCloudConfigAuthorizerCredentialArgs, ConnectionBitbucketCloudConfigAuthorizerCredentialPtr and ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketCloudConfigAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput
+	ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput
+}
+
+type connectionBitbucketCloudConfigAuthorizerCredentialPtrType ConnectionBitbucketCloudConfigAuthorizerCredentialArgs
+
+func ConnectionBitbucketCloudConfigAuthorizerCredentialPtr(v *ConnectionBitbucketCloudConfigAuthorizerCredentialArgs) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrInput {
+	return (*connectionBitbucketCloudConfigAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionBitbucketCloudConfigAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionBitbucketCloudConfigAuthorizerCredentialPtrType) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketCloudConfigAuthorizerCredentialPtrType) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return o.ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketCloudConfigAuthorizerCredential) *ConnectionBitbucketCloudConfigAuthorizerCredential {
+		return &v
+	}).(ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfigAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) ToConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) Elem() ConnectionBitbucketCloudConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigAuthorizerCredential) ConnectionBitbucketCloudConfigAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketCloudConfigAuthorizerCredential
+		return ret
+	}).(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigReadAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionBitbucketCloudConfigReadAuthorizerCredentialInput is an input type that accepts ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs and ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigReadAuthorizerCredentialInput` via:
+//
+//	ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs{...}
+type ConnectionBitbucketCloudConfigReadAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput
+	ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutputWithContext(context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput
+}
+
+type ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return i.ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput)
+}
+
+func (i ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput).ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrInput is an input type that accepts ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs, ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtr and ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput
+	ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput
+}
+
+type connectionBitbucketCloudConfigReadAuthorizerCredentialPtrType ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs
+
+func ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtr(v *ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrInput {
+	return (*connectionBitbucketCloudConfigReadAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionBitbucketCloudConfigReadAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionBitbucketCloudConfigReadAuthorizerCredentialPtrType) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketCloudConfigReadAuthorizerCredentialPtrType) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketCloudConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return o.ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketCloudConfigReadAuthorizerCredential) *ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+		return &v
+	}).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfigReadAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketCloudConfigReadAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketCloudConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) ToConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) Elem() ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigReadAuthorizerCredential) ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketCloudConfigReadAuthorizerCredential
+		return ret
+	}).(ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketCloudConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfig struct {
+	// Required. A http access token with the `REPO_ADMIN` scope access.
+	// Structure is documented below.
+	AuthorizerCredential ConnectionBitbucketDataCenterConfigAuthorizerCredential `pulumi:"authorizerCredential"`
+	// The URI of the Bitbucket Data Center host this connection is for.
+	HostUri string `pulumi:"hostUri"`
+	// Required. A http access token with the `REPO_READ` access.
+	// Structure is documented below.
+	ReadAuthorizerCredential ConnectionBitbucketDataCenterConfigReadAuthorizerCredential `pulumi:"readAuthorizerCredential"`
+	// (Output)
+	// Output only. Version of the Bitbucket Data Center running on the `hostUri`.
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+	// Structure is documented below.
+	ServiceDirectoryConfig *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to the Bitbucket Data Center.
+	SslCa *string `pulumi:"sslCa"`
+	// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+}
+
+// ConnectionBitbucketDataCenterConfigInput is an input type that accepts ConnectionBitbucketDataCenterConfigArgs and ConnectionBitbucketDataCenterConfigOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigInput` via:
+//
+//	ConnectionBitbucketDataCenterConfigArgs{...}
+type ConnectionBitbucketDataCenterConfigInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigOutput() ConnectionBitbucketDataCenterConfigOutput
+	ToConnectionBitbucketDataCenterConfigOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigOutput
+}
+
+type ConnectionBitbucketDataCenterConfigArgs struct {
+	// Required. A http access token with the `REPO_ADMIN` scope access.
+	// Structure is documented below.
+	AuthorizerCredential ConnectionBitbucketDataCenterConfigAuthorizerCredentialInput `pulumi:"authorizerCredential"`
+	// The URI of the Bitbucket Data Center host this connection is for.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// Required. A http access token with the `REPO_READ` access.
+	// Structure is documented below.
+	ReadAuthorizerCredential ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialInput `pulumi:"readAuthorizerCredential"`
+	// (Output)
+	// Output only. Version of the Bitbucket Data Center running on the `hostUri`.
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+	// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+	// Structure is documented below.
+	ServiceDirectoryConfig ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to the Bitbucket Data Center.
+	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
+	// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion pulumi.StringInput `pulumi:"webhookSecretSecretVersion"`
+}
+
+func (ConnectionBitbucketDataCenterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketDataCenterConfigArgs) ToConnectionBitbucketDataCenterConfigOutput() ConnectionBitbucketDataCenterConfigOutput {
+	return i.ToConnectionBitbucketDataCenterConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigArgs) ToConnectionBitbucketDataCenterConfigOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigOutput)
+}
+
+func (i ConnectionBitbucketDataCenterConfigArgs) ToConnectionBitbucketDataCenterConfigPtrOutput() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigArgs) ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigOutput).ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketDataCenterConfigPtrInput is an input type that accepts ConnectionBitbucketDataCenterConfigArgs, ConnectionBitbucketDataCenterConfigPtr and ConnectionBitbucketDataCenterConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigPtrInput` via:
+//
+//	        ConnectionBitbucketDataCenterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketDataCenterConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigPtrOutput() ConnectionBitbucketDataCenterConfigPtrOutput
+	ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigPtrOutput
+}
+
+type connectionBitbucketDataCenterConfigPtrType ConnectionBitbucketDataCenterConfigArgs
+
+func ConnectionBitbucketDataCenterConfigPtr(v *ConnectionBitbucketDataCenterConfigArgs) ConnectionBitbucketDataCenterConfigPtrInput {
+	return (*connectionBitbucketDataCenterConfigPtrType)(v)
+}
+
+func (*connectionBitbucketDataCenterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (i *connectionBitbucketDataCenterConfigPtrType) ToConnectionBitbucketDataCenterConfigPtrOutput() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketDataCenterConfigPtrType) ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigOutput) ToConnectionBitbucketDataCenterConfigOutput() ConnectionBitbucketDataCenterConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigOutput) ToConnectionBitbucketDataCenterConfigOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigOutput) ToConnectionBitbucketDataCenterConfigPtrOutput() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o.ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketDataCenterConfigOutput) ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketDataCenterConfig) *ConnectionBitbucketDataCenterConfig {
+		return &v
+	}).(ConnectionBitbucketDataCenterConfigPtrOutput)
+}
+
+// Required. A http access token with the `REPO_ADMIN` scope access.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigOutput) AuthorizerCredential() ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+		return v.AuthorizerCredential
+	}).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput)
+}
+
+// The URI of the Bitbucket Data Center host this connection is for.
+func (o ConnectionBitbucketDataCenterConfigOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// Required. A http access token with the `REPO_READ` access.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigOutput) ReadAuthorizerCredential() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+		return v.ReadAuthorizerCredential
+	}).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput)
+}
+
+// (Output)
+// Output only. Version of the Bitbucket Data Center running on the `hostUri`.
+func (o ConnectionBitbucketDataCenterConfigOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigOutput) ServiceDirectoryConfig() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+		return v.ServiceDirectoryConfig
+	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to the Bitbucket Data Center.
+func (o ConnectionBitbucketDataCenterConfigOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) *string { return v.SslCa }).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfig) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) ToConnectionBitbucketDataCenterConfigPtrOutput() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) ToConnectionBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) Elem() ConnectionBitbucketDataCenterConfigOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) ConnectionBitbucketDataCenterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketDataCenterConfig
+		return ret
+	}).(ConnectionBitbucketDataCenterConfigOutput)
+}
+
+// Required. A http access token with the `REPO_ADMIN` scope access.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) AuthorizerCredential() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizerCredential
+	}).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput)
+}
+
+// The URI of the Bitbucket Data Center host this connection is for.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. A http access token with the `REPO_READ` access.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) ReadAuthorizerCredential() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAuthorizerCredential
+	}).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// (Output)
+// Output only. Version of the Bitbucket Data Center running on the `hostUri`.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+// Structure is documented below.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) ServiceDirectoryConfig() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to the Bitbucket Data Center.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigPtrOutput) WebhookSecretSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionBitbucketDataCenterConfigAuthorizerCredentialInput is an input type that accepts ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs and ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigAuthorizerCredentialInput` via:
+//
+//	ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs{...}
+type ConnectionBitbucketDataCenterConfigAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput
+	ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput
+}
+
+type ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return i.ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput)
+}
+
+func (i ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput).ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrInput is an input type that accepts ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs, ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtr and ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput
+	ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput
+}
+
+type connectionBitbucketDataCenterConfigAuthorizerCredentialPtrType ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs
+
+func ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtr(v *ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrInput {
+	return (*connectionBitbucketDataCenterConfigAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionBitbucketDataCenterConfigAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionBitbucketDataCenterConfigAuthorizerCredentialPtrType) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketDataCenterConfigAuthorizerCredentialPtrType) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return o.ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketDataCenterConfigAuthorizerCredential) *ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+		return &v
+	}).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfigAuthorizerCredential) string {
+		return v.UserTokenSecretVersion
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) ToConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) Elem() ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigAuthorizerCredential) ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketDataCenterConfigAuthorizerCredential
+		return ret
+	}).(ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialInput is an input type that accepts ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs and ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialInput` via:
+//
+//	ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs{...}
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput
+	ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput
+}
+
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
+	// Output only. The username associated to this token.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return i.ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput)
+}
+
+func (i ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput).ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrInput is an input type that accepts ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs, ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtr and ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput
+	ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput
+}
+
+type connectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrType ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs
+
+func ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtr(v *ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrInput {
+	return (*connectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrType) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrType) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return o.ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) *ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+		return &v
+	}).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) string {
+		return v.UserTokenSecretVersion
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) ToConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) Elem() ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketDataCenterConfigReadAuthorizerCredential
+		return ret
+	}).(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The username associated to this token.
+func (o ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfig struct {
+	// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service string `pulumi:"service"`
+}
+
+// ConnectionBitbucketDataCenterConfigServiceDirectoryConfigInput is an input type that accepts ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs and ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigServiceDirectoryConfigInput` via:
+//
+//	ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs{...}
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput
+	ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput
+}
+
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs struct {
+	// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput {
+	return i.ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput)
+}
+
+func (i ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput).ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput is an input type that accepts ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs, ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtr and ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput` via:
+//
+//	        ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput
+	ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput
+}
+
+type connectionBitbucketDataCenterConfigServiceDirectoryConfigPtrType ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs
+
+func ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtr(v *ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput {
+	return (*connectionBitbucketDataCenterConfigServiceDirectoryConfigPtrType)(v)
+}
+
+func (*connectionBitbucketDataCenterConfigServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *connectionBitbucketDataCenterConfigServiceDirectoryConfigPtrType) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBitbucketDataCenterConfigServiceDirectoryConfigPtrType) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBitbucketDataCenterConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o.ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBitbucketDataCenterConfigServiceDirectoryConfig) *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+		return &v
+	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput)
+}
+
+// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionBitbucketDataCenterConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBitbucketDataCenterConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) ToConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) Elem() ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig) ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBitbucketDataCenterConfigServiceDirectoryConfig
+		return ret
+	}).(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput)
+}
+
+// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBitbucketDataCenterConfigServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionGithubConfig struct {
 	// GitHub App installation id.
 	AppInstallationId *int `pulumi:"appInstallationId"`
@@ -1929,6 +3189,20 @@ func (o ConnectionInstallationStateArrayOutput) Index(i pulumi.IntInput) Connect
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigPtrInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigReadAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigPtrInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubConfigInput)(nil)).Elem(), ConnectionGithubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubConfigPtrInput)(nil)).Elem(), ConnectionGithubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionGithubConfigAuthorizerCredentialArgs{})
@@ -1951,6 +3225,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMMemberConditionPtrInput)(nil)).Elem(), ConnectionIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateInput)(nil)).Elem(), ConnectionInstallationStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateArrayInput)(nil)).Elem(), ConnectionInstallationStateArray{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigReadAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigReadAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionBitbucketDataCenterConfigServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionGithubConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionGithubConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionGithubConfigAuthorizerCredentialOutput{})

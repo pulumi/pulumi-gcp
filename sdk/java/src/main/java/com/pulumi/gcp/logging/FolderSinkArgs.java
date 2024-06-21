@@ -165,16 +165,16 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * Whether or not to intercept logs from child projects. If true, matching logs will not
+     * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      * 
      */
     @Import(name="interceptChildren")
     private @Nullable Output<Boolean> interceptChildren;
 
     /**
-     * @return Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * @return Whether or not to intercept logs from child projects. If true, matching logs will not
+     * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      * 
      */
     public Optional<Output<Boolean>> interceptChildren() {
@@ -432,8 +432,8 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interceptChildren Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-         * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+         * @param interceptChildren Whether or not to intercept logs from child projects. If true, matching logs will not
+         * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
          * 
          * @return builder
          * 
@@ -444,8 +444,8 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interceptChildren Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-         * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+         * @param interceptChildren Whether or not to intercept logs from child projects. If true, matching logs will not
+         * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
          * 
          * @return builder
          * 

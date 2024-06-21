@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigtable.inputs.TableAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class TableState extends com.pulumi.resources.ResourceArgs {
 
     public static final TableState Empty = new TableState();
+
+    /**
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+     * Retention Period and Frequency to 0.
+     * 
+     */
+    @Import(name="automatedBackupPolicy")
+    private @Nullable Output<TableAutomatedBackupPolicyArgs> automatedBackupPolicy;
+
+    /**
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+     * Retention Period and Frequency to 0.
+     * 
+     */
+    public Optional<Output<TableAutomatedBackupPolicyArgs>> automatedBackupPolicy() {
+        return Optional.ofNullable(this.automatedBackupPolicy);
+    }
 
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
@@ -135,6 +153,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private TableState() {}
 
     private TableState(TableState $) {
+        this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.changeStreamRetention = $.changeStreamRetention;
         this.columnFamilies = $.columnFamilies;
         this.deletionProtection = $.deletionProtection;
@@ -160,6 +179,29 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableState defaults) {
             $ = new TableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+         * Retention Period and Frequency to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupPolicy(@Nullable Output<TableAutomatedBackupPolicyArgs> automatedBackupPolicy) {
+            $.automatedBackupPolicy = automatedBackupPolicy;
+            return this;
+        }
+
+        /**
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+         * Retention Period and Frequency to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupPolicy(TableAutomatedBackupPolicyArgs automatedBackupPolicy) {
+            return automatedBackupPolicy(Output.of(automatedBackupPolicy));
         }
 
         /**

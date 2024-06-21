@@ -6,13 +6,38 @@ package com.pulumi.gcp.edgecontainer.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowArgs;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterMaintenancePolicyArgs Empty = new ClusterMaintenancePolicyArgs();
+
+    /**
+     * Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+     * in these windows. Each exclusion has a unique name and may be active or expired.
+     * The max number of maintenance exclusions allowed at a given time is 3.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceExclusions")
+    private @Nullable Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>> maintenanceExclusions;
+
+    /**
+     * @return Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+     * in these windows. Each exclusion has a unique name and may be active or expired.
+     * The max number of maintenance exclusions allowed at a given time is 3.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>>> maintenanceExclusions() {
+        return Optional.ofNullable(this.maintenanceExclusions);
+    }
 
     /**
      * Specifies the maintenance window in which maintenance may be performed.
@@ -34,6 +59,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     private ClusterMaintenancePolicyArgs() {}
 
     private ClusterMaintenancePolicyArgs(ClusterMaintenancePolicyArgs $) {
+        this.maintenanceExclusions = $.maintenanceExclusions;
         this.window = $.window;
     }
 
@@ -53,6 +79,46 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
 
         public Builder(ClusterMaintenancePolicyArgs defaults) {
             $ = new ClusterMaintenancePolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param maintenanceExclusions Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+         * in these windows. Each exclusion has a unique name and may be active or expired.
+         * The max number of maintenance exclusions allowed at a given time is 3.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceExclusions(@Nullable Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>> maintenanceExclusions) {
+            $.maintenanceExclusions = maintenanceExclusions;
+            return this;
+        }
+
+        /**
+         * @param maintenanceExclusions Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+         * in these windows. Each exclusion has a unique name and may be active or expired.
+         * The max number of maintenance exclusions allowed at a given time is 3.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceExclusions(List<ClusterMaintenancePolicyMaintenanceExclusionArgs> maintenanceExclusions) {
+            return maintenanceExclusions(Output.of(maintenanceExclusions));
+        }
+
+        /**
+         * @param maintenanceExclusions Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+         * in these windows. Each exclusion has a unique name and may be active or expired.
+         * The max number of maintenance exclusions allowed at a given time is 3.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceExclusions(ClusterMaintenancePolicyMaintenanceExclusionArgs... maintenanceExclusions) {
+            return maintenanceExclusions(List.of(maintenanceExclusions));
         }
 
         /**

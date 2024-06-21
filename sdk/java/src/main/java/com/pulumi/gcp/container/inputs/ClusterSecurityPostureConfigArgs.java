@@ -16,14 +16,14 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
     public static final ClusterSecurityPostureConfigArgs Empty = new ClusterSecurityPostureConfigArgs();
 
     /**
-     * Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+     * Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -71,7 +71,7 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mode Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+         * @param mode Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mode Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+         * @param mode Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
          * 
          * @return builder
          * 

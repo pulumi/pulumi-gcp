@@ -333,6 +333,9 @@ namespace Pulumi.Gcp
         [Output("lookerCustomEndpoint")]
         public Output<string?> LookerCustomEndpoint { get; private set; } = null!;
 
+        [Output("managedKafkaCustomEndpoint")]
+        public Output<string?> ManagedKafkaCustomEndpoint { get; private set; } = null!;
+
         [Output("memcacheCustomEndpoint")]
         public Output<string?> MemcacheCustomEndpoint { get; private set; } = null!;
 
@@ -887,6 +890,9 @@ namespace Pulumi.Gcp
 
         [Input("lookerCustomEndpoint")]
         public Input<string>? LookerCustomEndpoint { get; set; }
+
+        [Input("managedKafkaCustomEndpoint")]
+        public Input<string>? ManagedKafkaCustomEndpoint { get; set; }
 
         [Input("memcacheCustomEndpoint")]
         public Input<string>? MemcacheCustomEndpoint { get; set; }

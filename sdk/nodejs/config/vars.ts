@@ -889,6 +889,14 @@ Object.defineProperty(exports, "lookerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const managedKafkaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "managedKafkaCustomEndpoint", {
+    get() {
+        return __config.get("managedKafkaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const memcacheCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "memcacheCustomEndpoint", {
     get() {

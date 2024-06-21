@@ -101,6 +101,11 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+     * Retention Period and Frequency to 0.
+     */
+    public readonly automatedBackupPolicy!: pulumi.Output<outputs.bigtable.TableAutomatedBackupPolicy | undefined>;
+    /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      *
      * -----
@@ -147,6 +152,7 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
+            resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
             resourceInputs["changeStreamRetention"] = state ? state.changeStreamRetention : undefined;
             resourceInputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -159,6 +165,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
+            resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["changeStreamRetention"] = args ? args.changeStreamRetention : undefined;
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -176,6 +183,11 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+     * Retention Period and Frequency to 0.
+     */
+    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      *
@@ -215,6 +227,11 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+     * Retention Period and Frequency to 0.
+     */
+    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      *

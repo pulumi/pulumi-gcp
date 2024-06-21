@@ -35,10 +35,25 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { ManagementFolderSecurityHealthAnalyticsCustomModuleArgs, ManagementFolderSecurityHealthAnalyticsCustomModuleState } from "./managementFolderSecurityHealthAnalyticsCustomModule";
+export type ManagementFolderSecurityHealthAnalyticsCustomModule = import("./managementFolderSecurityHealthAnalyticsCustomModule").ManagementFolderSecurityHealthAnalyticsCustomModule;
+export const ManagementFolderSecurityHealthAnalyticsCustomModule: typeof import("./managementFolderSecurityHealthAnalyticsCustomModule").ManagementFolderSecurityHealthAnalyticsCustomModule = null as any;
+utilities.lazyLoad(exports, ["ManagementFolderSecurityHealthAnalyticsCustomModule"], () => require("./managementFolderSecurityHealthAnalyticsCustomModule"));
+
 export { ManagementOrganizationEventThreatDetectionCustomModuleArgs, ManagementOrganizationEventThreatDetectionCustomModuleState } from "./managementOrganizationEventThreatDetectionCustomModule";
 export type ManagementOrganizationEventThreatDetectionCustomModule = import("./managementOrganizationEventThreatDetectionCustomModule").ManagementOrganizationEventThreatDetectionCustomModule;
 export const ManagementOrganizationEventThreatDetectionCustomModule: typeof import("./managementOrganizationEventThreatDetectionCustomModule").ManagementOrganizationEventThreatDetectionCustomModule = null as any;
 utilities.lazyLoad(exports, ["ManagementOrganizationEventThreatDetectionCustomModule"], () => require("./managementOrganizationEventThreatDetectionCustomModule"));
+
+export { ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs, ManagementOrganizationSecurityHealthAnalyticsCustomModuleState } from "./managementOrganizationSecurityHealthAnalyticsCustomModule";
+export type ManagementOrganizationSecurityHealthAnalyticsCustomModule = import("./managementOrganizationSecurityHealthAnalyticsCustomModule").ManagementOrganizationSecurityHealthAnalyticsCustomModule;
+export const ManagementOrganizationSecurityHealthAnalyticsCustomModule: typeof import("./managementOrganizationSecurityHealthAnalyticsCustomModule").ManagementOrganizationSecurityHealthAnalyticsCustomModule = null as any;
+utilities.lazyLoad(exports, ["ManagementOrganizationSecurityHealthAnalyticsCustomModule"], () => require("./managementOrganizationSecurityHealthAnalyticsCustomModule"));
+
+export { ManagementProjectSecurityHealthAnalyticsCustomModuleArgs, ManagementProjectSecurityHealthAnalyticsCustomModuleState } from "./managementProjectSecurityHealthAnalyticsCustomModule";
+export type ManagementProjectSecurityHealthAnalyticsCustomModule = import("./managementProjectSecurityHealthAnalyticsCustomModule").ManagementProjectSecurityHealthAnalyticsCustomModule;
+export const ManagementProjectSecurityHealthAnalyticsCustomModule: typeof import("./managementProjectSecurityHealthAnalyticsCustomModule").ManagementProjectSecurityHealthAnalyticsCustomModule = null as any;
+utilities.lazyLoad(exports, ["ManagementProjectSecurityHealthAnalyticsCustomModule"], () => require("./managementProjectSecurityHealthAnalyticsCustomModule"));
 
 export { MuteConfigArgs, MuteConfigState } from "./muteConfig";
 export type MuteConfig = import("./muteConfig").MuteConfig;
@@ -95,8 +110,14 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule":
+                return new ManagementFolderSecurityHealthAnalyticsCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule":
                 return new ManagementOrganizationEventThreatDetectionCustomModule(name, <any>undefined, { urn })
+            case "gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule":
+                return new ManagementOrganizationSecurityHealthAnalyticsCustomModule(name, <any>undefined, { urn })
+            case "gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule":
+                return new ManagementProjectSecurityHealthAnalyticsCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/muteConfig:MuteConfig":
                 return new MuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
@@ -123,7 +144,10 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule"
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementFolderSecurityHealthAnalyticsCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementOrganizationEventThreatDetectionCustomModule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementProjectSecurityHealthAnalyticsCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)

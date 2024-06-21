@@ -142,7 +142,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      * 
      */
     @Import(name="networkEndpointType")
@@ -151,7 +151,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -459,7 +459,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
          * Default value is `SERVERLESS`.
-         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
          * Default value is `SERVERLESS`.
-         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
          * 
          * @return builder
          * 

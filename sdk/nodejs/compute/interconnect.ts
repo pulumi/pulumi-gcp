@@ -208,7 +208,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly nocContactEmail!: pulumi.Output<string | undefined>;
     /**
-     * The current status of this Interconnect's functionality, which can take one of the following values:
+     * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      * be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -493,7 +493,7 @@ export interface InterconnectState {
      */
     nocContactEmail?: pulumi.Input<string>;
     /**
-     * The current status of this Interconnect's functionality, which can take one of the following values:
+     * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
      * be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be

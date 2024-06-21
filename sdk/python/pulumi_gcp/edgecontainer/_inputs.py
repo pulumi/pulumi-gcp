@@ -20,6 +20,8 @@ __all__ = [
     'ClusterFleetArgs',
     'ClusterMaintenanceEventArgs',
     'ClusterMaintenancePolicyArgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionArgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionWindowArgs',
     'ClusterMaintenancePolicyWindowArgs',
     'ClusterMaintenancePolicyWindowRecurringWindowArgs',
     'ClusterMaintenancePolicyWindowRecurringWindowWindowArgs',
@@ -627,12 +629,19 @@ class ClusterMaintenanceEventArgs:
 @pulumi.input_type
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 window: pulumi.Input['ClusterMaintenancePolicyWindowArgs']):
+                 window: pulumi.Input['ClusterMaintenancePolicyWindowArgs'],
+                 maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None):
         """
         :param pulumi.Input['ClusterMaintenancePolicyWindowArgs'] window: Specifies the maintenance window in which maintenance may be performed.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+               in these windows. Each exclusion has a unique name and may be active or expired.
+               The max number of maintenance exclusions allowed at a given time is 3.
+               Structure is documented below.
         """
         pulumi.set(__self__, "window", window)
+        if maintenance_exclusions is not None:
+            pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
 
     @property
     @pulumi.getter
@@ -646,6 +655,103 @@ class ClusterMaintenancePolicyArgs:
     @window.setter
     def window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowArgs']):
         pulumi.set(self, "window", value)
+
+    @property
+    @pulumi.getter(name="maintenanceExclusions")
+    def maintenance_exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]:
+        """
+        Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+        in these windows. Each exclusion has a unique name and may be active or expired.
+        The max number of maintenance exclusions allowed at a given time is 3.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_exclusions")
+
+    @maintenance_exclusions.setter
+    def maintenance_exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]):
+        pulumi.set(self, "maintenance_exclusions", value)
+
+
+@pulumi.input_type
+class ClusterMaintenancePolicyMaintenanceExclusionArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 window: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']] = None):
+        """
+        :param pulumi.Input[str] id: A unique (per cluster) id for the window.
+        :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs'] window: Represents an arbitrary window of time.
+               Structure is documented below.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if window is not None:
+            pulumi.set(__self__, "window", window)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique (per cluster) id for the window.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]:
+        """
+        Represents an arbitrary window of time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]):
+        pulumi.set(self, "window", value)
+
+
+@pulumi.input_type
+class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: The time that the window ends. The end time must take place after the
+               start time.
+        :param pulumi.Input[str] start_time: The time that the window first starts.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time that the window ends. The end time must take place after the
+        start time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time that the window first starts.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

@@ -653,6 +653,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> lookerCustomEndpoint() {
         return Codegen.optional(this.lookerCustomEndpoint);
     }
+    @Export(name="managedKafkaCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> managedKafkaCustomEndpoint;
+
+    public Output<Optional<String>> managedKafkaCustomEndpoint() {
+        return Codegen.optional(this.managedKafkaCustomEndpoint);
+    }
     @Export(name="memcacheCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memcacheCustomEndpoint;
 
