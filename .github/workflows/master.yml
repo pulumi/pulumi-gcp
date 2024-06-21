@@ -27,11 +27,21 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
 jobs:
+  prerequisites:
+    uses: ./.github/workflows/prerequisites.yml
+    secrets: inherit
+    with:
+      default_branch: ${{ github.event.repository.default_branch }}
+      is_pr: ${{ github.event_name == 'pull_request' }}
+      is_automated: ${{ github.actor == 'dependabot[bot]' }}
+
   build_sdk:
     name: build_sdk
     needs: prerequisites
     uses: ./.github/workflows/build_sdk.yml
     secrets: inherit
+    with:
+      version: ${{ needs.prerequisites.outputs.version }}
 
   generate_coverage_data:
     continue-on-error: true
@@ -95,17 +105,11 @@ jobs:
     name: License Check
     uses: ./.github/workflows/license.yml
     secrets: inherit
-  prerequisites:
-    uses: ./.github/workflows/prerequisites.yml
-    secrets: inherit
-    with:
-      default_branch: ${{ github.event.repository.default_branch }}
-      is_pr: ${{ github.event_name == 'pull_request' }}
-      is_automated: ${{ github.actor == 'dependabot[bot]' }}
 
   publish:
     name: publish
     needs:
+      - prerequisites
       - test
       - license_check
     runs-on: ubuntu-latest
@@ -144,13 +148,11 @@ jobs:
         role-external-id: upload-pulumi-release
         role-session-name: gcp@githubActions
         role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
-    - id: version
-      uses: pulumi/provider-version-action@v1
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v5
       env:
-        GORELEASER_CURRENT_TAG: v${{ steps.version.outputs.version }}
-        PROVIDER_VERSION: ${{ steps.version.outputs.version }}
+        GORELEASER_CURRENT_TAG: v${{ needs.prerequisites.outputs.version }}
+        PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
       with:
         args: -p 2 -f .goreleaser.prerelease.yml --rm-dist --skip-validate --timeout
           60m0s
@@ -164,16 +166,16 @@ jobs:
         status: ${{ job.status }}
   publish_sdk:
     name: publish_sdk
-    needs: publish
+    needs:
+      - prerequisites
+      - publish
     runs-on: ubuntu-latest
     steps:
-    - id: version
-      uses: pulumi/provider-version-action@v1
     - name: Publish SDKs
       uses: pulumi/pulumi-package-publisher@v0.0.18
       with:
         sdk: all
-        version: ${{ steps.version.outputs.version }}
+        version: ${{ needs.prerequisites.outputs.version }}
         dotnet-version: "6.0.x"
         java-version: "11"
         node-version: "20.x"
@@ -209,17 +211,18 @@ jobs:
 
   test:
     name: test
-    needs: build_sdk
+    needs: 
+      - prerequisites
+      - build_sdk
     permissions:
       contents: read
       id-token: write
     runs-on: ubuntu-latest
+    env:
+      PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
-    - uses: pulumi/provider-version-action@v1
-      with:
-        set-env: 'PROVIDER_VERSION'
     - name: Install Go
       uses: actions/setup-go@v5
       with:
