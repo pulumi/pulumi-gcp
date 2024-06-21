@@ -2770,6 +2770,9 @@
                 "current": "gcp:bigtable/table:Table",
                 "majorVersion": 7,
                 "fields": {
+                    "automated_backup_policy": {
+                        "maxItemsOne": true
+                    },
                     "column_family": {
                         "maxItemsOne": false
                     },
@@ -4126,6 +4129,35 @@
                 "current": "gcp:cloudbuildv2/connection:Connection",
                 "majorVersion": 7,
                 "fields": {
+                    "bitbucket_cloud_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "bitbucket_data_center_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "github_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4950,6 +4982,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_composer_user_workloads_config_map": {
+                "current": "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap",
+                "majorVersion": 7
             },
             "google_composer_user_workloads_secret": {
                 "current": "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret",
@@ -15450,6 +15486,39 @@
                 "current": "gcp:discoveryengine/dataStore:DataStore",
                 "majorVersion": 7,
                 "fields": {
+                    "document_processing_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "default_parsing_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "digital_parsing_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ocr_parsing_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "parsing_config_overrides": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "digital_parsing_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ocr_parsing_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "solution_types": {
                         "maxItemsOne": false
                     }
@@ -15865,6 +15934,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "maintenance_exclusions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "window": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "window": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -19515,6 +19594,39 @@
                     }
                 }
             },
+            "google_managed_kafka_cluster": {
+                "current": "gcp:managedkafka/cluster:Cluster",
+                "majorVersion": 7,
+                "fields": {
+                    "capacity_config": {
+                        "maxItemsOne": true
+                    },
+                    "gcp_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_configs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rebalance_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_managed_kafka_topic": {
+                "current": "gcp:managedkafka/topic:Topic",
+                "majorVersion": 7
+            },
             "google_memcache_instance": {
                 "current": "gcp:memcache/instance:Instance",
                 "majorVersion": 7,
@@ -19985,6 +20097,9 @@
                 "current": "gcp:netapp/activeDirectory:ActiveDirectory",
                 "majorVersion": 7,
                 "fields": {
+                    "administrators": {
+                        "maxItemsOne": false
+                    },
                     "backup_operators": {
                         "maxItemsOne": false
                     },
@@ -19992,6 +20107,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_netapp_backup": {
+                "current": "gcp:netapp/backup:Backup",
+                "majorVersion": 7
             },
             "google_netapp_backup_policy": {
                 "current": "gcp:netapp/backupPolicy:BackupPolicy",
@@ -23459,9 +23578,138 @@
                     }
                 }
             },
+            "google_scc_management_folder_security_health_analytics_custom_module": {
+                "current": "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule",
+                "majorVersion": 7,
+                "fields": {
+                    "custom_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_output": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "properties": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "value_expression": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "predicate": {
+                                    "maxItemsOne": true
+                                },
+                                "resource_selector": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_scc_management_organization_event_threat_detection_custom_module": {
                 "current": "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule",
                 "majorVersion": 7
+            },
+            "google_scc_management_organization_security_health_analytics_custom_module": {
+                "current": "gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule",
+                "majorVersion": 7,
+                "fields": {
+                    "custom_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_output": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "properties": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "value_expression": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "predicate": {
+                                    "maxItemsOne": true
+                                },
+                                "resource_selector": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_scc_management_project_security_health_analytics_custom_module": {
+                "current": "gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule",
+                "majorVersion": 7,
+                "fields": {
+                    "custom_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_output": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "properties": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "value_expression": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "predicate": {
+                                    "maxItemsOne": true
+                                },
+                                "resource_selector": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_scc_mute_config": {
                 "current": "gcp:securitycenter/muteConfig:MuteConfig",
@@ -27037,6 +27285,14 @@
                         }
                     }
                 }
+            },
+            "google_composer_user_workloads_config_map": {
+                "current": "gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap",
+                "majorVersion": 7
+            },
+            "google_composer_user_workloads_secret": {
+                "current": "gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret",
+                "majorVersion": 7
             },
             "google_compute_address": {
                 "current": "gcp:compute/getAddress:getAddress",
@@ -31516,6 +31772,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_managed_kafka_cluster": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_memcache_instance": [
                 "effective_labels",
                 "terraform_labels"
@@ -31529,6 +31789,10 @@
                 "terraform_labels"
             ],
             "google_netapp_active_directory": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_netapp_backup": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -32193,6 +32457,7 @@
             "gcp:cloudtasks/queueIamMember:QueueIamMember": 0,
             "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy": 0,
             "gcp:composer/environment:Environment": 0,
+            "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap": 0,
             "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret": 0,
             "gcp:compute/address:Address": 0,
             "gcp:compute/attachedDisk:AttachedDisk": 0,
@@ -32661,6 +32926,8 @@
             "gcp:logging/projectExclusion:ProjectExclusion": 0,
             "gcp:logging/projectSink:ProjectSink": 0,
             "gcp:looker/instance:Instance": 0,
+            "gcp:managedkafka/cluster:Cluster": 0,
+            "gcp:managedkafka/topic:Topic": 0,
             "gcp:memcache/instance:Instance": 0,
             "gcp:migrationcenter/group:Group": 0,
             "gcp:migrationcenter/preferenceSet:PreferenceSet": 0,
@@ -32676,6 +32943,7 @@
             "gcp:monitoring/slo:Slo": 0,
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": 0,
             "gcp:netapp/activeDirectory:ActiveDirectory": 0,
+            "gcp:netapp/backup:Backup": 0,
             "gcp:netapp/backupPolicy:BackupPolicy": 0,
             "gcp:netapp/backupVault:BackupVault": 0,
             "gcp:netapp/kmsconfig:Kmsconfig": 0,
@@ -32797,7 +33065,10 @@
             "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securitycenter/instanceIamMember:InstanceIamMember": 0,
             "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": 0,
+            "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule": 0,
             "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule": 0,
+            "gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule": 0,
+            "gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule": 0,
             "gcp:securitycenter/muteConfig:MuteConfig": 0,
             "gcp:securitycenter/notificationConfig:NotificationConfig": 0,
             "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule": 0,
@@ -32981,6 +33252,8 @@
             "gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy": 0,
             "gcp:composer/getEnvironment:getEnvironment": 0,
             "gcp:composer/getImageVersions:getImageVersions": 0,
+            "gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap": 0,
+            "gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret": 0,
             "gcp:compute/getAddress:getAddress": 0,
             "gcp:compute/getAddresses:getAddresses": 0,
             "gcp:compute/getBackendBucket:getBackendBucket": 0,
